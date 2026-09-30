@@ -1,0 +1,501 @@
+name: CI
+
+# The Lean package: Mathlib from its cache, then the package's own modules and the checks of code/lean/check.sh
+# (the build, every target up to date, the source scan, #print axioms, the types of the interfaces, the environment
+# audit). The package's .lake/build is restored first, from the actions cache (the last build on this toolchain and
+# manifest), else from the Lake build archive of the latest release, so only the modules that changed and those that
+# import them are compiled; Comparator replays the whole environment in the Lean kernel and in nanoda whatever was
+# restored. Then a scan of the sources, and Comparator.
+#
+# The computations: code/rerun.sh reruns the checks of the paper that fit a runner in about 20 minutes and compares
+# each output with the recorded one; the job assets runs those that read the data tarballs of ASSETS.md, when a
+# release (draft or published) holds them. code/README.md lists the checks left out and why.
+# Every job uploads the complete output of each check and one result line per check as an artifact verify-*, which
+# release.yml collects into the verification archive of a release.
+# Only commits that touch the build or the computations run it; a newer push cancels the older run on the same branch.
+on:
+  push:
+    branches: ["**"]
+    paths: &build-paths
+      - "**.lean"
+      - lakefile.toml
+      - lake-manifest.json
+      - lean-toolchain
+      - config.json
+      - ASSETS.md
+      - code/**
+      - data/**
+      - .github/workflows/ci.yml
+  pull_request:
+    paths: *build-paths
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    name: Source scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: sorry, admit and native_decide outside comments and strings
+        shell: bash
+        run: |
+          set -u
+          mkdir -p verify/lean verify/results
+          cat > scan.awk <<'EOF'
+          FNR == 1 { depth = 0 }
+          {
+            s = $0; out = ""; i = 1; n = length(s)
+            while (i <= n) {
+              two = substr(s, i, 2)
+              if (depth > 0) {
+                if (two == "/-") { depth++; i += 2 } else if (two == "-/") { depth--; i += 2 } else i++
+                continue
+              }
+              if (two == "/-") { depth = 1; i += 2; continue }
+              if (two == "--") break
+              c = substr(s, i, 1)
+              if (c == "\"") {
+                j = i + 1
+                while (j <= n) { d = substr(s, j, 1); if (d == "\\") { j += 2; continue }; if (d == "\"") break; j++ }
+                out = out " "; i = j + 1; continue
+              }
+              out = out c; i++
+            }
+            if (match(out, "(^|[^A-Za-z0-9_.'!?])(" W ")([^A-Za-z0-9_'!?]|$)")) print FILENAME ":" FNR ": " $0
+          }
+          EOF
+          find Tammes15 -name '*.lean' ! -path Tammes15/Challenge.lean | LC_ALL=C sort > files.txt
+          {
+            echo "# Uses of sorry, admit and native_decide outside comments and string literals, in the $(wc -l < files.txt) files of Tammes15/ other than Challenge.lean, and of admit and native_decide in Challenge.lean (whose statement ends in sorry)."
+            xargs awk -v W='sorry|admit|native_decide' -f scan.awk < files.txt
+            awk -v W='admit|native_decide' -f scan.awk Tammes15/Challenge.lean
+          } > scan.txt
+          cat scan.txt
+          hits=$(($(wc -l < scan.txt) - 1))
+          echo "# $hits uses" >> scan.txt
+          cp scan.txt verify/lean/source-scan.txt
+          if [ "$hits" -eq 0 ]; then r=PASS; else r=FAIL; fi
+          printf 'source-scan\tscan of Tammes15/ for sorry, admit and native_decide outside comments\t%s uses\t%s\tlean/source-scan.txt\n' "$hits" "$r" > verify/results/source-scan.tsv
+          [ "$r" = PASS ]
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-source-scan
+          path: verify/
+
+  lean:
+    name: Lean build and checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    outputs:
+      built: ${{ steps.check.outputs.built }}
+    steps:
+      - name: Free disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL && df -h /
+      - uses: actions/checkout@v5
+      - name: Set up Lean and fetch the Mathlib cache
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-mathlib-cache: true
+          use-github-cache: false
+      - name: Earlier build from the cache
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            .lake/build
+            !.lake/build/**/*.setup.json
+          key: lake-build-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.sha }}
+          restore-keys: lake-build-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-
+      - name: Earlier build from the latest release
+        if: steps.cache.outputs.cache-matched-key == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -u
+          a=tammes-15-x86_64-unknown-linux-gnu.tar.gz
+          if gh release download --pattern "$a" -D /tmp 2> /dev/null; then
+            mkdir -p .lake/build && tar -xzf "/tmp/$a" -C .lake/build && rm "/tmp/$a"
+            echo "Restored the build of the latest release."
+          else
+            echo "No release build archive: a build from scratch."
+          fi
+      - name: code/lean/check.sh
+        id: check
+        shell: bash
+        run: |
+          set -u
+          mkdir -p verify/lean verify/results verify/versions
+          lean --version > verify/versions/lean.txt
+          # check.out is what check.sh > check.out 2>&1 writes; the loop stamps the result line of each step, for its time.
+          s0=$(date +%s)
+          set +e  # the default shell has -e and pipefail: record the result lines also when a step fails
+          code/lean/check.sh 2>&1 | tee code/lean/check.out | while IFS= read -r l; do
+            printf '%s\n' "$l" >&2
+            if [[ $l =~ ^[a-z-]+:\ (PASS|FAIL)$ ]]; then printf '%(%s)T %s\n' -1 "${l%%:*}"; fi
+          done > steps.txt
+          rc=${PIPESTATUS[0]}
+          set -e
+          cp code/lean/check.out code/lean/build.out verify/lean/ || true
+          if grep -qx 'up-to-date: PASS' code/lean/check.out; then echo "built=true" >> "$GITHUB_OUTPUT"; fi
+          declare -A secs
+          prev=$s0
+          while read -r t s; do secs[$s]="$((t - prev)) s"; prev=$t; done < steps.txt
+          for s in build up-to-date scan axioms types audit; do
+            case $s in
+              build) c="code/lean/check.sh, 1: lake build of every library of lakefile.toml"; o=lean/build.out ;;
+              up-to-date) c="code/lean/check.sh, 2: lake build --no-build of every library"; o=lean/build.out ;;
+              scan) c="code/lean/check.sh, 3: code/lean/scan.sh Tammes15 lakefile.toml"; o=lean/check.out ;;
+              axioms) c="code/lean/check.sh, 4: lake env lean code/lean/axioms.lean"; o=lean/check.out ;;
+              types) c="code/lean/check.sh, 5: lake env lean code/lean/types.lean"; o=lean/check.out ;;
+              audit) c="code/lean/check.sh, 6: code/lean/EnvAudit.lean on every module but the challenge"; o=lean/check.out ;;
+            esac
+            if grep -qx "$s: PASS" code/lean/check.out; then r=PASS; else r=FAIL; fi
+            printf 'lean %s\t%s\t%s\t%s\t%s\n' "$s" "$c" "${secs[$s]:-not reached}" "$r" "$o" > "verify/results/lean_$s.tsv"
+          done
+          cat verify/results/lean_*.tsv
+          tail -1 code/lean/check.out | grep -qx 'CHECK PASS' && [ "$rc" -eq 0 ]
+      - name: Save the build to the cache
+        if: always() && steps.check.outputs.built == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            .lake/build
+            !.lake/build/**/*.setup.json
+          key: lake-build-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.sha }}
+      # Read by the job comparator, and by release.yml some days later.
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.check.outputs.built == 'true'
+        with:
+          name: lake-build
+          path: .lake/build
+          include-hidden-files: true
+          compression-level: 1
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-lean
+          path: verify/
+
+  comparator:
+    name: Comparator
+    needs: lean
+    if: ${{ !cancelled() && needs.lean.outputs.built == 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - name: Free disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL && df -h /
+      - uses: actions/checkout@v5
+
+      - uses: actions/checkout@v5
+        with:
+          repository: leanprover/comparator
+          ref: d03acab154d269c06e60e4de7e4cc85deebff94b
+          path: .ci/comparator
+
+      - uses: actions/checkout@v5
+        with:
+          repository: Zouuup/landrun
+          ref: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
+          path: .ci/landrun
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+
+      - name: Build Landrun
+        working-directory: .ci/landrun
+        run: go build -o landrun cmd/landrun/main.go
+
+      - name: Build nanoda
+        run: cargo install --locked --git https://github.com/ammkrn/nanoda_lib --rev 3a2407216ee84a75f9e1aead6803d0578be06ae7 --root "$RUNNER_TEMP/nanoda"
+
+      - name: Set up Lean and fetch the Mathlib cache
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-mathlib-cache: true
+          use-github-cache: false
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: lake-build
+          path: .lake/build
+      # Comparator compiles the challenge modules again from their source inside its sandbox.
+      - name: Drop the build outputs of the challenge modules
+        run: |
+          rm -rfv .lake/build/lib/lean/Tammes15/Challenge .lake/build/lib/lean/Tammes15/Challenge.* \
+            .lake/build/ir/Tammes15/Challenge .lake/build/ir/Tammes15/Challenge.*
+
+      # Comparator at this commit targets Lean v4.34.0; build it with the project's toolchain so that
+      # lean4export reads the project's .olean files.
+      - name: Align the Comparator toolchain
+        run: cp lean-toolchain .ci/comparator/lean-toolchain
+
+      - name: Build Comparator
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: .ci/comparator
+          auto-config: false
+          build: true
+          build-args: lean4export comparator
+          use-mathlib-cache: false
+          use-github-cache: false
+
+      - name: Check lean4export commit
+        run: test "$(git -C .ci/comparator/.lake/packages/lean4export rev-parse HEAD)" = 076e8e57707e813375e8f9da8bf989799ace9680
+
+      - name: Start time
+        run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
+
+      # config.json: Tammes15.reduction of Tammes15.Solution against the statement of Tammes15.Challenge, the
+      # axioms propext, Quot.sound and Classical.choice, the Lean kernel and nanoda.
+      - name: Run Comparator
+        id: run
+        shell: bash
+        env:
+          COMPARATOR_LANDRUN: ${{ github.workspace }}/.ci/landrun/landrun
+          COMPARATOR_LEAN4EXPORT: ${{ github.workspace }}/.ci/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export
+          COMPARATOR_NANODA: ${{ runner.temp }}/nanoda/bin/nanoda_bin
+        run: >-
+          systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pty --pipe
+          -E PATH="$PATH"
+          -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN"
+          -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT"
+          -E COMPARATOR_NANODA="$COMPARATOR_NANODA"
+          --working-directory "$PWD" --
+          bash -c 'lake env .ci/comparator/.lake/build/bin/comparator config.json'
+          2>&1 | tee comparator.log
+
+      - name: Record the result
+        if: always()
+        run: |
+          mkdir -p verify/lean verify/results
+          secs=$(($(date +%s) - ${START:-$(date +%s)}))
+          cp comparator.log verify/lean/comparator.txt || true
+          if [ "${{ steps.run.outcome }}" = success ]; then r=PASS; else r=FAIL; fi
+          printf 'comparator\tcomparator config.json (Tammes15.Challenge against Tammes15.Solution, Lean kernel and nanoda)\t%s s\t%s\tlean/comparator.txt\n' "$secs" "$r" > verify/results/comparator.tsv
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-comparator
+          path: verify/
+
+  impl1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    container:
+      image: rust:1.98.1
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build plantri 5.8 and both implementations
+        run: |
+          mkdir -p verify/versions
+          { rustc --version; cc --version | head -1; } > verify/versions/rust.txt
+          code/rerun.sh build_plantri build_impl1 build_impl2
+      - name: Unit tests, sample replay, the realised cases of C1 and C3 (placement, run without Local), enumeration up to n = 13, stage A for k = 1, 2, 3
+        run: |
+          SAVE="$PWD/verify" code/rerun.sh test_impl1 replay_sample replay_corrupt localtest truth nolocal_case \
+            place_c1_edges place_c3_edges place_c1_vertex place_c3_vertex \
+            filtercheck_n4_13 unfiltered_n13 stageA_k1 stageA_k2 stageA_k3
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-impl1
+          path: verify/
+
+  # plantri at n = 14: the count without the degree filter (4 parts) and the unsplit count of the class
+  enum14:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    container:
+      image: rust:1.98.1
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build plantri 5.8
+        run: code/rerun.sh build_plantri
+      - name: Counts at n = 14
+        run: SAVE="$PWD/verify" code/rerun.sh unfiltered_n14 split_n14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-enum14
+          path: verify/
+
+  # Stage A for k = 0 (2000 parts of plantri), 200 parts per job, each part through tfilter and vlevel1
+  stageA_k0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    container:
+      image: rust:1.98.1
+    strategy:
+      fail-fast: false
+      matrix:
+        first: [0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800]
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build plantri 5.8 and both implementations
+        run: code/rerun.sh build_plantri build_impl1 build_impl2
+      - name: Parts ${{ matrix.first }} to ${{ matrix.first }} + 199
+        run: SAVE="$PWD/verify" code/rerun.sh stageA_k0_${{ matrix.first }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-stageA-k0-${{ matrix.first }}
+          path: verify/
+
+  impl2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    container:
+      image: rust:1.98.1
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build the second implementation
+        run: code/rerun.sh build_impl2
+      - name: Unit tests, the plain pass on the sample, tests on C1 and C3 with and without Local
+        run: |
+          SAVE="$PWD/verify" code/rerun.sh test_impl2 sample_kill nolocal \
+            vtest_c1_edges vtest_c3_edges vtest_c1_vertex vtest_c3_vertex
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-impl2
+          path: verify/
+
+  # The 42 graphs left by the bulk passes of vkill (54 runs, some on slices of d), in five groups
+  residue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    container:
+      image: rust:1.98.1
+    strategy:
+      fail-fast: false
+      matrix:
+        group: [a, b, c, d, e]
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build the second implementation
+        run: code/rerun.sh build_impl2
+      - name: Residue group ${{ matrix.group }}
+        run: SAVE="$PWD/verify" code/rerun.sh residue_${{ matrix.group }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-residue-${{ matrix.group }}
+          path: verify/
+
+  gp:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq pari-gp
+      - name: PARI/GP checks
+        run: |
+          mkdir -p verify/versions
+          echo 'print("PARI/GP ", version())' | gp -q > verify/versions/gp.txt
+          SAVE="$PWD/verify" code/rerun.sh paper_checks structure_checks rtrig_consts consts120 params \
+            bk15_c3_coords tie_targets_check kappa_gale kappa_vertex local_nonlinear contact_graphs consts_check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-gp
+          path: verify/
+
+  sage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    container:
+      image: sagemath/sagemath:10.9
+      options: --user root
+    steps:
+      - uses: actions/checkout@v5
+      - name: curl, to download plantri
+        run: apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq curl
+      - name: SageMath checks, and stage A by exact rational LP
+        run: |
+          mkdir -p verify/versions
+          { sage --version; sage -c 'print("PARI in Sage", pari.version())'; } > verify/versions/sage.txt
+          code/rerun.sh build_plantri
+          SAVE="$PWD/verify" code/rerun.sh bk15_exact attain_aa params_check rigidity rigidity2 tie_targets \
+            exactlp_k3 exactlp_k2 exactlp_k1_15 exactlp_k0_135 exactlp_k0_1848
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-sage
+          path: verify/
+
+  # The checks that read the data tarballs (group assets of code/rerun.sh): the coverage join of the
+  # second level and its tests, the comparison of the two first levels, the samples of the MPFR replays and
+  # the replay of the two random samples (974 replays) with the MPFR backend. The tarballs come from the
+  # newest release, draft or published, that has the three of ASSETS.md with its sha256 sums.
+  assets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write # a draft release is visible only with write access; this job writes nothing
+    steps:
+      - uses: actions/checkout@v5
+      - name: Data tarballs from a release, checked against ASSETS.md and unpacked
+        id: fetch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -eu
+          a="$RUNNER_TEMP/assets"; mkdir -p "$a"
+          grep -E '^[0-9a-f]{64}  ' ASSETS.md > "$a/SHA256SUMS"
+          want=$(awk '{print $2}' "$a/SHA256SUMS" | jq -R . | jq -sc .)
+          # One line per release that has the three tarballs, newest first: tag, draft, then id:name of each.
+          gh api --paginate "repos/$GITHUB_REPOSITORY/releases?per_page=100" | jq -rs --argjson want "$want" '
+            add // [] | .[] | . as $r
+            | [$want[] as $n | $r.assets[] | select(.name == $n) | "\(.id):\(.name)"] as $ids
+            | select(($ids | length) == ($want | length))
+            | "\($r.tag_name) \($r.draft) \($ids | join(" "))"' > "$a/candidates.txt"
+          if [ ! -s "$a/candidates.txt" ]; then
+            echo "No release has the three data tarballs of ASSETS.md: the checks on them are not run."
+            exit 0
+          fi
+          found=""
+          while read -r tag draft pairs <&3; do
+            for p in $pairs; do
+              gh api -H 'Accept: application/octet-stream' "repos/$GITHUB_REPOSITORY/releases/assets/${p%%:*}" > "$a/${p#*:}"
+            done
+            if (cd "$a" && sha256sum -c SHA256SUMS); then found=$tag; break; fi
+            echo "release $tag (draft: $draft): the data tarballs differ from ASSETS.md"
+          done 3< "$a/candidates.txt"
+          [ -n "$found" ] || { echo "no release has the data tarballs of ASSETS.md with its sha256 sums"; exit 1; }
+          echo "Data tarballs of the release $found, checked against ASSETS.md."
+          (cd "$a" && for f in *.tar.xz; do tar xJf "$f"; done)
+          echo "release=$found" >> "$GITHUB_OUTPUT"
+      - name: Build the first implementation with Rust 1.98.1
+        if: steps.fetch.outputs.release != ''
+        run: |
+          rustup toolchain install 1.98.1 --profile minimal
+          rustup default 1.98.1
+          mkdir -p verify/versions
+          { rustc --version; awk -W version 2>&1 | head -1; } > verify/versions/assets.txt
+          code/rerun.sh build_impl1
+      - name: Coverage join and its tests, stage A comparison, MPFR samples and their replay
+        if: steps.fetch.outputs.release != ''
+        run: |
+          ASSETS="$RUNNER_TEMP/assets" SAVE="$PWD/verify" code/rerun.sh coverage_join coverage_join_test \
+            stageA_compare mpfr_samples mpfr_974
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.fetch.outputs.release != ''
+        with:
+          name: verify-assets
+          path: verify/

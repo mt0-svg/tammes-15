@@ -1,0 +1,11 @@
+source: code/impl2/{src,Cargo.toml,Cargo.lock,build.rs}, sha256 ac3b4ad053772387
+cargo 1.99.0-nightly (b07e5a086 2026-08-07)
+rustc 1.99.0-nightly (12c36e253 2026-08-10)
+    Finished `release` profile [optimized] target(s) in 42.40s
+    Finished `release` profile [optimized] target(s) in 39.41s
+vkill build a 3aa8a1f8f7232cfd3afe9712a448b3f6391d6249ab16b04203e45bdb17002bb8 build b 3aa8a1f8f7232cfd3afe9712a448b3f6391d6249ab16b04203e45bdb17002bb8 EQUAL
+vlevel1 build a 080b6d6dbca7a878c4a8047f56368e62e4641470a7b8848cd80883be8127ed9b build b 080b6d6dbca7a878c4a8047f56368e62e4641470a7b8848cd80883be8127ed9b EQUAL
+vtest build a e8024bbde69ba247a812c78ca72a4c96f2c3fa62970dea7bddfb53f1e160509c build b e8024bbde69ba247a812c78ca72a4c96f2c3fa62970dea7bddfb53f1e160509c EQUAL
+3aa8a1f8f7232cfd3afe9712a448b3f6391d6249ab16b04203e45bdb17002bb8  vkill
+080b6d6dbca7a878c4a8047f56368e62e4641470a7b8848cd80883be8127ed9b  vlevel1
+e8024bbde69ba247a812c78ca72a4c96f2c3fa62970dea7bddfb53f1e160509c  vtest

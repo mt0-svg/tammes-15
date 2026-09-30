@@ -1,0 +1,98 @@
+name = "tammes-15"
+version = "1.0.0"
+description = "The Tammes problem for fifteen points: the maximal minimal distance is arccos u, u the root in (1/2, 7/10) of 13u^5 - u^4 + 6u^3 + 2u^2 - 3u - 1; proved in Lean 4 from four finite computations and the bound of Fejes Toth, stated as hypotheses"
+keywords = ["math", "Tammes problem", "spherical code", "contact graph", "discrete geometry", "formal verification"]
+license = "Apache-2.0"
+licenseFiles = ["LICENSE", "NOTICE"]
+preferReleaseBuild = true
+releaseRepo = "https://github.com/mt0-svg/tammes-15"
+defaultTargets = ["Statement", "Trigrows", "Local41", "Rattlers", "Glue", "Fans", "Draw", "VendorEM8", "Hyps",
+  "Geom", "TwoConn", "Numerics", "FaceChain", "Challenge", "Solution"]
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.34.1"
+
+# The statement of the problem (Section 8.1 of the paper).
+[[lean_lib]]
+name = "Statement"
+roots = ["Tammes15.Statement"]
+
+# Real functions of the rows and face relations (Sections 3.4 and 5).
+[[lean_lib]]
+name = "Trigrows"
+globs = ["Tammes15.Trigrows.+"]
+
+# Theorem 4.1, with the rigidity bound D1 as a hypothesis.
+[[lean_lib]]
+name = "Local41"
+globs = ["Tammes15.Local41.+"]
+
+# Lemmas edge and disc, Propositions nor and onehex by inscribed polygons.
+[[lean_lib]]
+name = "Rattlers"
+globs = ["Tammes15.Rattlers.+"]
+
+# Frames, reconstruction, the enclosure bound, Pair and Local (Section 5.4).
+[[lean_lib]]
+name = "Glue"
+globs = ["Tammes15.Glue.+"]
+
+# Relations (T5), (T6), (T8) and angle additivity.
+[[lean_lib]]
+name = "Fans"
+globs = ["Tammes15.Fans.+"]
+
+# Configurations, contact graphs, rotation systems and Theorem 3.1.
+[[lean_lib]]
+name = "Draw"
+globs = ["Tammes15.Draw.+"]
+
+# The eight-point Lean code of Kryvonos, Liehr and Taylor (arXiv 2609.22077, commit 50d14bc), the modules
+# reachable from BestPacking, renamed into Tammes15.Vendor.EM8 (THIRD_PARTY.md). Its sources were written under
+# Lean's default options, restored here for this library only.
+[[lean_lib]]
+name = "VendorEM8"
+globs = ["Tammes15.Vendor.EM8.+"]
+leanOptions = { autoImplicit = true, relaxedAutoImplicit = true }
+
+# The cases, D1 to D4 stated exactly, the interfaces and the main theorem `Tammes15.reduction`.
+[[lean_lib]]
+name = "Hyps"
+globs = ["Tammes15.Hyps.+"]
+
+# Spherical geometry of Section 3 on faces in cone form.
+[[lean_lib]]
+name = "Geom"
+globs = ["Tammes15.Geom.+"]
+
+# Corollary twoconn by the convex hull (Remark routeC).
+[[lean_lib]]
+name = "TwoConn"
+globs = ["Tammes15.TwoConn.+"]
+
+# Certified values of cos, sin, arccos and pi at explicit points.
+[[lean_lib]]
+name = "Numerics"
+globs = ["Tammes15.Numerics.+"]
+
+# Lemmas convex (cone form), faces and threeconn through the face chain of the eight-point code.
+[[lean_lib]]
+name = "FaceChain"
+globs = ["Tammes15.FaceChain.+"]
+
+# The statement with `sorry` over copies of the definition modules, which nothing imports, and the module
+# that proves it: the pair Comparator checks (config.json).
+[[lean_lib]]
+name = "Challenge"
+globs = ["Tammes15.Challenge.*"]
+
+[[lean_lib]]
+name = "Solution"
+roots = ["Tammes15.Solution"]

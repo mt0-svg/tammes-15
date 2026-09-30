@@ -1,0 +1,15 @@
+system: Ubuntu 24.04.4 LTS
+package: pari-gp 2.15.4-2.1build1
+PARI/GP [2, 15, 4]
+paper_checks: PASS, identical to code/gp/paper_checks.out
+structure_checks: PASS, identical to code/gp/structure_checks.out
+rtrig_consts: PASS, identical to code/gp/rtrig_consts.out
+consts120: PASS, identical to code/gp/consts120.out
+params: PASS, identical to data/params15ft.txt
+bk15_c3_coords: PASS, identical to code/gp/bk15_c3_coords.out (and data/bk15_c1.txt data/bk15_c3.txt)
+tie_targets_check: PASS, identical to code/gp/tie_targets_check.out
+kappa_gale: PASS, identical to code/gp/kappa_gale.out
+kappa_vertex: PASS, identical to code/gp/kappa_vertex.out
+local_nonlinear: PASS, identical to code/gp/local_nonlinear.out
+contact_graphs: PASS, identical to code/gp/contact_graphs.out
+consts_check: PASS, identical to code/impl2/consts_check.out

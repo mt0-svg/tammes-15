@@ -1,0 +1,4 @@
+input k2_0_plantri.pc: 5447863 graphs, 185973 with >= 2 hexagons, 441 of them survivors of stage A, 185532 killed; testing all survivors and 2000 killed
+killed by stage A: LP infeasible 2000, LP FEASIBLE (wrong kill) 0
+survivors of stage A: LP feasible 441, LP infeasible 0
+survivor file graphs not found in the input: 0

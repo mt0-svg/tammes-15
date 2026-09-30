@@ -1,0 +1,7 @@
+{
+  "challenge_module": "Tammes15.Challenge",
+  "solution_module": "Tammes15.Solution",
+  "theorem_names": ["Tammes15.reduction"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}

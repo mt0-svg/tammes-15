@@ -1,0 +1,8 @@
+# Negative control of code/impl2/stageA_compare.sh: the drop list without its line "0 1 253" (DROP=that list code/impl2/stageA_compare.sh ASSETS); expected FAIL on k = 0 part 1.
+FAIL: k0 part 1: the tfilter part without the listed graphs is not the vlevel1 survivor file
+k = 0: 2000 parts; tfilter parts equal to their recorded sha256: 2000; identical survivor files 1927; vlevel1 file = tfilter file without the listed graphs, byte for byte, in 72 of 73 other parts (97 graphs); survivors tfilter 435263, vlevel1 435165
+k = 1: 40 parts; tfilter parts equal to their recorded sha256: 40; identical survivor files 40; vlevel1 file = tfilter file without the listed graphs, byte for byte, in 0 of 0 other parts (0 graphs); survivors tfilter 26994, vlevel1 26994
+k = 2: 1 parts; tfilter parts equal to their recorded sha256: 1; identical survivor files 1; vlevel1 file = tfilter file without the listed graphs, byte for byte, in 0 of 0 other parts (0 graphs); survivors tfilter 441, vlevel1 441
+k = 3: 1 parts; tfilter parts equal to their recorded sha256: 1; identical survivor files 1; vlevel1 file = tfilter file without the listed graphs, byte for byte, in 0 of 0 other parts (0 graphs); survivors tfilter 5, vlevel1 5
+stage A compare: FAIL
+exit status 1

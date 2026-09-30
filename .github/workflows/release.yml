@@ -1,0 +1,214 @@
+name: Release
+
+# On a tag v* (or by hand for a given tag): publishes the draft release of the tag, from the green CI run of the
+# tagged commit. Nothing is compiled again but the PDF: the Lake build that CI built and checked (the checks of
+# code/lean/check.sh, the source scan, Comparator) is packed as it is, with the PDF and the outputs of every check of
+# that run, computations included.
+#
+# The data tarballs of ASSETS.md (inputs, certificates, run records) are too large for git and CI does not recompute
+# them. They are uploaded by hand to a draft release of the tag, before the tag is pushed:
+#   1. push the commit;
+#   2. create the draft with the tarballs:
+#        gh release create v1.0.0 --draft --title v1.0.0 --notes "" tammes15-inputs.tar.xz \
+#          tammes15-certificates.tar.xz tammes15-records.tar.xz
+#   3. run ci.yml by hand on the branch (gh workflow run ci.yml), so that its job assets checks them, and wait
+#      until it is green;
+#   4. push the tag.
+# This workflow downloads the tarballs from the draft, checks them against the sha256 sums of ASSETS.md, adds the
+# PDF, the verification archive and the Lake build archive, and publishes the draft. It stops, saying so, when the
+# tag has no draft with the tarballs, or when no green CI run has checked the commit with them.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag to release
+        required: true
+
+permissions:
+  contents: read
+
+env:
+  TAG: ${{ inputs.tag || github.ref_name }}
+
+jobs:
+  ci-run:
+    name: Green CI run of the tagged commit
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+    outputs:
+      run: ${{ steps.find.outputs.run }}
+      sha: ${{ steps.find.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      # The green CI run of the tagged commit, else of the latest commit with the same build inputs (CI runs only
+      # on commits that touch them).
+      - id: find
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -eu
+          sha=$(git rev-parse "$TAG^{commit}")
+          inputs=(':(glob)**/*.lean' lakefile.toml lake-manifest.json lean-toolchain config.json ASSETS.md code data .github/workflows/ci.yml)
+          run=""
+          for r in $(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/ci.yml/runs?status=success&per_page=100" --jq '.workflow_runs[] | "\(.id):\(.head_sha)"'); do
+            h=${r#*:}
+            git cat-file -e "$h^{commit}" 2> /dev/null || continue
+            if [ "$h" = "$sha" ] || { git merge-base --is-ancestor "$h" "$sha" && git diff --quiet "$h" "$sha" -- "${inputs[@]}"; }; then
+              run=${r%%:*}; break
+            fi
+          done
+          [ -n "$run" ] || { echo "no successful CI run with the build inputs of $TAG ($sha): run ci.yml on it, then this workflow by hand"; exit 1; }
+          echo "CI run $run on $TAG ($sha)"
+          echo "run=$run" >> "$GITHUB_OUTPUT"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+  pdf:
+    uses: ./.github/workflows/paper.yml
+    with:
+      ref: ${{ inputs.tag || github.ref_name }}
+
+  release:
+    name: GitHub release
+    needs: [ci-run, pdf]
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.TAG }}
+      - name: Data tarballs from the draft release of the tag, checked against ASSETS.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -eu
+          [ -f "release-notes/$TAG.md" ] || { echo "missing release-notes/$TAG.md"; exit 1; }
+          grep -E '^[0-9a-f]{64}  ' ASSETS.md > assets.sha256
+          gh api --paginate "repos/$GITHUB_REPOSITORY/releases?per_page=100" \
+            | jq -s --arg tag "$TAG" 'add // [] | map(select(.tag_name == $tag))' > rel.json
+          [ "$(jq 'map(select(.draft | not)) | length' rel.json)" -eq 0 ] || { echo "the release $TAG is already published"; exit 1; }
+          n=$(jq 'length' rel.json)
+          [ "$n" -gt 0 ] || { echo "no draft release $TAG with the data tarballs: see the head of release.yml"; exit 1; }
+          [ "$n" -eq 1 ] || { echo "$n draft releases $TAG: delete all but the one with the data tarballs"; exit 1; }
+          while read -r _ f; do
+            id=$(jq -r --arg f "$f" '.[0].assets[] | select(.name == $f) | .id' rel.json)
+            [ -n "$id" ] || { echo "the draft release $TAG has no $f: see the head of release.yml"; exit 1; }
+            gh api -H 'Accept: application/octet-stream' "repos/$GITHUB_REPOSITORY/releases/assets/$id" > "$f"
+          done < assets.sha256
+          sha256sum -c assets.sha256
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ needs.ci-run.outputs.run }}
+          github-token: ${{ github.token }}
+          pattern: verify-*
+          merge-multiple: true
+          path: verify
+      - uses: actions/download-artifact@v4
+        with:
+          name: paper
+          path: .
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ needs.ci-run.outputs.run }}
+          github-token: ${{ github.token }}
+          name: lake-build
+          path: .lake/build
+
+      # The archive Lake looks for: the build directory less the .setup.json files (Lake writes them again).
+      # GitHub takes release files under 2 GiB; a larger archive goes out in parts, which Lake cannot download.
+      - name: Lake build archive
+        shell: bash
+        run: |
+          set -eu
+          a=tammes-15-x86_64-unknown-linux-gnu.tar.gz
+          tar -czf "$a" -C .lake/build --exclude='*.setup.json' .
+          size=$(stat -c %s "$a")
+          if [ "$size" -lt 2000000000 ]; then
+            echo "ASSETS=$a" >> "$GITHUB_ENV"
+            echo "Lake build archive: $a, $size bytes." > archive.md
+          else
+            split -b 1900M -d -a 2 "$a" "$a.part"
+            rm "$a"
+            parts=("$a".part*)
+            echo "ASSETS=${parts[*]}" >> "$GITHUB_ENV"
+            echo "Lake build archive: $size bytes, in ${#parts[@]} parts (join them with cat before use; lake build :release cannot download them)." > archive.md
+          fi
+          cat archive.md
+
+      # Expected runs: the source scan, the six steps of code/lean/check.sh, Comparator, and the computations
+      # (update the counts when the jobs of ci.yml change).
+      - name: Verification archive
+        shell: bash
+        run: |
+          set -eu
+          d="verification-$TAG"
+          run="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/${{ needs.ci-run.outputs.run }}"
+          count() { find verify/results -name "$1*.tsv" | wc -l; }
+          [ "$(count assets_)" -gt 0 ] || { echo "the CI run $run did not check the data tarballs: once the draft $TAG holds them, run ci.yml by hand, then this workflow by hand"; exit 1; }
+          miss=""
+          for k in source-scan lean_build lean_up-to-date lean_scan lean_axioms lean_types lean_audit comparator; do
+            [ -f "verify/results/$k.tsv" ] || miss="$miss $k"
+          done
+          for kn in impl1_:27 impl2_:12 gp_:12 sage_:11 assets_:5; do
+            k=${kn%%:*} want=${kn#*:}
+            [ "$(count "$k")" -eq "$want" ] || miss="$miss ${k%_} ($(count "$k") of $want)"
+          done
+          [ -z "$miss" ] || { echo "missing runs:$miss"; ls verify/results; exit 1; }
+          if cut -f4 verify/results/*.tsv | grep -v '^PASS'; then echo "a run did not pass"; exit 1; fi
+          mkdir "$d"
+          cp -r verify/. "$d/"
+          n=$(cat verify/results/*.tsv | wc -l)
+          {
+            echo "# Verification of $TAG"
+            echo
+            echo "Commit ${{ needs.ci-run.outputs.sha }}, $(date -u +%Y-%m-%d), workflow run $run."
+            echo
+            echo "## Versions"
+            echo
+            cat verify/versions/*.txt | sort -u | sed 's/^/    /'
+            echo "    Mathlib $(jq -r '.packages[] | select(.name == "mathlib") | .rev' lake-manifest.json)"
+            echo
+            echo "## Runs"
+            echo
+            echo "$n runs, each compared with the output recorded in the repository or checked by its own exit status"
+            echo "(column result). The complete output of each one is the file of the last column, in $d.tar.gz;"
+            echo "lean/check.out is the output of code/lean/check.sh, lean/build.out the complete log of its lake calls."
+            echo "code/README.md says which claim of the paper each computation checks."
+            echo
+            echo "| check | command | time | result | output |"
+            echo "|---|---|---|---|---|"
+            cat verify/results/*.tsv | sort -V | awk -F '\t' '{printf "| %s | `%s` | %s | %s | `%s` |\n", $1, $2, $3, $4, $5}'
+            echo
+            echo "## Not rerun here"
+            echo
+            sed -n '/^## Not rerun by the continuous integration/,/^## /{/^## /d;p}' code/README.md
+            echo
+            echo "## Data tarballs"
+            echo
+            echo "Checked against the sha256 sums of ASSETS.md:"
+            echo
+            sed 's/^/    /' assets.sha256
+          } > "$d/VERIFICATION.md"
+          tar -czf "$d.tar.gz" "$d"
+          cat "$d/VERIFICATION.md" >> "$GITHUB_STEP_SUMMARY"
+          echo "Verification: all $n runs passed ([workflow run]($run)); \`VERIFICATION.md\` in \`$d.tar.gz\` lists them." > summary.md
+
+      - name: Publish the draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -eu
+          cat "release-notes/$TAG.md" - summary.md archive.md <<< "" > notes.md
+          # shellcheck disable=SC2086 # ASSETS may hold several parts
+          gh release upload "$TAG" tammes-15.pdf "verification-$TAG.tar.gz" $ASSETS --clobber
+          gh release edit "$TAG" --title "$TAG" --notes-file notes.md --draft=false

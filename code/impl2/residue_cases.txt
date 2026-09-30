@@ -1,0 +1,56 @@
+# The graphs left by the two bulk passes of vkill (out/residue_verdicts.txt), one line per run:
+# tag input index iso dlo dhi nodes options (dlo, dhi in degrees; "dlo" and "dhi" are the ends of the range)
+k0_0_7421 data/level2/k0_residue.pc 0 0 dlo dhi 793 --shave 8 --incr
+k0_0_43064 data/level2/k0_residue.pc 1 0 dlo dhi 327 --shave 8 --incr
+k0_0_121092 data/level2/k0_residue.pc 2 0 dlo dhi 419 --shave 8 --incr
+k0_2_35779 data/level2/k0_residue.pc 3 0 dlo dhi 277 --shave 8 --incr
+k1_1 data/level2/b_k1.pc 1 1 dlo dhi 2135 --shave 8 --incr
+k1_8 data/level2/b_k1.pc 8 1 dlo dhi 556 --shave 8 --incr
+k1_9 data/level2/b_k1.pc 9 1 dlo dhi 95 --shave 8 --incr
+k1_15 data/level2/b_k1.pc 15 1 dlo dhi 525 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_28 data/level2/b_k1.pc 28 1 dlo dhi 329 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_36 data/level2/b_k1.pc 36 1 dlo dhi 171 --shave 8 --incr
+k1_44 data/level2/b_k1.pc 44 1 dlo dhi 2602 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_50 data/level2/b_k1.pc 50 1 dlo dhi 267 --shave 8 --incr
+k1_51 data/level2/b_k1.pc 51 1 dlo dhi 179 --shave 8 --incr
+k1_53 data/level2/b_k1.pc 53 1 dlo dhi 173 --shave 8 --incr
+k1_55_res_d2 data/level2/b_k1.pc 55 1 54.6 dhi 13 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_55_res_d1 data/level2/b_k1.pc 55 1 53.7 54.6 95 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_55_res_d0 data/level2/b_k1.pc 55 1 dlo 53.7 1031 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_56 data/level2/b_k1.pc 56 1 dlo dhi 101 --shave 8 --incr
+k1_68_res_d2 data/level2/b_k1.pc 68 1 54.6 dhi 21 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_68_res_d1 data/level2/b_k1.pc 68 1 53.7 54.6 301 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_68_r68_a_w data/level2/b_k1.pc 68 1 dlo 53.6578502 923 --shave 8 --incr --dweight 1e-9
+k1_68_r68_s1w data/level2/b_k1.pc 68 1 53.6578502 53.6585 943 --shave 8 --incr --dweight 1e-9
+k1_68_r68_s2w data/level2/b_k1.pc 68 1 53.6585 53.6592 677 --shave 8 --incr --dweight 1e-9
+k1_68_r68_s3w data/level2/b_k1.pc 68 1 53.6592 53.66 553 --shave 8 --incr --dweight 1e-9
+k1_68_r68_s4w data/level2/b_k1.pc 68 1 53.66 53.673 581 --shave 8 --incr --dweight 1e-9
+k1_68_r68_s5 data/level2/b_k1.pc 68 1 53.673 53.686 1301 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_68_r68_s6 data/level2/b_k1.pc 68 1 53.686 53.7 847 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_76 data/level2/b_k1.pc 76 1 dlo dhi 117 --shave 8 --incr
+k1_77_res_d2 data/level2/b_k1.pc 77 1 54.6 dhi 5 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_77_res_d1 data/level2/b_k1.pc 77 1 53.7 54.6 43 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_77_res_d0 data/level2/b_k1.pc 77 1 dlo 53.7 559 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k1_83 data/level2/b_k1.pc 83 1 dlo dhi 165 --shave 8 --incr
+k1_89 data/level2/b_k1.pc 89 1 dlo dhi 289 --shave 8 --incr
+k1_95 data/level2/b_k1.pc 95 1 dlo dhi 219 --shave 8 --incr
+k1_102 data/level2/b_k1.pc 102 1 dlo dhi 317 --shave 8 --incr
+k1_104 data/level2/b_k1.pc 104 1 dlo dhi 205 --shave 8 --incr
+k2_0 data/level2/b_k2.pc 0 2 dlo dhi 199 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k2_1 data/level2/b_k2.pc 1 2 dlo dhi 285 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k2_3 data/level2/b_k2.pc 3 2 dlo dhi 481 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k2_4 data/level2/b_k2.pc 4 2 dlo dhi 147 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k2_30 data/level2/b_k2.pc 30 2 dlo dhi 63 --shave 8 --incr
+k2_31 data/level2/b_k2.pc 31 2 dlo dhi 551 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k2_11 data/level2/b_k2.pc 11 2 dlo dhi 349 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k2_33 data/level2/b_k2.pc 33 2 dlo dhi 823 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k2_13 data/level2/b_k2.pc 13 2 dlo dhi 117 --shave 8 --incr
+k2_34 data/level2/b_k2.pc 34 2 dlo dhi 83 --shave 8 --incr
+k2_35 data/level2/b_k2.pc 35 2 dlo dhi 111 --shave 8 --incr
+k2_15 data/level2/b_k2.pc 15 2 dlo dhi 275 --shave 8 --incr
+k2_26 data/level2/b_k2.pc 26 2 dlo dhi 881 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k2_41 data/level2/b_k2.pc 41 2 dlo dhi 73 --shave 8 --incr
+k3_0 data/stageA/stageA_k3.pc 0 3 dlo dhi 621 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k3_1 data/stageA/stageA_k3.pc 1 3 dlo dhi 75 --shave 8 --incr
+k3_2 data/stageA/stageA_k3.pc 2 3 dlo dhi 815 --shave 8 --incr --dropfam HexC4Iso,HexChain5
+k3_4 data/stageA/stageA_k3.pc 4 3 dlo dhi 49 --shave 8 --incr --dropfam HexC4Iso,HexChain5

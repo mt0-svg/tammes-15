@@ -1,0 +1,12 @@
+The Tammes problem for 15 points
+Licensed under the Apache License, Version 2.0 (see LICENSE), except the files of
+Tammes15/Vendor/EM8/.
+
+Tammes15/Vendor/EM8/ holds 140 Lean files taken from Energy-Minimization-8-Points
+(github.com/lukasliehr/Energy-Minimization-8-Points, commit 50d14bc06bd41f61573eb6a36eedb8d00759af8f,
+directory LeanCode/LargeS/Lean_Code), the Lean formalization accompanying Kryvonos, Liehr and
+Taylor, arXiv 2609.22077. That repository carries no licence file at that commit. Each file names
+its source in its header; the changes are listed in THIRD_PARTY.md.
+
+The package is built on Mathlib, Copyright (c) the respective Mathlib authors, Apache License 2.0.
+The other software and data this project uses are listed in README.md, section Built on.

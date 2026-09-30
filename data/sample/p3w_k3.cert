@@ -1,0 +1,84 @@
+G 0 0
+S 1 40045fe7c58a4c24
+S 3 40045fe7c58a4c24
+S 5 40045fe7c58a4c24
+S 9 40045fe7c58a4c24
+K hex 0 0
+K hex 0 0
+K wheel 0 0
+S 26 3ffdf7dbc15873b8
+K hex 0 1
+K hex 0 1
+S 3 40045fe7c58a4c24
+S 5 40045fe7c58a4c24
+K hex 0 1
+K wheel 0 0
+S 5 40045fe7c58a4c24
+K wheel 0 0
+S 9 40045fe7c58a4c24
+K wheel 0 0
+K wheel 0 0
+E
+G 0 1
+S 1 40045fe7c58a4c24
+S 3 40045fe7c58a4c24
+S 5 40045fe7c58a4c24
+S 9 40045fe7c58a4c24
+K hex 0 0
+K hex 0 0
+K wheel 0 0
+S 26 3ffdf7dbc15873b8
+K hex 0 1
+K hex 0 1
+S 3 40045fe7c58a4c24
+S 5 40045fe7c58a4c24
+K hex 0 1
+K wheel 0 0
+S 5 40045fe7c58a4c24
+K wheel 0 0
+S 9 40045fe7c58a4c24
+K wheel 0 0
+K wheel 0 0
+E
+G 0 2
+S 1 40045fe7c58a4c24
+S 3 40045fe7c58a4c24
+S 5 40045fe7c58a4c24
+S 9 40045fe7c58a4c24
+K hex 0 0
+K hex 0 0
+K wheel 0 0
+S 26 3ffdf7dbc15873b8
+K hex 0 1
+K hex 0 1
+S 3 40045fe7c58a4c24
+S 5 40045fe7c58a4c24
+K hex 0 1
+K wheel 0 0
+S 5 40045fe7c58a4c24
+K wheel 0 0
+S 9 40045fe7c58a4c24
+K wheel 0 0
+K wheel 0 0
+E
+G 0 3
+S 1 40045fe7c58a4c24
+S 3 40045fe7c58a4c24
+S 5 40045fe7c58a4c24
+S 9 40045fe7c58a4c24
+K hex 0 0
+K hex 0 0
+K hex 1 0
+S 26 3ffdf7dbc15873b8
+K hex 0 1
+K hex 0 1
+S 3 40045fe7c58a4c24
+S 5 40045fe7c58a4c24
+K hex 0 1
+K hex 1 0
+S 5 40045fe7c58a4c24
+K hex 1 0
+S 9 40045fe7c58a4c24
+K hex 1 0
+K hex 1 0
+E

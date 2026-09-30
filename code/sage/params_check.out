@@ -1,0 +1,14 @@
+dlo_file <= 53.65785 deg                                   OK  (value 1.3486070e-21)
+dhi_file >= 56.6716 deg                                    OK  (value 4.1136624e-21)
+alo_file <= alpha(53.65785 deg)                            OK  (value 8.0965990e-21)
+ahi_file >= alpha(56.6716 deg)                             OK  (value 9.9571879e-21)
+shi_file >= smax(56.6716 deg)                              OK  (value 2.7118042e-21)
+psi* - 53.65785 deg (u root of 13x^5 - ... in (0.5, 0.7))  OK  (value 2.2677530e-9)
+53.6578502 deg - psi* (main range starts above psi*)       OK  (value 1.2229055e-9)
+Fejes Toth bound for N = 15: 56.671503548 deg
+56.6716 deg - Fejes Toth bound                             OK  (value 1.6834001e-6)
+[3.1] 2 pi - 5 alpha(dhi)                                  OK  (value 0.24165784)
+[3.2] pi (1 + sin h(dlo)) - 5 dhi                          OK  (value 0.54488319)
+[3.3] pi - 2 h(dhi) - dhi                                  OK  (value 0.35918994)
+[3.4] min over 40 subintervals of P(a, h(a)) - 6 b         OK  (value 0.11054029)
+ALL OK

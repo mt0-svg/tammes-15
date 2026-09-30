@@ -1,0 +1,927 @@
+\documentclass[12pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage{amsmath,amssymb}
+\usepackage[table]{xcolor}
+\usepackage{array}
+\usepackage[margin=1in]{geometry}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{longtable}
+\lstset{basicstyle=\ttfamily\footnotesize,columns=fullflexible,breaklines=true,frame=single,xleftmargin=1em,xrightmargin=1em}
+\usepackage[pdfauthor={311859884+mt0-svg@users.noreply.github.com},
+            pdftitle={The Tammes problem for fifteen points},
+            pdfkeywords={Tammes problem, spherical code, contact graph, interval arithmetic},
+            bookmarksnumbered=true]{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+\newcommand{\repo}{https://github.com/mt0-svg/tammes-15}
+% robust, so that amsart does not uppercase the address in the author line
+\DeclareRobustCommand{\authorlink}{\href{\repo/issues/new/choose}{\nolinkurl{311859884+mt0-svg@users.noreply.github.com}}}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{question}[theorem]{Question}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{step}[theorem]{Computation}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Sph}{S^2}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\CG}{\operatorname{CG}}
+\newcommand{\per}{\operatorname{per}}
+\newcommand{\area}{\operatorname{area}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\psis}{\psi^{*}}
+\newcommand{\dlo}{d_{\mathrm{lo}}}
+\newcommand{\dhi}{d_{\mathrm{hi}}}
+\newcommand{\CI}{C_1}
+\newcommand{\CIII}{C_3}
+% Lean status of a statement (Section 8): declarations are named without the namespace Tammes15,
+% files relative to the folder Tammes15 of the Lean package.
+% Lean names in typewriter, breakable after an underscore or a dot.
+\ExplSyntaxOn
+\cs_new:Npn \__lname_char:n #1 { #1 \str_if_in:nnT { _. } {#1} { \allowbreak } }
+\NewDocumentCommand \lname { m } { \texttt { \str_map_function:nN {#1} \__lname_char:n } }
+\cs_new:Npn \__lfile_char:n #1 { #1 \str_if_eq:nnT { / } {#1} { \allowbreak } }
+\NewDocumentCommand \lfile { m } { \texttt { \str_map_function:nN {#1} \__lfile_char:n } }
+\ExplSyntaxOff
+\setlength{\emergencystretch}{2em}
+\newcommand{\leanline}[1]{\par\smallskip\noindent{\small Lean: #1}\par\smallskip}
+\newcommand{\notlean}{\leanline{not formalized.}}
+% A result the formalization or the release has not delivered yet: shown in the draft, and a
+% build with \finaltrue stops at the first one left.
+\newif\iffinal
+\ifdefined\UseFinal\finaltrue\fi
+\definecolor{pendingred}{RGB}{176,0,32}
+\newcommand{\pending}[2]{\iffinal\errmessage{Pending item left (#1)}\fi{\leavevmode\color{pendingred}[pending, #1: #2]}}
+% Rattler bounds by inscribed polygons (polygon.tex) in place of the convex hulls of Lemma perims.
+\newif\ifpolygonform
+\ifdefined\UsePolygonForm\polygonformtrue\fi
+\input{polygon}
+% Where the formal route of Proposition nor and the polygon of Proposition onehex are written.
+\newcommand{\norroute}{\ifpolygonform the proof below\else the route of Remark~\ref{rem:norroute}\fi}
+\newcommand{\polyref}{\ifpolygonform Lemma~\ref{lem:perims}\else Remark~\ref{rem:polygons}\fi}
+% The Lean line of the monotonicity in Lemma polar, shared by both forms.
+\newcommand{\polarmono}{The monotonicity, for two polygons in that cone form with the vertices of the inner one in the closed face of the outer one, is \lname{Geom.perim_mono} in \lfile{Geom/Crofton.lean}. Its proof is a formula of Crofton in place of the identity: the points $n$ of the open unit ball for which the plane $n^\perp$ separates the ends of a side of length $\ell$ form two lunes of volume $2\ell/3$ each (\lname{Geom.volume_lune}), so the number of sides that $n^\perp$ separates has integral $\frac43$ times the perimeter (\lname{Geom.lintegral_cnt}); for a polygon in cone form this number is at most $2$ (\lname{Geom.IsCPoly.chg_le_two}), and it is pointwise no larger for the inner polygon (\lname{Geom.chg_mono}).}
+% Lean sources quoted verbatim, from the folder Tammes15 of the Lean package (at the root of the
+% repository, or under lean/ in the development tree).
+\IfFileExists{../lean/Tammes15/Statement.lean}{\newcommand{\leandir}{../lean}}{\newcommand{\leandir}{..}}
+\newcommand{\statementpath}{\leandir/Tammes15/Statement.lean}\newcommand{\statementfile}{Statement.lean}\newcommand{\statementlines}{36-52}
+\newcommand{\statementlisting}{\edef\next{\noexpand\lstinputlisting[style=lean,linerange={\statementlines}]{\statementpath}}\next}
+\lstdefinelanguage{lean4}{morekeywords={def,theorem,abbrev,structure,where,fun,by,noncomputable},sensitive=true,morecomment=[l]{--},morecomment=[s]{/-}{-/}}
+\lstdefinestyle{lean}{language=lean4,extendedchars=true,keepspaces=true,basicstyle=\ttfamily\scriptsize,xleftmargin=0pt,xrightmargin=0pt,breakindent=4em,
+  literate={∃}{{$\exists$}}1 {∀}{{$\forall$}}1 {≠}{{$\neq$}}1 {≤}{{$\leq$}}1 {≥}{{$\geq$}}1 {→}{{$\to$}}1
+    {‖}{{$\|$}}1 {⟪}{{$\langle\!\langle$}}1 {⟫}{{$\rangle\!\rangle$}}1 {ℝ}{{$\mathbb{R}$}}1 {ℕ}{{$\mathbb{N}$}}1
+    {∧}{{$\wedge$}}1 {↔}{{$\leftrightarrow$}}1 {∑}{{$\textstyle\sum$}}1 {∈}{{$\in$}}1 {κ}{{$\kappa$}}1
+    {₀}{{$_0$}}1 {π}{{$\pi$}}1 {×}{{$\times$}}1 {²}{{$^2$}}1 {∨}{{$\vee$}}1 {⟨}{{$\langle$}}1 {⟩}{{$\rangle$}}1}
+% paper_checks.gp: code/gp/ in the repository, code/paper/ in the development tree
+\IfFileExists{../code/gp/paper_checks.gp}{\newcommand{\checksdir}{../code/gp}}{\newcommand{\checksdir}{../code/paper}}
+\newcommand{\gpcheck}[2]{\lstinputlisting[linerange={#1}]{\checksdir/paper_checks.gp}\vspace{-0.5\baselineskip}\lstinputlisting[linerange={#2},frame=none]{\checksdir/paper_checks.out}}
+
+\begin{document}
+
+\title[The Tammes problem for fifteen points]{The Tammes problem for fifteen points}
+\author{\authorlink}
+\thanks{2020 {\em Mathematics Subject Classification.} Primary: 52C17; Secondary: 05C10, 52C25, 65G30.\\\indent
+{\em Key words and phrases.} Tammes problem; spherical code; contact graph; plane graph enumeration; interval arithmetic; computer-assisted proof.}
+
+\begin{abstract}
+We prove that the largest possible minimal angular distance between fifteen points on the unit sphere is $\arccos u\approx 53.6578501^\circ$, where $u$ is the root in $(1/2,7/10)$ of $13u^5-u^4+6u^3+2u^2-3u-1$. This value is attained by two configurations described by Buddenhagen and Kottwitz, and their contact graphs are not isomorphic, so the optimal arrangement of fifteen points is not unique. The proof follows the method Musin and Tarasov used for thirteen and fourteen points: a written reduction to plane graphs with at most fifteen vertices, and an interval computation that rules out each such graph except near the two known optima, where a local rigidity estimate concludes. The computation records certificates, and a second program written independently confirms it. The written reduction is formalized in Lean~4, with the four finite computations it rests on and an upper bound of Fejes T\'oth from the literature as named hypotheses.
+\end{abstract}
+
+\maketitle
+
+\definecolor{leangreen}{RGB}{0,122,61}
+\definecolor{compblue}{RGB}{0,84,166}
+\definecolor{paperorange}{RGB}{190,90,0}
+\newcommand{\badge}[2]{\colorbox{#1}{\strut\textcolor{white}{\sffamily\bfseries\small #2}}}
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.2\textwidth} >{\raggedright\arraybackslash}p{0.7\textwidth}}
+\rowcolor{black!6}
+\multicolumn{2}{>{\raggedright\arraybackslash}p{0.93\textwidth}}{\textit{This is AI-generated research: the results, proofs and code were found and written by AI. Credit goes to all the humans whose work it builds on.}}\\
+\badge{leangreen}{Proved in Lean 4} & The equality $d_{15}=\arccos u$ of Theorem~\ref{thm:main} (\lname{Tammes15.Conjecture}) is proved in Lean~4 with Mathlib, with only the standard axioms (\lname{Tammes15.reduction}), from five hypotheses: the finite statements D1 to D4 below and the bound $d_{15}\le56.6716^\circ$ of Fejes T\'oth \cite{FT43}, taken from the literature. Its proof contains Theorem~\ref{thm:structure}, and Theorem~\ref{thm:local} without its equality case, from D1.\\
+\badge{compblue}{By computation} & D1 to D4 (Section~\ref{sec:leanhyps}). D1, the rigidity bound of Lemma~\ref{lem:kappa}, and D4, the attainment by $\CI$ and $\CIII$, in exact and ball arithmetic in SageMath, each repeated in PARI/GP. D2, the list of plane graphs, by plantri alone, with consistency checks. D3, the refutation of each graph, by the linear filter and the interval search of the first program, whose certificates the repository replays. To guard against a bug in the search, a second program, written separately, with relations that are not fields of the relation system of D3 and without certificates, reaches the same conclusion on all $462{,}703$ graphs left by the filter; it is a second computation of Theorem~\ref{thm:main}, not a check of D3 (Sections~\ref{sec:comp} and~\ref{sec:leanhyps}).\\
+\badge{paperorange}{Proof on paper} & Proposition~\ref{prop:sound} and the soundness of the first level (Computation~\ref{comp:stageA}), by which the verdicts of the first program give D3; the step from the output of plantri to D2, by Whitney's theorem; the equality case of Theorem~\ref{thm:local} and Corollary~\ref{cor:nonunique}.\\
+\rowcolor{black!6}
+\multicolumn{2}{>{\raggedright\arraybackslash}p{0.93\textwidth}}{Lean proofs, code, certificates and the \TeX{} source: \href{\repo}{\texttt{github.com/mt0-svg/tammes-15}}}\\
+\end{tabular}
+\end{center}
+
+\clearpage
+\section{Introduction}\label{sec:intro}
+
+We determine the largest minimal angular distance of fifteen points on the unit sphere. For a finite set $X\subset\Sph$ of at least two points write $\dist(x,y)=\arccos\langle x,y\rangle\in[0,\pi]$ for the angular distance and
+\[
+\psi(X)=\min_{x\ne y\in X}\dist(x,y),\qquad d_N=\max_{|X|=N}\psi(X);
+\]
+the maximum exists by compactness. The problem of computing $d_N$ was raised by Tammes \cite{Tam}. It is solved for $N\le 12$ and $N=24$ by Fejes T\'oth \cite{FT43}, Sch\"utte and van der Waerden \cite{SvdW}, Danzer \cite{Dan}, B\"or\"oczky \cite{Bor11}, H\'ars \cite{Har} and Robinson \cite{Rob}, and for $N=13$ and $N=14$ by Musin and Tarasov \cite{MT13,MT14}, with a computer enumeration of contact graphs.
+
+\begin{theorem}\label{thm:main}
+Let $u=0.5926059029250737780\ldots$ be the unique root in $(1/2,7/10)$ of
+\[
+13u^5-u^4+6u^3+2u^2-3u-1,
+\]
+and let $\psis=\arccos u=53.65785012993267\ldots^\circ$. Every set of fifteen points on $\Sph$ contains two points at angular distance at most $\psis$. The configurations $\CI$ and $\CIII$ of Section~\ref{sec:optima} consist of fifteen points each and satisfy $\psi(\CI)=\psi(\CIII)=\psis$. Hence $d_{15}=\psis$.
+\end{theorem}
+\leanline{the equality $d_{15}=\psis$ is \lname{Conjecture} in \texttt{\statementfile} (Section~\ref{sec:leanstatement}), which does not name $\CI$ and $\CIII$. \lname{reduction} derives it from the four finite statements D1 to D4 of Section~\ref{sec:leanhyps}, which are checked by computation, and the bound of Fejes T\'oth, and from nothing else unproved: it depends only on the standard axioms (Section~\ref{sec:leantrust}).}
+
+The quintic is irreducible over $\Q$ and increasing on $[1/2,7/10]$, where it changes sign, so $u$ is well defined. The lines below (PARI/GP, under a second) check irreducibility, the single real root and the sign change, and print $u$ and $\psis$; the output follows the code.
+\gpcheck{3-7}{1-2} The configuration $\CIII$, with a threefold axis, is the one of Sch\"utte and van der Waerden \cite[Section~17, Fig.~59]{SvdW}; Kottwitz found numerically that a second arrangement, $\CI$, reaches the same minimal distance \cite[Section~5, Fig.~2]{Kot}. Buddenhagen and Kottwitz gave exact coordinates for both and the minimal polynomial of $u$ \cite[Section~4 and Table~1]{BK}. Theorem~\ref{thm:main} shows that these arrangements are optimal. Cohn, de Laat and Leijenhorst note that there appear to be exactly two optimal codes up to isometry, the first code to be discovered \cite{SvdW} and a modification that moves one point \cite{Kot}, and that the direct techniques used for $N\le14$ ``have not yet had any success in other cases'' \cite[Section~1 and footnote~1]{CdLL}. In September 2026 the problem data of the benchmark HorizonMath list the case $N=15$, with the same quintic, as not rigorously proven \cite{Wan}.
+
+A reader can check the lower bound by hand. The eighteen points of Table~\ref{tab:frame} are given to ten digits; the fifteen points of $\CIII$ are the first nine rows and the last six, and thirty pairs of them have inner products that agree with $u$ to within $10^{-10}$, while every other pair has inner product below $0.425$. Proposition~\ref{prop:optima} checks this exactly.
+
+\begin{corollary}\label{cor:nonunique}
+The sets $\CI$ and $\CIII$ are maximal ($\psi=d_{15}$), and their contact graphs are not isomorphic. In particular $\CI$ and $\CIII$ are not isometric.
+\end{corollary}
+\notlean
+
+Musin and Tarasov asked \cite[Section~6, Question~2]{MTsurvey}: ``Is it true that on the sphere, for a given $N>5$, there is a unique (up to isomorphism) maximal graph?'' (our translation; a maximal graph is the contact graph of a maximal configuration). Corollary~\ref{cor:nonunique} answers this question in the negative for $N=15$. They raise it after noting that for seven points on the square flat torus there are three non-isomorphic maximal graphs \cite{MN}. We do not prove that $\CI$ and $\CIII$ are the only maximal configurations up to isometry.
+
+The known bounds before this paper were $\psis\le d_{15}\le 55.03^\circ$ (as printed in \cite[Table~5.3]{BV}, to two decimals). The upper bound $56.6715^\circ$ of Fejes T\'oth \cite{FT43} was lowered to $55.833^\circ$ by Robinson \cite{Rob} (see the table of \cite[p.~408]{BS14}, in radians), to $55.175^\circ$ by B\"or\"oczky and Szab\'o \cite[Theorem~1]{BS14}, and to $55.03^\circ$ by Bachoc and Vallentin with semidefinite programming \cite[Table~5.3]{BV}; the value $55.84^\circ$ that \cite[Table~5.3]{BV} gives as the best bound previously known, citing \cite{BS14}, is Robinson's bound as listed there, rounded up. We use only the bound of Fejes T\'oth.
+
+\subsection*{Method}
+We follow Musin and Tarasov \cite{MT13,MT14}. The contact graph of an optimal configuration, with its isolated vertices removed, is a plane graph whose faces are convex equilateral spherical polygons. For fifteen points this confines it to an explicit finite class of plane graphs on $12$ to $15$ vertices, which plantri \cite{BM} enumerates. For each graph, the angles of its faces satisfy relations that no graph far from an optimal one can satisfy with $d_{15}\ge\psis$; a branch and prune search in interval arithmetic proves this. Three points differ from \cite{MT13,MT14}.
+\begin{enumerate}
+\item The structural facts are proved for one maximal configuration with the fewest contacts (Theorem~\ref{thm:structure}). Musin and Tarasov state that the contact graph of every maximal configuration is irreducible, citing Danzer \cite[Proposition~3.2]{MT13}; this fails whenever a maximal configuration has a point without contact (Remark~\ref{rem:every}). We also prove the 3-connectivity of the contact graph, which their papers use through plantri without stating it.
+\item Every numerical step is rigorous: constants are enclosed from exact values, all arithmetic is rounded outward, the elementary functions carry proved error bounds, and every refutation writes a certificate, a search tree that a replay checks: the replay rebuilds every box and refutes it again with the same contractors, so what it checks is the bookkeeping and the coverage of the tree. The published eliminations for $N=13$ decide infeasibility of linear programs in floating point (``up to any computer rounding approximation'') with constants found by numerical minimisation, according to the description of the computation in the ancillary files of arXiv:1002.1439 \cite{MT13}; for $N=14$, \cite{MT14} refers for the numerical details to \cite{MTenum}, which describes the same linearisation and branching, calls its Taylor enclosures interval analysis, and refers back to \cite[Section~4]{MT13}.
+\item The two optimal configurations have different contact graphs, and their subgraphs are realisable at $d=\psis$, so no valid relation refutes them near $\psis$. We close this tie with a quantitative local optimality theorem (Theorem~\ref{thm:local}): every configuration within $1.04\cdot10^{-3}$ of a copy of $\CI$ or $\CIII$ has minimal distance at most $\psis$. The search uses it to discard such neighbourhoods.
+\end{enumerate}
+The enumeration yields $513{,}264{,}771$ plane graphs, a linear filter leaves $462{,}703$, and the search refutes each of them. A second implementation, written from the mathematical description alone, reaches the same conclusion on every graph.
+
+Section~\ref{sec:lean} describes the formalization of the written reduction in Lean~4 with Mathlib. Its main theorem takes as hypotheses four finite statements, which the computations of Sections~\ref{sec:optima}, \ref{sec:local} and~\ref{sec:comp} check (the existence of the two configurations, the rigidity bound of Lemma~\ref{lem:kappa}, the completeness of the enumeration and the refutation of every graph), and the upper bound of Fejes T\'oth for fifteen points. Everything else in its proof is proved in Lean, with only the standard axioms. For Section~\ref{sec:structure} the formalization follows the conventions of the Lean proof of the eight-point case by Kryvonos, Liehr and Taylor \cite{KLT}, which the Lean package includes (Section~\ref{sec:leanklt}).
+
+\subsection*{Organisation}
+Section~\ref{sec:optima} constructs $\CI$ and $\CIII$. Section~\ref{sec:structure} proves the structure theorem, Section~\ref{sec:local} the local optimality of $\CI$ and $\CIII$. Section~\ref{sec:kill} describes the refutation test and proves it sound, Section~\ref{sec:comp} reports the computation, and Section~\ref{sec:proof} assembles the proof. Section~\ref{sec:lean} describes the formalization in Lean, Section~\ref{sec:remarks} lists open questions and Section~\ref{sec:data} the code and data. Appendix~\ref{app:map} lists every numbered statement with the way it is checked.
+
+\subsection*{Conventions}
+Distances on $\Sph$ are angular. A \emph{configuration} is a finite subset of $\Sph$, or a tuple of distinct points when labels matter. For $d\in(0,\pi)$ put
+\[
+\alpha(d)=\arccos\frac{\cos d}{1+\cos d},\qquad h(d)=\arccos\frac{\cos d}{\cos(d/2)} .
+\]
+Both are increasing in $d$. The range of the computation is $[\dlo,\dhi]$ with $\dlo=53.65785^\circ$ and $\dhi=56.6716^\circ$; all constants derived from them are enclosed from exact values (Section~\ref{sec:constants}).
+
+\section{The two optimal configurations}\label{sec:optima}
+
+This section constructs $\CI$ and $\CIII$ from the eighteen-point frame of Buddenhagen and Kottwitz \cite[Section~4]{BK} and checks exactly that both have minimal distance $\psis$.
+
+Let $u$ be as in Theorem~\ref{thm:main}. Let $\beta$ be the root near $0.0294089$ of
+\[
+9(4u^2-u-1)(3u+1)^2y^2+2u(62u^4-155u^3-37u^2+51u+15)\,y+u^2(4u^2-u-1)(5u-1)^2,
+\]
+let $b=\sqrt\beta\approx0.1714903$, and put
+\[
+c=\frac{b\,(27b^2u^2+18b^2u+29u^3+3b^2-18u^2-11u)}{(3u+1)(9b^2u+3b^2-5u^2+u)},\qquad a=\frac{u-bc}{b+c},
+\]
+\[
+q_1=\frac{(2a-b+2c)u-b}{u+1},\quad q_2=\frac{(2a+2b-c)u-c}{u+1},\quad q_3=\frac{(-a+2b+2c)u-a}{u+1},
+\]
+\begin{align*}
+r_1&=\frac{(6a+3b-2c)u^2+2(a-b-c)u-b}{(u+1)^2},\\
+r_2&=\frac{(3c-2a+6b)u^2+2(b-c-a)u-c}{(u+1)^2},\\
+r_3&=\frac{(3a-2b+6c)u^2+2(c-a-b)u-a}{(u+1)^2}.
+\end{align*}
+These are the formulas of \cite[Section~4]{BK} written with our letters ($q_i$ and $r_i$ are their $d,e,f$ and $r,s,t$). Their text names the close pairs differently: with their own coordinates, the pairs so named are about $113.89^\circ$ apart, and the close pairs are the ones given below. Let $\rho(x,y,z)=(z,x,y)$ and $\tau(x,y,z)=(-z,-y,-x)$. Both are rotations, $\rho^3=\tau^2=1$ and $\tau\rho\tau=\rho^{-1}$, so they generate a dihedral group $D$ of order six. The \emph{frame} is the union of the $D$-orbits of $p_V=(a,b,c)$, $p_W=(q_1,q_2,q_3)$ and $p_T=(r_1,r_2,r_3)$; it has eighteen points (Table~\ref{tab:frame}). The six points of the orbit of $p_T$ form three \emph{toggle pairs} $\{\rho^ip_T,\rho^{i-1}\tau p_T\}$, $i=0,1,2$, at mutual distance about $12.34^\circ$. A \emph{frame configuration} is obtained by deleting one point of each toggle pair; there are eight. We write $\CIII$ for the one that keeps $p_T,\rho p_T,\rho^2p_T$ and $\CI$ for the one that keeps $p_T,\rho p_T,\rho\tau p_T$.
+
+\begin{table}[ht]
+\caption{The frame, to ten digits. $\CIII$ consists of rows 1 to 9 and 13 to 18, $\CI$ of rows 1 to 8, 11 and 13 to 18. Rows 7 to 12 are the toggle points; the toggle pairs are $\{7,12\}$, $\{8,10\}$, $\{9,11\}$.}\label{tab:frame}
+\centering\small
+\begin{tabular}{rlrrr}
+ & point & $x$ & $y$ & $z$\\\hline
+1 & $p_V$ & $0.8950239687$ & $0.1714903098$ & $0.4117319140$\\
+2 & $\rho p_V$ & $0.4117319140$ & $0.8950239687$ & $0.1714903098$\\
+3 & $\rho^2p_V$ & $0.1714903098$ & $0.4117319140$ & $0.8950239687$\\
+4 & $p_W$ & $0.8009928995$ & $0.3819643241$ & $-0.4609920065$\\
+5 & $\rho p_W$ & $-0.4609920065$ & $0.8009928995$ & $0.3819643241$\\
+6 & $\rho^2p_W$ & $0.3819643241$ & $-0.4609920065$ & $0.8009928995$\\
+7 & $p_T$ & $0.7788399620$ & $-0.6271780756$ & $0.0074816440$\\
+8 & $\rho p_T$ & $0.0074816440$ & $0.7788399620$ & $-0.6271780756$\\
+9 & $\rho^2p_T$ & $-0.6271780756$ & $0.0074816440$ & $0.7788399620$\\
+10 & $\tau p_T$ & $-0.0074816440$ & $0.6271780756$ & $-0.7788399620$\\
+11 & $\rho\tau p_T$ & $-0.7788399620$ & $-0.0074816440$ & $0.6271780756$\\
+12 & $\rho^2\tau p_T$ & $0.6271780756$ & $-0.7788399620$ & $-0.0074816440$\\
+13 & $\tau p_W$ & $0.4609920065$ & $-0.3819643241$ & $-0.8009928995$\\
+14 & $\rho^2\tau p_W$ & $-0.3819643241$ & $-0.8009928995$ & $0.4609920065$\\
+15 & $\rho\tau p_W$ & $-0.8009928995$ & $0.4609920065$ & $-0.3819643241$\\
+16 & $\tau p_V$ & $-0.4117319140$ & $-0.1714903098$ & $-0.8950239687$\\
+17 & $\rho^2\tau p_V$ & $-0.1714903098$ & $-0.8950239687$ & $-0.4117319140$\\
+18 & $\rho\tau p_V$ & $-0.8950239687$ & $-0.4117319140$ & $-0.1714903098$
+\end{tabular}
+\end{table}
+
+\begin{proposition}\label{prop:optima}
+\begin{enumerate}
+\item The polynomial $13x^5-x^4+6x^3+2x^2-3x-1$ is irreducible over $\Q$, the quadratic above is irreducible over $\Q(u)$, and $L=\Q(u,b)$ has degree $20$.
+\item All eighteen frame points are unit vectors, and $a^2+b^2+c^2=1$, $ab+bc+ca=u$.
+\item In each of the eight frame configurations exactly thirty pairs of points have inner product $u$, and every other pair has inner product at most $u-0.1679$.
+\item The group $D$ acts on the eight frame configurations with two orbits: $\CIII$ and the configuration keeping the other three toggle points form one orbit, the six others the second, which contains $\CI$.
+\end{enumerate}
+In particular $\psi(\CI)=\psi(\CIII)=\psis$ and $d_{15}\ge\psis$.
+\end{proposition}
+\leanline{not proved in Lean; the formal proof uses items (2) and (3) in the weaker form of the hypothesis D4 of Section~\ref{sec:leanhyps}, which Computation~\ref{comp:attain} checks.}
+
+\begin{proof}
+Items (1) to (3) are identities in the number field $L$ and inequalities between real numbers of $L$, checked in exact arithmetic (Computation~\ref{comp:attain}). For (4), $\rho$ permutes the toggle pairs cyclically and keeps the side ($\rho^ip_T$ or $\rho^{i-1}\tau p_T$) of each chosen point, while $\tau$ maps the side of each pair to the other side of another pair. So the configurations keeping one side entirely form one orbit, and those keeping two points on one side and one on the other form an orbit of size six.
+\end{proof}
+
+\begin{step}\label{comp:attain}
+The checks of Proposition~\ref{prop:optima} were done three times, by different routes. (a) In SageMath \cite{Sage}, $L$ is built as an absolute number field of degree $20$; unit norms and the thirty contacts of each configuration are identities in $L$; the real embedding with $u\approx0.5926$, $\beta\approx0.0294$ and $b>0$ is isolated, and the other inner products are bounded in ball arithmetic at $600$ bits. (b) In PARI/GP \cite{PARI}, the tower $\Q(u)\subset\Q(u,\beta)\subset L$ is rebuilt with \texttt{rnfequation}, the embedding is isolated by a Sturm count, and the same identities and the same gap $0.1679104305$ are found; the eight Gram matrices are compared exactly to those of $\CI$ and $\CIII$. (c) In the field of real algebraic numbers of SageMath (exact arithmetic, no tower), the same identities and inequalities hold. Routes (a) and (c) treat $\CI$ and $\CIII$; the other six frame configurations are covered by (b), which compares their Gram matrices exactly with those of $\CI$ and $\CIII$. Each run takes under a minute.
+\end{step}
+
+\begin{proof}[Proof of Corollary~\ref{cor:nonunique}]
+By Theorem~\ref{thm:main} both configurations are maximal. The contact graph of each has thirty edges and degrees $3,3,3$, nine times $4$, and $5,5,5$ (Computation~\ref{comp:attain}; these facts and the ones below are printed by \texttt{code/gp/contact\_graphs.gp} in the repository). In the contact graph of $\CIII$ the three vertices of degree five are $p_V,\rho p_V,\rho^2p_V$, pairwise adjacent; in that of $\CI$ they are $p_V$, $\rho p_V$ and $\rho\tau p_V$, and only $p_V\rho p_V$ is an edge among them. So the graphs are not isomorphic, and an isometry between the configurations would induce an isomorphism.
+\end{proof}
+
+Both contact graphs have $17$ faces: $11$ triangles, $3$ rhombi and $3$ pentagons. They are 3-connected (both facts are checked by the same script), so they appear in the enumeration of Section~\ref{sec:comp}, and they survive every valid relation there; Section~\ref{sec:local} is what removes them.
+
+\section{Structure of a maximal configuration with fewest contacts}\label{sec:structure}
+
+This section proves that some maximal configuration of fifteen points has a contact graph in the finite class that the computation enumerates.
+
+Let $X$ be a configuration with $\psi(X)=d$. Its \emph{contact graph} $\CG(X)$ has vertex set $X$ and an edge between $x$ and $y$ when $\dist(x,y)=d$; we draw the edge as the minor arc from $x$ to $y$. Two such arcs do not cross \cite[Proposition~3.1]{MT13}. An isolated vertex of $\CG(X)$ is a \emph{rattler}, and $G'(X)$ denotes $\CG(X)$ without its rattlers, with the induced drawing. At a vertex $v$ of $G'(X)$ with neighbours $w_1,\dots,w_m$ in cyclic order, the \emph{corners} at $v$ are the angles between the directions of consecutive arcs $vw_i$, $vw_{i+1}$ in the tangent plane at $v$; they sum to $2\pi$, and each belongs to one face of $G'(X)$. A configuration $X$ with $|X|=N$ is \emph{maximal} if $\psi(X)=d_N$. Write $E(X)$ for the number of edges of $\CG(X)$.
+
+\begin{theorem}\label{thm:structure}
+Suppose $d_{15}\in[\dlo,\dhi]$. Let $X_0$ be a maximal configuration of fifteen points with $E(X_0)$ minimal among maximal configurations, let $d=d_{15}$, and let $k$ be the number of rattlers of $X_0$. Then:
+\begin{enumerate}
+\item every corner of $G'(X_0)$ lies in $[\alpha(d),\pi)$, and every vertex of $G'(X_0)$ has degree $3$, $4$ or $5$;
+\item $G'(X_0)$ is a 3-connected plane graph on $15-k$ vertices;
+\item every face of $G'(X_0)$ is bounded by a cycle of $3$ to $6$ edges and is a convex spherical polygon with all sides of length $d$ and all corners below $\pi$;
+\item every rattler lies in a hexagonal face of $G'(X_0)$, no hexagon contains two rattlers, and $k\le3$;
+\item distinct points of $X_0$ that are not adjacent in $G'(X_0)$ are at distance greater than $d$.
+\end{enumerate}
+\end{theorem}
+\leanline{\lname{structured_of_min} in \lfile{Draw/Structure.lean}, for $X_0$ with an indexing of its non-rattlers, and \lname{structure_theorem} in \lfile{Draw/Structure.lean}, the form the reduction uses, which takes $X_0$ from \lname{exists_min_contacts} (\lfile{Draw/Exist.lean}). Both take the ends $a\le b$ of a range of $d_{15}$ as parameters, with $7a>2\pi$, $\alpha(b)<2\pi/5$ and $[a,b]\subseteq[\dlo,\dhi]$, and the reduction applies them with $a=\dlo$ and $b=\dhi$. They conclude \lname{Structured} (\lfile{Draw/Defs.lean}), with item (3) in the cone form of Lemma~\ref{lem:convex} and item (4) as the fields \lname{hexOf} of \lname{Structured}. The proof assembles the lemmas of this section, with Corollary~\ref{cor:twoconn} as \lname{twoconn_contact} of \lfile{Draw/Iface.lean} and item (4) as \lname{rattlers_in_hexagons} of the same file, proved by \lname{Geom.rattlers_in_hexagons_proof} in \lfile{Geom/Hexagons.lean} (Corollary~\ref{cor:k3}).}
+
+Item (5) is the definition of the contact graph. The hypothesis $d_{15}\in[\dlo,\dhi]$ holds: $d_{15}\ge\psis>\dlo$ by Proposition~\ref{prop:optima}, and $d_{15}\le 56.67150355^\circ<\dhi$ by the bound of Fejes T\'oth \cite{FT43}, $d_N\le\arccos((\cot^2\omega_N-1)/2)$ with $\omega_N=\pi N/(6N-12)$. In particular $d<\pi/2$. Both endpoint comparisons, in floating point at 60 digits:
+\gpcheck{8-11}{3-3}
+The certified comparison in ball arithmetic is in Section~\ref{sec:constants}. The proof occupies the rest of the section.
+
+\subsection{Corners and shifts}
+
+\begin{lemma}\label{lem:alpha}
+If $\dist(v,w_1)=\dist(v,w_2)=d<\pi/2$ and $\dist(w_1,w_2)\ge d$, then the angle at $v$ between the arcs $vw_1$ and $vw_2$ is at least $\alpha(d)$, and $\alpha(d)>\pi/3$.
+\end{lemma}
+\leanline{\lname{alpha_le_angle} in \lfile{Trigrows/Points.lean} and \lname{alpha_bounds} in \lfile{Trigrows/Rows.lean}.}
+
+\begin{proof}
+With $\theta$ the angle, the spherical law of cosines gives $\cos d\ge\cos\dist(w_1,w_2)=\cos^2d+\sin^2d\cos\theta$, so $\cos\theta\le\cos d(1-\cos d)/\sin^2d=\cos d/(1+\cos d)$. The last quantity is below $1/2$.
+\end{proof}
+
+\begin{lemma}\label{lem:shift}
+Let $X$ be a configuration with $\psi(X)=d<\pi/2$ and $v$ a vertex of $G'(X)$. If some corner at $v$ is at least $\pi$, then $v$ can be moved to points $v'$ arbitrarily close to $v$ with $\dist(v',x)>d$ for every $x\in X\setminus\{v\}$.
+\end{lemma}
+\leanline{the lemma without the closeness of $v'$ to $v$, which Lemma~\ref{lem:minimal} does not use. From a corner at least $\pi$ at $v$, or from a vertex of degree one, \lname{exists_push_dir} gives a unit tangent vector $t$ at $v$ with $\langle t,w\rangle\le0$ for every neighbour $w$, and \lname{shift_config} moves $v$ to a point $v'$ with $\dist(v',x)>d$ for every other point $x$ (both in \lfile{Draw/Shift.lean}). The move is along the great circle in the direction $t$, by \lname{shift_move} in \lfile{Trigrows/Sdist.lean}, the first variation step.}
+
+\begin{proof}
+Let $\gamma$ be the unit speed geodesic from $v$ along the bisector of the corner. If the corner exceeds $\pi$, every neighbour direction makes an angle greater than $\pi/2$ with $\gamma'(0)$, so the first variation formula shows that the distance from $\gamma(s)$ to each neighbour increases for small $s>0$. If the corner equals $\pi$, the two neighbours $w_a,w_b$ bounding it lie in opposite directions orthogonal to $\gamma'(0)$, and the right triangle with vertices $v,\gamma(s),w_a$ gives $\cos\dist(\gamma(s),w_a)=\cos d\cos s<\cos d$ since $\cos d>0$; the same holds for $w_b$, and the other neighbours are handled by the first variation. Points of $X$ that are not neighbours of $v$ are at distance greater than $d$ from $v$ and stay so for small $s$.
+\end{proof}
+
+\begin{lemma}\label{lem:minimal}
+Let $X_0$ be as in Theorem~\ref{thm:structure}. Every corner of $G'(X_0)$ lies in $[\alpha(d),\pi)$ and every vertex of $G'(X_0)$ has degree $3$, $4$ or $5$.
+\end{lemma}
+\leanline{\lname{lemma_minimal} in \lfile{Draw/Minimal.lean}, for every $d\in(0,\pi/2)$ and a configuration of fifteen points at pairwise distance at least $d$ with the fewest contacts among these (for $d=d_{15}$ they are the maximal configurations), with an indexing of its non-rattlers and the angular rotation system of their drawing (\lname{exists_angular} in \lfile{Draw/Angular.lean}). A corner at least $\pi$, or a vertex of degree one, gives fewer contacts by Lemma~\ref{lem:shift} and \lname{contactCount_lt_of_shift} in \lfile{Draw/Shift.lean}; the lower bound is \lname{alpha_le_corner} in \lfile{Draw/Minimal.lean}, from Lemma~\ref{lem:alpha}; the degrees come from the sum of the corners at a vertex, \lname{corner_sum} in \lfile{Draw/Angular.lean}.}
+
+\begin{proof}
+If a corner at $v$ were at least $\pi$, Lemma~\ref{lem:shift} would give $X'=(X_0\setminus\{v\})\cup\{v'\}$ with $\psi(X')\ge d$, hence $X'$ maximal, and $\CG(X')$ equal to $\CG(X_0)$ without the edges at $v$: fewer edges. The lower bound is Lemma~\ref{lem:alpha}, since two points of $X_0$ are at distance at least $d$. A vertex of degree $1$ or $2$ has a corner at least $\pi$, and a vertex of degree $6$ or more would have corners summing to at least $6\alpha(d)>2\pi$.
+\end{proof}
+
+\subsection{Faces}
+
+\begin{lemma}\label{lem:discs}
+Let $G$ be a plane graph on $\Sph$ without isolated vertices, drawn with minor arcs, all of whose corners are at most $\pi$. Then every face of $G$ is an open disc, bounded by one closed walk, and $G$ is connected.
+\end{lemma}
+\leanline{not formalized; the formal proof of Corollary~\ref{cor:twoconn} takes the route of Remark~\ref{rem:routeC}.}
+
+\begin{proof}
+The completion of a face $F$ for its path metric is a compact surface of genus $0$ whose $b_F$ boundary circles are the facial walks of $F$, with geodesic sides and with the corners of $G$ owned by $F$ as corners. Gauss and Bonnet give $\area(F)+\sum_c(\pi-\theta_c)=2\pi(2-b_F)$, the sum over the corners of $F$. The left side is positive, so $b_F=1$. For a plane graph with $c$ components, $\sum_F(b_F-1)=c-1$, so $c=1$.
+\end{proof}
+
+\begin{lemma}\label{lem:hemi}
+A closed curve on $\Sph$ of length $\ell<2\pi$ lies in an open hemisphere.
+\end{lemma}
+\leanline{for closed polygons with sides shorter than $\pi$, \lname{polygon_hemisphere} in \lfile{TwoConn/Farm.lean}, the case that the route of Remark~\ref{rem:routeC} uses; the general case is not formalized.}
+
+\begin{proof}
+Split the curve at two points $A,B$ into two arcs of length $\ell/2<\pi$. Then $\dist(A,B)\le\ell/2<\pi$; let $M$ be the midpoint of the minor arc $AB$. Suppose one of the arcs meets the great circle $M^\perp$ at a point $C$, and let $\sigma$ be the half-turn about $M$, so $\sigma(A)=B$ and $\sigma(C)=-C$. The subarc from $C$ to $A$ followed by the image under $\sigma$ of the subarc from $B$ to $C$ (which runs from $A$ to $-C$) joins $C$ to $-C$ with length at most $\ell/2<\pi$, which is impossible. So the curve misses $M^\perp$, and it lies in the open hemisphere $\{\langle x,M\rangle>0\}$, which contains $A$.
+\end{proof}
+
+For a face $F$ bounded by a closed walk $W$ with $F$ on its left, and a traversed edge $e$ parametrised by $\gamma$ at unit speed, the \emph{pole} of $e$ is $n_e=\gamma\times\gamma'$; it does not depend on the point of $e$, and $F$ lies near $e$ on the side $\langle x,n_e\rangle>0$. At a corner of angle $\theta$ the tangent direction turns by $\pi-\theta$, and since $t\mapsto p\times t$ is an isometry of the tangent plane at $p$, consecutive poles are at distance $\pi-\theta$. So the closed polygon of poles has length $\sum_c(\pi-\theta_c)=2\pi-\area(F)<2\pi$ by Gauss and Bonnet, and by Lemma~\ref{lem:hemi} there is $c\in\Sph$ with $\langle c,n_e\rangle>0$ for every traversed edge $e$. We use this in the next two lemmas.
+
+\begin{lemma}\label{lem:simple}
+Let $G$ be as in Lemma~\ref{lem:discs}, and $F$ a face all of whose corners lie in $(0,\pi]$. Then the boundary walk $W$ of $F$ is a simple closed curve.
+\end{lemma}
+\leanline{not formalized; the formal proof of Corollary~\ref{cor:twoconn} takes the route of Remark~\ref{rem:routeC}.}
+
+\begin{proof}
+Take $c$ as above. No edge lies on a great circle through $c$ or $-c$. An edge traversed twice by $W$ would be traversed in both directions and give the poles $n$ and $-n$, which cannot both have positive inner product with $c$. Let $\varphi$ be the longitude about the axis through $c$. Along an edge, $\gamma\times\gamma'=n_e$ gives $d\varphi/ds=\langle c,n_e\rangle/|\gamma-\langle\gamma,c\rangle c|^2>0$, so $\varphi$ increases strictly along $W$, by $2\pi m$ in total for an integer $m\ge1$. The form $d\varphi$ is closed on $\Sph\setminus\{c,-c\}$, and $W$ is the oriented boundary of the closed disc that completes $F$ (Lemma~\ref{lem:discs}); Stokes' theorem on this disc minus small discs about the preimages of $\pm c$ gives total increase $2\pi(\mathbf 1_F(c)-\mathbf 1_F(-c))\le2\pi$. So $m=1$. If $W(s_1)=W(s_2)$ for parameters $s_1<s_2$ in one period, the increase of $\varphi$ from $s_1$ to $s_2$ would be a multiple of $2\pi$ strictly between $0$ and $2\pi$. So $W$ is injective.
+\end{proof}
+
+\begin{corollary}\label{cor:twoconn}
+If $G'(X)$ is not empty and all its corners lie in $(0,\pi)$, then $G'(X)$ is connected and 2-connected, and every face of $G'(X)$ is bounded by a cycle.
+\end{corollary}
+\leanline{\lname{twoconn} in \lfile{TwoConn/Main.lean}, by the route of Remark~\ref{rem:routeC}, for a graph without isolated vertices whose edges are exposed pairs of distinct unit vectors, with an angular rotation system whose corners all lie in $(0,\pi)$. Besides the conclusions of the corollary, in the form that every face walk has at least three vertices, pairwise distinct, it gives Euler's relation. For $G'(X)$ it is \lname{twoconn_contact} of \lfile{Draw/Iface.lean}, proved by \lname{twoconn_contact_proof} in \lfile{TwoConn/Contact.lean} from \lname{contact_exposed} in \lfile{TwoConn/Farm.lean}, by which contacts are exposed pairs, and \lname{twoconn}.}
+
+\begin{proof}
+The corners at a vertex are below $\pi$ and sum to $2\pi$, so every vertex has degree at least $3$ and $G'(X)$ has at least four vertices. By Lemma~\ref{lem:discs}, $G'(X)$ is connected, and by Lemmas~\ref{lem:discs} and~\ref{lem:simple} every face is bounded by a simple closed walk, that is a cycle. If $v$ were a cut vertex, some corner at $v$ would lie between edges to two different components of $G'(X)-v$, and the boundary walk of the face owning that corner would leave $v$ into one component and return to $v$ from another, passing through $v$ twice.
+\end{proof}
+
+\begin{lemma}\label{lem:convex}
+Let $P$ be a simple closed spherical polygon with minor arc sides and $F$ one of the two regions it bounds, with every interior angle of $F$ in $(0,\pi]$ and at least three of them below $\pi$. Merge the maximal runs of consecutive sides on one great circle into sides $S_1,\dots,S_s$, and let $H_i$ be the open hemisphere bounded by the great circle $\Gamma_i$ of $S_i$ on the side of $F$. Then $F=\bigcap_iH_i$, the closure of $F$ lies in an open hemisphere, and $\Gamma_i\cap\cl F=S_i$ for each $i$.
+\end{lemma}
+\leanline{in the cone form \lname{StrictSupportFace} (\lfile{Draw/Defs.lean}): each vertex of a face that is not an end of a side lies in the open hemisphere of that side. For the faces of the contact graph of a configuration it is the first conclusion of \lname{FaceChain.faceconvex_contact} in \lfile{FaceChain/Contact.lean}, for $d\in[\dlo,\pi/2)$, corners in $[\alpha(d),\pi)$ and a 2-connected graph with simple face walks, through the chain of the eight-point proof \cite{KLT} (Section~\ref{sec:leanklt}); the lemma for general polygons is not formalized.}
+
+\begin{proof}
+Let $n_i$ be the pole of $S_i$, so $H_i=\{\langle x,n_i\rangle>0\}$, and take $c$ with $\langle c,n_i\rangle>0$ for all $i$, as above. Then $c\in\bigcap_iH_i$ and no $\Gamma_i$ passes through $\pm c$. In polar coordinates $(\varphi,s)$ about $c$, with $s$ the distance to $c$, the longitude increases strictly along $P$ (proof of Lemma~\ref{lem:simple}). A simple closed curve in the annulus $\Sph\setminus\{\pm c\}$ has winding number $0$ or $\pm1$ about the axis, so $P$ meets each meridian once: $P=\{s=r(\varphi)\}$ with $0<r<\pi$, and $F=\{s<r(\varphi)\}$, the side of $c$.
+
+Put $w=\cot s$. A great circle with pole $n=\cos\eta\,c+\sin\eta(\cos\varphi_n e_1+\sin\varphi_n e_2)$, where $\cos\eta>0$ and $e_1,e_2$ complete $c$ to an orthonormal basis, has equation $w=-\tan\eta\cos(\varphi-\varphi_n)$, a function $w_i(\varphi)$ in the span $V$ of $\cos\varphi$ and $\sin\varphi$, and $H_i=\{w>w_i(\varphi)\}$. So $F=\{w>U(\varphi)\}$ where $U=w_i$ on the interval $I_i=[\varphi_i,\varphi_{i+1}]$ of longitudes of $S_i$. At the corner between $S_i$ and $S_{i+1}$ the angle is below $\pi$, so $S_{i+1}$ enters $H_i$: the difference $w_{i+1}-w_i$, a nonzero element of $V$ vanishing at $\varphi_{i+1}$, changes sign from negative to positive there with positive derivative (nonzero elements of $V$ have simple zeros). Thus $U''+U$ is a sum of positive Dirac masses at the corners.
+
+Fix $j$ and put $g=U-w_j$ and $\sigma(\varphi)=\sin(\varphi-\varphi_{j+1})$. Then $g''+g\ge0$, $g=0$ on $I_j$, and $g'$ jumps by a positive amount at $\varphi_{j+1}$. The Wronskian $\Omega=g'\sigma-g\sigma'$ satisfies $\Omega'=(g''+g)\sigma\ge0$ on $J=(\varphi_{j+1},\varphi_{j+1}+\pi)$, where $\sigma>0$, and $\Omega$ tends to $0$ at $\varphi_{j+1}^+$, since $g$ and $\sigma$ vanish there; hence $(g/\sigma)'=\Omega/\sigma^2\ge0$ on $J$. As $g/\sigma$ tends to the positive jump of $g'$ at $\varphi_{j+1}^+$, we get $g/\sigma>0$, so $g>0$ on $J$. In the same way $g>0$ on $(\varphi_j-\pi,\varphi_j)$. These two intervals and $I_j$ cover the circle, so $U\ge w_j$ everywhere, with equality exactly on $I_j$. Hence $U=\max_jw_j$, $F=\bigcap_jH_j$, and $\Gamma_j\cap\cl F=S_j$. The poles span $\R^3$ (otherwise all $\Gamma_i$ pass through a common pair $\pm x$ and there are at most two corners below $\pi$), so $\langle x,\sum_in_i\rangle>0$ on $\cl F$, which therefore lies in an open hemisphere.
+\end{proof}
+
+\ifpolygonform\PolygonPolarDef\PolygonPolar\else
+For a closed convex set $K$ with nonempty interior in an open hemisphere, put $K^\circ=\{y\in\Sph:\langle x,y\rangle\ge0\text{ for all }x\in K\}$ and let $\per K$ be the length of its boundary.
+
+\begin{lemma}\label{lem:polar}
+For such $K$, $\per K=2\pi-\area K^\circ$. Consequently, if $K\subseteq K'$ are two such sets, then $\per K\le\per K'$.
+\end{lemma}
+\leanline{in part. The inequality $md<2\pi$ for a face with $m$ sides of length $d$ in the cone form of Lemma~\ref{lem:convex} is \lname{face_perimeter_lt} in \lfile{FaceChain/Sizes.lean}, from the perimeter bound of the eight-point proof \cite{KLT}. \polarmono{} The identity is not formalized; the formal proof of Lemma~\ref{lem:faces} takes $md<2\pi$ from \lname{face_perimeter_lt} instead. Nor is the general case: only the proofs of Propositions~\ref{prop:nor} and~\ref{prop:onehex} given here use it, and the formal proofs replace these (Remarks~\ref{rem:norroute} and~\ref{rem:polygons}).}
+
+\begin{proof}
+If $K$ is a polygon as in Lemma~\ref{lem:convex}, $K^\circ$ is the convex polygon with vertices $n_1,\dots,n_s$; its angle at $n_i$ is $\pi-\ell_i$, where $\ell_i$ is the length of $S_i$, and Gauss and Bonnet give $\area K^\circ=\sum_i(\pi-\ell_i)-(s-2)\pi=2\pi-\per K$. A general $K$ is the limit, in the Hausdorff metric, of inscribed convex polygons $K_n$; their perimeters converge to $\per K$ and the areas of $K_n^\circ$ to that of $K^\circ$ (both statements are classical for convex sets in the plane and transfer through the central projection of the open hemisphere onto a plane, which maps convex sets to convex sets). The monotonicity follows from $K'^\circ\subseteq K^\circ$. The identity is also a consequence of Crofton's formula on the sphere.
+\end{proof}
+\fi
+
+\begin{lemma}\label{lem:faces}
+Let $X_0$ be as in Theorem~\ref{thm:structure}. Then $G'(X_0)$ is 2-connected, and every face $F$ of $G'(X_0)$ is bounded by a cycle of $m\in\{3,4,5,6\}$ edges, is the intersection of the open hemispheres of its sides, has its closure in an open hemisphere, and satisfies $md=\per F<2\pi$. Triangular faces have all corners equal to $\alpha(d)$, and in a rhombus opposite corners are equal.
+\end{lemma}
+\leanline{in part: faces of size $3$ to $6$, the second conclusion of \lname{FaceChain.faceconvex_contact} (\lfile{FaceChain/Contact.lean}), by \lname{face_perimeter_lt} and \lname{faceSizes_of} in \lfile{FaceChain/Sizes.lean}; \lname{face_size_le_six} ($m\le6$ from $md<2\pi$ and $d\ge\dlo$) in \lfile{Rattlers/Basic.lean}; \lname{equilateral_angle} and \lname{rhombus_opposite_angle} in \lfile{Trigrows/Sdist.lean}. The 2-connectivity and the boundary cycles are conclusions of \lname{twoconn_contact} (Corollary~\ref{cor:twoconn}) in \lfile{Draw/Iface.lean}.}
+
+\begin{proof}
+All corners lie in $[\alpha(d),\pi)$ by Lemma~\ref{lem:minimal}, and $G'(X_0)$ has at least four vertices, since some pair of $X_0$ is at distance $d$ and its vertices have degree at least $3$; so Corollary~\ref{cor:twoconn} applies. A face is bounded by a cycle of a simple graph, which has at least three vertices, and all its corners are below $\pi$, so Lemma~\ref{lem:convex} applies with $S_i$ the edges, and Lemma~\ref{lem:polar} gives $md=\per F=2\pi-\area F^\circ<2\pi$. Since $7\dlo-2\pi=15.6^\circ>0$, $m\le6$. A triangle with three sides $d$ has three angles $\alpha(d)$ by the law of cosines, and the diagonal of a rhombus cuts it into two congruent triangles.
+\end{proof}
+
+\begin{lemma}\label{lem:threeconn}
+Let $G$ be a 2-connected plane graph with minor arc edges, at least four vertices and minimum degree at least $3$, every face of which is as in Lemma~\ref{lem:convex} with all corners below $\pi$. Then $G$ is 3-connected.
+\end{lemma}
+\leanline{\lname{FaceChain.threeconn} in \lfile{FaceChain/ThreeConn.lean}, with the conclusion \lname{KConnected} $G$ $3$, for a 2-connected graph with degrees at least $3$, edges of one length, corners in $(0,\pi)$, simple face walks and faces in the cone form of Lemma~\ref{lem:convex}; for the contact graph it is the third conclusion of \lname{FaceChain.faceconvex_contact}.}
+
+\begin{proof}
+Suppose $\{u,v\}$ separates $G$, with components $D_1,\dots,D_r$ of $G-\{u,v\}$, $r\ge2$. By 2-connectivity $u$ has neighbours in every $D_i$. Label each edge at $u$ by the component of its other end, or by $v$ for the edge $uv$ if present. A corner at $u$ between two edges with different labels belongs to a face whose boundary cycle contains $v$: the cycle leaves $u$ into one part and must return to $u$, and it can only cross from one part to another through $v$. There are at least two label changes around $u$, and at least three if $uv$ is an edge; distinct corners at $u$ belong to distinct faces, since a boundary cycle passes $u$ once. Take two such faces $F_1\ne F_2$. Their closures are convex and lie in open hemispheres, so the minor arc $[uv]$ lies in $\cl F_1\cap\cl F_2$. As $F_2$ is open and disjoint from $F_1$, the arc $[uv]$ lies in the boundary of both. A geodesic arc in the boundary of a convex face shares a subarc of positive length with some side, hence lies on the great circle of that side, and by Lemma~\ref{lem:convex} it is contained in that side. If a vertex $z$ lay in the relative interior of $[uv]$, it would have a straight corner in $F_1$, which is excluded. The arc $[uv]$ starts at $u$ along an edge $ua$ of the boundary of $F_2$, and neither endpoint of one of the arcs $[uv]$, $[ua]$ lies inside the other, so $a=v$: $uv$ is an edge. Then at least three faces contain $u$ and $v$, and the same argument applied to each pair of them puts the edge $uv$ on the boundary of three distinct faces; but an edge of a 2-connected plane graph borders exactly two.
+\end{proof}
+
+\subsection{Rattlers}
+For thirteen points, the statements that a rattler lies in a hexagon and that a hexagon holds at most one were treated by B\"or\"oczky and Szab\'o \cite[Lemmas~8 and~9(iii)]{BS13}, as reported in \cite[Proposition~3.5]{MT13}; we have not seen their paper, and the proofs below are self-contained for our range of $d$.
+
+
+\begin{lemma}\label{lem:edge}
+Let $0<d<\pi/2$ and $\dist(v,w)=d$. Then $d/2<h(d)<d$, and every point $p$ with $\dist(p,v)\ge d$ and $\dist(p,w)\ge d$ is at distance at least $h(d)$ from the arc $[vw]$.
+\end{lemma}
+\leanline{\lname{edge_distance} in \lfile{Rattlers/Basic.lean}, for the points \lname{arcPt} of the arc (same file), and \lname{hrad_bounds} in \lfile{Trigrows/Mono.lean}.}
+
+\begin{proof}
+The inequalities $\cos d<\cos^2(d/2)$ and $\cos d/\cos(d/2)>\cos d$ give $d/2<h(d)<d$. Let $x$ be a nearest point of $[vw]$ to $p$ and $s=\dist(p,x)$. If $s\ge\pi/2$ or $x\in\{v,w\}$ there is nothing to prove. Otherwise the arc $px$ is orthogonal to $vw$ at $x$, and the spherical theorem of Pythagoras gives $\cos\dist(p,v)=\cos s\cos\dist(x,v)$. If, say, $\dist(x,v)\le d/2$, then $\cos d\ge\cos s\cos(d/2)$, so $s\ge h(d)$.
+\end{proof}
+
+\begin{lemma}\label{lem:disc}
+Let $F$ be a face of $G'(X_0)$ and $r\in F$ a point with $\dist(r,v)\ge d$ for every vertex $v$ of $F$. Then the closed disc $D(r,h(d))$ of centre $r$ and radius $h(d)$ lies in $\cl F$.
+\end{lemma}
+\leanline{for a face in the cone form of Lemma~\ref{lem:convex} with vertices $A_i$ and sides of length $d\in(0,\pi/2)$, and a point $r$ inside it at distance at least $d$ from its vertices, \lname{Geom.disc_side} in \lfile{Geom/Nor.lean} gives $\langle A_i\times A_{i+1},r\rangle\ge\sin d\sin h(d)$ for every side, that is, $r$ is at distance at least $h(d)$ from the great circle of every side; every point within $h(d)$ of $r$ then lies in the closed face (\lname{Geom.inClosed_of_disc} in \lfile{Geom/Onehex.lean}). The formal proof bounds the distance to the great circles, not only to the sides, and needs no connectedness argument: for the side whose great circle is nearest to $r$, the nearest point of that circle to $r$ lies on the side, by the choice of the side and the cone form, and the distances from $r$ to the two ends of the side give the bound.}
+
+\begin{proof}
+By Lemma~\ref{lem:edge}, $r$ is at distance at least $h(d)$ from every edge of $F$. The open disc of radius $h(d)$ about $r$ is connected, contains $r$ and misses the boundary of $F$, so it lies in $F$.
+\end{proof}
+
+\ifpolygonform\PolygonPerims\else
+\begin{lemma}\label{lem:perims}
+Let $0<h<\pi/2$.
+\begin{enumerate}
+\item If $\dist(v,r)=\pi/2$, then $\per\conv(\{v\}\cup D(r,h))=\pi(1+\sin h)$.
+\item If $\dist(r_1,r_2)=l<\pi-2h$, then $\per\conv(D(r_1,h)\cup D(r_2,h))=P(l,h)$, where
+\[
+P(l,h)=2\arccos\frac{\cos l-\sin^2h}{\cos^2h}+2\sin h\,\bigl(\pi-2\arcsin(\tan h\tan(l/2))\bigr),
+\]
+and $P$ is increasing in $l$ and in $h$.
+\end{enumerate}
+\end{lemma}
+\leanline{not formalized; the formal proof of Proposition~\ref{prop:nor} uses no perimeter (Remark~\ref{rem:norroute}), and that of Proposition~\ref{prop:onehex} an inscribed polygon (Remark~\ref{rem:polygons}).}
+
+\begin{proof}
+(1) By Lemma~\ref{lem:polar} the perimeter is $2\pi$ minus the area of the set of $y$ with $\langle y,v\rangle\ge0$ and $\langle y,r\rangle\ge\sin h$. The second condition is a cap of angular radius $\pi/2-h$ about $r$, and the great circle $v^\perp$ passes through $r$, so the set is half of the cap, of area $\pi(1-\sin h)$.
+
+(2) The boundary of the convex hull consists of two arcs of the great circles tangent to both discs and of two arcs of the boundary circles. Place the tangent great circle on the equator, with tangency points $(\cos\frac L2,\mp\sin\frac L2,0)$ and centres $r_{1,2}=(\cos h\cos\frac L2,\mp\cos h\sin\frac L2,\sin h)$; then $\cos l=\cos^2h\cos L+\sin^2h$, which gives the first term. The angle $\gamma$ at $r_1$ between the directions to its tangency point and to $r_2$ satisfies
+\[
+\cos\gamma=\frac{\langle T_1,r_2\rangle-\cos h\cos l}{\sin h\sin l}=\frac{\cos h(\cos L-\cos l)}{\sin h\sin l}=-\tan h\tan\frac l2 ,
+\]
+so the boundary arc of each disc subtends $2\pi-2\gamma=\pi-2\arcsin(\tan h\tan\frac l2)$ at its centre and has length $\sin h$ times that angle. Monotonicity: a disc of radius $h'\ge h$ contains the disc of radius $h$ with the same centre, and the convex hull of $D(r_1,h')\cup D(r_2',h')$ contains every disc of radius $h'$ centred on $[r_1r_2']$; so the hulls increase with $l$ and $h$, and Lemma~\ref{lem:polar} applies.
+\end{proof}
+\fi
+
+\begin{proposition}\label{prop:nor}
+No face of $G'(X_0)$ with at most five vertices contains a rattler.
+\end{proposition}
+\leanline{\lname{Geom.nor} in \lfile{Geom/Nor.lean}, for $d\in[\dlo,\dhi]$, a face in the cone form of Lemma~\ref{lem:convex} with at most five sides of length $d$, and a point inside it at distance at least $d$ from its vertices, by \norroute: Lemma~\ref{lem:disc} for each side (\lname{Geom.disc_side}), the bound $\beta_i\le\alpha(d)$ (\lname{Geom.subtend_le_alpha}, same file), the sum of the $\beta_i$ (\lname{Geom.wheel_sum} in \lfile{Geom/Wheel.lean}) and $\alpha(\dhi)<2\pi/5$ (\lname{alpha_dhi_lt} in \lfile{Trigrows/Margins.lean}).}
+
+\ifpolygonform\PolygonNorProof\else
+\begin{proof}
+Let $r$ be a rattler in a face $F$ with vertices $v_1,\dots,v_m$, $m\le5$, and let $\beta_i$ be the angle $v_irv_{i+1}$. As $r$ is inside the convex face, $\sum\beta_i=2\pi$, so some $\beta_i\ge2\pi/5$. With $a=\dist(r,v_i)$ and $b=\dist(r,v_{i+1})$, both greater than $d$, the law of cosines gives $\cos\beta_i=f(a,b)=(\cos d-\cos a\cos b)/(\sin a\sin b)$. On $[d,\pi/2]^2$ the function $f$ is at least $f(d,d)=\cos\alpha(d)$: the partial derivative $\partial f/\partial a$ has the sign of $\cos b-\cos d\cos a$, so an interior critical point would need $\cos b=\cos d\cos a$ and $\cos a=\cos d\cos b$, forcing $a=b=\pi/2$; on the side $a=d$, $f=\cot d\tan(b/2)$ increases with $b$; on the side $a=\pi/2$, $f=\cos d/\sin b\ge\cos d>\cos\alpha(d)$; the other two sides are symmetric. If $a,b\le\pi/2$, then $\beta_i\le\alpha(d)\le\alpha(\dhi)=69.23^\circ<72^\circ$, a contradiction. So some vertex $v$ of $F$ has $\dist(r,v)>\pi/2$. Let $v'$ be the point of $[rv]$ at distance $\pi/2$ from $r$; it lies in $\cl F$ by convexity, and $D(r,h(d))\subseteq\cl F$ by Lemma~\ref{lem:disc}. By Lemmas~\ref{lem:polar} and~\ref{lem:perims}(1),
+\[
+5d\ge md=\per F\ge\pi(1+\sin h(d))\ge\pi(1+\sin h(\dlo)),
+\]
+but $\pi(1+\sin h(\dlo))-5\dhi=31.2^\circ>0$.
+\end{proof}
+\fi
+
+\begin{proposition}\label{prop:onehex}
+No hexagonal face of $G'(X_0)$ contains two rattlers.
+\end{proposition}
+\leanline{\lname{Geom.onehex} in \lfile{Geom/Onehex.lean}, for $d\in[\dlo,\dhi]$, a hexagonal face in the cone form of Lemma~\ref{lem:convex} with sides of length $d$, and two points inside it at distance at least $d$ from its vertices and from each other, by the polygon of \polyref. The disc about $c$ lies in the closed face by \lname{Geom.disc_slerp} and \lname{Geom.inClosed_of_disc} (same file), from \lname{onehex_inner} and \lname{cap_in_hemisphere} in \lfile{Rattlers/Hex.lean} and \lname{sin_sub_add_sin} in \lfile{Rattlers/Basic.lean}; the polygon is in cone form and has the perimeter stated there (\lname{Geom.qpoly_isCPoly} and \lname{Geom.qpoly_perim} in \lfile{Geom/Qpoly.lean}); Lemma~\ref{lem:polar} is \lname{Geom.perim_mono} in \lfile{Geom/Crofton.lean}; the margin is \lname{margin_onehex_poly} in \lfile{Rattlers/HexPoly.lean}, through \lname{hexPoly_lower} (same file), from rational enclosures of $\cos$ and $\sin$ by Taylor polynomials with Lagrange remainders in \lfile{Numerics/Taylor.lean} and \lfile{Numerics/HexData.lean}.}
+
+\ifpolygonform\PolygonOnehexProof\else
+\begin{proof}
+Let $r_1,r_2$ be rattlers in a hexagonal face $F$, so $l=\dist(r_1,r_2)>d$, and put $h=h(d)$. By Lemma~\ref{lem:disc}, $D(r_1,h)$ and $D(r_2,h)$ lie in $\cl F$. Let $c$ be the point of $[r_1r_2]$ with $\dist(r_1,c)=d$. By Lemma~\ref{lem:convex}, $\cl F$ is the intersection of the closed hemispheres $\{\langle x,n_i\rangle\ge0\}$ of its sides, and a disc $D(r,h)$ lies in such a hemisphere exactly when $\langle r,n_i\rangle\ge\sin h$. From $c=(\sin(l-d)r_1+\sin d\,r_2)/\sin l$,
+\[
+\langle c,n_i\rangle\ge\sin h\,\frac{\sin(l-d)+\sin d}{\sin l}=\sin h\,\frac{\cos(l/2-d)}{\cos(l/2)}\ge\sin h ,
+\]
+so $D(c,h)\subseteq\cl F$, and $K=\conv(D(r_1,h)\cup D(c,h))\subseteq\cl F$. Since $\pi-2h(d)-d$ decreases with $d$ and equals $20.58^\circ$ at $\dhi$, Lemma~\ref{lem:perims}(2) applies with $l=d$, and Lemma~\ref{lem:polar} gives $6d\ge P(d,h(d))$. Cut $[\dlo,\dhi]$ into $40$ equal intervals $[a',b']$. On each, $P(d,h(d))-6d\ge P(a',h(a'))-6b'\ge6.33^\circ$, because $P$ increases in both arguments and $h$ increases. This is a contradiction.
+\end{proof}
+\fi
+
+\begin{corollary}\label{cor:k3}
+$X_0$ has at most three rattlers.
+\end{corollary}
+\leanline{the count \lname{k_le_three_of_hex} in \lfile{Draw/Count.lean}: $k\le3$ for a graph on $15-k$ vertices of minimum degree $3$ with a rotation system that satisfies Euler's relation, has faces of at least three sides and has $k$ distinct hexagonal faces. The proof of Theorem~\ref{thm:structure} applies it with Euler's relation from \lname{twoconn_contact} and the hexagons from \lname{rattlers_in_hexagons} (\lfile{Draw/Iface.lean}). The latter is proved by \lname{Geom.rattlers_in_hexagons_proof} in \lfile{Geom/Hexagons.lean}, which gives each rattler a hexagonal face that contains it, distinct faces for distinct rattlers, from Propositions~\ref{prop:nor} and~\ref{prop:onehex} (\lname{Geom.rattlers_core}, same file). It puts a rattler in a face by another route than the proof below: a point of the drawn graph nearest to the rattler is not a vertex, since the corners are below $\pi$, and the face on the side of the rattler of the edge through that point contains it (\lname{Geom.exists_face_inside} in \lfile{Geom/Cover.lean}).}
+
+\begin{proof}
+A rattler is at distance greater than $d$ from every other point, so it is not on an edge (points of an edge are within $d/2$ of an endpoint) and lies in a face. By Propositions~\ref{prop:nor} and~\ref{prop:onehex}, $G'(X_0)$ has at least $k$ hexagons. With $n=15-k$ vertices, $E$ edges and $F$ faces, $2E\ge3F+3k$, Euler's formula $F=E-n+2$ and $2E\ge3n$ give $3n/2\le E\le3n-6-3k$, so $k\le n/2-2$, that is $3k\le11$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:structure}]
+Item (1) is Lemma~\ref{lem:minimal}. By Lemma~\ref{lem:faces}, $G'(X_0)$ is 2-connected with faces as in item (3), and it has at least $15-3\ge4$ vertices by Corollary~\ref{cor:k3}, so Lemma~\ref{lem:threeconn} gives item (2). Item (4) is Propositions~\ref{prop:nor} and~\ref{prop:onehex} and Corollary~\ref{cor:k3}.
+\end{proof}
+
+\subsection{The numerical margins}\label{sec:constants}
+\ifpolygonform\PolygonConstants\else
+The margins used above are $7\dlo-2\pi=15.6^\circ$, $72^\circ-\alpha(\dhi)=2.77^\circ$, $\pi(1+\sin h(\dlo))-5\dhi=31.22^\circ$, $\pi-2h(\dhi)-\dhi=20.58^\circ$ and $\min(P(a',h(a'))-6b')=6.33^\circ$ over the $40$ intervals. In floating point at 60 digits:
+\gpcheck{12-18}{4-4} They were evaluated in PARI/GP with 60 digits; the last four were certified in ball arithmetic (SageMath, 256 bits) as signs of balls, while the first is a comparison of rationals in degrees ($7\cdot53.65785=375.60495>360$); all five were recomputed independently in PARI/GP with 120 digits; the closed form of $P$ was compared with the integral $2\pi-2\int_0^{t_1}2(\arccos(\sin h/\cos t)-l/2)\cos t\,dt$, $t_1=\arccos(\sin h/\cos(l/2))$, of Lemma~\ref{lem:polar}, and they agree to $10^{-76}$. The same ball computation checks $\dlo<\psis$ (by $1.3\cdot10^{-7}$ degrees) and $\dhi$ above the bound of Fejes T\'oth (by $9.6\cdot10^{-5}$ degrees).
+\leanline{the first four margins are positive by \lname{two_pi_lt_seven_dlo}, \lname{alpha_dhi_lt}, \lname{margin_nor_closed} and \lname{margin_perims} in \lfile{Trigrows/Margins.lean}; the fifth is not formalized, and the formal proof uses the polygon of Remark~\ref{rem:polygons} instead.}
+\fi
+
+\begin{remark}\label{rem:every}
+Musin and Tarasov state that for $N>6$ the contact graph of every maximal configuration is irreducible, citing Danzer \cite[Proposition~3.2]{MT13}. We use only Lemma~\ref{lem:minimal}, which concerns one configuration. The statement for every maximal configuration fails as soon as some maximal configuration has a rattler: moving the rattler to a boundary point of the region of points at distance at least $d$ from the others gives a maximal configuration, and at all but finitely many boundary points the moved point has exactly one contact, hence degree one. Whether a maximal configuration of fifteen points has a rattler is not known, which is why the computation covers $k=1,2,3$.
+\end{remark}
+
+\subsection{The route of the formal proof}\label{sec:formalroute}
+\ifpolygonform The formal proof of Theorem~\ref{thm:structure} follows the proof above except in Corollary~\ref{cor:twoconn}, which it proves by the route of Remark~\ref{rem:routeC}.\else The formal proof of Theorem~\ref{thm:structure} differs from the proof above in three places: Corollary~\ref{cor:twoconn} (Remark~\ref{rem:routeC}), Proposition~\ref{prop:nor} (Remark~\ref{rem:norroute}) and Proposition~\ref{prop:onehex} (Remark~\ref{rem:polygons}).\fi{} Smaller changes of route, in Lemmas~\ref{lem:polar} and~\ref{lem:disc} and in Corollary~\ref{cor:k3}, are described in their Lean lines.
+
+\begin{remark}[a proof by the convex hull]\label{rem:routeC}
+A second proof of Corollary~\ref{cor:twoconn} replaces the formula of Gauss and Bonnet in Lemma~\ref{lem:discs} and Stokes' theorem in Lemma~\ref{lem:simple} by finite counts over the facets of a polytope; it is the proof the formalization follows (Section~\ref{sec:lean}). Let $V$ be the vertex set of $G'(X)$. The proof uses only that the points of $V$ are distinct unit vectors, that all corners lie in $(0,\pi)$, and that each edge $xy$ is an \emph{exposed pair} of $V$: some linear function attains its maximum over $V$ exactly at $x$ and $y$. Contacts are exposed pairs, since with $N=x+y$ every other point $z$ of $X$ has $\langle z,N\rangle\le2\cos d<1+\cos d=\langle x,N\rangle$. As the corners are below $\pi$, no closed hemisphere contains $V$, so the origin is interior to $Q=\conv V$ and the radial projection of the boundary of $Q$ tiles $\Sph$. The facets of $Q$ are the faces of the angular rotation system of the graph $H\supseteq G'(X)$ of exposed pairs, and each has positive spherical excess. A \emph{region} $\mathcal R$ is a class of facets for the relation generated by sharing an edge of $H$ that is not an edge of $G'(X)$. Summing angles gives, for each region,
+\[
+\sum_{f\in\mathcal R}\operatorname{exc}(f)=2\pi\chi(\mathcal R)-\sum_c(\pi-\theta_c),
+\]
+where $\chi(\mathcal R)$ is the number of facets of $\mathcal R$ minus the number of edges of $H$ between two of them that are not edges of $G'(X)$, and the sum runs over the corners of $G'(X)$ in $\mathcal R$. This identity plays the part of the formula of Gauss and Bonnet, and it gives $\chi(\mathcal R)\ge1$. A rank count over $\mathbb Z/2$ in the cycle space of the adjacency graph of the facets of $\mathcal R$ gives $\chi(\mathcal R)\le2-s(\mathcal R)$, where $s(\mathcal R)$ is the number of components of $G'(X)$ with a vertex on a facet of $\mathcal R$. So each region meets one component, and $G'(X)$ is connected because $H$ is. Counting regions and face walks then gives one face walk per region and Euler's relation $\lvert V\rvert-\lvert E\rvert+F=2$ for $G'(X)$. Stokes' theorem becomes the additivity of winding numbers about an axis $c$, chosen as before Lemma~\ref{lem:simple} with the case of polygons of Lemma~\ref{lem:hemi}, over the fan triangles of the facets of a region: the winding of the face walk about $c$ is the number of fan cones that contain $c$ minus the number that contain $-c$, at most one fan cone contains $c$, so the face walk winds once about $c$ and is simple. With corners equal to $\pi$ this route fails (points on one great circle joined in a cycle have a flat hull), which is why the corollary is stated for $(0,\pi)$; Lemma~\ref{lem:faces} uses it only there.
+\end{remark}
+\leanline{\lname{twoconn} in \lfile{TwoConn/Main.lean} (Corollary~\ref{cor:twoconn}), through the positive excess of the facets (\lname{facet_excess} in \lfile{TwoConn/Excess.lean}), $\chi(\mathcal R)\ge1$ for each region (\lname{region_chi} in \lfile{TwoConn/Regions.lean}), the disjoint fan cones (\lname{cone_unique} in \lfile{TwoConn/FanCones.lean}) and the winding of the face walks (\lname{face_walk_injective} in \lfile{TwoConn/Winding.lean}). In place of the rank count over $\mathbb Z/2$, the formal proof counts the orbits of three permutations of the darts of $H$ by the genus bound of the eight-point proof \cite{KLT}, extended to the classes of a partition (\lname{permutation_cycle_bound_classes} and \lname{euler_bound_regions} in \lfile{TwoConn/Regions.lean}); this count gives one face walk per region, Euler's relation and the connectivity of $G'(X)$ together.}
+
+\ifpolygonform\else
+\begin{remark}[Proposition~\ref{prop:nor} by the subtended angles]\label{rem:norroute}
+The formal proof of Proposition~\ref{prop:nor} bounds each angle $\beta_i$ of its proof directly, and uses neither the vertex beyond $\pi/2$ nor Lemmas~\ref{lem:polar} and~\ref{lem:perims}. \NorRouteCore
+\end{remark}
+\leanline{\lname{Geom.subtend_le_alpha} in \lfile{Geom/Nor.lean}, the bound $\beta_i\le\alpha(d)$ for a side of length $d\in(0,\pi/2)$ whose great circle is at distance at least $h(d)$ from $r$, with the algebra in \lname{Geom.subtend_alg} (same file); \lname{Geom.no_small_face} (same file) sums the bounds by \lname{Geom.wheel_sum} of \lfile{Geom/Wheel.lean}.}
+\fi
+
+\ifpolygonform\PolygonRemark\else
+\begin{remark}[an inscribed polygon]\label{rem:polygons}
+The formal proof of Proposition~\ref{prop:onehex} replaces the convex hull $K$ of its proof by a convex polygon inscribed in $K$, so that only perimeters of convex polygons appear, Lemma~\ref{lem:polar} is needed for polygons only, and Lemma~\ref{lem:perims} is not used. The polygon has the two points of contact of each common tangent great circle of $D(r_1,h)$ and $D(c,h)$ and five equally spaced points on each outer arc, from one point of contact to the other, ten vertices in all; they lie on the boundary circles of the two discs, hence in $\cl F$. Its perimeter is $2L+8s$, with $L$ the length of a tangent side and $s$ the chord of a quarter of an outer arc, and it exceeds $6d$ on each of ten equal intervals of $[\dlo,\dhi]$ by at least $2.48^\circ$. The polygon is convex in the cone form of Lemma~\ref{lem:convex}, which is proved in Lean only: the rotation by $\pi$ that exchanges the two circles reduces it to the sides that start on one circle, its chords against the other vertices of that circle, the same chords against the other disc, which needs one inequality in $d$, and the tangent side.
+\end{remark}
+\leanline{the polygon is \lname{Geom.qpoly} in \lfile{Geom/Qpoly.lean}, placed in a frame at $r_1$. For $d\in[\dlo,\dhi]$ and $h=h(d)$ it is in cone form and has perimeter $2L+8s$, the function \lname{hexPoly} of \lfile{Rattlers/HexPoly.lean} (\lname{Geom.qpoly_isCPoly} and \lname{Geom.qpoly_perim} in \lfile{Geom/Qpoly.lean}). The inequality in $d$ is \lname{onehex_chord_margin} in \lfile{Rattlers/HexChord.lean}, and the margin is \lname{margin_onehex_poly} in \lfile{Rattlers/HexPoly.lean}.}
+\fi
+
+\section{Local optimality of the two configurations}\label{sec:local}
+
+This section proves that $\CI$ and $\CIII$ are optimal within an explicit radius. The computation uses the radius to discard the neighbourhoods of the optima, where no refutation can succeed. The first step of the proof of Lemma~\ref{lem:kappa}, that no first order motion other than an infinitesimal rotation keeps every contact distance from decreasing, is the infinitesimal jamming of Cohn, Jiao, Kumar and Torquato \cite[Section~2]{CJKT}, and it rests on an equilibrium stress with positive entries on the contacts, a proper stress of the tensegrity framework with a strut for each contact in the sense of Roth and Whiteley \cite{RW}. Musin and Tarasov use such stresses to exclude two contact graphs for $N=14$ \cite[Section~4.2]{MT14}, following Connelly \cite{Con}. The constant $\kappa$ makes the argument quantitative.
+
+\begin{theorem}\label{thm:local}
+Let $(p_1,\dots,p_{15})$ be one of the eight frame configurations, labelled. Let $x_1,\dots,x_{15}\in\Sph$, and suppose that $|x_i-Rp_i|\le r=1.04\cdot10^{-3}$ for all $i$ and some orthogonal map $R$ (Euclidean norm in $\R^3$). Then $\min_{i<j}\dist(x_i,x_j)\le\psis$, with equality only if $x_i=R'p_i$ for all $i$ and some orthogonal map $R'$.
+\end{theorem}
+\leanline{\lname{local_optimality} in \lfile{Local41/Chain.lean} proves the inequality, for every $n$, every frame $p$ with a set $S$ of contacts at inner product $u>0$, every orthogonal map $R$ and every $r$ with $\sqrt n\,r\cdot1.01(1+u)\le\kappa_0$ and $nr^2<0.02$, from the hypothesis that $\kappa\ge\kappa_0$ (\lname{KappaBound}, the hypothesis D1 of Section~\ref{sec:leanhyps}). The equality case is not formalized; Section~\ref{sec:proof} does not use it. For the instance $n=15$, $r=1.04\cdot10^{-3}$ and $\kappa_0=6.4980\cdot10^{-3}$, \lname{radius_ok} and \lname{radius_sq_ok} in \lfile{Hyps/Reduction.lean} prove the two conditions for every $u\in(0,0.5927)$, and \lname{root_lt} (same file) puts the root $u$ of the quintic in that interval.}
+
+The theorem uses only the thirty contact distances of the frame configuration, and it holds for all fifteen points, rattlers included, whatever the contact graph of $(x_i)$.
+
+Fix the frame configuration $p=(p_i)$ and its set $S$ of thirty contact pairs, $\langle p_i,p_j\rangle=u$ for $ij\in S$. For tangent vectors $t=(t_i)$, $t_i\perp p_i$, put $L(t)_{ij}=\langle p_i,t_j\rangle+\langle p_j,t_i\rangle$ for $ij\in S$, the first order change of $\langle x_i,x_j\rangle$. Let $T'$ be the orthogonal complement, in the space of tangent vectors, of the three infinitesimal rotations $t_i=\omega\times p_i$; $L$ vanishes on these. Define
+\[
+\kappa=\min_{t\in T',\,|t|=1}\ \max_{ij\in S}L(t)_{ij}.
+\]
+
+\begin{lemma}\label{lem:kappa}
+$\kappa\ge6.4980\cdot10^{-3}$ for the frame configurations congruent to $\CI$ and $\kappa\ge6.8142\cdot10^{-3}$ for those congruent to $\CIII$.
+\end{lemma}
+\leanline{not proved in Lean: the lemma is the hypothesis D1 of Section~\ref{sec:leanhyps} (\lname{KappaBound} in \lfile{Local41/Defs.lean}), which Computation~\ref{comp:kappa} checks.}
+
+\begin{proof}
+Let $\mathcal P=\{t\in T':L(t)_{ij}\le1\text{ for all }ij\in S\}$. First, no nonzero $t\in T'$ has $L(t)\le0$. Computation~\ref{comp:kappa} provides a vector $\omega\in\R^S$ with all entries at least $\omega_{\min}=5.485\cdot10^{-3}$ and $\sum\omega=1$, whose residual $\epsilon=\omega^{\mathsf T}L$ has norm at most $1.8\cdot10^{-15}$ on $T'$, and a lower bound $\sigma\ge0.31$ for the smallest singular value of $L$ on $T'$. If $L(t)\le0$, then $\sum\omega_{ij}|L(t)_{ij}|=-\epsilon\cdot t\le|\epsilon||t|$, so every entry satisfies $|L(t)_{ij}|\le|\epsilon||t|/\omega_{\min}$ and $\sigma|t|\le|L(t)|\le\sqrt{30}|\epsilon||t|/\omega_{\min}$, which forces $t=0$. Hence $\mathcal P$ is a polytope, and for $t\in T'\setminus\{0\}$ the maximum $M=\max L(t)_{ij}$ is positive and $t/M\in\mathcal P$. So $M\ge|t|/R_{\max}$ with $R_{\max}=\max_{\mathcal P}|t|$, attained at a vertex, and $\kappa\ge1/R_{\max}$. A vertex of $\mathcal P$ solves $L_At=\mathbf 1$, $Qt=0$ for a set $A$ of $27$ contact pairs with the $30\times30$ system nonsingular, $Q$ the three rotation constraints. Computation~\ref{comp:kappa} runs over the $4060$ complements of such sets and bounds $R_{\max}\le153.8918$ for $\CI$ and $R_{\max}\le146.7508$ for $\CIII$.
+\end{proof}
+
+\begin{step}\label{comp:kappa}
+In SageMath, for each of the eight frame configurations, with the exact contact data of Computation~\ref{comp:attain} in ball arithmetic at $600$ bits. (a) A rational Cholesky factorisation of $L^{\mathsf T}L+Q^{\mathsf T}Q-\lambda_0I$ and Weyl's inequality give $\lambda_{\min}\ge0.0965$, hence $\sigma\ge0.31$. A positive equilibrium stress $\omega$ is found by linear programming and its residual bounded rigorously. (b) Of the $4060$ sets of three contact pairs, $318$ give an exactly singular system: for them the $27$ remaining pairs contain, on some set $U$ of $k\ge2$ points, more than $2k-3$ pairs; these rows involve only the tangent vectors at $U$ and vanish on the three rotation fields restricted to $U$, which are independent since $U$ contains two points at distance $\psis$. All the other systems are certified nonsingular by \texttt{acb\_mat\_solve}, and each solution enters the maximum unless one of the three inequalities $L(t)_{ij}\le1$ it omits is certainly violated. Independently, a PARI/GP computation by Gale duality and a second direct vertex enumeration in PARI/GP at 100 digits find the same $318$ singular sets and the same values $1/R_{\max}=6.4980723\cdot10^{-3}$ and $6.8142767\cdot10^{-3}$. Each run takes under a minute.
+\end{step}
+
+The constant $\kappa$ is defined for any labelled configuration with the set $S$ of contact pairs, and the proof of Theorem~\ref{thm:local} applies it to an orthogonal image of $p$, which need not be a frame configuration.
+
+\begin{lemma}\label{lem:kappainv}
+For every orthogonal map $O$ of $\R^3$, the configuration $Op=(Op_i)$ with the same set $S$ has the same constant $\kappa$ as $p$.
+\end{lemma}
+\leanline{\lname{kappaBound_orthogonal} in \lfile{Local41/Chain.lean}, in the form: if $\kappa\ge\kappa_0$ for $p$, then $\kappa\ge\kappa_0$ for $Op$.}
+
+\begin{proof}
+The map $t\mapsto Ot=(Ot_i)$ sends tangent vectors at $p$ to tangent vectors at $Op$ and preserves $|t|$. It preserves $L$, since $\langle Op_i,Ot_j\rangle=\langle p_i,t_j\rangle$. It maps $T'$ onto the space $T'$ of $Op$: the vector $t$ is orthogonal to the infinitesimal rotations exactly when $\sum_ip_i\times t_i=0$, because $\sum_i\langle\omega\times p_i,t_i\rangle=\langle\omega,\sum_ip_i\times t_i\rangle$, and $\sum_iOp_i\times Ot_i=\det(O)\,O\sum_ip_i\times t_i$. So the two minima defining $\kappa$ run over the same values.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:local}]
+The orthogonal group is compact, so some orthogonal map $R$ minimises $\sum_i|x_i-Rp_i|^2$; replace $p$ by $Rp$. This changes no inner product and, by Lemma~\ref{lem:kappainv}, not $\kappa$; and $\sum_i|x_i-p_i|^2\le15r^2$, since the minimum is at most the value at the map of the hypothesis. Put $v_i=x_i-p_i$ and $s_i=|v_i|^2$. From $|p_i+v_i|=1$ we get $\langle p_i,v_i\rangle=-s_i/2$, so $v_i=t_i-(s_i/2)p_i$ with $t_i\perp p_i$ and $s_i(1-s_i/4)=|t_i|^2$. The first order condition of the minimisation along the maps $e^{\theta\Omega}R$, with $\Omega$ skew symmetric, is $\sum_ip_i\times x_i=0$, that is $\sum_ip_i\times t_i=0$, which says $t\in T'$. Also $|t|^2\le\sum s_i\le15r^2$. For $ij\in S$,
+\[
+\langle x_i,x_j\rangle-u=L(t)_{ij}-\frac u2(s_i+s_j)+\langle v_i,v_j\rangle\ge L(t)_{ij}-(1+u)\max_ks_k ,
+\]
+using $\langle v_i,v_j\rangle\ge-(s_i+s_j)/2$. Since $s_k\le15r^2<0.02$, we have $s_k\le1.01|t_k|^2\le1.01|t|^2$. So
+\[
+\max_{ij\in S}\bigl(\langle x_i,x_j\rangle-u\bigr)\ge\kappa|t|-1.01(1+u)|t|^2 ,
+\]
+which is nonnegative when $|t|\le\kappa/(1.01(1+u))$. This holds because $|t|\le\sqrt{15}\,r$ and $\kappa/(1.01(1+u)\sqrt{15})\ge1.0430\cdot10^{-3}$ by Lemma~\ref{lem:kappa}. Hence some pair has $\langle x_i,x_j\rangle\ge u$, that is $\dist(x_i,x_j)\le\psis$, and the inequality is strict when $t\ne0$. If $t=0$, then $s_k=0$ for all $k$ and $x_i=p_i$.
+\end{proof}
+
+\section{The refutation test}\label{sec:kill}
+
+This section defines the finite statement that the computation checks for each graph, and proves that the test deciding it is sound.
+
+\subsection{Cases and realisations}
+A \emph{case} is a pair $(G,H)$ where $G$ is a 3-connected plane graph with $15-k$ vertices, $0\le k\le3$, all degrees in $\{3,4,5\}$ and all faces of size $3$ to $6$, and $H$ is a set of $k$ hexagonal faces of $G$. By Whitney's theorem, stated in \cite[Theorem~11]{Whi} as the uniqueness of the dual and in \cite[Theorem~4.3.2]{Die} in the form used here, the embedding of a 3-connected planar graph is unique up to reflection, so $G$ is determined by the abstract graph up to its mirror image.
+
+\begin{definition}\label{def:real}
+A \emph{realisation} of the case $(G,H)$ with edge length $d\in(0,\pi/2)$ is a map $x$ from the vertices of $G$ and the elements of $H$ to $\Sph$ such that
+\begin{enumerate}
+\item adjacent vertices are mapped to points at distance $d$, and the minor arcs between them form a drawing of $G$ whose rotation system is that of $G$ or of its mirror image;
+\item every face of $G$ is mapped onto a convex spherical polygon, with all corners in $[\alpha(d),\pi]$;
+\item any two distinct image points are at distance at least $d$;
+\item the point $x(f)$ of $f\in H$ lies in the interior of the image of $f$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}\label{lem:realise}
+Under the hypothesis of Theorem~\ref{thm:structure}, let $H_0$ be the set of hexagons of $G'(X_0)$ that contain a rattler. Then $X_0$ is a realisation of the case $(G'(X_0),H_0)$ with $d=d_{15}$, and its minimal distance is $d_{15}$.
+\end{lemma}
+\leanline{\lname{realisation_of_structured} in \lfile{Hyps/Reduction.lean}, from the conclusion of Theorem~\ref{thm:structure} in the form \lname{Structured} (\lfile{Draw/Defs.lean}). Its realisation (\lname{Realisation} in \lfile{Hyps/Case.lean}) has all corners below $\pi$ and the rotation system of $G'(X_0)$ itself; D2 and \lname{realisation_transport} in \lfile{Hyps/Transport.lean} carry it to an entry of the list: an isomorphism that keeps the rotation relabels the points, and one that reverses it is preceded by the mirror image $-x$ with the reversed rotation system (\lname{realisation_iso}, \lname{realisation_reverse}, same file).}
+
+\begin{proof}
+This is Theorem~\ref{thm:structure}: items (1) to (4) give the case and conditions (1), (2) and (4) of Definition~\ref{def:real}, and $\psi(X_0)=d$ gives (3).
+\end{proof}
+
+A realisation is determined, up to isometry, by $d$, the corners at every vertex and, for each $f\in H$, the six distances from $x(f)$ to the corners of $f$. These are the variables of the test. For a box $B$ of values of these variables (a product of closed intervals), the test tries to prove that no realisation with values in $B$ has minimal distance greater than $\psis$. It uses contractors, which shrink a variable to an interval containing its value in every realisation in $B$, refutations, which prove that $B$ contains no realisation, and one discard, which proves that every realisation in $B$ has minimal distance at most $\psis$.
+
+\subsection{The linear rows}\label{sec:rows}
+The first level uses the variable $a=\alpha(d)$, one variable per corner of a pentagon or hexagon, and two per rhombus ($x$ at two opposite corners, $y$ at the other two). Every realisation with $d\in[\dlo,\dhi]$ satisfies:
+\begin{enumerate}
+\item $a\in[\alpha(\dlo),\alpha(\dhi)]$, and every corner of a triangle equals $a$;
+\item for a rhombus, $a\le x,y\le2a$, $x+y\ge3a$ and $x+y\le S(\dhi)$ with $S(d)=4\arctan(1/\sqrt{\cos d})$;
+\item every corner of a pentagon or hexagon lies in $[a,\pi]$;
+\item the corners at each vertex sum to $2\pi$.
+\end{enumerate}
+For the rhombus, the diagonal joining the two corners $y$ cuts it into two isosceles triangles with legs $d$ and apex $x$, which gives $y=\rho_d(x)=2\operatorname{arccot}(\cos d\tan(x/2))$ and $\cos d=\cot(x/2)\cot(y/2)$. With $k=\cos d$ and $t=\tan(x/2)$, $\rho_d'(x)=-k(1+t^2)/(1+k^2t^2)$ is decreasing in $x$, so $\rho_d$ is concave and decreasing; $\rho_d(\alpha)=2\alpha$ (a rhombus with corner $\alpha$ is two equilateral triangles), so $x,y\ge a$ give $y\le 2a$, and $x+\rho_d(x)$ is at least its value $3\alpha$ at the ends of $[\alpha,2\alpha]$. Its unique critical point is $t^2=1/k$, where $x=y=2\arctan(1/\sqrt k)$, so $x+y\le S(d)\le S(\dhi)$. Corners lie in $[\alpha(d),\pi]$ by Definition~\ref{def:real}(2), and the triangle corners are $\alpha(d)$ by the law of cosines.
+\leanline{row (2) is \lname{rhombus_rows} in \lfile{Trigrows/Rows.lean}, which follows from \lname{rho_concaveOn}, \lname{rho_strictAntiOn_x}, \lname{rho_alpha} and \lname{Ssum_strictMonoOn} in \lfile{Trigrows/Mono.lean}; the ends of row (1) come from \lname{alpha_strictMonoOn} (same file), and the triangle corners from \lname{equilateral_angle} in \lfile{Trigrows/Sdist.lean}. The rows are fields of the relation system \lname{RelSys} of \lfile{Hyps/Case.lean} (Section~\ref{sec:leanhyps}), and \lname{relSys_of_realisation} in \lfile{Hyps/Reduction.lean} derives them for every realisation: row (4) from \lname{vertexSum_of_realisation} in \lfile{Hyps/Interfaces.lean}, proved by \lname{vertexSum_realisation} in \lfile{Draw/Realise.lean}, and the triangle corners and the rhombi from \lname{tri_of_realisation} and \lname{rhombus_of_realisation} in \lfile{Hyps/Interfaces.lean}. These two are proved by \lname{tri_of_realisation_proof} and \lname{rhombus_of_realisation_proof} in \lfile{Trigrows/Realise.lean}, where a face of a realisation is a convex walk whose angles are its corners (\lname{FaceWalk.walk_of_realisation} and \lname{FaceWalk.fc_eq_wangle} in \lfile{Draw/FaceWalk.lean}).}
+
+\subsection{The face relations}\label{sec:faces}
+The second level adds $d$ as a variable and the following relations, each valid for every convex equilateral polygon of side $d<\pi/2$ with corners in $[\alpha(d),\pi]$ and non-adjacent vertices at distance at least $d$. We write $\gamma(g;e,f)=\arccos\bigl((\cos g-\cos e\cos f)/(\sin e\sin f)\bigr)$ for the angle opposite the side $g$ of a triangle with sides $g,e,f$.
+\begin{itemize}
+\item[(T1)] An isosceles triangle with legs $d$ and apex angle $u'$ has base $e$ with $\sin(e/2)=\sin d\sin(u'/2)$ and base angles $\beta=\arctan\bigl(\cos(u'/2)/(\cos d\sin(u'/2))\bigr)$, decreasing in $u'$.
+\item[(T2)] Put $\eta(g;e,f)=(\cos g-\cos e\cos f)/(\sin e\sin f)$, so that $\gamma=\arccos\eta$ is decreasing in $\eta$. For all arguments in $(0,\pi)^3$, $\eta$ is decreasing in $g$, its derivative in $e$ has the sign of $\cos f-\cos e\cos g$ and its derivative in $f$ that of $\cos e-\cos f\cos g$; hence $\gamma$ is increasing in $g$, and the signs of its derivatives in $e$ and $f$ are the opposite ones. If the argument of the arc cosine is above $1$ or below $-1$ on the whole box, no triangle has sides in the box.
+\item[(T3)] $a=\alpha(d)$ and $d=\arccos(\cos a/(1-\cos a))$, both increasing.
+\item[(T4)] Rhombus: $y=\rho_d(x)$, $x=\rho_d(y)$ and $\cos d=\cot(x/2)\cot(y/2)$. The map $\rho_d(x)$ is increasing in $d$, since $\cos d\tan(x/2)$ decreases, and $d=\arccos(\cot(x/2)\cot(y/2))$ is increasing in $x$ and in $y$, since the cotangents decrease on $(0,\pi)$.
+\item[(T5)] Pentagon $A_0\dots A_4$ with corners $u_i$, fan from $A_i$: with $e,b_1$ the base and base angle of the isosceles triangle at $A_{i+1}$ and $f,b_3$ those at $A_{i-1}$ (T1), $u_i=b_1+\gamma(d;e,f)+b_3$, $u_{i+2}=b_1+\gamma(f;e,d)$ and $u_{i-2}=b_3+\gamma(e;f,d)$. The diagonals from $A_i$ lie inside the corner at $A_i$ by convexity.
+\item[(T6)] Hexagon $A_0\dots A_5$: the corners $u_1,u_3,u_5$ give the sides of the triangle $A_0A_2A_4$ by (T1), and $u_0,u_2,u_4$ are sums of two base angles and one angle of that triangle; the same with the parities exchanged.
+\item[(T7)] Long diagonals: in the chain $A_0A_1A_2A_3$, $\dist(A_0,A_3)\ge d$ holds exactly when $u_2\ge b_1+\arccos(\min(1,\cot d\tan(e_1/2)))$, with $e_1,b_1$ from the isosceles triangle at $A_1$; applied to each of the six pairs of adjacent corners of a hexagon in both directions, twelve relations. The bound is non-increasing in $u_1$, since $b_1$ decreases and $e_1$ increases with $u_1$ by (T1). The short diagonals give $u_i\ge\alpha(d)$.
+\item[(T8)] Wheel: for $f\in H$ with corners $A_0,\dots,A_5$ and $r_i=\dist(x(f),A_i)$, the triangles $x(f)A_iA_{i+1}$ tile the hexagon, so $\sum_i\gamma(d;r_i,r_{i+1})=2\pi$ and $u_i=\gamma(r_{i+1};r_i,d)+\gamma(r_{i-1};r_i,d)$; moreover $d\le r_i\le3d$, because the geodesic from $A_i$ through $x(f)$ leaves the face at a boundary point at boundary distance at most half the perimeter from $A_i$, and $3\dhi<\pi$.
+\item[(T9)] Side opposite a known angle: $\cos g=\cos e\cos f+\sin e\sin f\cos G$, used to recover $r_{i\pm1}$ from $r_i$, $d$ and the part of $u_i$ between them. The side $g$ is increasing in $G\in[0,\pi]$, and monotone in $e$ with the sign of $\sin e\cos f-\cos e\sin f\cos G$, which is the sign of $\partial g/\partial e$.
+\end{itemize}
+The maps of (T5) and (T6) are monotone in each corner under conditions that are tested on the box. Write an output as $C(u)=\beta(u)+\Gamma(e(u))$, where $e(u)$ and $\beta(u)$ are the base and the base angle of the isosceles triangle with apex $u$ (T1), $\Gamma$ is the angle of the middle triangle between the side $e$ and a second side, and $X$ is the angle of the middle triangle opposite that second side. In a triangle with sides $a,b,c$ and angle $\Gamma$ between $a$ and $b$, the derivative of $\Gamma$ in $a$ at fixed $b$ and $c$ is $-\cot B/\sin a$, where $B$ is the angle opposite $b$. With $\beta'(u)=-\cos d/(2\cos^2(e/2))$ and $e'(u)=\sin d\cos(u/2)/\cos(e/2)$ this gives
+\[
+C'(u)=-\frac{\sin d\,\bigl(\cos d\sin\frac u2+\cot X\cos\frac u2\bigr)}{2\sin\frac e2\cos^2\frac e2},\qquad\cos d\sin\frac u2+\cot X\cos\frac u2=\frac{\cos\frac u2\,\sin(\beta+X)}{\sin\beta\,\sin X},
+\]
+the identity by Napier's rule $\cos d=\cot(u/2)\cot\beta$. So $C$ is non-increasing in $u$ where $u\le\pi$ and $\beta+X\le\pi$. An output is non-decreasing, with no condition, in the corner whose base is the side opposite the output angle, by (T2), since $e$ is increasing on $(0,\pi]$; and $e(2\pi-u)=e(u)$. Where no triangle exists the clamped arc cosine is constant, so the monotonicity survives the clamp. Where the test succeeds, the values at the corners of the box are intersected with the natural interval extension. No relation links vertices of different faces except through the vertex sums and the two tests of the next subsection.
+\leanline{(T1) is \lname{T1_isosceles_base} and \lname{T1_isosceles_angle} in \lfile{Trigrows/Points.lean}, with \lname{bangle_strictAntiOn} in \lfile{Trigrows/Mono.lean}; (T2) is \lname{eta_strictAntiOn_g} and \lname{eta_hasDerivAt_e} in \lfile{Trigrows/Mono.lean} and \lname{eta_hasDerivAt_f} in \lfile{Trigrows/Rows.lean}; (T3) is \lname{alpha_strictMonoOn} and \lname{alpha_inverse} in \lfile{Trigrows/Mono.lean} and \lname{dOfAlpha_strictMonoOn} in \lfile{Trigrows/Rows.lean}; (T4) is \lname{rho_rho}, \lname{cot_mul_cot_rho}, \lname{rho_strictMonoOn_d} and \lname{rhombus_d_monotoneOn_x} in \lfile{Trigrows/Mono.lean}, with \lname{rhombus_opposite_angle} in \lfile{Trigrows/Sdist.lean}; the corner equations of (T5), (T6) and (T8) are \lname{T5_corner} and \lname{T8_corner} in \lfile{Fans/Corners.lean} and \lname{T5_side_corner} and \lname{T6_corner} in \lfile{Fans/Hexagon.lean}, for a polygon whose diagonals lie inside its corners, with \lname{angle_add_of_cone} in \lfile{Fans/Cone.lean}; (T7) is \lname{T7_iff} in \lfile{Trigrows/Sdist.lean} and \lname{T7_bound_antitoneOn}; (T9) is \lname{T9_monotoneOn_G} and \lname{T9_monotoneOn_e}. The monotonicity of the fan maps uses \lname{gam_hasDerivAt_side}, \lname{fan_sign_identity}, \lname{napier_isosceles}, \lname{ebase_strictMonoOn} and \lname{ebase_symm}; it serves only the interval evaluation of Proposition~\ref{prop:sound}, which is not formalized. The relations (T5) to (T8) are fields of \lname{RelSys} (\lfile{Hyps/Case.lean}), at every dart. Their validity for every realisation is \lname{pent_of_realisation}, \lname{hex_of_realisation}, \lname{hexDiag_of_realisation} and \lname{wheel_of_realisation} in \lfile{Hyps/Interfaces.lean}. The first three are proved by \lname{pent_of_realisation_proof} and \lname{hex_of_realisation_proof} in \lfile{Fans/Realise.lean} and \lname{hexDiag_of_realisation_proof} in \lfile{Trigrows/Realise.lean}, with the cones of the corners of a face as the cone hypotheses of the cores, and the fourth by \lname{Geom.wheel_of_realisation_proof} in \lfile{Geom/T8.lean}: the six angles at the free point sum to $2\pi$ by \lname{Geom.wheel_sum} in \lfile{Geom/Wheel.lean}, and $r_i\le3d$ because a point of a closed face with $m$ sides of length $d$ is within $md/2$ of its first vertex (\lname{Geom.sdist_le_half_perim} in \lfile{Geom/T8.lean}), applied to each rotation of the face. Unmarked declarations are in \lfile{Trigrows/Mono.lean}.}
+
+\subsection{Gluing, Pair and Local}\label{sec:glue}
+Fix a spanning tree of $G$ by breadth first search from a root $v_0$. Given $d$ and the corners, put $Y(v_0)=(0,0,1)$ with frame $F(v_0)=I$, and for a child $w$ of $v$ put $F(w)=F(v)R_z(\phi)R_y(d)Z$, where $\phi$ is the sum of the corners at $v$ from the reference neighbour of $v$ (a fixed neighbour for the root, the parent in the tree otherwise) to $w$, $R_z,R_y$ are the rotations about the coordinate axes and $Z=\operatorname{diag}(-1,-1,1)$; $Y(w)$ is the third column of $F(w)$. The point of $f\in H$ is placed from a corner $A_i$ of $f$ at the position $F(A_i)R_z(\phi+\gamma(r_{j};r_i,d))R_y(r_i)(0,0,1)^{\mathsf T}$, where $A_j$ is the neighbour of $A_i$ on $f$ that precedes it, $\phi$ is the sum of the corners at $A_i$ from its reference neighbour to $A_j$, and $\gamma(r_j;r_i,d)$ is the angle at $A_i$ of the triangle $x(f)A_iA_j$ of (T8); the program tries the six corners and keeps the placement with the least radius $\varrho$ below. Every realisation with these values is congruent to $Y$ or to its mirror image. Over a box, each angle is an interval with midpoint $c$ and radius $\delta$; let $Y_c$ be the configuration built from the midpoints. Since all factors are rotations and $\|R_z(\phi)-R_z(\phi')\|\le|\phi-\phi'|$ in operator norm, every realisation in the box satisfies $|Y(w)-Y_c(w)|\le\varrho(w)$, where $\varrho(w)$ is the sum, over the steps of the tree path to $w$, of the radius of the turning angle and the radius of the step length ($d$ along an edge of the tree, $r_i$ for the step to a free point); the bound grows linearly with the widths.
+
+\begin{itemize}
+\item \emph{Pair} (a refutation). If two points not joined by an edge satisfy $|Y_c(v)-Y_c(w)|+\varrho(v)+\varrho(w)<2\sin(d_-/2)$, where $d_-$ is the lower end of $d$ in the box, the box contains no realisation, by Definition~\ref{def:real}(3).
+\item \emph{Local} (a discard). The targets are the eight frame configurations and their mirror images, each placed in the $60$ ways that send a contact $p_ap_b$ to $(0,0,1)$ and a point of the half plane $y=0$, $x>0$: $960$ labelled configurations, with coordinates enclosed from $40$-digit balls of the exact values. If for some target $T$ there is a bijection $j$ from the fifteen points of $Y$ to those of $T$ with $|Y_c(v)-T_{j(v)}|+\varrho(v)\le1.04\cdot10^{-3}$ for every $v$, then every realisation in the box is within $1.04\cdot10^{-3}$ of an isometric copy of a frame configuration, point by point, and Theorem~\ref{thm:local} shows that its minimal distance is at most $\psis$.
+\end{itemize}
+\leanline{a child is at distance $d$ from its parent and sees it in the direction of the first column of its frame (\lname{frame_child_inner} in \lfile{Glue/FramesAlg.lean}, \lname{frame_child_eq} and \lname{frame_child_back} in \lfile{Glue/Enclosure.lean}); the enclosure $|Y(w)-Y_c(w)|\le\varrho(w)$ for a product of steps, with the radius of the step length at every step (\lname{stepM_sub_apply_le} and \lname{frame_path_enclosure}, same file); Pair is \lname{pair_core} with \lname{norm_sub_eq_two_sin} in \lfile{Glue/Pair.lean}; Local is \lname{local_core} in \lfile{Glue/FramesAlg.lean} followed by \lname{local_optimality} in \lfile{Local41/Chain.lean}. The two tests are \lname{PairFires} and \lname{LocalFires} of \lfile{Hyps/Case.lean}, on the configuration \lname{glueY} glued along a valid tree. The congruence of every realisation with its glued configuration is \lname{glue_congruent} in \lfile{Hyps/Interfaces.lean}, proved by \lname{glue_congruent_proof} in \lfile{Glue/Reconstruct.lean}, by induction on the depth in the tree.}
+
+\subsection{Search, certificates and arithmetic}\label{sec:search}
+The search starts from the box given by the rows of Section~\ref{sec:rows}, $d\in[d_1,d_2]$ and, for the free points, $r_i\in[d_1,3d_2]$ by (T8). At each node it propagates the relations until the box stops shrinking, tests Pair and Local, and otherwise bisects the variable of largest width relative to its width in the root box, both halves closed. Optionally it applies 3B shaving \cite{Lho}: for each variable, a slice of width $1/8$ of its interval at each end is propagated alone, and removed if the propagation empties it. A box whose variables are all narrower than $10^{-9}$ radians and that is neither refuted nor discarded ends the search with the verdict UNRESOLVED; it is never discarded. The verdict KILLED means that every leaf was refuted or discarded.
+
+The search records its tree in preorder: a split gives the variable and the split point, a leaf the reason of its refutation or discard. The replay rebuilds the boxes from the recorded split points, propagates again and accepts the tree only if every leaf is refuted or discarded again, and only if the leaves cover the root box; a leaf refuted earlier than recorded is accepted. A graph is KILLED on $[d_1,d_2]$ when the case $(G,H)$ is for every choice of $H$, and a range cut into slices is rounded outward so that consecutive slices overlap.
+
+All arithmetic is on intervals of IEEE~754 binary64 numbers. Each of $+,-,\times,/,\sqrt{\ }$ is computed with rounding to nearest and widened by one unit in the last place on each side, which contains the exact result. The elementary functions are computed from these operations only: for $\cos,\sin$ the argument is reduced by $\pi/2$ split into three parts, two of them with at most $32$ significant bits, so that the products by the quotient are exact for $|k|<2^{21}$, and the Taylor series of degree $20$ and $21$ carry the Lagrange remainders $|x|^{22}/22!$ and $|x|^{23}/23!$; $\arctan$ uses $\arctan t=\arctan c+\arctan((t-c)/(1+tc))$ with $c$ the nearest multiple of $1/8$, enclosed values of $\arctan(j/8)$ and the terms up to $u^{13}/13$ of the alternating series with remainder $|u|^{15}/15$; $\arccos$ and $\arcsin$ are expressed through $\arctan$ and square roots. The constants are enclosures computed in PARI/GP with 200 digits. A second backend calls MPFR \cite{MPFR} with directed rounding at 53 bits and is used for replays.
+
+\begin{proposition}\label{prop:sound}
+Suppose that the test returns KILLED for the case $(G,H)$ on $[d_1,d_2]$, and put $J=[d_1,d_2]\cap[\dlo,\dhi]$.
+\begin{enumerate}
+\item No realisation of $(G,H)$ with $d\in J$ has minimal distance greater than $\psis$.
+\item Let an assignment give a value $d\in J$, a corner at each dart and, for each free point, its distances to the six corners of its hexagon, and let it satisfy the relation system \lname{RelSys} of hypothesis D3 (Section~\ref{sec:leanhyps}). Then Pair or Local fires on the configuration that the program glues from it along its tree.
+\end{enumerate}
+\end{proposition}
+\leanline{not formalized: the proposition concerns the programs. In the formal proof its place is taken by the hypothesis D3 of Section~\ref{sec:leanhyps}, the statement that item (2) gives for the verdicts KILLED (with the reflection of Section~\ref{sec:leanhyps}), together with the validity of the relation system \lname{RelSys} for every realisation (Sections~\ref{sec:rows} and~\ref{sec:faces}).}
+
+\begin{proof}
+The root box contains the values of every realisation with $d\in J$ by Section~\ref{sec:rows} and, for the distances $r_i$, by (T8). The two halves of a split cover the box. Each contractor is one of the relations of Sections~\ref{sec:rows} and~\ref{sec:faces}, evaluated in outward rounded arithmetic, so it removes only values that no realisation in the box takes; an empty intersection therefore proves that the box contains no realisation, and so does Pair. Local discards only boxes whose realisations have minimal distance at most $\psis$. So every realisation with $d\in J$ lies in a leaf, and every leaf holds none with minimal distance greater than $\psis$. The rows use constants at $\dlo$ and $\dhi$, which is why $d$ is restricted to $[\dlo,\dhi]$.
+
+For (2), the same argument applies to the assignment in place of a realisation. Its values lie in the root box: the corners lie in $[\alpha(d),\pi)$ and sum to $2\pi$ at each vertex, the triangle corners equal $\alpha(d)$ and each rhombus satisfies $y=\rho_d(x)$, all fields of \lname{RelSys}, and these give the rows of Section~\ref{sec:rows} for $d\in[\dlo,\dhi]$ (those of the rhombi by \lname{rhombus_rows}); $d\le r_i\le3d$ is part of (T8). Each contractor is a consequence of the fields of \lname{RelSys}: (T5) to (T8), with the ranges of their arc cosines, are fields, (T3) is the definition of $\alpha$, (T4) follows from $y=\rho_d(x)$ for corners below $\pi$, and (T9) follows from (T8) since $\sin r_i\sin d>0$. So no contractor removes the values of the assignment, and the leaf that holds them is refuted by Pair or discarded by Local. Pair and Local are tested on the enclosure of the configurations glued from the box, which contains the configuration glued from the assignment, so the test that ends the leaf fires on that configuration.
+\end{proof}
+
+\section{The computation}\label{sec:comp}
+
+This section reports the enumeration, the two levels of the test, the certificates and the independent checks. All runs were on one workstation with an AMD Ryzen~9 5900X processor under Linux; times are in core hours.
+
+\subsection{Enumeration}\label{sec:enum}
+\begin{step}\label{comp:enum}
+For $k=0,1,2,3$, plantri~5.8 \cite{BM} lists the 3-connected plane graphs on $n=15-k$ vertices with faces of size at most $6$, one for each isomorphism class up to reflection (options \texttt{-p -f6}); an output filter compiled into plantri keeps those of maximum degree at most $5$. The minimum degree is $3$ for \texttt{-p}. For $n=15$ and $n=14$ the enumeration is split into $2000$ and $40$ parts by plantri's own splitting. Table~\ref{tab:enum} gives the counts.
+\end{step}
+
+\begin{table}[ht]
+\caption{Enumeration and the first level. The columns count the 3-connected planar graphs on $n$ vertices (OEIS A000944), the graphs of the class (3-connected, faces of size $3$ to $6$, degrees $3$ to $5$), and the survivors of the first level. For $k\ge1$ the first level also requires at least $k$ hexagons.}\label{tab:enum}
+\centering
+\begin{tabular}{rrrrr}
+$k$ & $n$ & all (A000944) & class & first level\\\hline
+0 & 15 & 23{,}833{,}988{,}129 & 457{,}548{,}213 & 435{,}263\\
+1 & 14 & 1{,}496{,}225{,}352 & 49{,}661{,}857 & 26{,}994\\
+2 & 13 & 96{,}262{,}938 & 5{,}447{,}863 & 441\\
+3 & 12 & 6{,}384{,}634 & 606{,}838 & 5\\\hline
+ & & & 513{,}264{,}771 & 462{,}703
+\end{tabular}
+\end{table}
+
+Checks of the enumeration. (a) The unsplit count at $n=14$ equals the sum of the $40$ parts, and at $n=15$ the sum of $8$ parts modulo $8$ equals the sum of the $2000$ parts. (b) For every $n\le15$, the unrestricted output of \texttt{plantri -p} was read by a separate program that traces the faces, checks Euler's formula and counts the graphs of the class; its totals equal the terms of OEIS A000944 \cite{OEIS} in the table, and its class counts equal those of the filtered, face-restricted enumeration. So neither the face-size pruning nor the degree filter loses a graph. At $n=15$ this pass reads $2.4\cdot10^{10}$ graphs in about 8 core hours. (c) Without the degree filter, plantri gives $93{,}985{,}085$ graphs with faces of size at most $6$ on $13$ vertices and $1{,}449{,}901{,}521$ on $14$ vertices, the sums of the three class counts printed by Musin and Tarasov \cite[Section~4]{MT13}, \cite[Section~3]{MT14}. These checks compare plantri with itself under different options and with published counts; no second program enumerates the classes for $n=14,15$.
+
+\subsection{First level}\label{sec:stageA}
+\begin{step}\label{comp:stageA}
+For each graph of Table~\ref{tab:enum}, the rows of Section~\ref{sec:rows} with $d\in[\dlo,\dhi]$ are propagated in outward rounded interval arithmetic until the bounds stop improving; a graph is rejected when a domain becomes empty. For $k\ge1$ a graph with fewer than $k$ hexagons is rejected. The enumeration and this level together take about 3.6 core hours; the survivors are in the last column of Table~\ref{tab:enum}.
+\end{step}
+The constants of the rows were computed in PARI/GP at 100 digits and rounded outward; they were checked in ball arithmetic (SageMath, 256 bits), each lower constant being below and each upper constant above its exact value by $10^{-21}$ to $10^{-20}$, and recomputed independently at 120 digits.
+
+Two independent checks. A second program, written from the description of Section~\ref{sec:rows} and adding the rows ``the corners of an $m$-gon sum to at least $(m-2)\pi$'', saw the same plantri counts in all $2042$ parts and kept $435{,}165+26{,}994+441+5$ graphs, a subset of the survivors ($98$ graphs fewer for $k=0$). A third check, in SageMath with the exact rational simplex of GLPK \cite{GLPK} and all constants rounded outward to dyadic rationals, confirmed that the linear system is infeasible for each of $10{,}077$ graphs rejected by the rows: all $77$ for $k=3$, $2000$ drawn at random among the $185{,}532$ for $k=2$, and $2000$ drawn in one of the $40$ parts for $k=1$ and $3000$ in each of two of the $2000$ parts for $k=0$ (parts $15$, $135$ and $1848$); the $2042$ parts regenerated by plantri reproduce the recorded survivor files of both programs byte for byte.
+
+\subsection{Second level}\label{sec:level2}
+\begin{step}\label{comp:level2}
+For every survivor of Table~\ref{tab:enum} and every choice of $H$, the test of Section~\ref{sec:kill} was run with the face relations, Pair and Local, over $[\dlo,\dhi]$; the pass on $[53.6578502^\circ,\dhi]$ of Table~\ref{tab:passes} ran without Pair and Local, a weaker test. A first pass with a budget of $30{,}000$ nodes per case, run on all survivors except $156$ graphs set aside below, killed $435{,}249$ graphs with $k=0$, $26{,}886$ with $k=1$, $393$ with $k=2$ and one with $k=3$, in about 3 core hours. A second pass with $300{,}000$ nodes killed the $14$ graphs with $k=0$ and $4$ with $k=2$ left over. The $156$ graphs set aside from the first pass ($108$ with $k=1$, $44$ with $k=2$, $4$ with $k=3$), which contain the rattler cases near the optima, were killed by the passes of Table~\ref{tab:passes}, in about 8 core hours. For every choice of $H$, every graph is KILLED on a union of overlapping ranges that covers $[\dlo,\dhi]$; Section~\ref{sec:replay} checks this on the replayed trees.
+\end{step}
+
+\begin{table}[ht]
+\caption{The passes for the $156$ rattler cases. The slices $[\dlo,53.6578502^\circ]$ contain $\psis$.}\label{tab:passes}
+\centering
+\begin{tabular}{rll}
+graphs & ranges (degrees) & search\\\hline
+51 & $[53.6578502,\dhi]$, then $[\dlo,53.6578502]$ & plain\\
+4 & $[53.6578502,\dhi]$, then $[\dlo,53.6578502]$ & plain, then 3B shaving\\
+51 & $[\dlo,\dhi]$ & plain, $100{,}000$ nodes\\
+48 & $[\dlo,\dhi]$ & 3B shaving\\
+1 & $[\dlo,53.7]$, $[53.7,54.6]$, $[54.6,\dhi]$ & 3B shaving\\
+1 & $[\dlo,53.6578502]$, $[53.6578502,53.66]$, $[53.66,53.7]$, & 3B shaving\\
+ & $[53.7,54.6]$, $[54.6,\dhi]$ &
+\end{tabular}
+\end{table}
+
+Local is what removes the neighbourhoods of the optima: without it, no realised case of Section~\ref{sec:truth} is killed, since no valid relation can refute a genuine realisation.
+
+\subsection{Replay of the certificates}\label{sec:replay}
+Every tree of Computation~\ref{comp:level2} was replayed and verified on the range it has to cover, by builds of committed sources of the first program: the trees of the $435{,}249$ graphs of the first pass for $k=0$ and the $235$ replays of the second pass and of Table~\ref{tab:passes} ($174$ graphs) by the build used for the last passes, and the trees of the first pass for $k=1,2,3$ by a separate build of a committed source. Samples were replayed again with the MPFR backend, which removes the dependence on our elementary functions for these trees: $5\%$ of the first pass (of the $23{,}129$ graphs whose index in their input file is a multiple of $20$, the $23{,}127$ that have a tree of the first pass; the other two have their trees in the second pass) and two further random samples of it, of $63$ and $911$ graphs (\texttt{code/impl1/out/replay\_mpfr\_974.txt}; the single graph with $k=3$ is in both). These replays found one defect in the replay program: when a box was refuted earlier than recorded, it skipped the recorded subtree counting one child per split. This could reject valid trees and accept malformed token strings, but it could not accept a tree that leaves part of a box unrefuted: the replay takes each box from its own stack and requires that the box be refuted or split into two halves that cover it, and that all tokens be consumed. The published code corrects it, and every tree was replayed again with the published code (the sources of that build differ from the published ones in comments and one assertion message only, \texttt{code/impl1/out/replay\_build\_diff.txt}): $462{,}764$ replays, one for each graph and range of $d$, of the $462{,}703$ graphs ($468{,}476$ trees), all VERIFIED, none failed, in about 9 core hours (\texttt{code/impl1/out/replay\_summary.txt}). A script joins these replays with the survivors: it identifies the input files of the second level with the survivor files of the first, record by record, reads the range of $d$ of each replay from its log, and checks that every one of the $462{,}703$ survivors has, for every choice of $H$, verified trees whose ranges cover $[\dlo,\dhi]$; $462{,}646$ are covered on the whole range and $57$ by slices only (\texttt{code/impl1/out/coverage\_join.txt}). The same script fails, as it should, when one verified line is removed or one slice is shrunk so that a gap opens.
+
+\subsection{Second implementation}\label{sec:second}
+A second program was written, before this paper, from a written description of the arguments of Sections~\ref{sec:structure} to~\ref{sec:kill} and the data files alone, without reading the source of the first. It has its own interval arithmetic, its own elementary functions (tables of $\cos(k/64)$, $\sin(k/64)$ and $\arctan(k/64)$ enclosed with MPFR, and Taylor polynomials with Lagrange remainders), mean value forms by automatic differentiation, more relation families per face (every triple of other corners of a hexagon, pentagon splittings along a diagonal), its own gluing, Pair and Local, and a further refutation that compares the enclosure of each edge length with $2\sin(d/2)$. It writes no certificates, so its verdicts are checked only by rerunning it: reruns of $480$ sampled graphs and of the $42$ hardest reproduce the recorded node counts, except for two sampled graphs that the recorded pass stopped at its time limit (\texttt{code/impl2/README.md}). On the $462{,}703$ graphs, a plain pass (at most $30{,}000$ nodes or $5$ seconds per graph) killed $461{,}647$, a pass with 3B shaving $1{,}014$ more, and passes on single graphs the last $42$, three of them on unions of overlapping slices of $d$; about 14 core hours in all. Near $\psis$ the variable $d$ cannot be contracted, since realisations exist for every $d\le\psis$; there the search splits $d$ last. No run of this program with Local reported UNRESOLVED.
+
+\subsection{Tests on the true configurations}\label{sec:truth}
+A test that refuted genuine realisations would kill every graph, the optimal ones included. Call a case \emph{realised} if $\CI$ or $\CIII$, or one of them with a point declared a rattler, is a realisation of it at $d=\psis$ (its graph is the contact graph with some edges removed, and all corners stay below $\pi$). The realised cases tested are those with at most six edges of the contact graph removed ($84$ for $\CI$, $28$ for $\CIII$) and those with a rattler (a point removed with its edges, which stays as an isolated point in the merged face) and at most four more edges removed ($104$ and $48$). With Local switched off, neither implementation kills any realised case: the first, in the rigorous mode of the final runs with Pair, 3B shaving, at most $3000$ nodes per case and a stop at the first unresolved box (options \texttt{-{}-shave 8 -{}-nodes 3000 -{}-stopunres 1}), on $d\in[\dlo,53.6578502^\circ]$, killed none of the $131$ cases it reached before its time limit ($126$ UNRESOLVED, $5$ out of budget), among them the contact graphs of $\CI$ and $\CIII$ and cases with a rattler; the second kills none of the $264$. On $252$ of them, those without a rattler and those with a rattler and at most three more edges removed, the enclosure of the box around the true corners contains the true configuration, and Local fires. On the eight frame configurations Local fires when one point is moved by $0.9$ times the radius $1.04\cdot10^{-3}$ of Theorem~\ref{thm:local}, but not when it is moved by $1.1$ times it, and never against the targets of the other configuration (\texttt{code/impl1/out/localtest.txt}).
+
+\subsection{What the proof rests on}
+Besides the written arguments of Sections~\ref{sec:optima} to~\ref{sec:kill}, the proof relies on the first Rust program (its relations, gluing, Pair, Local, search and replay), on plantri for the enumeration (Section~\ref{sec:enum}), on the Rust compiler and on IEEE~754 rounding to nearest of the five basic operations on the machine used, on SageMath, PARI/GP and the Arb ball arithmetic inside SageMath for Computations~\ref{comp:attain} and~\ref{comp:kappa} and the constants, and on MPFR for the tables of the second implementation and the reference replays. Each computation except the enumeration has an independent second computation; for the second level this is the second implementation, whose verdicts agree with those of the first but are not certified by trees. In the formal proof of Section~\ref{sec:lean}, the Lean kernel and Mathlib take the place of the written arguments, except Proposition~\ref{prop:sound} and the step from the output of plantri to D2 (Section~\ref{sec:leanhyps}); the computations enter as the hypotheses D1 to D4, and the bound of Fejes T\'oth as a fifth hypothesis.
+
+\section{Proof of Theorem~\ref{thm:main}}\label{sec:proof}
+
+The lower bound $d_{15}\ge\psis$ and the values $\psi(\CI)=\psi(\CIII)=\psis$ are Proposition~\ref{prop:optima}. Suppose some fifteen points have minimal distance greater than $\psis$. Then $d_{15}>\psis$, and $d_{15}\in[\dlo,\dhi]$ (Section~\ref{sec:structure}). Let $X_0$ be a maximal configuration with the fewest contacts; it exists because $E$ takes finitely many values. By Theorem~\ref{thm:structure} and Lemma~\ref{lem:realise}, $X_0$ is a realisation, with $d=d_{15}$ and minimal distance $d_{15}>\psis$, of a case $(G,H)$ whose graph is isomorphic, up to reflection, to a graph of Table~\ref{tab:enum} (Computation~\ref{comp:enum}). By Section~\ref{sec:rows} the rows hold for this realisation, so the graph survives the first level (Computation~\ref{comp:stageA}). By Computation~\ref{comp:level2}, every choice of $H$ for this graph is KILLED on ranges covering $[\dlo,\dhi]$, and by Proposition~\ref{prop:sound}(1) no realisation of the case with $d\in[\dlo,\dhi]$ has minimal distance greater than $\psis$. This contradicts the choice of $X_0$. Hence every set of fifteen points has minimal distance at most $\psis$, and $d_{15}=\psis$. \qed
+\leanline{\lname{reduction} (\lfile{Hyps/Reduction.lean}) follows this proof, with the hypothesis \lname{FejesTothBound} for $d_{15}\le\dhi$, D1 in place of Lemma~\ref{lem:kappa}, D2 of Computation~\ref{comp:enum}, D3 of Computations~\ref{comp:stageA} and~\ref{comp:level2} with Proposition~\ref{prop:sound}, and D4 of Proposition~\ref{prop:optima} (Section~\ref{sec:leanhyps}); it depends only on the standard axioms (Section~\ref{sec:leantrust}).}
+
+\section{The formalization in Lean}\label{sec:lean}
+
+This section describes the formalization of the proof in Lean~4 \cite{Lean4} with Mathlib \cite{Mathlib}: the statement, the main theorem and its hypotheses (four finite statements and a bound from the literature), the programs that check each finite statement, the code taken from the eight-point proof, and what the check trusts. Declarations are named without the namespace \lname{Tammes15}; files are relative to the folder \texttt{Tammes15} of the Lean package.
+
+\subsection{The statement}\label{sec:leanstatement}
+The statement of Theorem~\ref{thm:main} was written in Lean before any proof, in the file \texttt{\statementfile}, with the definitions of Mathlib only:
+\statementlisting
+For unit vectors, \lname{angle} is the spherical distance $\arccos\langle p,q\rangle$. So \lname{Conjecture} says that $\arccos u$, for the root $u$ of the quintic in $(1/2,7/10)$, is the greatest $d$ such that some fifteen points of the sphere have pairwise distances at least $d$: this is Theorem~\ref{thm:main} without the names of $\CI$ and $\CIII$. The same file proves that the quintic has exactly one root in $(1/2,7/10)$ (\lname{existsUnique_root}) and that \lname{Conjecture} is equivalent to the conjunction of \lname{Attained}, some fifteen points reach $\arccos u$, and \lname{UpperBound}, any fifteen points have two at distance at most $\arccos u$ (\lname{conjecture_iff}); both depend only on the standard axioms (\texttt{code/lean/check.out}).
+
+\subsection{The main theorem and its hypotheses}\label{sec:leanhyps}
+The formal proof follows Sections~\ref{sec:optima} to~\ref{sec:proof}. Where the written proof uses a computation, the formal proof takes the finite statement that the computation checks as a hypothesis; there are four, D1 to D4 below. Where it uses the bound of Fejes T\'oth, the formal proof takes that bound as a fifth hypothesis. The main theorem, in \lfile{Hyps/Reduction.lean}, is
+\lstinputlisting[style=lean,includerangemarker=true,linerange={theorem\ reduction-Conjecture\ :=}]{\leandir/Tammes15/Hyps/Reduction.lean}
+and the five hypotheses are stated in \lfile{Hyps/Computations.lean}, over objects defined in \lfile{Hyps/Case.lean}, which follow Section~\ref{sec:kill}. A \lname{PlaneGraph} is a rotation system on a simple graph with vertex set $\{0,\dots,n-1\}$, and a \lname{Frame} is a map $p$ from $\{0,\dots,14\}$ to $\R^3$ with a finite set $S$ of pairs of indices. The theorem holds for every set $L$ of plane graphs and every set $F$ of frames. The computations check the hypotheses for one pair: $F$ is the set of the eight frame configurations of Section~\ref{sec:optima}, with their exact points in the number field of degree $20$ and $S$ their thirty contacts, and $L$ is the list of Computation~\ref{comp:enum}. The rotation \lname{P.R.rot} of an entry takes each dart at a vertex to the next one counterclockwise, which is the previous neighbour in the clockwise list of plantri's planar code. With this orientation the variables and faces of the first program are those of Lean. For an assignment whose corners at each vertex sum to $2\pi$ and whose free points satisfy the corner equations of (T8), both fields of \lname{RelSys}, the configuration the program glues is that of \lname{glueY} reflected by $D=\operatorname{diag}(1,-1,1)$, for the vertices and the free points alike. Both multiply the factors $R_z(\phi)R_y(d)Z$ of Section~\ref{sec:glue} along the tree, with the sums $\phi$ of corners taken in opposite rotation orders, so each turn of Lean is $2\pi$ minus the turn of the program when the corners at the vertex sum to $2\pi$; since $DR_z(\phi)D=R_z(-\phi)$, $DR_y(d)D=R_y(d)$, $DZD=Z$ and $De_3=e_3$, the frames of Lean are those of the program conjugated by $D$. A free point is placed from a corner $A_i$ of its hexagon through $A_{i+1}$ in Lean and through $A_{i-1}$ in the program, and the angle of Lean is again $2\pi$ minus that of the program, by the corner equation $u_i=\gamma(r_{i+1};r_i,d)+\gamma(r_{i-1};r_i,d)$ of (T8). Pair and Local do not change under this reflection, so the verdicts of the program apply to \lname{glueY} on the assignments that D3 covers. These two sets are data of the programs; they are not written in Lean.
+
+\medskip\noindent\textbf{The bound of Fejes T\'oth.} It is stated as
+\lstinputlisting[style=lean,linerange={65-66}]{\leandir/Tammes15/Hyps/Computations.lean}
+where \lname{Config 15 d} is the type of fifteen unit vectors at pairwise distance at least $d$: if some fifteen points of $\Sph$ are at pairwise distance at least $d$, then $d\le\dhi=56.6716^\circ$. Fejes T\'oth proved $d_N\le\arccos((\cot^2\omega_N-1)/2)$ with $\omega_N=\pi N/(6N-12)$ \cite{FT43}, which for $N=15$ is $56.67150355^\circ<\dhi$ (Section~\ref{sec:structure}). This hypothesis is a result from the literature; it is proved neither in Lean nor in this paper.
+
+\medskip\noindent\textbf{D1, the bound of Lemma~\ref{lem:kappa}.} With the definitions of \lfile{Local41/Defs.lean},
+\lstinputlisting[style=lean,linerange={20-30}]{\leandir/Tammes15/Local41/Defs.lean}
+the hypothesis is
+\lstinputlisting[style=lean,linerange={30-30,34-35}]{\leandir/Tammes15/Hyps/Computations.lean}
+The condition \lname{TPerp} says that $t\in T'$, and \lname{KappaBound} says that $\kappa\ge\kappa_0$; one constant $\kappa_0=6.4980\cdot10^{-3}$ serves for all eight configurations. D1 is checked by Computation~\ref{comp:kappa}, in SageMath with ball arithmetic, for each of the eight frame configurations: $\kappa\ge6.4980\cdot10^{-3}$ for the six congruent to $\CI$ and $\kappa\ge6.8142\cdot10^{-3}$ for the two congruent to $\CIII$. Two PARI/GP programs, one by Gale duality and one by a direct enumeration of vertices, find on each of the eight the same $318$ singular sets and the same values.
+
+\medskip\noindent\textbf{D2, the completeness of the enumeration.} The hypothesis is
+\lstinputlisting[style=lean,linerange={39-41}]{\leandir/Tammes15/Hyps/Computations.lean}
+Here \lname{InClass} asks that the graph be 3-connected, that its degrees lie in $\{3,4,5\}$ and its faces have $3$ to $6$ sides, and that the rotation system have genus zero; \lname{IsoRefl} asks for a graph isomorphism that carries one rotation to the other or to its inverse. So D2 says that every graph of the class of Section~\ref{sec:kill} on $12$ to $15$ vertices, with any rotation system of genus zero, is isomorphic, possibly after reversing the orientation, to an entry of $L$ with as many vertices. The hexagons do not enter D2: D3 ranges over the choices of hexagons, and a graph with too few hexagons has none. That the output of plantri satisfies D2 uses Whitney's theorem (Section~\ref{sec:kill}): a rotation system of genus zero on a 3-connected graph is its embedding up to reflection. This step is argued on paper only, and the agreement of plantri's notions of 3-connectivity and planarity with those of the Lean statement is taken from the description of plantri \cite{BM} and not checked further. D2 is checked by plantri alone, with the consistency checks of Section~\ref{sec:enum}: the counts of the split runs, the unrestricted counts against OEIS A000944 and the counts of Musin and Tarasov. No second program enumerates the classes for $14$ and $15$ vertices.
+
+\medskip\noindent\textbf{D3, the verdicts of the test.} The hypothesis is
+\lstinputlisting[style=lean,linerange={46-49}]{\leandir/Tammes15/Hyps/Computations.lean}
+For each entry $P$ of $L$ with $n$ vertices, $k=15-n$, and each choice \lname{H} of $k$ distinct hexagons, an assignment \lname{A} gives the edge length $d$, a corner at each dart and the six distances from each free point to the corners of its hexagon. The relation system \lname{RelSys} asks that every corner lie in $[\alpha(d),\pi)$, that the corners at a vertex sum to $2\pi$, that triangle corners equal $\alpha(d)$, that in a rhombus opposite corners be equal and $y=\rho_d(x)$, that (T5) hold in every pentagon and (T6) and (T7) in every hexagon, from every dart, and that each free point satisfy the wheel relations (T8). The other rows of Section~\ref{sec:rows} follow from these, those of the rhombi by \lname{rhombus_rows}. A valid gluing \lname{g} is a spanning tree of the graph with a root and a reference dart there, and for each free point a corner of its hexagon; \lname{glueY} is the configuration of Section~\ref{sec:glue} glued along it. \lname{PairFires} says that two points not joined by an edge are at chord distance less than $2\sin(d/2)$, and \lname{LocalFires F} that some isometry of $\R^3$ and some bijection of the fifteen points with those of a frame of $F$ move every point by at most $1.04\cdot10^{-3}$. So D3 says: for every case of the list and every assignment with $d\in[\dlo,\dhi]$ that satisfies the relations, some valid gluing gives a configuration on which Pair or Local fires. A \lname{HexChoice} is an ordered choice of $k$ distinct hexagons with a base dart in each, while the program runs one choice for each set of $k$ hexagons, with base darts of its own. Two choices of the same set differ by a relabelling of the free points and a cyclic shift of the corners of each hexagon. Under this change an assignment that satisfies \lname{RelSys} for one choice gives one that satisfies it for the other, since \lname{WheelRel} from another base dart is \lname{WheelRel} with its indices shifted; a valid gluing gives a valid gluing that places each free point from the same vertex, and \lname{glueY} puts every point at the same position, up to the relabelling; and Pair and Local, which do not see the labels of the points, fire on both configurations or on neither. So the verdicts of the program on its choices give D3 for every \lname{HexChoice}; this step is argued on paper only.
+
+D3 differs from Section~\ref{sec:kill} in two places. Its corners are below $\pi$, while the program allows $\pi$: at a corner $\pi$ the Lean value of $\rho_d$ is a convention that the program does not share, and with corners up to $\pi$ D3 would claim more than the program checks; realisations have their corners below $\pi$ by Theorem~\ref{thm:structure}(1). And Local compares with the exact frames, while the program compares with the $960$ targets of Section~\ref{sec:glue}, built from balls of $40$ digits; that these balls contain the points of the eight frame configurations, with the same contact lists, is part of the argument that the verdicts of the program give D3. The SageMath script that writes the targets evaluates the exact points in ball arithmetic at $600$ bits and widens each radius by $10^{-38}$, which covers the rounding of the midpoints to $40$ digits (\texttt{code/sage/tie\_targets.sage}). A PARI/GP script checks the file again, in floating point at $100$ digits and not in interval arithmetic: it rebuilds the frame of Section~\ref{sec:optima} from its formulas, with the real roots it needs from \texttt{polrootsreal}, and finds that each ball of each target contains a point of the frame, distinct balls distinct points, that the thirty listed contacts have inner product $u$ within $3\cdot10^{-115}$, and that every other pair is below $u-0.1679$ (\texttt{code/gp/tie\_check.gp} and its output, on the targets \texttt{data/tie\_targets.txt}).
+
+D3 is what the verdicts KILLED of the first program establish, by Proposition~\ref{prop:sound}(2): its first level rejects all but $462{,}703$ graphs, and a rejected graph has no assignment that satisfies the rows (Computation~\ref{comp:stageA}); its second level kills these, for every choice of hexagons, on ranges covering $[\dlo,\dhi]$ (Computation~\ref{comp:level2}); and every tree it recorded is replayed (Section~\ref{sec:replay}). The range of $d$ of the program contains the range of D3. Its decimal endpoints lie below $\dlo$ by $1.3\cdot10^{-21}$ and above $\dhi$ by $4.1\cdot10^{-21}$ radians; the program reads each as the nearest binary64 value and then moves it one unit in the last place outward, which puts the lower end below $\dlo$ by $1.6\cdot10^{-16}$ and the upper end above $\dhi$ by $1.2\cdot10^{-16}$ radians. These margins are computed in PARI/GP from exact rationals, with $\pi$ to $100$ digits, and a Rust program that runs the parser of the first program on its parameter file finds the same two binary64 values (\texttt{code/hyps/d\_range.gp}, \texttt{d\_range\_parse.rs}, \texttt{d\_range.sh} and the output \texttt{d\_range.out}).
+
+The second program (Sections~\ref{sec:stageA} and~\ref{sec:second}) also kills every graph, but it uses relations that are not fields of \lname{RelSys}: in its first level, the rows by which the corners of a pentagon sum to at least $3\pi$ and those of a hexagon to at least $4\pi$; in its second level, the splittings of a pentagon along a diagonal and two families that give three corners of a hexagon from the other three. These relations hold for every convex equilateral polygon, but they follow from the fields of \lname{RelSys} only through a lemma on the realisability of a single face, which is not stated. So the second program checks the conclusion of D3 from more hypotheses: it is a second computation of Theorem~\ref{thm:main}, not a check of D3 as stated. Its comparison of edge lengths with $2\sin(d/2)$, a refutation that D3 does not have, fired in none of its recorded runs.
+
+With these relations and the edge test switched off, the second program would check D3 as stated, if run on all graphs. This restricted run has been done on samples only. On $12$ of the $2042$ parts of the enumeration ($10{,}437{,}407$ graphs), its first level keeps exactly the survivors of the first program. With the options of the recorded passes, its second level kills $1{,}415$ of $1{,}417$ survivors taken at regular strides from the input files, and $11$ of the hardest cases of the recorded runs, one of them on a slice of $d$; the other two sampled graphs stopped at the budget of the second pass, as they did in the recorded run of the unrestricted program, and were not run further. On the subgraphs realised by $\CI$ and $\CIII$ the restricted run neither refutes the boxes around the true values nor loses them, and Local fires on each (\texttt{code/impl2/d3check/README.md} and its outputs). These runs are sampled evidence: D3 as stated is checked by the first program only, and the restricted run on all $462{,}703$ graphs is left for a later version.
+
+\medskip\noindent\textbf{D4, the attainment.} The hypothesis is
+\lstinputlisting[style=lean,linerange={54-57}]{\leandir/Tammes15/Hyps/Computations.lean}
+The set $F$ is not empty, and for the root $u$ of the quintic every frame of $F$ consists of unit vectors, its listed pairs are pairs of distinct points with inner product $u$, and any two distinct points have inner product at most $u$. D4 is checked by Computation~\ref{comp:attain}, which proves more (every pair other than a contact has inner product at most $u-0.1679$): for $\CI$ and $\CIII$ in a number field of degree $20$ in SageMath and in the real algebraic numbers of SageMath, and for all eight frame configurations in a tower of fields in PARI/GP, which compares their Gram matrices exactly with those of $\CI$ and $\CIII$. The SageMath script that builds the targets of Local also checks, for each of the eight, the thirty contacts exactly in $L$ and every other inner product below $u-1/10$.
+
+\medskip
+The proof of \lname{reduction} (\lfile{Hyps/Reduction.lean}) follows Section~\ref{sec:proof}. What it takes from Sections~\ref{sec:structure} and~\ref{sec:kill} is stated as theorems in two files, \lfile{Draw/Iface.lean} (Corollary~\ref{cor:twoconn}, the face chain of Section~\ref{sec:leanklt} and item (4) of Theorem~\ref{thm:structure}) and \lfile{Hyps/Interfaces.lean} (the relations of Sections~\ref{sec:rows} and~\ref{sec:faces} for every realisation, the congruence of Section~\ref{sec:glue} and $\dlo<\psis$). Ten of these twelve theorems are proved by a theorem with the same statement in the modules of its part, named in the Lean lines of those sections, and the types are also compared by elaboration (\texttt{code/lean/types.lean}). The other two, the corner sum at a vertex and $\dlo<\psis$, are proved in the file itself from \lname{vertexSum_realisation} (\lfile{Draw/Realise.lean}), which needs fewer hypotheses, and from \lname{Numerics.dlo_lt_arccos_quintic_root} (\lfile{Numerics/Root.lean}), which states $\dlo$ and the quintic explicitly. \texttt{\#print axioms} reports only the standard axioms for these theorems and for \lname{reduction} (\lfile{Hyps/Reduction.lean}) (\texttt{code/lean/check.out}, Section~\ref{sec:leantrust}).
+
+The definitions of \lfile{Hyps/Case.lean} were tested numerically. A PARI/GP script rebuilds, at $60$ digits and from the formulas of the Lean files, the rotation system, the faces and every field of \lname{InClass}, \lname{Realisation} and \lname{RelSys}, and the glued configuration, on the eight frame configurations, their mirror images and $61$ realisations of subgraphs of the contact graphs of $\CI$ and $\CIII$ at or slightly below $\psis$, $26$ of them with a free point. Every field holds to $10^{-30}$ from every dart, and for every root of a breadth first tree and every corner that places a free point, \lname{glueY} has the Gram matrix of the configuration; each of four deliberately wrong conventions fails the test (\texttt{code/hyps/check.out}).
+
+\subsection{The eight-point proof}\label{sec:leanklt}
+Kryvonos, Liehr and Taylor \cite{KLT} proved in Lean the eight-point packing theorem of Sch\"utte and van der Waerden with its rigidity, which their proof for large Riesz exponents uses \cite[Section~7.1]{KLT}; like Section~\ref{sec:structure}, it has to treat the faces of a contact graph drawn on the sphere. The Lean package includes their development, as its library \texttt{VendorEM8} in the folder \lfile{Vendor/EM8}: the $140$ modules that the file \lfile{LeanCode/LargeS/Lean_Code/BestPacking.lean} of their repository imports, at commit \texttt{50d14bc}. Their repository carries no licence file; the code is reused with credit to its authors. Each file names its source in its first lines, and the file \texttt{THIRD\_PARTY.md} lists the changes. The modules and declarations are moved under the prefix \lname{Tammes15.Vendor.EM8}; two files raise the limit of the instance search; two build options are set; and their chain of lemmas on the faces of a contact graph is generalized from eight points to any number of points. For the generalization, $\mathrm{Fin}\,8$ becomes a variable number of points in every declaration whose proof allows it ($122$ declarations keep eight points), and $31$ marked changes in $12$ files replace, in $11$ lemmas of the chain, a bound on the contact distance, which these lemmas use only to obtain the 2-connectivity of the contact graph, by that 2-connectivity as a hypothesis. A script undoes these changes and finds every file equal to its source, except for the two lines of the instance limit. The library builds with the toolchain of the package, and its main theorem, \lname{Vendor.EM8.SquareAntiprismVerification.eight_point_best_packing_rigidity}, keeps the statement of the source and depends only on the standard axioms. The conventions of Section~\ref{sec:structure} in Lean are theirs: faces as orbits of a permutation of the darts, and convexity in the cone form of Lemma~\ref{lem:convex}. For the contact graph, Lemmas~\ref{lem:convex}, \ref{lem:faces} and~\ref{lem:threeconn} follow their chain from 2-connectivity to convex faces: \lname{FaceChain.faceconvex_contact} in \lfile{FaceChain/Contact.lean} applies the generalized chain (\lname{FaceChain.Setup.strictSupportFace} in \lfile{FaceChain/Interfaces.lean}), then \lname{faceSizes_of} (\lfile{FaceChain/Sizes.lean}) and \lname{threeconn} (\lfile{FaceChain/ThreeConn.lean}), and the interface \lname{faceconvex_contact} of \lfile{Draw/Iface.lean}, which the proof of Theorem~\ref{thm:structure} uses, is this theorem.
+
+\subsection{What the check trusts}\label{sec:leantrust}
+The formal proof is checked by the kernel of Lean~4, version~4.34.1, with Mathlib at commit \texttt{d13f23b7}. The script \texttt{code/lean/check.sh} of the repository builds the $232$ modules of the package from their sources (the proof, the library \texttt{VendorEM8} and the challenge below), checks that every target is then up to date, and makes four checks of what the proof relies on; its output is \texttt{code/lean/check.out}, with the build log \texttt{code/lean/build.out}. On a fresh copy of the repository, with Mathlib compiled and nothing of the package, the build took $623$~s of wall time, with \texttt{LEAN\_NUM\_THREADS} set to $3$. \texttt{\#print axioms}, on \lname{reduction} (\lfile{Hyps/Reduction.lean}), on the twelve theorems of \lfile{Draw/Iface.lean} and \lfile{Hyps/Interfaces.lean}, on twelve further theorems of its proof and of Section~\ref{sec:leanstatement}, and on the main theorem of the library \texttt{VendorEM8}, reports the standard axioms \lname{propext}, \lname{Classical.choice} and \lname{Quot.sound} and no other. Ten of these twelve theorems are each proved by a theorem with the same statement in the modules of its part, and \texttt{code/lean/types.lean} checks that the two types agree. A scan of the sources for the constructs that can bypass the kernel or change the meaning of a statement (\texttt{sorry}, \texttt{admit}, \texttt{native\_decide}, declared axioms, notations and others) lists $123$ lines: the \texttt{sorry} of the challenge statement, and $122$ local notations in files of \texttt{VendorEM8}, $121$ for $\R^3$ and one for the unit sphere. An audit of the compiled environment follows each of the $4268$ constants of the package outside the challenge to the constants it uses, and finds no flag and no axiom beyond these three.
+
+Comparator \cite{Comparator} checks that \lname{reduction} proves the intended statement from the intended definitions. It takes a challenge, here \lfile{Challenge.lean}: the statement of \lname{reduction} with \texttt{sorry} as its proof, over copies of the $13$ modules that hold the definitions this statement reaches (\lfile{Challenge/}, in which only the module names differ). It requires that the type of \lname{reduction} and every constant this type reaches be identical in the challenge and in the package, that only the three standard axioms be used, and that two independent kernels, the one of Lean and nanoda \cite{nanoda}, accept the whole export of the proof; it builds the challenge inside the sandbox landrun \cite{landrun}, with write access to the build directory only. The continuous integration of the repository runs Comparator in this way, with both kernels (file \texttt{config.json}), on the build that it has just made and checked with \texttt{code/lean/check.sh}, and each release carries its complete output. On the release tree itself, after \texttt{code/lean/check.sh} and with the tools and steps of that job, Comparator passes with both kernels in $173$~s (\texttt{code/lean/comparator.out}), and it fails, as it should, when \lname{FejesTothBound} is changed in the challenge (\texttt{code/lean/comparator-fejestoth.out}). The package is thus built outside Comparator's sandbox, which departs from Comparator's assumption that the solution is never built outside it; the challenge is compiled again from its source inside the sandbox. Before the release, Comparator was run twice on the development tree, whose Lean code is that of the package apart from comments and the challenge. In the first run, the challenge has one file per source module and its $117$ constants have the same fingerprints as in the package; Comparator passes, it fails when one digit of $\dhi$ is changed in the challenge, and on the tree before the last two interfaces were proved it fails on \lname{sorryAx}. Its own build of the package did not fit in $8$~GB, so the $213$ modules that \lname{reduction} imports were built just before, on a fresh copy, in a sandbox with the rights of Comparator's build. In the second run, the challenge is a separate copy of the $13$ modules of definitions, the same $213$ modules were built from the sources, one module at a time inside landrun with the rights of Comparator's build, and Comparator passes; it fails when \lname{FejesTothBound} is changed in the challenge. The records of these two runs belong to the development and are not in the repository. These checks certify the implication from the five hypotheses to \lname{Conjecture}. They do not check the hypotheses, the computations D1 to D4 and the bound of Fejes T\'oth (Section~\ref{sec:leannot}).
+
+\subsection{What is not in Lean}\label{sec:leannot}
+The four hypotheses D1 to D4 are computations, checked by the programs named above; the programs are not verified in Lean, and Proposition~\ref{prop:sound}, their soundness, is not formalized. The fifth hypothesis, the bound of Fejes T\'oth, is taken from \cite{FT43} and proved neither in Lean nor here. The equality case of Theorem~\ref{thm:local} is not formalized; Section~\ref{sec:proof} does not use it. Corollary~\ref{cor:nonunique} is not formalized. Lemmas~\ref{lem:discs} and~\ref{lem:simple} are replaced by the proof of Remark~\ref{rem:routeC}, and Lemmas~\ref{lem:hemi} and~\ref{lem:convex} are formalized only in the cases that the formal proof uses, for polygons and for the faces of a contact graph. Of Lemma~\ref{lem:polar} only the bound $md<2\pi$ for the faces and the monotonicity for polygons in cone form are formalized, the latter by the route of its Lean line, and \ifpolygonform the polygon of Lemma~\ref{lem:perims} only for $l=d$, $h=h(d)$ and $d\in[\dlo,\dhi]$, the values that Proposition~\ref{prop:onehex} uses\else Lemma~\ref{lem:perims} is replaced by the proofs of Remarks~\ref{rem:norroute} and~\ref{rem:polygons}\fi. Appendix~\ref{app:map} lists, for each numbered statement, its Lean declaration or the computation that checks it.
+
+\section{Further remarks}\label{sec:remarks}
+
+\begin{enumerate}
+\item The argument controls one maximal configuration, the one with the fewest contacts. We do not know whether $\CI$, $\CIII$ and their mirror images are all the maximal configurations up to isometry. A classification would need, for instance, a proof that every maximal configuration deforms within the maximal ones to one with the fewest contacts, together with the local rigidity of Section~\ref{sec:local}.
+\item The enumeration of the classes for $14$ and $15$ vertices rests on plantri alone. An enumeration by a different program, or a formally verified one such as the enumeration of tame plane graphs in the proof of the Kepler conjecture \cite{NBS}, would remove the last step without a second computation.
+\item The formalization of Section~\ref{sec:lean} takes the four computations D1 to D4 and the bound of Fejes T\'oth as hypotheses. The trees behind D3 use dyadic interval arithmetic only, so a checker for them in Lean is a finite, if large, verification task; D2 is the enumeration of the previous item, and D1 and D4 are exact computations in a number field of degree $20$.
+\item Musin and Tarasov \cite[Section~6, Question~1]{MTsurvey} also ask whether a maximal graph determines its configuration up to isometry among all configurations with that irreducible contact graph. This stays open for $N=15$; Theorem~\ref{thm:local} only shows that $\CI$ and $\CIII$ are strictly locally optimal, with an explicit radius.
+\end{enumerate}
+
+\section{Code, certificates and data}\label{sec:data}
+
+The companion repository \url{https://github.com/mt0-svg/tammes-15} holds the source of this paper, the plantri output filter and the scripts of the enumeration, both implementations of the test with their unit tests, the SageMath and PARI/GP scripts of Computations~\ref{comp:attain} and~\ref{comp:kappa} and of the constants with their outputs, the targets of Local, and the Lean package of Section~\ref{sec:lean}: the statement, the formal proof, the library \texttt{VendorEM8} and the challenge, with the script \texttt{code/lean/check.sh} and its recorded output (Section~\ref{sec:leantrust}). Its continuous integration, on GitHub's runners, builds the Lean package, runs \texttt{code/lean/check.sh} and Comparator on that build, and reruns every check of the computations that fits a runner in about 20 minutes, comparing each output with the recorded one: the enumeration and both first levels on all $2042$ parts, a sample of certificates, the second implementation on a sample, on the $42$ hardest graphs and on the true configurations, and the SageMath and PARI/GP checks; on the data attached to the release it also checks the coverage of the second level and the samples of Section~\ref{sec:replay}, and replays the two random samples of Section~\ref{sec:replay} ($974$ replays) with the MPFR backend. Each release carries the complete outputs of these runs, and \texttt{code/README.md} maps every check of this paper to its script and output. The certificates (the search trees, 207 MB, 27 MB compressed), the survivor lists and the verdict records are attached to a release of the repository, with their SHA-256 sums listed in the repository, together with the commands that rerun every computation of Section~\ref{sec:comp}. Rerunning the enumeration and both searches takes about 30 core hours, replaying all certificates about 9 core hours, and the sample replayed by the continuous integration a few minutes; the checks of Sections~\ref{sec:optima} and~\ref{sec:local} take minutes, and the build of the Lean package from its sources about $10$ minutes. The computations of Section~\ref{sec:comp} used rustc~1.99.0-nightly (2026-08-10), SageMath~10.9, PARI/GP~2.17.4, MPFR and plantri~5.8.
+
+\appendix
+\section{Statements and their checks}\label{app:map}
+
+For each numbered statement the table gives its Lean declarations, with their files, and the computation that checks it, if any; ``not formalized'' means a proof on paper only. Every theorem listed depends only on the standard axioms, as does every constant of the package (Section~\ref{sec:leantrust}); the hypotheses D1 to D4 and \lname{FejesTothBound} are propositions that \lname{reduction} assumes. The scripts and outputs of the computations are listed in \texttt{code/README.md} of the repository.
+
+{\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.47\textwidth}>{\raggedright\arraybackslash}p{0.28\textwidth}}
+statement & Lean & computation\\\hline\endhead
+Theorem~\ref{thm:main} & statement \lname{Conjecture} (\texttt{\statementfile}); proof \lname{reduction} (\lfile{Hyps/Reduction.lean}) from D1 to D4 and \lname{FejesTothBound} & through D1 to D4\\
+Corollary~\ref{cor:nonunique} & not formalized & contact graphs of $\CI$, $\CIII$ (Section~\ref{sec:optima})\\
+Proposition~\ref{prop:optima} & not formalized; items (2) and (3) in the weaker form of hypothesis D4, \lname{AttainedHyp} & Computation~\ref{comp:attain}\\
+bound of Fejes T\'oth (Section~\ref{sec:structure}) & hypothesis \lname{FejesTothBound} (\lfile{Hyps/Computations.lean}) & literature \cite{FT43}; its value in PARI/GP\\
+$\dlo<\psis$ (Section~\ref{sec:structure}) & \lname{dlo_lt_arccos_root} (\lfile{Hyps/Interfaces.lean}), from \lname{dlo_lt_arccos_quintic_root} (\lfile{Numerics/Root.lean}) & PARI/GP and ball arithmetic\\
+Theorem~\ref{thm:structure} & \lname{structured_of_min}, \lname{structure_theorem} (\lfile{Draw/Structure.lean}), conclusion \lname{Structured} (\lfile{Draw/Defs.lean}); item (4) by \lname{Geom.rattlers_in_hexagons_proof} (\lfile{Geom/Hexagons.lean}) & \\
+Lemma~\ref{lem:alpha} & \lname{alpha_le_angle} (\lfile{Trigrows/Points.lean}), \lname{alpha_bounds} (\lfile{Trigrows/Rows.lean}) & \\
+Lemma~\ref{lem:shift} & \lname{exists_push_dir}, \lname{shift_config} (\lfile{Draw/Shift.lean}), \lname{shift_move} (\lfile{Trigrows/Sdist.lean}), without the closeness of $v'$ & \\
+Lemma~\ref{lem:minimal} & \lname{lemma_minimal}, \lname{alpha_le_corner} (\lfile{Draw/Minimal.lean}), \lname{contactCount_lt_of_shift} (\lfile{Draw/Shift.lean}) & \\
+Lemmas~\ref{lem:discs}, \ref{lem:simple} & not formalized; replaced by Remark~\ref{rem:routeC} & \\
+Lemma~\ref{lem:hemi} & \lname{polygon_hemisphere} (\lfile{TwoConn/Farm.lean}), for polygons; general case not formalized & \\
+Corollary~\ref{cor:twoconn} & \lname{twoconn} (\lfile{TwoConn/Main.lean}); \lname{twoconn_contact} (\lfile{Draw/Iface.lean}) for $G'(X)$ & \\
+Lemma~\ref{lem:convex} & cone form \lname{StrictSupportFace} (\lfile{Draw/Defs.lean}) for the faces of a contact graph, \lname{FaceChain.faceconvex_contact} (\lfile{FaceChain/Contact.lean}) & \\
+Lemma~\ref{lem:polar} & \lname{face_perimeter_lt} (\lfile{FaceChain/Sizes.lean}), $md<2\pi$ for the faces; the monotonicity for polygons in cone form, by a lune count, \lname{Geom.perim_mono} (\lfile{Geom/Crofton.lean}); the identity\ifpolygonform\else{} and the general case\fi{} not formalized & \\
+Lemma~\ref{lem:faces} & \lname{faceSizes_of} (\lfile{FaceChain/Sizes.lean}), \lname{face_size_le_six} (\lfile{Rattlers/Basic.lean}), \lname{equilateral_angle}, \lname{rhombus_opposite_angle} (\lfile{Trigrows/Sdist.lean}), \lname{twoconn_contact} (\lfile{Draw/Iface.lean}) & \\
+Lemma~\ref{lem:threeconn} & \lname{FaceChain.threeconn} (\lfile{FaceChain/ThreeConn.lean}) & \\
+Lemma~\ref{lem:edge} & \lname{edge_distance} (\lfile{Rattlers/Basic.lean}), \lname{hrad_bounds} (\lfile{Trigrows/Mono.lean}) & \\
+Lemma~\ref{lem:disc} & \lname{Geom.disc_side} (\lfile{Geom/Nor.lean}), \lname{Geom.inClosed_of_disc} (\lfile{Geom/Onehex.lean}), in cone form & \\
+Lemma~\ref{lem:perims} & \ifpolygonform\lname{Geom.qpoly_isCPoly}, \lname{Geom.qpoly_perim} (\lfile{Geom/Qpoly.lean}) for $l=d$, $h=h(d)$, $d\in[\dlo,\dhi]$; \lname{hexPoly} and its monotonicity (\lfile{Rattlers/HexPoly.lean})\else not formalized; replaced by Remarks~\ref{rem:norroute} and~\ref{rem:polygons}\fi{} & margins, Section~\ref{sec:constants}\\
+Proposition~\ref{prop:nor} & \lname{Geom.nor}, \lname{Geom.disc_side}, \lname{Geom.subtend_le_alpha} (\lfile{Geom/Nor.lean}), \lname{Geom.wheel_sum} (\lfile{Geom/Wheel.lean}), \lname{alpha_dhi_lt} (\lfile{Trigrows/Margins.lean}) & margin, Section~\ref{sec:constants}\\
+Proposition~\ref{prop:onehex} & \lname{Geom.onehex}, \lname{Geom.disc_slerp}, \lname{Geom.inClosed_of_disc} (\lfile{Geom/Onehex.lean}), \lname{Geom.qpoly_isCPoly}, \lname{Geom.qpoly_perim} (\lfile{Geom/Qpoly.lean}), \lname{Geom.perim_mono} (\lfile{Geom/Crofton.lean}), \lname{onehex_inner}, \lname{cap_in_hemisphere} (\lfile{Rattlers/Hex.lean}), \lname{sin_sub_add_sin} (\lfile{Rattlers/Basic.lean}), \lname{margin_onehex_poly} (\lfile{Rattlers/HexPoly.lean}), \lname{onehex_chord_margin} (\lfile{Rattlers/HexChord.lean}) & margin, Section~\ref{sec:constants}\\
+Corollary~\ref{cor:k3} & \lname{k_le_three_of_hex} (\lfile{Draw/Count.lean}); the hexagons by \lname{Geom.rattlers_in_hexagons_proof}, \lname{Geom.rattlers_core} (\lfile{Geom/Hexagons.lean}), \lname{Geom.exists_face_inside} (\lfile{Geom/Cover.lean}) & \\
+Section~\ref{sec:constants} & \lname{two_pi_lt_seven_dlo}, \lname{alpha_dhi_lt}, \ifpolygonform\else\lname{margin_nor_closed}, \fi\lname{margin_perims} (\lfile{Trigrows/Margins.lean})\ifpolygonform; \lname{hex_piece_0} to \lname{hex_piece_9}, \lname{margin_onehex_poly} (\lfile{Rattlers/HexPoly.lean})\fi{} & PARI/GP and ball arithmetic\\
+Remark~\ref{rem:every} & not formalized & \\
+Remark~\ref{rem:routeC} & \lname{twoconn} and the declarations of its Lean line (\texttt{TwoConn}) & \\
+\ifpolygonform\else Remark~\ref{rem:norroute} & as Proposition~\ref{prop:nor} & \\ \fi
+Remark~\ref{rem:polygons} & as Proposition~\ref{prop:onehex} & margin\\
+Theorem~\ref{thm:local} & \lname{local_optimality} (\lfile{Local41/Chain.lean}), inequality only, from D1 & \\
+Lemma~\ref{lem:kappa} & hypothesis D1, \lname{KappaHyp} (\lfile{Hyps/Computations.lean}) over \lname{KappaBound} (\lfile{Local41/Defs.lean}) & Computation~\ref{comp:kappa}\\
+Lemma~\ref{lem:kappainv} & \lname{kappaBound_orthogonal} (\lfile{Local41/Chain.lean}) & \\
+Lemma~\ref{lem:realise} & \lname{realisation_of_structured} (\lfile{Hyps/Reduction.lean}), corners below $\pi$; \lname{realisation_transport} (\lfile{Hyps/Transport.lean}) & \\
+Section~\ref{sec:rows} & \lname{rhombus_rows} (\lfile{Trigrows/Rows.lean}) and the declarations of its Lean line; fields of \lname{RelSys}; \lname{vertexSum_of_realisation} (\lfile{Hyps/Interfaces.lean}); \lname{tri_of_realisation}, \lname{rhombus_of_realisation} (\lfile{Hyps/Interfaces.lean}) by \lname{tri_of_realisation_proof}, \lname{rhombus_of_realisation_proof} (\lfile{Trigrows/Realise.lean}) & \\
+Section~\ref{sec:faces} & the declarations of its Lean line (\texttt{Trigrows}, \texttt{Fans}); fields of \lname{RelSys}; the relations of a realisation (\lfile{Hyps/Interfaces.lean}) by \lname{pent_of_realisation_proof}, \lname{hex_of_realisation_proof} (\lfile{Fans/Realise.lean}), \lname{hexDiag_of_realisation_proof} (\lfile{Trigrows/Realise.lean}) and \lname{Geom.wheel_of_realisation_proof} (\lfile{Geom/T8.lean}) & \\
+Section~\ref{sec:glue} & \lname{frame_path_enclosure}, \lname{pair_core}, \lname{local_core} and the declarations of its Lean line (\texttt{Glue}); \lname{glueY}, \lname{PairFires}, \lname{LocalFires} (\lfile{Hyps/Case.lean}); \lname{glue_congruent} (\lfile{Hyps/Interfaces.lean}) by \lname{glue_congruent_proof} (\lfile{Glue/Reconstruct.lean}) & \\
+Proposition~\ref{prop:sound} & not formalized; item (2) gives hypothesis D3, which takes its place & \\
+Computation~\ref{comp:enum} & hypothesis D2, \lname{EnumComplete} & plantri alone\\
+Computations \ref{comp:stageA}, \ref{comp:level2} & hypothesis D3, \lname{Killed} & first program with its certificates; the second program checks the conclusion under more relations (Section~\ref{sec:leanhyps})\\
+\end{longtable}
+}
+
+\section*{Contact}
+Questions, corrections and comments are welcome as issues on the repository: \url{\repo/issues/new/choose}.
+
+\begin{thebibliography}{99}
+
+\bibitem{BV} C. Bachoc and F. Vallentin: \emph{New upper bounds for kissing numbers from semidefinite programming}, J. Amer. Math. Soc. \textbf{21} (2008), 909--924; arXiv:math/0608426.
+
+\bibitem{Bor11} K. B\"or\"oczky: \emph{The problem of Tammes for $n=11$}, Studia Sci. Math. Hungar. \textbf{18} (1983), 165--171.
+
+\bibitem{BS13} K. B\"or\"oczky and L. Szab\'o: \emph{Arrangements of 13 points on a sphere}, in: A. Bezdek (ed.), Discrete Geometry, Dekker, New York (2003), 111--184.
+
+\bibitem{BS14} K. B\"or\"oczky and L. Szab\'o: \emph{Arrangements of 14, 15, 16 and 17 points on a sphere}, Studia Sci. Math. Hungar. \textbf{40} (2003), 407--421.
+
+\bibitem{BM} G. Brinkmann and B. D. McKay: \emph{Fast generation of planar graphs}, MATCH Commun. Math. Comput. Chem. \textbf{58} (2007), 323--357; program plantri, version 5.8, \url{https://users.cecs.anu.edu.au/~bdm/plantri/}.
+
+\bibitem{BK} J. Buddenhagen and D. A. Kottwitz: \emph{Multiplicity and symmetry breaking in (conjectured) densest packings of congruent circles on a sphere}, preprint, formerly at buddenbooks.com, archived copy \url{https://web.archive.org/web/20210507001707/http://www.buddenbooks.com/jb/pack/sphere/toggles7.pdf}.
+
+\bibitem{CdLL} H. Cohn, D. de Laat and N. Leijenhorst: \emph{Optimality of spherical codes via exact semidefinite programming bounds}, preprint, arXiv:2403.16874 (2024).
+
+\bibitem{CJKT} H. Cohn, Y. Jiao, A. Kumar and S. Torquato: \emph{Rigidity of spherical codes}, Geom. Topol. \textbf{15} (2011), 2235--2273; arXiv:1102.5060.
+
+\bibitem{Comparator} \emph{Comparator}, a check that a Lean proof proves a given statement, \url{https://github.com/leanprover/comparator}, tag v4.34.0, commit \texttt{d03acab}, with \emph{lean4export}, \url{https://github.com/leanprover/lean4export}, commit \texttt{076e8e5}.
+
+\bibitem{Con} R. Connelly: \emph{Generic global rigidity}, Discrete Comput. Geom. \textbf{33} (2005), 549--563.
+
+\bibitem{Dan} L. Danzer: \emph{Finite point-sets on $S^2$ with minimum distance as large as possible}, Discrete Math. \textbf{60} (1986), 3--66.
+
+\bibitem{Die} R. Diestel: \emph{Graph theory}, 3rd ed., Graduate Texts in Mathematics \textbf{173}, Springer, Berlin (2005).
+
+\bibitem{FT43} L. Fejes T\'oth: \emph{\"Uber eine Absch\"atzung des k\"urzesten Abstandes zweier Punkte eines auf einer Kugelfl\"ache liegenden Punktsystems}, Jber. Deutsch. Math.-Verein. \textbf{53} (1943), 66--68. % english-ok: German title of a cited paper
+
+\bibitem{GLPK} A. Makhorin: \emph{GNU Linear Programming Kit}, \url{https://www.gnu.org/software/glpk/}.
+
+\bibitem{Har} L. H\'ars: \emph{The Tammes problem for $n=10$}, Studia Sci. Math. Hungar. \textbf{21} (1986), 439--451.
+
+\bibitem{Kot} D. A. Kottwitz: \emph{The densest packing of equal circles on a sphere}, Acta Cryst. Sect. A \textbf{47} (1991), 158--165.
+
+\bibitem{KLT} L. Kryvonos, L. Liehr and M. A. Taylor: \emph{Energy minimization for eight points on the sphere}, preprint (2026), \href{https://arxiv.org/abs/2609.22077}{arXiv:2609.22077}; Lean development at \url{https://github.com/lukasliehr/Energy-Minimization-8-Points}, commit \texttt{50d14bc}.
+
+\bibitem{landrun} \emph{landrun}, a sandbox for Linux processes based on Landlock, \url{https://github.com/Zouuup/landrun}, commit \texttt{811cfff}.
+
+\bibitem{Lean4} L. de Moura and S. Ullrich: \emph{The Lean~4 theorem prover and programming language}, in: A. Platzer and G. Sutcliffe (eds.), Automated Deduction, CADE~28, Lecture Notes in Comput. Sci. \textbf{12699}, Springer, Cham (2021), 625--635.
+
+\bibitem{Lho} O. Lhomme: \emph{Consistency techniques for numeric CSPs}, in: Proceedings of the 13th International Joint Conference on Artificial Intelligence (IJCAI 1993), 232--238.
+
+\bibitem{Mathlib} The mathlib Community: \emph{The Lean mathematical library}, in: Proceedings of the 9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP 2020), ACM, New York (2020), 367--381.
+
+\bibitem{MPFR} L. Fousse, G. Hanrot, V. Lef\`evre, P. P\'elissier and P. Zimmermann: \emph{MPFR: a multiple-precision binary floating-point library with correct rounding}, ACM Trans. Math. Software \textbf{33} (2007), Art.~13.
+
+\bibitem{MN} O. R. Musin and A. V. Nikitenko: \emph{Optimal packings of congruent circles on a square flat torus}, Discrete Comput. Geom. \textbf{55} (2016), 1--20; arXiv:1212.0649.
+
+\bibitem{MT13} O. R. Musin and A. S. Tarasov: \emph{The strong thirteen spheres problem}, Discrete Comput. Geom. \textbf{48} (2012), 128--141; arXiv:1002.1439.
+
+\bibitem{MTsurvey} O. R. Musin and A. S. Tarasov: \emph{Extreme problems of circle packings on a sphere and irreducible contact graphs} (in Russian), arXiv:1410.0744 (2014); English version: \emph{Extremal problems of circle packings on a sphere and irreducible contact graphs}, Proc. Steklov Inst. Math. \textbf{288} (2015), 117--131. Section and question numbers refer to the arXiv version.
+
+\bibitem{MTenum} O. R. Musin and A. S. Tarasov: \emph{Enumeration of irreducible contact graphs on the sphere}, Fundam. Prikl. Mat. \textbf{18} (2013), no.~2, 125--145; English translation: J. Math. Sci. (N.Y.) \textbf{203} (2014), no.~6, 837--850; arXiv:1312.5450.
+
+\bibitem{MT14} O. R. Musin and A. S. Tarasov: \emph{The Tammes problem for $N=14$}, Exp. Math. \textbf{24} (2015), 460--468; arXiv:1410.2536.
+
+\bibitem{nanoda} \emph{nanoda\_lib}, a type checker for the Lean~4 kernel language, \url{https://github.com/ammkrn/nanoda_lib}, commit \texttt{3a24072}.
+
+\bibitem{NBS} T. Nipkow, G. Bauer and P. Schultz: \emph{Flyspeck I: Tame graphs}, in: U. Furbach and N. Shankar (eds.), Automated Reasoning (IJCAR 2006), Lecture Notes in Comput. Sci. \textbf{4130}, Springer, Berlin (2006), 21--35.
+
+\bibitem{OEIS} OEIS Foundation: \emph{The On-Line Encyclopedia of Integer Sequences}, sequence A000944, \url{https://oeis.org/A000944}.
+
+\bibitem{PARI} The PARI Group: \emph{PARI/GP}, version 2.17.4, Universit\'e de Bordeaux, \url{https://pari.math.u-bordeaux.fr/}.
+
+\bibitem{Rob} R. M. Robinson: \emph{Arrangement of 24 points on a sphere}, Math. Ann. \textbf{144} (1961), 17--48.
+
+\bibitem{RW} B. Roth and W. Whiteley: \emph{Tensegrity frameworks}, Trans. Amer. Math. Soc. \textbf{265} (1981), 419--446.
+
+\bibitem{Sage} The Sage Developers: \emph{SageMath, the Sage Mathematics Software System}, version 10.9 (2026), \url{https://www.sagemath.org}.
+
+\bibitem{SvdW} K. Sch\"utte and B. L. van der Waerden: \emph{Auf welcher Kugel haben 5, 6, 7, 8 oder 9 Punkte mit Mindestabstand Eins Platz?}, Math. Ann. \textbf{123} (1951), 96--124. % english-ok: German title of a cited paper
+
+\bibitem{Tam} P. M. L. Tammes: \emph{On the origin of number and arrangement of the places of exit on the surface of pollen-grains}, Recueil Trav. Bot. N\'eerl. \textbf{27} (1930), 1--84.
+
+\bibitem{Wan} E. Y. Wang, S. R. Motwani, J. V. Roggeveen et al.: \emph{Measuring progress in reasoning toward mathematical discovery with automatic verification}, preprint, arXiv:2603.15617v2 (2026); the case $N=15$ is problem \texttt{tammes\_n15} of the file \texttt{data/problems\_full.json} of \url{https://github.com/ewang26/HorizonMath}, commit \texttt{4ef0b61}.
+
+\bibitem{Whi} H. Whitney: \emph{Congruent graphs and the connectivity of graphs}, Amer. J. Math. \textbf{54} (1932), 150--168.
+
+\end{thebibliography}
+
+\end{document}

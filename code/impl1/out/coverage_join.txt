@@ -1,0 +1,288 @@
+Coverage join, code/impl1/coverage_join.sh; replay records: replay-v1
+
+== 1. The stage-A survivor files against the recorded parts (code/impl1/out/stageA_parts.txt)
+k = 0: stageA_k0.pc (435263 graphs) cut in part order into parts of the recorded sizes: sha256 equal to the recorded one in 2000 of 2000 parts
+k = 1: stageA_k1.pc (26994 graphs) cut in part order into parts of the recorded sizes: sha256 equal to the recorded one in 40 of 40 parts
+k = 2: stageA_k2.pc (441 graphs) cut in part order into parts of the recorded sizes: sha256 equal to the recorded one in 1 of 1 parts
+k = 3: stageA_k3.pc (5 graphs) cut in part order into parts of the recorded sizes: sha256 equal to the recorded one in 1 of 1 parts
+
+tdeep --replayfile (code/impl1/rust/src/bin/tdeep.rs, lines 296 to 408) prints VERIFIED for a graph only
+when every choice of H (all C(h, k) sets of k of its h hexagons, one choice for k = 0) has a recorded
+tree that replays; Prob::new drops a choice only for a degree above 5 or a face of another size, which
+section 2 excludes. Section 4 also checks, for every VERIFIED line, a tree in the certificate file of
+the job for each of its choices of H and at least one leaf per choice.
+
+== 2. The stage-A survivors (inputs/stageA_k<k>.pc) and their choices of H
+k = 0: 435263 survivors; repeated records 0, repeated canonical codes 0; degree above 5: 0, a face of size other than 3 to 6: 0, fewer than k hexagons: 0; 435263 choices of H in all
+k = 1: 26994 survivors; repeated records 0, repeated canonical codes 0; degree above 5: 0, a face of size other than 3 to 6: 0, fewer than k hexagons: 0; 32660 choices of H in all
+k = 2: 441 survivors; repeated records 0, repeated canonical codes 0; degree above 5: 0, a face of size other than 3 to 6: 0, fewer than k hexagons: 0; 479 choices of H in all
+k = 3: 5 survivors; repeated records 0, repeated canonical codes 0; degree above 5: 0, a face of size other than 3 to 6: 0, fewer than k hexagons: 0; 8 choices of H in all
+
+== 3. The level-2 inputs, record by record
+b_k1.pc: 108 records, class k = 1; 108 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+b_k2.pc: 44 records, class k = 2; 44 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in9_k1_0.pc: 3000 records, class k = 1; 3000 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in9_k1_1.pc: 3000 records, class k = 1; 3000 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in9_k1_2.pc: 3000 records, class k = 1; 3000 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in9_k1_3.pc: 2999 records, class k = 1; 2999 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in9_k1_4.pc: 2999 records, class k = 1; 2999 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in9_k1_5.pc: 2999 records, class k = 1; 2999 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in9_k1_6.pc: 2999 records, class k = 1; 2999 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in9_k1_7.pc: 2999 records, class k = 1; 2999 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in9_k1_8.pc: 2999 records, class k = 1; 2999 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in_k0_0.pc: 145088 records, class k = 0; 145088 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in_k0_1.pc: 145088 records, class k = 0; 145088 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in_k0_2.pc: 145087 records, class k = 0; 145087 byte-identical to a survivor, 0 identified by canonical code, 0 unidentified, 0 repeated
+in9_k1_0.pc record i = stageA_k1.pc record 9 i + 0, byte for byte, for every i
+in9_k1_1.pc record i = stageA_k1.pc record 9 i + 1, byte for byte, for every i
+in9_k1_2.pc record i = stageA_k1.pc record 9 i + 2, byte for byte, for every i
+in9_k1_3.pc record i = stageA_k1.pc record 9 i + 3, byte for byte, for every i
+in9_k1_4.pc record i = stageA_k1.pc record 9 i + 4, byte for byte, for every i
+in9_k1_5.pc record i = stageA_k1.pc record 9 i + 5, byte for byte, for every i
+in9_k1_6.pc record i = stageA_k1.pc record 9 i + 6, byte for byte, for every i
+in9_k1_7.pc record i = stageA_k1.pc record 9 i + 7, byte for byte, for every i
+in9_k1_8.pc record i = stageA_k1.pc record 9 i + 8, byte for byte, for every i
+in_k0_0.pc record i = stageA_k0.pc record 3 i + 0, byte for byte, for every i
+in_k0_1.pc record i = stageA_k0.pc record 3 i + 1, byte for byte, for every i
+in_k0_2.pc record i = stageA_k0.pc record 3 i + 2, byte for byte, for every i
+k = 0: every survivor is in exactly one of the in_k0_* files
+k = 1: every survivor is in exactly one of the in9_k1_* files
+b_k1.pc = the records of in9_k1_0..8.pc at the indices of b_k1_0..8.idx, in order, byte for byte (108 records)
+b_k2.pc = the records of stageA_k2.pc at the 44 indices of skip_k2.idx, as a set (44 byte-identical, 0 by canonical code)
+k = 3: the jobs read stageA_k3.pc itself; set aside: indices 0 1 2 3
+set aside from the first pass: 156 graphs
+
+== 4. The replay jobs (job list of code/impl1/replay_all.sh, logs and per-graph lines of the replay)
+job | input | options | d range of the log (rad) = (deg) | lines: VERIFIED, NO_CERTIFICATE
+full_k0_0_q0 | in_k0_0.pc | --iso 0 --local tie_targets.txt --pair --from 0 --skip above_0.idx | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 36271, 1
+full_k0_0_q1 | in_k0_0.pc | --iso 0 --local tie_targets.txt --pair --from 36272 --skip above_1.idx | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 36271, 1
+full_k0_0_q2 | in_k0_0.pc | --iso 0 --local tie_targets.txt --pair --from 72544 --skip above_2.idx | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 36269, 3
+full_k0_0_q3 | in_k0_0.pc | --iso 0 --local tie_targets.txt --pair --from 108816 | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 36271, 1
+full_k0_1_q0 | in_k0_1.pc | --iso 0 --local tie_targets.txt --pair --from 0 --skip above_0.idx | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 36270, 2
+full_k0_1_q1 | in_k0_1.pc | --iso 0 --local tie_targets.txt --pair --from 36272 --skip above_1.idx | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 36271, 1
+full_k0_1_q2 | in_k0_1.pc | --iso 0 --local tie_targets.txt --pair --from 72544 --skip above_2.idx | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 36272, 0
+full_k0_1_q3 | in_k0_1.pc | --iso 0 --local tie_targets.txt --pair --from 108816 | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 36270, 2
+full_k0_2_q0 | in_k0_2.pc | --iso 0 --local tie_targets.txt --pair --from 0 --skip above_0.idx | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 36271, 1
+full_k0_2_q1 | in_k0_2.pc | --iso 0 --local tie_targets.txt --pair --from 36272 --skip above_1.idx | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 36270, 2
+full_k0_2_q2 | in_k0_2.pc | --iso 0 --local tie_targets.txt --pair --from 72544 --skip above_2.idx | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 36272, 0
+full_k0_2_q3 | in_k0_2.pc | --iso 0 --local tie_targets.txt --pair --from 108816 | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 36271, 0
+full_k1_0 | in9_k1_0.pc | --iso 1 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 2990, 10
+full_k1_1 | in9_k1_1.pc | --iso 1 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 2991, 9
+full_k1_2 | in9_k1_2.pc | --iso 1 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 2983, 17
+full_k1_3 | in9_k1_3.pc | --iso 1 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 2992, 7
+full_k1_4 | in9_k1_4.pc | --iso 1 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 2991, 8
+full_k1_5 | in9_k1_5.pc | --iso 1 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 2988, 11
+full_k1_6 | in9_k1_6.pc | --iso 1 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 2984, 15
+full_k1_7 | in9_k1_7.pc | --iso 1 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 2979, 20
+full_k1_8 | in9_k1_8.pc | --iso 1 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 2988, 11
+full_k2 | stageA_k2.pc | --iso 2 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 393, 48
+full_k3 | stageA_k3.pc | --iso 3 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 1, 4
+pb_k0_0 | in_k0_0.pc | --iso 0 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 6, 145082
+pb_k0_1 | in_k0_1.pc | --iso 0 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 5, 145083
+pb_k0_2 | in_k0_2.pc | --iso 0 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 3, 145084
+pb_k2 | stageA_k2.pc | --iso 2 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 4, 437
+p1_k1 | b_k1.pc | --iso 1 --dlo 53.6578502 | [9.36506155531897644e-1, 9.89106012373218602e-1] = [53.6578502000, 56.6716000000] | 46, 62
+p1_k2 | b_k2.pc | --iso 2 --dlo 53.6578502 | [9.36506155531897644e-1, 9.89106012373218602e-1] = [53.6578502000, 56.6716000000] | 8, 36
+p1_k3 | stageA_k3.pc | --iso 3 --dlo 53.6578502 | [9.36506155531897644e-1, 9.89106012373218602e-1] = [53.6578502000, 56.6716000000] | 1, 4
+pw_k1 | b_k1.pc | --iso 1 --dhi 53.6578502 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.36506155531898088e-1] = [53.6578500000, 53.6578502000] | 43, 65
+pw_k2 | b_k2.pc | --iso 2 --dhi 53.6578502 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.36506155531898088e-1] = [53.6578500000, 53.6578502000] | 8, 36
+p3w_k1 | b_k1.pc | --iso 1 --dhi 53.6578502 --shave 8 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.36506155531898088e-1] = [53.6578500000, 53.6578502000] | 3, 105
+p3w_k3 | stageA_k3.pc | --iso 3 --dhi 53.6578502 --shave 8 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.36506155531898088e-1] = [53.6578500000, 53.6578502000] | 1, 4
+p2_k1 | b_k1.pc | --iso 1 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 43, 65
+p2_k2 | b_k2.pc | --iso 2 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 8, 36
+p3_k1 | b_k1.pc | --iso 1 --shave 8 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 17, 91
+p3_k2 | b_k2.pc | --iso 2 --shave 8 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 28, 16
+p3_k3 | stageA_k3.pc | --iso 3 --shave 8 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.89106012373218602e-1] = [53.6578500000, 56.6716000000] | 3, 2
+p4a_k1 | b_k1.pc | --iso 1 --dhi 53.7 --shave 8 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.37241808320955272e-1] = [53.6578500000, 53.7000000000] | 1, 107
+p4b_k1 | b_k1.pc | --iso 1 --dlo 53.7 --dhi 54.6 --shave 8 --local tie_targets.txt --pair | [9.37241808320954828e-1, 9.52949771588904149e-1] = [53.7000000000, 54.6000000000] | 2, 106
+p4c_k1 | b_k1.pc | --iso 1 --dlo 54.6 --shave 8 --local tie_targets.txt --pair | [9.52949771588903705e-1, 9.89106012373218602e-1] = [54.6000000000, 56.6716000000] | 2, 106
+p5a_k1 | b_k1.pc | --iso 1 --dhi 53.6578502 --shave 8 --local tie_targets.txt --pair | [9.36506152041239215e-1, 9.36506155531898088e-1] = [53.6578500000, 53.6578502000] | 1, 107
+p5b_k1 | b_k1.pc | --iso 1 --dlo 53.6578502 --dhi 53.66 --shave 8 --local tie_targets.txt --pair | [9.36506155531897644e-1, 9.36543676620157362e-1] = [53.6578502000, 53.6600000000] | 1, 107
+p5c_k1 | b_k1.pc | --iso 1 --dlo 53.66 --dhi 53.7 --shave 8 --local tie_targets.txt --pair | [9.36543676620156917e-1, 9.37241808320955272e-1] = [53.6600000000, 53.7000000000] | 1, 107
+45 jobs; 462764 VERIFIED lines, each with a tree for every one of its choices of H (468476 trees)
+
+== 5. Coverage: the d ranges of the VERIFIED replays of every survivor against the d range of data/params15ft.txt
+d range: [9.36506152041239215e-1, 9.89106012373218602e-1] rad = [53.6578500000, 56.6716000000] deg
+graphs with a replay outside the first pass, with their replays (slice [lo, hi] in degrees, job):
+  k0 #22263 (stageA_k0.pc#22263 in_k0_0.pc#7421): [53.6578500000, 56.6716000000] pb_k0_0: one replay of the whole range
+  k0 #23986 (stageA_k0.pc#23986 in_k0_1.pc#7995): [53.6578500000, 56.6716000000] pb_k0_1: one replay of the whole range
+  k0 #107080 (stageA_k0.pc#107080 in_k0_1.pc#35693): [53.6578500000, 56.6716000000] pb_k0_1: one replay of the whole range
+  k0 #107339 (stageA_k0.pc#107339 in_k0_2.pc#35779): [53.6578500000, 56.6716000000] pb_k0_2: one replay of the whole range
+  k0 #122399 (stageA_k0.pc#122399 in_k0_2.pc#40799): [53.6578500000, 56.6716000000] pb_k0_2: one replay of the whole range
+  k0 #129192 (stageA_k0.pc#129192 in_k0_0.pc#43064): [53.6578500000, 56.6716000000] pb_k0_0: one replay of the whole range
+  k0 #129215 (stageA_k0.pc#129215 in_k0_2.pc#43071): [53.6578500000, 56.6716000000] pb_k0_2: one replay of the whole range
+  k0 #131722 (stageA_k0.pc#131722 in_k0_1.pc#43907): [53.6578500000, 56.6716000000] pb_k0_1: one replay of the whole range
+  k0 #228135 (stageA_k0.pc#228135 in_k0_0.pc#76045): [53.6578500000, 56.6716000000] pb_k0_0: one replay of the whole range
+  k0 #271140 (stageA_k0.pc#271140 in_k0_0.pc#90380): [53.6578500000, 56.6716000000] pb_k0_0: one replay of the whole range
+  k0 #314208 (stageA_k0.pc#314208 in_k0_0.pc#104736): [53.6578500000, 56.6716000000] pb_k0_0: one replay of the whole range
+  k0 #342649 (stageA_k0.pc#342649 in_k0_1.pc#114216): [53.6578500000, 56.6716000000] pb_k0_1: one replay of the whole range
+  k0 #351286 (stageA_k0.pc#351286 in_k0_1.pc#117095): [53.6578500000, 56.6716000000] pb_k0_1: one replay of the whole range
+  k0 #363276 (stageA_k0.pc#363276 in_k0_0.pc#121092): [53.6578500000, 56.6716000000] pb_k0_0: one replay of the whole range
+  k1 #337 (stageA_k1.pc#337 b_k1.pc#43 in9_k1_4.pc#37, set aside as k1_43): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #625 (stageA_k1.pc#625 b_k1.pc#44 in9_k1_4.pc#69, set aside as k1_44): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #656 (stageA_k1.pc#656 b_k1.pc#97 in9_k1_8.pc#72, set aside as k1_97): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #891 (stageA_k1.pc#891 b_k1.pc#0 in9_k1_0.pc#99, set aside as k1_0): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #897 (stageA_k1.pc#897 b_k1.pc#62 in9_k1_6.pc#99, set aside as k1_62): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #1473 (stageA_k1.pc#1473 b_k1.pc#63 in9_k1_6.pc#163, set aside as k1_63): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #1754 (stageA_k1.pc#1754 b_k1.pc#98 in9_k1_8.pc#194, set aside as k1_98): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #2125 (stageA_k1.pc#2125 b_k1.pc#10 in9_k1_1.pc#236, set aside as k1_10): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #2255 (stageA_k1.pc#2255 b_k1.pc#51 in9_k1_5.pc#250, set aside as k1_51): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #2312 (stageA_k1.pc#2312 b_k1.pc#99 in9_k1_8.pc#256, set aside as k1_99): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #2324 (stageA_k1.pc#2324 b_k1.pc#19 in9_k1_2.pc#258, set aside as k1_19): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #2325 (stageA_k1.pc#2325 b_k1.pc#36 in9_k1_3.pc#258, set aside as k1_36): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #2499 (stageA_k1.pc#2499 b_k1.pc#64 in9_k1_6.pc#277, set aside as k1_64): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #2500 (stageA_k1.pc#2500 b_k1.pc#77 in9_k1_7.pc#277, set aside as k1_77): [53.6578500000, 53.7000000000] p4a_k1, [53.7000000000, 54.6000000000] p4b_k1, [54.6000000000, 56.6716000000] p4c_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #2551 (stageA_k1.pc#2551 b_k1.pc#45 in9_k1_4.pc#283, set aside as k1_45): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #3240 (stageA_k1.pc#3240 b_k1.pc#1 in9_k1_0.pc#360, set aside as k1_1): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #3630 (stageA_k1.pc#3630 b_k1.pc#37 in9_k1_3.pc#403, set aside as k1_37): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #3724 (stageA_k1.pc#3724 b_k1.pc#78 in9_k1_7.pc#413, set aside as k1_78): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #3880 (stageA_k1.pc#3880 b_k1.pc#11 in9_k1_1.pc#431, set aside as k1_11): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #4484 (stageA_k1.pc#4484 b_k1.pc#20 in9_k1_2.pc#498, set aside as k1_20): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #4538 (stageA_k1.pc#4538 b_k1.pc#21 in9_k1_2.pc#504, set aside as k1_21): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #4605 (stageA_k1.pc#4605 b_k1.pc#65 in9_k1_6.pc#511, set aside as k1_65): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #4651 (stageA_k1.pc#4651 b_k1.pc#79 in9_k1_7.pc#516, set aside as k1_79): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #4664 (stageA_k1.pc#4664 b_k1.pc#22 in9_k1_2.pc#518, set aside as k1_22): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #4815 (stageA_k1.pc#4815 b_k1.pc#2 in9_k1_0.pc#535, set aside as k1_2): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #5326 (stageA_k1.pc#5326 b_k1.pc#80 in9_k1_7.pc#591, set aside as k1_80): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #5570 (stageA_k1.pc#5570 b_k1.pc#100 in9_k1_8.pc#618, set aside as k1_100): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #5587 (stageA_k1.pc#5587 b_k1.pc#81 in9_k1_7.pc#620, set aside as k1_81): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #6244 (stageA_k1.pc#6244 b_k1.pc#82 in9_k1_7.pc#693, set aside as k1_82): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #6698 (stageA_k1.pc#6698 b_k1.pc#23 in9_k1_2.pc#744, set aside as k1_23): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #6997 (stageA_k1.pc#6997 b_k1.pc#46 in9_k1_4.pc#777, set aside as k1_46): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #7058 (stageA_k1.pc#7058 b_k1.pc#24 in9_k1_2.pc#784, set aside as k1_24): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #7060 (stageA_k1.pc#7060 b_k1.pc#47 in9_k1_4.pc#784, set aside as k1_47): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #7392 (stageA_k1.pc#7392 b_k1.pc#38 in9_k1_3.pc#821, set aside as k1_38): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #7625 (stageA_k1.pc#7625 b_k1.pc#25 in9_k1_2.pc#847, set aside as k1_25): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #7834 (stageA_k1.pc#7834 b_k1.pc#48 in9_k1_4.pc#870, set aside as k1_48): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #8080 (stageA_k1.pc#8080 b_k1.pc#83 in9_k1_7.pc#897, set aside as k1_83): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #8216 (stageA_k1.pc#8216 b_k1.pc#101 in9_k1_8.pc#912, set aside as k1_101): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #8303 (stageA_k1.pc#8303 b_k1.pc#52 in9_k1_5.pc#922, set aside as k1_52): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #8408 (stageA_k1.pc#8408 b_k1.pc#26 in9_k1_2.pc#934, set aside as k1_26): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #8944 (stageA_k1.pc#8944 b_k1.pc#84 in9_k1_7.pc#993, set aside as k1_84): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #9156 (stageA_k1.pc#9156 b_k1.pc#39 in9_k1_3.pc#1017, set aside as k1_39): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #9293 (stageA_k1.pc#9293 b_k1.pc#53 in9_k1_5.pc#1032, set aside as k1_53): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #9558 (stageA_k1.pc#9558 b_k1.pc#3 in9_k1_0.pc#1062, set aside as k1_3): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #9564 (stageA_k1.pc#9564 b_k1.pc#66 in9_k1_6.pc#1062, set aside as k1_66): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #10387 (stageA_k1.pc#10387 b_k1.pc#12 in9_k1_1.pc#1154, set aside as k1_12): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #10467 (stageA_k1.pc#10467 b_k1.pc#4 in9_k1_0.pc#1163, set aside as k1_4): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #10601 (stageA_k1.pc#10601 b_k1.pc#102 in9_k1_8.pc#1177, set aside as k1_102): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #10796 (stageA_k1.pc#10796 b_k1.pc#54 in9_k1_5.pc#1199, set aside as k1_54): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #10872 (stageA_k1.pc#10872 b_k1.pc#5 in9_k1_0.pc#1208, set aside as k1_5): [53.6578500000, 53.6578502000] p3w_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #10958 (stageA_k1.pc#10958 b_k1.pc#55 in9_k1_5.pc#1217, set aside as k1_55): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #10959 (stageA_k1.pc#10959 b_k1.pc#67 in9_k1_6.pc#1217, set aside as k1_67): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #10960 (stageA_k1.pc#10960 b_k1.pc#85 in9_k1_7.pc#1217, set aside as k1_85): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #10969 (stageA_k1.pc#10969 b_k1.pc#86 in9_k1_7.pc#1218, set aside as k1_86): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #10980 (stageA_k1.pc#10980 b_k1.pc#6 in9_k1_0.pc#1220, set aside as k1_6): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #10981 (stageA_k1.pc#10981 b_k1.pc#13 in9_k1_1.pc#1220, set aside as k1_13): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #11674 (stageA_k1.pc#11674 b_k1.pc#14 in9_k1_1.pc#1297, set aside as k1_14): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #12215 (stageA_k1.pc#12215 b_k1.pc#27 in9_k1_2.pc#1357, set aside as k1_27): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #12368 (stageA_k1.pc#12368 b_k1.pc#28 in9_k1_2.pc#1374, set aside as k1_28): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #12506 (stageA_k1.pc#12506 b_k1.pc#56 in9_k1_5.pc#1389, set aside as k1_56): [53.6578500000, 53.6578502000] p3w_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #12507 (stageA_k1.pc#12507 b_k1.pc#68 in9_k1_6.pc#1389, set aside as k1_68): [53.6578500000, 53.6578502000] p5a_k1, [53.6578502000, 53.6600000000] p5b_k1, [53.6600000000, 53.7000000000] p5c_k1, [53.7000000000, 54.6000000000] p4b_k1, [54.6000000000, 56.6716000000] p4c_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #12581 (stageA_k1.pc#12581 b_k1.pc#103 in9_k1_8.pc#1397, set aside as k1_103): [53.6578500000, 53.6578502000] p3w_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #12638 (stageA_k1.pc#12638 b_k1.pc#29 in9_k1_2.pc#1404, set aside as k1_29): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #14011 (stageA_k1.pc#14011 b_k1.pc#87 in9_k1_7.pc#1556, set aside as k1_87): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #14483 (stageA_k1.pc#14483 b_k1.pc#30 in9_k1_2.pc#1609, set aside as k1_30): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #14726 (stageA_k1.pc#14726 b_k1.pc#31 in9_k1_2.pc#1636, set aside as k1_31): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #14766 (stageA_k1.pc#14766 b_k1.pc#69 in9_k1_6.pc#1640, set aside as k1_69): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #15032 (stageA_k1.pc#15032 b_k1.pc#32 in9_k1_2.pc#1670, set aside as k1_32): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #15215 (stageA_k1.pc#15215 b_k1.pc#57 in9_k1_5.pc#1690, set aside as k1_57): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #15216 (stageA_k1.pc#15216 b_k1.pc#70 in9_k1_6.pc#1690, set aside as k1_70): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #15222 (stageA_k1.pc#15222 b_k1.pc#40 in9_k1_3.pc#1691, set aside as k1_40): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #15602 (stageA_k1.pc#15602 b_k1.pc#58 in9_k1_5.pc#1733, set aside as k1_58): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #15604 (stageA_k1.pc#15604 b_k1.pc#88 in9_k1_7.pc#1733, set aside as k1_88): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #16382 (stageA_k1.pc#16382 b_k1.pc#33 in9_k1_2.pc#1820, set aside as k1_33): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #16676 (stageA_k1.pc#16676 b_k1.pc#104 in9_k1_8.pc#1852, set aside as k1_104): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #17134 (stageA_k1.pc#17134 b_k1.pc#89 in9_k1_7.pc#1903, set aside as k1_89): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #17195 (stageA_k1.pc#17195 b_k1.pc#59 in9_k1_5.pc#1910, set aside as k1_59): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #17208 (stageA_k1.pc#17208 b_k1.pc#7 in9_k1_0.pc#1912, set aside as k1_7): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #17344 (stageA_k1.pc#17344 b_k1.pc#15 in9_k1_1.pc#1927, set aside as k1_15): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #17444 (stageA_k1.pc#17444 b_k1.pc#34 in9_k1_2.pc#1938, set aside as k1_34): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #17827 (stageA_k1.pc#17827 b_k1.pc#90 in9_k1_7.pc#1980, set aside as k1_90): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #17995 (stageA_k1.pc#17995 b_k1.pc#49 in9_k1_4.pc#1999, set aside as k1_49): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #18257 (stageA_k1.pc#18257 b_k1.pc#60 in9_k1_5.pc#2028, set aside as k1_60): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #18272 (stageA_k1.pc#18272 b_k1.pc#35 in9_k1_2.pc#2030, set aside as k1_35): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #18811 (stageA_k1.pc#18811 b_k1.pc#16 in9_k1_1.pc#2090, set aside as k1_16): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #19124 (stageA_k1.pc#19124 b_k1.pc#105 in9_k1_8.pc#2124, set aside as k1_105): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #19563 (stageA_k1.pc#19563 b_k1.pc#71 in9_k1_6.pc#2173, set aside as k1_71): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #19789 (stageA_k1.pc#19789 b_k1.pc#91 in9_k1_7.pc#2198, set aside as k1_91): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #20175 (stageA_k1.pc#20175 b_k1.pc#72 in9_k1_6.pc#2241, set aside as k1_72): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #20374 (stageA_k1.pc#20374 b_k1.pc#92 in9_k1_7.pc#2263, set aside as k1_92): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #20376 (stageA_k1.pc#20376 b_k1.pc#8 in9_k1_0.pc#2264, set aside as k1_8): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #20658 (stageA_k1.pc#20658 b_k1.pc#41 in9_k1_3.pc#2295, set aside as k1_41): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #20696 (stageA_k1.pc#20696 b_k1.pc#61 in9_k1_5.pc#2299, set aside as k1_61): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #20755 (stageA_k1.pc#20755 b_k1.pc#17 in9_k1_1.pc#2306, set aside as k1_17): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #20782 (stageA_k1.pc#20782 b_k1.pc#18 in9_k1_1.pc#2309, set aside as k1_18): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #20933 (stageA_k1.pc#20933 b_k1.pc#106 in9_k1_8.pc#2325, set aside as k1_106): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #21454 (stageA_k1.pc#21454 b_k1.pc#93 in9_k1_7.pc#2383, set aside as k1_93): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #21705 (stageA_k1.pc#21705 b_k1.pc#73 in9_k1_6.pc#2411, set aside as k1_73): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #21945 (stageA_k1.pc#21945 b_k1.pc#42 in9_k1_3.pc#2438, set aside as k1_42): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #22066 (stageA_k1.pc#22066 b_k1.pc#94 in9_k1_7.pc#2451, set aside as k1_94): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #22228 (stageA_k1.pc#22228 b_k1.pc#95 in9_k1_7.pc#2469, set aside as k1_95): [53.6578500000, 53.6578502000] pw_k1, [53.6578502000, 56.6716000000] p1_k1: slices, smallest overlap 4.44e-16 rad
+  k1 #23508 (stageA_k1.pc#23508 b_k1.pc#9 in9_k1_0.pc#2612, set aside as k1_9): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #23593 (stageA_k1.pc#23593 b_k1.pc#50 in9_k1_4.pc#2621, set aside as k1_50): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #25233 (stageA_k1.pc#25233 b_k1.pc#74 in9_k1_6.pc#2803, set aside as k1_74): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #25234 (stageA_k1.pc#25234 b_k1.pc#96 in9_k1_7.pc#2803, set aside as k1_96): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #25235 (stageA_k1.pc#25235 b_k1.pc#107 in9_k1_8.pc#2803, set aside as k1_107): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k1 #25962 (stageA_k1.pc#25962 b_k1.pc#75 in9_k1_6.pc#2884, set aside as k1_75): [53.6578500000, 56.6716000000] p2_k1: one replay of the whole range
+  k1 #26871 (stageA_k1.pc#26871 b_k1.pc#76 in9_k1_6.pc#2985, set aside as k1_76): [53.6578500000, 56.6716000000] p3_k1: one replay of the whole range
+  k2 #2 (stageA_k2.pc#2): [53.6578500000, 56.6716000000] pb_k2: one replay of the whole range
+  k2 #11 (stageA_k2.pc#11 b_k2.pc#0, set aside as k2_0): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #23 (stageA_k2.pc#23): [53.6578500000, 56.6716000000] pb_k2: one replay of the whole range
+  k2 #42 (stageA_k2.pc#42 b_k2.pc#1, set aside as k2_1): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #52 (stageA_k2.pc#52 b_k2.pc#2, set aside as k2_2): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #55 (stageA_k2.pc#55): [53.6578500000, 56.6716000000] pb_k2: one replay of the whole range
+  k2 #72 (stageA_k2.pc#72 b_k2.pc#3, set aside as k2_3): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #74 (stageA_k2.pc#74 b_k2.pc#4, set aside as k2_4): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #84 (stageA_k2.pc#84 b_k2.pc#5, set aside as k2_5): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #111 (stageA_k2.pc#111 b_k2.pc#6, set aside as k2_6): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #120 (stageA_k2.pc#120): [53.6578500000, 56.6716000000] pb_k2: one replay of the whole range
+  k2 #137 (stageA_k2.pc#137 b_k2.pc#7, set aside as k2_7): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #138 (stageA_k2.pc#138 b_k2.pc#8, set aside as k2_8): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #145 (stageA_k2.pc#145 b_k2.pc#19, set aside as k2_19): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #148 (stageA_k2.pc#148 b_k2.pc#20, set aside as k2_20): [53.6578500000, 56.6716000000] p2_k2: one replay of the whole range
+  k2 #151 (stageA_k2.pc#151 b_k2.pc#21, set aside as k2_21): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #154 (stageA_k2.pc#154 b_k2.pc#22, set aside as k2_22): [53.6578500000, 56.6716000000] p2_k2: one replay of the whole range
+  k2 #155 (stageA_k2.pc#155 b_k2.pc#30, set aside as k2_30): [53.6578500000, 56.6716000000] p2_k2: one replay of the whole range
+  k2 #156 (stageA_k2.pc#156 b_k2.pc#9, set aside as k2_9): [53.6578500000, 56.6716000000] p2_k2: one replay of the whole range
+  k2 #181 (stageA_k2.pc#181 b_k2.pc#23, set aside as k2_23): [53.6578500000, 53.6578502000] pw_k2, [53.6578502000, 56.6716000000] p1_k2: slices, smallest overlap 4.44e-16 rad
+  k2 #182 (stageA_k2.pc#182 b_k2.pc#31, set aside as k2_31): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #200 (stageA_k2.pc#200 b_k2.pc#32, set aside as k2_32): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #201 (stageA_k2.pc#201 b_k2.pc#10, set aside as k2_10): [53.6578500000, 53.6578502000] pw_k2, [53.6578502000, 56.6716000000] p1_k2: slices, smallest overlap 4.44e-16 rad
+  k2 #213 (stageA_k2.pc#213 b_k2.pc#11, set aside as k2_11): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #214 (stageA_k2.pc#214 b_k2.pc#24, set aside as k2_24): [53.6578500000, 53.6578502000] pw_k2, [53.6578502000, 56.6716000000] p1_k2: slices, smallest overlap 4.44e-16 rad
+  k2 #219 (stageA_k2.pc#219 b_k2.pc#12, set aside as k2_12): [53.6578500000, 53.6578502000] pw_k2, [53.6578502000, 56.6716000000] p1_k2: slices, smallest overlap 4.44e-16 rad
+  k2 #230 (stageA_k2.pc#230 b_k2.pc#33, set aside as k2_33): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #231 (stageA_k2.pc#231 b_k2.pc#13, set aside as k2_13): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #233 (stageA_k2.pc#233 b_k2.pc#34, set aside as k2_34): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #248 (stageA_k2.pc#248 b_k2.pc#35, set aside as k2_35): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #249 (stageA_k2.pc#249 b_k2.pc#14, set aside as k2_14): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #254 (stageA_k2.pc#254 b_k2.pc#36, set aside as k2_36): [53.6578500000, 56.6716000000] p2_k2: one replay of the whole range
+  k2 #255 (stageA_k2.pc#255 b_k2.pc#15, set aside as k2_15): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #265 (stageA_k2.pc#265 b_k2.pc#25, set aside as k2_25): [53.6578500000, 53.6578502000] pw_k2, [53.6578502000, 56.6716000000] p1_k2: slices, smallest overlap 4.44e-16 rad
+  k2 #295 (stageA_k2.pc#295 b_k2.pc#26, set aside as k2_26): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #322 (stageA_k2.pc#322 b_k2.pc#27, set aside as k2_27): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #323 (stageA_k2.pc#323 b_k2.pc#37, set aside as k2_37): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #339 (stageA_k2.pc#339 b_k2.pc#16, set aside as k2_16): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #342 (stageA_k2.pc#342 b_k2.pc#17, set aside as k2_17): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #353 (stageA_k2.pc#353 b_k2.pc#38, set aside as k2_38): [53.6578500000, 53.6578502000] pw_k2, [53.6578502000, 56.6716000000] p1_k2: slices, smallest overlap 4.44e-16 rad
+  k2 #361 (stageA_k2.pc#361 b_k2.pc#28, set aside as k2_28): [53.6578500000, 56.6716000000] p2_k2: one replay of the whole range
+  k2 #380 (stageA_k2.pc#380 b_k2.pc#39, set aside as k2_39): [53.6578500000, 56.6716000000] p2_k2: one replay of the whole range
+  k2 #398 (stageA_k2.pc#398 b_k2.pc#40, set aside as k2_40): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #404 (stageA_k2.pc#404 b_k2.pc#41, set aside as k2_41): [53.6578500000, 56.6716000000] p2_k2: one replay of the whole range
+  k2 #411 (stageA_k2.pc#411 b_k2.pc#18, set aside as k2_18): [53.6578500000, 53.6578502000] pw_k2, [53.6578502000, 56.6716000000] p1_k2: slices, smallest overlap 4.44e-16 rad
+  k2 #413 (stageA_k2.pc#413 b_k2.pc#42, set aside as k2_42): [53.6578500000, 53.6578502000] pw_k2, [53.6578502000, 56.6716000000] p1_k2: slices, smallest overlap 4.44e-16 rad
+  k2 #424 (stageA_k2.pc#424 b_k2.pc#29, set aside as k2_29): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k2 #437 (stageA_k2.pc#437 b_k2.pc#43, set aside as k2_43): [53.6578500000, 56.6716000000] p3_k2: one replay of the whole range
+  k3 #0 (stageA_k3.pc#0, set aside as k3_0): [53.6578500000, 56.6716000000] p3_k3: one replay of the whole range
+  k3 #1 (stageA_k3.pc#1, set aside as k3_1): [53.6578500000, 56.6716000000] p3_k3: one replay of the whole range
+  k3 #2 (stageA_k3.pc#2, set aside as k3_2): [53.6578500000, 56.6716000000] p3_k3: one replay of the whole range
+  k3 #3 (stageA_k3.pc#3, set aside as k3_3): [53.6578500000, 53.6578502000] p3w_k3, [53.6578502000, 56.6716000000] p1_k3: slices, smallest overlap 4.44e-16 rad
+
+== 6. Counts
+k = 0: 435263 survivors, 435263 VERIFIED replays; VERIFIED in the first pass 435249; set aside 0 (of them VERIFIED in the first pass 0); the other 14 VERIFIED in the second pass 14; covered by one replay of the whole range 435263, by a union of slices only 0, not covered 0
+k = 1: 26994 survivors, 27046 VERIFIED replays; VERIFIED in the first pass 26886; set aside 108 (of them VERIFIED in the first pass 0); the other 0 VERIFIED in the second pass 0; covered by one replay of the whole range 26946, by a union of slices only 48, not covered 0
+k = 2: 441 survivors, 449 VERIFIED replays; VERIFIED in the first pass 393; set aside 44 (of them VERIFIED in the first pass 0); the other 4 VERIFIED in the second pass 4; covered by one replay of the whole range 433, by a union of slices only 8, not covered 0
+k = 3: 5 survivors, 6 VERIFIED replays; VERIFIED in the first pass 1; set aside 4 (of them VERIFIED in the first pass 0); the other 0 VERIFIED in the second pass 0; covered by one replay of the whole range 4, by a union of slices only 1, not covered 0
+total: 462703 survivors, 462764 VERIFIED replays, 0 not covered, 0 failures
+coverage join: PASS

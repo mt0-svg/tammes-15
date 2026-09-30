@@ -1,0 +1,14 @@
+# tag | relsys: verdict nodes seconds (limit) | recorded: pass verdict nodes seconds
+k1_5 | relsys: KILLED 9 3.3194 (120 s) exit 0 | recorded: fp_s8_30 KILLED 5 2.8731
+k1_3 | relsys: KILLED 47 14.0530 (120 s) exit 0 | recorded: fp_s8_30 KILLED 35 12.8082
+k1_69 | relsys: KILLED 65 18.4757 (120 s) exit 0 | recorded: fp3_30 KILLED 61 18.3958
+k1_0 | relsys: KILLED 155 42.9826 (120 s) exit 0 | recorded: fp3_120 KILLED 109 31.3419
+k1_14 | relsys: KILLED 103 39.9598 (240 s) exit 0 | recorded: fp3_120 KILLED 97 55.3425
+k2_4 | relsys: KILLED 151 74.7666 (240 s) exit 0 | recorded: res_600 KILLED 147 51.5771
+k1_68_d1 | relsys: KILLED 303 68.8645 (240 s) exit 0 | recorded: res_d1 KILLED 301 60.0781
+k2_33 | relsys: KILLED 805 186.0219 (300 s) exit 0 | recorded: res_600 KILLED 823 135.9403
+k3_0 | relsys: KILLED 621 299.4449 (300 s) exit 0 | recorded: res_600 KILLED 621 197.1203
+k0_0_43064 | relsys: KILLED 327 76.4855 (300 s) exit 0 | recorded: hard_600 KILLED 327 85.3720
+k1_1 | relsys: KILLED 2801 564.0525 (600 s) exit 0 | recorded: k1_1_all KILLED 2135 620.8266
+== relsys kills 11 of 11 cases; not killed:
+ratio 1.092 (relsys 1388.4 s over recorded 1271.7 s on the killed cases)

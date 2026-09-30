@@ -1,0 +1,27 @@
+# code/hyps/d_range.sh, 2026-09-30 09:23 UTC; rustc 1.99.0-nightly (12c36e253 2026-08-10); PARI/GP [2, 17, 4]
+== gp -q d_range.gp
+Lean dlo = 0.9365061520412393728913486070194670768601060336458862326444468371797998142002469973168516580721306462
+Lean dhi = 0.9891060123732184805158863375547926425114905851868124835775759442079536013916084549258252133769906757
+params15ft.txt: dlo 0.9365061520412393728900000000000000000000000000000000000000000000000000000000000000000000000000000000, dhi 0.9891060123732184805200000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+(1) decimals of params15ft.txt against Lean
+Lean dlo - decimal dlo                                     1.348607 e-21 rad
+decimal dhi - Lean dhi                                     4.113662 e-21 rad
+
+(2a) program parse: nearest binary64, then one ulp outward
+  ulp at dlo, dhi: 2^-53, 2^-53
+  nearest(dlo) - decimal dlo = -4.700058 e-17, nearest(dhi) - decimal dhi = 1.003206 e-17
+  parse_dn(dlo) = 8435297514726204 * 2^-53
+  parse_up(dhi) = 8909074937507889 * 2^-53
+Lean dlo - parse_dn(dlo)                                   1.580242 e-16 rad
+parse_up(dhi) - Lean dhi                                   1.210585 e-16 rad
+
+(2b) directed roundings: largest binary64 <= dlo, smallest binary64 >= dhi
+Lean dlo - floor64(dlo)                                    4.700193 e-17 rad
+ceil64(dhi) - Lean dhi                                     1.003618 e-17 rad
+
+END OK
+== rustc -O d_range_parse.rs, run
+dlo 0.93650615204123937289 parsed = 8435297514726204 * 2^-53
+dhi 0.98910601237321848052 parsed = 8909074937507889 * 2^-53
+PARSE AGREES: the program's binary64 bounds are those of d_range.gp (2a)

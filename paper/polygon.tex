@@ -1,0 +1,93 @@
+% The rattler bounds in the form the formalization follows (Geom/Nor.lean, Geom/Qpoly.lean,
+% Geom/Onehex.lean): Proposition nor by the subtended angles, Proposition onehex by an inscribed
+% polygon. main.tex prints this text in place of its own when \polygonformtrue is set there; the
+% default build keeps the convex hulls of Lemma perims and describes the formal route in Remarks
+% rem:norroute and rem:polygons. The two forms share every statement except Lemmas polar and perims.
+
+% The bound on the angles subtended at a rattler, shared by Remark rem:norroute of main.tex and the
+% proof of Proposition nor below. It follows the sentence that defines r, v_i and beta_i.
+\newcommand{\NorRouteCore}{%
+Write $c=\cos d$, $h=h(d)$, $p=\langle r,v_i\rangle$ and $q=\langle r,v_{i+1}\rangle$. By Lemma~\ref{lem:disc}, $r$ is at distance at least $h$ from the great circle of the side $v_iv_{i+1}$, so $\langle r,v_i\times v_{i+1}\rangle\ge\sin d\sin h$. The Gram determinant of $v_i,v_{i+1},r$ is $\langle r,v_i\times v_{i+1}\rangle^2=1-c^2-p^2-q^2+2cpq$, and $\cos h=c/\cos(d/2)$ gives $\cos^2h=2c^2/(1+c)$, so
+\[
+p^2+q^2-2cpq\le(1-c^2)\cos^2h=2c^2(1-c).
+\]
+With $2pq\le p^2+q^2$ this gives $pq\le c^2$. The law of cosines at $r$, the inequality $(1-p^2)(1-q^2)\le(1-pq)^2$ and $c-pq\ge0$ give
+\[
+\cos\beta_i=\frac{c-pq}{\sqrt{(1-p^2)(1-q^2)}}\ge\frac{c-pq}{1-pq}\ge\frac{c-c^2}{1-c^2}=\cos\alpha(d),
+\]
+since $(c-t)/(1-t)$ decreases in $t<1$. So $\beta_i\le\alpha(d)\le\alpha(\dhi)=69.23^\circ<72^\circ$ for each of the at most five sides, and the $\beta_i$ cannot sum to $2\pi$.%
+}
+
+% Before Lemma polar, in place of the definition of K° for convex sets.
+\newcommand{\PolygonPolarDef}{%
+For the closure $K$ of a region as in Lemma~\ref{lem:convex}, with sides $S_1,\dots,S_s$ and poles $n_1,\dots,n_s$, put $K^\circ=\{y\in\Sph:\langle x,y\rangle\ge0\text{ for all }x\in K\}$ and let $\per K$ be the length of its boundary, the sum of the lengths $\ell_i$ of the $S_i$. We call such a $K$ a \emph{convex polygon}.
+}
+
+\newcommand{\PolygonPolar}{%
+\begin{lemma}\label{lem:polar}
+For a convex polygon $K$, $\per K=2\pi-\area K^\circ$. Consequently, if $K\subseteq K'$ are two convex polygons, then $\per K\le\per K'$.
+\end{lemma}
+\leanline{in part. The inequality $\per K<2\pi$ for a face in the cone form of Lemma~\ref{lem:convex} is \lname{face_perimeter_lt} in \lfile{FaceChain/Sizes.lean}, from the perimeter bound of the eight-point proof \cite{KLT}. \polarmono{} The identity is not formalized.}
+
+\begin{proof}
+$K^\circ$ is the convex polygon with vertices $n_1,\dots,n_s$, and its angle at $n_i$ is $\pi-\ell_i$. The area of a spherical polygon with $s$ vertices is the sum of its angles minus $(s-2)\pi$, so $\area K^\circ=\sum_i(\pi-\ell_i)-(s-2)\pi=2\pi-\per K$. If $K\subseteq K'$, then $K'^\circ\subseteq K^\circ$, so $\area K'^\circ\le\area K^\circ$.
+\end{proof}
+}
+
+% In place of Lemma perims (same label, same number).
+\newcommand{\PolygonPerims}{%
+For $0<h<\pi/2$ and $0\le s\le\pi$ put $\operatorname{ch}_h(s)=\arccos(\cos^2h+\sin^2h\cos s)$, the distance between two points of a circle of radius $h$ whose directions from the centre make the angle $s$.
+
+\begin{lemma}\label{lem:perims}
+Let $0<h<\pi/2$ and $\dist(r_1,r_2)=l<\pi-2h$. One of the two great circles tangent to both $D(r_1,h)$ and $D(r_2,h)$ with both discs on one side touches them at points $T_1$ and $T_2$, and the other at $T_1'$ and $T_2'$. On the boundary circle of $D(r_i,h)$, let $q_{i,0}=T_i,q_{i,1},\dots,q_{i,4}=T_i'$ be five equally spaced points of the arc from $T_i$ to $T_i'$ that does not meet $[r_1r_2]$. Then the closed polygon $q_{1,4}\cdots q_{1,0}\,q_{2,0}\cdots q_{2,4}$ has length
+\[
+P_{10}(l,h)=2L(l,h)+8\operatorname{ch}_h\bigl((2\pi-2\gamma(l,h))/4\bigr),
+\]
+where $L,\gamma\in[0,\pi]$ are given by
+\[
+\cos L=\frac{\cos l-\sin^2h}{\cos^2h},\qquad\cos\gamma=-\tan h\tan\frac l2 .
+\]
+The functions $L$ and $\gamma$ are nondecreasing in $l$ and in $h$, and $\operatorname{ch}_h(s)$ is nondecreasing in $h$ and in $s$. For $l=d$, $h=h(d)$ and $d\in[\dlo,\dhi]$, the polygon is a convex polygon in the sense above, so its length is its perimeter.
+\end{lemma}
+\leanline{$P_{10}$ is the definition \lname{hexPoly}, $L$, $\gamma$ and $\operatorname{ch}$ are \lname{tanLen}, \lname{tanAng} and \lname{chordC}, and the monotonicity is \lname{tanLen_monotoneOn_l}, \lname{tanLen_monotoneOn_h}, \lname{tanAng_monotoneOn_l}, \lname{tanAng_monotoneOn_h}, \lname{chordC_monotoneOn_h} and \lname{chordC_monotoneOn_s} in \lfile{Rattlers/HexPoly.lean}. For $l=d$, $h=h(d)$ and $d\in[\dlo,\dhi]$ the polygon is \lname{Geom.qpoly} in \lfile{Geom/Qpoly.lean}, placed in a frame at $r_1$; it is in the cone form of Lemma~\ref{lem:convex} (\lname{Geom.qpoly_isCPoly}) and has length $P_{10}(d,h(d))$ (\lname{Geom.qpoly_perim}, same file). The inequality in $d$ of the proof is \lname{onehex_chord_margin} in \lfile{Rattlers/HexChord.lean}.}
+
+\begin{proof}
+Place the tangent great circle through $T_1$ and $T_2$ on the equator, with $T_{1,2}=(\cos\frac L2,\mp\sin\frac L2,0)$ and centres $r_{1,2}=(\cos h\cos\frac L2,\mp\cos h\sin\frac L2,\sin h)$. Then $\cos l=\langle r_1,r_2\rangle=\cos^2h\cos L+\sin^2h$, which is the formula for $L$, the length of the side $T_1T_2$. The angle $\gamma$ at $r_1$ between the directions to $T_1$ and to $r_2$ satisfies $\cos\gamma=(\langle T_1,r_2\rangle-\cos h\cos l)/(\sin h\sin l)=\cos h(\cos L-\cos l)/(\sin h\sin l)=-\tan h\tan\frac l2$. By the reflection in the great circle through $r_1$ and $r_2$, which exchanges the two tangent great circles, the arc from $T_1$ to $T_1'$ subtends the angle $2\pi-2\gamma$ at $r_1$, and likewise at $r_2$; so each of its four steps subtends $(2\pi-2\gamma)/4$, and the eight sides on the arcs have length $\operatorname{ch}_h((2\pi-2\gamma)/4)$. Monotonicity: $\cos L=1-(1-\cos l)/\cos^2h$ decreases in $l\in[0,\pi]$ and in $h\in[0,\pi/2)$; $-\tan h\tan\frac l2$ decreases in $h\in[0,\pi/2)$ and in $l\in[0,\pi)$; and $\cos^2h+\sin^2h\cos s=1-(1-\cos s)\sin^2h$ decreases in $h\in[0,\pi/2]$ and in $s\in[0,\pi]$. Since $\arccos$ decreases, $L$, $\gamma$ and $\operatorname{ch}_h(s)$ increase as stated.
+
+The convexity, for $l=d$, $h=h(d)$ and $d\in[\dlo,\dhi]$, is proved in Lean only. The rotation by $\pi$ that exchanges the two circles reduces it to the sides that start on one circle: its chords against the other vertices of that circle, by a closed form of the pole of a chord; the same chords against the other disc, which needs one inequality in $d$; and the tangent side, whose great circle touches both circles.
+\end{proof}
+}
+
+% In place of the proof of Proposition nor.
+\newcommand{\PolygonNorProof}{%
+\begin{proof}
+Let $r$ be a rattler in a face $F$ with vertices $v_1,\dots,v_m$, $m\le5$, and let $\beta_i$ be the angle $v_irv_{i+1}$. As $r$ is inside the convex face, $\sum\beta_i=2\pi$. \NorRouteCore
+\end{proof}
+}
+
+% In place of the proof of Proposition onehex.
+\newcommand{\PolygonOnehexProof}{%
+\begin{proof}
+Let $r_1,r_2$ be rattlers in a hexagonal face $F$, so $l=\dist(r_1,r_2)>d$, and put $h=h(d)$. By Lemma~\ref{lem:disc}, $D(r_1,h)$ and $D(r_2,h)$ lie in $\cl F$. Let $c$ be the point of $[r_1r_2]$ with $\dist(r_1,c)=d$. By Lemma~\ref{lem:convex}, $\cl F$ is the intersection of the closed hemispheres $\{\langle x,n_i\rangle\ge0\}$ of its sides, and a disc $D(r,h)$ lies in such a hemisphere exactly when $\langle r,n_i\rangle\ge\sin h$. From $c=(\sin(l-d)r_1+\sin d\,r_2)/\sin l$,
+\[
+\langle c,n_i\rangle\ge\sin h\,\frac{\sin(l-d)+\sin d}{\sin l}=\sin h\,\frac{\cos(l/2-d)}{\cos(l/2)}\ge\sin h ,
+\]
+so $D(c,h)\subseteq\cl F$. Since $\pi-2h(d)-d$ decreases with $d$ and equals $20.58^\circ$ at $\dhi$, Lemma~\ref{lem:perims} applies to $D(r_1,h)$ and $D(c,h)$ with $l=d$. The ten vertices of its polygon lie in $\cl F$, which is convex, so Lemma~\ref{lem:polar} gives $6d=\per F\ge P_{10}(d,h(d))$. Cut $[\dlo,\dhi]$ into ten equal intervals $[a',b']$, of length $0.301375^\circ$. For $d\in[a',b']$, the monotonicity of Lemma~\ref{lem:perims} and of $h$ gives
+\[
+P_{10}(d,h(d))-6d\ge2L(a',h(a'))+8\operatorname{ch}_{h(a')}\bigl((2\pi-2\gamma(b',h(b')))/4\bigr)-6b',
+\]
+and the right side is at least $2.48^\circ$ on each of the ten intervals. This is a contradiction.
+\end{proof}
+}
+
+% In place of Remark rem:polygons.
+\newcommand{\PolygonRemark}{%
+\begin{remark}\label{rem:polygons}
+The polygon of Lemma~\ref{lem:perims} is inscribed in the convex hull $\conv(D(r_1,h)\cup D(r_2,h))$, and with more vertices on the arcs its perimeter increases toward that of the hull. We use the polygon because then Lemma~\ref{lem:polar} is needed for polygons only. The proof of Proposition~\ref{prop:nor} above uses no perimeter at all. The formalization follows both proofs.
+\end{remark}
+}
+
+% In place of the first paragraph of Section 3.4.
+\newcommand{\PolygonConstants}{%
+The margins used above are $7\dlo-2\pi=15.6^\circ$, $72^\circ-\alpha(\dhi)=2.77^\circ$, $\pi-2h(\dhi)-\dhi=20.58^\circ$, and for Proposition~\ref{prop:onehex} the ten worst end bounds, which decrease from $10.13^\circ$ on the first interval to $2.48^\circ$ on the last. Lean proves that all of them are positive: \lname{two_pi_lt_seven_dlo}, \lname{alpha_dhi_lt} and \lname{margin_perims} in \lfile{Trigrows/Margins.lean}, and the ten bounds \lname{hex_piece_0} to \lname{hex_piece_9}, assembled into \lname{margin_onehex_poly}, in \lfile{Rattlers/HexPoly.lean}, from rational enclosures of $\cos$ and $\sin$ by Taylor polynomials with Lagrange remainders (\lfile{Numerics/Taylor.lean}, \lfile{Numerics/HexData.lean}). The values quoted come from PARI/GP with 60 digits (\texttt{code/paper/paper\_checks.gp} and \texttt{code/lean-check/onehex\_poly.gp}, with their outputs). A ball computation (SageMath, 256 bits) checks $\dlo<\psis$ (by $1.3\cdot10^{-7}$ degrees) and $\dhi$ above the bound of Fejes T\'oth (by $9.6\cdot10^{-5}$ degrees).
+}

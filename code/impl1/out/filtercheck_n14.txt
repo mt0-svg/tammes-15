@@ -1,0 +1,18 @@
+part 0/16: graphs 92346443 maxdeg<=5 3515776 class(deg 3..5, faces 3..6, Euler 2) 3158139
+part 1/16: graphs 98305000 maxdeg<=5 3710347 class(deg 3..5, faces 3..6, Euler 2) 3306327
+part 2/16: graphs 89471503 maxdeg<=5 3212916 class(deg 3..5, faces 3..6, Euler 2) 2894128
+part 3/16: graphs 90494667 maxdeg<=5 3456378 class(deg 3..5, faces 3..6, Euler 2) 3094066
+part 4/16: graphs 94095126 maxdeg<=5 3452147 class(deg 3..5, faces 3..6, Euler 2) 3072228
+part 5/16: graphs 90802639 maxdeg<=5 3320897 class(deg 3..5, faces 3..6, Euler 2) 2984326
+part 6/16: graphs 90900544 maxdeg<=5 3308883 class(deg 3..5, faces 3..6, Euler 2) 2945844
+part 7/16: graphs 94112256 maxdeg<=5 3584128 class(deg 3..5, faces 3..6, Euler 2) 3199185
+part 8/16: graphs 93313683 maxdeg<=5 3470598 class(deg 3..5, faces 3..6, Euler 2) 3109229
+part 9/16: graphs 99522436 maxdeg<=5 3736387 class(deg 3..5, faces 3..6, Euler 2) 3327177
+part 10/16: graphs 94469445 maxdeg<=5 3531765 class(deg 3..5, faces 3..6, Euler 2) 3150767
+part 11/16: graphs 96376657 maxdeg<=5 3548288 class(deg 3..5, faces 3..6, Euler 2) 3179200
+part 12/16: graphs 90921810 maxdeg<=5 3367821 class(deg 3..5, faces 3..6, Euler 2) 3039393
+part 13/16: graphs 93530847 maxdeg<=5 3444213 class(deg 3..5, faces 3..6, Euler 2) 3079693
+part 14/16: graphs 94052409 maxdeg<=5 3450873 class(deg 3..5, faces 3..6, Euler 2) 3076207
+part 15/16: graphs 93509887 maxdeg<=5 3386421 class(deg 3..5, faces 3..6, Euler 2) 3045948
+n=14 unrestricted plantri -p | pcdeg, 16 parts: graphs 1496225352 maxdeg<=5 55497838 class 49661857
+plantri_md5 -p -f6 -u 14: 49661857

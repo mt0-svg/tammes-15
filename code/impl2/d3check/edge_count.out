@@ -1,0 +1,4 @@
+# E= values over the case records of $T15/verify/l2/*.out
+ 469477  E=0
+# E= values over the case records of $T15/verify/cases/*/*.txt
+    290  E=0

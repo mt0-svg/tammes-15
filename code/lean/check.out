@@ -1,0 +1,399 @@
+# code/lean/check.sh, 2026-09-30 10:44 UTC, not a git checkout
+# Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release); Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)
+# Mathlib: manifest d13f23b723b8a846827a245b89c10fc7d3f11612, checkout d13f23b723b8a846827a245b89c10fc7d3f11612
+# sources: sha256 62b84fbbe9d15a28 of the list of sha256 sums of the files of Tammes15/, lakefile.toml, lake-manifest.json, lean-toolchain and the five files of code/lean/ that this script reads (code/lean/sources.sh prints it)
+# LEAN_NUM_THREADS 3; 24 processors visible
+== 1. lake build Statement Trigrows Local41 Rattlers Glue Fans Draw VendorEM8 Hyps Geom TwoConn Numerics FaceChain Challenge Solution
+exit 0, 623 s wall; modules of the package built: 232 (built or replayed: 232); sorry warnings: 1, of them in Tammes15/Challenge.lean: 1
+Build completed successfully (9170 jobs).
+build: PASS
+== 2. every target up to date (lake build --no-build)
+exit 0; All targets up-to-date (9170 jobs).
+up-to-date: PASS
+== 3. source scan (code/lean/scan.sh Tammes15 lakefile.toml)
+Tammes15/Challenge.lean:15: sorry | (h3 : Tammes15.Killed L F) (h4 : Tammes15.AttainedHyp F) : Tammes15.Conjecture := sorry
+Tammes15/Vendor/EM8/AngularArcParametrization.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/Antiprism.lean:14: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ArcEmbedding.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/BestPacking.lean:42: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/BoundaryAdjacency.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/BoundaryCoverage.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/BoundaryFaceArrays.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/BoundaryFaceSupport.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/BoundaryPartition.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/BoundaryPolygons.lean:11: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/BoundaryReindex.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/BoundarySupportAssembly.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ChartInverse.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/CompactArcPatches.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ComponentHemisphere.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ComponentWedgeModel.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactAngles.lean:11: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactArcLocalGeometry.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactBoundary.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactChainConvexity.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactComponents.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactCovering.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactCycleEmbedding.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactDirections.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactEdgeFaceModel.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactEndpointGeometry.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactEulerBound.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactFaceLocalModels.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactFaceRegions.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactGeometryGlobal.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactGraphTrace.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactLocalStars.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactOrder.lean:11: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactQuadrilateral.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactRotationInvariants.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactSector.lean:12: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactSectorCover.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactSectorNeighborhoods.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactSeparation.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactSimpleCycles.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactTilingData.lean:13: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactTilingRigidity.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ContactVertexFaceModel.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/CrossAlgebra.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/CrossRotations.lean:11: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/CycleEdgeSeparation.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/CycleSeparationValue.lean:12: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/CycleVertexSeparation.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/Definitions.lean:20: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/Definitions.lean:24: notation | local notation "𝕊²" => unitSphere
+Tammes15/Vendor/EM8/EmptyContactSector.lean:11: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/EqualityReconstruction.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ExteriorTriangle.lean:11: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/FaceDartPropagation.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/FaceEdgePropagation.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/FiniteArcPatchCover.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/FinitePatchChains.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/GlobalPackingAssembly.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/GreatCircleCorners.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/GreatCircleFrames.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/GreatCircleInteriorPropagation.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/GreatCircleShortening.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/GreatCircleTrace.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/HemisphereCoordinates.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/Infinitesimal.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/InitialSupportingFace.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/InteriorChainShortening.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/LocalChart.lean:11: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/LocalRotations.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/LocalSphericalModels.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/LocalToGlobalArcConvexity.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/OrbitClosure.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/OrthonormalFrame.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/PackingConstants.lean:19: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/PackingGeometry.lean:17: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/PackingMaximum.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/PackingPush.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/PackingReduction.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/PatchChainMinimization.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/PatchChainSplicing.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/PolygonExcess.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/PuncturedSphericalCaps.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/RankinBound.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ReducedPatchChains.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/RegularSquare.lean:11: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/RhombusBounds.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/RhombusFace.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/RhombusGram.lean:14: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/RhombusOrientation.lean:11: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/RhombusRelation.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/RotationSystem.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ShortArcPatchChains.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ShortBoundaryCycles.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ShortestChainCorners.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/ShortestChainGreatCircle.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SliceAlignment.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SliceCovering.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SliceTarget.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SolidAngleAlgebra.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SolidAngleDerivative.lean:12: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SolidAngleDomain.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalArcStability.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalArcSupport.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalCapPaths.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalComplementRegions.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalCone.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalConvexPatches.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalFan.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalLocalConnectivity.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalMetric.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalPolygon.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalRegionInterior.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalStrictMetric.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalTriangle.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SphericalWedgePaths.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/SupportedTiling.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/TangentAngles.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/TangentCircle.lean:11: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/TangentWedge.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/TracePatchSubdivision.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/VoronoiRegions.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+Tammes15/Vendor/EM8/WeakBoundarySupport.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
+SCAN: 123 lines with a construct in 233 files; per construct:
+    122 notation
+      1 sorry
+scan: PASS
+== 4. #print axioms (code/lean/axioms.lean)
+'Tammes15.reduction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.upperBound_of_hyps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.attained_of_hyp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.relSys_of_realisation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.realisation_of_structured' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.structure_theorem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.structured_of_min' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.twoconn_contact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.faceconvex_contact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.rattlers_in_hexagons' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.twoconn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.vertexSum_of_realisation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.tri_of_realisation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.rhombus_of_realisation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.pent_of_realisation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.hex_of_realisation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.hexDiag_of_realisation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.wheel_of_realisation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.glue_congruent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.dlo_lt_arccos_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.realisation_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.local_optimality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.kappaBound_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.existsUnique_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.conjecture_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Vendor.EM8.SquareAntiprismVerification.eight_point_best_packing_rigidity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+exit 0; 26 of 26 theorems printed; axioms outside propext, Classical.choice, Quot.sound: none
+axioms: PASS
+== 5. types of the interfaces (code/lean/types.lean)
+(no message)
+exit 0; examples: 10
+types: PASS
+== 6. environment audit (code/lean/EnvAudit.lean), every module of the package except Tammes15.Challenge*
+MODULE Tammes15.Draw.Angular: 11 constants
+MODULE Tammes15.Draw.Count: 8 constants
+MODULE Tammes15.Draw.Cyclic: 8 constants
+MODULE Tammes15.Draw.Defs: 78 constants
+MODULE Tammes15.Draw.Exist: 18 constants
+MODULE Tammes15.Draw.FaceWalk: 101 constants
+MODULE Tammes15.Draw.Frame: 30 constants
+MODULE Tammes15.Draw.Iface: 3 constants
+MODULE Tammes15.Draw.Minimal: 3 constants
+MODULE Tammes15.Draw.Realise: 3 constants
+MODULE Tammes15.Draw.Shift: 3 constants
+MODULE Tammes15.Draw.Structure: 7 constants
+MODULE Tammes15.FaceChain.Basic: 5 constants
+MODULE Tammes15.FaceChain.Contact: 9 constants
+MODULE Tammes15.FaceChain.Interfaces: 51 constants
+MODULE Tammes15.FaceChain.Sizes: 21 constants
+MODULE Tammes15.FaceChain.ThreeConn: 34 constants
+MODULE Tammes15.Fans.Cone: 1 constants
+MODULE Tammes15.Fans.Corners: 2 constants
+MODULE Tammes15.Fans.Hexagon: 2 constants
+MODULE Tammes15.Fans.Realise: 10 constants
+MODULE Tammes15.Geom.Basic: 65 constants
+MODULE Tammes15.Geom.Cover: 47 constants
+MODULE Tammes15.Geom.Crofton: 85 constants
+MODULE Tammes15.Geom.Face: 18 constants
+MODULE Tammes15.Geom.Frame: 31 constants
+MODULE Tammes15.Geom.Hexagons: 7 constants
+MODULE Tammes15.Geom.Lune: 22 constants
+MODULE Tammes15.Geom.Nor: 25 constants
+MODULE Tammes15.Geom.Onehex: 22 constants
+MODULE Tammes15.Geom.Qpoly: 107 constants
+MODULE Tammes15.Geom.T8: 21 constants
+MODULE Tammes15.Geom.Wheel: 48 constants
+MODULE Tammes15.Glue.Enclosure: 14 constants
+MODULE Tammes15.Glue.Frames: 14 constants
+MODULE Tammes15.Glue.FramesAlg: 15 constants
+MODULE Tammes15.Glue.Pair: 3 constants
+MODULE Tammes15.Glue.Reconstruct: 46 constants
+MODULE Tammes15.Hyps.Case: 163 constants
+MODULE Tammes15.Hyps.Computations: 9 constants
+MODULE Tammes15.Hyps.Interfaces: 9 constants
+MODULE Tammes15.Hyps.Reduction: 13 constants
+MODULE Tammes15.Hyps.Transport: 44 constants
+MODULE Tammes15.Local41.Chain: 17 constants
+MODULE Tammes15.Local41.Defs: 7 constants
+MODULE Tammes15.Local41.Rotation: 18 constants
+MODULE Tammes15.Numerics.ChordData: 6 constants
+MODULE Tammes15.Numerics.HexData: 97 constants
+MODULE Tammes15.Numerics.Root: 2 constants
+MODULE Tammes15.Numerics.Taylor: 23 constants
+MODULE Tammes15.Rattlers.Basic: 17 constants
+MODULE Tammes15.Rattlers.Hex: 8 constants
+MODULE Tammes15.Rattlers.HexChord: 6 constants
+MODULE Tammes15.Rattlers.HexPoly: 37 constants
+MODULE Tammes15.Rattlers.NorPoly: 11 constants
+MODULE Tammes15.Statement: 19 constants
+MODULE Tammes15.Trigrows.Defs: 10 constants
+MODULE Tammes15.Trigrows.Margins: 18 constants
+MODULE Tammes15.Trigrows.Mono: 71 constants
+MODULE Tammes15.Trigrows.Points: 20 constants
+MODULE Tammes15.Trigrows.Realise: 9 constants
+MODULE Tammes15.Trigrows.Rows: 21 constants
+MODULE Tammes15.Trigrows.Sdist: 25 constants
+MODULE Tammes15.Trigrows.Sphere: 3 constants
+MODULE Tammes15.TwoConn.Blocks: 15 constants
+MODULE Tammes15.TwoConn.Contact: 1 constants
+MODULE Tammes15.TwoConn.Defs: 9 constants
+MODULE Tammes15.TwoConn.Euler: 31 constants
+MODULE Tammes15.TwoConn.Excess: 21 constants
+MODULE Tammes15.TwoConn.Facets: 26 constants
+MODULE Tammes15.TwoConn.FanCones: 53 constants
+MODULE Tammes15.TwoConn.Farm: 121 constants
+MODULE Tammes15.TwoConn.Hull: 34 constants
+MODULE Tammes15.TwoConn.KConn: 16 constants
+MODULE Tammes15.TwoConn.Main: 1 constants
+MODULE Tammes15.TwoConn.Regions: 89 constants
+MODULE Tammes15.TwoConn.Winding: 37 constants
+MODULE Tammes15.Vendor.EM8.AngularArcParametrization: 18 constants
+MODULE Tammes15.Vendor.EM8.Antiprism: 18 constants
+MODULE Tammes15.Vendor.EM8.ArcEmbedding: 10 constants
+MODULE Tammes15.Vendor.EM8.AreaSummation: 1 constants
+MODULE Tammes15.Vendor.EM8.BestPacking: 4 constants
+MODULE Tammes15.Vendor.EM8.BoundaryAdjacency: 10 constants
+MODULE Tammes15.Vendor.EM8.BoundaryCoverage: 10 constants
+MODULE Tammes15.Vendor.EM8.BoundaryFaceArrays: 19 constants
+MODULE Tammes15.Vendor.EM8.BoundaryFaceSupport: 7 constants
+MODULE Tammes15.Vendor.EM8.BoundaryPartition: 14 constants
+MODULE Tammes15.Vendor.EM8.BoundaryPolygons: 13 constants
+MODULE Tammes15.Vendor.EM8.BoundaryReindex: 19 constants
+MODULE Tammes15.Vendor.EM8.BoundarySupportAssembly: 6 constants
+MODULE Tammes15.Vendor.EM8.ChartInverse: 25 constants
+MODULE Tammes15.Vendor.EM8.CircleGapInterior: 11 constants
+MODULE Tammes15.Vendor.EM8.CircleOrder: 10 constants
+MODULE Tammes15.Vendor.EM8.CirclePhase: 7 constants
+MODULE Tammes15.Vendor.EM8.CompactArcPatches: 33 constants
+MODULE Tammes15.Vendor.EM8.ComponentHemisphere: 5 constants
+MODULE Tammes15.Vendor.EM8.ComponentWedgeModel: 8 constants
+MODULE Tammes15.Vendor.EM8.ContactAngles: 38 constants
+MODULE Tammes15.Vendor.EM8.ContactArcLocalGeometry: 14 constants
+MODULE Tammes15.Vendor.EM8.ContactBoundary: 13 constants
+MODULE Tammes15.Vendor.EM8.ContactCertificate: 33 constants
+MODULE Tammes15.Vendor.EM8.ContactChainConvexity: 13 constants
+MODULE Tammes15.Vendor.EM8.ContactComponents: 26 constants
+MODULE Tammes15.Vendor.EM8.ContactCovering: 8 constants
+MODULE Tammes15.Vendor.EM8.ContactCycleEmbedding: 14 constants
+MODULE Tammes15.Vendor.EM8.ContactDirections: 16 constants
+MODULE Tammes15.Vendor.EM8.ContactEdgeFaceModel: 7 constants
+MODULE Tammes15.Vendor.EM8.ContactEndpointGeometry: 7 constants
+MODULE Tammes15.Vendor.EM8.ContactEulerBound: 10 constants
+MODULE Tammes15.Vendor.EM8.ContactFaceLocalModels: 8 constants
+MODULE Tammes15.Vendor.EM8.ContactFaceRegions: 16 constants
+MODULE Tammes15.Vendor.EM8.ContactGeometryGlobal: 10 constants
+MODULE Tammes15.Vendor.EM8.ContactGraphTrace: 15 constants
+MODULE Tammes15.Vendor.EM8.ContactLocalStars: 7 constants
+MODULE Tammes15.Vendor.EM8.ContactOrder: 53 constants
+MODULE Tammes15.Vendor.EM8.ContactQuadrilateral: 5 constants
+MODULE Tammes15.Vendor.EM8.ContactRankBound: 10 constants
+MODULE Tammes15.Vendor.EM8.ContactRotationInvariants: 25 constants
+MODULE Tammes15.Vendor.EM8.ContactSector: 8 constants
+MODULE Tammes15.Vendor.EM8.ContactSectorCover: 9 constants
+MODULE Tammes15.Vendor.EM8.ContactSectorNeighborhoods: 5 constants
+MODULE Tammes15.Vendor.EM8.ContactSeparation: 17 constants
+MODULE Tammes15.Vendor.EM8.ContactSimpleCycles: 42 constants
+MODULE Tammes15.Vendor.EM8.ContactTilingData: 67 constants
+MODULE Tammes15.Vendor.EM8.ContactTilingRigidity: 5 constants
+MODULE Tammes15.Vendor.EM8.ContactVertexFaceModel: 5 constants
+MODULE Tammes15.Vendor.EM8.CrossAlgebra: 14 constants
+MODULE Tammes15.Vendor.EM8.CrossRotations: 4 constants
+MODULE Tammes15.Vendor.EM8.CycleEdgeSeparation: 10 constants
+MODULE Tammes15.Vendor.EM8.CycleSeparationValue: 13 constants
+MODULE Tammes15.Vendor.EM8.CycleVertexSeparation: 7 constants
+MODULE Tammes15.Vendor.EM8.Definitions: 41 constants
+MODULE Tammes15.Vendor.EM8.EmptyContactSector: 7 constants
+MODULE Tammes15.Vendor.EM8.EqualityReconstruction: 10 constants
+MODULE Tammes15.Vendor.EM8.ExteriorTriangle: 7 constants
+MODULE Tammes15.Vendor.EM8.FaceDartPropagation: 8 constants
+MODULE Tammes15.Vendor.EM8.FaceEdgePropagation: 5 constants
+MODULE Tammes15.Vendor.EM8.FaceIncidence: 14 constants
+MODULE Tammes15.Vendor.EM8.FiniteArcPatchCover: 5 constants
+MODULE Tammes15.Vendor.EM8.FiniteCycles: 24 constants
+MODULE Tammes15.Vendor.EM8.FinitePatchChains: 50 constants
+MODULE Tammes15.Vendor.EM8.GlobalPackingAssembly: 7 constants
+MODULE Tammes15.Vendor.EM8.GreatCircleCorners: 7 constants
+MODULE Tammes15.Vendor.EM8.GreatCircleFrames: 22 constants
+MODULE Tammes15.Vendor.EM8.GreatCircleInteriorPropagation: 8 constants
+MODULE Tammes15.Vendor.EM8.GreatCircleShortening: 14 constants
+MODULE Tammes15.Vendor.EM8.GreatCircleTrace: 7 constants
+MODULE Tammes15.Vendor.EM8.HemisphereCoordinates: 40 constants
+MODULE Tammes15.Vendor.EM8.Infinitesimal: 14 constants
+MODULE Tammes15.Vendor.EM8.InitialSupportingFace: 4 constants
+MODULE Tammes15.Vendor.EM8.InteriorChainShortening: 6 constants
+MODULE Tammes15.Vendor.EM8.LocalChart: 28 constants
+MODULE Tammes15.Vendor.EM8.LocalRotations: 28 constants
+MODULE Tammes15.Vendor.EM8.LocalSphericalModels: 8 constants
+MODULE Tammes15.Vendor.EM8.LocalToGlobalArcConvexity: 10 constants
+MODULE Tammes15.Vendor.EM8.OrbitClosure: 14 constants
+MODULE Tammes15.Vendor.EM8.OrthonormalFrame: 13 constants
+MODULE Tammes15.Vendor.EM8.PackingConstants: 8 constants
+MODULE Tammes15.Vendor.EM8.PackingEndgame: 12 constants
+MODULE Tammes15.Vendor.EM8.PackingGeometry: 13 constants
+MODULE Tammes15.Vendor.EM8.PackingMaximum: 21 constants
+MODULE Tammes15.Vendor.EM8.PackingPush: 10 constants
+MODULE Tammes15.Vendor.EM8.PackingReduction: 13 constants
+MODULE Tammes15.Vendor.EM8.Parameter: 34 constants
+MODULE Tammes15.Vendor.EM8.PatchChainMinimization: 28 constants
+MODULE Tammes15.Vendor.EM8.PatchChainSplicing: 11 constants
+MODULE Tammes15.Vendor.EM8.PermutationFixedSpace: 25 constants
+MODULE Tammes15.Vendor.EM8.PermutationPartition: 18 constants
+MODULE Tammes15.Vendor.EM8.PolygonExcess: 26 constants
+MODULE Tammes15.Vendor.EM8.PositiveStress: 4 constants
+MODULE Tammes15.Vendor.EM8.PuncturedSphericalCaps: 7 constants
+MODULE Tammes15.Vendor.EM8.RankinBound: 8 constants
+MODULE Tammes15.Vendor.EM8.ReducedPatchChains: 13 constants
+MODULE Tammes15.Vendor.EM8.RegularSquare: 19 constants
+MODULE Tammes15.Vendor.EM8.RhombusBounds: 10 constants
+MODULE Tammes15.Vendor.EM8.RhombusConcavity: 16 constants
+MODULE Tammes15.Vendor.EM8.RhombusFace: 13 constants
+MODULE Tammes15.Vendor.EM8.RhombusGram: 13 constants
+MODULE Tammes15.Vendor.EM8.RhombusOrientation: 7 constants
+MODULE Tammes15.Vendor.EM8.RhombusRelation: 21 constants
+MODULE Tammes15.Vendor.EM8.RhombusScalar: 15 constants
+MODULE Tammes15.Vendor.EM8.RotationSystem: 22 constants
+MODULE Tammes15.Vendor.EM8.ScottInequality: 23 constants
+MODULE Tammes15.Vendor.EM8.ShortArcPatchChains: 10 constants
+MODULE Tammes15.Vendor.EM8.ShortBoundaryCycles: 10 constants
+MODULE Tammes15.Vendor.EM8.ShortestChainCorners: 7 constants
+MODULE Tammes15.Vendor.EM8.ShortestChainGreatCircle: 4 constants
+MODULE Tammes15.Vendor.EM8.SliceAlignment: 40 constants
+MODULE Tammes15.Vendor.EM8.SliceCovering: 10 constants
+MODULE Tammes15.Vendor.EM8.SliceTarget: 33 constants
+MODULE Tammes15.Vendor.EM8.SolidAngleAlgebra: 8 constants
+MODULE Tammes15.Vendor.EM8.SolidAngleDerivative: 19 constants
+MODULE Tammes15.Vendor.EM8.SolidAngleDomain: 6 constants
+MODULE Tammes15.Vendor.EM8.SphericalArcStability: 8 constants
+MODULE Tammes15.Vendor.EM8.SphericalArcSupport: 14 constants
+MODULE Tammes15.Vendor.EM8.SphericalCapPaths: 13 constants
+MODULE Tammes15.Vendor.EM8.SphericalComplementRegions: 16 constants
+MODULE Tammes15.Vendor.EM8.SphericalCone: 11 constants
+MODULE Tammes15.Vendor.EM8.SphericalConvexPatches: 10 constants
+MODULE Tammes15.Vendor.EM8.SphericalFan: 11 constants
+MODULE Tammes15.Vendor.EM8.SphericalLocalConnectivity: 41 constants
+MODULE Tammes15.Vendor.EM8.SphericalMetric: 17 constants
+MODULE Tammes15.Vendor.EM8.SphericalPolygon: 50 constants
+MODULE Tammes15.Vendor.EM8.SphericalRegionInterior: 10 constants
+MODULE Tammes15.Vendor.EM8.SphericalStrictMetric: 9 constants
+MODULE Tammes15.Vendor.EM8.SphericalTriangle: 14 constants
+MODULE Tammes15.Vendor.EM8.SphericalWedgePaths: 11 constants
+MODULE Tammes15.Vendor.EM8.SupportedTiling: 15 constants
+MODULE Tammes15.Vendor.EM8.TangentAngles: 14 constants
+MODULE Tammes15.Vendor.EM8.TangentCircle: 46 constants
+MODULE Tammes15.Vendor.EM8.TangentWedge: 10 constants
+MODULE Tammes15.Vendor.EM8.TracePatchSubdivision: 9 constants
+MODULE Tammes15.Vendor.EM8.VertexArea: 2 constants
+MODULE Tammes15.Vendor.EM8.VertexConcavity: 22 constants
+MODULE Tammes15.Vendor.EM8.VoronoiRegions: 8 constants
+MODULE Tammes15.Vendor.EM8.WeakBoundarySupport: 10 constants
+MODULE Tammes15.Vendor.EM8.WeakEulerArea: 2 constants
+SCOPE [M:Tammes15]: 4268 constants in 217 modules
+FLAGS: 0 (6 compiled-code shims `_unsafe_rec` of checked recursive definitions not counted)
+AXIOMS OK: 4268 constants reach 66975 constants and only the axioms [Classical.choice, Quot.sound, propext]
+exit 0; modules audited: 218
+audit: PASS
+CHECK PASS

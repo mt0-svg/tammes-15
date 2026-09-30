@@ -1,0 +1,21 @@
+# stage A (plantri_md5 | vlevel1 --relsys over the whole enumeration, 2042 parts)
+recorded: plantri cpu 9192.39 s, vlevel1 (Girard rows on) 2639.58 s
+probe (12 parts): plantri user 116.99 s against recorded 96.66 s (ratio 1.210); vlevel1 --relsys user 39.78 s against recorded default 29.02 s (ratio 1.371)
+projected stage A: 14744 core s
+# vkill pass 1 (--nodes 30000 --maxsec 5) over the 462,703 stage-A survivors
+k0: recorded class total 5427.5 s; sample relsys 14.39 s against recorded 16.35 s on the same graphs; projected 4778 s
+k1: recorded class total 6709.3 s; sample relsys 79.85 s against recorded 91.23 s on the same graphs; projected 5872 s
+k2: recorded class total 760.4 s; sample relsys 177.95 s against recorded 177.50 s on the same graphs; projected 762 s
+k3: recorded class total 25.0 s; sample relsys 25.01 s against recorded 25.02 s on the same graphs; projected 25 s
+projected pass 1: 11438 core s
+# vkill pass 2 (--shave 8 --incr --maxsec 60) on the graphs pass 1 leaves
+k0: sample leaves 0 of 1001; no relsys pass-2 data, recorded default pass 2 taken: 273 graphs, 1939 s
+k1: sample leaves 6 of 300; relsys pass 2 mean 17.8 s over 6 graphs; projected 540 graphs, 9616 s
+k2: sample leaves 28 of 111; relsys pass 2 mean 12.7 s over 28 graphs; projected 111 graphs, 1418 s
+k3: sample leaves 5 of 5; relsys pass 2 mean 55.1 s over 5 graphs; projected 5 graphs, 276 s
+projected pass 2: 13248 core s
+# the graphs pass 2 leaves: per-case passes (hard_600, fp3_120, res_600, slices)
+== relsys kills 11 of 11 cases; not killed:
+recorded killing passes of the 42 residue graphs: 7864.62 s; hard-case ratio relsys over recorded: 1.092
+projected residue: 8588 core s (a lower bound: failed attempts and BUDGET cases are not counted)
+# total projected 48018 core s = 13.34 core h, 6.67 h wall at 2 cores

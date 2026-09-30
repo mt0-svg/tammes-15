@@ -1,0 +1,11 @@
+# source: LeanCode/LargeS/Lean_Code at commit 50d14bc06bd41f61573eb6a36eedb8d00759af8f
+== SolidAngleDerivative
+5,6d4
+< -- tammes-15 port change: instance search for ContinuousSMul ℝ ℝ³ times out at the default limit on Lean v4.34.1.
+< set_option synthInstance.maxHeartbeats 200000
+== CycleSeparationValue
+5,6d4
+< -- tammes-15 port change: instance search for ContinuousSMul ℝ ℝ³ times out at the default limit on Lean v4.34.1 (l.28, l.51 of the source).
+< set_option synthInstance.maxHeartbeats 200000
+files compared: 140; with differences: 2; namespace and end lines renamed: 280; files in Vendor/EM8 not in the order list: none
+generalized files: 48, `Fin nPts` occurrences: 323; hand changes undone: 31 (rows of handfix.tsv)

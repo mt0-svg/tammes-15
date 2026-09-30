@@ -1,0 +1,7 @@
+src/bin/vkill.rs: 1 default path put back
+src/bin/vtest.rs: 1 default path put back
+    Finished `release` profile [optimized] target(s) in 31.25s
+vkill a518bbb9af0f183f48fef8907e9136bbc68a530c60d8d1178a3bb6da61d309a5 recorded a518bbb9af0f183f48fef8907e9136bbc68a530c60d8d1178a3bb6da61d309a5 SAME
+vlevel1 080b6d6dbca7a878c4a8047f56368e62e4641470a7b8848cd80883be8127ed9b recorded 080b6d6dbca7a878c4a8047f56368e62e4641470a7b8848cd80883be8127ed9b SAME
+vtest 3130163e74819a0aae6e263d4a7f69156c16b25902af0f11f7f7be6d77bfd12a recorded 3130163e74819a0aae6e263d4a7f69156c16b25902af0f11f7f7be6d77bfd12a SAME
+SAME BINARIES

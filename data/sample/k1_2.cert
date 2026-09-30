@@ -1,0 +1,282 @@
+G 0 0
+K hex 1 0
+E
+G 1 0
+K pent 8 0
+E
+G 2 0
+K pent 6 1
+E
+G 3 0
+K pent 1 0
+E
+G 4 0
+K pent 1 0
+E
+G 5 0
+K lin -1 0
+E
+G 6 0
+K pent 5 0
+E
+G 7 0
+K lin -1 0
+E
+G 8 0
+S 2 3ff7e46a11c33549
+S 3 40013fd6be66a25b
+S 17 3ffc0d6ad7d84b6c
+S 26 3feecf4eb36f09b6
+K lin -1 0
+K hex 7 1
+S 24 3ff7e46a11c33549
+S 26 3feecf4eb36f09b6
+K pent 9 0
+K hex 7 0
+S 26 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 19 3ff8919387ef4a97
+S 8 3ffa1c9875fae358
+S 28 3ff7b59f25b30281
+S 30 3ff7b59f25b30281
+S 27 3ff4cc4d53d1d052
+S 26 3fee639539afd679
+S 29 3ff6caafeb43e0db
+K wheel 7 0
+S 32 3ff65f80713a0fdf
+K wheel 7 0
+S 15 40084ee927ead620
+K lin -1 0
+S 31 3ff305d6b1f8d1e0
+K wheel 7 0
+K wheel 7 0
+S 29 3ff6e01f5d416854
+K wheel 7 0
+S 15 40083a4e790de2d2
+K rho 0 0
+K hex 7 0
+K wheel 7 0
+K wheel 7 0
+K wheel 7 0
+K rho 0 0
+S 28 3ff84b46017e6e93
+S 30 3ff84b453353afa3
+S 8 3ff695d124a178e4
+S 27 3ff4ba423f36d2d6
+K lin -1 0
+K wheel 7 0
+S 27 3ff4d33989088844
+S 13 3ff9088fca770216
+S 26 3fee639539afd679
+K hex 7 0
+K lin -1 0
+S 26 3fee639539afd679
+K hex 7 0
+K hex 7 0
+K wheel 7 0
+K wheel 7 0
+K wheel 7 0
+S 27 3ff8c306fb939ca6
+S 19 3ff8919387ef4a97
+S 31 3ff622a62e84b8ca
+K hex 7 1
+K wheel 7 0
+S 31 3ff622a62e84b8ca
+K hex 7 1
+K wheel 7 0
+K wheel 7 0
+S 32 3ffe9971f68f7018
+S 19 3ff8919387ef4a97
+S 28 3ffab379e6d48386
+S 8 3ffa1c9875fae35a
+S 30 3ff7e16ff8959ab8
+S 26 3fee639539afd679
+K wheel 7 0
+K hex 7 0
+K wheel 7 0
+K rho 0 0
+K lin -1 0
+S 28 3ffab379e6d48386
+S 8 3ff695d124a178e4
+S 26 3fee639539afd679
+K rho 1 0
+K hex 7 0
+S 30 3ff7c01916851802
+S 26 3fee639539afd679
+K lin -1 0
+K wheel 7 0
+K wheel 7 0
+K lin -1 0
+K wheel 7 0
+S 28 3fff70e4ea0dd694
+S 29 3fff70e4ea0dd694
+S 32 3fff70e4ea0dd694
+S 8 3ff98699705b0889
+S 19 3ffa10d46b4c5339
+S 21 3ffc178909958d0f
+S 30 3ff92e0ed295f800
+S 13 3ff9ee80473d41ad
+K rho 0 0
+K lin -1 0
+K wheel 7 0
+S 25 4000896581287eac
+K hex 7 0
+K lin -1 0
+K hex 7 0
+K rho 0 0
+S 8 3ff98699705b0889
+S 27 3ff8fa07c22279f2
+K hex 7 0
+K hex 7 1
+K rho 0 0
+S 8 3ff98699705b0889
+S 30 3ffbff876cc6132d
+S 19 3ffa10d46b4c5339
+S 21 3ffc178909958d0f
+S 13 3ff9ee80473d41ad
+K rho 0 0
+K lin -1 0
+S 25 4000896581287eac
+K hex 7 0
+K lin -1 0
+K hex 7 0
+K wheel 7 0
+K rho 0 0
+K wheel 7 0
+S 5 3ffb5dcf8c12097e
+S 24 3ff7e46a11c33549
+K hex 7 0
+S 26 3feecf4eb36f09b6
+K hex 7 0
+S 28 3fff70e4ea0dd694
+S 29 3fff70e4ea0dd694
+S 32 3fff70e4ea0dd694
+S 16 3ff7331105f992a6
+K hex 7 0
+K hex 7 0
+S 16 3ff7331105f992a6
+K hex 7 0
+K hex 7 0
+S 30 3fff8bd3487da35d
+S 16 3ff7331105f992a6
+K hex 7 0
+K hex 7 0
+K wheel 7 0
+K hex 7 0
+S 26 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 19 3ff805c64d9e92e5
+S 27 3ff4f94eedff0874
+S 30 3ff7903a3b072eaa
+S 15 40081e4c20dae2e6
+K lin -1 0
+S 31 3ff4d79e6350ff16
+S 26 3fee639539afd679
+K hex 7 0
+K hex 7 0
+K wheel 7 0
+K wheel 7 0
+K wheel 7 0
+S 28 3ff7dfd864ebbd55
+S 27 3ff4f94eedff0874
+S 31 3ff4d79e6350ff16
+K lin -1 0
+K wheel 7 0
+K wheel 7 0
+K wheel 7 0
+S 27 3ff8cc6345cb4e92
+S 31 3ff640ca6add6b2a
+S 12 40069289f5cc1cb5
+K hex 7 0
+K hex 7 1
+K wheel 7 0
+K wheel 7 0
+S 32 3ffe9971f68f7018
+S 28 3ffae305c0cf7e7e
+S 30 3ff9467b6fc0d48e
+S 19 3ff805c64d9e92e5
+S 15 40081e4c20dae2e6
+K lin -1 0
+S 26 3fee639539afd679
+K hex 7 0
+K hex 7 0
+S 1 4002214d667fc416
+K lin -1 0
+K hex 7 1
+K wheel 7 0
+K wheel 7 0
+K wheel 7 0
+S 28 3fff70e4ea0dd694
+S 29 3fff70e4ea0dd694
+S 32 3fff70e4ea0dd694
+S 24 3ff937377b05fe20
+K lin -1 0
+S 13 3ffba8828de5506a
+K rho 0 0
+K hex 7 1
+S 27 3ff8fa07c22279f1
+S 24 3ff937377b05fe20
+K lin -1 0
+K hex 7 0
+K hex 7 1
+S 30 3ffc094f9d276567
+S 24 3ff937377b05fe20
+K lin -1 0
+S 13 3ffb49d29dc77f32
+K hex 7 0
+K lin -1 0
+K wheel 7 0
+K wheel 7 0
+S 26 3feecf4eb36f09b6
+K lin -1 0
+S 28 3fff70e4ea0dd694
+S 29 3fff70e4ea0dd694
+S 32 3fff70e4ea0dd694
+S 18 3ffb9b50e99ed343
+K rho 0 0
+K hex 7 1
+S 27 3ff90036606bfa07
+K rho 1 0
+K hex 7 0
+S 30 3ffdcce81f1cd342
+S 18 3ffb9b50e99ed343
+K rho 0 0
+K hex 7 1
+K wheel 7 0
+K wheel 7 0
+E
+G 9 0
+K pent 0 0
+E
+G 10 0
+K pent 10 2
+E
+G 11 0
+K pent 4 0
+E
+G 12 0
+K pent 9 0
+E
+G 13 0
+K hex 1 0
+E
+G 14 0
+K hex 0 0
+E
+G 15 0
+K hex 5 0
+E
+G 16 0
+K hex 11 1
+E
+G 17 0
+K pent 8 2
+E
+G 18 0
+K pent 3 0
+E
+G 19 0
+K pent 1 0
+E

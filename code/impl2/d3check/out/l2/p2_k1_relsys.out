@@ -1,0 +1,6 @@
+100 KILLED 1 11 1.6188 faces=[2, 6, 2, 1] [[4] Killed n=11 e=6 L=0 P=0 E=0 LP=0 done=1.0000]
+360 BUDGET 1 224 60.0229 faces=[0, 4, 4, 1] [[5] Budget n=224 e=105 L=0 P=0 E=0 LP=0 done=0.0393]
+730 KILLED 1 45 6.9671 faces=[2, 6, 2, 1] [[0] Killed n=45 e=23 L=0 P=0 E=0 LP=0 done=1.0000]
+1220 KILLED 1 53 13.2175 faces=[2, 3, 4, 1] [[7] Killed n=53 e=27 L=0 P=0 E=0 LP=0 done=1.0000]
+2200 KILLED 2 34 6.2299 faces=[2, 4, 2, 2] [[1] Killed n=17 e=9 L=0 P=0 E=0 LP=0 done=1.0000] [[9] Killed n=17 e=9 L=0 P=0 E=0 LP=0 done=1.0000]
+2670 KILLED 2 138 18.8103 faces=[0, 8, 0, 2] [[4] Killed n=67 e=34 L=0 P=0 E=0 LP=0 done=1.0000] [[7] Killed n=71 e=36 L=0 P=0 E=0 LP=0 done=1.0000]

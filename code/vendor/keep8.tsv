@@ -1,0 +1,123 @@
+module	kind	name	occurrence	reason
+Definitions	abbrev	Configuration8	1	probe: Unknown identifier `nPts`
+Definitions	def	E	1	probe: used at Fin 8 by ℰ
+Definitions	def	X	1	probe: Type mismatch | Fin.append (fun j => !₂[r a * cos (↑↑j * π / 2), r a * sin (↑↑j * π / 2), h a]) fun j => | !₂[r a * cos (π / 4 + ↑↑j * π / 2), r a * sin (π / 4 + ↑↑j * π / 2), -h a]
+Definitions	def	P	1	probe: Type mismatch | X aInf | has type
+Definitions	lemma	finEight_split	1	probe: Type mismatch | Fin.castAdd 4 j | has type
+Definitions	theorem	X_mem_unitSphere	1	probe: Application type mismatch: The argument | i | has type
+Definitions	lemma	E_nonneg	1	probe: Application type mismatch: The argument | Y | has type
+Definitions	theorem	minimalEnergy_eq_of_global	1	probe: don't know how to synthesize implicit argument `nPts` | @E (?m.18 s a hX hmin) s (X a) | context:
+Antiprism	def	Xc	1	probe: Type mismatch | ![!₂[r a, 0, h a], !₂[0, r a, h a], !₂[-r a, 0, h a], !₂[0, -r a, h a], !₂[r a * (√2 / 2), r a * (√2 / 2), -h a], | !₂[-r a * (√2 / 2), r a * (√2 / 2), -h a], !₂[-r a * (√2 / 2), -r a * (√2 / 2), -h
+Antiprism	lemma	finEight_pair_sum	1	probe: failed to synthesize instance of type class | OfNat (Fin nPts) 0 | numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+Antiprism	theorem	energy_linearIsometry	1	probe: Application type mismatch: The argument | i | has type
+Antiprism	lemma	two_mul_pairSum_of_symmetric	1	probe: Tactic `rewrite` failed: Did not find an occurrence of the pattern | ∑ i, ∑ j with i < j, ?f i j | in the target expression
+Antiprism	theorem	energy_permutation	1	probe: Application type mismatch: The argument | i | has type
+Antiprism	theorem	congruent_energy	1	probe: Application type mismatch: The argument | Z | has type
+ContactCertificate	def	azimuth	1	probe: Type mismatch | ![0, π / 2, π, 3 * π / 2, π / 4, 3 * π / 4, 5 * π / 4, 7 * π / 4] | has type
+ContactCertificate	def	layerSign	1	probe: Type mismatch | ![1, 1, 1, 1, -1, -1, -1, -1] | has type
+ContactCertificate	def	rigidityRow	1	probe: typeclass instance problem is stuck | OfNat (Fin ?m.1) 0 | Note: Lean will not try to resolve this typeclass instance problem because the first type argument to `OfNat` contains metavariables. This argument must be fully determined before L
+ContactCertificate	abbrev	InfinitesimalCoordinates	1	probe: Unknown identifier `nPts`
+ContactCertificate	theorem	contact_minor_injective	1	probe: failed to synthesize instance of type class | OfNat (Fin nPts) 0 | numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+PackingGeometry	abbrev	SphereTuple	1	probe: Unknown identifier `nPts`
+PackingGeometry	def	toSphereTuple	1	probe: Application type mismatch: The argument | i | has type
+PackingGeometry	def	fromSphereTuple	1	probe: Application type mismatch: The argument | i | has type
+PackingGeometry	lemma	fromSphereTuple_sphere	1	probe: Not a definitional equality: the left-hand side | fromSphereTuple (toSphereTuple Y hY) | is not definitionally equal to the right-hand side
+PackingGeometry	def	OrbitNeighborhood	1	probe: Unknown identifier `nPts`
+ContactRankBound	lemma	gaugeUnit_nonempty	1	probe: Unknown identifier `nPts`
+PositiveStress	theorem	exact_positive_stress	1	probe: Application type mismatch: The argument | α | has type
+RankinBound	theorem	eight_points_have_positive_inner	1	probe: unsolved goals | nPts : ℕ | Y : Fin nPts → ℝ³
+PackingConstants	theorem	P_pair_sq_ge_tau	1	probe: Application type mismatch: The argument | i | has type
+Infinitesimal	def	polarP	1	probe: Application type mismatch: The argument | i | has type
+Infinitesimal	def	tangentVector	1	probe: Application type mismatch: The argument | i | has type
+Infinitesimal	lemma	tangentVector_orthogonal	1	probe: Application type mismatch: The argument | i | has type
+Infinitesimal	lemma	inner_variation_eq_rigidityRow	1	probe: Application type mismatch: The argument | i | has type
+Infinitesimal	def	squaredDistanceDifferential	1	probe: Application type mismatch: The argument | i | has type
+Infinitesimal	lemma	squaredDistanceDifferential_eq	1	probe: Application type mismatch: The argument | i | has type
+LocalChart	def	coordinateChart	1	probe: Application type mismatch: The argument | i | has type
+LocalChart	lemma	polarP_norm	1	probe: Application type mismatch: The argument | i | has type
+LocalChart	lemma	coordinateChart_mem_sphere	1	probe: Application type mismatch: The argument | i | has type
+LocalChart	lemma	tangentVector_smul	1	probe: Application type mismatch: The argument | i | has type
+LocalChart	def	tangentVectorLinear	1	probe: Application type mismatch: The argument | i | has type
+LocalChart	lemma	tangentVector_contDiff	1	probe: Application type mismatch: The argument | i | has type
+LocalChart	lemma	coordinateChart_contDiffAt	1	probe: Application type mismatch: The argument | i | has type
+LocalChart	def	chartRay	1	probe: Application type mismatch: The argument | i | has type
+LocalChart	lemma	coordinateChart_smul	1	probe: unsolved goals | case i | nPts : ℕ
+LocalChart	lemma	chartRay_hasDerivAt	1	probe: Application type mismatch: The argument | i | has type
+LocalChart	def	chartSquaredDistance	1	probe: Application type mismatch: The argument | i | has type
+LocalChart	lemma	chartSquaredDistance_hasDerivAt	1	probe: Application type mismatch: The argument | i | has type
+LocalChart	lemma	chartSquaredDistance_deriv	1	probe: Application type mismatch: The argument | i | has type
+AreaSummation	theorem	area_inequality_from_incidence	1	probe: unsolved goals | nPts : ℕ | α β γ S₃ S₄ : ℝ
+ChartInverse	def	tangentCoordinateInverse	1	probe: Application type mismatch: The argument | i | has type
+ChartInverse	lemma	tangentCoordinateInverse_right	1	probe: Application type mismatch: The argument | i | has type
+ChartInverse	def	coordinateInverse	1	probe: Application type mismatch: The argument | i | has type
+ChartInverse	lemma	coordinateChart_inverse	1	probe: Application type mismatch: The argument | i | has type
+PackingMaximum	def	packingIndexPairs	1	probe: used at Fin 8 by packingIndexPairs_nonempty
+PackingMaximum	lemma	packingIndexPairs_nonempty	1	probe: don't know how to synthesize implicit argument `α` | @Finset.Nonempty (Fin ?m.1 × Fin ?m.1) packingIndexPairs | context:
+PackingMaximum	def	packingMaxInner	1	probe: Unknown identifier `packingIndexPairs_nonempty`
+PackingMaximum	lemma	inner_le_packingMaxInner	1	probe: Application type mismatch: The argument | Y | has type
+PackingMaximum	lemma	packingMaxInner_le_iff	1	probe: Unknown identifier `packingIndexPairs_nonempty`
+PackingMaximum	lemma	packingMaxInner_attained	1	probe: Unknown identifier `packingIndexPairs_nonempty`
+PackingMaximum	lemma	packingMaxInner_continuous	1	probe: don't know how to synthesize implicit argument `X` | @Continuous (Fin ?m.5 → ℝ³) ℝ Pi.topologicalSpace PseudoMetricSpace.toUniformSpace.toTopologicalSpace packingMaxInner | context:
+PackingMaximum	lemma	packingMaxInner_pos	1	probe: Application type mismatch: The argument | Y | has type
+PackingMaximum	theorem	packing_maximum_exists	1	probe: Unknown identifier `packingMaxInner_continuous.comp`
+PackingMaximum	theorem	maximizing_irreducible_reduction	1	probe: Application type mismatch: The argument | Y | has type
+SliceTarget	lemma	coordinateInverse_in_gauge	1	probe: failed to synthesize instance of type class | OfNat (Fin nPts) 0 | numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+ContactSeparation	theorem	contact_cut_partition_impossible	1	probe: omega could not prove the goal: | a possible counterexample may satisfy the constraints | d ≥ 0
+WeakEulerArea	theorem	area_inequality_before_euler	1	probe: unsolved goals | nPts : ℕ | α β γ S₃ S₄ : ℝ
+SliceAlignment	def	sliceDot	1	probe: failed to synthesize instance of type class | OfNat (Fin nPts) 1 | numerals are polymorphic in Lean, but the numeral `1` cannot be used in a context where the expected type is
+SliceAlignment	def	firstAlignment	1	probe: failed to synthesize instance of type class | OfNat (Fin nPts) 0 | numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+SliceAlignment	def	firstAligned	1	probe: Application type mismatch: The argument | Y | has type
+SliceAlignment	def	sliceSourcePerp	1	probe: failed to synthesize instance of type class | OfNat (Fin nPts) 1 | numerals are polymorphic in Lean, but the numeral `1` cannot be used in a context where the expected type is
+SliceAlignment	def	sliceTargetPerp	1	probe: Application type mismatch: The argument | Y | has type
+SliceAlignment	def	sliceAlignment	1	probe: Application type mismatch: The argument | Y | has type
+SliceAlignment	def	alignedConfiguration	1	probe: Application type mismatch: The argument | Y | has type
+SliceAlignment	lemma	firstAligned_zero	1	probe: failed to synthesize instance of type class | OfNat (Fin nPts) 0 | numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+SliceAlignment	lemma	firstAligned_inner	1	probe: failed to synthesize instance of type class | OfNat (Fin nPts) 0 | numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+SliceAlignment	lemma	sliceSourcePerp_orthogonal	1	probe: failed to synthesize instance of type class | OfNat (Fin nPts) 0 | numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+SliceAlignment	lemma	sliceTargetPerp_orthogonal	1	probe: Application type mismatch: The argument | Y | has type
+SliceAlignment	lemma	slice_perp_norm_eq	1	probe: failed to synthesize instance of type class | OfNat (Fin nPts) 1 | numerals are polymorphic in Lean, but the numeral `1` cannot be used in a context where the expected type is
+SliceAlignment	lemma	alignedConfiguration_zero	1	probe: failed to synthesize instance of type class | OfNat (Fin nPts) 0 | numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+SliceAlignment	lemma	alignedConfiguration_one	1	probe: failed to synthesize instance of type class | OfNat (Fin nPts) 1 | numerals are polymorphic in Lean, but the numeral `1` cannot be used in a context where the expected type is
+SliceAlignment	lemma	alignedConfiguration_congruent	1	probe: Application type mismatch: The argument | Y | has type
+SliceAlignment	lemma	alignedConfiguration_sphere	1	probe: Application type mismatch: The argument | Y | has type
+SliceAlignment	lemma	alignedConfiguration_gauge	1	probe: Application type mismatch: The argument | Y | has type
+SliceAlignment	lemma	firstAligned_P	1	probe: Application type mismatch: The argument | i | has type
+SliceAlignment	lemma	firstAligned_continuousAt	1	probe: Unknown identifier `nPts`
+SliceAlignment	lemma	alignedConfiguration_continuousAt	1	probe: Unknown identifier `nPts`
+ContactComponents	theorem	unique_nontrivial_contact_component	1	probe: omega could not prove the goal: | a possible counterexample may satisfy the constraints | d ≥ 0
+ContactComponents	theorem	irreducible_component_two_connected	1	probe: Application type mismatch: The argument | Y | has type
+ContactComponents	theorem	contactTwoConnected_of_aInf	1	Application type mismatch: The argument | Y | has type
+SliceCovering	theorem	local_chart_covering	1	probe: Application type mismatch: The argument | P | has type
+SliceCovering	theorem	chart_orbit_neighborhood	1	probe: Unknown identifier `nPts`
+ContactRotationInvariants	theorem	contact_rotation_orbit_count	1	probe: unsolved goals | nPts : ℕ | Y : Fin nPts → ℝ³
+ContactRotationInvariants	theorem	contact_joint_invariants_constant	1	probe: Application type mismatch: The argument | Y | has type
+ContactTilingData	structure	ContactTilingData	1	not converged: kept whole
+ContactTilingData	variable	-	1	not converged: kept whole
+ContactTilingData	def	localArea	1	not converged: kept whole
+ContactTilingData	theorem	total_excess_before_euler	1	not converged: kept whole
+ContactTilingData	theorem	local_area_reduction	1	not converged: kept whole
+ContactTilingData	theorem	packing_and_euler	1	not converged: kept whole
+ContactTilingData	theorem	area_bound	1	not converged: kept whole
+ContactTilingData	theorem	equality_incidence	1	not converged: kept whole
+ContactTilingData	theorem	equality_face_counts	1	not converged: kept whole
+ContactTilingData	def	BoundaryAdjacency	1	not converged: kept whole
+EqualityReconstruction	theorem	regular_square_cross_contact_reconstruction	1	probe: Application type mismatch: The argument | Fin.castAdd 4 i | has type
+EqualityReconstruction	theorem	relabeled_regular_square_cross_contact_reconstruction	1	probe: Application type mismatch: The argument | Fin.castAdd 4 i | has type
+EqualityReconstruction	lemma	congruent_of_model_point_witnesses	1	probe: Application type mismatch: The argument | i | has type
+EqualityReconstruction	theorem	square_triangle_witness_reconstruction	1	probe: Application type mismatch: The argument | P | has type
+EqualityReconstruction	theorem	regular_square_triangle_witness_reconstruction	1	probe: Application type mismatch: The argument | P | has type
+BoundaryPolygons	lemma	length_le_eight_of_support	1	Type mismatch: After simplification, term | Fintype.card_le_of_injective C.vertex (vertex_injective_of_support C hsupport) | has type
+ContactTilingRigidity	theorem	contact_tiling_rigidity	1	Application type mismatch: The argument | Y | has type
+GlobalPackingAssembly	def	IrreducibleContactDecomposition	1	Unknown identifier `nPts`
+GlobalPackingAssembly	theorem	global_packing_bound_of_decomposition	1	Application type mismatch: The argument | Y | has type
+GlobalPackingAssembly	theorem	global_packing_rigidity_of_decomposition	1	Application type mismatch: The argument | P | has type
+GlobalPackingAssembly	theorem	packing_rigidity_interface_of_decomposition	1	Application type mismatch: The argument | P | has type
+ContactEulerBound	theorem	contact_euler_upper_bound	1	failed to synthesize instance of type class | OfNat (Fin nPts) 0 | numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+ContactEulerBound	theorem	contact_euler_upper_bound_of_support	1	Application type mismatch: The argument | Y | has type
+BoundaryFaceArrays	theorem	boundary_array_euler_bound	1	Application type mismatch: The argument | Y | has type
+SupportedTiling	def	supportedContactTilingData	1	Application type mismatch: The argument | Y | has type
+SupportedTiling	theorem	packing_constant_of_boundary_support	1	Application type mismatch: The argument | Y | has type
+BoundaryAdjacency	theorem	supported_tiling_boundary_adjacency	1	Application type mismatch: The argument | Y | has type
+BoundarySupportAssembly	def	IrreducibleBoundarySupport	1	Unknown identifier `nPts`
+BoundarySupportAssembly	theorem	packing_rigidity_interface_of_boundary_support	1	Application type mismatch: The argument | P | has type
+BestPacking	theorem	eight_point_best_packing_rigidity	1	Application type mismatch: The argument | P | has type

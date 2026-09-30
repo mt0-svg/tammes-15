@@ -1,0 +1,43 @@
+# residue entry | vkill tag | verdict | pass | d range (deg) | nodes | seconds | binary and options (all: Local, Pair, Edge; df = --dropfam HexC4Iso,HexChain5)
+k0_0 #7421 (other) | k0_0_7421 | KILLED | hard_600 | [dlo, dhi] | 793 nodes | 201.6208 s | bin_v3 --shave8,--incr
+k0_0 #43064 (other) | k0_0_43064 | KILLED | hard_600 | [dlo, dhi] | 327 nodes | 85.3720 s | bin_v3 --shave8,--incr
+k0_0 #121092 (other) | k0_0_121092 | KILLED | hard_600 | [dlo, dhi] | 419 nodes | 115.2454 s | bin_v3 --shave8,--incr
+k0_2 #35779 (other) | k0_2_35779 | KILLED | hard_600 | [dlo, dhi] | 277 nodes | 75.6625 s | bin_v3 --shave8,--incr
+k1_0 #360 (free-point) | k1_1 | KILLED | k1_1_all | [dlo, dhi] | 2135 nodes | 620.8266 s | bin_v5 --shave8,--incr
+k1_0 #2264 (free-point) | k1_8 | KILLED | fp3_120 | [dlo, dhi] | 556 nodes | 150.9636 s | bin_v3 --shave8,--incr
+k1_0 #2612 (free-point) | k1_9 | KILLED | fp3_120 | [dlo, dhi] | 95 nodes | 67.0829 s | bin_v3 --shave8,--incr
+k1_1 #1927 (free-point) | k1_15 | KILLED | res_600 | [dlo, dhi] | 525 nodes | 125.8685 s | bin_v5 --shave8,--incr,df
+k1_2 #1374 (free-point) | k1_28 | KILLED | res_600 | [dlo, dhi] | 329 nodes | 84.9069 s | bin_v5 --shave8,--incr,df
+k1_3 #258 (free-point) | k1_36 | KILLED | fp3_120 | [dlo, dhi] | 171 nodes | 101.5358 s | bin_v3 --shave8,--incr
+k1_4 #69 (free-point) | k1_44 | KILLED | res_600 | [dlo, dhi] | 2602 nodes | 350.6364 s | bin_v5 --shave8,--incr,df
+k1_4 #2621 (free-point) | k1_50 | KILLED | fp3_120 | [dlo, dhi] | 267 nodes | 72.4471 s | bin_v3 --shave8,--incr
+k1_5 #250 (free-point) | k1_51 | KILLED | fp3_120 | [dlo, dhi] | 179 nodes | 101.5744 s | bin_v3 --shave8,--incr
+k1_5 #1032 (free-point) | k1_53 | KILLED | fp3_120 | [dlo, dhi] | 173 nodes | 98.9457 s | bin_v3 --shave8,--incr
+k1_5 #1217 (free-point) | k1_55 | KILLED | slices res_d2 [54.6,dhi] 13 nodes 1.7976 s (bin_v5 --shave8,--incr,df); res_d1 [53.7,54.6] 95 nodes 20.5218 s (bin_v5 --shave8,--incr,df); res_d0 [dlo,53.7] 1031 nodes 291.5196 s (bin_v5 --shave8,--incr,df) | union [dlo, dhi] | 1139 nodes | 313.8390 s | see slices
+k1_5 #1389 (free-point) | k1_56 | KILLED | fp3_120 | [dlo, dhi] | 101 nodes | 66.1323 s | bin_v3 --shave8,--incr
+k1_6 #1389 (free-point) | k1_68 | KILLED | slices res_d2 [54.6,dhi] 21 nodes 2.9711 s (bin_v5 --shave8,--incr,df); res_d1 [53.7,54.6] 301 nodes 60.0781 s (bin_v5 --shave8,--incr,df); r68_a_w [dlo,53.6578502] 923 nodes 563.4849 s (bin_v6 --shave8,--incr,--dweight1e-9); r68_s1w [53.6578502,53.6585] 943 nodes 522.7806 s (bin_v6 --shave8,--incr,--dweight1e-9); r68_s2w [53.6585,53.6592] 677 nodes 365.9013 s (bin_v6 --shave8,--incr,--dweight1e-9); r68_s3w [53.6592,53.66] 553 nodes 284.3111 s (bin_v6 --shave8,--incr,--dweight1e-9); r68_s4w [53.66,53.673] 581 nodes 297.6328 s (bin_v6 --shave8,--incr,--dweight1e-9); r68_s5 [53.673,53.686] 1301 nodes 307.8093 s (bin_v5 --shave8,--incr,df); r68_s6 [53.686,53.7] 847 nodes 190.7844 s (bin_v5 --shave8,--incr,df) | union [dlo, dhi] | 6147 nodes | 2595.7536 s | see slices
+k1_6 #2985 (free-point) | k1_76 | KILLED | fp3_120 | [dlo, dhi] | 117 nodes | 68.6250 s | bin_v3 --shave8,--incr
+k1_7 #277 (free-point) | k1_77 | KILLED | slices res_d2 [54.6,dhi] 5 nodes 0.8949 s (bin_v5 --shave8,--incr,df); res_d1 [53.7,54.6] 43 nodes 8.3238 s (bin_v5 --shave8,--incr,df); res_d0 [dlo,53.7] 559 nodes 117.0000 s (bin_v5 --shave8,--incr,df) | union [dlo, dhi] | 607 nodes | 126.2187 s | see slices
+k1_7 #897 (free-point) | k1_83 | KILLED | fp3_120 | [dlo, dhi] | 165 nodes | 91.3133 s | bin_v3 --shave8,--incr
+k1_7 #1903 (free-point) | k1_89 | KILLED | fp3_120 | [dlo, dhi] | 289 nodes | 77.8060 s | bin_v3 --shave8,--incr
+k1_7 #2469 (free-point) | k1_95 | KILLED | fp3_120 | [dlo, dhi] | 219 nodes | 66.2698 s | bin_v3 --shave8,--incr
+k1_8 #1177 (free-point) | k1_102 | KILLED | fp3_120 | [dlo, dhi] | 317 nodes | 113.2608 s | bin_v3 --shave8,--incr
+k1_8 #1852 (free-point) | k1_104 | KILLED | fp3_120 | [dlo, dhi] | 205 nodes | 79.1947 s | bin_v3 --shave8,--incr
+k2 #11 (free-point) | k2_0 | KILLED | res_600 | [dlo, dhi] | 199 nodes | 66.6387 s | bin_v5 --shave8,--incr,df
+k2 #42 (free-point) | k2_1 | KILLED | res_600 | [dlo, dhi] | 285 nodes | 96.1705 s | bin_v5 --shave8,--incr,df
+k2 #72 (free-point) | k2_3 | KILLED | res_600 | [dlo, dhi] | 481 nodes | 156.8761 s | bin_v5 --shave8,--incr,df
+k2 #74 (free-point) | k2_4 | KILLED | res_600 | [dlo, dhi] | 147 nodes | 51.5771 s | bin_v5 --shave8,--incr,df
+k2 #155 (free-point) | k2_30 | KILLED | fp3_120 | [dlo, dhi] | 63 nodes | 87.4348 s | bin_v3 --shave8,--incr
+k2 #182 (free-point) | k2_31 | KILLED | res_600 | [dlo, dhi] | 551 nodes | 156.7443 s | bin_v5 --shave8,--incr,df
+k2 #213 (free-point) | k2_11 | KILLED | res_600 | [dlo, dhi] | 349 nodes | 114.1520 s | bin_v5 --shave8,--incr,df
+k2 #230 (free-point) | k2_33 | KILLED | res_600 | [dlo, dhi] | 823 nodes | 135.9403 s | bin_v5 --shave8,--incr,df
+k2 #231 (free-point) | k2_13 | KILLED | fp3_120 | [dlo, dhi] | 117 nodes | 62.5234 s | bin_v3 --shave8,--incr
+k2 #233 (free-point) | k2_34 | KILLED | fp3_120 | [dlo, dhi] | 83 nodes | 79.6050 s | bin_v3 --shave8,--incr
+k2 #248 (free-point) | k2_35 | KILLED | fp3_120 | [dlo, dhi] | 111 nodes | 94.7183 s | bin_v3 --shave8,--incr
+k2 #255 (free-point) | k2_15 | KILLED | fp3_120 | [dlo, dhi] | 275 nodes | 86.2808 s | bin_v3 --shave8,--incr
+k2 #295 (free-point) | k2_26 | KILLED | res_600 | [dlo, dhi] | 881 nodes | 139.1229 s | bin_v5 --shave8,--incr,df
+k2 #404 (free-point) | k2_41 | KILLED | fp3_120 | [dlo, dhi] | 73 nodes | 63.2240 s | bin_v3 --shave8,--incr
+k3 #0 (free-point) | k3_0 | KILLED | res_600 | [dlo, dhi] | 621 nodes | 197.1203 s | bin_v5 --shave8,--incr,df
+k3 #1 (free-point) | k3_1 | KILLED | fp3_120 | [dlo, dhi] | 75 nodes | 95.6943 s | bin_v3 --shave8,--incr
+k3 #2 (free-point) | k3_2 | KILLED | res_600 | [dlo, dhi] | 815 nodes | 302.9289 s | bin_v5 --shave8,--incr,df
+k3 #4 (other) | k3_4 | KILLED | res_k3 | [dlo, dhi] | 49 nodes | 26.7638 s | bin_v5 --shave8,--incr,df

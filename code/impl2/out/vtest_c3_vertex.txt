@@ -1,0 +1,3 @@
+psi = 53.657850129932669 deg, 30 contacts
+144 realised subgraphs (maxdel 4, vertex true)
+tested 144 subgraphs, 0 searches, Local fired on 144 truth boxes, failures 0

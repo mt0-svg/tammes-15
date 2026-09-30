@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "The Tammes problem for fifteen points"
+authors:
+  - name: mt0-svg
+repository-code: "https://github.com/mt0-svg/tammes-15"
+license: Apache-2.0
+version: v1.0.0
+doi: 10.5281/zenodo.23058956
+keywords:
+  - Tammes problem
+  - spherical codes
+  - contact graphs
+  - plane graph enumeration
+  - interval arithmetic
+  - computer-assisted proof
+  - Lean 4
+  - formal verification
+preferred-citation:
+  type: article
+  title: "The Tammes problem for fifteen points"
+  authors:
+    - name: mt0-svg
+  doi: 10.5281/zenodo.23058956
+  url: "https://github.com/mt0-svg/tammes-15"

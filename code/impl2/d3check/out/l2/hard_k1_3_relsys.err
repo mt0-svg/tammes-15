@@ -1,0 +1,3 @@
+range d in [9.36506152041239104e-1, 9.89106012373218935e-1] rad, alpha in [1.18952772983819077e0, 1.20830549335659398e0]
+relsys: families [PentSplit, HexChain5, HexC4Iso] dropped, Edge off
+graphs 1 killed 1 budget 0 unresolved 0 nodes 47 time 14.05 s

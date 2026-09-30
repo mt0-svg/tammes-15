@@ -1,0 +1,7 @@
+modules of the library: 140
+declarations: 1242; under Tammes15.Vendor.EM8: 1242; internal or private (not counted): 888
+roots of the declarations, their number, and whether Mathlib or its dependencies declare under the same root:
+  Tammes15: 1242; declared outside the library too: false
+internal or private names whose text does not contain Tammes15.Vendor.EM8 (dots or underscores): 0
+(7.02 s wall, 7111264 kB max RSS)
+exit 0

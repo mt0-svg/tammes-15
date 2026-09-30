@@ -1,0 +1,15 @@
+/.lake
+target/
+/code/impl1/enum/build/
+/code/impl1/enum/bin/
+paper/*.aux
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.toc
+*.pdf
+data/sample/*.out
+data/sample/*.err

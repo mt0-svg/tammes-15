@@ -1,0 +1,132 @@
+== p1_k0: default user 22.00 wall 24.17 maxrss_kb 563948 exit 0, relsys user 14.46 wall 16.55 maxrss_kb 563836 exit 0
+default rerun against the recorded run ($T15/verify/l2/k0_0.out):
+  graphs 1001, lines differing or missing 2
+  differs 35525: rerun: 35525 BUDGET 1 1508 5.0053 faces=[1, 5, 5, 0] [[] Budget n=1508 e=747 L=0 P=0 E=0 LP=0 done=0.1023]
+  differs 35525: recorded: 35525 KILLED 1 1885 3.8884 faces=[1, 5, 5, 0] [[] Killed n=1885 e=943 L=0 P=0 E=0 done=1.0000]
+  differs 66265: rerun: 66265 BUDGET 1 1737 5.0016 faces=[1, 6, 3, 1] [[] Budget n=1737 e=866 L=0 P=0 E=0 LP=0 done=0.3970]
+  differs 66265: recorded: 66265 KILLED 1 2425 4.1648 faces=[1, 6, 3, 1] [[] Killed n=2425 e=1213 L=0 P=0 E=0 done=1.0000]
+  differing lines with no BUDGET verdict on either side (the 5 s limit is wall clock): 0
+  negative control (node count of graph 0 changed by 1 in a copy): graph 0 reported 1 time(s)
+verdicts default:       2 BUDGET     999 KILLED
+verdicts relsys:    1001 KILLED
+seconds (sum of field 5) default 22.06 relsys 14.39; nodes default 8126 relsys 10097
+graphs KILLED by default and not by relsys (index, relsys line):
+graphs KILLED by relsys and not by default: 35525 66265
+== p1_k1: default user 96.56 wall 105.24 maxrss_kb 15904 exit 0, relsys user 73.18 wall 79.91 maxrss_kb 16144 exit 0
+default rerun against the recorded run ($T15/verify/l2/k1_0.out):
+  graphs 300, lines differing or missing 10
+  differs 100: rerun: 100 BUDGET 1 1365 5.0078 faces=[2, 6, 2, 1] [[4] Budget n=1365 e=675 L=0 P=0 E=0 LP=0 done=0.3129]
+  differs 100: recorded: 100 BUDGET 1 2374 5.0034 faces=[2, 6, 2, 1] [[4] Budget n=2374 e=1174 L=0 P=0 E=0 done=0.3282]
+  differs 260: rerun: 260 BUDGET 1 826 5.0029 faces=[6, 4, 2, 1] [[1] Budget n=826 e=402 L=9 P=0 E=0 LP=0 done=0.0547]
+  differs 260: recorded: 260 KILLED 1 1129 4.4761 faces=[6, 4, 2, 1] [[1] Killed n=1129 e=556 L=9 P=0 E=0 done=1.0000]
+  differs 360: rerun: 360 BUDGET 1 1176 5.0016 faces=[0, 4, 4, 1] [[5] Budget n=1176 e=578 L=0 P=0 E=0 LP=0 done=0.0039]
+  differs 360: recorded: 360 BUDGET 1 1781 5.0009 faces=[0, 4, 4, 1] [[5] Budget n=1781 e=877 L=0 P=0 E=0 done=0.0039]
+  differs 580: rerun: 580 BUDGET 1 1612 5.0026 faces=[4, 5, 2, 1] [[1] Budget n=1612 e=802 L=0 P=0 E=0 LP=0 done=0.1387]
+  differs 580: recorded: 580 BUDGET 1 2226 5.0083 faces=[4, 5, 2, 1] [[1] Budget n=2226 e=1111 L=0 P=0 E=0 done=0.7939]
+  differs 730: rerun: 730 BUDGET 1 2107 5.0032 faces=[2, 6, 2, 1] [[0] Budget n=2107 e=1045 L=0 P=0 E=0 LP=0 done=0.1565]
+  differs 730: recorded: 730 BUDGET 1 2795 5.0008 faces=[2, 6, 2, 1] [[0] Budget n=2795 e=1390 L=0 P=0 E=0 done=0.1570]
+  differs 1220: rerun: 1220 BUDGET 1 1521 5.0037 faces=[2, 3, 4, 1] [[7] Budget n=1521 e=751 L=0 P=0 E=0 LP=0 done=0.0627]
+  differs 1220: recorded: 1220 BUDGET 1 2090 5.0028 faces=[2, 3, 4, 1] [[7] Budget n=2090 e=1034 L=0 P=0 E=0 done=0.0627]
+  differs 2010: rerun: 2010 BUDGET 2 1508 5.0059 faces=[3, 2, 3, 2] [[1] Budget n=1508 e=752 L=0 P=0 E=0 LP=0 done=0.4797]
+  differs 2010: recorded: 2010 KILLED 2 4136 8.9627 faces=[3, 2, 3, 2] [[1] Killed n=2057 e=1029 L=0 P=0 E=0 done=1.0000] [[2] Killed n=2079 e=1040 L=0 P=0 E=0 done=1.0000]
+  differs 2050: rerun: 2050 BUDGET 1 1870 5.0008 faces=[1, 5, 3, 1] [[1] Budget n=1870 e=930 L=0 P=0 E=0 LP=0 done=0.3389]
+  differs 2050: recorded: 2050 BUDGET 1 2715 5.0042 faces=[1, 5, 3, 1] [[1] Budget n=2715 e=1353 L=0 P=0 E=0 done=0.6583]
+  differs 2200: rerun: 2200 BUDGET 2 1947 5.0052 faces=[2, 4, 2, 2] [[1] Budget n=1947 e=966 L=0 P=0 E=0 LP=0 done=0.2969]
+  differs 2200: recorded: 2200 BUDGET 2 2618 5.0030 faces=[2, 4, 2, 2] [[1] Budget n=2618 e=1306 L=0 P=0 E=0 done=0.3489]
+  differs 2670: rerun: 2670 BUDGET 2 1679 5.0014 faces=[0, 8, 0, 2] [[4] Budget n=1679 e=829 L=0 P=0 E=0 LP=0 done=0.0031]
+  differs 2670: recorded: 2670 BUDGET 2 2206 5.0058 faces=[0, 8, 0, 2] [[4] Budget n=2206 e=1093 L=0 P=0 E=0 done=0.0031]
+  differing lines with no BUDGET verdict on either side (the 5 s limit is wall clock): 0
+  negative control (node count of graph 0 changed by 1 in a copy): graph 0 reported 1 time(s)
+verdicts default:      10 BUDGET     290 KILLED
+verdicts relsys:       6 BUDGET     294 KILLED
+seconds (sum of field 5) default 105.17 relsys 79.85; nodes default 34495 relsys 60072
+graphs KILLED by default and not by relsys (index, relsys line):
+graphs KILLED by relsys and not by default: 260 580 2010 2050
+== p1_k2: default user 182.98 wall 193.60 maxrss_kb 6752 exit 0, relsys user 166.97 wall 177.99 maxrss_kb 6716 exit 0
+default rerun against the recorded run ($T15/verify/l2/k2.out):
+  graphs 111, lines differing or missing 29
+  differs 0: rerun: 0 BUDGET 1 1664 5.0055 faces=[4, 2, 2, 2] [[1, 6] Budget n=1664 e=830 L=0 P=0 E=0 LP=0 done=0.2263]
+  differs 0: recorded: 0 BUDGET 1 2649 5.0032 faces=[4, 2, 2, 2] [[1, 6] Budget n=2649 e=1319 L=0 P=0 E=0 done=0.3439]
+  differs 36: rerun: 36 BUDGET 1 1792 5.0092 faces=[6, 1, 2, 2] [[1, 3] Budget n=1792 e=890 L=0 P=0 E=0 LP=0 done=0.0938]
+  differs 36: recorded: 36 BUDGET 1 2824 5.0012 faces=[6, 1, 2, 2] [[1, 3] Budget n=2824 e=1404 L=0 P=0 E=0 done=0.1877]
+  differs 40: rerun: 40 BUDGET 3 1267 5.0069 faces=[5, 1, 1, 3] [[1, 3] Budget n=1267 e=627 L=0 P=0 E=0 LP=0 done=0.1278]
+  differs 40: recorded: 40 BUDGET 3 2093 5.0086 faces=[5, 1, 1, 3] [[1, 3] Budget n=2093 e=1043 L=0 P=0 E=0 done=0.1492]
+  differs 52: rerun: 52 BUDGET 1 874 5.0080 faces=[5, 3, 1, 2] [[1, 8] Budget n=874 e=425 L=0 P=0 E=0 LP=0 done=0.0001]
+  differs 52: recorded: 52 BUDGET 1 1384 5.0062 faces=[5, 3, 1, 2] [[1, 8] Budget n=1384 e=678 L=0 P=0 E=0 done=0.0001]
+  differs 56: rerun: 56 BUDGET 1 1628 5.0041 faces=[4, 2, 2, 2] [[1, 6] Budget n=1628 e=809 L=0 P=0 E=0 LP=0 done=0.0029]
+  differs 56: recorded: 56 BUDGET 1 2708 5.0028 faces=[4, 2, 2, 2] [[1, 6] Budget n=2708 e=1346 L=0 P=0 E=0 done=0.0061]
+  differs 72: rerun: 72 BUDGET 1 635 5.0031 faces=[3, 4, 1, 2] [[0, 6] Budget n=635 e=296 L=0 P=0 E=0 LP=0 done=0.0001]
+  differs 72: recorded: 72 BUDGET 1 856 5.0033 faces=[3, 4, 1, 2] [[0, 6] Budget n=856 e=405 L=0 P=0 E=0 done=0.0001]
+  differs 80: rerun: 80 BUDGET 1 1644 5.0059 faces=[2, 3, 2, 2] [[0, 7] Budget n=1644 e=817 L=0 P=0 E=0 LP=0 done=0.0161]
+  differs 80: recorded: 80 BUDGET 1 2591 5.0028 faces=[2, 3, 2, 2] [[0, 7] Budget n=2591 e=1289 L=0 P=0 E=0 done=0.0186]
+  differs 84: rerun: 84 BUDGET 1 1031 5.0033 faces=[5, 3, 1, 2] [[0, 10] Budget n=1031 e=494 L=0 P=0 E=0 LP=0 done=0.0000]
+  differs 84: recorded: 84 BUDGET 1 1462 5.0024 faces=[5, 3, 1, 2] [[0, 10] Budget n=1462 e=709 L=0 P=0 E=0 done=0.0000]
+  differs 92: rerun: 92 BUDGET 3 1794 5.0025 faces=[3, 2, 1, 3] [[4, 5] Budget n=1794 e=892 L=0 P=0 E=0 LP=0 done=0.0974]
+  differs 92: recorded: 92 BUDGET 3 2619 5.0054 faces=[3, 2, 1, 3] [[4, 5] Budget n=2619 e=1306 L=0 P=0 E=0 done=0.1029]
+  differs 112: rerun: 112 BUDGET 1 1998 5.0027 faces=[6, 1, 2, 2] [[1, 10] Budget n=1998 e=996 L=0 P=0 E=0 LP=0 done=0.2031]
+  differs 112: recorded: 112 BUDGET 1 3392 5.0024 faces=[6, 1, 2, 2] [[1, 10] Budget n=3392 e=1693 L=0 P=0 E=0 done=0.4032]
+  differs 120: rerun: 120 BUDGET 1 788 5.0126 faces=[3, 4, 1, 2] [[0, 2] Budget n=788 e=384 L=0 P=0 E=0 LP=0 done=0.0000]
+  differs 120: recorded: 120 BUDGET 1 1789 5.0024 faces=[3, 4, 1, 2] [[0, 2] Budget n=1789 e=881 L=0 P=0 E=0 done=0.0000]
+  differs 140: rerun: 140 BUDGET 1 1313 5.0060 faces=[5, 3, 1, 2] [[1, 9] Budget n=1313 e=639 L=2 P=0 E=0 LP=0 done=0.0001]
+  differs 140: recorded: 140 BUDGET 1 1726 5.0028 faces=[5, 3, 1, 2] [[1, 9] Budget n=1726 e=838 L=4 P=0 E=0 done=0.0001]
+  differs 148: rerun: 148 BUDGET 1 686 5.0028 faces=[4, 2, 2, 2] [[5, 7] Budget n=686 e=332 L=0 P=0 E=0 LP=0 done=0.0000]
+  differs 148: recorded: 148 BUDGET 1 1281 5.0034 faces=[4, 2, 2, 2] [[5, 7] Budget n=1281 e=625 L=0 P=0 E=0 done=0.0000]
+  differs 156: rerun: 156 BUDGET 1 1215 5.0042 faces=[5, 3, 1, 2] [[0, 10] Budget n=1215 e=594 L=0 P=0 E=0 LP=0 done=0.0000]
+  differs 156: recorded: 156 BUDGET 1 1642 5.0222 faces=[5, 3, 1, 2] [[0, 10] Budget n=1642 e=784 L=10 P=0 E=0 done=0.0001]
+  differs 176: rerun: 176 BUDGET 1 1547 5.0051 faces=[4, 2, 2, 2] [[1, 2] Budget n=1547 e=762 L=0 P=0 E=0 LP=0 done=0.1250]
+  differs 176: recorded: 176 BUDGET 1 2563 5.0022 faces=[4, 2, 2, 2] [[1, 2] Budget n=2563 e=1269 L=0 P=0 E=0 done=0.1251]
+  differs 180: rerun: 180 BUDGET 1 470 5.0053 faces=[5, 3, 1, 2] [[4, 7] Budget n=470 e=215 L=0 P=0 E=0 LP=0 done=0.0000]
+  differs 180: recorded: 180 BUDGET 1 843 5.0033 faces=[5, 3, 1, 2] [[4, 7] Budget n=843 e=407 L=0 P=0 E=0 done=0.0000]
+  differs 200: rerun: 200 BUDGET 1 1590 5.0026 faces=[2, 3, 2, 2] [[3, 5] Budget n=1590 e=780 L=0 P=0 E=0 LP=0 done=0.0000]
+  differs 200: recorded: 200 BUDGET 1 2497 5.0046 faces=[2, 3, 2, 2] [[3, 5] Budget n=2497 e=1236 L=0 P=0 E=0 done=0.0000]
+  differs 244: rerun: 244 BUDGET 1 1566 5.0072 faces=[4, 2, 2, 2] [[2, 8] Budget n=1566 e=776 L=0 P=0 E=0 LP=0 done=0.0157]
+  differs 244: recorded: 244 BUDGET 1 2457 5.0037 faces=[4, 2, 2, 2] [[2, 8] Budget n=2457 e=1223 L=0 P=0 E=0 done=0.0173]
+  differs 248: rerun: 248 BUDGET 1 916 5.0057 faces=[3, 4, 1, 2] [[3, 5] Budget n=916 e=443 L=0 P=0 E=0 LP=0 done=0.0000]
+  differs 248: recorded: 248 BUDGET 1 1277 5.0095 faces=[3, 4, 1, 2] [[3, 5] Budget n=1277 e=616 L=0 P=0 E=0 done=0.0000]
+  differs 264: rerun: 264 BUDGET 1 1189 5.0037 faces=[4, 2, 2, 2] [[1, 7] Budget n=1189 e=590 L=0 P=0 E=0 LP=0 done=0.0078]
+  differs 264: recorded: 264 BUDGET 1 1846 5.0033 faces=[4, 2, 2, 2] [[1, 7] Budget n=1846 e=918 L=0 P=0 E=0 done=0.0168]
+  differs 352: rerun: 352 BUDGET 1 1730 5.0222 faces=[3, 4, 1, 2] [[0, 4] Budget n=1730 e=852 L=0 P=0 E=0 LP=0 done=0.1563]
+  differs 352: recorded: 352 BUDGET 1 2540 5.0025 faces=[3, 4, 1, 2] [[0, 4] Budget n=2540 e=1261 L=0 P=0 E=0 done=0.1564]
+  differs 368: rerun: 368 BUDGET 1 1179 5.0099 faces=[5, 3, 1, 2] [[0, 4] Budget n=1179 e=568 L=0 P=0 E=0 LP=0 done=0.0000]
+  differs 368: recorded: 368 BUDGET 1 1810 5.0027 faces=[5, 3, 1, 2] [[0, 4] Budget n=1810 e=894 L=0 P=0 E=0 done=0.0000]
+  differs 376: rerun: 376 BUDGET 1 1370 5.0054 faces=[4, 2, 2, 2] [[5, 6] Budget n=1370 e=680 L=0 P=0 E=0 LP=0 done=0.2663]
+  differs 376: recorded: 376 BUDGET 1 2154 5.0129 faces=[4, 2, 2, 2] [[5, 6] Budget n=2154 e=1073 L=0 P=0 E=0 done=0.2844]
+  differs 380: rerun: 380 BUDGET 1 1000 5.0133 faces=[3, 4, 1, 2] [[3, 8] Budget n=1000 e=484 L=0 P=0 E=0 LP=0 done=0.0000]
+  differs 380: recorded: 380 BUDGET 1 1464 5.0012 faces=[3, 4, 1, 2] [[3, 8] Budget n=1464 e=715 L=0 P=0 E=0 done=0.0000]
+  differs 396: rerun: 396 BUDGET 1 897 5.0117 faces=[7, 2, 1, 2] [[2, 8] Budget n=897 e=435 L=4 P=0 E=0 LP=0 done=0.0044]
+  differs 396: recorded: 396 KILLED 1 1767 4.9732 faces=[7, 2, 1, 2] [[2, 8] Killed n=1767 e=880 L=4 P=0 E=0 done=1.0000]
+  differs 404: rerun: 404 BUDGET 1 1075 5.0112 faces=[5, 3, 1, 2] [[0, 10] Budget n=1075 e=514 L=1 P=0 E=0 LP=0 done=0.0029]
+  differs 404: recorded: 404 BUDGET 1 1387 5.0171 faces=[5, 3, 1, 2] [[0, 10] Budget n=1387 e=656 L=23 P=0 E=0 done=0.0029]
+  differs 424: rerun: 424 BUDGET 1 828 5.0203 faces=[5, 3, 1, 2] [[5, 7] Budget n=828 e=396 L=0 P=0 E=0 LP=0 done=0.0010]
+  differs 424: recorded: 424 BUDGET 1 1095 5.0106 faces=[5, 3, 1, 2] [[5, 7] Budget n=1095 e=530 L=0 P=0 E=0 done=0.0010]
+  differs 436: rerun: 436 BUDGET 1 1824 5.0020 faces=[4, 2, 2, 2] [[1, 5] Budget n=1824 e=904 L=0 P=0 E=0 LP=0 done=0.0391]
+  differs 436: recorded: 436 BUDGET 1 2849 5.0070 faces=[4, 2, 2, 2] [[1, 5] Budget n=2849 e=1412 L=0 P=0 E=0 done=0.2813]
+  differs 440: rerun: 440 BUDGET 1 1000 5.0081 faces=[4, 2, 2, 2] [[0, 1] Budget n=1000 e=490 L=0 P=0 E=0 LP=0 done=0.0011]
+  differs 440: recorded: 440 BUDGET 1 1660 5.0093 faces=[4, 2, 2, 2] [[0, 1] Budget n=1660 e=826 L=0 P=0 E=0 done=0.0183]
+  differing lines with no BUDGET verdict on either side (the 5 s limit is wall clock): 0
+  negative control (node count of graph 0 changed by 1 in a copy): graph 0 reported 1 time(s)
+verdicts default:      29 BUDGET      82 KILLED
+verdicts relsys:      28 BUDGET      83 KILLED
+seconds (sum of field 5) default 193.57 relsys 177.95; nodes default 55076 relsys 115431
+graphs KILLED by default and not by relsys (index, relsys line):
+graphs KILLED by relsys and not by default: 396
+== p1_k3: default user 24.22 wall 25.07 maxrss_kb 4960 exit 0, relsys user 24.17 wall 25.03 maxrss_kb 4936 exit 0
+default rerun against the recorded run ($T15/verify/l2/k3.out):
+  graphs 5, lines differing or missing 5
+  differs 0: rerun: 0 BUDGET 1 766 5.0208 faces=[4, 2, 0, 3] [[0, 4, 5] Budget n=766 e=353 L=0 P=0 E=0 LP=0 done=0.0000]
+  differs 0: recorded: 0 BUDGET 1 1028 5.0059 faces=[4, 2, 0, 3] [[0, 4, 5] Budget n=1028 e=485 L=0 P=0 E=0 done=0.0000]
+  differs 1: rerun: 1 BUDGET 1 732 5.0073 faces=[6, 1, 0, 3] [[1, 4, 5] Budget n=732 e=339 L=2 P=0 E=0 LP=0 done=0.0000]
+  differs 1: recorded: 1 BUDGET 1 981 5.0017 faces=[6, 1, 0, 3] [[1, 4, 5] Budget n=981 e=457 L=4 P=0 E=0 done=0.0000]
+  differs 2: rerun: 2 BUDGET 1 709 5.0038 faces=[4, 2, 0, 3] [[1, 3, 4] Budget n=709 e=324 L=0 P=0 E=0 LP=0 done=0.0000]
+  differs 2: recorded: 2 BUDGET 1 1105 5.0019 faces=[4, 2, 0, 3] [[1, 3, 4] Budget n=1105 e=525 L=0 P=0 E=0 done=0.0000]
+  differs 3: rerun: 3 BUDGET 4 1103 5.0062 faces=[4, 0, 0, 4] [[0, 1, 4] Budget n=1103 e=533 L=0 P=0 E=0 LP=0 done=0.0000]
+  differs 3: recorded: 3 BUDGET 4 1827 5.0029 faces=[4, 0, 0, 4] [[0, 1, 4] Budget n=1827 e=895 L=0 P=0 E=0 done=0.0000]
+  differs 4: rerun: 4 BUDGET 1 724 5.0041 faces=[8, 0, 0, 3] [[0, 4, 6] Budget n=724 e=335 L=8 P=0 E=0 LP=0 done=0.0000]
+  differs 4: recorded: 4 BUDGET 1 1378 5.0090 faces=[8, 0, 0, 3] [[0, 4, 6] Budget n=1378 e=662 L=8 P=0 E=0 done=0.0000]
+  differing lines with no BUDGET verdict on either side (the 5 s limit is wall clock): 0
+  negative control (node count of graph 0 changed by 1 in a copy): graph 0 reported 1 time(s)
+verdicts default:       5 BUDGET
+verdicts relsys:       5 BUDGET
+seconds (sum of field 5) default 25.04 relsys 25.01; nodes default 4034 relsys 14386
+graphs KILLED by default and not by relsys (index, relsys line):
+graphs KILLED by relsys and not by default: none
