@@ -31,7 +31,10 @@ T=$(realpath code/impl1/rust/target/release/tdeep)
 P=$(realpath data/params15ft.txt); L=$(realpath data/tie_targets.txt)
 I=$A/inputs; C=$A/certificates/full; F=$A/records/first/full
 mkdir -p "$O"
-rnd() { yes "$S" | head -c 1000000; }
+# the random source of shuf: the first 1000000 bytes of `yes SEED`, written to a file (a pipe would
+# print "Broken pipe" where SIGPIPE is ignored, since shuf stops reading early)
+rnd() { awk -v s="$1" 'BEGIN {l = s "\n"; for (n = 1000000; n >= length(l); n -= length(l)) printf "%s", l; printf "%s", substr(l, 1, n)}'; }
+if [ "$S" != every20 ]; then RS=$(mktemp); trap 'rm -f "$RS"' EXIT; rnd "$S" > "$RS"; fi
 N0=(145088 145088 145087); N1=(3000 3000 3000 2999 2999 2999 2999 2999 2999)
 jobs() { # name | input | certificate file | k | number of graphs | skip list of the graphs set aside | sample size
   for j in 0 1 2; do echo "full_k0_$j|$I/in_k0_$j.pc|$C/k0_$j.cert|0|${N0[$j]}||${4:-}"; done
@@ -43,7 +46,7 @@ jobs "$@" | while IFS='|' read -r name inp cert k n skip m; do
   if [ "$S" = every20 ]; then
     sel="--every 20"; [ -n "$skip" ] && sel="$sel --skip $skip"
   else
-    grep '^G ' "$cert" | awk '{print $2}' | sort -un | shuf -n "$m" --random-source=<(rnd) | sort -n > "$O/$name.idx"
+    grep '^G ' "$cert" | awk '{print $2}' | sort -un | shuf -n "$m" --random-source="$RS" | sort -n > "$O/$name.idx"
     awk -v n="$n" 'NR == FNR {s[$1] = 1; next} END {for (i = 0; i < n; i++) if (!(i in s)) print i}' "$O/$name.idx" /dev/null > "$O/$name.skip"
     sel="--skip $O/$name.skip"
   fi

@@ -10,10 +10,13 @@ set -eu
 A=$1; O=$2; SEED=${3:-2026}
 B=$(dirname "$0")/rust/target/release
 mkdir -p "$O"
-rnd() { yes "$SEED" | head -c 1000000; }
+# the random source of shuf: the first 1000000 bytes of `yes SEED`, written to a file (a pipe would
+# print "Broken pipe" where SIGPIPE is ignored, since shuf stops reading early)
+rnd() { awk -v s="$1" 'BEGIN {l = s "\n"; for (n = 1000000; n >= length(l); n -= length(l)) printf "%s", l; printf "%s", substr(l, 1, n)}'; }
+RS=$(mktemp); trap 'rm -f "$RS"' EXIT; rnd "$SEED" > "$RS"
 pick() { # TAG INPUT CERT M
   tag=$1; inp=$2; cert=$3; m=$4
-  grep '^G ' "$cert" | awk '{print $2}' | sort -un | shuf -n "$m" --random-source=<(rnd) | sort -n > "$O/$tag.idx"
+  grep '^G ' "$cert" | awk '{print $2}' | sort -un | shuf -n "$m" --random-source="$RS" | sort -n > "$O/$tag.idx"
   "$B/pcpick" "$O/$tag.idx" "$O/$tag.pc" < "$inp"
   awk 'NR == FNR {r[$1] = FNR - 1; next}
        /^G / {keep = ($2 in r); if (keep) {print "G", r[$2], $3}; next}

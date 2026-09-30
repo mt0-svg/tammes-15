@@ -65,6 +65,10 @@ def tob(v):
 codes = {"C3": [1,2,3,4,5,6,7,8,9,13,14,15,16,17,18], "C1": [1,2,3,4,5,6,7,8,11,13,14,15,16,17,18]}
 uB = tob(u)
 def bs(z): return "%s %s" % (z.mid().str(digits=150), z.rad().str(digits=3))
+def dec(q, up, n=30):
+    # the rational q rounded to n decimals toward +infinity (up) or -infinity, as an exact decimal
+    n = int(n); m = int(ceil(q * 10**n) if up else floor(q * 10**n))
+    return "%s%d.%0*d" % ("-" if m < 0 else "", abs(m) // int(10)**n, n, abs(m) % int(10)**n)
 out = open("data/bk15_exact.txt", "w")
 out.write("# u = cos(psi*) and the 18 frame points of Buddenhagen-Kottwitz as balls (%d bits); exact checks in bk15_exact.sage\n" % PREC)
 out.write("u %s\n" % bs(uB))
@@ -83,8 +87,9 @@ for nm, keep in codes.items():
                 gb = tob(g) - uB
                 assert gb < 0, (nm, i, j, gb)
                 other_max = gb if other_max is None else other_max.max(gb)
-    print(nm, "exact contacts:", len(cont), " max over other pairs of <x,y> - u:", other_max.upper())
+    print(nm, "exact contacts:", len(cont), " max over other pairs of <x,y> - u <", dec(other_max.upper().exact_rational(), True))
     out.write("%s keep %s\n" % (nm, keep))
     out.write("%s contacts %s\n" % (nm, cont))
 out.close()
-print("psi* deg:", (uB.arccos() * 180 / RB.pi()))
+psi = uB.arccos() * 180 / RB.pi()
+print("psi* deg in [%s, %s]" % (dec(psi.lower().exact_rational(), False), dec(psi.upper().exact_rational(), True)))

@@ -14,7 +14,7 @@
 #       no two antipodal), so they have rank <= 2k - 3 and are linearly dependent: L_A has rank
 #       < 27 on T' and [L_A; Q] is exactly singular.
 # A 3-set in neither case stops the script. P is bounded: a recession direction t != 0 in T' has
-# L t <= 0, and the stress omega > 0 of rigidity.out (|omega^T L| <= 1.8e-15, omega_min >= 5.4e-3)
+# L t <= 0, and the stress omega > 0 of rigidity.out (|omega^T L| < 1e-14, omega_min >= 5.4e-3)
 # gives |L t|_2 <= sqrt(30) |eps| |t| / omega_min < sigma |t|, a contradiction with sigma >= 0.31.
 # Radius: the proof of Theorem 4.1 with c replaced by kappa: r = kappa / ((1 + u) 1.01 sqrt(15)).
 load("code/sage/bk15_exact.sage")
@@ -101,4 +101,4 @@ for nm, keep in allconf.items():
     print("%s: max |t| over P <= %.8e (at S = %s); kappa >= %.8e ; radius r = %.8e, sqrt(15) r <= 0.1: %s" % (nm, Rup, arg, kappa, r, ok))
     sys.stdout.flush()
     res[nm] = (kappa, r)
-print("minimum radius over all configurations:", min(v[1] for v in res.values()))
+print("minimum radius over all configurations >=", dec(min(v[1] for v in res.values()).exact_rational(), False))

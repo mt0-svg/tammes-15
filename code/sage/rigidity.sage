@@ -87,12 +87,20 @@ for nm, keep in allconf.items():
     uhi = RealField(100)(uB.upper())
     r = c_lo / ((1 + uhi) * RealField(100)(1.01) * sqrt(RealField(100)(15)))
     ok = sqrt(RealField(100)(15)) * r <= 0.1
-    print("%s: singular values of L^T (3 smallest) %s" % (nm, [RDF(z) for z in sv[27:30]]))
+    assert max(sv[27:30]) < 1e-12
+    assert epsn < 1e-14
+    print("%s: singular values of L^T: the 3 smallest are below 1e-12" % nm)
     print("%s: lambda_min(A) >= %.6e (rational Cholesky at %.6e, radius %.2e); sigma >= %.6e" % (nm, lam_lo, RealField(53)(lam0), radF, sigma_lo))
-    print("%s: stress omega > 0: min %.6e, sum %.6e, W = %.4f, |eps| = %.2e" % (nm, RDF(wmin), RDF(sum(omega)), RDF(W), epsn))
+    print("%s: stress omega > 0: min %.6e, sum %.6e, W = %.4f, |eps| < 1e-14" % (nm, RDF(wmin), RDF(sum(omega)), RDF(W)))
     print("%s: c >= %.6e ; radius r = %.6e (per point, Euclidean), sqrt(15) r <= 0.1: %s" % (nm, c_lo, r, ok))
     res[nm] = (c_lo, r)
     # the strictly positive stress and exact contact list, for the record
     print("%s: contacts %s" % (nm, cont))
-    print("%s: omega %s" % (nm, [RDF(w) for w in omega]))
-print("minimum radius over all configurations:", min(v[1] for v in res.values()))
+    print("%s: omega [%s]" % (nm, ", ".join("%.6e" % RDF(w) for w in omega)))
+# rounded down to 6 significant digits
+rmin = min(v[1] for v in res.values()).exact_rational()
+e = floor(RR(rmin).log10())
+while floor(rmin / 10**(e - 5)) >= 10**6: e += 1
+while floor(rmin / 10**(e - 5)) < 10**5: e -= 1
+m = int(floor(rmin / 10**(e - 5)))
+print("minimum radius over all configurations >= %d.%05de%+03d" % (m // 10**5, m % 10**5, e))
