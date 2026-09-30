@@ -14,6 +14,6 @@ al(d) = acos(cos(d)/(1+cos(d)));
 h(d) = acos(cos(d)/cos(d/2));
 P(l,t) = 2*acos((cos(l)-sin(t)^2)/cos(t)^2) + 2*sin(t)*(Pi - 2*asin(tan(t)*tan(l/2)));
 m = vector(40, i, my(a = dlo+(i-1)*(dhi-dlo)/40, b = dlo+i*(dhi-dlo)/40); P(a,h(a)) - 6*b);
-printf("%.2f %.2f %.2f %.2f %.2f\n", (7*dlo-2*Pi)/deg, 72-al(dhi)/deg, \
-  (Pi*(1+sin(h(dlo)))-5*dhi)/deg, (Pi-2*h(dhi)-dhi)/deg, vecmin(m)/deg);
+printf("%.2f %.2f %.2f %.2f\n", (7*dlo-2*Pi)/deg, 72-al(dhi)/deg, \
+  (Pi-2*h(dhi)-dhi)/deg, vecmin(m)/deg);
 quit;

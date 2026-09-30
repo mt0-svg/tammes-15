@@ -56,12 +56,12 @@ def AttainedHyp (F : Set Frame) : Prop :=
     ∀ q ∈ F, (∀ i, ‖q.p i‖ = 1) ∧ (∀ ij ∈ q.S, ij.1 ≠ ij.2 ∧ ⟪q.p ij.1, q.p ij.2⟫ = u) ∧
       ∀ i j, i ≠ j → ⟪q.p i, q.p j⟫ ≤ u
 
-/-! ## Literature input -/
+/-! ## The Fejes Tóth bound -/
 
 /-- The Fejes Tóth bound for 15 points in the form the capstone uses: every configuration of 15
 points with minimal distance `d` has `d ≤ dhi = 56.6716°`. L. Fejes Tóth (1943) gives
-`d₁₅ ≤ arccos ((cot² ω - 1) / 2)`, `ω = 15π / 78`, which is `56.67…°`. A named literature
-hypothesis of `reduction`, separate from D1 to D4. -/
+`d₁₅ ≤ arccos ((cot² ω - 1) / 2)`, `ω = 15π / 78`, which is `56.67…°`. Proved in Lean as
+`fejesToth_bound` (module `Tammes15.FejesToth.Bound`), which `reduction` uses; not a hypothesis. -/
 def FejesTothBound : Prop :=
   ∀ d : ℝ, Nonempty (Config 15 d) → d ≤ dhi
 

@@ -1,7 +1,7 @@
 {
   "challenge_module": "Tammes15.Challenge",
   "solution_module": "Tammes15.Solution",
-  "theorem_names": ["Tammes15.reduction"],
+  "theorem_names": ["Tammes15.reduction", "Tammes15.fejesToth_bound"],
   "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
   "enable_nanoda": true
 }

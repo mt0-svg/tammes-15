@@ -1,13 +1,13 @@
 name = "tammes-15"
-version = "1.0.0"
-description = "The Tammes problem for fifteen points: the maximal minimal distance is arccos u, u the root in (1/2, 7/10) of 13u^5 - u^4 + 6u^3 + 2u^2 - 3u - 1; proved in Lean 4 from four finite computations and the bound of Fejes Toth, stated as hypotheses"
+version = "1.1.0"
+description = "The Tammes problem for fifteen points: the maximal minimal distance is arccos u, u the root in (1/2, 7/10) of 13u^5 - u^4 + 6u^3 + 2u^2 - 3u - 1; proved in Lean 4 from four finite computations, stated as hypotheses"
 keywords = ["math", "Tammes problem", "spherical code", "contact graph", "discrete geometry", "formal verification"]
 license = "Apache-2.0"
 licenseFiles = ["LICENSE", "NOTICE"]
 preferReleaseBuild = true
 releaseRepo = "https://github.com/mt0-svg/tammes-15"
 defaultTargets = ["Statement", "Trigrows", "Local41", "Rattlers", "Glue", "Fans", "Draw", "VendorEM8", "Hyps",
-  "Geom", "TwoConn", "Numerics", "FaceChain", "Challenge", "Solution"]
+  "Geom", "TwoConn", "Numerics", "FaceChain", "FejesToth", "Challenge", "Solution"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -87,8 +87,14 @@ globs = ["Tammes15.Numerics.+"]
 name = "FaceChain"
 globs = ["Tammes15.FaceChain.+"]
 
-# The statement with `sorry` over copies of the definition modules, which nothing imports, and the module
-# that proves it: the pair Comparator checks (config.json).
+# The bound of Fejes Toth in the form d15 <= 56.6716 degrees, by a triangle lemma on the hull of a saturated set
+# (Section 8.4).
+[[lean_lib]]
+name = "FejesToth"
+globs = ["Tammes15.FejesToth.+"]
+
+# The statements with `sorry` over copies of the definition modules, which nothing imports, and the module
+# that proves them: the pair Comparator checks (config.json).
 [[lean_lib]]
 name = "Challenge"
 globs = ["Tammes15.Challenge.*"]

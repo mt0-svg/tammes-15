@@ -1,12 +1,12 @@
-# code/lean/comparator.sh pass, 2026-09-30 10:56 UTC, sources sha256 62b84fbbe9d15a28
-# comparator d03acab154d269c06e60e4de7e4cc85deebff94b (v4.34.0), lean4export 076e8e57707e813375e8f9da8bf989799ace9680, landrun landrun version 0.1.18, nanoda_lib 3a2407216ee84a75f9e1aead6803d0578be06ae7; limits: memory 12G, 4 processors
-config: {"challenge_module":"Tammes15.Challenge","solution_module":"Tammes15.Solution","theorem_names":["Tammes15.reduction"],"permitted_axioms":["propext","Quot.sound","Classical.choice"],"enable_nanoda":true}
+# code/lean/comparator.sh pass, 2026-09-30 14:04 UTC, sources sha256 a2ef8838df2e0696
+# comparator d03acab154d269c06e60e4de7e4cc85deebff94b (v4.34.0), lean4export 076e8e57707e813375e8f9da8bf989799ace9680, landrun landrun version 0.1.18, nanoda_lib 3a2407216ee84a75f9e1aead6803d0578be06ae7; limits: memory 10G, 4 processors
+config: {"challenge_module":"Tammes15.Challenge","solution_module":"Tammes15.Solution","theorem_names":["Tammes15.reduction","Tammes15.fejesToth_bound"],"permitted_axioms":["propext","Quot.sound","Classical.choice"],"enable_nanoda":true}
 comparator 
 Building Tammes15.Challenge
-✔ [8924/8937] Built Tammes15.Challenge.Trigrows.Defs (3.1s)
+✔ [8924/8937] Built Tammes15.Challenge.Trigrows.Defs (3.2s)
 ✔ [8925/8937] Built Tammes15.Challenge.Statement (4.3s)
-✔ [8926/8937] Built Tammes15.Challenge.Trigrows.Sphere (9.8s)
-✔ [8927/8937] Built Tammes15.Challenge.Local41.Defs (10s)
+✔ [8926/8937] Built Tammes15.Challenge.Trigrows.Sphere (8.7s)
+✔ [8927/8937] Built Tammes15.Challenge.Local41.Defs (9.4s)
 ⚠ [8928/8937] Built Tammes15.Challenge.Trigrows.Mono (16s)
 info: Tammes15/Challenge/Trigrows/Mono.lean:186:82: Try this:
   [apply] ring_nf
@@ -38,12 +38,13 @@ Hint: The binding can be removed (if unused) or named `_` (if used implicitly). 
   [apply] _hab
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-✔ [8929/8937] Built Tammes15.Challenge.Draw.Defs (5.4s)
+✔ [8929/8937] Built Tammes15.Challenge.Draw.Defs (5.0s)
 ℹ [8930/8937] Built Tammes15.Challenge.Glue.Frames (17s)
 info: Tammes15/Challenge/Glue/Frames.lean:222:94: Try this:
   [apply] abel_nf
-✔ [8931/8937] Built Tammes15.Challenge.Glue.FramesAlg (6.2s)
-ℹ [8932/8937] Built Tammes15.Challenge.Trigrows.Rows (14s)
+✔ [8931/8937] Built Tammes15.Challenge.Glue.FramesAlg (6.4s)
+✔ [8932/8937] Built Tammes15.Challenge.Glue.Enclosure (6.0s)
+ℹ [8933/8937] Built Tammes15.Challenge.Trigrows.Rows (14s)
 info: Tammes15/Challenge/Trigrows/Rows.lean:374:55: Try this:
   [apply] ring_nf
   
@@ -62,19 +63,19 @@ info: Tammes15/Challenge/Trigrows/Rows.lean:387:47: Try this:
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
     
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-✔ [8933/8937] Built Tammes15.Challenge.Glue.Enclosure (6.3s)
 ✔ [8934/8937] Built Tammes15.Challenge.Trigrows.Margins (4.4s)
 ✔ [8935/8937] Built Tammes15.Challenge.Hyps.Case (3.7s)
-✔ [8936/8937] Built Tammes15.Challenge.Hyps.Computations (3.2s)
-⚠ [8937/8937] Built Tammes15.Challenge (3.3s)
-warning: Tammes15/Challenge.lean:13:8: declaration uses `sorry`
+✔ [8936/8937] Built Tammes15.Challenge.Hyps.Computations (2.0s)
+⚠ [8937/8937] Built Tammes15.Challenge (3.2s)
+warning: Tammes15/Challenge.lean:14:8: declaration uses `sorry`
+warning: Tammes15/Challenge.lean:18:8: declaration uses `sorry`
 Build completed successfully (8937 jobs).
-Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, Tammes15.reduction, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Tammes15.Challenge
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, Tammes15.reduction, Tammes15.fejesToth_bound, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Tammes15.Challenge
 Building Tammes15.Solution
-ℹ [8929/9137] Replayed Tammes15.Glue.Frames
+ℹ [8929/9142] Replayed Tammes15.Glue.Frames
 info: Tammes15/Glue/Frames.lean:222:94: Try this:
   [apply] abel_nf
-⚠ [8932/9137] Replayed Tammes15.Trigrows.Mono
+⚠ [8932/9142] Replayed Tammes15.Trigrows.Mono
 info: Tammes15/Trigrows/Mono.lean:186:82: Try this:
   [apply] ring_nf
   
@@ -105,7 +106,7 @@ Hint: The binding can be removed (if unused) or named `_` (if used implicitly). 
   [apply] _hab
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-ℹ [8933/9137] Replayed Tammes15.Trigrows.Rows
+ℹ [8933/9142] Replayed Tammes15.Trigrows.Rows
 info: Tammes15/Trigrows/Rows.lean:374:55: Try this:
   [apply] ring_nf
   
@@ -124,14 +125,14 @@ info: Tammes15/Trigrows/Rows.lean:387:47: Try this:
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
     
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-⚠ [8937/9137] Replayed Tammes15.Local41.Rotation
+⚠ [8937/9142] Replayed Tammes15.Local41.Rotation
 warning: Tammes15/Local41/Rotation.lean:57:4: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
 warning: Tammes15/Local41/Rotation.lean:100:6: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-⚠ [8939/9137] Replayed Tammes15.Trigrows.Sdist
+⚠ [8939/9142] Replayed Tammes15.Trigrows.Sdist
 warning: Tammes15/Trigrows/Sdist.lean:273:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
 If you'd rather continue using `push_neg` in your project, you can implement it as follows:
 ```
@@ -139,7 +140,7 @@ open Lean.Parser.Tactic in
 macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
   `(tactic| push $cfg:optConfig Not $[$loc]?)
 ```
-⚠ [8940/9137] Replayed Tammes15.Draw.Frame
+⚠ [8940/9142] Replayed Tammes15.Draw.Frame
 warning: Tammes15/Draw/Frame.lean:43:10: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
@@ -180,7 +181,7 @@ Hint: The binding can be removed (if unused) or named `_` (if used implicitly). 
   [apply] _hz
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-⚠ [8942/9137] Replayed Tammes15.Vendor.EM8.Definitions
+⚠ [8942/9142] Replayed Tammes15.Vendor.EM8.Definitions
 warning: Tammes15/Vendor/EM8/Definitions.lean:81:40: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
 warning: Tammes15/Vendor/EM8/Definitions.lean:88:41: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
 warning: Tammes15/Vendor/EM8/Definitions.lean:82:53: This simp argument is unused:
@@ -218,7 +219,7 @@ The difference between `let` and `letI` is that `letI` inlines the value.
 But this is not relevant for proofs because of proof irrelevance.
 
 Note: This linter can be disabled with `set_option linter.style.haveILetI false`
-⚠ [8943/9137] Replayed Tammes15.Vendor.EM8.Antiprism
+⚠ [8943/9142] Replayed Tammes15.Vendor.EM8.Antiprism
 warning: Tammes15/Vendor/EM8/Antiprism.lean:38:54: this tactic is never executed
 
 Note: This linter can be disabled with `set_option linter.unreachableTactic false`
@@ -239,10 +240,10 @@ Hint: Omit it from the simp argument list.
   [apply] simp [Xc, norm_vec3_sub, r, h, hra, hha]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [8944/9137] Replayed Tammes15.Vendor.EM8.Parameter
+⚠ [8944/9142] Replayed Tammes15.Vendor.EM8.Parameter
 warning: Tammes15/Vendor/EM8/Parameter.lean:332:20: `dif_pos` has been deprecated: Use `dite_eq_left` instead
 warning: Tammes15/Vendor/EM8/Parameter.lean:337:20: `dif_pos` has been deprecated: Use `dite_eq_left` instead
-⚠ [8946/9137] Replayed Tammes15.Vendor.EM8.RankinBound
+⚠ [8946/9142] Replayed Tammes15.Vendor.EM8.RankinBound
 warning: Tammes15/Vendor/EM8/RankinBound.lean:99:17: `if_neg` has been deprecated: Use `ite_eq_right` instead
 warning: Tammes15/Vendor/EM8/RankinBound.lean:117:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
 If you'd rather continue using `push_neg` in your project, you can implement it as follows:
@@ -251,7 +252,7 @@ open Lean.Parser.Tactic in
 macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
   `(tactic| push $cfg:optConfig Not $[$loc]?)
 ```
-⚠ [8948/9137] Replayed Tammes15.Draw.Angular
+⚠ [8948/9142] Replayed Tammes15.Draw.Angular
 warning: Tammes15/Draw/Angular.lean:116:15: This simp argument is unused:
   E
 
@@ -275,7 +276,7 @@ consider restructuring your `variable` declarations so that the variables are no
   omit [Fintype V] [DecidableEq V] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-⚠ [8951/9137] Replayed Tammes15.Vendor.EM8.ContactGeometryGlobal
+⚠ [8951/9142] Replayed Tammes15.Vendor.EM8.ContactGeometryGlobal
 warning: Tammes15/Vendor/EM8/ContactGeometryGlobal.lean:26:21: This simp argument is unused:
   real_inner_self_eq_norm_sq
 
@@ -297,7 +298,7 @@ Hint: Omit it from the simp argument list.
   [apply] simp [inner_smul_left, inner_smul_right, hqnorm, mul_comm]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [8953/9137] Replayed Tammes15.Vendor.EM8.PackingPush
+⚠ [8953/9142] Replayed Tammes15.Vendor.EM8.PackingPush
 warning: Tammes15/Vendor/EM8/PackingPush.lean:23:25: This simp argument is unused:
   real_inner_self_eq_norm_sq
 
@@ -305,7 +306,7 @@ Hint: Omit it from the simp argument list.
   [apply] simp [horth', horth, hp, hv]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [8955/9137] Replayed Tammes15.Vendor.EM8.ContactDirections
+⚠ [8955/9142] Replayed Tammes15.Vendor.EM8.ContactDirections
 warning: Tammes15/Vendor/EM8/ContactDirections.lean:82:10: This simp argument is unused:
   real_inner_self_eq_norm_sq
 
@@ -320,7 +321,7 @@ open Lean.Parser.Tactic in
 macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
   `(tactic| push $cfg:optConfig Not $[$loc]?)
 ```
-⚠ [8958/9137] Replayed Tammes15.Vendor.EM8.CrossAlgebra
+⚠ [8958/9142] Replayed Tammes15.Vendor.EM8.CrossAlgebra
 warning: Tammes15/Vendor/EM8/CrossAlgebra.lean:51:37: This simp argument is unused:
   Real.norm_eq_abs
 
@@ -335,21 +336,21 @@ Hint: Omit it from the simp argument list.
   [apply] simp [sphereEdgeNormal, norm_smul, Real.norm_eq_abs, hp.ne']
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [8960/9137] Replayed Tammes15.Vendor.EM8.SphericalPolygon
+⚠ [8960/9142] Replayed Tammes15.Vendor.EM8.SphericalPolygon
 warning: Tammes15/Vendor/EM8/SphericalPolygon.lean:26:25: `if_neg` has been deprecated: Use `ite_eq_right` instead
-⚠ [8963/9137] Replayed Tammes15.Vendor.EM8.PackingEndgame
+⚠ [8963/9142] Replayed Tammes15.Vendor.EM8.PackingEndgame
 warning: Tammes15/Vendor/EM8/PackingEndgame.lean:15:45: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 warning: Tammes15/Vendor/EM8/PackingEndgame.lean:15:57: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-⚠ [8965/9137] Replayed Tammes15.Vendor.EM8.VertexConcavity
+⚠ [8965/9142] Replayed Tammes15.Vendor.EM8.VertexConcavity
 warning: Tammes15/Vendor/EM8/VertexConcavity.lean:71:56: `if_pos` has been deprecated: Use `ite_eq_left` instead
 warning: Tammes15/Vendor/EM8/VertexConcavity.lean:82:55: `if_neg` has been deprecated: Use `ite_eq_right` instead
 warning: Tammes15/Vendor/EM8/VertexConcavity.lean:114:56: `if_pos` has been deprecated: Use `ite_eq_left` instead
 warning: Tammes15/Vendor/EM8/VertexConcavity.lean:125:55: `if_neg` has been deprecated: Use `ite_eq_right` instead
-⚠ [8967/9137] Replayed Tammes15.Vendor.EM8.RhombusScalar
+⚠ [8967/9142] Replayed Tammes15.Vendor.EM8.RhombusScalar
 warning: Tammes15/Vendor/EM8/RhombusScalar.lean:49:45: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
@@ -362,7 +363,7 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 warning: Tammes15/Vendor/EM8/RhombusScalar.lean:51:57: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-⚠ [8972/9137] Replayed Tammes15.Vendor.EM8.ContactRankBound
+⚠ [8972/9142] Replayed Tammes15.Vendor.EM8.ContactRankBound
 warning: Tammes15/Vendor/EM8/ContactRankBound.lean:23:43: `Set.setOf_and` has been deprecated: Use `Set.ofPred_and` instead
 warning: Tammes15/Vendor/EM8/ContactRankBound.lean:38:10: This simp argument is unused:
   Pi.single_apply
@@ -378,7 +379,7 @@ Hint: Omit it from the simp argument list.
   [apply] simp [Pi.norm_single]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [8973/9137] Replayed Tammes15.Vendor.EM8.LocalChart
+⚠ [8973/9142] Replayed Tammes15.Vendor.EM8.LocalChart
 warning: Tammes15/Vendor/EM8/LocalChart.lean:100:48: This simp argument is unused:
   chartRay
 
@@ -396,7 +397,7 @@ Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
 warning: Tammes15/Vendor/EM8/LocalChart.lean:100:38: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-⚠ [8974/9137] Replayed Tammes15.Vendor.EM8.LocalRotations
+⚠ [8974/9142] Replayed Tammes15.Vendor.EM8.LocalRotations
 warning: Tammes15/Vendor/EM8/LocalRotations.lean:34:32: This simp argument is unused:
   hab
 
@@ -404,16 +405,16 @@ Hint: Omit it from the simp argument list.
   [apply] simp [lineReflection_apply, hb]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [8977/9137] Replayed Tammes15.Vendor.EM8.TangentAngles
+⚠ [8977/9142] Replayed Tammes15.Vendor.EM8.TangentAngles
 warning: Tammes15/Vendor/EM8/TangentAngles.lean:59:29: Variable name `hpw` is not explicitly referenced.
 
 Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
   [apply] _hpw
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-⚠ [8978/9137] Replayed Tammes15.Vendor.EM8.TangentWedge
+⚠ [8978/9142] Replayed Tammes15.Vendor.EM8.TangentWedge
 warning: Tammes15/Vendor/EM8/TangentWedge.lean:24:27: `if_pos` has been deprecated: Use `ite_eq_left` instead
-⚠ [8982/9137] Replayed Tammes15.Vendor.EM8.ContactCovering
+⚠ [8982/9142] Replayed Tammes15.Vendor.EM8.ContactCovering
 warning: Tammes15/Vendor/EM8/ContactCovering.lean:45:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
 If you'd rather continue using `push_neg` in your project, you can implement it as follows:
 ```
@@ -434,7 +435,7 @@ open Lean.Parser.Tactic in
 macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
   `(tactic| push $cfg:optConfig Not $[$loc]?)
 ```
-⚠ [8983/9137] Replayed Tammes15.Vendor.EM8.SphericalCone
+⚠ [8983/9142] Replayed Tammes15.Vendor.EM8.SphericalCone
 warning: Tammes15/Vendor/EM8/SphericalCone.lean:56:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
 If you'd rather continue using `push_neg` in your project, you can implement it as follows:
 ```
@@ -442,17 +443,17 @@ open Lean.Parser.Tactic in
 macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
   `(tactic| push $cfg:optConfig Not $[$loc]?)
 ```
-⚠ [8984/9137] Replayed Tammes15.Vendor.EM8.CircleOrder
+⚠ [8984/9142] Replayed Tammes15.Vendor.EM8.CircleOrder
 warning: Tammes15/Vendor/EM8/CircleOrder.lean:33:27: `if_neg` has been deprecated: Use `ite_eq_right` instead
 warning: Tammes15/Vendor/EM8/CircleOrder.lean:35:27: `if_neg` has been deprecated: Use `ite_eq_right` instead
 warning: Tammes15/Vendor/EM8/CircleOrder.lean:69:26: `if_neg` has been deprecated: Use `ite_eq_right` instead
 warning: Tammes15/Vendor/EM8/CircleOrder.lean:79:29: `if_neg` has been deprecated: Use `ite_eq_right` instead
-⚠ [8988/9137] Replayed Tammes15.Vendor.EM8.RotationSystem
+⚠ [8988/9142] Replayed Tammes15.Vendor.EM8.RotationSystem
 warning: Tammes15/Vendor/EM8/RotationSystem.lean:61:6: `dif_pos` has been deprecated: Use `dite_eq_left` instead
 warning: Tammes15/Vendor/EM8/RotationSystem.lean:73:6: `dif_pos` has been deprecated: Use `dite_eq_left` instead
-⚠ [8989/9137] Replayed Tammes15.Vendor.EM8.FiniteCycles
+⚠ [8989/9142] Replayed Tammes15.Vendor.EM8.FiniteCycles
 warning: Tammes15/Vendor/EM8/FiniteCycles.lean:46:27: `if_neg` has been deprecated: Use `ite_eq_right` instead
-⚠ [8990/9137] Replayed Tammes15.Vendor.EM8.ContactBoundary
+⚠ [8990/9142] Replayed Tammes15.Vendor.EM8.ContactBoundary
 warning: Tammes15/Vendor/EM8/ContactBoundary.lean:58:12: This simp argument is unused:
   Fin.val_add_one
 
@@ -467,7 +468,7 @@ Hint: Omit it from the simp argument list.
   [apply] simp [Fin.val_add_one, hzero]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [8991/9137] Replayed Tammes15.Vendor.EM8.CircleGapInterior
+⚠ [8991/9142] Replayed Tammes15.Vendor.EM8.CircleGapInterior
 warning: Tammes15/Vendor/EM8/CircleGapInterior.lean:61:82: `if_pos` has been deprecated: Use `ite_eq_left` instead
 warning: Tammes15/Vendor/EM8/CircleGapInterior.lean:63:26: `if_neg` has been deprecated: Use `ite_eq_right` instead
 warning: Tammes15/Vendor/EM8/CircleGapInterior.lean:66:43: `if_pos` has been deprecated: Use `ite_eq_left` instead
@@ -478,17 +479,17 @@ warning: Tammes15/Vendor/EM8/CircleGapInterior.lean:97:26: `if_neg` has been dep
 warning: Tammes15/Vendor/EM8/CircleGapInterior.lean:100:43: `if_pos` has been deprecated: Use `ite_eq_left` instead
 warning: Tammes15/Vendor/EM8/CircleGapInterior.lean:105:29: `if_neg` has been deprecated: Use `ite_eq_right` instead
 warning: Tammes15/Vendor/EM8/CircleGapInterior.lean:109:43: `if_neg` has been deprecated: Use `ite_eq_right` instead
-⚠ [8992/9137] Replayed Tammes15.Vendor.EM8.ContactSector
+⚠ [8992/9142] Replayed Tammes15.Vendor.EM8.ContactSector
 warning: Tammes15/Vendor/EM8/ContactSector.lean:59:6: `dif_pos` has been deprecated: Use `dite_eq_left` instead
-⚠ [8995/9137] Replayed Tammes15.Vendor.EM8.WeakBoundarySupport
+⚠ [8995/9142] Replayed Tammes15.Vendor.EM8.WeakBoundarySupport
 warning: Tammes15/Vendor/EM8/WeakBoundarySupport.lean:31:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-⚠ [8999/9137] Replayed Tammes15.Vendor.EM8.SphericalLocalConnectivity
+⚠ [8999/9142] Replayed Tammes15.Vendor.EM8.SphericalLocalConnectivity
 warning: Tammes15/Vendor/EM8/SphericalLocalConnectivity.lean:40:2: Try `simp at h` instead of `simpa using h`
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-⚠ [9003/9137] Replayed Tammes15.Vendor.EM8.FiniteArcPatchCover
+⚠ [9003/9142] Replayed Tammes15.Vendor.EM8.FiniteArcPatchCover
 warning: Tammes15/Vendor/EM8/FiniteArcPatchCover.lean:23:2: Try this: 
   letI̵
 
@@ -497,11 +498,11 @@ The difference between `let` and `letI` is that `letI` inlines the value.
 But this is not relevant for proofs because of proof irrelevance.
 
 Note: This linter can be disabled with `set_option linter.style.haveILetI false`
-⚠ [9009/9137] Replayed Tammes15.Vendor.EM8.ShortestChainCorners
+⚠ [9009/9142] Replayed Tammes15.Vendor.EM8.ShortestChainCorners
 warning: Tammes15/Vendor/EM8/ShortestChainCorners.lean:106:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-⚠ [9014/9137] Replayed Tammes15.Vendor.EM8.TracePatchSubdivision
+⚠ [9014/9142] Replayed Tammes15.Vendor.EM8.TracePatchSubdivision
 warning: Tammes15/Vendor/EM8/TracePatchSubdivision.lean:47:4: `push_neg` has been deprecated. Prefer using `push Not` instead.
 If you'd rather continue using `push_neg` in your project, you can implement it as follows:
 ```
@@ -509,14 +510,14 @@ open Lean.Parser.Tactic in
 macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
   `(tactic| push $cfg:optConfig Not $[$loc]?)
 ```
-⚠ [9016/9137] Replayed Tammes15.Vendor.EM8.InteriorChainShortening
+⚠ [9016/9142] Replayed Tammes15.Vendor.EM8.InteriorChainShortening
 warning: Tammes15/Vendor/EM8/InteriorChainShortening.lean:155:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 warning: Tammes15/Vendor/EM8/InteriorChainShortening.lean:155:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-⚠ [9017/9137] Replayed Tammes15.Vendor.EM8.SphericalRegionInterior
+⚠ [9017/9142] Replayed Tammes15.Vendor.EM8.SphericalRegionInterior
 warning: Tammes15/Vendor/EM8/SphericalRegionInterior.lean:98:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
 If you'd rather continue using `push_neg` in your project, you can implement it as follows:
 ```
@@ -524,14 +525,14 @@ open Lean.Parser.Tactic in
 macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
   `(tactic| push $cfg:optConfig Not $[$loc]?)
 ```
-⚠ [9018/9137] Replayed Tammes15.Vendor.EM8.GreatCircleInteriorPropagation
+⚠ [9018/9142] Replayed Tammes15.Vendor.EM8.GreatCircleInteriorPropagation
 warning: Tammes15/Vendor/EM8/GreatCircleInteriorPropagation.lean:113:9: Variable name `x` is not explicitly referenced.
 
 Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
   [apply] _x
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-⚠ [9020/9137] Replayed Tammes15.Vendor.EM8.SphericalComplementRegions
+⚠ [9020/9142] Replayed Tammes15.Vendor.EM8.SphericalComplementRegions
 warning: Tammes15/Vendor/EM8/SphericalComplementRegions.lean:43:27: This simp argument is unused:
   real_inner_self_eq_norm_sq
 
@@ -539,7 +540,7 @@ Hint: Omit it from the simp argument list.
   [apply] simp [inner_neg_right, hxunit] at hh
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [9022/9137] Replayed Tammes15.Vendor.EM8.ContactArcLocalGeometry
+⚠ [9022/9142] Replayed Tammes15.Vendor.EM8.ContactArcLocalGeometry
 warning: Tammes15/Vendor/EM8/ContactArcLocalGeometry.lean:39:43: This simp argument is unused:
   real_inner_self_eq_norm_sq
 
@@ -554,7 +555,7 @@ Hint: Omit it from the simp argument list.
   [apply] simp [inner_sub_left, inner_smul_left, ha, hba]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [9024/9137] Replayed Tammes15.Vendor.EM8.SolidAngleDerivative
+⚠ [9024/9142] Replayed Tammes15.Vendor.EM8.SolidAngleDerivative
 warning: Tammes15/Vendor/EM8/SolidAngleDerivative.lean:43:19: This simp argument is unused:
   solidAngleDenom
 
@@ -569,7 +570,7 @@ Hint: Omit it from the simp argument list.
   [apply] simp only [solidAngleDenom, inner_zero_left, add_zero, zero_add]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [9025/9137] Replayed Tammes15.Vendor.EM8.SolidAngleDomain
+⚠ [9025/9142] Replayed Tammes15.Vendor.EM8.SolidAngleDomain
 warning: Tammes15/Vendor/EM8/SolidAngleDomain.lean:21:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
 If you'd rather continue using `push_neg` in your project, you can implement it as follows:
 ```
@@ -584,12 +585,12 @@ Hint: Omit it from the simp argument list.
   [apply] simp [hx]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [9027/9137] Replayed Tammes15.Vendor.EM8.CycleEdgeSeparation
+⚠ [9027/9142] Replayed Tammes15.Vendor.EM8.CycleEdgeSeparation
 warning: Tammes15/Vendor/EM8/CycleEdgeSeparation.lean:41:19: `if_neg` has been deprecated: Use `ite_eq_right` instead
 warning: Tammes15/Vendor/EM8/CycleEdgeSeparation.lean:41:45: `if_neg` has been deprecated: Use `ite_eq_right` instead
 warning: Tammes15/Vendor/EM8/CycleEdgeSeparation.lean:45:19: `if_neg` has been deprecated: Use `ite_eq_right` instead
 warning: Tammes15/Vendor/EM8/CycleEdgeSeparation.lean:45:45: `if_pos` has been deprecated: Use `ite_eq_left` instead
-⚠ [9028/9137] Replayed Tammes15.Vendor.EM8.ContactSimpleCycles
+⚠ [9028/9142] Replayed Tammes15.Vendor.EM8.ContactSimpleCycles
 warning: Tammes15/Vendor/EM8/ContactSimpleCycles.lean:55:42: `if_true` has been deprecated: Use `ite_true` instead
 warning: Tammes15/Vendor/EM8/ContactSimpleCycles.lean:55:51: `if_false` has been deprecated: Use `ite_false` instead
 warning: Tammes15/Vendor/EM8/ContactSimpleCycles.lean:57:42: `if_true` has been deprecated: Use `ite_true` instead
@@ -613,17 +614,17 @@ Hint: The binding can be removed (if unused) or named `_` (if used implicitly). 
   [apply] _hirr
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-⚠ [9029/9137] Replayed Tammes15.Vendor.EM8.ArcEmbedding
+⚠ [9029/9142] Replayed Tammes15.Vendor.EM8.ArcEmbedding
 warning: Tammes15/Vendor/EM8/ArcEmbedding.lean:79:26: Variable name `hij` is not explicitly referenced.
 
 Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
   [apply] _hij
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-⚠ [9036/9137] Replayed Tammes15.Vendor.EM8.ContactSectorCover
+⚠ [9036/9142] Replayed Tammes15.Vendor.EM8.ContactSectorCover
 warning: Tammes15/Vendor/EM8/ContactSectorCover.lean:31:27: `if_neg` has been deprecated: Use `ite_eq_right` instead
 warning: Tammes15/Vendor/EM8/ContactSectorCover.lean:99:6: `dif_pos` has been deprecated: Use `dite_eq_left` instead
-⚠ [9042/9137] Replayed Tammes15.Vendor.EM8.ContactFaceLocalModels
+⚠ [9042/9142] Replayed Tammes15.Vendor.EM8.ContactFaceLocalModels
 warning: Tammes15/Vendor/EM8/ContactFaceLocalModels.lean:125:2: Try this: 
   letI̵
 
@@ -632,17 +633,17 @@ The difference between `let` and `letI` is that `letI` inlines the value.
 But this is not relevant for proofs because of proof irrelevance.
 
 Note: This linter can be disabled with `set_option linter.style.haveILetI false`
-⚠ [9050/9137] Replayed Tammes15.Vendor.EM8.RhombusRelation
+⚠ [9050/9142] Replayed Tammes15.Vendor.EM8.RhombusRelation
 warning: Tammes15/Vendor/EM8/RhombusRelation.lean:11:42: Variable name `hc` is not explicitly referenced.
 
 Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
   [apply] _hc
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-⚠ [9056/9137] Replayed Tammes15.Vendor.EM8.ContactRotationInvariants
+⚠ [9056/9142] Replayed Tammes15.Vendor.EM8.ContactRotationInvariants
 warning: Tammes15/Vendor/EM8/ContactRotationInvariants.lean:24:29: `if_neg` has been deprecated: Use `ite_eq_right` instead
 warning: Tammes15/Vendor/EM8/ContactRotationInvariants.lean:52:31: `dif_pos` has been deprecated: Use `dite_eq_left` instead
-⚠ [9073/9137] Replayed Tammes15.Vendor.EM8.ChartInverse
+⚠ [9073/9142] Replayed Tammes15.Vendor.EM8.ChartInverse
 warning: Tammes15/Vendor/EM8/ChartInverse.lean:17:4: This simp argument is unused:
   real_inner_self_eq_norm_sq
 
@@ -687,7 +688,7 @@ Hint: Omit it from the simp argument list.
     WithLp.equiv_symm_apply]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [9080/9137] Replayed Tammes15.Vendor.EM8.BoundaryFaceSupport
+⚠ [9080/9142] Replayed Tammes15.Vendor.EM8.BoundaryFaceSupport
 warning: Tammes15/Vendor/EM8/BoundaryFaceSupport.lean:34:14: This simp argument is unused:
   Fin.val_add
 
@@ -709,7 +710,7 @@ Hint: Omit it from the simp argument list.
   [apply] simp [Fin.val_add, Nat.mod_eq_of_lt hsize]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [9081/9137] Replayed Tammes15.Vendor.EM8.RhombusOrientation
+⚠ [9081/9142] Replayed Tammes15.Vendor.EM8.RhombusOrientation
 warning: Tammes15/Vendor/EM8/RhombusOrientation.lean:24:32: This simp argument is unused:
   ha
 
@@ -726,10 +727,10 @@ Hint: Omit it from the simp argument list.
     cross_inner_cross, real_inner_self_eq_norm_sq, ha, hb, one_pow, hab, hbd, hba, hdb, hda] at h
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [9082/9137] Replayed Tammes15.Vendor.EM8.EmptyContactSector
+⚠ [9082/9142] Replayed Tammes15.Vendor.EM8.EmptyContactSector
 warning: Tammes15/Vendor/EM8/EmptyContactSector.lean:56:6: `dif_pos` has been deprecated: Use `dite_eq_left` instead
 warning: Tammes15/Vendor/EM8/EmptyContactSector.lean:56:6: `dif_pos` has been deprecated: Use `dite_eq_left` instead
-⚠ [9084/9137] Replayed Tammes15.Rattlers.Basic
+⚠ [9084/9142] Replayed Tammes15.Rattlers.Basic
 info: Tammes15/Rattlers/Basic.lean:59:50: Try this:
   [apply] ring_nf
   
@@ -753,17 +754,17 @@ Note: This linter can be disabled with `set_option linter.style.haveILetI false`
 warning: Tammes15/Rattlers/Basic.lean:245:4: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-⚠ [9085/9137] Replayed Tammes15.Rattlers.Hex
+⚠ [9085/9142] Replayed Tammes15.Rattlers.Hex
 warning: Tammes15/Rattlers/Hex.lean:59:4: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-⚠ [9088/9137] Replayed Tammes15.FaceChain.Interfaces
+⚠ [9088/9142] Replayed Tammes15.FaceChain.Interfaces
 warning: Tammes15/FaceChain/Interfaces.lean:166:53: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
 warning: Tammes15/FaceChain/Interfaces.lean:281:4: Try this: intro x h_eq
 warning: Tammes15/FaceChain/Interfaces.lean:376:2: Try this: intro i hcontact
-⚠ [9089/9137] Replayed Tammes15.FaceChain.ThreeConn
+⚠ [9089/9142] Replayed Tammes15.FaceChain.ThreeConn
 warning: Tammes15/FaceChain/ThreeConn.lean:721:61: Try `simp at this` instead of `simpa using this`
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
@@ -782,7 +783,7 @@ Note: This linter can be disabled with `set_option linter.unnecessarySimpa false
 warning: Tammes15/FaceChain/ThreeConn.lean:841:34: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-⚠ [9091/9137] Replayed Tammes15.Hyps.Transport
+⚠ [9091/9142] Replayed Tammes15.Hyps.Transport
 warning: Tammes15/Hyps/Transport.lean:412:0: automatically included section variable(s) unused in theorem `Tammes15.iso_degree`:
   [DecidableEq V]
   [DecidableEq V']
@@ -803,7 +804,7 @@ Note: This linter can be disabled with `set_option linter.unnecessarySimpa false
 warning: Tammes15/Hyps/Transport.lean:795:8: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-ℹ [9093/9137] Replayed Tammes15.TwoConn.Hull
+ℹ [9093/9142] Replayed Tammes15.TwoConn.Hull
 info: Tammes15/TwoConn/Hull.lean:705:60: Try this:
   [apply] ring_nf
   
@@ -816,7 +817,7 @@ info: Tammes15/TwoConn/Hull.lean:708:73: Try this:
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
     
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-⚠ [9107/9137] Replayed Tammes15.Local41.Chain
+⚠ [9107/9142] Replayed Tammes15.Local41.Chain
 warning: Tammes15/Local41/Chain.lean:96:37: Variable name `hp` is not explicitly referenced.
 
 Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
@@ -841,7 +842,7 @@ Hint: The binding can be removed (if unused) or named `_` (if used implicitly). 
   [apply] _hy
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-⚠ [9111/9137] Replayed Tammes15.Geom.Wheel
+⚠ [9111/9142] Replayed Tammes15.Geom.Wheel
 warning: Tammes15/Geom/Wheel.lean:23:35: Variable name `hx` is not explicitly referenced.
 
 Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
@@ -892,14 +893,14 @@ Hint: The binding can be removed (if unused) or named `_` (if used implicitly). 
   [apply] _hx
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-ℹ [9112/9137] Replayed Tammes15.Geom.Nor
+ℹ [9112/9142] Replayed Tammes15.Geom.Nor
 info: Tammes15/Geom/Nor.lean:122:49: Try this:
   [apply] ring_nf
   
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
     
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-ℹ [9113/9137] Replayed Tammes15.Rattlers.NorPoly
+ℹ [9113/9142] Replayed Tammes15.Rattlers.NorPoly
 info: Tammes15/Rattlers/NorPoly.lean:116:46: Try this:
   [apply] ring_nf
   
@@ -912,10 +913,10 @@ info: Tammes15/Rattlers/NorPoly.lean:138:8: Try this:
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
     
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-⚠ [9123/9137] Replayed Tammes15.Draw.Count
+⚠ [9123/9142] Replayed Tammes15.Draw.Count
 warning: Tammes15/Draw/Count.lean:150:14: `if_pos` has been deprecated: Use `ite_eq_left` instead
 warning: Tammes15/Draw/Count.lean:155:14: `if_neg` has been deprecated: Use `ite_eq_right` instead
-⚠ [9124/9137] Replayed Tammes15.Draw.Structure
+⚠ [9124/9142] Replayed Tammes15.Draw.Structure
 warning: Tammes15/Draw/Structure.lean:86:2: Try this: 
   haveI̵
 
@@ -924,7 +925,7 @@ The difference between `have` and `haveI` is that `haveI` inlines the value.
 But this is not relevant for proofs because of proof irrelevance.
 
 Note: This linter can be disabled with `set_option linter.style.haveILetI false`
-⚠ [9127/9137] Replayed Tammes15.Fans.Corners
+⚠ [9127/9142] Replayed Tammes15.Fans.Corners
 warning: Tammes15/Fans/Corners.lean:83:40: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
@@ -937,7 +938,7 @@ Note: This linter can be disabled with `set_option linter.unnecessarySimpa false
 warning: Tammes15/Fans/Corners.lean:104:40: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-⚠ [9128/9137] Replayed Tammes15.Fans.Hexagon
+⚠ [9128/9142] Replayed Tammes15.Fans.Hexagon
 warning: Tammes15/Fans/Hexagon.lean:40:40: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
@@ -950,7 +951,7 @@ Note: This linter can be disabled with `set_option linter.unnecessarySimpa false
 warning: Tammes15/Fans/Hexagon.lean:61:40: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-⚠ [9129/9137] Replayed Tammes15.Draw.FaceWalk
+⚠ [9129/9142] Replayed Tammes15.Draw.FaceWalk
 warning: Tammes15/Draw/FaceWalk.lean:31:39: Variable name `hv` is not explicitly referenced.
 
 Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
@@ -963,14 +964,14 @@ Note: This linter can be disabled with `set_option linter.unnecessarySimpa false
 warning: Tammes15/Draw/FaceWalk.lean:113:8: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-ℹ [9131/9137] Replayed Tammes15.Fans.Realise
+ℹ [9131/9142] Replayed Tammes15.Fans.Realise
 info: Tammes15/Fans/Realise.lean:333:32: Try this:
   [apply] ring_nf
   
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
     
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-⚠ [9132/9137] Replayed Tammes15.Glue.Reconstruct
+⚠ [9132/9142] Replayed Tammes15.Glue.Reconstruct
 warning: Tammes15/Glue/Reconstruct.lean:36:41: This simp argument is unused:
   e2
 
@@ -1058,14 +1059,18 @@ Note: This linter can be disabled with `set_option linter.unnecessarySimpa false
 warning: Tammes15/Glue/Reconstruct.lean:298:4: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-Build completed successfully (9137 jobs).
-Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, Tammes15.reduction, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Tammes15.Solution
+⚠ [9138/9142] Replayed Tammes15.FejesToth.Saturate
+warning: Tammes15/FejesToth/Saturate.lean:117:10: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+Build completed successfully (9142 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, Tammes15.reduction, Tammes15.fejesToth_bound, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Tammes15.Solution
 Running nanoda kernel on solution
 nanoda kernel accepts the solution
 Running Lean default kernel on solution.
 Lean default kernel accepts the solution
 Your solution is okay!
-memory.peak 3576774656
-COMPARATOR PASS (nanoda on): 173 s wall, memory peak 3411 MiB, exit 0
+memory.peak 3543670784
+COMPARATOR PASS (nanoda on): 177 s wall, memory peak 3379 MiB, exit 0
 RESULT pass: as expected (Your solution is okay!)
 exit 0

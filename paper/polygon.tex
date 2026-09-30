@@ -1,22 +1,7 @@
-% The rattler bounds in the form the formalization follows (Geom/Nor.lean, Geom/Qpoly.lean,
-% Geom/Onehex.lean): Proposition nor by the subtended angles, Proposition onehex by an inscribed
-% polygon. main.tex prints this text in place of its own when \polygonformtrue is set there; the
-% default build keeps the convex hulls of Lemma perims and describes the formal route in Remarks
-% rem:norroute and rem:polygons. The two forms share every statement except Lemmas polar and perims.
-
-% The bound on the angles subtended at a rattler, shared by Remark rem:norroute of main.tex and the
-% proof of Proposition nor below. It follows the sentence that defines r, v_i and beta_i.
-\newcommand{\NorRouteCore}{%
-Write $c=\cos d$, $h=h(d)$, $p=\langle r,v_i\rangle$ and $q=\langle r,v_{i+1}\rangle$. By Lemma~\ref{lem:disc}, $r$ is at distance at least $h$ from the great circle of the side $v_iv_{i+1}$, so $\langle r,v_i\times v_{i+1}\rangle\ge\sin d\sin h$. The Gram determinant of $v_i,v_{i+1},r$ is $\langle r,v_i\times v_{i+1}\rangle^2=1-c^2-p^2-q^2+2cpq$, and $\cos h=c/\cos(d/2)$ gives $\cos^2h=2c^2/(1+c)$, so
-\[
-p^2+q^2-2cpq\le(1-c^2)\cos^2h=2c^2(1-c).
-\]
-With $2pq\le p^2+q^2$ this gives $pq\le c^2$. The law of cosines at $r$, the inequality $(1-p^2)(1-q^2)\le(1-pq)^2$ and $c-pq\ge0$ give
-\[
-\cos\beta_i=\frac{c-pq}{\sqrt{(1-p^2)(1-q^2)}}\ge\frac{c-pq}{1-pq}\ge\frac{c-c^2}{1-c^2}=\cos\alpha(d),
-\]
-since $(c-t)/(1-t)$ decreases in $t<1$. So $\beta_i\le\alpha(d)\le\alpha(\dhi)=69.23^\circ<72^\circ$ for each of the at most five sides, and the $\beta_i$ cannot sum to $2\pi$.%
-}
+% Proposition onehex in the form the formalization follows (Geom/Qpoly.lean, Geom/Onehex.lean), by
+% an inscribed polygon. main.tex prints this text in place of its own when \polygonformtrue is set
+% there; the default build keeps the convex hull of Lemma perims and describes the formal route in
+% Remark rem:polygons. The two forms share every statement except Lemmas polar and perims.
 
 % Before Lemma polar, in place of the definition of K° for convex sets.
 \newcommand{\PolygonPolarDef}{%
@@ -27,7 +12,7 @@ For the closure $K$ of a region as in Lemma~\ref{lem:convex}, with sides $S_1,\d
 \begin{lemma}\label{lem:polar}
 For a convex polygon $K$, $\per K=2\pi-\area K^\circ$. Consequently, if $K\subseteq K'$ are two convex polygons, then $\per K\le\per K'$.
 \end{lemma}
-\leanline{in part. The inequality $\per K<2\pi$ for a face in the cone form of Lemma~\ref{lem:convex} is \lname{face_perimeter_lt} in \lfile{FaceChain/Sizes.lean}, from the perimeter bound of the eight-point proof \cite{KLT}. \polarmono{} The identity is not formalized.}
+\leanline{in part. The inequality $\per K<2\pi$ for the faces is \lname{FaceChain.face_perimeter_lt} in \lfile{FaceChain/Sizes.lean}, from the perimeter bound of the eight-point proof \cite{KLT}, for a rotation system all of whose faces are in the cone form of Lemma~\ref{lem:convex} and have at least three sides, and all of whose edges have length $d$: then every face with $m$ sides has $md<2\pi$. \polarmono{} The identity is not formalized.}
 
 \begin{proof}
 $K^\circ$ is the convex polygon with vertices $n_1,\dots,n_s$, and its angle at $n_i$ is $\pi-\ell_i$. The area of a spherical polygon with $s$ vertices is the sum of its angles minus $(s-2)\pi$, so $\area K^\circ=\sum_i(\pi-\ell_i)-(s-2)\pi=2\pi-\per K$. If $K\subseteq K'$, then $K'^\circ\subseteq K^\circ$, so $\area K'^\circ\le\area K^\circ$.
@@ -58,13 +43,6 @@ The convexity, for $l=d$, $h=h(d)$ and $d\in[\dlo,\dhi]$, is proved in Lean only
 \end{proof}
 }
 
-% In place of the proof of Proposition nor.
-\newcommand{\PolygonNorProof}{%
-\begin{proof}
-Let $r$ be a rattler in a face $F$ with vertices $v_1,\dots,v_m$, $m\le5$, and let $\beta_i$ be the angle $v_irv_{i+1}$. As $r$ is inside the convex face, $\sum\beta_i=2\pi$. \NorRouteCore
-\end{proof}
-}
-
 % In place of the proof of Proposition onehex.
 \newcommand{\PolygonOnehexProof}{%
 \begin{proof}
@@ -83,11 +61,11 @@ and the right side is at least $2.48^\circ$ on each of the ten intervals. This i
 % In place of Remark rem:polygons.
 \newcommand{\PolygonRemark}{%
 \begin{remark}\label{rem:polygons}
-The polygon of Lemma~\ref{lem:perims} is inscribed in the convex hull $\conv(D(r_1,h)\cup D(r_2,h))$, and with more vertices on the arcs its perimeter increases toward that of the hull. We use the polygon because then Lemma~\ref{lem:polar} is needed for polygons only. The proof of Proposition~\ref{prop:nor} above uses no perimeter at all. The formalization follows both proofs.
+The polygon of Lemma~\ref{lem:perims} is inscribed in the convex hull $\conv(D(r_1,h)\cup D(r_2,h))$, and with more vertices on the arcs its perimeter increases toward that of the hull. We use the polygon because then Lemma~\ref{lem:polar} is needed for polygons only. The proof of Proposition~\ref{prop:nor} above uses no perimeter. The formalization follows both proofs.
 \end{remark}
 }
 
 % In place of the first paragraph of Section 3.4.
 \newcommand{\PolygonConstants}{%
-The margins used above are $7\dlo-2\pi=15.6^\circ$, $72^\circ-\alpha(\dhi)=2.77^\circ$, $\pi-2h(\dhi)-\dhi=20.58^\circ$, and for Proposition~\ref{prop:onehex} the ten worst end bounds, which decrease from $10.13^\circ$ on the first interval to $2.48^\circ$ on the last. Lean proves that all of them are positive: \lname{two_pi_lt_seven_dlo}, \lname{alpha_dhi_lt} and \lname{margin_perims} in \lfile{Trigrows/Margins.lean}, and the ten bounds \lname{hex_piece_0} to \lname{hex_piece_9}, assembled into \lname{margin_onehex_poly}, in \lfile{Rattlers/HexPoly.lean}, from rational enclosures of $\cos$ and $\sin$ by Taylor polynomials with Lagrange remainders (\lfile{Numerics/Taylor.lean}, \lfile{Numerics/HexData.lean}). The values quoted come from PARI/GP with 60 digits (\texttt{code/paper/paper\_checks.gp} and \texttt{code/lean-check/onehex\_poly.gp}, with their outputs). A ball computation (SageMath, 256 bits) checks $\dlo<\psis$ (by $1.3\cdot10^{-7}$ degrees) and $\dhi$ above the bound of Fejes T\'oth (by $9.6\cdot10^{-5}$ degrees).
+The margins used above are $7\dlo-2\pi=15.6^\circ$, $72^\circ-\alpha(\dhi)=2.77^\circ$, $\pi-2h(\dhi)-\dhi=20.58^\circ$, and for Proposition~\ref{prop:onehex} the ten worst end bounds, which decrease from $10.13^\circ$ on the first interval to $2.48^\circ$ on the last. Lean proves that all of them are positive: \lname{two_pi_lt_seven_dlo}, \lname{alpha_dhi_lt} and \lname{margin_perims} in \lfile{Trigrows/Margins.lean}, and the ten bounds \lname{hex_piece_0} to \lname{hex_piece_9}, assembled into \lname{margin_onehex_poly}, in \lfile{Rattlers/HexPoly.lean}, from rational enclosures of $\cos$ and $\sin$ by Taylor polynomials with Lagrange remainders (\lfile{Numerics/Taylor.lean}, \lfile{Numerics/HexData.lean}). The values quoted come from PARI/GP with 60 digits (\texttt{code/gp/paper\_checks.gp} and \texttt{code/lean/numerics/onehex\_poly.gp}, with their outputs). A ball computation (SageMath, 256 bits) checks $\dlo<\psis$ (by $1.3\cdot10^{-7}$ degrees) and $\dhi$ above the bound of Fejes T\'oth (by $9.6\cdot10^{-5}$ degrees).
 }

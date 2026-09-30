@@ -1,17 +1,18 @@
-# code/lean/check.sh, 2026-09-30 10:44 UTC, not a git checkout
+# code/lean/check.sh, 2026-09-30 13:44 UTC, not a git checkout
 # Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release); Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)
 # Mathlib: manifest d13f23b723b8a846827a245b89c10fc7d3f11612, checkout d13f23b723b8a846827a245b89c10fc7d3f11612
-# sources: sha256 62b84fbbe9d15a28 of the list of sha256 sums of the files of Tammes15/, lakefile.toml, lake-manifest.json, lean-toolchain and the five files of code/lean/ that this script reads (code/lean/sources.sh prints it)
+# sources: sha256 a2ef8838df2e0696 of the list of sha256 sums of the files of Tammes15/, lakefile.toml, lake-manifest.json, lean-toolchain and the five files of code/lean/ that this script reads (code/lean/sources.sh prints it)
 # LEAN_NUM_THREADS 3; 24 processors visible
-== 1. lake build Statement Trigrows Local41 Rattlers Glue Fans Draw VendorEM8 Hyps Geom TwoConn Numerics FaceChain Challenge Solution
-exit 0, 623 s wall; modules of the package built: 232 (built or replayed: 232); sorry warnings: 1, of them in Tammes15/Challenge.lean: 1
-Build completed successfully (9170 jobs).
+== 1. lake build Statement Trigrows Local41 Rattlers Glue Fans Draw VendorEM8 Hyps Geom TwoConn Numerics FaceChain FejesToth Challenge Solution
+exit 0, 648 s wall; modules of the package built: 237 (built or replayed: 237); sorry warnings: 2, of them in Tammes15/Challenge.lean: 2
+Build completed successfully (9176 jobs).
 build: PASS
 == 2. every target up to date (lake build --no-build)
-exit 0; All targets up-to-date (9170 jobs).
+exit 0; All targets up-to-date (9176 jobs).
 up-to-date: PASS
 == 3. source scan (code/lean/scan.sh Tammes15 lakefile.toml)
-Tammes15/Challenge.lean:15: sorry | (h3 : Tammes15.Killed L F) (h4 : Tammes15.AttainedHyp F) : Tammes15.Conjecture := sorry
+Tammes15/Challenge.lean:16: sorry | (h3 : Tammes15.Killed L F) (h4 : Tammes15.AttainedHyp F) : Tammes15.Conjecture := sorry
+Tammes15/Challenge.lean:18: sorry | theorem Tammes15.fejesToth_bound : Tammes15.FejesTothBound := sorry
 Tammes15/Vendor/EM8/AngularArcParametrization.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
 Tammes15/Vendor/EM8/Antiprism.lean:14: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
 Tammes15/Vendor/EM8/ArcEmbedding.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
@@ -134,9 +135,9 @@ Tammes15/Vendor/EM8/TangentWedge.lean:9: notation | local notation "ℝ³" => Eu
 Tammes15/Vendor/EM8/TracePatchSubdivision.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
 Tammes15/Vendor/EM8/VoronoiRegions.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
 Tammes15/Vendor/EM8/WeakBoundarySupport.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
-SCAN: 123 lines with a construct in 233 files; per construct:
+SCAN: 124 lines with a construct in 238 files; per construct:
     122 notation
-      1 sorry
+      2 sorry
 scan: PASS
 == 4. #print axioms (code/lean/axioms.lean)
 'Tammes15.reduction' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -167,7 +168,24 @@ scan: PASS
 'Tammes15.Vendor.EM8.SquareAntiprismVerification.eight_point_best_packing_rigidity' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
-exit 0; 26 of 26 theorems printed; axioms outside propext, Classical.choice, Quot.sound: none
+'Tammes15.fejesToth_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.sphereVertexAngle_eq_arg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.angle_sum_arg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.fejesToth_triangle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.circumcentre_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.tri_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.tri_poly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.tri_mul_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.arg_le_arg_of_mul_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.N1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.N2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.exists_saturated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.sep_card_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.hB_of_sat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.facetPolar_norm_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.facet_fan_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.FejesToth.hull_fan_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit 0; 43 of 43 theorems printed; axioms outside propext, Classical.choice, Quot.sound: none
 axioms: PASS
 == 5. types of the interfaces (code/lean/types.lean)
 (no message)
@@ -195,6 +213,11 @@ MODULE Tammes15.Fans.Cone: 1 constants
 MODULE Tammes15.Fans.Corners: 2 constants
 MODULE Tammes15.Fans.Hexagon: 2 constants
 MODULE Tammes15.Fans.Realise: 10 constants
+MODULE Tammes15.FejesToth.Bound: 5 constants
+MODULE Tammes15.FejesToth.Facets: 4 constants
+MODULE Tammes15.FejesToth.Numerics: 6 constants
+MODULE Tammes15.FejesToth.Saturate: 4 constants
+MODULE Tammes15.FejesToth.Triangle: 14 constants
 MODULE Tammes15.Geom.Basic: 65 constants
 MODULE Tammes15.Geom.Cover: 47 constants
 MODULE Tammes15.Geom.Crofton: 85 constants
@@ -391,9 +414,9 @@ MODULE Tammes15.Vendor.EM8.VertexConcavity: 22 constants
 MODULE Tammes15.Vendor.EM8.VoronoiRegions: 8 constants
 MODULE Tammes15.Vendor.EM8.WeakBoundarySupport: 10 constants
 MODULE Tammes15.Vendor.EM8.WeakEulerArea: 2 constants
-SCOPE [M:Tammes15]: 4268 constants in 217 modules
+SCOPE [M:Tammes15]: 4301 constants in 222 modules
 FLAGS: 0 (6 compiled-code shims `_unsafe_rec` of checked recursive definitions not counted)
-AXIOMS OK: 4268 constants reach 66975 constants and only the axioms [Classical.choice, Quot.sound, propext]
-exit 0; modules audited: 218
+AXIOMS OK: 4301 constants reach 67030 constants and only the axioms [Classical.choice, Quot.sound, propext]
+exit 0; modules audited: 223
 audit: PASS
 CHECK PASS

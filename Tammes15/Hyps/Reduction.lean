@@ -3,16 +3,18 @@ import Tammes15.Hyps.Transport
 import Tammes15.Local41.Chain
 import Tammes15.Glue.Pair
 import Tammes15.Trigrows.Sdist
+import Tammes15.FejesToth.Bound
 
 /-!
 # The capstone: `Tammes15.Conjecture` from D1 to D4
 
-`reduction L F : FejesTothBound → KappaHyp F → EnumComplete L → Killed L F → AttainedHyp F →
-Conjecture`.
+`reduction L F : KappaHyp F → EnumComplete L → Killed L F → AttainedHyp F → Conjecture`. The
+upper end `dhi` of the search range comes from the Fejes Tóth bound, proved in Lean
+(`fejesToth_bound : FejesTothBound`, module `Tammes15.FejesToth.Bound`).
 
 The proof is the written reduction. Attainment is D4. For the upper bound, a configuration with
 all angles above `ψ* = arccos u` gives a maximal configuration at `d₁₅ ∈ (ψ*, dhi]`
-(`exists_isGreatest_config`, `FejesTothBound`), hence (Theorem 3.1, `structure_theorem`) a
+(`exists_isGreatest_config`, `fejesToth_bound`), hence (Theorem 3.1, `structure_theorem`) a
 structured one, hence a realisation of a case of a plane graph of the class
 (`realisation_of_structured`); D2 and `realisation_transport` move it to a case of an entry of the
 list, whose assignment satisfies the relation system (`relSys_of_realisation`). D3 then gives a
@@ -213,11 +215,12 @@ theorem upperBound_of_hyps (L : Set PlaneGraph) (F : Set Frame) (h0 : FejesTothB
     have hne' : j.symm ij.1 ≠ j.symm ij.2 := fun h => (hSu ij hij).1 (j.symm.injective h)
     linarith [hsmall _ _ hne']
 
-/-- The capstone: the Fejes Tóth bound (`FejesTothBound`, a literature input) and the four
-computations D1 (`KappaHyp`), D2 (`EnumComplete`), D3 (`Killed`) and D4 (`AttainedHyp`) imply the
-Tammes conjecture for 15 points, `Tammes15.Conjecture` of `lean/Tammes15/Statement.lean`. -/
-theorem reduction (L : Set PlaneGraph) (F : Set Frame) (h0 : FejesTothBound) (h1 : KappaHyp F)
+/-- The capstone: the four computations D1 (`KappaHyp`), D2 (`EnumComplete`), D3 (`Killed`) and D4
+(`AttainedHyp`) imply the Tammes conjecture for 15 points, `Tammes15.Conjecture` of
+`Tammes15/Statement.lean`. The Fejes Tóth bound is not a hypothesis: `fejesToth_bound`
+proves it. -/
+theorem reduction (L : Set PlaneGraph) (F : Set Frame) (h1 : KappaHyp F)
     (h2 : EnumComplete L) (h3 : Killed L F) (h4 : AttainedHyp F) : Conjecture :=
-  conjecture_iff.mpr ⟨attained_of_hyp F h4, upperBound_of_hyps L F h0 h1 h2 h3 h4⟩
+  conjecture_iff.mpr ⟨attained_of_hyp F h4, upperBound_of_hyps L F fejesToth_bound h1 h2 h3 h4⟩
 
 end Tammes15

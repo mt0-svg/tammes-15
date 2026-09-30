@@ -13,6 +13,11 @@ name: CI
 # Every job uploads the complete output of each check and one result line per check as an artifact verify-*, which
 # release.yml collects into the verification archive of a release.
 # Only commits that touch the build or the computations run it; a newer push cancels the older run on the same branch.
+# On a push to an existing branch the job changes reads the files of the pushed commits, and only the jobs of the parts
+# they touch run: the computations for code/ outside code/lean/, data/ and ASSETS.md, the Lean jobs (scan, lean,
+# comparator) for the Lean sources, the Lake files, config.json and code/lean/. A change of this file, a run by hand, a
+# pull request and a new branch run everything. A push cancelled by a newer one is not made up by the newer run, so a
+# release takes a run started by hand on its tagged commit (release.yml).
 on:
   push:
     branches: ["**"]
@@ -38,8 +43,46 @@ permissions:
   contents: read
 
 jobs:
+  changes:
+    name: Changed parts
+    runs-on: ubuntu-latest
+    outputs:
+      compute: ${{ steps.diff.outputs.compute }}
+      lean: ${{ steps.diff.outputs.lean }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Files of the pushed commits
+        id: diff
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -eu
+          zero=0000000000000000000000000000000000000000
+          if [ "$EVENT" != push ] || [ -z "$BEFORE" ] || [ "$BEFORE" = "$zero" ] ||
+            ! files=$(git diff --name-only --no-renames "$BEFORE" "$SHA"); then
+            echo "$EVENT${BEFORE:+ from $BEFORE}: every job runs"
+            { echo compute=true; echo lean=true; } >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          compute=false lean=false
+          while IFS= read -r f; do
+            case "$f" in .github/workflows/ci.yml) compute=true lean=true ;; esac
+            case "$f" in code/lean/*) ;; code/* | data/* | ASSETS.md) compute=true ;; esac
+            case "$f" in *.lean | lakefile.toml | lake-manifest.json | lean-toolchain | config.json | code/lean/*) lean=true ;; esac
+          done <<< "$files"
+          printf '%s\n' "$files"
+          echo "compute=$compute lean=$lean"
+          { echo "compute=$compute"; echo "lean=$lean"; } >> "$GITHUB_OUTPUT"
+
   scan:
     name: Source scan
+    needs: changes
+    if: needs.changes.outputs.lean == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -73,7 +116,7 @@ jobs:
           EOF
           find Tammes15 -name '*.lean' ! -path Tammes15/Challenge.lean | LC_ALL=C sort > files.txt
           {
-            echo "# Uses of sorry, admit and native_decide outside comments and string literals, in the $(wc -l < files.txt) files of Tammes15/ other than Challenge.lean, and of admit and native_decide in Challenge.lean (whose statement ends in sorry)."
+            echo "# Uses of sorry, admit and native_decide outside comments and string literals, in the $(wc -l < files.txt) files of Tammes15/ other than Challenge.lean, and of admit and native_decide in Challenge.lean (whose statements end in sorry)."
             xargs awk -v W='sorry|admit|native_decide' -f scan.awk < files.txt
             awk -v W='admit|native_decide' -f scan.awk Tammes15/Challenge.lean
           } > scan.txt
@@ -92,6 +135,8 @@ jobs:
 
   lean:
     name: Lean build and checks
+    needs: changes
+    if: needs.changes.outputs.lean == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 240
     outputs:
@@ -189,8 +234,8 @@ jobs:
 
   comparator:
     name: Comparator
-    needs: lean
-    if: ${{ !cancelled() && needs.lean.outputs.built == 'true' }}
+    needs: [changes, lean]
+    if: ${{ !cancelled() && needs.changes.outputs.lean == 'true' && needs.lean.outputs.built == 'true' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
@@ -259,8 +304,8 @@ jobs:
       - name: Start time
         run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
 
-      # config.json: Tammes15.reduction of Tammes15.Solution against the statement of Tammes15.Challenge, the
-      # axioms propext, Quot.sound and Classical.choice, the Lean kernel and nanoda.
+      # config.json: Tammes15.reduction and Tammes15.fejesToth_bound of Tammes15.Solution against the statements of
+      # Tammes15.Challenge, the axioms propext, Quot.sound and Classical.choice, the Lean kernel and nanoda.
       - name: Run Comparator
         id: run
         shell: bash
@@ -268,15 +313,30 @@ jobs:
           COMPARATOR_LANDRUN: ${{ github.workspace }}/.ci/landrun/landrun
           COMPARATOR_LEAN4EXPORT: ${{ github.workspace }}/.ci/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export
           COMPARATOR_NANODA: ${{ runner.temp }}/nanoda/bin/nanoda_bin
-        run: >-
-          systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pty --pipe
-          -E PATH="$PATH"
-          -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN"
-          -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT"
-          -E COMPARATOR_NANODA="$COMPARATOR_NANODA"
-          --working-directory "$PWD" --
-          bash -c 'lake env .ci/comparator/.lake/build/bin/comparator config.json'
-          2>&1 | tee comparator.log
+        # One more run, and only one, when lean4export crashed during the export before any kernel ran
+        # (code/lean/export_crash.awk); that run decides. Any other failure is final.
+        run: |
+          run() {
+            systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pty --pipe \
+              -E PATH="$PATH" \
+              -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" \
+              -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
+              -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
+              --working-directory "$PWD" -- \
+              bash -c 'lake env .ci/comparator/.lake/build/bin/comparator config.json' \
+              2>&1 | tee "$1"
+          }
+          rc=0
+          run comparator.log || rc=$?
+          retry=no
+          if [ "$rc" != 0 ] && awk -f code/lean/export_crash.awk comparator.log; then
+            retry=yes
+            echo "lean4export exited with 139 during the export, before any kernel: Comparator runs once more"
+            rc=0
+            run comparator-retry.log || rc=$?
+          fi
+          echo "retry=$retry" >> "$GITHUB_OUTPUT"
+          exit "$rc"
 
       - name: Record the result
         if: always()
@@ -284,8 +344,13 @@ jobs:
           mkdir -p verify/lean verify/results
           secs=$(($(date +%s) - ${START:-$(date +%s)}))
           cp comparator.log verify/lean/comparator.txt || true
+          files=lean/comparator.txt; retry="no retry"
+          if [ "${{ steps.run.outputs.retry }}" = yes ]; then
+            cp comparator-retry.log verify/lean/comparator-retry.txt || true
+            files="lean/comparator.txt lean/comparator-retry.txt"; retry="retried once after a lean4export crash"
+          fi
           if [ "${{ steps.run.outcome }}" = success ]; then r=PASS; else r=FAIL; fi
-          printf 'comparator\tcomparator config.json (Tammes15.Challenge against Tammes15.Solution, Lean kernel and nanoda)\t%s s\t%s\tlean/comparator.txt\n' "$secs" "$r" > verify/results/comparator.tsv
+          printf 'comparator\tcomparator config.json (Tammes15.Challenge against Tammes15.Solution, Lean kernel and nanoda; %s)\t%s s\t%s\t%s\n' "$retry" "$secs" "$r" "$files" > verify/results/comparator.tsv
 
       - uses: actions/upload-artifact@v4
         if: always()
@@ -294,6 +359,8 @@ jobs:
           path: verify/
 
   impl1:
+    needs: changes
+    if: needs.changes.outputs.compute == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     container:
@@ -318,6 +385,8 @@ jobs:
 
   # plantri at n = 14: the count without the degree filter (4 parts) and the unsplit count of the class
   enum14:
+    needs: changes
+    if: needs.changes.outputs.compute == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     container:
@@ -336,6 +405,8 @@ jobs:
 
   # Stage A for k = 0 (2000 parts of plantri), 200 parts per job, each part through tfilter and vlevel1
   stageA_k0:
+    needs: changes
+    if: needs.changes.outputs.compute == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     container:
@@ -357,6 +428,8 @@ jobs:
           path: verify/
 
   impl2:
+    needs: changes
+    if: needs.changes.outputs.compute == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     container:
@@ -377,6 +450,8 @@ jobs:
 
   # The 42 graphs left by the bulk passes of vkill (54 runs, some on slices of d), in five groups
   residue:
+    needs: changes
+    if: needs.changes.outputs.compute == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     container:
@@ -398,6 +473,8 @@ jobs:
           path: verify/
 
   gp:
+    needs: changes
+    if: needs.changes.outputs.compute == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
@@ -416,6 +493,8 @@ jobs:
           path: verify/
 
   sage:
+    needs: changes
+    if: needs.changes.outputs.compute == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     container:
@@ -443,6 +522,8 @@ jobs:
   # the replay of the two further samples (974 replays) with the MPFR backend. The tarballs come from the
   # newest release, draft or published, that has the three of ASSETS.md with its sha256 sums.
   assets:
+    needs: changes
+    if: needs.changes.outputs.compute == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     permissions:

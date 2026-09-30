@@ -1,18 +1,19 @@
-# code/lean/comparator.sh fejestoth, 2026-09-30 14:00 UTC, sources sha256 a2ef8838df2e0696
+# code/lean/comparator.sh oldstatement, 2026-09-30 14:01 UTC, sources sha256 a2ef8838df2e0696
 # comparator d03acab154d269c06e60e4de7e4cc85deebff94b (v4.34.0), lean4export 076e8e57707e813375e8f9da8bf989799ace9680, landrun landrun version 0.1.18, nanoda_lib 3a2407216ee84a75f9e1aead6803d0578be06ae7; limits: memory 10G, 4 processors
-control fejestoth: in Tammes15/Challenge/Hyps/Computations.lean only, the line
-    ∀ d : ℝ, Nonempty (Config 15 d) → d ≤ dhi
+control oldstatement: in Tammes15/Challenge.lean only, the line
+      (h1 : Tammes15.KappaHyp F) (h2 : Tammes15.EnumComplete L)
 is changed to
-    ∀ d : ℝ, Nonempty (Config 15 d) → d ≤ dhi + 1
+      (h0 : Tammes15.FejesTothBound) (h1 : Tammes15.KappaHyp F) (h2 : Tammes15.EnumComplete L)
 lines that differ from the original in the copy of Tammes15/: 2
 config: {"challenge_module":"Tammes15.Challenge","solution_module":"Tammes15.Solution","theorem_names":["Tammes15.reduction","Tammes15.fejesToth_bound"],"permitted_axioms":["propext","Quot.sound","Classical.choice"],"enable_nanoda":false}
 comparator 
 Building Tammes15.Challenge
-✔ [8924/8937] Built Tammes15.Challenge.Trigrows.Defs (3.1s)
-✔ [8925/8937] Built Tammes15.Challenge.Statement (4.4s)
-✔ [8926/8937] Built Tammes15.Challenge.Trigrows.Sphere (10s)
-✔ [8927/8937] Built Tammes15.Challenge.Local41.Defs (10s)
-⚠ [8928/8937] Built Tammes15.Challenge.Trigrows.Mono (16s)
+✔ [8924/8937] Built Tammes15.Challenge.Trigrows.Defs (3.2s)
+✔ [8925/8937] Built Tammes15.Challenge.Statement (4.3s)
+✔ [8926/8937] Built Tammes15.Challenge.Trigrows.Sphere (8.8s)
+✔ [8927/8937] Built Tammes15.Challenge.Local41.Defs (9.4s)
+✔ [8928/8937] Built Tammes15.Challenge.Draw.Defs (6.3s)
+⚠ [8929/8937] Built Tammes15.Challenge.Trigrows.Mono (16s)
 info: Tammes15/Challenge/Trigrows/Mono.lean:186:82: Try this:
   [apply] ring_nf
   
@@ -43,12 +44,12 @@ Hint: The binding can be removed (if unused) or named `_` (if used implicitly). 
   [apply] _hab
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-✔ [8929/8937] Built Tammes15.Challenge.Draw.Defs (4.0s)
 ℹ [8930/8937] Built Tammes15.Challenge.Glue.Frames (17s)
 info: Tammes15/Challenge/Glue/Frames.lean:222:94: Try this:
   [apply] abel_nf
-✔ [8931/8937] Built Tammes15.Challenge.Glue.FramesAlg (6.3s)
-ℹ [8932/8937] Built Tammes15.Challenge.Trigrows.Rows (14s)
+✔ [8931/8937] Built Tammes15.Challenge.Glue.FramesAlg (6.7s)
+✔ [8932/8937] Built Tammes15.Challenge.Glue.Enclosure (6.1s)
+ℹ [8933/8937] Built Tammes15.Challenge.Trigrows.Rows (14s)
 info: Tammes15/Challenge/Trigrows/Rows.lean:374:55: Try this:
   [apply] ring_nf
   
@@ -67,11 +68,10 @@ info: Tammes15/Challenge/Trigrows/Rows.lean:387:47: Try this:
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
     
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-✔ [8933/8937] Built Tammes15.Challenge.Glue.Enclosure (6.2s)
 ✔ [8934/8937] Built Tammes15.Challenge.Trigrows.Margins (4.3s)
-✔ [8935/8937] Built Tammes15.Challenge.Hyps.Case (3.8s)
+✔ [8935/8937] Built Tammes15.Challenge.Hyps.Case (3.5s)
 ✔ [8936/8937] Built Tammes15.Challenge.Hyps.Computations (3.1s)
-⚠ [8937/8937] Built Tammes15.Challenge (3.3s)
+⚠ [8937/8937] Built Tammes15.Challenge (3.2s)
 warning: Tammes15/Challenge.lean:14:8: declaration uses `sorry`
 warning: Tammes15/Challenge.lean:18:8: declaration uses `sorry`
 Build completed successfully (8937 jobs).
@@ -1070,8 +1070,8 @@ warning: Tammes15/FejesToth/Saturate.lean:117:10: try 'simp' instead of 'simpa'
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
 Build completed successfully (9142 jobs).
 Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, Tammes15.reduction, Tammes15.fejesToth_bound, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Tammes15.Solution
-uncaught exception: Const does not match between challenge and target 'Tammes15.FejesTothBound'
-memory.peak 3618590720
-COMPARATOR FAIL (nanoda off): 102 s wall, memory peak 3450 MiB, exit 1
-RESULT fejestoth: as expected (Const does not match between challenge and target 'Tammes15.FejesTothBound')
+uncaught exception: Challenge and solution theorem statement do not match: 'Tammes15.reduction'
+memory.peak 3554689024
+COMPARATOR FAIL (nanoda off): 101 s wall, memory peak 3390 MiB, exit 1
+RESULT oldstatement: as expected (Challenge and solution theorem statement do not match: 'Tammes15.reduction')
 exit 0
