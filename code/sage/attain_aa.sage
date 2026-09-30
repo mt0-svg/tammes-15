@@ -26,6 +26,18 @@ for p in F:
     assert p[0]^2 + p[1]^2 + p[2]^2 == 1
 print("18 frame points: exact unit norm")
 ip = lambda p, q: p[0]*q[0] + p[1]*q[1] + p[2]*q[2]
+def sci(q, up, n=8):
+    # the positive rational q rounded to n significant digits toward +infinity (up) or -infinity
+    n = int(n); e = int(floor(RR(q).log10()))
+    while floor(q / QQ(10)**(e - n + 1)) >= 10**n: e += 1
+    while floor(q / QQ(10)**(e - n + 1)) < 10**(n - 1): e -= 1
+    m = int(ceil(q / QQ(10)**(e - n + 1)) if up else floor(q / QQ(10)**(e - n + 1)))
+    if m == 10**n: m, e = m // 10, e + 1
+    return "%d.%0*de%+03d" % (m // 10**(n - 1), int(n - 1), m % 10**(n - 1), e)
+def fix(x, up, n):
+    # x (rational, real ball endpoint or real algebraic) rounded to n decimals toward +infinity (up) or -infinity
+    n = int(n); m = int((x * 10**n).ceil() if up else (x * 10**n).floor())
+    return "%s%d.%0*d" % ("-" if m < 0 else "", abs(m) // int(10)**n, n, abs(m) % int(10)**n)
 codes = {"C3": [1,2,3,4,5,6,7,8,9,13,14,15,16,17,18], "C1": [1,2,3,4,5,6,7,8,11,13,14,15,16,17,18]}
 for nm, keep in codes.items():
     X = [F[k-1] for k in keep]
@@ -38,7 +50,7 @@ for nm, keep in codes.items():
             else:
                 assert g < u, (nm, i, j)
                 worst = g if worst is None or g > worst else worst
-    print(nm, ": pairs with inner product exactly u:", ncont, "; all other pairs < u; max other - u =", RR(worst - u))
+    print(nm, ": pairs with inner product exactly u:", ncont, "; all other pairs < u; max other - u <", fix(worst - u, True, 15))
 print("psi* =", RR(arccos(RR(u))*180/pi), "deg")
 # Match with the data files: each data point within 1e-20 of a distinct point of the exact code.
 for nm, keep in codes.items():
@@ -50,10 +62,11 @@ for nm, keep in codes.items():
         dist = [(sum((RealField(200)(X[j][i]) - p[i])^2 for i in range(3)).sqrt(), j) for j in range(15)]
         m, j = min(dist)
         assert j not in used; used.add(j); worst = max(worst, m)
-    print(fn, ": bijective match with the exact", nm, ", max distance", worst)
+    assert worst < 1e-20
+    print(fn, ": bijective match with the exact", nm, ", max distance <=", sci(worst.exact_rational(), True, 3))
 # C1 and C3 are not congruent: compare the sorted multisets of inner products.
 G = {}
 for nm, keep in codes.items():
     X = [F[k-1] for k in keep]
     G[nm] = sorted(RR(ip(X[i], X[j])) for i in range(15) for j in range(i+1, 15))
-print("max |sorted Gram C1 - sorted Gram C3| =", max(abs(p - q) for p, q in zip(G["C1"], G["C3"])))
+print("max |sorted Gram C1 - sorted Gram C3| >=", fix(max(abs(p - q) for p, q in zip(G["C1"], G["C3"])).exact_rational(), False, 4))

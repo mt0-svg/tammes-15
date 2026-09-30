@@ -1,8 +1,8 @@
 a, b, c = 0.895023968738567 0.171490309809375 0.411731914022885
 18 frame points: exact unit norm
-C3 : pairs with inner product exactly u: 30 ; all other pairs < u; max other - u = -0.167910430543256
-C1 : pairs with inner product exactly u: 30 ; all other pairs < u; max other - u = -0.167910430543256
+C3 : pairs with inner product exactly u: 30 ; all other pairs < u; max other - u < -0.167910430543256
+C1 : pairs with inner product exactly u: 30 ; all other pairs < u; max other - u < -0.167910430543256
 psi* = 53.6578501299327 deg
-../../data/bk15_c3.txt : bijective match with the exact C3 , max distance 5.8049758514447212453119291949038476672772818530849434311785e-26
-../../data/bk15_c1.txt : bijective match with the exact C1 , max distance 5.8049758514447212453119291949038476672772818530849434311785e-26
-max |sorted Gram C1 - sorted Gram C3| = 0.109870371959922
+../../data/bk15_c3.txt : bijective match with the exact C3 , max distance <= 5.81e-26
+../../data/bk15_c1.txt : bijective match with the exact C1 , max distance <= 5.81e-26
+max |sorted Gram C1 - sorted Gram C3| >= 0.1098

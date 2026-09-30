@@ -440,7 +440,7 @@ jobs:
 
   # The checks that read the data tarballs (group assets of code/rerun.sh): the coverage join of the
   # second level and its tests, the comparison of the two first levels, the samples of the MPFR replays and
-  # the replay of the two random samples (974 replays) with the MPFR backend. The tarballs come from the
+  # the replay of the two further samples (974 replays) with the MPFR backend. The tarballs come from the
   # newest release, draft or published, that has the three of ASSETS.md with its sha256 sums.
   assets:
     runs-on: ubuntu-latest

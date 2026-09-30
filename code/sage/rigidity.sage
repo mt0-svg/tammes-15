@@ -57,12 +57,15 @@ for nm, keep in allconf.items():
     # rational midpoint and radius
     Am = matrix(QQ, 30, 30, [z.mid().exact_rational() for z in A.list()])
     Am = (Am + Am.transpose()) / 2
-    radF = sqrt(RealField(100)(sum((z.rad()) ** 2 for z in A.list())))
+    # interval arithmetic from here on: every printed bound is rounded outward from an interval
+    RI = RealIntervalField(100)
+    radF = RI(sum(RI(z.rad()) ** 2 for z in A.list())).sqrt().upper()
+    assert radF < 1e-100
     ev = sorted(matrix(RDF, Am).eigenvalues())
-    lam0 = QQ(round(RDF(ev[0]) * 0.99 * 10**12)) / 10**12
+    lam0 = QQ(floor(RDF(ev[0]) * 0.99 * 10**6)) / 10**6
     assert (Am - lam0 * identity_matrix(QQ, 30)).is_positive_definite()
-    lam_lo = RealField(100)(lam0) - radF
-    sigma_lo = sqrt(lam_lo)
+    lam_lo = RI(lam0) - RI(radF)
+    sigma_lo = lam_lo.sqrt()
     # stress: left kernel of L (numerical), positive combination by LP, then rigorous residual
     Ld = matrix(RDF, 30, 30, [z.mid() for z in Lm.list()])
     U, S, V = Ld.transpose().SVD()
@@ -81,26 +84,20 @@ for nm, keep in allconf.items():
     wmin = min(omega)
     assert wmin > 0
     eps = vector(RBr, omega) * Lm
-    epsn = sqrt(sum((abs(z).upper()) ** 2 for z in eps))
+    epsn = RI(sum(RI(abs(z).upper()) ** 2 for z in eps)).sqrt().upper()
     W = sum(omega) / wmin
-    c_lo = (sigma_lo / sqrt(RealField(100)(30)) - RealField(100)(epsn) / RealField(100)(wmin)) / RealField(100)(W)
-    uhi = RealField(100)(uB.upper())
-    r = c_lo / ((1 + uhi) * RealField(100)(1.01) * sqrt(RealField(100)(15)))
-    ok = sqrt(RealField(100)(15)) * r <= 0.1
+    c_lo = ((sigma_lo / RI(30).sqrt() - RI(epsn) / RI(wmin)) / RI(W)).lower()
+    r = (RI(c_lo) / ((1 + RI(uB.upper())) * RI(101) / 100 * RI(15).sqrt())).lower()
+    ok = RI(15).sqrt() * RI(r) <= RI(1) / 10
     assert max(sv[27:30]) < 1e-12
     assert epsn < 1e-14
+    assert abs(sum(omega) - 1) < 10**-12
     print("%s: singular values of L^T: the 3 smallest are below 1e-12" % nm)
-    print("%s: lambda_min(A) >= %.6e (rational Cholesky at %.6e, radius %.2e); sigma >= %.6e" % (nm, lam_lo, RealField(53)(lam0), radF, sigma_lo))
-    print("%s: stress omega > 0: min %.6e, sum %.6e, W = %.4f, |eps| < 1e-14" % (nm, RDF(wmin), RDF(sum(omega)), RDF(W)))
-    print("%s: c >= %.6e ; radius r = %.6e (per point, Euclidean), sqrt(15) r <= 0.1: %s" % (nm, c_lo, r, ok))
+    print("%s: lambda_min(A) >= %s (rational Cholesky at %s, radius < 1e-100); sigma >= %s" % (nm, sci(lam_lo.lower().exact_rational(), False), dec(lam0, False, 6), sci(sigma_lo.lower().exact_rational(), False)))
+    print("%s: stress omega > 0: min >= %s, sum 1 within 1e-12, W <= %s, |eps| < 1e-14" % (nm, sci(wmin, False), sci(W, True)))
+    print("%s: c >= %s ; radius r >= %s (per point, Euclidean), sqrt(15) r <= 0.1: %s" % (nm, sci(c_lo.exact_rational(), False), sci(r.exact_rational(), False), ok))
     res[nm] = (c_lo, r)
     # the strictly positive stress and exact contact list, for the record
     print("%s: contacts %s" % (nm, cont))
     print("%s: omega [%s]" % (nm, ", ".join("%.6e" % RDF(w) for w in omega)))
-# rounded down to 6 significant digits
-rmin = min(v[1] for v in res.values()).exact_rational()
-e = floor(RR(rmin).log10())
-while floor(rmin / 10**(e - 5)) >= 10**6: e += 1
-while floor(rmin / 10**(e - 5)) < 10**5: e -= 1
-m = int(floor(rmin / 10**(e - 5)))
-print("minimum radius over all configurations >= %d.%05de%+03d" % (m // 10**5, m % 10**5, e))
+print("minimum radius over all configurations >= %s" % sci(min(v[1] for v in res.values()).exact_rational(), False))

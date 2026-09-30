@@ -69,6 +69,14 @@ def dec(q, up, n=30):
     # the rational q rounded to n decimals toward +infinity (up) or -infinity, as an exact decimal
     n = int(n); m = int(ceil(q * 10**n) if up else floor(q * 10**n))
     return "%s%d.%0*d" % ("-" if m < 0 else "", abs(m) // int(10)**n, n, abs(m) % int(10)**n)
+def sci(q, up, n=4):
+    # the positive rational q rounded to n significant digits toward +infinity (up) or -infinity
+    n = int(n); e = int(floor(RR(q).log10()))
+    while floor(q / QQ(10)**(e - n + 1)) >= 10**n: e += 1
+    while floor(q / QQ(10)**(e - n + 1)) < 10**(n - 1): e -= 1
+    m = int(ceil(q / QQ(10)**(e - n + 1)) if up else floor(q / QQ(10)**(e - n + 1)))
+    if m == 10**n: m, e = m // 10, e + 1
+    return "%d.%0*de%+03d" % (m // 10**(n - 1), int(n - 1), m % 10**(n - 1), e)
 out = open("data/bk15_exact.txt", "w")
 out.write("# u = cos(psi*) and the 18 frame points of Buddenhagen-Kottwitz as balls (%d bits); exact checks in bk15_exact.sage\n" % PREC)
 out.write("u %s\n" % bs(uB))

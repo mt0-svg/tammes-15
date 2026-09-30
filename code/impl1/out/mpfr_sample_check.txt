@@ -16,5 +16,4 @@ k3 5 4 0 yes 0 0 [9.36506152041239215e-1, 9.89106012373218602e-1] rad = [53.6578
 total: 23127 VERIFIED, 2 other lines ( 2 NO_CERTIFICATE )
 seed 777: the 63 graphs of code/impl1/out/mpfr_sample_777.txt drawn again, identical
 seed 31337: the 911 graphs of code/impl1/out/mpfr_sample_31337.txt drawn again, identical
-shuf: shuf (GNU coreutils) 9.4
 MPFR samples: PASS

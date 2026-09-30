@@ -7,12 +7,12 @@
 #       (tdeep --every 20), the graphs set aside from the first pass excepted (skip lists of
 #       records/first/full); records/first/replay/k*.txt of the records asset hold its recorded run
 #   code/impl1/replay_mpfr.sh ASSETS OUT SEED N0 N1 N2
-#       a random sample: N0, N1, N2 graphs of each certificate file of k = 0, 1, 2 and one of k = 3,
-#       drawn among the graphs with a tree by GNU shuf with the random source "yes SEED | head -c
-#       1000000"; the samples of 63 and 911 trees are SEED 777 with 10 3 5 and SEED 31337 with 200 30 40
+#       a hash sample: N0, N1, N2 graphs of each certificate file of k = 0, 1, 2 and one of k = 3,
+#       among the graphs with a tree, those of least SHA-256 of "SEED:JOB:INDEX" (code/impl1/sample_pick.pl);
+#       the samples of 63 and 911 trees are SEED 777 with 10 3 5 and SEED 31337 with 200 30 40
 #       (index lists code/impl1/out/mpfr_sample_777.txt, mpfr_sample_31337.txt)
 #   code/impl1/replay_mpfr.sh ASSETS OUT samples
-#       both random samples, in OUT/777 and OUT/31337, and the total (recorded output
+#       both hash samples, in OUT/777 and OUT/31337, and the total (recorded output
 #       code/impl1/out/replay_mpfr_974.txt; exit 0 when all 974 replays are VERIFIED)
 # Output: OUT/<job>.txt (per-graph lines), .log, .idx (the sampled indices), and one summary line per job
 # on stdout.
@@ -27,14 +27,10 @@ if [ "$S" = samples ]; then
   echo "MPFR samples: $v VERIFIED of $n replays"
   [ "$v" = 974 ] && [ "$n" = 974 ]; exit
 fi
-T=$(realpath code/impl1/rust/target/release/tdeep)
+T=$(realpath code/impl1/rust/target/release/tdeep); PICK=$(realpath code/impl1/sample_pick.pl)
 P=$(realpath data/params15ft.txt); L=$(realpath data/tie_targets.txt)
 I=$A/inputs; C=$A/certificates/full; F=$A/records/first/full
 mkdir -p "$O"
-# the random source of shuf: the first 1000000 bytes of `yes SEED`, written to a file (a pipe would
-# print "Broken pipe" where SIGPIPE is ignored, since shuf stops reading early)
-rnd() { awk -v s="$1" 'BEGIN {l = s "\n"; for (n = 1000000; n >= length(l); n -= length(l)) printf "%s", l; printf "%s", substr(l, 1, n)}'; }
-if [ "$S" != every20 ]; then RS=$(mktemp); trap 'rm -f "$RS"' EXIT; rnd "$S" > "$RS"; fi
 N0=(145088 145088 145087); N1=(3000 3000 3000 2999 2999 2999 2999 2999 2999)
 jobs() { # name | input | certificate file | k | number of graphs | skip list of the graphs set aside | sample size
   for j in 0 1 2; do echo "full_k0_$j|$I/in_k0_$j.pc|$C/k0_$j.cert|0|${N0[$j]}||${4:-}"; done
@@ -46,7 +42,7 @@ jobs "$@" | while IFS='|' read -r name inp cert k n skip m; do
   if [ "$S" = every20 ]; then
     sel="--every 20"; [ -n "$skip" ] && sel="$sel --skip $skip"
   else
-    grep '^G ' "$cert" | awk '{print $2}' | sort -un | shuf -n "$m" --random-source="$RS" | sort -n > "$O/$name.idx"
+    grep '^G ' "$cert" | awk '{print $2}' | sort -un | "$PICK" "$S" "$name" "$m" > "$O/$name.idx"
     awk -v n="$n" 'NR == FNR {s[$1] = 1; next} END {for (i = 0; i < n; i++) if (!(i in s)) print i}' "$O/$name.idx" /dev/null > "$O/$name.skip"
     sel="--skip $O/$name.skip"
   fi

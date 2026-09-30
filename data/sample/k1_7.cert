@@ -1,144 +1,4636 @@
 G 0 0
-S 1 40028e5741ee5404
-K hex 1 1
-S 6 3ffb6717f0a3f812
-K hex 1 1
-K hex 1 0
-E
-G 0 1
-S 1 40028e5741ee5404
-K hex 1 1
-S 6 3ffb6717f0a3f812
-K hex 1 1
-K hex 1 0
+K lin -1 0
 E
 G 1 0
-K pent 5 0
-E
-G 2 0
-K pent 1 2
-E
-G 3 0
-K pent 5 0
-E
-G 4 0
-S 1 40078d4a262d3907
-K lin -1 0
-S 2 4005a8bced0bc36d
-K hex 1 1
-K hex 1 0
-E
-G 5 0
-K pent 0 0
-E
-G 6 0
-K hex 1 1
-E
-G 7 0
 K pent 4 0
 E
-G 8 0
+G 2 0
 K lin -1 0
+E
+G 3 0
+K lin -1 0
+E
+G 4 0
+K hex 0 0
+E
+G 5 0
+S 1 3ffa47c8a5834f96
+S 3 400778f77ab8d645
+S 6 400778f77ab8d645
+S 25 3feecf4eb36f09b6
+K hex 0 0
+K lin -1 0
+S 8 3ff9f12b58e99db2
+S 25 3feecf4eb36f09b6
+K lin -1 0
+K lin -1 0
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 28 3ff77374c0d6e2ac
+S 30 3ff77374c0d6e2ac
+S 27 3ff62412b0759979
+S 25 3fee639539afd679
+K hex 0 1
+K lin -1 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 28 3ffb33a27ec5e162
+S 30 3ff8133c94dd6f09
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 29 3ffcad5781f7effd
+S 31 3ff8fe2f3712ff7e
+S 27 3ff7bf86057d6df2
+K lin -1 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K rho 1 0
+S 4 3ffa47c8a5834f96
+S 7 4000acf015c71128
+S 14 40068ff7442057ee
+S 25 3feecf4eb36f09b6
+K rho 12 0
+K pent 7 4
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 28 3ff62412b0759979
+S 30 3ff62412b0759979
+S 27 3ff62412b0759979
+S 25 3fee639539afd679
+K rho 2 0
+S 29 3ff6413a2c70d621
+K wheel 0 0
+S 26 3ff6420718db790d
+K wheel 0 0
+S 22 40018da4efaab7ba
+K wheel 0 0
+S 12 4008bb81bfc305ed
+K wheel 0 0
+S 3 4008a54d93c5c37f
+S 25 3fee9971f68f7018
+K pent 7 4
+K pent 4 1
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 28 3ff931ab1a93a08c
+S 30 3ff7a4b958327fbe
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 29 3ffddd220d88a70e
+S 27 3ff931ab1a93a08c
+S 31 3ff7017d591e079e
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K pent 4 0
+S 25 3feecf4eb36f09b6
+K lin -1 0
+K pent 4 1
+S 7 4000acf015c71128
+S 13 3ff5b78150a8304c
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 28 3ff75dd67cf3d088
+S 30 3ff75dd67cf3d088
+S 22 4001beeb811c5734
+S 27 3ff62412b0759979
+S 25 3fee639539afd679
+K rho 2 0
+S 29 3ff7021faea577c5
+K wheel 0 0
+S 26 3ff61a85a3f10312
+K wheel 0 0
+S 10 40018da28241debe
+K wheel 0 0
+S 30 3ff347d08ce5dde2
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 27 3ff62412b0759979
+S 25 3fee639539afd679
+K rho 2 0
+S 29 3ff6e59e49b3adaa
+K wheel 0 0
+S 26 3ff60d8ffff5f0a7
+K wheel 0 0
+S 3 40085b48a8308543
+S 19 40085f82144cf3ef
+K lin -1 0
+S 30 3ff347d08ce5dde2
+K wheel 0 0
+K wheel 0 0
+S 19 400861303082873b
+K lin -1 0
+S 30 3ff347d08ce5dde2
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 28 3ffb173838a85d12
+S 30 3ff92d29b111d506
+S 22 4001beeb811c5734
+S 25 3fee639539afd679
+K wheel 0 0
+K wheel 0 0
+S 25 3fee639539afd679
+K wheel 0 0
+K wheel 0 0
+S 22 4001beeb811c5734
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 29 3ffe2dddd06b699e
+S 27 3ff931ab1a93a08c
+S 31 3ff7435a290dced4
+S 22 4001beeb811c5734
+S 25 3fee639539afd679
+K wheel 0 0
+K wheel 0 0
+S 25 3fee639539afd679
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 31 3ff931ab1a93a08c
+K wheel 0 0
+S 30 3ff7063e2bf7b613
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K pent 4 1
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 28 3ff7e35928a6067c
+S 30 3ff7e35928a6067c
+S 27 3ff62412b0759979
+S 25 3fee639539afd679
+K rho 2 0
+K pent 7 2
+K wheel 0 0
+K lin -1 0
+K wheel 0 0
+S 28 3ffbccbf52d6fff8
+S 30 3ff9a2af60f6f7bd
+S 25 3fee639539afd679
+K rho 2 0
+K pent 7 2
+K wheel 0 0
+K wheel 0 0
+S 29 3ffe80a2032e00d1
+S 27 3ff931ab1a93a08c
+S 31 3ff74d7145a91c8c
+S 25 3fee639539afd679
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 31 3ff931ab1a93a08c
+K wheel 0 0
+S 30 3ff7063e2bf7b613
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K pent 7 4
+S 18 3ffd59058daa567d
+S 25 3feecf4eb36f09b6
+K lin -1 0
+K lin -1 0
+S 25 3feecf4eb36f09b6
+K pent 7 3
+K lin -1 0
+S 3 400778f77ab8d645
+S 6 400778f77ab8d645
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 28 3ff7897c932cc851
+S 31 3ff7896eaae308b0
+S 27 3ff6effe22064807
+S 30 3ff6eff5121c48ce
+S 25 3fee639539afd679
+K pent 4 0
+K rho 1 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 28 3ffb50f2c2356f3c
+S 30 3ff8eca4946a408f
+S 25 3fee639539afd679
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 30 3ffb50f2c2356f3c
+K wheel 0 0
+K wheel 0 0
+S 29 3ffe9971f68f7018
+S 27 3ffb50f2c2354f98
+S 31 3ff944a71771ad2b
+S 25 3fee639539afd679
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K hex 0 0
+S 20 3ff5b78150a8304c
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 28 3ff791b34d7045eb
+S 30 3ff791b34d7045eb
+S 31 3ff75dd67cf3d084
+S 27 3ff6f5598ebb5673
+S 16 4006f07654e8e460
+S 25 3fee639539afd679
+K lin -1 0
+K pent 7 4
+S 25 3fee639539afd679
+K hex 0 0
+K hex 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 28 3ffb5bf94f8b8626
+S 30 3ff8f4f2845b0022
+S 10 4001c5efcd285e78
+S 25 3fee639539afd679
+K lin -1 0
+K hex 0 0
+S 25 3fee639539afd679
+K lin -1 0
+K pent 7 4
+K wheel 0 0
+K wheel 0 0
+S 29 3ffe9971f68f7018
+S 27 3ffb173838a85d0e
+S 31 3ff917692a92b916
+S 10 4001c5efcd285e78
+S 25 3fee639539afd679
+K lin -1 0
+K hex 0 0
+S 25 3fee639539afd679
+K lin -1 0
+K pent 7 4
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K pent 7 4
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 27 3ff7f7a87f058873
+S 31 3ff7f7a87f058873
+S 12 4008080cff0193bb
+S 28 3ff783ebdff3c323
+S 30 3ff783ebdff3c323
+S 20 3ff70f1adbb18fcd
+S 25 3fee639539afd679
+K pent 4 2
+K pent 7 4
+S 25 3fee639539afd679
+K pent 4 0
+K pent 4 1
+K wheel 0 0
+K wheel 0 0
+S 28 3ff79038aeaddab9
+S 30 3ff79038aeaddab9
+S 17 400068ecba92c128
+S 25 3fee639539afd679
+K pent 4 0
+K lin -1 0
+S 25 3fee639539afd679
+K pent 4 0
+K pent 4 0
+K wheel 0 0
+K wheel 0 0
+K lin -1 0
+K wheel 0 0
+S 28 3ffb59fc0fbac0dc
+S 30 3ff8f371f1ed43cd
+S 12 4008080cff0193bb
+S 20 3ff70f1adbb18fcd
+S 25 3fee639539afd679
+K wheel 0 0
+K pent 7 4
+S 25 3fee639539afd679
+K wheel 0 0
+K wheel 0 0
+S 17 400068ecba92c128
+S 25 3fee639539afd679
+K pent 4 0
+K lin -1 0
+S 25 3fee639539afd679
+K pent 4 0
+K wheel 0 0
+K wheel 0 0
+S 30 3ffb59fc0fbac0dc
+K wheel 0 0
+S 27 3ff7f7a87f058873
+K wheel 0 0
+K wheel 0 0
+S 29 3ffe9971f68f7018
+S 27 3ffbe9cd68a3c246
+S 31 3ff9b4c678d78028
+S 12 4008080cff0193bb
+S 20 3ff70f1adbb18fcd
+S 25 3fee639539afd679
+K pent 4 2
+K pent 7 4
+S 25 3fee639539afd679
+K pent 4 0
+K pent 4 1
+S 17 400068ecba92c128
+S 25 3fee639539afd679
+K pent 4 0
+K lin -1 0
+S 25 3fee639539afd679
+K pent 4 0
+K pent 4 0
+S 12 4008080cff0193bb
+S 30 3ff6e3728cb0256e
+K wheel 0 0
+K wheel 0 0
+S 30 3ff74cdf6595d32d
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K lin -1 0
+S 5 40061337d217e977
+S 7 4000acf015c71128
+S 13 3ff5b78150a8304c
+S 25 3feecf4eb36f09b6
+K hex 0 0
+K hex 0 1
+S 25 3feecf4eb36f09b6
+K pent 7 2
+K lin -1 0
+S 19 4007ec6a80b4ef76
+S 25 3feecf4eb36f09b6
+K rho 12 0
+K lin -1 0
+S 25 3feecf4eb36f09b6
+K hex 0 0
+K lin -1 0
+S 6 400778f77ab8d645
+S 13 3ff5b78150a8304c
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 27 3ff791b34d7045ed
+S 31 3ff791b34d7045ed
+S 28 3ff75dd67cf3d086
+S 30 3ff6f5598ebb5674
+S 14 4006f07654e8e45a
+S 25 3fee639539afd679
+K lin -1 0
+K pent 4 2
+S 25 3fee639539afd679
+K hex 0 0
+K hex 0 1
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 28 3ffb173838a85d10
+S 30 3ff91499294b8bb9
+S 22 4001c5efcd285e7d
+S 25 3fee639539afd679
+K lin -1 0
+K hex 0 1
+S 25 3fee639539afd679
+K lin -1 0
+K pent 4 2
+K wheel 0 0
+S 30 3ffb173838a85d10
+K wheel 0 0
+K wheel 0 0
+S 29 3ffe9971f68f7018
+S 27 3ffb5bf94f8b8628
+S 31 3ff937021d06d019
+S 22 4001c5efcd285e7d
+S 25 3fee639539afd679
+K lin -1 0
+K hex 0 1
+S 25 3fee639539afd679
+K lin -1 0
+K pent 4 2
+K wheel 0 0
+S 31 3ffb5bf94f8b8628
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K pent 4 2
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 28 3ff7f7a87f058875
+S 30 3ff7f7a87f058875
+S 19 4008080cff0193bb
+S 27 3ff783ebdff3c321
+S 31 3ff783ebdff3c321
+S 13 3ff70f1adbb18fcd
+S 25 3fee639539afd679
+K pent 4 2
+K pent 4 2
+S 25 3fee639539afd679
+K pent 7 0
+K lin -1 0
+K wheel 0 0
+K wheel 0 0
+S 27 3ff79038aeaddab7
+S 31 3ff79038aeaddab7
+S 15 400068ecba92c128
+S 25 3fee639539afd679
+K rho 2 0
+K lin -1 0
+S 25 3fee639539afd679
+K rho 2 0
+K pent 4 2
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 28 3ffbe9cd68a3c24a
+S 30 3ff9adc64937460b
+S 19 4008080cff0193bb
+S 13 3ff70f1adbb18fcd
+S 25 3fee639539afd679
+K wheel 0 0
+K pent 4 2
+S 25 3fee639539afd679
+K wheel 0 0
+K lin -1 0
+S 15 400068ecba92c128
+S 25 3fee639539afd679
+K rho 2 0
+K lin -1 0
+S 25 3fee639539afd679
+K rho 2 0
+K pent 4 2
+S 19 4008080cff0193bb
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 29 3ffe9971f68f7018
+S 27 3ffb59fc0fbac0da
+S 31 3ff93ec38d5e0c4e
+S 19 4008080cff0193bb
+S 13 3ff70f1adbb18fcd
+S 25 3fee639539afd679
+K wheel 0 0
+K wheel 0 0
+S 25 3fee639539afd679
+K wheel 0 0
+K wheel 0 0
+S 15 400068ecba92c128
+S 25 3fee639539afd679
+K rho 2 0
+K lin -1 0
+S 25 3fee639539afd679
+K rho 2 0
+K pent 4 2
+S 19 4008080cff0193bb
+K wheel 0 0
+K wheel 0 0
+S 31 3ffb59fc0fbac0da
+K wheel 0 0
+S 28 3ff7f7a87f058875
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K lin -1 0
+S 7 4000acf015c71128
+S 13 3ff5b78150a8304c
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 20 3ff5629730ed9f9c
+S 28 3ff75dd67cf3d086
+S 30 3ff75dd67cf3d086
+S 21 3ff6d6a264a75780
+S 27 3ff73903deb3ed2a
+S 31 3ff73903deb3ed2a
+S 25 3fee639539afd679
+S 29 3ff6a94b632e41c1
+K lin -1 0
+S 26 3ff660bb6eb82ee5
+K wheel 0 0
+K pent 4 2
+S 26 3ff6e59e49b3adaa
+K lin -1 0
+S 29 3ff6e59e49b3adaa
+K wheel 0 0
+S 12 4008994bbc11eee0
+S 6 400876d9c8f35730
+S 3 4008621f9bb02751
+S 30 3ff347d08ce5dde1
+K wheel 0 0
+K wheel 0 0
+S 30 3ff347d08ce5dde1
+K wheel 0 0
+K wheel 0 0
+S 3 4008575fcd70e295
+S 30 3ff347d08ce5dde1
+K wheel 0 0
+K wheel 0 0
+S 19 4008565a7052f436
+K pent 7 4
+S 30 3ff347d08ce5dde1
+K wheel 0 0
+K wheel 0 0
+S 3 40085ee78781c120
+S 19 40085e1fd625d31c
+K rho 2 0
+S 13 3ff4ed528f522724
+S 30 3ff347d08ce5dde1
+K wheel 0 0
+K wheel 0 0
+S 30 3ff347d08ce5dde1
+K wheel 0 0
+K wheel 0 0
+S 19 40086e9b0f953d82
+K lin -1 0
+S 30 3ff347d08ce5dde1
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 27 3ff73903deb3ed2a
+S 31 3ff71616b4fb4f86
+S 25 3fee639539afd679
+K pent 4 2
+S 29 3ff6d1ddc5acf6a2
+K wheel 0 0
+S 26 3ff6c844ac2d4b4f
+K wheel 0 0
+S 9 3ff6d5571ad5f41a
+S 6 40086f79af624fbc
+S 30 3ff347d08ce5dde1
+K wheel 0 0
+K wheel 0 0
+S 30 3ff347d08ce5dde1
+K wheel 0 0
+K wheel 0 0
+S 30 3ff347d08ce5dde1
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 27 3ff7c88dcc556983
+S 31 3ff7c88dcc556983
+S 28 3ff75dd67cf3d086
+S 30 3ff75dd67cf3d086
+S 21 3ff6d6a264a75780
+S 17 400068ecba92c128
+S 25 3fee639539afd679
+S 26 3ff6caafeb43e0db
+K wheel 0 0
+S 29 3ff6b1d6ea4886c8
+K wheel 0 0
+S 27 3ff3623dd626dd90
+K wheel 0 0
+S 30 3ff32ce22e761112
+K wheel 0 0
+K wheel 0 0
+S 26 3ff6e59e49b3adaa
+K wheel 0 0
+S 29 3ff6d09e34f42c3f
+K wheel 0 0
+S 27 3ff37d2c3496aa60
+K wheel 0 0
+K wheel 0 0
+S 25 3fee639539afd679
+K pent 7 0
+S 26 3ff6e59e49b3adaa
+K wheel 0 0
+S 29 3ff6e59e49b3adaa
+K wheel 0 0
+S 27 3ff37d2c3496aa60
+K wheel 0 0
+K wheel 0 0
+S 17 40006a06c724b85d
+S 25 3fee639539afd679
+K rho 12 0
+K pent 4 1
+S 25 3fee639539afd679
+K pent 7 4
+K pent 4 2
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K lin -1 0
+S 20 3ff5629730ed9f9c
+S 28 3ffb173838a85d10
+S 30 3ff913eec717eeca
+S 21 3ff6d6a264a75780
+S 25 3fee639539afd679
+K wheel 0 0
+S 12 4008994bbc11eee0
+S 28 3ff56a5496fabc9e
+K wheel 0 0
+K wheel 0 0
+S 28 3ff560bab9d383f5
+K wheel 0 0
+K wheel 0 0
+S 25 3fee639539afd679
+K wheel 0 0
+S 9 3ff6d5571ad5f41a
+S 28 3ff5643bae53b057
+K wheel 0 0
+K wheel 0 0
+S 28 3ff55b61c768d822
+K wheel 0 0
+K wheel 0 0
+S 21 3ff6d6a264a75780
+S 31 3ff66a8cf6a812b2
+K lin -1 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 28 3ffb173838a85d10
+S 30 3ff913eec717eeca
+S 21 3ff6d6a264a75780
+S 17 400068ecba92c128
+S 25 3fee639539afd679
+K wheel 0 0
+S 28 3ff57da8fb39cd45
+K wheel 0 0
+K wheel 0 0
+S 25 3fee639539afd679
+K wheel 0 0
+S 28 3ff57da8fb39cd45
+K wheel 0 0
+K wheel 0 0
+S 17 40006a06c724b85d
+S 25 3fee639539afd679
+K rho 12 0
+K wheel 0 0
+S 25 3fee639539afd679
+K pent 7 4
+K pent 4 2
+S 21 3ff6d6a264a75780
+S 31 3ff683bb25267129
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 30 3ffb173838a85d10
+K wheel 0 0
+S 27 3ff7c88dcc556983
+K wheel 0 0
+K wheel 0 0
+S 29 3ffe9971f68f7018
+S 27 3ffc0b091bf96fe2
+S 20 3ff5629730ed9f9c
+S 31 3ff91be59dcc4ce5
+S 21 3ff6d6a264a75780
+S 25 3fee639539afd679
+S 27 3ff61f6cf13ef7b0
+K wheel 0 0
+K wheel 0 0
+S 12 4008994bbc11eee0
+S 27 3ff601ede32f180c
+K wheel 0 0
+K wheel 0 0
+S 27 3ff601ede32f180c
+K wheel 0 0
+K wheel 0 0
+S 25 3fee639539afd679
+K wheel 0 0
+S 9 3ff6d5571ad5f41a
+S 27 3ff601ede32f180c
+K wheel 0 0
+K wheel 0 0
+S 27 3ff601ede32f180c
+K wheel 0 0
+K wheel 0 0
+S 21 3ff6d6a264a75780
+S 30 3ff6e83af3f157e8
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 31 3ff981fce4f97719
+S 21 3ff6d6a264a75780
+S 17 400068ecba92c128
+S 25 3fee639539afd679
+S 27 3ff615381b7ffad4
+K wheel 0 0
+K wheel 0 0
+S 27 3ff5eefcbc65d148
+K wheel 0 0
+K wheel 0 0
+S 25 3fee639539afd679
+K wheel 0 0
+S 27 3ff5eefcbc65d148
+K wheel 0 0
+K wheel 0 0
+S 17 40006a06c724b85d
+S 25 3fee639539afd679
+K rho 12 0
+K wheel 0 0
+S 25 3fee639539afd679
+K pent 7 4
+K pent 4 2
+S 30 3ff751d6f3e0b1d0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K pent 4 2
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 20 3ff5629730ed9f9c
+S 28 3ff7f7a87f058875
+S 30 3ff7f7a87f058875
+S 27 3ff73903deb3ed2a
+S 31 3ff73903deb3ed2a
+S 24 4000a58ed71668cc
+S 25 3fee639539afd679
+K pent 4 2
+K pent 7 4
+S 25 3fee639539afd679
+K pent 4 2
+K pent 7 4
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 28 3ff7f7a87f058875
+S 30 3ff7f7a87f058875
+S 27 3ff7c88dcc556983
+S 31 3ff7c88dcc556983
+S 19 4008080cff0193bc
+S 17 400068ecba92c128
+S 25 3fee639539afd679
+S 26 3ff6caafeb43e0db
+K wheel 0 0
+S 29 3ff6caafeb43e0db
+K wheel 0 0
+S 9 3ff51983624213bc
+S 30 3ff379cb2f7eed0a
+K wheel 0 0
+K wheel 0 0
+K pent 4 2
+K lin -1 0
+S 25 3fee639539afd679
+S 26 3ff6caafeb43e0db
+K wheel 0 0
+S 29 3ff6caafeb43e0db
+K wheel 0 0
+S 9 3ff4a8e7742496d8
+S 30 3ff379cb2f7eed0a
+K wheel 0 0
+K wheel 0 0
+S 30 3ff38125745baef3
+K wheel 0 0
+K wheel 0 0
+K pent 7 4
+S 17 400068ecba92c128
+S 25 3fee639539afd679
+S 26 3ff6caafeb43e0db
+K lin -1 0
+S 29 3ff6caafeb43e0db
+K wheel 0 0
+S 3 4008515c5711ce85
+S 12 4008774ab2fa7e14
+S 30 3ff379cb2f7eed0a
+K wheel 0 0
+K wheel 0 0
+K pent 4 1
+S 30 3ff379cb2f7eed0a
+K wheel 0 0
+S 27 3ff3623dd626dd90
+K wheel 0 0
+K wheel 0 0
+K pent 7 0
+S 25 3fee639539afd679
+S 26 3ff6caafeb43e0db
+K wheel 0 0
+S 29 3ff6caafeb43e0db
+K lin -1 0
+S 3 400852363b16b5bd
+S 9 3ff4f2f48bffd506
+S 30 3ff379cb2f7eed0a
+K wheel 0 0
+K wheel 0 0
+S 30 3ff379cb2f7eed0a
+K wheel 0 0
+K wheel 0 0
+S 20 3ff64557e03f362e
+S 30 3ff379cb2f7eed0a
+K wheel 0 0
+K wheel 0 0
+S 30 3ff379cb2f7eed0a
+K wheel 0 0
+K wheel 0 0
+S 26 3ff6e59e49b3adaa
+K wheel 0 0
+K pent 7 4
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 28 3ffbe9cd68a3c24a
+S 20 3ff5629730ed9f9c
+S 30 3ff9ad89fd63fa45
+S 24 4000a58ed71668cc
+S 25 3fee639539afd679
+K pent 4 2
+K pent 7 4
+S 25 3fee639539afd679
+K pent 4 2
+K pent 7 4
+S 31 3ff70d881a9c77cc
+K wheel 0 0
+K wheel 0 0
+S 30 3ff9ad597730b707
+S 19 4008080cff0193bc
+S 17 400068ecba92c128
+S 25 3fee639539afd679
+S 28 3ff5837b13bd8f54
+K wheel 0 0
+K wheel 0 0
+K lin -1 0
+S 25 3fee639539afd679
+S 28 3ff5f6b465257486
+K wheel 0 0
+K wheel 0 0
+K pent 7 4
+S 17 400068ecba92c128
+S 25 3fee639539afd679
+S 28 3ff5f3cf1cd9b827
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 25 3fee639539afd679
+S 28 3ff5f3cf1cd9b827
+K wheel 0 0
+K wheel 0 0
+S 28 3ff5e68ead3d0091
+K wheel 0 0
+K wheel 0 0
+S 19 4008080cff0193bc
+S 31 3ff6940491cf0ad3
+K wheel 0 0
+K wheel 0 0
+S 31 3ff6f2e59b4ece14
+K wheel 0 0
+K wheel 0 0
+S 30 3ffbe9cd68a3c24a
+K wheel 0 0
+S 20 3ff5629730ed9f9c
+K wheel 0 0
+K wheel 0 0
+S 29 3ffe9971f68f7018
+S 27 3ffc0b091bf96fe2
+S 20 3ff5629730ed9f9c
+S 31 3ff921327aac3256
+S 24 4000a58ed71668cc
+S 25 3fee639539afd679
+K pent 4 2
+K pent 7 4
+S 25 3fee639539afd679
+K pent 4 2
+K pent 7 4
+S 30 3ff6edc165155f01
+K hex 0 0
+K lin -1 0
+S 31 3ff9875f2b3722da
+S 19 4008080cff0193bc
+S 17 400068ecba92c128
+S 25 3fee639539afd679
+S 27 3ff5dd9ee2bdd089
+K wheel 0 0
+K wheel 0 0
+K lin -1 0
+S 25 3fee639539afd679
+S 27 3ff5c764291781ec
+K wheel 0 0
+K wheel 0 0
+K pent 7 4
+S 17 400068ecba92c128
+S 25 3fee639539afd679
+S 27 3ff60b3f92a1d8c9
+K wheel 0 0
+K wheel 0 0
+K pent 7 0
+S 25 3fee639539afd679
+S 27 3ff60b3f92a1d8c9
+K wheel 0 0
+K wheel 0 0
+S 27 3ff5fda6dae213a2
+K wheel 0 0
+K wheel 0 0
+S 19 4008080cff0193bc
+S 30 3ff756b0400162d0
+K wheel 0 0
+K wheel 0 0
+S 30 3ff756fe5299644e
+K wheel 0 0
+K wheel 0 0
+S 31 3ffc0b091bf96fe2
+K wheel 0 0
+S 20 3ff5629730ed9f9c
+S 28 3ff7e442de128766
+K wheel 0 0
+K wheel 0 0
+S 28 3ff7f7a87f058875
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K pent 7 4
+S 19 4007ec6a80b4ef76
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 27 3ff75b67590db0d0
+S 31 3ff75b67590db0d0
+S 28 3ff74a5de990ecc6
+S 30 3ff74a5de990ecc6
+S 25 3fee639539afd679
+S 26 3ff6caafeb43e0db
+K lin -1 0
+S 29 3ff6caafeb43e0db
+K wheel 0 0
+S 20 3ff789258d8371a4
+S 27 3ff32baa9c830137
+K wheel 0 0
+K wheel 0 0
+S 27 3ff32baa9c830137
+K wheel 0 0
+K wheel 0 0
+K pent 4 2
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 28 3ffafde84f62d43a
+S 30 3ff8f982f80fc598
+S 25 3fee639539afd679
+S 28 3ff5bb2e9b6f1376
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 31 3ff62e31d527768a
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 29 3ffe9971f68f7018
+S 27 3ffb140a7ef54f6a
+S 31 3ff9040d48f947b9
+S 25 3fee639539afd679
+S 27 3ff5b585c72d30c8
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 30 3ff6927125eaeec8
+K wheel 0 0
+K wheel 0 0
+S 31 3ffb140a7ef54f6a
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K rho 2 0
+S 25 3feecf4eb36f09b6
+S 26 3ffe9971f68f7018
+S 29 3ffe9971f68f7018
+S 28 3ff82b4366c8bddd
+S 30 3ff82b4366c8bddd
+S 21 3ff4e8a5f2060c0c
+S 27 3ff75b67590db0d0
+S 31 3ff75b67590db0d0
+S 20 3ff6fd2c5e9fbfaa
+S 25 3fee639539afd679
+S 26 3ff6cf2eaeab6b91
+K wheel 0 0
+S 29 3ff6cf2eaeab6b91
+K wheel 0 0
+S 30 3ff39799d1cd95b0
+K wheel 0 0
+K wheel 0 0
+K pent 4 2
+S 25 3fee639539afd679
+S 26 3ff6caafeb43e0db
+K wheel 0 0
+S 29 3ff6caafeb43e0db
+S 15 4000b1ca59744b8c
+K hex 0 1
+K lin -1 0
+S 3 40081c7de8c5ab7b
+S 30 3ff39398a36087be
+S 21 3ff41adaf2c5b9a3
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 30 3ff39398a36087be
+S 6 4007fe231ae87f2f
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K pent 4 2
+K wheel 0 0
+K wheel 0 0
+S 27 3ff75b67590db0d0
+S 31 3ff75b67590db0d0
+S 20 3ff6fd2c5e9fbfaa
+S 25 3fee639539afd679
+K lin -1 0
+K pent 4 2
+S 25 3fee639539afd679
+K pent 7 4
+K pent 4 2
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 28 3ffc35c0bbdbdd8e
+S 30 3ff9da1f155ac720
+S 21 3ff4e6d97897355c
+S 20 3ff6fd2c5e9fbfaa
+S 25 3fee639539afd679
+K wheel 0 0
+K wheel 0 0
+S 25 3fee639539afd679
+S 28 3ff62626727aa8ba
+K wheel 0 0
+K wheel 0 0
+K pent 4 2
+S 20 3ff6fd2c5e9fbfaa
+S 25 3fee639539afd679
+K wheel 0 0
+K pent 4 2
+S 25 3fee639539afd679
+K pent 7 4
+K pent 4 2
+S 21 3ff4e8a5f2060c0c
+S 31 3ff6d93f2cff67ec
+K wheel 0 0
+K wheel 0 0
+S 31 3ff6e78310ca10b4
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 29 3ffe9971f68f7018
+S 27 3ffb140a7ef54f6a
+S 31 3ff9040d48f947ba
+S 21 3ff4e6d97897355c
+S 20 3ff6fd2c5e9fbfaa
+S 25 3fee639539afd679
+S 27 3ff5d3f5b86d8b0c
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+S 25 3fee639539afd679
+S 27 3ff5c7c81c3c2110
+K wheel 0 0
+K wheel 0 0
+K pent 4 2
+S 20 3ff6fd2c5e9fbfaa
+S 25 3fee639539afd679
+K wheel 0 0
+K pent 4 2
+S 25 3fee639539afd679
+K pent 7 4
+K pent 4 2
+S 21 3ff4e8a5f2060c0c
+S 30 3ff6800bd29a5fea
+K wheel 0 0
+K wheel 0 0
+S 30 3ff6800bd29a5fea
+K wheel 0 0
+K wheel 0 0
+S 31 3ffb140a7ef54f6a
+K wheel 0 0
+S 28 3ff82b4366c8bddd
+K wheel 0 0
+K wheel 0 0
+K wheel 0 0
+K pent 4 2
+E
+G 6 0
+K hex 11 1
+E
+G 6 1
+K hex 11 1
+E
+G 7 0
+S 1 3ffcd95f41636bae
+K lin -1 0
+S 17 3ffeeebe846fa71a
+S 19 3ff7e46a11c33549
+S 27 3feecf4eb36f09b6
+S 9 4004567e5c72720c
+S 28 3ffe9971f68f7018
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 29 3ff9ec52a8641447
+S 33 3ff9ec52a8641447
+S 27 3fee639539afd679
+S 28 3ff6caafeb43e0db
+S 31 3ff6caafeb43e0db
+S 24 4006e764fcfc6f3e
+K pent 4 0
+K rho 7 0
+S 24 4006e764fcfc6f3e
+K pent 4 0
+K rho 7 0
+S 31 3ff6caafeb43e0db
+S 24 4006e764fcfc6f3e
+K pent 4 0
+K rho 7 0
+K wheel 11 0
+K lin -1 0
+K wheel 11 0
+K wheel 11 0
+S 33 3ffa286077af4c3b
+K wheel 11 0
+K wheel 11 0
+S 32 400061a063519e86
+K wheel 11 0
+S 33 3ffb1c286eddc788
+K wheel 11 0
+K wheel 11 0
+S 32 3ffe9971f68f7018
+S 31 3ffc291e5d1f37aa
+K wheel 11 0
+S 29 3ffa074106d3e110
+K wheel 11 0
+K wheel 11 0
+S 31 3ffeb46054ff3ce0
+K wheel 11 0
+S 29 3ffa074106d3e110
+K wheel 11 0
+K wheel 11 0
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 29 3ffeb46054ff3ce0
+S 33 3ffc6a41b8098934
+K wheel 11 0
+S 27 3fee639539afd679
+K wheel 11 0
+K lin -1 0
+S 33 3ffc291e5aa8ef50
+K wheel 11 0
+S 27 3fee639539afd679
+K wheel 11 0
+K lin -1 0
+S 33 3ffed57fc5daa80c
+K wheel 11 0
+S 29 3ff85dfaec4e1f3c
+K wheel 11 0
+K wheel 11 0
+K wheel 11 0
+S 32 3ffe9971f68f7018
+S 29 3ffeb46054ff3ce0
+K wheel 11 0
+S 31 3ffc291e5d1f37aa
+K wheel 11 0
+K wheel 11 0
+S 29 3ffeb46054ff3ce0
+K wheel 11 0
+S 31 3ffeb46054ff3ce0
+K wheel 11 0
+S 33 3ffeb46054ff3ce0
+K wheel 11 0
+S 27 3fee639539afd679
+K wheel 11 0
+K lin -1 0
+K lin -1 0
+K pent 4 0
+S 27 3feecf4eb36f09b6
+S 9 4004567e5c72720c
+S 28 3ffe9971f68f7018
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 31 3ffc1564f3f939b9
+S 29 3ff9ec52a8641447
+S 33 3ff9ec52a8641447
+S 27 3fee639539afd679
+S 24 4006c0fe447172ce
+S 28 3ff6caafeb43e0db
+S 30 3ff678d0ec1db3c0
+S 32 3ff678d0ec1db3c0
+S 22 40084ee927ead620
+K pent 4 0
+K pent 4 0
+S 22 40084ee927ead620
+K rho 7 0
+K wheel 11 0
+S 22 40084ee927ead620
+K wheel 11 0
+K wheel 11 0
+S 22 40084ee927ead620
+K pent 4 3
+K lin -1 0
+S 28 3ff6caafeb43e0db
+S 32 3ff616ab7dac8f33
+S 30 3ff5e1e63c3962a5
+S 22 400828010feaf185
+K hex 11 0
+K pent 4 1
+K wheel 11 0
+K wheel 11 0
+S 32 3ff5b85364c006b7
+K wheel 11 0
+S 31 3ff588a969f8c5ac
+S 22 400828010feaf185
+K hex 11 0
+K pent 4 1
+K wheel 11 0
+K lin -1 0
+K wheel 11 0
+K wheel 11 0
+K wheel 11 0
+S 31 3ffdab2657f46aa8
+S 33 3ffa5ec99f94cda0
+K wheel 11 0
+K wheel 11 0
+S 33 3ffa074106d3e110
+K wheel 11 0
+K wheel 11 0
+S 32 3ffe9971f68f7018
+S 31 3ffc305352690682
+K wheel 11 0
+S 29 3ffa074106d3e110
+K wheel 11 0
+K wheel 11 0
+S 31 3ffeb46054ff3ce0
+K wheel 11 0
+S 29 3ffa074106d3e110
+K wheel 11 0
+K wheel 11 0
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 29 3ffdab2657f46aa8
+S 33 3ffc532164ab4a08
+K wheel 11 0
+S 27 3fee639539afd679
+K wheel 11 0
+K wheel 11 0
+S 33 3ffc3053105c7810
+K wheel 11 0
+S 27 3fee639539afd679
+S 24 4006c0fe447172ce
+K wheel 11 0
+K wheel 11 0
+K wheel 11 0
+S 33 3ffeb46054ff3ce0
+K wheel 11 0
+S 29 3ffdab2657f46aa8
+S 27 3fee639539afd679
+K wheel 11 0
+K wheel 11 0
+K wheel 11 0
+S 32 3ffe9971f68f7018
+S 29 3ffeb46054ff3ce0
+K wheel 11 0
+S 31 3ffc305352690682
+K wheel 11 0
+K wheel 11 0
+S 29 3ffeb46054ff3ce0
+K wheel 11 0
+S 31 3ffeb46054ff3ce0
+K wheel 11 0
+S 33 3ffeb46054ff3ce0
+K wheel 11 0
+S 27 3fee639539afd679
+K wheel 11 0
+K lin -1 0
+S 28 3ffe9971f68f7018
+K rho 0 0
+K rho 0 0
+S 24 4004422713c8a65a
+K lin -1 0
+K rho 2 0
+S 19 3ff7e46a11c33549
+S 27 3feecf4eb36f09b6
+S 9 4004567e5c72720c
+S 28 3ffe9971f68f7018
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 29 3ffdf9b1f6444bab
+S 33 3ffd19e29e707907
+S 4 3ffe5d0fde9d4ad3
+K pent 4 0
+S 22 400691aa18ffa894
+K lin -1 0
+S 27 3fee639539afd679
+S 24 4006c0fe447172ce
+K pent 4 0
+S 28 3ff6caafeb43e0db
+S 30 3ff6caafeb43e0db
+S 32 3ff6caafeb43e0db
+S 18 3ff947262a1ad10c
+K lin -1 0
+S 20 4001a4d4d28d20b7
+K rho 2 0
+K lin -1 0
+S 18 3ff947262a1ad10c
+K lin -1 0
+S 31 3ff3c28a96aee37c
+S 20 4001a4d4d28d20b7
+K rho 2 0
+K lin -1 0
+S 20 4001a4d4d28d20b7
+K lin -1 0
+K rho 0 0
+S 31 3ff6caafeb43e0db
+S 18 3ff947262a1ad10c
+K lin -1 0
+K wheel 11 0
+S 32 3ff6caafeb43e0db
+K wheel 11 0
+S 18 3ff951225b36a74a
+K lin -1 0
+K wheel 11 0
+S 30 3ff6caafeb43e0db
+S 32 3ff6caafeb43e0db
+S 18 3ff947262a1ad10c
+K lin -1 0
+S 29 3ff3c28a96aee37c
+S 20 4001a4d4d28d20b7
+K wheel 11 0
+K wheel 11 0
+S 20 4001a4d4d28d20b7
+K lin -1 0
+K rho 0 0
+S 33 3ff60ae83f346552
+S 20 4001a4d4d28d20b7
+K rho 2 0
+K wheel 11 0
+S 18 3ff951225b36a74a
+K lin -1 0
+S 29 3ff3c1cb2d2352c0
+K wheel 11 0
+K wheel 11 0
+S 31 3ff6caafeb43e0db
+S 29 3ff67acfeb1e4ea4
+K wheel 11 0
+S 18 3ff951225b36a74a
+K lin -1 0
+S 32 3ff3de018b98be42
+K wheel 11 0
+K wheel 11 0
+K wheel 11 0
+K rho 0 0
+S 4 3ffe5d0fde9d4ad3
+K wheel 11 0
+K lin -1 0
+S 4 3ffe5d0fde9d4ad3
+K wheel 11 0
+K wheel 11 0
+S 33 3ffe35bfc58f839f
+S 4 3ffe5d0fde9d4ad3
+K rho 0 0
+K wheel 11 0
+K lin -1 0
+S 33 3ffdf9b1f6444bab
+S 32 400061a063519e86
+K pent 6 3
+K wheel 11 0
+K wheel 11 0
+S 32 3ffe9971f68f7018
+S 29 3ffe14a054b41874
+K wheel 11 0
+S 31 3ffd34d0fce045d0
+K wheel 11 0
+S 4 3ffe5d0fde9d4ad3
+K wheel 11 0
+S 22 400691aa18ffa894
+K wheel 11 0
+K lin -1 0
+S 31 3ffeb46054ff3ce0
+K wheel 11 0
+S 29 3ffe14a054b41874
+K wheel 11 0
+K wheel 11 0
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 29 3ffeb46054ff3ce0
+S 33 3ffd75f45a40dfb4
+K wheel 11 0
+S 4 3ffe5d0fde9d4ad3
+K wheel 11 0
+K pent 4 0
+S 33 3ffd34d0fce045d0
+K wheel 11 0
+S 4 3ffe5d0fde9d4ad3
+K wheel 11 0
+K wheel 11 0
+S 33 3ffed57fc5daa80c
+K wheel 11 0
+S 4 3ffe5d0fde9d4ad3
+K pent 4 0
+S 29 3ff8e9224b127802
+K wheel 11 0
+K wheel 11 0
+K wheel 11 0
+S 32 3ffe9971f68f7018
+S 29 3ffeb46054ff3ce0
+K wheel 11 0
+S 31 3ffd34d0fce045d0
+K wheel 11 0
+K wheel 11 0
+S 29 3ffeb46054ff3ce0
+K wheel 11 0
+S 31 3ffeb46054ff3ce0
+K wheel 11 0
+S 33 3ffeb46054ff3ce0
+K wheel 11 0
+S 4 3ffe5d0fde9d4ad3
+K pent 4 0
+S 22 400691aa18ffa894
+K lin -1 0
+S 27 3fee639539afd679
+S 24 4006c0fe447172ce
+K pent 4 0
+K wheel 11 0
+K rho 0 0
+K lin -1 0
+S 9 40044cad4b3e0050
+K lin -1 0
+K pent 4 0
+S 27 3feecf4eb36f09b6
+S 9 4004567e5c72720c
+S 28 3ffe9971f68f7018
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 29 3ffdf9b1f6444bab
+S 31 3ffd1626095dab32
+S 33 3ffd10bff71981ed
+S 4 3ffe8cb79d053552
+K lin -1 0
+S 5 3ff7ca8eff343ad8
+S 27 3fee639539afd679
+S 24 4006c0fe447172ce
+K lin -1 0
+S 28 3ff6caafeb43e0db
+S 30 3ff6caafeb43e0db
+S 32 3ff6caafeb43e0db
+S 22 40084ee927ead620
+S 18 3ff92d9096996ba0
+K lin -1 0
+S 3 3ff93e0eddbf0a41
+K rho 2 0
+K lin -1 0
+K lin -1 0
+S 22 40084ee927ead620
+S 18 3ff92d9096996ba0
+K lin -1 0
+S 3 3ff93e0eddbf0a41
+K rho 3 0
+K lin -1 0
+K lin -1 0
+S 32 3ff6caafeb43e0db
+S 22 40084ee927ead620
+S 18 3ff92d9096996ba0
+K lin -1 0
+S 3 3ff93e0eddbf0a41
+K wheel 11 0
+K lin -1 0
+K lin -1 0
+S 31 3ff60909f4aafe68
+K lin -1 0
+S 22 40084ee927ead620
+S 18 3ff92d9096996ba0
+K lin -1 0
+S 3 3ff93e0eddbf0a41
+K wheel 11 0
+K lin -1 0
+K lin -1 0
+S 30 3ff6caafeb43e0db
+S 32 3ff6caafeb43e0db
+S 22 40084ee927ead620
+S 18 3ff92d9096996ba0
+K lin -1 0
+S 3 3ff93e0eddbf0a41
+K rho 2 0
+K lin -1 0
+K lin -1 0
+S 33 3ff60656eb88e9c6
+S 22 40084ee927ead620
+K lin -1 0
+K lin -1 0
+S 22 40084ee927ead620
+S 18 3ff92d9096996ba0
+K lin -1 0
+S 3 3ff93e0eddbf0a41
+K rho 2 0
+K lin -1 0
+K lin -1 0
+S 32 3ff6caafeb43e0db
+S 29 3ff67acfeb1e4ea4
+K wheel 11 0
+S 22 40084ee927ead620
+S 18 3ff92d9096996ba0
+K lin -1 0
+S 3 3ff93e0eddbf0a41
+K wheel 11 0
+K lin -1 0
+K lin -1 0
+S 29 3ff67acfeb1e4ea4
+K wheel 11 0
+K wheel 11 0
+K lin -1 0
+K pent 4 0
+S 4 3ffe8cb79d053552
+K lin -1 0
+K wheel 11 0
+S 4 3ffe801088d7e198
+K lin -1 0
+K wheel 11 0
+S 4 3ffe801088d7e198
+K lin -1 0
+K wheel 11 0
+S 31 3ffe4ff43463168c
+S 33 3ffe5203ad7ac9e3
+S 4 3ffe801088d7e198
+K lin -1 0
+K wheel 11 0
+S 4 3ffe801088d7e198
+K lin -1 0
+K lin -1 0
+S 33 3ffe14a054b41874
+S 4 3ffe801088d7e198
+K lin -1 0
+K wheel 11 0
+S 4 3ffe801088d7e198
+K lin -1 0
+S 5 3ff7d05bef1baf10
+K lin -1 0
+K wheel 11 0
+S 32 3ffe9971f68f7018
+S 29 3ffe14a054b41874
+S 31 3ffd2bae55894eb6
+K wheel 11 0
+S 4 3ffe801088d7e198
+K lin -1 0
+K wheel 11 0
+S 31 3ffd2bae55894eb6
+K wheel 11 0
+S 4 3ffe801088d7e198
+K lin -1 0
+S 5 3ff7d05bef1baf10
+K lin -1 0
+K wheel 11 0
+S 31 3ffeb46054ff3ce0
+K wheel 11 0
+S 29 3ffe14a054b41874
+S 4 3ffe801088d7e198
+K lin -1 0
+K wheel 11 0
+K wheel 11 0
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 29 3ffe4ff43463168c
+S 33 3ffd3e9cdc6b1740
+K wheel 11 0
+S 4 3ffe801088d7e198
+K lin -1 0
+S 5 3ff7d05bef1baf10
+K wheel 11 0
+K lin -1 0
+S 33 3ffd2bae55894eb6
+K wheel 11 0
+S 4 3ffe801088d7e198
+K lin -1 0
+S 5 3ff7d05bef1baf10
+K wheel 11 0
+K wheel 11 0
+S 33 3ffeb46054ff3ce0
+K wheel 11 0
+S 29 3ffe4ff43463168c
+S 4 3ffe801088d7e198
+K lin -1 0
+S 5 3ff7d05bef1baf10
+S 27 3fee639539afd679
+K wheel 11 0
+K lin -1 0
+K hex 11 1
+K wheel 11 0
+S 32 3ffe9971f68f7018
+S 29 3ffeb46054ff3ce0
+K wheel 11 0
+S 31 3ffd311467cd77fa
+K wheel 11 0
+K wheel 11 0
+S 29 3ffeb46054ff3ce0
+K wheel 11 0
+S 31 3ffeb46054ff3ce0
+K wheel 11 0
+S 33 3ffeb46054ff3ce0
+K wheel 11 0
+S 4 3ffe8cb79d053552
+K lin -1 0
+S 5 3ff7ca8eff343ad8
+S 27 3fee639539afd679
+S 24 4006c0fe447172ce
+K wheel 11 0
+S 28 40030bb47345cc74
+K wheel 11 0
+K wheel 11 0
+K wheel 11 0
+K wheel 11 0
+K lin -1 0
+S 24 40044cad4b3e0050
+K lin -1 0
+K lin -1 0
+E
+G 8 0
+S 1 4000c82aff199bd0
+S 3 400322fe704fad60
+K hex 5 1
+K hex 5 1
+S 7 3ff7e46a11c33549
+K hex 0 0
+K hex 5 1
+E
+G 8 1
+S 1 4000c82aff199bd0
+S 3 400322fe704fad60
+K hex 5 1
+K hex 5 1
+S 7 3ff7e46a11c33549
+K hex 0 0
+K hex 5 1
+E
+G 8 2
+S 1 4000c82aff199bd0
+S 3 400322fe704fad60
+K hex 5 1
+K hex 5 1
+S 7 3ff7e46a11c33549
+K hex 0 0
+K hex 5 1
 E
 G 9 0
-S 1 400322fe704fad5f
-K lin -1 0
-K lin -1 0
-E
-G 9 1
-S 1 400322fe704fad5f
-K lin -1 0
-K lin -1 0
-E
-G 10 0
-K pent 7 0
-E
-G 11 0
-K pent 7 0
-E
-G 12 0
-K pent 2 3
-E
-G 13 0
 K pent 6 0
 E
+G 10 0
+K lin -1 0
+E
+G 11 0
+K pent 4 1
+E
+G 12 0
+K pent 0 1
+E
+G 13 0
+K hex 8 0
+E
 G 14 0
-K pent 9 4
+K lin -1 0
 E
 G 15 0
-K pent 9 1
+K pent 9 0
 E
 G 16 0
-K hex 0 0
+S 1 3ffe16f083e4636e
+S 8 4001531138c772e0
+S 22 3ff7e46a11c33549
+K hex 3 0
+S 29 3feecf4eb36f09b6
+K lin -1 0
+K hex 3 0
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+K pent 2 2
+K pent 2 2
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 20 40012d85ad986152
+K pent 2 2
+S 35 3ffbb8e54d2b3b88
+S 33 3ffb82c9524d9856
+S 13 4002a9e275af0c20
+K hex 3 0
+K hex 1 1
+K hex 3 0
+S 13 4002a9e275af0c20
+K wheel 1 0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+S 20 40012d85ad986152
+K pent 2 2
+S 33 3ffb9e4f1e9a841e
+K wheel 1 0
+S 13 4002a9e275af0c20
+K wheel 1 0
+K wheel 1 0
+S 20 40012d85ad986152
+K wheel 1 0
+S 33 3ffb9db7b0bd651e
+K wheel 1 0
+S 13 4002a9e275af0c20
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 20 40012d85ad986152
+K wheel 1 0
+S 33 3ffbddc46325b957
+K wheel 1 0
+S 13 4002a9e275af0c20
+K wheel 1 0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 20 40012d85ad986152
+K wheel 1 0
+S 13 4002a9e275af0c20
+K wheel 1 0
+K wheel 1 0
+S 33 3ffe9971f68f7018
+S 32 3fff90c2560b0a43
+K wheel 1 0
+K wheel 1 0
+S 32 3fff90c2560b0a43
+K wheel 1 0
+S 20 40012d85ad986152
+K wheel 1 0
+K hex 3 0
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 20 40012d85ad986152
+K pent 2 2
+S 35 3ffbd3d3ab9b0850
+K wheel 1 0
+S 31 3ffb9db7b0bd651e
+K wheel 1 0
+S 13 4002a9e275af0c20
+K wheel 1 0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 20 40012d85ad986152
+K pent 2 2
+S 31 3ffb9db7b0bd651e
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 20 40012d85ad986152
+K pent 2 2
+S 33 3ffbd3d3ab9b0850
+K wheel 1 0
+K wheel 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 20 40012d85ad986152
+K pent 2 2
+S 13 4002a9e275af0c20
+K hex 3 0
+K wheel 1 0
+K hex 3 0
+S 4 40047cd0b19cc62e
+S 19 4004d83b721dabc7
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 32 3ffcbf5b31db1f54
+S 8 4002a32c86becc65
+K hex 3 0
+S 6 400691aa18ffa894
+K hex 1 0
+K hex 3 0
+S 8 4002a32c86becc65
+K hex 3 0
+K wheel 1 0
+K wheel 1 0
+K wheel 1 0
+S 35 3ffe9971f68f7018
+S 34 3ffeb46054ff3ce0
+S 8 4002a32c86becc65
+K wheel 1 0
+S 32 3fff94eb39894ce6
+K wheel 1 0
+K wheel 1 0
+S 32 3ffcda49904aec1c
+K wheel 1 0
+S 18 40078e2b0d227f8f
+K wheel 1 0
+S 14 4002ddc230524af6
+K hex 1 0
+K hex 3 1
+K wheel 1 0
+S 33 3ffe9971f68f7018
+S 32 3fff1ed6eac3de92
+K wheel 1 0
+S 8 4002a32c86becc65
+K hex 3 0
+K wheel 1 0
+S 32 3fff1ed6eac3de92
+K wheel 1 0
+S 8 4002a32c86becc65
+K wheel 1 0
+S 34 3ffa4e2085be1090
+K wheel 1 0
+K wheel 1 0
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffeb46054ff3ce0
+S 18 40078e2b0d227f8f
+K hex 3 0
+S 31 3ffe34a4bb57a0fb
+K wheel 1 0
+K wheel 1 0
+S 31 3ffd00116d74b928
+K wheel 1 0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ffd00116d74b928
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+S 18 40078e2b0d227f8f
+K hex 3 0
+S 8 4002ddd247f1c332
+K wheel 1 0
+K wheel 1 0
+K wheel 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 8 4002a32c86becc65
+K hex 3 0
+S 6 400691aa18ffa894
+K hex 1 0
+K hex 3 0
+K hex 3 1
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 32 3ffcbf5b31db1f54
+S 15 4003e535a00863c2
+K hex 3 1
+S 14 3fff293f76d67ccc
+K hex 3 1
+K hex 1 1
+S 15 4003e535a00863c2
+K hex 3 1
+K wheel 1 0
+K wheel 1 0
+K wheel 1 0
+S 35 3ffe9971f68f7018
+S 34 3ffeb46054ff3ce0
+S 18 40078e2b0d227f8f
+K hex 3 0
+S 8 40034308f356a13a
+K hex 3 1
+S 14 4000d28cd8bdded1
+K hex 3 1
+K hex 3 1
+S 32 3ffcda49904aec1c
+K wheel 1 0
+S 15 4003e535a00863c2
+K hex 3 1
+S 14 3fff28141a7d00f8
+K hex 3 1
+K hex 3 0
+K wheel 1 0
+S 33 3ffe9971f68f7018
+S 32 3fff1ed6eac3de92
+K wheel 1 0
+S 15 4003e50fea01a95c
+K hex 3 1
+K wheel 1 0
+S 32 3fff1ed6eac3de92
+K wheel 1 0
+S 15 4003e50fea01a95c
+K hex 3 1
+K wheel 1 0
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffeb46054ff3ce0
+S 15 4003e50fea01a95c
+K hex 3 1
+K hex 1 0
+S 18 40078e2b0d227f8f
+K hex 3 0
+S 31 3ffb9db7b0bd651e
+K wheel 1 0
+S 8 40034cf5dfb045d0
+K hex 3 1
+K hex 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 15 4003e50fea01a95c
+K hex 3 1
+S 31 3ffb9db7b0bd651e
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+S 15 4003e52b1f35dbec
+K hex 3 1
+K hex 1 0
+K wheel 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 15 4003e535a00863c2
+K hex 3 1
+S 14 3fff293f76d67ccc
+K hex 3 1
+K hex 1 1
+S 30 3fff70e4ea0dd694
+S 31 3fff70e4ea0dd694
+S 33 3fff70e4ea0dd694
+K hex 3 1
+K hex 3 1
+S 33 3fff70e4ea0dd694
+K hex 3 1
+K hex 3 1
+S 32 3fff70e4ea0dd694
+K wheel 1 0
+S 34 3fff70e4ea0dd694
+K hex 3 1
+K hex 3 1
+S 21 3ff7e46a11c33549
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 32 3ffcbf5b31db1f54
+S 14 3fffd3f6587d1043
+K hex 1 1
+K hex 3 1
+S 14 3fffd3f6587d1043
+K wheel 1 0
+K hex 3 1
+K lin -1 0
+K wheel 1 0
+S 35 3ffe9971f68f7018
+S 34 3ffeb46054ff3ce0
+S 14 3fffd401c48e2a9f
+K wheel 1 0
+K hex 3 1
+S 32 3ffcda49904aec1c
+K wheel 1 0
+S 14 3fffd3f6587d1043
+K hex 1 1
+K hex 3 1
+K wheel 1 0
+S 33 3ffe9971f68f7018
+S 32 3fff299421acdda0
+K wheel 1 0
+K wheel 1 0
+S 32 3fff299421acdda0
+K wheel 1 0
+S 14 3fffd4213d8763c8
+K wheel 1 0
+K hex 3 1
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffeb46054ff3ce0
+S 31 3ffe34a4bb57a0fb
+K wheel 1 0
+K wheel 1 0
+S 31 3ffd00116d74b928
+K wheel 1 0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ffd00116d74b928
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+S 14 3fffd401c48e2a9f
+K wheel 1 0
+K hex 1 0
+K wheel 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 14 3fffd3f6587d1043
+K hex 1 1
+K hex 3 1
+K hex 1 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffd11c4c691ffaf
+S 32 3ffcbf5b31db1f54
+S 15 40055128a67fac26
+K hex 3 0
+K hex 1 1
+S 15 40055128a67fac26
+K hex 3 0
+K lin -1 0
+S 15 40055125ebc55c0a
+K hex 3 0
+K wheel 1 0
+K wheel 1 0
+S 35 3ffe9971f68f7018
+S 34 3ffeb46054ff3ce0
+S 32 40006906b5736a06
+K wheel 1 0
+K wheel 1 0
+S 32 3ffcda49904aec1c
+K wheel 1 0
+S 15 40055128a67fac26
+K hex 3 0
+K hex 1 1
+K wheel 1 0
+S 33 3ffe9971f68f7018
+S 32 3fff299421acdda0
+K wheel 1 0
+K wheel 1 0
+S 32 3fff299421acdda0
+K wheel 1 0
+S 34 3ff9f6e9bb7b14f2
+K wheel 1 0
+K hex 1 0
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffd2cdfb4af6ad2
+K wheel 1 0
+S 31 3ffb9db7b0bd651e
+K wheel 1 0
+S 15 40055125ebc55c0a
+K hex 3 0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ffb9db7b0bd651e
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffd2cdfb4af6ad2
+K wheel 1 0
+K hex 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 15 40055128a67fac26
+K hex 3 0
+K hex 1 1
+K hex 1 0
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffe557f5eb4532e
+S 32 3ffcbf5b31db1f54
+S 14 3ffefdc3ccc57259
+K hex 1 1
+K hex 1 1
+S 14 3ffefdc3ccc57259
+K wheel 1 0
+K hex 1 1
+K hex 1 1
+K wheel 1 0
+S 35 3ffe9971f68f7018
+S 34 3ffeb46054ff3ce0
+S 32 3fff94eb39894ce6
+K wheel 1 0
+K wheel 1 0
+S 32 3ffcda49904aec1c
+K wheel 1 0
+K wheel 1 0
+K wheel 1 0
+S 33 3ffe9971f68f7018
+S 32 3fff30bee58d0334
+K wheel 1 0
+K wheel 1 0
+S 32 3fff30bee58d0334
+K wheel 1 0
+S 34 3ff98b51cc9beb04
+K wheel 1 0
+K hex 1 0
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffe78b7c90594ba
+S 31 3ffe4691c29949af
+K wheel 1 0
+K wheel 1 0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ffd00116d74b928
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffe7380495c6fac
+K wheel 1 0
+K wheel 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 14 3ffefe951fd5845e
+K hex 1 1
+K hex 1 1
+K hex 1 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 32 3ffcbf5b31db1f54
+S 35 3ffc335ac01b9044
+S 14 3ffd8e7cfc3a5e19
+K hex 1 1
+K rho 6 0
+S 14 3ffd8e7cfc3a5e19
+K wheel 1 0
+K wheel 1 0
+S 14 3ffd9006535e90c4
+K wheel 1 0
+K rho 6 0
+K wheel 1 0
+S 35 3ffe9971f68f7018
+S 34 3ffeb46054ff3ce0
+K wheel 1 0
+S 32 3ffcda49904aec1c
+K wheel 1 0
+K wheel 1 0
+K wheel 1 0
+S 33 3ffe9971f68f7018
+S 32 3fff30bee58d0334
+K wheel 1 0
+K wheel 1 0
+K lin -1 0
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffc4f95d45a4280
+K hex 1 0
+S 31 3ffb9db7b0bd651e
+K wheel 1 0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ffb9db7b0bd651e
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffc4f95d45a4280
+K hex 1 0
+K hex 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 14 3ffd8f3a5b49482a
+K hex 1 1
+K rho 6 0
+K hex 1 0
+S 5 3ffe27f13df9a370
+S 19 4004d83b721dabc7
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 8 4002560d5131e896
+K hex 3 0
+K hex 1 0
+S 8 40025612d1e29ff9
+K hex 3 0
+K hex 1 0
+K wheel 1 0
+S 35 3ffe9971f68f7018
+S 8 400255fe21fcc83e
+K hex 3 0
+K hex 1 0
+K wheel 1 0
+K wheel 1 0
+K hex 1 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 15 40033e618e1b6242
+K lin -1 0
+K hex 1 1
+S 8 400213eda86e1036
+K hex 3 0
+K wheel 1 0
+K wheel 1 0
+S 35 3ffe9971f68f7018
+S 15 40033e618e1b6242
+K lin -1 0
+K hex 1 1
+K wheel 1 0
+K wheel 1 0
+S 30 3fff70e4ea0dd694
+S 32 3fff70e4ea0dd694
+S 34 3fff70e4ea0dd694
+S 35 3fff70e4ea0dd694
+S 8 4001ba85ffcfde20
+K hex 3 1
+K pent 8 4
+S 8 4001ba85ffcfde20
+K hex 3 1
+K pent 8 4
+K wheel 1 0
+S 35 3fff70e4ea0dd694
+S 8 4001ba85ffcfde20
+K hex 3 1
+K pent 8 4
+K wheel 1 0
+K wheel 1 0
+S 21 3ff7e46a11c33549
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 14 4000e72ccbb51168
+K hex 1 0
+K hex 1 0
+S 14 4000e72ccbb51168
+K hex 1 0
+K hex 1 0
+K wheel 1 0
+S 35 3ffe9971f68f7018
+S 14 4000e7545a24ef12
+K hex 1 0
+K hex 1 0
+K wheel 1 0
+K wheel 1 0
+K hex 1 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 15 4003bd7dcf332854
+K hex 3 0
+K hex 1 1
+S 14 400122b7f11eef98
+K wheel 1 0
+K hex 1 0
+K wheel 1 0
+S 35 3ffe9971f68f7018
+S 15 4003bd2f3c52081b
+K hex 3 0
+K hex 1 1
+K wheel 1 0
+K wheel 1 0
+S 30 3fff70e4ea0dd694
+S 32 3fff70e4ea0dd694
+S 34 3fff70e4ea0dd694
+S 35 3fff0008fd771656
+S 8 40026f64a8a1c8c0
+K hex 3 1
+K lin -1 0
+S 8 40027013c056d6e0
+K hex 3 1
+K lin -1 0
+K wheel 1 0
+S 35 3fff0008fd771656
+S 8 40026dbfa7f2c8d4
+K hex 3 1
+K lin -1 0
+K hex 1 0
+K wheel 1 0
+S 22 3ff7e46a11c33549
+K hex 1 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffc942b5a144a0e
+S 14 3ffe94cd55bb0166
+K hex 1 1
+K hex 1 1
+S 14 3ffe94cd55bb0166
+K hex 1 1
+K hex 1 1
+K wheel 1 0
+S 35 3ffe6c9fd7723718
+S 31 3ffbb0dba443d9a8
+S 33 3ff991e5bcbac37a
+K wheel 1 0
+S 14 3ffe8f2e671e5698
+K hex 1 1
+K hex 1 1
+S 33 3ffbb0dba443d9a8
+K wheel 1 0
+S 34 3ff9294e5ef639f5
+K wheel 1 0
+K hex 1 0
+K wheel 1 0
+K wheel 1 0
+K hex 1 0
+S 11 3fff3ba86df2e8f2
+S 17 3ffc849681db6078
+S 19 4004d83b721dabc7
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+K lin -1 0
+K hex 3 1
+S 29 3feecf4eb36f09b6
+K hex 3 0
+S 30 3fff70e4ea0dd694
+K hex 3 1
+K hex 3 1
+S 21 3ff7e46a11c33549
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+K hex 3 0
+K hex 3 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffdbfcecf3f1427
+S 33 3ffad28bcec1a79b
+S 14 3fff2b27625a8386
+S 18 400691aa18ffa894
+K hex 1 0
+K hex 1 0
+K pent 8 0
+K wheel 1 0
+S 14 3fff2b4b24770e1a
+K wheel 1 0
+K pent 8 0
+S 35 3ffeb46054ff3ce0
+S 33 3ffafaca9a2a8f0d
+K wheel 1 0
+S 14 3fff2b27625a8386
+K wheel 1 0
+K pent 8 0
+S 33 3ffaed7a2d317464
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 33 3ffdea67fe6bd88d
+S 14 3fff2b4b24770e1a
+K wheel 1 0
+K pent 8 0
+S 14 3fff2b4b24770e1a
+K wheel 1 0
+K pent 8 0
+S 33 3ffec40b25bc347e
+K wheel 1 0
+S 14 3fff2b4b24770e1a
+S 18 400691aa18ffa894
+K wheel 1 0
+K wheel 1 0
+K pent 8 0
+S 33 3ffe9971f68f7018
+S 32 40006ce90a7ca66c
+K wheel 1 0
+K wheel 1 0
+S 32 4000ea6c0119cfd5
+K wheel 1 0
+S 14 3fff2ba6361b1d69
+K wheel 1 0
+K pent 8 0
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffddb66ac75119e
+S 31 3ffb3ce396152335
+K wheel 1 0
+K wheel 1 0
+S 31 3ffaed7a2d317464
+K wheel 1 0
+S 14 3fff2b4b24770e1a
+K wheel 1 0
+K pent 8 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ffaed7a2d317464
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffddb66ac75119e
+S 14 3fff2b4b24770e1a
+K wheel 1 0
+K pent 8 0
+K wheel 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 14 3fff2b27625a8386
+S 18 400691aa18ffa894
+K hex 1 0
+K hex 1 0
+K pent 8 0
+K hex 1 0
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+K hex 1 0
+K hex 1 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffc7fcad93b65ab
+S 31 3ff9dcd022369999
+S 33 3ff9dcd022369997
+S 14 3ffe757c00a969df
+K hex 1 1
+K hex 1 1
+K wheel 1 0
+K wheel 1 0
+S 14 3ffe76f09402215b
+K wheel 1 0
+K hex 1 1
+S 35 3ffe878e35e203e0
+S 33 3ffa084e990c820c
+K wheel 1 0
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffe878e35e203e0
+K wheel 1 0
+S 33 3ffc99def1e182d6
+K wheel 1 0
+S 14 3ffe75fbd97cbfb3
+K wheel 1 0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ffe878e35e203e0
+K wheel 1 0
+K wheel 1 0
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffc9ab937ab3274
+K wheel 1 0
+S 31 3ff9f7be80a66660
+K wheel 1 0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ff9f7be80a66662
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffc9ab937ab3274
+K hex 1 0
+K wheel 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 14 3ffe75a52986b2c5
+K hex 1 1
+K hex 1 1
+K hex 1 0
+S 19 4004d83b721dabc7
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 25 4004b35ea0ee4b4c
+K hex 3 0
+K hex 3 1
+S 25 4004b35ea0ee4b4c
+K wheel 1 0
+K lin -1 0
+S 35 3ffeb46054ff3ce0
+S 25 4004b35ea0ee4b4c
+K wheel 1 0
+K hex 3 1
+S 25 4004b35ea0ee4b4c
+K wheel 1 0
+K hex 3 1
+S 34 3ffe9971f68f7018
+S 33 3ffec40b25bc347e
+S 25 4004b35ea0ee4b4c
+K hex 3 0
+K wheel 1 0
+S 25 4004b35ea0ee4b4c
+K hex 3 0
+K hex 3 1
+S 33 3ffec40b25bc347e
+K wheel 1 0
+S 25 4004b35ea0ee4b4c
+K hex 3 0
+K hex 3 1
+S 33 3ffe9971f68f7018
+S 25 4004b35ea0ee4b4c
+K wheel 1 0
+K hex 3 1
+S 25 4004b35ea0ee4b4c
+K wheel 1 0
+K hex 3 1
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffeb46054ff3ce0
+S 25 4004b35ea0ee4b4c
+K wheel 1 0
+K hex 3 1
+S 25 4004b35ea0ee4b4c
+K hex 3 0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 25 4004b35ea0ee4b4c
+K wheel 1 0
+K hex 3 1
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+S 25 4004b35ea0ee4b4c
+K wheel 1 0
+K wheel 1 0
+K wheel 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 25 4004b35ea0ee4b4c
+K hex 3 0
+K hex 3 1
+K hex 3 1
+S 21 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffd440df5f3ba77
+S 33 3ffc455e9e38037b
+S 25 40049e6bb1324164
+K hex 1 0
+K hex 3 0
+K wheel 1 0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+S 25 40049e6bb1324164
+K wheel 1 0
+K hex 3 0
+S 33 3ffc604cfca7d044
+K wheel 1 0
+S 25 40049e6bb1324164
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 33 3ffd71d2dbac40b8
+K wheel 1 0
+S 25 40049e6bb1324164
+K hex 1 0
+K hex 3 0
+S 33 3ffec6eb59169639
+K wheel 1 0
+S 25 40049e6bb1324164
+K wheel 1 0
+K hex 3 0
+S 33 3ffe9971f68f7018
+S 32 40006ce90a7ca66c
+K wheel 1 0
+K wheel 1 0
+S 32 40006ce90a7ca66c
+K wheel 1 0
+S 25 40049e6bb1324164
+K hex 1 1
+K wheel 1 0
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffd61992e90ea08
+S 25 40049e6bb1324164
+K hex 1 0
+K wheel 1 0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ffc604cfca7d044
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffd61992e90ea08
+K wheel 1 0
+K wheel 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 25 40049e6bb1324164
+K hex 1 0
+K hex 3 0
+K hex 3 0
+K lin -1 0
+S 19 4004d83b721dabc7
+S 22 3ff7e46a11c33549
+K lin -1 0
+S 29 3feecf4eb36f09b6
+K hex 3 0
+K pent 2 1
+S 21 3ff7e46a11c33549
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffd87d3d0e27a3f
+S 31 3ffc83eef09bfca7
+S 33 3ffc83eef09bfca7
+S 14 400008b6efedd296
+K hex 3 0
+K pent 8 4
+K wheel 1 0
+K wheel 1 0
+S 14 400008e237cc8c77
+K wheel 1 0
+K pent 8 4
+S 35 3ffda2c22f524708
+S 33 3ffd13bd32ad2aa8
+K wheel 1 0
+K wheel 1 0
+S 33 3ffc9edd4f0bc970
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 33 3ffeb46054ff3ce0
+S 31 3ffdb26e96baae30
+K wheel 1 0
+S 14 400008c25b0418da
+K wheel 1 0
+K pent 8 4
+S 31 3ffda2c22f524708
+K wheel 1 0
+S 14 400008c25b0418da
+K wheel 1 0
+K pent 8 4
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ffda2c22f524708
+K wheel 1 0
+K wheel 1 0
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffeb46054ff3ce0
+S 31 3ffce142b34a1051
+K wheel 1 0
+K wheel 1 0
+S 31 3ffc9edd4f0bc970
+K wheel 1 0
+K hex 3 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ffc9edd4f0bc970
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+S 14 400008c25b0418da
+K wheel 1 0
+K pent 8 4
+K wheel 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 14 400008b6efedd296
+K hex 3 0
+K pent 8 4
+K hex 3 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffd4fdbac4fb066
+S 31 3ffb82c9524d9858
+S 33 3ffb82c9524d9858
+S 14 3ffe88f7d485dfac
+K hex 1 0
+K hex 3 1
+K wheel 1 0
+K wheel 1 0
+K wheel 1 0
+S 35 3ffda2c22f524708
+S 33 3ffbc460aa90a59a
+K wheel 1 0
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffda2c22f524708
+K wheel 1 0
+S 33 3ffd69dffc93637e
+S 14 3ffe8901c8bf6466
+K wheel 1 0
+K hex 3 1
+S 14 3ffe8901c8bf6466
+K wheel 1 0
+K hex 3 1
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ffda2c22f524708
+K wheel 1 0
+K wheel 1 0
+S 32 3ffe9971f68f7018
+S 34 3ffe9971f68f7018
+S 35 3ffd6a1bb2eda4b2
+S 31 3ffc55dd1234cf22
+K wheel 1 0
+K wheel 1 0
+S 31 3ffb9db7b0bd6520
+K wheel 1 0
+S 14 3ffe8901c8bf6466
+K wheel 1 0
+K hex 3 1
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 31 3ffb9db7b0bd6520
+K wheel 1 0
+K wheel 1 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffd6a1bb2eda4b2
+K wheel 1 0
+K wheel 1 0
+S 31 3ffeb46054ff3ce0
+K wheel 1 0
+S 33 3ffeb46054ff3ce0
+K wheel 1 0
+S 35 3ffeb46054ff3ce0
+K wheel 1 0
+S 14 3ffe88f7d485dfac
+K hex 1 0
+K hex 3 1
+K hex 3 0
+S 29 3feecf4eb36f09b6
+K pent 8 1
+K pent 8 2
 E
 G 16 1
-K hex 0 0
+S 1 3ffe16f083e4636e
+S 8 4001531138c772e0
+S 22 3ff7e46a11c33549
+K hex 3 0
+S 29 3feecf4eb36f09b6
+K lin -1 0
+K hex 3 0
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+K pent 2 2
+K pent 2 2
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 20 40012d85ad986152
+K pent 2 2
+S 13 4002a9e275af0c20
+K hex 3 0
+K hex 1 1
+S 20 40012d85ad986152
+K pent 2 2
+S 13 4002a9e275af0c20
+K hex 3 0
+K hex 1 1
+S 33 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+S 35 3ffeb46054ff3ce0
+S 20 40012d85ad986152
+K pent 2 2
+S 13 4002a9e275af0c20
+K hex 3 0
+K hex 1 1
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K hex 3 0
+S 4 40047cd0b19cc62e
+S 19 4004d83b721dabc7
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 8 4002a32c86becc65
+K hex 3 0
+S 6 400691aa18ffa894
+K hex 1 0
+K hex 3 0
+K wheel 3 0
+S 8 4002a32c86becc65
+K hex 3 0
+S 32 3ffb5ddaa3f752f2
+K hex 3 0
+K hex 3 0
+K wheel 3 0
+S 33 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+S 35 3ffeb46054ff3ce0
+S 8 4002a32c86becc65
+K hex 3 0
+S 6 400691aa18ffa894
+K hex 1 0
+K hex 3 0
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K hex 3 1
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 35 3ffcd62e47b61d46
+S 15 4003e52b1f35dbec
+K hex 3 1
+S 14 3fff294d9ca32482
+K hex 3 1
+K hex 1 1
+K wheel 3 0
+S 15 4003e50fea01a95c
+K hex 3 1
+S 32 3ff90b2aa7482f02
+S 14 3fff17fd3eb0af07
+K hex 3 1
+K hex 3 0
+S 34 3ff90b2aa7482f02
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+S 33 3ffe9971f68f7018
+S 31 3ffcf11ca625ea0e
+S 35 3ffcf11ca625ea0e
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+S 30 3fff70e4ea0dd694
+S 31 3fff70e4ea0dd694
+S 33 3fff70e4ea0dd694
+K hex 3 1
+K hex 3 1
+K wheel 3 0
+S 33 3fff70e4ea0dd694
+K hex 3 1
+K wheel 3 0
+S 21 3ff7e46a11c33549
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffd737c9470c567
+S 35 3ffd735d0c946d6a
+S 14 3fffd3f6587d1043
+K hex 1 1
+K hex 3 1
+K wheel 3 0
+K wheel 3 0
+S 32 3ffbce4f33cf2750
+S 14 3fffd3f0b21b13d6
+K hex 1 1
+K hex 3 1
+S 34 3ffbce4f33cf2750
+K wheel 3 0
+S 14 3fffd3f026524071
+K hex 1 1
+K hex 3 1
+S 33 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+S 35 3ffeb46054ff3ce0
+S 14 3fffd3f23342556a
+K hex 1 1
+K hex 3 1
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K hex 1 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffbdeae19a7a5cd
+S 35 3ffb9f26c82adbf9
+S 15 40055128a67fac26
+K hex 3 0
+K hex 1 1
+K wheel 3 0
+K wheel 3 0
+S 32 3ff919b2f8e0c43c
+S 15 40055129ec950c1e
+K hex 3 0
+K hex 1 1
+S 34 3ff919b2f8e0c43c
+K wheel 3 0
+S 15 40055129ec950c1e
+K hex 3 0
+K hex 1 1
+S 33 3ffe9971f68f7018
+S 31 3ffcd5cbc1a11b32
+S 35 3ffbba15269aa8c2
+S 15 40055f19bd24e11a
+K hex 3 0
+K hex 1 1
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K hex 1 0
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffcaaab60a15fd2
+S 35 3ffca97f1bbaaf3c
+S 14 3fff0163bdb307a8
+K hex 1 1
+K hex 1 1
+K wheel 3 0
+K wheel 3 0
+S 32 3ffb5c8cfb5a2cb0
+S 14 3fff051fbae2c1f4
+K hex 1 1
+K hex 1 1
+S 34 3ffb5bf85444587c
+S 14 3ffefe4aaaff04d0
+K hex 1 1
+K hex 1 1
+S 35 3ff922c948e3ce0c
+K wheel 3 0
+K wheel 3 0
+S 33 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+S 35 3ffeb46054ff3ce0
+S 14 3ffefefeae24940f
+K hex 1 1
+K hex 1 1
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K hex 1 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffb4c2950e66300
+S 35 3ffb4b22b25538b1
+S 14 3ffd921836191a37
+K hex 1 1
+K rho 6 0
+K wheel 3 0
+K wheel 3 0
+S 32 3ff9092d948ccbc0
+S 14 3ffd91e4876cbe92
+K hex 1 1
+K rho 6 0
+S 34 3ff9092d948ccbc0
+K wheel 3 0
+S 14 3ffd9083fd7a3d48
+K hex 1 1
+K rho 6 0
+S 33 3ffe9971f68f7018
+S 31 3ffc469380c28d24
+S 35 3ffc462fbf383798
+S 14 3ffd8afbd6c17220
+K hex 1 1
+K rho 6 0
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K hex 1 0
+S 5 3ffe27f13df9a370
+S 19 4004d83b721dabc7
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 8 40025612d1e29ff9
+K hex 3 0
+K hex 1 0
+S 18 40078e2b0d227f8f
+K hex 1 0
+K wheel 3 0
+S 35 3ffe9971f68f7018
+S 8 40025612d1e29ff9
+K hex 3 0
+K hex 1 0
+S 34 3fff3ba94dcb3695
+K wheel 3 0
+S 18 40078e2b0d227f8f
+K hex 1 0
+K wheel 3 0
+S 34 3ffe9971f68f7018
+S 8 4002560d5131e895
+K hex 3 0
+K hex 1 0
+S 8 4002560d5131e895
+K hex 3 0
+K hex 1 0
+S 33 3ffe9971f68f7018
+S 18 40078e2b0d227f8f
+K hex 1 0
+K wheel 3 0
+S 32 3fff234214649d74
+K wheel 3 0
+S 18 40078e2b0d227f8f
+K lin -1 0
+K wheel 3 0
+S 32 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+S 35 3ffeb46054ff3ce0
+S 8 40025612d1e29ff9
+K hex 3 0
+K hex 1 0
+S 8 40025612d1e29ff9
+K hex 3 0
+K hex 1 0
+K wheel 3 0
+K wheel 3 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 3 0
+S 33 3ffeb46054ff3ce0
+K wheel 3 0
+K wheel 3 0
+S 31 3ffeb46054ff3ce0
+K wheel 3 0
+S 33 3ffeb46054ff3ce0
+K wheel 3 0
+S 35 3ffeb46054ff3ce0
+K wheel 3 0
+S 8 40025614d086e90e
+K hex 3 0
+K hex 1 0
+K hex 1 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 15 40033e618e1b6242
+K lin -1 0
+K hex 1 1
+K wheel 3 0
+S 15 40033e618e1b6242
+K lin -1 0
+K hex 1 1
+K wheel 3 0
+S 33 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+S 35 3ffeb46054ff3ce0
+S 8 400213eda86e1036
+K hex 3 0
+S 3 4003a233018c58f9
+K hex 1 0
+K lin -1 0
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+S 30 3fff70e4ea0dd694
+S 31 3fff70e4ea0dd694
+S 33 3fff70e4ea0dd694
+S 35 3fff70e4ea0dd694
+S 8 4001ba85ffcfde20
+K hex 3 1
+K pent 8 4
+K wheel 3 0
+S 8 4001ba85ffcfde20
+K hex 3 1
+K pent 8 4
+K wheel 3 0
+S 33 3fff70e4ea0dd694
+S 31 3fff8bd3487da35d
+S 35 3fff8bd3487da35d
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+S 21 3ff7e46a11c33549
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 14 4000e71a76341e09
+K hex 1 0
+K hex 1 0
+K wheel 3 0
+S 35 3ffe9971f68f7018
+S 34 3ffeb46054ff3ce0
+S 14 4000e718173f040e
+K hex 1 0
+K hex 1 0
+S 14 4000ef823c0376e1
+K hex 1 0
+K hex 1 0
+K hex 1 0
+S 34 3ffe9971f68f7018
+S 14 4000e71a76341e09
+K hex 1 0
+K hex 1 0
+S 14 4000e71a76341e09
+K hex 1 0
+K hex 1 0
+K hex 1 0
+S 32 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+S 35 3ffeb46054ff3ce0
+S 14 4000e71848864247
+K hex 1 0
+K hex 1 0
+S 14 4000e718d77b4a54
+K hex 1 0
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 3 0
+S 33 3ffeb46054ff3ce0
+K wheel 3 0
+K wheel 3 0
+S 31 3ffeb46054ff3ce0
+K wheel 3 0
+S 33 3ffeb46054ff3ce0
+K wheel 3 0
+S 35 3ffeb46054ff3ce0
+K wheel 3 0
+S 14 4000e71a76341e09
+K hex 1 0
+K hex 1 0
+K hex 1 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 15 4003bd9d77f83846
+K hex 3 0
+K hex 1 1
+K wheel 3 0
+S 15 4003bd7dcf332854
+K hex 3 0
+K hex 1 1
+K wheel 3 0
+S 33 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+S 35 3ffeb46054ff3ce0
+S 15 4003bdaf5e0358de
+K hex 3 0
+K hex 1 1
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+S 30 3fff70e4ea0dd694
+S 31 3fff70e4ea0dd694
+S 33 3fff70e4ea0dd694
+S 35 3fff70e4ea0dd694
+S 8 4002701305b37956
+K hex 3 1
+K lin -1 0
+K wheel 3 0
+S 8 40026f62e9249308
+K hex 3 1
+K lin -1 0
+K wheel 3 0
+S 33 3fff70e4ea0dd694
+S 31 3fff8bd3487da35d
+S 35 3fff8bd3487da35d
+S 8 4002707b3350dbcc
+K hex 3 1
+K lin -1 0
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+S 22 3ff7e46a11c33549
+K hex 1 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffbef9f6a9e5eeb
+S 35 3ffbed3434c4cfc1
+S 14 3ffe943375059570
+K hex 1 1
+K hex 1 1
+K wheel 3 0
+K wheel 3 0
+S 32 3ff93353ffb1f5c2
+S 14 3ffe93dc96005bda
+K hex 1 1
+K hex 1 1
+S 34 3ff9329658743e7e
+K wheel 3 0
+S 14 3ffe93dc96005bda
+K hex 1 1
+K hex 1 1
+S 33 3ffe9971f68f7018
+S 31 3ffdfea4b912cf9e
+S 35 3ffdf4469c86f830
+S 14 3ffe8d118c592d20
+K hex 1 1
+K hex 1 1
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K hex 1 0
+S 11 3fff3ba86df2e8f2
+S 17 3ffc849681db6078
+S 19 4004d83b721dabc7
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+K lin -1 0
+K hex 3 1
+S 29 3feecf4eb36f09b6
+K hex 3 0
+S 30 3fff70e4ea0dd694
+K hex 3 1
+K hex 3 1
+S 21 3ff7e46a11c33549
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+K hex 3 0
+K hex 3 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffcc8bf5c69afeb
+S 35 3ffcc867c206034e
+S 14 3fff2b5b4f395b00
+S 18 400691aa18ffa894
+K hex 1 0
+K hex 1 0
+K pent 8 0
+K wheel 3 0
+K wheel 3 0
+S 14 3fff2ba7e44ea95c
+S 32 3ff95246b942d462
+S 18 400691aa18ffa894
+K hex 1 0
+K hex 1 0
+K wheel 3 0
+K pent 8 0
+S 33 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+S 35 3ffeb46054ff3ce0
+S 14 3fff2b2b25600248
+S 18 400691aa18ffa894
+K hex 1 0
+K hex 1 0
+K pent 8 0
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K hex 1 0
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+K hex 1 0
+K hex 1 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffbd16673cac23b
+S 35 3ffbd09ef3a87fe9
+S 14 3ffe766541924aa2
+K hex 1 1
+K hex 1 1
+K wheel 3 0
+K wheel 3 0
+S 32 3ff92bf7583503e0
+S 14 3ffe764122c0b644
+K hex 1 1
+K hex 1 1
+S 34 3ff92bf7583503e0
+K wheel 3 0
+S 14 3ffe764122c0b644
+K wheel 3 0
+K hex 1 1
+S 33 3ffe9971f68f7018
+S 31 3ffd9db1e6ec0ede
+S 35 3ffd9db1e6ec0ede
+S 14 3ffe75bce08d2a9e
+K hex 1 1
+K hex 1 1
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K hex 1 0
+S 19 4004d83b721dabc7
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 35 3ffe9971f68f7018
+S 25 4004b35ea0ee4b4c
+K hex 3 0
+K hex 3 1
+S 25 4004b35ea0ee4b4c
+K hex 3 0
+K wheel 3 0
+S 35 3ffe9971f68f7018
+S 34 3ffd33e552eb21a0
+K wheel 3 0
+S 25 4004b35ea0ee4b4c
+K wheel 3 0
+K wheel 3 0
+S 34 3fff3ba94dcb3695
+K wheel 3 0
+S 25 4004b35ea0ee4b4c
+K hex 3 1
+K hex 3 1
+S 34 3ffe9971f68f7018
+S 25 4004b35ea0ee4b4c
+K hex 3 0
+K hex 3 1
+S 25 4004b35ea0ee4b4c
+K hex 3 0
+K wheel 3 0
+S 33 3ffe9971f68f7018
+S 25 4004b35ea0ee4b4c
+K wheel 3 0
+K wheel 3 0
+S 32 3fff174d2b428851
+K wheel 3 0
+S 25 4004b35ea0ee4b4c
+K hex 3 0
+K wheel 3 0
+S 32 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+S 35 3ffec3ec77c62aac
+S 25 4004b35ea0ee4b4c
+K wheel 3 0
+K wheel 3 0
+S 25 4004b35ea0ee4b4c
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 3 0
+S 33 3ffeb46054ff3ce0
+K wheel 3 0
+K wheel 3 0
+S 31 3ffeb46054ff3ce0
+K wheel 3 0
+S 33 3ffeb46054ff3ce0
+K wheel 3 0
+S 35 3ffeb46054ff3ce0
+K wheel 3 0
+S 25 4004b35ea0ee4b4c
+K hex 3 0
+K wheel 3 0
+K hex 3 1
+S 21 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffdfa6ff9490a14
+S 35 3ffdf8d1b1d3d4b6
+S 25 40049e6bb1324164
+K hex 1 0
+K hex 3 0
+S 25 40049e6bb1324164
+K wheel 3 0
+K hex 3 0
+K wheel 3 0
+S 34 3ffeb4f89f7d7fd0
+S 25 40049e6bb1324164
+K hex 1 0
+K hex 3 0
+S 35 3ffe20dfbee66b3d
+S 25 40049e6bb1324164
+K hex 1 0
+K hex 3 0
+K hex 3 0
+S 34 3ffe9971f68f7018
+S 33 3ffeb46054ff3ce0
+K wheel 3 0
+S 31 3ffe11efac414a88
+K hex 1 0
+S 25 40049e6bb1324164
+K hex 1 0
+K wheel 3 0
+S 33 3ffeb46054ff3ce0
+K wheel 3 0
+S 31 3ffe155e57b8d6dc
+K wheel 3 0
+K wheel 3 0
+S 32 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+S 35 3ffeb46054ff3ce0
+S 25 40049e6bb1324164
+K hex 1 0
+K hex 3 0
+S 25 40049e6bb1324164
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+S 34 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+K wheel 3 0
+S 33 3ffeb46054ff3ce0
+K wheel 3 0
+K wheel 3 0
+S 31 3ffeb46054ff3ce0
+K wheel 3 0
+S 33 3ffeb46054ff3ce0
+K wheel 3 0
+S 35 3ffeb46054ff3ce0
+K wheel 3 0
+S 25 40049e6bb1324164
+K hex 1 0
+K lin -1 0
+K hex 3 0
+K lin -1 0
+S 19 4004d83b721dabc7
+S 22 3ff7e46a11c33549
+K lin -1 0
+S 29 3feecf4eb36f09b6
+K hex 3 0
+K pent 2 1
+S 21 3ff7e46a11c33549
+S 22 3ff7e46a11c33549
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffdb1c30cc67ce4
+S 35 3ffdb18215b16513
+S 14 400008b6efedd296
+K hex 3 0
+K pent 8 4
+K wheel 3 0
+K wheel 3 0
+S 32 3ffc1ae522a8cd04
+S 14 400008b160f1eca4
+K hex 3 0
+K pent 8 4
+S 34 3ffc1ae522a8cd04
+K wheel 3 0
+S 14 400008b0da66886e
+K hex 3 0
+K pent 8 4
+S 33 3ffe9971f68f7018
+S 31 3ffeb46054ff3ce0
+S 35 3ffeb46054ff3ce0
+S 14 400008b2d85e5dd6
+K hex 3 0
+K pent 8 4
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K hex 3 0
+S 29 3feecf4eb36f09b6
+S 30 3ffe9971f68f7018
+S 33 3ffe9971f68f7018
+S 31 3ffc3211b8d3d5ba
+S 35 3ffc31f62d3a3071
+S 14 3ffe88f7d485dfac
+K lin -1 0
+K hex 3 1
+K wheel 3 0
+K wheel 3 0
+S 32 3ff92da06ab4a654
+S 14 3ffe88f34043bef5
+K lin -1 0
+K hex 3 1
+S 34 3ff92da06ab4a654
+K wheel 3 0
+S 14 3ffe88f34043bef5
+K wheel 3 0
+K hex 3 1
+S 33 3ffe9971f68f7018
+S 31 3ffdb27b187d7caa
+S 35 3ffc93f70cf9e3ba
+S 14 3ffe88f2d9c39f3a
+K lin -1 0
+K hex 3 1
+K wheel 3 0
+K wheel 3 0
+K wheel 3 0
+K hex 3 0
+S 29 3feecf4eb36f09b6
+K pent 8 1
+K pent 8 2
 E
 G 17 0
-K pent 7 0
+S 2 40003f90b02a00a8
+S 9 3ffc15761e1ecfab
+S 16 40032802fc71b8fe
+S 18 3ff5b78150a8304c
+S 28 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 5 40079f73ad2759a9
+K pent 1 1
+K lin -1 0
+S 5 40079f73ad2759a9
+K pent 1 1
+K lin -1 0
+S 32 3ffe9971f68f7018
+S 30 3ffeb46054ff3ce0
+S 34 3ffeb46054ff3ce0
+S 5 40079f73be539d4e
+K pent 1 1
+K lin -1 0
+K wheel 6 0
+K wheel 6 0
+K wheel 6 0
+K lin -1 0
+S 28 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 5 4007c1d073e76d96
+K pent 1 0
+K pent 1 0
+S 31 3ffd389cee6f83f2
+S 33 3ffc2b88df2fd21a
+S 5 4007c1d124bd9ed8
+K pent 1 0
+K pent 1 0
+S 5 4007c1d124bd9ed8
+K pent 1 0
+K pent 1 0
+S 33 3ffd389cee6f83f2
+K wheel 6 0
+S 5 4007c1d124bd9ed8
+K pent 1 0
+K pent 1 0
+S 32 3ffe9971f68f7018
+S 30 3ffeb46054ff3ce0
+S 34 3ffeb46054ff3ce0
+S 5 4007c1d124bd9ed8
+K pent 1 0
+K pent 1 0
+K wheel 6 0
+K wheel 6 0
+K wheel 6 0
+K lin -1 0
+S 18 3ff5b78150a8304c
+S 28 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 33 3ffe6923164ce6fa
+S 32 3ffdd8c1828cc8f3
+S 5 40079f73be874791
+K lin -1 0
+S 30 3ffaab85d374c5cb
+S 34 3ffaab669b107ea8
+S 6 3ff56b99e2c1c26c
+K pent 1 0
+K pent 1 3
+K wheel 6 0
+K wheel 6 0
+S 5 40079f73be874791
+K lin -1 0
+S 6 3ff56b99e2c1c26c
+K pent 1 0
+K hex 6 0
+S 32 3ffddb8870db512c
+K wheel 6 0
+S 5 40079f73be874791
+K wheel 6 0
+S 34 3ffaae4cc1c34e04
+K wheel 6 0
+S 6 3ff56b99e2c1c26c
+K pent 1 0
+K wheel 6 0
+S 33 3ffe9971f68f7018
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+S 5 40079f73be874791
+K lin -1 0
+S 6 3ff56b99e2c1c26c
+K pent 1 0
+K hex 6 0
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+S 5 40079f73be874791
+K wheel 6 0
+S 6 3ff56b99e2c1c26c
+K pent 1 0
+K wheel 6 0
+S 31 3ffe9971f68f7018
+S 34 3ffeb46054ff3ce0
+S 30 3ffdf3afe0fc95bc
+S 5 40079f73be874791
+K lin -1 0
+S 6 3ff56b99e2c1c26c
+K pent 1 0
+K hex 6 0
+K wheel 6 0
+S 33 3ffe9275f21de6ca
+K wheel 6 0
+S 32 3ffdf031dec3d114
+K wheel 6 0
+K wheel 6 0
+S 33 3ffe9971f68f7018
+S 30 3ffeb46054ff3ce0
+K wheel 6 0
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+K wheel 6 0
+S 30 3ffeb46054ff3ce0
+K wheel 6 0
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+S 34 3ffeb46054ff3ce0
+K wheel 6 0
+S 5 40079f73be87e301
+K lin -1 0
+K wheel 6 0
+K lin -1 0
+S 28 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 33 3ffe78ca1f19c33d
+S 32 3ffdd8c1828cc8f3
+S 5 4007c1d124bd9ed8
+K pent 1 1
+K rho 5 0
+S 5 4007c1d124bd9ed8
+K pent 1 1
+K rho 5 0
+S 32 3ffde35bf541bf4e
+K wheel 6 0
+S 5 4007c1d124bd9ed8
+K pent 1 1
+K rho 5 0
+S 33 3ffe9971f68f7018
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+S 5 4007c1d124bd9ed8
+K pent 1 1
+K rho 5 0
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+S 5 4007c1d124bd9ed8
+K pent 1 1
+K rho 5 0
+S 31 3ffe9971f68f7018
+S 34 3ffeb46054ff3ce0
+S 30 3ffdf3afe0fc95bc
+S 5 4007c1d124bd9ed8
+K pent 1 1
+K rho 5 0
+K wheel 6 0
+S 33 3ffea12facc17669
+K wheel 6 0
+S 30 3ffdf3afe0fc95bc
+K wheel 6 0
+K wheel 6 0
+S 33 3ffe9971f68f7018
+S 30 3ffeb46054ff3ce0
+K wheel 6 0
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+K wheel 6 0
+S 30 3ffeb46054ff3ce0
+K wheel 6 0
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+S 34 3ffeb46054ff3ce0
+K wheel 6 0
+S 5 4007c1d16d3280df
+K pent 1 1
+K rho 5 0
+K lin -1 0
+S 15 400111e39f52bdeb
+S 18 3ff5b78150a8304c
+S 28 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 5 40079f73be539d4e
+S 30 3ff8397dc2768d61
+S 34 3ff8397dc2768d61
+S 33 3ff7d7525034c9b2
+S 28 3fee639539afd679
+S 29 3ff6caafeb43e0db
+K hex 6 1
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+S 26 4001b6777b14d3c6
+S 31 3ff4b4b3b240f762
+K wheel 6 0
+K wheel 6 0
+K rho 5 0
+K lin -1 0
+K wheel 6 0
+K hex 6 1
+K wheel 6 0
+S 30 3ffab9550eaa5d5b
+S 34 3ffab9550eaa5d5b
+S 11 4000bca738b6df8e
+S 6 3ff56b99e2c1c26c
+S 1 3ffcc313f6dacef1
+S 33 3ff8f9b27a90172b
+S 28 3fee639539afd679
+K pent 1 3
+K lin -1 0
+K wheel 6 0
+S 33 3ff88adfbf0117ae
+S 28 3fee639539afd679
+K lin -1 0
+K hex 6 0
+K wheel 6 0
+S 33 3ff8fc0fbbee2d3d
+S 28 3fee639539afd679
+K lin -1 0
+K lin -1 0
+K wheel 6 0
+S 33 3ff85be8c5e59cc6
+S 28 3fee639539afd679
+S 29 3ff6caafeb43e0db
+K lin -1 0
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+K lin -1 0
+K lin -1 0
+K wheel 6 0
+S 11 4000bca738b6df8e
+K wheel 6 0
+K wheel 6 0
+K wheel 6 0
+S 33 3ffe3ba396d2ac7e
+S 5 40079f73be8239fc
+S 28 3fee639539afd679
+S 29 3ff6caafeb43e0db
+K hex 6 1
+K wheel 6 0
+K lin -1 0
+S 11 4000bca738b6df8e
+S 6 3ff56b99e2c1c26c
+S 1 3ffcc313f6aee4ba
+S 28 3fee639539afd679
+K pent 1 3
+K lin -1 0
+S 28 3fee639539afd679
+K lin -1 0
+K lin -1 0
+S 28 3fee639539afd679
+K wheel 6 0
+K lin -1 0
+S 28 3fee639539afd679
+S 29 3ff6caafeb43e0db
+K wheel 6 0
+K wheel 6 0
+K lin -1 0
+S 5 40079f73be8239fc
+K wheel 6 0
+S 34 3ffab9550eaa5d5b
+K wheel 6 0
+S 11 4000bca738b6df8e
+K wheel 6 0
+K wheel 6 0
+S 33 3ffe9971f68f7018
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+S 5 40079f73be8239fc
+K wheel 6 0
+S 11 4000bca738b6df8e
+S 6 3ff56b99e2c1c26c
+K wheel 6 0
+S 30 3ff9873733761f6e
+K wheel 6 0
+K wheel 6 0
+S 30 3ff94744331188e4
+K wheel 6 0
+K wheel 6 0
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+S 5 40079f73be8239fc
+K wheel 6 0
+S 11 4000bca738b6df8e
+S 6 3ff56b99e2c1c26c
+K wheel 6 0
+S 30 3ff9873733761f6e
+K wheel 6 0
+K wheel 6 0
+S 30 3ff964218f2be9a0
+K wheel 6 0
+K wheel 6 0
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 30 3ffeb46054ff3ce0
+S 34 3ffeb46054ff3ce0
+S 5 40079f73be874791
+S 28 3fee639539afd679
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+K wheel 6 0
+K lin -1 0
+S 11 4000bca738b6df8e
+S 6 3ff56b99e2c1c26c
+S 1 3ffcc313f6aa2200
+S 28 3fee639539afd679
+K pent 1 3
+K lin -1 0
+S 28 3fee639539afd679
+K lin -1 0
+K lin -1 0
+S 28 3fee639539afd679
+K lin -1 0
+K lin -1 0
+S 28 3fee639539afd679
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+K wheel 6 0
+K lin -1 0
+K wheel 6 0
+K wheel 6 0
+K wheel 6 0
+S 33 3ffe9971f68f7018
+S 30 3ffeb46054ff3ce0
+K wheel 6 0
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+K wheel 6 0
+S 30 3ffeb46054ff3ce0
+K wheel 6 0
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+S 34 3ffeb46054ff3ce0
+K wheel 6 0
+S 5 40079f73be87d3cc
+K wheel 6 0
+S 11 4000bca738b6df8e
+K wheel 6 0
+K wheel 6 0
+K pent 1 0
+S 28 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 5 4007be5d9e725cda
+S 30 3ff83d24b699296d
+S 34 3ff83a0392bb6825
+S 33 3ff7efdbe87f7a13
+S 19 40018ea610d707d0
+K pent 4 3
+S 28 3fee639539afd679
+K lin -1 0
+K lin -1 0
+K wheel 6 0
+K hex 6 1
+K wheel 6 0
+S 30 3ffab9550eaa5d5b
+S 34 3ffab9550eaa5d5b
+S 11 4000bca738b6df8e
+S 6 3ff56757e4c9eafc
+S 1 3ffcb25c2486cf9c
+S 33 3ff8d485171fdd6e
+S 19 40018ea610d707d0
+K pent 4 3
+K pent 1 0
+K wheel 6 0
+S 33 3ff9012d84eabbdf
+S 19 40018ea610d707d0
+K lin -1 0
+K lin -1 0
+K wheel 6 0
+S 33 3ff938dc990e7edc
+S 19 40018ea610d707d0
+K pent 2 4
+S 28 3fee639539afd679
+K pent 2 4
+K pent 2 4
+K wheel 6 0
+S 33 3ff8119ca60577d3
+S 19 40018ea610d707d0
+K lin -1 0
+K lin -1 0
+K wheel 6 0
+S 11 4000bca738b6df8e
+K hex 6 1
+K wheel 6 0
+K wheel 6 0
+S 33 3ffe57e244e644e8
+S 5 4007be5d9e725cda
+S 19 40018ea610d707d0
+K pent 4 3
+S 28 3fee639539afd679
+K lin -1 0
+K lin -1 0
+S 11 4000bca738b6df8e
+S 6 3ff567c0382ca9bc
+S 1 3ffcb27677b2da62
+S 19 40018ea610d707d0
+K lin -1 0
+K pent 1 0
+S 19 40018ea610d707d0
+K hex 6 0
+K pent 1 0
+S 19 40018ea610d707d0
+K pent 1 4
+S 28 3fee639539afd679
+K pent 1 3
+K pent 2 4
+S 19 40018ea610d707d0
+K pent 1 2
+K lin -1 0
+S 5 4007be5d9e725cda
+K wheel 6 0
+S 34 3ffab9550eaa5d5b
+K wheel 6 0
+S 11 4000bca738b6df8e
+K wheel 6 0
+K wheel 6 0
+S 33 3ffe9971f68f7018
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+S 5 4007be5d9e725cda
+K wheel 6 0
+S 11 4000bca738b6df8e
+S 6 3ff567c0382ca9bc
+K wheel 6 0
+S 30 3ff983024a39ddf0
+K wheel 6 0
+K wheel 6 0
+K wheel 6 0
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+S 5 4007be5d9e725cda
+K wheel 6 0
+S 11 4000bca738b6df8e
+S 6 3ff567c0382ca9bc
+K wheel 6 0
+S 30 3ff983024a39ddf0
+K wheel 6 0
+K wheel 6 0
+K wheel 6 0
+S 31 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 30 3ffeb46054ff3ce0
+S 34 3ffeb46054ff3ce0
+S 5 4007be5d9e725cda
+S 19 40018ea610d707d0
+K pent 4 3
+S 28 3fee639539afd679
+K lin -1 0
+K lin -1 0
+S 11 4000bca738b6df8e
+S 6 3ff567bfdef0b2f0
+S 1 3ffcb27661c00702
+S 19 40018ea610d707d0
+K lin -1 0
+K pent 1 0
+S 19 40018ea610d707d0
+K hex 6 0
+K pent 1 0
+S 19 40018ea610d707d0
+K pent 1 4
+S 28 3fee639539afd679
+K pent 1 3
+K pent 2 4
+S 19 40018ea610d707d0
+K pent 1 2
+K lin -1 0
+K wheel 6 0
+K wheel 6 0
+K wheel 6 0
+S 33 3ffe9971f68f7018
+S 30 3ffeb46054ff3ce0
+K wheel 6 0
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+K wheel 6 0
+S 30 3ffeb46054ff3ce0
+K wheel 6 0
+S 32 3ffeb46054ff3ce0
+K wheel 6 0
+S 34 3ffeb46054ff3ce0
+K wheel 6 0
+S 5 4007be5d9e725cda
+K wheel 6 0
+S 11 4000bca738b6df8e
+S 6 3ff567bfdef0b2f0
+K wheel 6 0
+S 19 40018ea610d707d0
+K wheel 6 0
+S 28 3fee639539afd679
+K wheel 6 0
+K wheel 6 0
+K wheel 6 0
+K pent 2 4
+S 18 3ff5b78150a8304c
+S 28 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 5 40079f9f45040ba0
+S 27 3ff6d6a264a75780
+S 30 3ff75086e51d52b2
+S 34 3ff75086186ddb9a
+S 28 3fee639539afd679
+K lin -1 0
+K pent 2 3
+K wheel 6 0
+K wheel 6 0
+S 30 3ff7d63178f958fd
+S 34 3ff7d63044214ef9
+S 28 3fee639539afd679
+S 31 3ff700b9729ff176
+S 29 3ff6caafeb43e0db
+K hex 6 1
+S 32 3ff6306934115878
+K wheel 6 0
+S 5 4007011b2f546760
+S 34 3ff3690f120cd04c
+K wheel 6 0
+K wheel 6 0
+K pent 1 1
+K wheel 6 0
+K pent 1 1
+K wheel 6 0
+K wheel 6 0
+S 30 3ff881238377398d
+S 34 3ff880b02eab49a7
+S 28 3fee639539afd679
+K pent 2 4
+K lin -1 0
+K wheel 6 0
+K wheel 6 0
+S 5 40079f9f45040ba0
+S 31 3ffaa47cba5eb34c
+S 27 3ff6d6a264a75780
+S 33 3ff832d8d0d07bd4
+S 28 3fee639539afd679
+K wheel 6 0
+K pent 2 3
+K wheel 6 0
+S 33 3ff84977ff035a9e
+S 28 3fee639539afd679
+K pent 4 3
+K pent 1 1
+K wheel 6 0
+S 33 3ffaa47cba5eb34c
+K wheel 6 0
+S 27 3ff6d6a264a75780
+S 34 3ff742e53fe510c4
+K wheel 6 0
+K wheel 6 0
+S 34 3ff7a9351ae6c2e1
+K wheel 6 0
+K wheel 6 0
+S 31 3ffaa47cba5eb34c
+S 33 3ff8811a67b09234
+S 28 3fee639539afd679
+K wheel 6 0
+K pent 2 4
+K wheel 6 0
+S 33 3ffaa47cba5eb34c
+K wheel 6 0
+S 30 3ff7e742ac03036d
+K wheel 6 0
+K wheel 6 0
+S 32 3ffe9971f68f7018
+S 30 3ffda4ab4e245b16
+S 34 3ffd4487e953def6
+S 5 40079f9f5e061092
+S 27 3ff6d6a264a75780
+S 28 3fee639539afd679
+K lin -1 0
+K pent 2 3
+S 28 3fee639539afd679
+S 32 3ff6c9497c2b3662
+K wheel 6 0
+K wheel 6 0
+K pent 1 1
+S 28 3fee639539afd679
+K pent 4 0
+K lin -1 0
+K wheel 6 0
+K wheel 6 0
+K wheel 6 0
+K pent 1 0
+S 28 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 5 4007c40ec728a66e
+K pent 1 1
+K pent 2 4
+S 5 4007c40ec728a66e
+K pent 1 1
+K pent 2 4
+S 32 3ffe9971f68f7018
+S 30 3ffc1d342819543a
+S 5 4007c57734c00d72
+K pent 1 1
+K pent 2 4
+K wheel 6 0
+K wheel 6 0
+K rho 5 0
+S 3 40068ff7442057ee
+S 5 400761343aceffe8
+S 28 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 26 4001b2dfc9efbb20
+S 30 3ff8afa31b950c40
+S 34 3ff8ab7e38403b87
+S 31 3ff79941301fc6a0
+S 33 3ff7983788ba9add
+S 7 40074e0d0904c891
+S 28 3fee639539afd679
+K pent 4 1
+K pent 1 4
+S 28 3fee639539afd679
+S 29 3ff6caafeb43e0db
+K pent 4 1
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+S 27 3ff76ef0f9d3c688
+K pent 2 0
+S 5 4006d3080a103540
+S 34 3ff35ca66f922272
+K wheel 6 0
+K wheel 6 0
+S 34 3ff35ca66f922272
+K wheel 6 0
+K wheel 6 0
+K pent 2 0
+K wheel 6 0
+K wheel 6 0
+K pent 2 0
+K wheel 6 0
+K pent 2 2
+S 31 3ffb7d8d3af93e3c
+S 26 4001b2dfc9efbb20
+S 33 3ff920fad7b42f52
+S 7 40074d9c7581f668
+K pent 4 1
+S 28 3fee639539afd679
+S 31 3ff59c5d763d3372
+K wheel 6 0
+K wheel 6 0
+K pent 2 0
+S 7 40074d9c7581f668
+K wheel 6 0
+S 28 3fee639539afd679
+K wheel 6 0
+K pent 2 0
+K pent 2 2
+S 33 3ffb7d8d3af93e3c
+K wheel 6 0
+S 26 4001b2dfc9efbb20
+S 30 3ff89703d122c617
+K wheel 6 0
+K wheel 6 0
+K pent 2 2
+S 32 3ffe9971f68f7018
+S 30 3ffd36a426e22e8e
+S 34 3ffc8ef4d06f0676
+S 26 4001b2dfc9efbb20
+S 7 40074d9c7581f668
+S 28 3fee639539afd679
+K pent 4 1
+K pent 1 4
+S 28 3fee639539afd679
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+K wheel 6 0
+K pent 2 0
+K pent 2 2
+K wheel 6 0
+K wheel 6 0
+K wheel 6 0
+K lin -1 0
+S 6 3ff65b6f38b03ae4
+S 11 400120efc1453852
+S 28 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 1 3ffc5ba758d45f39
+S 30 3ff9f3afc4b79f79
+S 34 3ff9f3afc4b79f79
+S 26 4001b2dfc9efbb20
+S 31 3ff8ec420c3531f5
+S 33 3ff8ec420c3531f5
+S 7 40071b4eefaa49e3
+S 28 3fee639539afd679
+S 29 3ff6caafeb43e0db
+S 32 3ff6eaa2055355d8
+S 21 40085a6aa440e5c2
+K wheel 6 0
+K wheel 6 0
+S 21 40085a6aa440e5c2
+S 27 3ff76ef0f9d3c688
+K pent 1 0
+K hex 6 0
+K hex 6 0
+S 32 3ff6caafeb43e0db
+S 11 40005ab9ff091ae2
+K wheel 6 0
+K wheel 6 0
+S 11 40005ab9ff091ae2
+K wheel 6 0
+K wheel 6 0
+K pent 1 0
+S 6 3ff4b1deb9a2d618
+S 28 3fee639539afd679
+S 29 3ff6caafeb43e0db
+S 27 3ff76ef0f9d3c688
+K pent 2 4
+K lin -1 0
+S 32 3ff6caafeb43e0db
+S 27 3ff76ef0f9d3c688
+K pent 2 4
+K wheel 6 0
+S 4 3ff5f4a949650719
+K wheel 6 0
+K wheel 6 0
+K pent 1 0
+S 28 3fee639539afd679
+S 29 3ff6caafeb43e0db
+S 27 3ff76ef0f9d3c688
+K lin -1 0
+K pent 4 2
+S 32 3ff6caafeb43e0db
+S 27 3ff76ef0f9d3c688
+K wheel 6 0
+K wheel 6 0
+S 4 3ff5f4a949650719
+K wheel 6 0
+K pent 4 2
+K pent 2 0
+K wheel 6 0
+K wheel 6 0
+K lin -1 0
+K pent 2 0
+K pent 2 0
+S 26 4001b2dfc9efbb20
+S 30 3ff98ab5c41585eb
+S 34 3ff98ab5c41585eb
+S 31 3ff8a53be76144d2
+S 33 3ff8a4a747750051
+S 7 40072cd7d0b4d1d6
+S 28 3fee639539afd679
+S 29 3ff6caafeb43e0db
+S 32 3ff746bc6c63df34
+K wheel 6 0
+S 27 3ff76ef0f9d3c688
+K pent 4 1
+K pent 4 2
+S 32 3ff6b98a8a9bc1b5
+K wheel 6 0
+S 27 3ff76ef0f9d3c688
+K pent 1 0
+K wheel 6 0
+K pent 4 0
+S 28 3fee639539afd679
+S 29 3ff6caafeb43e0db
+K hex 6 0
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+S 4 3ff6eaa1f45c9aea
+S 27 3ff76ef0f9d3c688
+K lin -1 0
+K wheel 6 0
+S 27 3ff76ef0f9d3c688
+K lin -1 0
+K pent 1 0
+K pent 2 4
+K wheel 6 0
+K wheel 6 0
+K pent 2 0
+K pent 2 0
+K pent 2 4
+S 31 3ffda4c2bbbd7bbc
+S 33 3ffce1d02d9333ec
+S 1 3ffc5ba758d45f39
+S 26 4001b2dfc9efbb20
+S 7 40071b4eefaa49e3
+S 28 3fee639539afd679
+S 11 40005ab9ff091ae2
+K wheel 6 0
+K wheel 6 0
+K pent 1 0
+S 6 3ff4b1deb9a2d618
+S 28 3fee639539afd679
+S 29 3ff6af3be3d57f9f
+K wheel 6 0
+K wheel 6 0
+K pent 1 0
+S 28 3fee639539afd679
+S 29 3ff667451150a6c1
+K wheel 6 0
+K lin -1 0
+K pent 2 0
+K lin -1 0
+S 26 4001b2dfc9efbb20
+S 7 40072cd7d0b4d1d6
+S 28 3fee639539afd679
+S 29 3ff613b2c37b7da2
+K pent 4 1
+K wheel 6 0
+K pent 4 0
+S 28 3fee639539afd679
+S 29 3ff6caafeb43e0db
+K wheel 6 0
+K wheel 6 0
+K pent 2 4
+K pent 2 4
+S 1 3ffc5ba758d45f39
+S 34 3ff9c94c7a2480c9
+K wheel 6 0
+K wheel 6 0
+S 26 4001b2dfc9efbb20
+S 34 3ff953ff407a0a56
+K wheel 6 0
+K wheel 6 0
+K pent 2 4
+S 33 3ffda4c2bbbd7bbc
+S 1 3ffc5ba758d45f39
+S 30 3ff9bcdab360391e
+K wheel 6 0
+K wheel 6 0
+S 26 4001b2dfc9efbb20
+S 30 3ff94fdbcb7dcdab
+K wheel 6 0
+K wheel 6 0
+K pent 2 4
+S 1 3ffc5ba758d45f39
+S 30 3ff9f37326a71011
+K hex 6 0
+K wheel 6 0
+S 26 4001b2dfc9efbb20
+S 30 3ff98ab5c41585eb
+K wheel 6 0
+K wheel 6 0
+K pent 2 4
+S 32 3ffe9971f68f7018
+S 30 3ffeb46054ff3ce0
+S 34 3ffeb46054ff3ce0
+S 1 3ffc5ba758d45f39
+S 26 4001b2dfc9efbb20
+S 7 40071b4eefaa49e3
+S 28 3fee639539afd679
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+K wheel 6 0
+K pent 1 0
+S 6 3ff4b1deb9a2d618
+S 28 3fee639539afd679
+S 32 3ff6caafeb43e0db
+K hex 6 0
+K wheel 6 0
+K pent 1 0
+S 28 3fee639539afd679
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+K wheel 6 0
+K pent 2 0
+K lin -1 0
+S 26 4001b2dfc9efbb20
+S 7 40072cd7d0b4d1d6
+S 28 3fee639539afd679
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+K wheel 6 0
+K pent 4 0
+S 28 3fee639539afd679
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+K wheel 6 0
+K pent 2 4
+K pent 2 4
+K wheel 6 0
+K wheel 6 0
+S 30 3ffeb46054ff3ce0
+K wheel 6 0
+S 34 3ffeb46054ff3ce0
+K wheel 6 0
+S 31 3ffdaf8ceaa93343
+K wheel 6 0
+S 33 3ffdaeff8d79e01b
+K wheel 6 0
+S 1 3ffc5ba758d45f39
+S 26 4001b2dfc9efbb20
+K wheel 6 0
+K wheel 6 0
+K wheel 6 0
+K pent 2 4
+S 28 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 30 3ffab0ce8e9b9459
+S 34 3ffaae58a30b4c3b
+S 26 4001b2dfc9efbb20
+S 31 3ff820cbc7a7a403
+S 33 3ff820cbc7a7a403
+S 28 3fee639539afd679
+S 29 3ff6caafeb43e0db
+S 32 3ff725c2adc6ad5a
+S 7 40077a8dc9ab968b
+K wheel 6 0
+K wheel 6 0
+S 7 40077a8dc9ab968b
+K hex 6 1
+S 27 3ff76ef0f9d3c688
+K lin -1 0
+S 5 400886915100b1ce
+K lin -1 0
+K lin -1 0
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+S 7 40077a8dc9ab968b
+K wheel 6 0
+S 27 3ff76ef0f9d3c688
+K lin -1 0
+S 5 400886915100b1ce
+K lin -1 0
+K lin -1 0
+K pent 2 4
+K wheel 6 0
+K wheel 6 0
+K pent 2 3
+K wheel 6 0
+S 26 4001b2dfc9efbb20
+K wheel 6 0
+K pent 2 3
+S 31 3ffc42bd3da4251c
+S 26 4001b2dfc9efbb20
+S 33 3ff9d2fc17efeef6
+S 28 3fee639539afd679
+S 31 3ff5fa3b42c2d59c
+K wheel 6 0
+K wheel 6 0
+K pent 2 4
+S 28 3fee639539afd679
+S 34 3ff6702ec7ff4dc8
+K wheel 6 0
+K wheel 6 0
+K pent 2 4
+K pent 2 3
+S 33 3ffc3c670479531a
+K wheel 6 0
+S 30 3ff9f1dcb8047573
+K wheel 6 0
+K wheel 6 0
+S 32 3ffe9971f68f7018
+S 30 3ffeb46054ff3ce0
+S 34 3ffeb46054ff3ce0
+S 26 4001b2dfc9efbb20
+S 28 3fee639539afd679
+S 32 3ff6caafeb43e0db
+K wheel 6 0
+K wheel 6 0
+K pent 2 4
+K pent 2 3
+K wheel 6 0
+K wheel 6 0
+K wheel 6 0
+K lin -1 0
+S 28 3feecf4eb36f09b6
+S 29 3ffe9971f68f7018
+S 32 3ffe9971f68f7018
+S 30 3ffa4df2bf0ba7cf
+S 34 3ffa498b560ce16e
+S 26 4001b2dfc9efbb20
+S 31 3ff8fe582d408cdd
+S 33 3ff8f6736049a5e6
+S 28 3fee639539afd679
+K lin -1 0
+K pent 1 0
+K wheel 6 0
+K wheel 6 0
+K hex 6 0
+K hex 6 1
+K hex 6 1
+S 31 3ffdcd87301aa728
+S 33 3ffcdd98e678fe38
+S 26 4001b2dfc9efbb20
+S 28 3fee639539afd679
+K lin -1 0
+K pent 1 0
+K hex 6 0
+S 34 3ff9d5d7ca51f965
+K wheel 6 0
+S 26 4001b2dfc9efbb20
+K hex 6 1
+K wheel 6 0
+S 33 3ffdcae4f22cb906
+S 30 3ffa410f36a4d4a7
+K wheel 6 0
+K wheel 6 0
+S 30 3ffa458a4063e610
+K wheel 6 0
+K wheel 6 0
+S 32 3ffe9971f68f7018
+S 30 3ffeb46054ff3ce0
+S 34 3ffeb46054ff3ce0
+S 26 4001b2dfc9efbb20
+S 28 3fee639539afd679
+K lin -1 0
+K pent 1 0
+K hex 6 0
+K wheel 6 0
+K wheel 6 0
+S 30 3ffeb46054ff3ce0
+K wheel 6 0
+S 34 3ffeb46054ff3ce0
+K wheel 6 0
+S 31 3ffdd46fa7ef77d2
+K wheel 6 0
+K wheel 6 0
+K pent 1 0
+S 16 40032802fc71b8fe
+S 28 3feecf4eb36f09b6
+K pent 2 4
+K pent 2 4
+S 28 3feecf4eb36f09b6
+K pent 2 4
+K pent 2 4
 E
 G 18 0
-K pent 11 0
-E
-G 18 1
-K pent 11 0
+K pent 0 0
 E
 G 19 0
-S 1 40023fa7b17a33c6
-S 12 40057dd1e185bef2
-K hex 1 0
-S 27 3ffe9cd8e2aee639
-S 29 3ffe9cd8e2aee639
-S 31 3ffe9cd8e2aee639
-S 30 3ffdfe71bd88015b
-S 26 3ff7aedd11785d07
-S 28 3ff7aedd11785d07
-S 25 3fee65d9d71a253a
-K pent 4 3
-K hex 1 0
-K wheel 1 0
-K wheel 1 0
-S 25 3fee65d9d71a253a
-K pent 4 3
-K hex 1 0
-K wheel 1 0
-K wheel 1 0
-S 30 3ffe9cd8e2aee639
-S 26 3ffb830547b58c7d
-S 28 3ff91ebc015bbc24
-K wheel 1 0
-K wheel 1 0
-S 28 3ffb830547b58c7d
-K wheel 1 0
-S 29 3ff94a9e038d0d5d
-K wheel 1 0
-K wheel 1 0
-K wheel 1 0
-S 6 4003f07239a07358
-K hex 1 0
-S 12 40057dd1e185bef2
-K hex 1 0
-S 27 3ffe9cd8e2aee639
-S 29 3ffe9cd8e2aee639
-S 31 3ffe9cd8e2aee639
-S 30 3ffdfe71bd88015b
-S 22 40084769270e3dfa
-K lin -1 0
-K lin -1 0
-S 22 40084769270e3dfa
-K lin -1 0
-K lin -1 0
-K wheel 1 0
-K wheel 1 0
-S 30 3ffe9cd8e2aee639
-S 26 3ffb84985453316e
-S 22 40084769270e3dfa
-K lin -1 0
-K lin -1 0
-S 28 3ffb8458b2cdf2b9
-K wheel 1 0
-S 22 40084769270e3dfa
-K wheel 1 0
-K wheel 1 0
-K wheel 1 0
+K pent 4 0
 E

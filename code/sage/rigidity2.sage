@@ -70,8 +70,8 @@ for nm, keep in allconf.items():
         return any(bin(em & sm).count("1") < s for (em, s) in over)
     rhs = matrix(CB, 30, 1, [1]*27 + [0]*3)
     Rsq = RBr(0).upper()
+    tops = []
     nsing = nfeas = ninf = 0
-    arg = None
     for S in itertools.combinations(range(30), 3):
         A = [e for e in range(30) if e not in S]
         M = matrix(CB, [list(Lm.row(e)) for e in A] + [list(Qm.row(w)) for w in range(3)])
@@ -91,14 +91,16 @@ for nm, keep in allconf.items():
             continue
         nfeas += 1
         n2 = (tv * tv).upper()
-        if n2 > Rsq:
-            Rsq = n2; arg = S
+        tops.append((n2, S))
+        Rsq = max(Rsq, n2)
+    # the first 3-set, in lexicographic order, attaining the maximum (symmetric vertices tie up to the ball radii)
+    arg = min(S for (n2, S) in tops if n2 > Rsq - 10**-100)
     Rup = RBr(Rsq).sqrt().upper()
     kappa = (1 / RBr(Rup)).lower()
     r = (RBr(kappa) / ((1 + RBr(uB.upper())) * RBr(101) / 100 * RBr(15).sqrt())).lower()
     ok = RBr(15).sqrt() * RBr(r) <= RBr(1) / 10
     print("%s: 3-sets: %d singular (Laman count), %d infeasible, %d possibly feasible vertices" % (nm, nsing, ninf, nfeas))
-    print("%s: max |t| over P <= %.8e (at S = %s); kappa >= %.8e ; radius r = %.8e, sqrt(15) r <= 0.1: %s" % (nm, Rup, arg, kappa, r, ok))
+    print("%s: max |t| over P <= %s (at S = %s); kappa >= %s ; radius r >= %s, sqrt(15) r <= 0.1: %s" % (nm, sci(Rup.exact_rational(), True, 8), arg, sci(kappa.exact_rational(), False, 8), sci(r.exact_rational(), False, 8), ok))
     sys.stdout.flush()
     res[nm] = (kappa, r)
 print("minimum radius over all configurations >=", dec(min(v[1] for v in res.values()).exact_rational(), False))

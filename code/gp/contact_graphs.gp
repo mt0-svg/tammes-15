@@ -26,7 +26,8 @@ check(tag, file) = {
   my(u = polrootsreal(13*x^5 - x^4 + 6*x^3 + 2*x^2 - 3*x - 1)[1], ce = 0, other = -1);
   for (i = 1, n, for (j = i + 1, n, my(t = X[i]*X[j]~);
     if (setsearch(Set(Vec(nb[i])), j), ce = max(ce, abs(t - u)), other = max(other, t))));
-  printf("%s: coordinates of %s: |<x_i,x_j> - u| < 1e-20 on the contacts: %d, other inner products <= %.6f\n", tag, file, ce < 1e-20, other);
+  \\ the bound is rounded up to 6 decimals (an exact decimal, printed exactly)
+  printf("%s: coordinates of %s: |<x_i,x_j> - u| < 1e-20 on the contacts: %d, other inner products <= %.6f\n", tag, file, ce < 1e-20, ceil(other * 10^6) / 10^6);
   printf("%s: %d points, %d contacts, degrees %s\n", tag, n, #E, vecsort(deg));
   d5 = [i | i <- [1..n], deg[i] == 5];
   printf("  degree 5: %s\n", strjoin(apply(i -> names[keep[i]], d5), ", "));

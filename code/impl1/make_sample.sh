@@ -2,21 +2,18 @@
 # Builds the replay sample of data/sample/ from the full release assets (see ASSETS.md).
 # Usage: code/impl1/make_sample.sh ASSETS OUT [SEED]
 #   ASSETS: directory holding the unpacked assets (inputs/ and certificates/)
-#   OUT: output directory; SEED: seed of the random choice (default 2026)
-# For each input file, a random set of graphs that have a tree in the full rerun is copied, in input
+#   OUT: output directory; SEED: seed of the choice (default 2026)
+# For each input file, a set of graphs that have a tree in the full rerun, those of least SHA-256 of
+# "SEED:TAG:INDEX" (code/impl1/sample_pick.pl, TAG as k0_0 below), is copied, in input
 # order, with pcpick, and their trees are copied with the graph index renumbered to the position in
 # the sample. tdeep --replayfile on the sample then replays exactly those trees (Section 6.4).
 set -eu
 A=$1; O=$2; SEED=${3:-2026}
 B=$(dirname "$0")/rust/target/release
 mkdir -p "$O"
-# the random source of shuf: the first 1000000 bytes of `yes SEED`, written to a file (a pipe would
-# print "Broken pipe" where SIGPIPE is ignored, since shuf stops reading early)
-rnd() { awk -v s="$1" 'BEGIN {l = s "\n"; for (n = 1000000; n >= length(l); n -= length(l)) printf "%s", l; printf "%s", substr(l, 1, n)}'; }
-RS=$(mktemp); trap 'rm -f "$RS"' EXIT; rnd "$SEED" > "$RS"
 pick() { # TAG INPUT CERT M
   tag=$1; inp=$2; cert=$3; m=$4
-  grep '^G ' "$cert" | awk '{print $2}' | sort -un | shuf -n "$m" --random-source="$RS" | sort -n > "$O/$tag.idx"
+  grep '^G ' "$cert" | awk '{print $2}' | sort -un | "$(dirname "$0")/sample_pick.pl" "$SEED" "$tag" "$m" > "$O/$tag.idx"
   "$B/pcpick" "$O/$tag.idx" "$O/$tag.pc" < "$inp"
   awk 'NR == FNR {r[$1] = FNR - 1; next}
        /^G / {keep = ($2 in r); if (keep) {print "G", r[$2], $3}; next}

@@ -30,12 +30,24 @@ def alpha(d): return (d.cos() / (1 + d.cos())).arccos()
 def smax(d): return 4 * (1 / d.cos().sqrt()).arctan()
 def hh(d): return (d.cos() / (d / 2).cos()).arccos()
 def ok(b): return "OK" if b else "FAIL"
+def sci(q, up, n=8):
+    # the positive rational q rounded to n significant digits toward +infinity (up) or -infinity
+    n = int(n); e = int(floor(RR(q).log10()))
+    while floor(q / QQ(10)**(e - n + 1)) >= 10**n: e += 1
+    while floor(q / QQ(10)**(e - n + 1)) < 10**(n - 1): e -= 1
+    m = int(ceil(q / QQ(10)**(e - n + 1)) if up else floor(q / QQ(10)**(e - n + 1)))
+    if m == 10**n: m, e = m // 10, e + 1
+    return "%d.%0*de%+03d" % (m // 10**(n - 1), int(n - 1), m % 10**(n - 1), e)
+def fix(x, up, n):
+    # x (rational, real ball endpoint or real algebraic) rounded to n decimals toward +infinity (up) or -infinity
+    n = int(n); m = int((x * 10**n).ceil() if up else (x * 10**n).floor())
+    return "%s%d.%0*d" % ("-" if m < 0 else "", abs(m) // int(10)**n, n, abs(m) % int(10)**n)
 checks = []
 def chk(name, ball_pos):
-    # ball_pos must be a ball certified > 0
+    # ball_pos must be a ball certified > 0; its lower end, rounded down, is printed
     good = ball_pos > 0
     checks.append(good)
-    print("%-58s %s  (value %s)" % (name, ok(good), ball_pos.n(30)))
+    print("%-58s %s  (margin >= %s)" % (name, ok(good), sci(ball_pos.lower().exact_rational(), False) if good else ball_pos))
 chk("dlo_file <= 53.65785 deg", Dlo - R(vals["dlo"]))
 chk("dhi_file >= 56.6716 deg", R(vals["dhi"]) - Dhi)
 chk("alo_file <= alpha(53.65785 deg)", alpha(Dlo) - R(vals["alo"]))
@@ -53,7 +65,8 @@ chk("53.6578502 deg - psi* (main range starts above psi*)", R(dec("53.6578502"))
 N = 15
 om = N * pi_ / (6 * (N - 2))
 ft = (((1 / om.tan())**2 - 1) / 2).arccos()
-print("Fejes Toth bound for N = 15: %s deg" % (ft / dg).n(40))
+ftd = ft / dg
+print("Fejes Toth bound for N = 15 in [%s, %s] deg" % (fix(ftd.lower().exact_rational(), False, 9), fix(ftd.upper().exact_rational(), True, 9)))
 chk("56.6716 deg - Fejes Toth bound", Dhi - ft)
 chk("[3.1] 2 pi - 5 alpha(dhi)", 2 * pi_ - 5 * alpha(Dhi))
 chk("[3.2] pi (1 + sin h(dlo)) - 5 dhi", pi_ * (1 + hh(Dlo).sin()) - 5 * Dhi)

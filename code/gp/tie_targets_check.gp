@@ -45,4 +45,4 @@ printf("bk15_c1.txt (%d points) vs frame001: max coordinate error %.3e; bk15_c3.
 { for(k = 1, 8, my(keep = confs[k], nc = 0, oth = -1);
   for(i = 1, 15, for(j = i+1, 15, my(g = ipE(F[keep[i]], F[keep[j]]));
     if(g == uE, nc++, my(e = encl(g - uE)); if(e[1] + e[2] >= 0, error("non-contact not separated")); oth = max(oth, e[1] + e[2]))));
-  printf("%s: exact contacts %d, max over the other pairs of <p_i,p_j> - u <= %.10f\n", cnames[k], nc, oth)); }
+  printf("%s: exact contacts %d, max over the other pairs of <p_i,p_j> - u <= %.10f\n", cnames[k], nc, ceil(oth * 10^10) / 10^10)); }
