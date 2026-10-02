@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "label": "Computation Certificates",
-  "message": "0/25 reproduced",
-  "color": "red",
+  "message": "25/25 reproduced",
+  "color": "brightgreen",
   "style": "flat"
 }
