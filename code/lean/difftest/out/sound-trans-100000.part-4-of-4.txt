@@ -1,0 +1,10 @@
+CONST piLo holds piHi holds twoPiLo holds twoPiHi holds
+# op calls contained vacuous violated undecided | distinct contained vacuous violated undecided
+T cos 0 0 0 0 0 | 0 0 0 0 0
+T sin 0 0 0 0 0 | 0 0 0 0 0
+T acos 4007340 3885866 121474 0 0 | 3250385 3137697 112688 0 0
+T asin 3185961 3185961 0 0 0 | 3074937 3074937 0 0 0
+T atan 3873818 3873818 0 0 0 | 3362779 3362779 0 0 0
+T tan 671886 628475 43411 0 0 | 619957 588119 31838 0 0
+NEAR calls 0 distinct 0 (within 2^-200 at the first precision; decided at a higher one unless undecided)
+TOTAL calls 11739005 contained 11574120 vacuous 164885 violated 0 undecided 0

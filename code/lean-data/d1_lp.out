@@ -1,0 +1,12 @@
+C1 vertex R_max = 153.8917937
+C1 LP status unknown  primal residual 6.23e-13 dual residual 1.49e-10
+C1 LP bound R = 153.8917937  ratio to vertex value 1.000000000  equation residual 9.95e-14  min multiplier -2.78e-14
+C1 rank of the quadratic block 378 of 378 equations
+C1 identity R2 - |x|^2 = sum lam s + sum mu s s at 20 random points: max relative residual 3.87e-14
+C1 multipliers above 1e-9: lam 27 of 30, mu 459 of 465 (squares 27)
+C3 vertex R_max = 146.7507184
+C3 LP status unknown  primal residual 3.41e-13 dual residual 2.55e-11
+C3 LP bound R = 146.7507184  ratio to vertex value 1.000000000  equation residual 1.14e-13  min multiplier -1.44e-14
+C3 rank of the quadratic block 378 of 378 equations
+C3 identity R2 - |x|^2 = sum lam s + sum mu s s at 20 random points: max relative residual 3.33e-14
+C3 multipliers above 1e-9: lam 21 of 30, mu 447 of 465 (squares 21)

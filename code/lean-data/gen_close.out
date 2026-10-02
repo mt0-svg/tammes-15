@@ -1,0 +1,24 @@
+layout check (all 90 entries of C1.Pn and C3.Pn are the signed Q_X of ptN): OK
+A: max over [L,H] of |x - Q/2^100| = 1.000000 e-20  (<= 2e-20: yes)
+B: max over [L,H] of |x - Q/2^100| = 1.000000 e-20  (<= 2e-20: yes)
+C: max over [L,H] of |x - Q/2^100| = 1.000000 e-20  (<= 2e-20: yes)
+D: max over [L,H] of |x - Q/2^100| = 1.000000 e-20  (<= 2e-20: yes)
+E: max over [L,H] of |x - Q/2^100| = 1.000000 e-20  (<= 2e-20: yes)
+F: max over [L,H] of |x - Q/2^100| = 1.000000 e-20  (<= 2e-20: yes)
+R: max over [L,H] of |x - Q/2^100| = 1.000000 e-20  (<= 2e-20: yes)
+S: max over [L,H] of |x - Q/2^100| = 1.000000 e-20  (<= 2e-20: yes)
+T: max over [L,H] of |x - Q/2^100| = 1.000000 e-20  (<= 2e-20: yes)
+worst 1.000000 e-20, margin to 2e-20: 1.000000 e-20
+-- Lean text
+def QA : ℤ := 1134577671190097222888295346076
+def QB : ℤ := 217389794163179204139966559912
+def QC : ℤ := 521932207944227640492349650481
+def QD : ℤ := 1015379129806939693687783493192
+def QE : ℤ := 484197304773890820856904832009
+def QF : ℤ := -584376793739443483497597904950
+def QR : ℤ := 987296945351919843020097874112
+def QS : ℤ := -795042664016532338696554461155
+def QT : ℤ := 9484110461912251561610304267
+def Qall : Fin 18 → Fin 3 → ℤ := ![![QA, QB, QC], ![QC, QA, QB], ![QB, QC, QA], ![QD, QE, QF], ![QF, QD, QE], ![QE, QF, QD], ![QR, QS, QT], ![QT, QR, QS], ![QS, QT, QR], ![-QT, -QS, -QR], ![-QR, -QT, -QS], ![-QS, -QR, -QT], ![-QF, -QE, -QD], ![-QE, -QD, -QF], ![-QD, -QF, -QE], ![-QC, -QB, -QA], ![-QB, -QA, -QC], ![-QA, -QC, -QB]]
+def QtabC1 : Fin 15 → Fin 3 → ℤ := ![![QA, QB, QC], ![QC, QA, QB], ![QB, QC, QA], ![QD, QE, QF], ![QF, QD, QE], ![QE, QF, QD], ![QR, QS, QT], ![QT, QR, QS], ![-QR, -QT, -QS], ![-QF, -QE, -QD], ![-QE, -QD, -QF], ![-QD, -QF, -QE], ![-QC, -QB, -QA], ![-QB, -QA, -QC], ![-QA, -QC, -QB]]
+def QtabC3 : Fin 15 → Fin 3 → ℤ := ![![QA, QB, QC], ![QC, QA, QB], ![QB, QC, QA], ![QD, QE, QF], ![QF, QD, QE], ![QE, QF, QD], ![QR, QS, QT], ![QT, QR, QS], ![QS, QT, QR], ![-QF, -QE, -QD], ![-QE, -QD, -QF], ![-QD, -QF, -QE], ![-QC, -QB, -QA], ![-QB, -QA, -QC], ![-QA, -QC, -QB]]

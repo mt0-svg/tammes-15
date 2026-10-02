@@ -1,6 +1,6 @@
 # Release assets
 
-Data too large for git are assets of the GitHub release (tag `v1.0.0`), with these sha256 sums. They are uploaded to a draft release before the tag is pushed; the job `assets` of `.github/workflows/ci.yml` runs its checks on them, and `.github/workflows/release.yml` checks them against these sums before it publishes the release (the head of `release.yml` gives the steps). `code/impl1/fetch_assets.sh DIR` downloads them, checks the sums and unpacks them into `DIR`.
+Data too large for git are assets of the GitHub release (tag `v1.0.0`), with these sha256 sums. They are uploaded to a draft release before the tag is pushed, or taken from the previous release when this file has not changed; the job `assets` of `.github/workflows/ci.yml` runs its checks on them, and `.github/workflows/release.yml` checks them against these sums before it publishes the release (the head of `release.yml` gives the steps). `code/impl1/fetch_assets.sh DIR` downloads them, checks the sums and unpacks them into `DIR`.
 
 ```
 6a28d8e133a0789247c3931d6d3bafe1c910c953b441691639bb9674d0affaef  tammes15-certificates.tar.xz

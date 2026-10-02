@@ -1,0 +1,8 @@
+part 0/2: graphs 3225865, class 308776, plantri count 3225865
+  ***   at top-level: main()
+  ***                 ^------
+  ***   in function main: ...vecsort(parts)!=[0..M-1],error("parts ",vecsor
+  ***                                                 ^---------------------
+  ***   user error: parts [0] are not 0..1
+... skipping file 'check.gp'
+CHECK FAIL: gp error or check.gp did not reach its end

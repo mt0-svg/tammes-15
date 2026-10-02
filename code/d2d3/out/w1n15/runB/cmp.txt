@@ -1,0 +1,10 @@
+run B: plantri parts M = 243; generator options --ring2 --caps --tight
+plantri route: 243 parts, 457548213 graphs written by plantri, fg ref read 457548213, class 457548213, kept (W1) 2586025; plantri cpu 8793 s, part wall sum 9389 s
+s 3 plantri_route_classes 0 generator_classes 0 expected_ring 0 generator_ok_leaves 0 equal
+s 4 plantri_route_classes 768 generator_classes 768 expected_ring 1142 generator_ok_leaves 1142 equal
+s 5 plantri_route_classes 1229926 generator_classes 1229926 expected_ring 1295567 generator_ok_leaves 1295567 equal
+s 6 plantri_route_classes 1355331 generator_classes 1355331 expected_ring 1439383 generator_ok_leaves 1439383 equal
+reference: 2586025 codes, sorted, 0 repeated
+generator: 2586025 codes, sorted, 0 repeated
+only in reference: 0; only in generator: 0
+verdict: sets equal

@@ -1,0 +1,10 @@
+generator options: --all --ring2 --caps --tight --rule 1
+plantri: 606838 polytopes written to stdout; cpu=2.82 sec
+reference: 606838 codes, sorted, 0 repeated
+generator: 606838 codes, sorted, 0 repeated
+only in reference: 0; only in generator: 0
+s 3 expected_ring 1 generator_ok_leaves 1 equal
+s 4 expected_ring 80880 generator_ok_leaves 80880 equal
+s 5 expected_ring 408459 generator_ok_leaves 408459 equal
+s 6 expected_ring 175082 generator_ok_leaves 175082 equal
+verdict n 12: sets equal

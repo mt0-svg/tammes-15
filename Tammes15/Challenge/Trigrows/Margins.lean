@@ -6,7 +6,7 @@ import Tammes15.Challenge.Trigrows.Rows
 
 `dlo = 53.65785°` and `dhi = 56.6716°` (paper, Section 1). The margins
 `7 dlo > 2π` and `α(dhi) < 72°` (the hypothesis `hmarg` of Theorem 3.1), `3 dhi < π` (T8),
-`dhi + 2 h(dhi) < π` (Lemma perims (2)) and the closed-form bound of Proposition nor,
+`dhi + 2 h(dhi) < π` (the hypothesis of Lemma perims) and the closed-form bound of Proposition nor,
 `5 dhi < π (1 + sin h(dlo))`. The margin of Proposition onehex is not here: it depends on the
 polygon form of Rattlers.
 -/

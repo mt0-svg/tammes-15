@@ -1,0 +1,44 @@
+# bash code/lean/challenge.sh (the fifteen statements), in a copy of the repository without Tammes15/Challenge/; the modules written are identical to those of Tammes15/Challenge/ (diff -r)
+Tammes15.Attained.Data
+Tammes15.Contractors.Arith
+Tammes15.Contractors.Defs
+Tammes15.Contractors.Prims
+Tammes15.D2Regions.Defs
+Tammes15.Draw.Defs
+Tammes15.Glue.Enclosure
+Tammes15.Glue.Frames
+Tammes15.Glue.FramesAlg
+Tammes15.Hyps.Case
+Tammes15.Hyps.Computations
+Tammes15.Local41.Defs
+Tammes15.Nonunique.Defs
+Tammes15.PaperSteps.Defs
+Tammes15.PaperSteps.FrameDefs
+Tammes15.PaperSteps.SearchDefs
+Tammes15.PaperSteps.SearchTree
+Tammes15.PaperSteps.TieData
+Tammes15.Statement
+Tammes15.Trigrows.Defs
+Tammes15.Trigrows.Margins
+Tammes15.Trigrows.Mono
+Tammes15.Trigrows.Rows
+Tammes15.Trigrows.Sphere
+modules: 24, lines: 5196
+# bash code/lean/challenge.sh --closure Tammes15.Hyps.Computations Tammes15.Attained.Data Tammes15.Nonunique.Defs (the first four statements of config.json)
+Tammes15.Attained.Data
+Tammes15.D2Regions.Defs
+Tammes15.Draw.Defs
+Tammes15.Glue.Enclosure
+Tammes15.Glue.Frames
+Tammes15.Glue.FramesAlg
+Tammes15.Hyps.Case
+Tammes15.Hyps.Computations
+Tammes15.Local41.Defs
+Tammes15.Nonunique.Defs
+Tammes15.Statement
+Tammes15.Trigrows.Defs
+Tammes15.Trigrows.Margins
+Tammes15.Trigrows.Mono
+Tammes15.Trigrows.Rows
+Tammes15.Trigrows.Sphere
+modules: 16, lines: 3502

@@ -271,7 +271,7 @@ impl Model {
 /// equilateral polygon, but follows from the pentagon fans (T5), hexagon triangles (T6) and long
 /// diagonals (T7) of `RelSys` only through a realisability lemma of the face that is not stated.
 /// Every other relation of the model is a field of `RelSys` or an identity derived from one
-/// (code/search/impl2/d3check/README.md).
+/// (code/impl2/README.md).
 pub const OUTSIDE_RELSYS: [Fam; 3] = [Fam::PentSplit, Fam::HexChain5, Fam::HexC4Iso];
 
 impl Model {

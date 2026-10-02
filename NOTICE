@@ -8,5 +8,9 @@ directory LeanCode/LargeS/Lean_Code), the Lean formalization accompanying Kryvon
 Taylor, arXiv 2609.22077. That repository carries no licence file at that commit. Each file names
 its source in its header; the changes are listed in THIRD_PARTY.md.
 
+code/impl1/enum/plantri-guide.txt is the file plantri-guide.txt of plantri 5.8
+(users.cecs.anu.edu.au/~bdm/plantri/plantri58.tar.gz), unchanged, Copyright Gunnar Brinkmann and
+Brendan McKay, Apache License 2.0 (its Appendix G).
+
 The package is built on Mathlib, Copyright (c) the respective Mathlib authors, Apache License 2.0.
 The other software and data this project uses are listed in README.md, section Built on.

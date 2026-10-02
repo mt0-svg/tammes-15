@@ -3,7 +3,7 @@ import Tammes15.TwoConn.KConn
 /-!
 # Corollary twoconn by the convex hull
 
-Corollary twoconn (paper, Section 3, in the form of Remark routeC,
+Corollary twoconn (paper, Section 3, in the form of Section 10.7,
 for corners in `(0, π)`): a finite injective family of unit vectors and a graph without isolated
 vertex whose edges are exposed pairs, with an angular rotation system whose corners all lie in
 `(0, π)`. Then the graph is connected and 2-connected, the rotation system is spherical, and every
@@ -17,7 +17,7 @@ namespace Tammes15
 
 variable {V : Type} [Fintype V] [DecidableEq V]
 
-/-- Corollary twoconn by route C. -/
+/-- Corollary twoconn by the convex hull. -/
 theorem twoconn [Nonempty V] {G : SimpleGraph V} [DecidableRel G.Adj] (x : V → E3)
     (hx : ∀ v, ‖x v‖ = 1) (hinj : Function.Injective x)
     (hexp : ∀ a b, G.Adj a b → ExposedPair x a b)

@@ -1,0 +1,5 @@
+fg ref n 14 s 3 classes 0 expected_leaves 0 expected_ring 0
+fg ref n 14 s 4 classes 195 expected_leaves 9022 expected_ring 301
+fg ref n 14 s 5 classes 147976 expected_leaves 4633715 expected_ring 157176
+fg ref n 14 s 6 classes 133834 expected_leaves 1906560 expected_ring 143803
+fg ref n 14 all 0 sabotage 0 read 49661857 class 49661857 kept 282005 expected_leaves 6549297 expected_ring 301280 secs 655.91

@@ -1,0 +1,9 @@
+common denominator DD = 225008
+max deviation of the 18 points from bk15_exact.txt: 3.112e-60
+C1 keep [1, 2, 3, 4, 5, 6, 7, 8, 11, 13, 14, 15, 16, 17, 18] contacts 30 = recorded list
+C3 keep [1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 15, 16, 17, 18] contacts 30 = recorded list
+point pairs: contacts 33 non-contacts 86
+largest non-contact inner product minus u: -0.1679104305 at point pair (8, 17)
+sign of the quintic at ul, uh: -1 1
+Q4(bl, [ul, uh]) = -1.214550e-30 .. -1.214550e-30   Q4(bh, [ul, uh]) = 1.619044e-30 .. 1.619044e-30
+lemmas: 18 norms, 33 contacts, 86 separations, plus 21 structural

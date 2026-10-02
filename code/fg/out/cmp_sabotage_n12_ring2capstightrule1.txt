@@ -1,0 +1,7 @@
+reference out/ref_w1_n12.codes: 3342 codes; generator out/gen_sabotage_n12_ring2capstightrule1.codes: 1886 codes
+only in reference: 1456; only in generator: 0
+s 3 expected_ring 0 generator_ok_leaves 0 equal
+s 4 expected_ring 12 generator_ok_leaves 5 DIFFERENT
+s 5 expected_ring 2299 generator_ok_leaves 1204 DIFFERENT
+s 6 expected_ring 1323 generator_ok_leaves 841 DIFFERENT
+verdict: sets DIFFERENT

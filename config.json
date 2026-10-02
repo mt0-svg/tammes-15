@@ -1,7 +1,14 @@
 {
   "challenge_module": "Tammes15.Challenge",
   "solution_module": "Tammes15.Solution",
-  "theorem_names": ["Tammes15.reduction", "Tammes15.fejesToth_bound"],
+  "theorem_names": ["Tammes15.reduction", "Tammes15.fejesToth_bound", "Tammes15.conjecture_of_enum_killed",
+    "Tammes15.nonunique_of_enum_killed", "Tammes15.PaperSteps.killed_of_progKilled",
+    "Tammes15.conjecture_of_enum_progKilled", "Tammes15.PaperSteps.progKilled_of_progTrees",
+    "Tammes15.conjecture_of_enum_progTrees", "Tammes15.PaperSteps.local_optimality_frame",
+    "Tammes15.PaperSteps.optima_four", "Tammes15.PaperSteps.frames_not_isometric",
+    "Tammes15.PaperSteps.frames_not_distance_preserving", "Tammes15.conjecture_of_enum_progTreesDom",
+    "Tammes15.Contractors.killed_of_progTreesDom", "Tammes15.nonunique_of_enum_progTreesDom"],
   "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
-  "enable_nanoda": true
+  "enable_nanoda": true,
+  "lean_kernel": false
 }

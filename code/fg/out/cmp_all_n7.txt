@@ -1,0 +1,7 @@
+reference out/ref_all_n7.codes: 25 codes; generator out/gen_all_n7.codes: 25 codes
+only in reference: 0; only in generator: 0
+s 3 expected_leaves 13 generator_ok_leaves 13 equal
+s 4 expected_leaves 170 generator_ok_leaves 170 equal
+s 5 expected_leaves 25 generator_ok_leaves 25 equal
+s 6 expected_leaves 0 generator_ok_leaves 0 equal
+verdict: sets equal

@@ -3,7 +3,7 @@ import Tammes15.TwoConn.Excess
 /-!
 # The triangle lemma of the Fejes Tóth bound
 
-Paper, Section 8.4, Lemmas 8.1 and 8.2. A
+Paper, Section 8, Lemmas 8.1 and 8.2. A
 spherical triangle `p q r` (positively oriented) with sides at least `a` (`⟪·, ·⟫ ≤ c = cos a`) and
 circumradius at most `a` (a unit `n` with `⟪n, p⟫ = ⟪n, q⟫ = ⟪n, r⟫ = k ≥ c`) has angle sum at least
 that of the equilateral triangle of side `a`, `π + 2 arg (1 + 3c + i (1 - c) √(1 + 2c))`, for

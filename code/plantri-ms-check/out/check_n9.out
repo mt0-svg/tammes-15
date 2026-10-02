@@ -1,0 +1,18 @@
+part 0/1: graphs 2606, class 1006, plantri count 2606
+n = 9, 1 parts of modulus 1: graphs 2606, class 1006
+
+  n   F   E         sum 4E/|Aut|           T(F-1,n-1)  equal       graphs        class
+  9   7  14                  252                  252    yes            8            8
+  9   8  15                 3580                 3580    yes           74           70
+  9   9  16                16980                16980    yes          296          247
+  9  10  17                39525                39525    yes          633          379
+  9  11  18                51300                51300    yes          768          235
+  9  12  19                38076                38076    yes          558           60
+  9  13  20                15180                15180    yes          219            6
+  9  14  21                 2530                 2530    yes           50            1
+
+cells equal: 8 of 8; total rooted maps 167423, formula 167423
+graphs 2606, A000944(9) = 2606: equal
+class 1006, recorded 1006: equal
+CHECK PASS n = 9
+END

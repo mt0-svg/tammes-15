@@ -4,8 +4,8 @@
 #     smax(d) = 4 atan(1 / sqrt(cos d)) (code/gp/consts.gp);
 # (2) the d range: 53.65785 deg < psi* (u from the exact construction, data/bk15_exact.txt ball) and
 #     56.6716 deg >= the Fejes Toth bound for N = 15, arccos((cot^2(N pi / (6 (N - 2))) - 1) / 2);
-# (3) the numerical margins of Section 3 (code/gp/structure_checks.gp): [3.1], [3.2],
-#     [3.3] at the ends of the range (monotonicity proved in Section 3) and [3.4] on 40
+# (3) the numerical margins of Section 4.3 of the paper: [3.1], [3.2],
+#     [3.3] at the ends of the range (monotonicity proved in Section 4) and [3.4] on 40
 #     subintervals, all as certified signs of balls.
 # Usage: sage code/sage/params_check.sage   (from the repository root)
 RBF256 = RealBallField(256)

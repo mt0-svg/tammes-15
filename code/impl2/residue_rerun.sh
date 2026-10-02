@@ -1,5 +1,5 @@
 #!/bin/bash
-# Reruns vkill on the graphs left by its two bulk passes (Section 6.5), with the options and d ranges of
+# Reruns vkill on the graphs left by its two bulk passes (Section 9.3 of the paper), with the options and d ranges of
 # code/impl2/residue_cases.txt, and compares verdict and node count with the recorded ones (the search is
 # deterministic, so a rerun gives the recorded node count).
 # Usage (from the repository root, after building code/impl2): code/impl2/residue_rerun.sh [TAG ...]

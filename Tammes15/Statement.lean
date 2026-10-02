@@ -18,15 +18,15 @@ best known 15-point packings is `0.59260590292507377810...`, with minimal polyno
 
 `Tammes15.Conjecture`: `arccos u` is the greatest `d` such that some 15 points of the unit sphere
 have pairwise angles `≥ d`, i.e. it is the maximum `d_15`. It splits (`conjecture_iff`) into
-* `Attained`: some configuration has minimal angle `≥ arccos u`. Known: Buddenhagen and Kottwitz
-  give exact coordinates for two such configurations (in a number field of degree 20; checked in
-  `code/sage/bk15_exact.sage`). Not formalized here.
-* `UpperBound`, the open part: every 15 points of the unit sphere have two of them at angle
-  `≤ arccos u`.
+* `Attained`: some configuration has minimal angle `≥ arccos u`. Buddenhagen and Kottwitz give
+  exact coordinates for two such configurations, in a number field of degree 20;
+  `Tammes15.Attained.attained` proves it for them (D4).
+* `UpperBound`: every 15 points of the unit sphere have two of them at angle `≤ arccos u`, proved
+  from D2 and D3 (`Tammes15.conjecture_of_enum_killed`).
 
-"The conjectured optimal arrangements attain it" is the known part: the statement below asks for
-attainment by some configuration, not by the two named ones, whose coordinates are not written in
-Lean.
+The statement below asks for attainment by some configuration, not by the two named ones;
+`Tammes15.nonunique_of_enum_killed` adds that two configurations whose contact graphs are not
+isomorphic attain the maximum.
 -/
 
 open Real InnerProductGeometry
@@ -51,11 +51,11 @@ def Conjecture : Prop :=
   ∃ u : ℝ, 1 / 2 < u ∧ u < 7 / 10 ∧ quintic u = 0 ∧
     IsGreatest {d | Achievable 15 d} (arccos u)
 
-/-- Attainment (known, from the Buddenhagen-Kottwitz construction; not formalized). -/
+/-- Attainment, proved by the frames C1 and C3 of Buddenhagen and Kottwitz (`Tammes15.Attained.attained`). -/
 def Attained : Prop :=
   ∀ u : ℝ, 1 / 2 < u → u < 7 / 10 → quintic u = 0 → Achievable 15 (arccos u)
 
-/-- The open part: any 15 points of the unit sphere have two distinct indices at angular distance
+/-- The upper bound: any 15 points of the unit sphere have two distinct indices at angular distance
 at most `arccos u`. -/
 def UpperBound : Prop :=
   ∀ u : ℝ, 1 / 2 < u → u < 7 / 10 → quintic u = 0 →

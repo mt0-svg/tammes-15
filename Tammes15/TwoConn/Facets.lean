@@ -4,7 +4,7 @@ import Tammes15.TwoConn.Hull
 # Facets of the hull
 
 Step S4 of the proof of Corollary twoconn by the convex hull (paper, Section 3, Corollary twoconn
-and Remark routeC). The facets are the orbits of the face permutation of the angular rotation
+and Lemma hull). The facets are the orbits of the face permutation of the angular rotation
 `rho` of the hull graph. Each hull dart `d` has a supporting plane `{y | ⟪y, m⟫ = 1}` through
 `x d.fst`, `x d.snd` and `x (rho.rot d).snd` (Lemma C, `hull_step`); its polar `facetPolar` is
 unique, constant along the orbit (`facetPolar_face`, the facet is planar), every other point of

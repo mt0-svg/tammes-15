@@ -1,0 +1,14 @@
+# The second enumerator of Section 6.1 of the paper: the face-growth generator fg (src/bin/fg.rs) and the modules
+# it uses (src/graph.rs: planar code, the class test and the canonical code; src/weights.rs: the vertex test W1, with
+# the enclosures of src/iv.rs and src/geom.rs; src/bnb.rs is compiled with the library and not used by fg).
+# The package keeps the name of the directory where it was written, which the source imports.
+[package]
+name = "tammes-weight-test"
+version = "0.1.0"
+edition = "2021"
+publish = false
+autobins = false
+
+[[bin]]
+name = "fg"
+path = "src/bin/fg.rs"

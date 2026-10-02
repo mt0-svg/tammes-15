@@ -8,8 +8,8 @@ import Tammes15.Fans.Cone
 /-!
 # Self-contained lemmas of Corollary twoconn by the convex hull
 
-Self-contained statements of the proof (paper, Section 3, Corollary twoconn and Remark
-routeC). Groups:
+Self-contained statements of the proof (paper, Section 3, Lemma hull and Corollary
+twoconn). Groups:
 
 * corners and determinants at a vertex (`inner_cross_tdir` to `sameRay_of_ocorner_eq_zero`);
 * Cramer's rule and strict convexity (`norm_lt_one_of_comb`, `cramer3`);

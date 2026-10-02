@@ -1,0 +1,7 @@
+reference out/ref_all_n9.codes: 1006 codes; generator out/gen_all_n9.codes: 1006 codes
+only in reference: 0; only in generator: 0
+s 3 expected_leaves 7 generator_ok_leaves 7 equal
+s 4 expected_leaves 10881 generator_ok_leaves 10881 equal
+s 5 expected_leaves 5365 generator_ok_leaves 5365 equal
+s 6 expected_leaves 646 generator_ok_leaves 646 equal
+verdict: sets equal

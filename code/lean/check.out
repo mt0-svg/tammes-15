@@ -1,18 +1,32 @@
-# code/lean/check.sh, 2026-09-30 13:44 UTC, not a git checkout
+# code/lean/check.sh, 2026-10-02 00:58 UTC, not a git checkout
 # Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release); Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)
 # Mathlib: manifest d13f23b723b8a846827a245b89c10fc7d3f11612, checkout d13f23b723b8a846827a245b89c10fc7d3f11612
-# sources: sha256 a2ef8838df2e0696 of the list of sha256 sums of the files of Tammes15/, lakefile.toml, lake-manifest.json, lean-toolchain and the five files of code/lean/ that this script reads (code/lean/sources.sh prints it)
-# LEAN_NUM_THREADS 3; 24 processors visible
-== 1. lake build Statement Trigrows Local41 Rattlers Glue Fans Draw VendorEM8 Hyps Geom TwoConn Numerics FaceChain FejesToth Challenge Solution
-exit 0, 648 s wall; modules of the package built: 237 (built or replayed: 237); sorry warnings: 2, of them in Tammes15/Challenge.lean: 2
-Build completed successfully (9176 jobs).
+# sources: sha256 6ff628c1845866c0 of the list of sha256 sums of the files of Tammes15/, lakefile.toml, lake-manifest.json, lean-toolchain and the five files of code/lean/ that this script reads (code/lean/sources.sh prints it)
+# LEAN_NUM_THREADS 3; 3 processors visible
+== 1. lake build Statement Trigrows Local41 Rattlers Glue Fans Draw VendorEM8 Hyps Geom TwoConn Numerics FaceChain FejesToth Attained Kappa Params Nonunique PaperSteps D2Draw D2Regions Contractors Challenge Solution
+exit 0, 1360 s wall; modules of the package built: 307 (built or replayed: 307); sorry warnings: 15, of them in Tammes15/Challenge.lean: 15
+Build completed successfully (9254 jobs).
 build: PASS
 == 2. every target up to date (lake build --no-build)
-exit 0; All targets up-to-date (9176 jobs).
+exit 0; All targets up-to-date (9254 jobs).
 up-to-date: PASS
 == 3. source scan (code/lean/scan.sh Tammes15 lakefile.toml)
-Tammes15/Challenge.lean:16: sorry | (h3 : Tammes15.Killed L F) (h4 : Tammes15.AttainedHyp F) : Tammes15.Conjecture := sorry
-Tammes15/Challenge.lean:18: sorry | theorem Tammes15.fejesToth_bound : Tammes15.FejesTothBound := sorry
+Tammes15/Challenge.lean:34: sorry | (h3 : Tammes15.Killed L F) (h4 : Tammes15.AttainedHyp F) : Tammes15.Conjecture := sorry
+Tammes15/Challenge.lean:36: sorry | theorem Tammes15.fejesToth_bound : Tammes15.FejesTothBound := sorry
+Tammes15/Challenge.lean:40: sorry | Tammes15.Conjecture := sorry
+Tammes15/Challenge.lean:49: sorry | Tammes15.Nonunique.contactGraph Y (Real.cos d)) := sorry
+Tammes15/Challenge.lean:53: sorry | Tammes15.Killed L {Tammes15.Attained.frameC1, Tammes15.Attained.frameC3} := sorry
+Tammes15/Challenge.lean:57: sorry | Tammes15.Conjecture := sorry
+Tammes15/Challenge.lean:61: sorry | Tammes15.PaperSteps.ProgKilled L := sorry
+Tammes15/Challenge.lean:66: sorry | Tammes15.Conjecture := sorry
+Tammes15/Challenge.lean:76: sorry | ∀ i, x i = R' (Tammes15.Attained.pt Tammes15.Attained.bR Tammes15.Attained.uR (keep i))) := sorry
+Tammes15/Challenge.lean:86: sorry | Tammes15.PaperSteps.frameSet t) ↔ ¬ ∀ i j, t i = t j) := sorry
+Tammes15/Challenge.lean:90: sorry | O '' Set.range Tammes15.Attained.frameC1.p = Set.range Tammes15.Attained.frameC3.p := sorry
+Tammes15/Challenge.lean:95: sorry | ‖Tammes15.Attained.frameC1.p i - Tammes15.Attained.frameC1.p j‖ := sorry
+Tammes15/Challenge.lean:99: sorry | (hN : Tammes15.Contractors.Impl N) : Tammes15.Killed L {Tammes15.Attained.frameC1, Tammes15.Attained.frameC3} := sorry
+Tammes15/Challenge.lean:103: sorry | Tammes15.Conjecture := sorry
+Tammes15/Challenge.lean:112: sorry | (Tammes15.Nonunique.contactGraph X (Real.cos d) ≃g Tammes15.Nonunique.contactGraph Y (Real.cos d)) := sorry
+Tammes15/Contractors/DiffTest/Commute.lean:234: macro | macro "comm_simp" : tactic => `(tactic| simp only [lift_add, lift_sub, lift_mul, lift_div,
 Tammes15/Vendor/EM8/AngularArcParametrization.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
 Tammes15/Vendor/EM8/Antiprism.lean:14: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
 Tammes15/Vendor/EM8/ArcEmbedding.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
@@ -135,9 +149,10 @@ Tammes15/Vendor/EM8/TangentWedge.lean:9: notation | local notation "ℝ³" => Eu
 Tammes15/Vendor/EM8/TracePatchSubdivision.lean:9: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
 Tammes15/Vendor/EM8/VoronoiRegions.lean:10: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
 Tammes15/Vendor/EM8/WeakBoundarySupport.lean:8: notation | local notation "ℝ³" => EuclideanSpace ℝ (Fin 3)
-SCAN: 124 lines with a construct in 238 files; per construct:
+SCAN: 138 lines with a construct in 308 files; per construct:
     122 notation
-      2 sorry
+     15 sorry
+      1 macro
 scan: PASS
 == 4. #print axioms (code/lean/axioms.lean)
 'Tammes15.reduction' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -185,13 +200,152 @@ scan: PASS
 'Tammes15.FejesToth.facetPolar_norm_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Tammes15.FejesToth.facet_fan_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Tammes15.FejesToth.hull_fan_count' depends on axioms: [propext, Classical.choice, Quot.sound]
-exit 0; 43 of 43 theorems printed; axioms outside propext, Classical.choice, Quot.sound: none
+'Tammes15.FejesToth.gram_cross' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Vendor.EM8.SquareAntiprismVerification.spherical_triangle_excess_positive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Tammes15.conjecture_of_enum_killed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.conjecture_of_frames' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Attained.attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Attained.frameC1_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Attained.frameC1_contact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Attained.frameC1_sep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Attained.frameC3_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Attained.frameC3_contact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Attained.frameC3_sep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Attained.uR_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Attained.bR_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Attained.nm_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Attained.ct_0_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Attained.sp_8_17' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Kappa.kappaHyp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Kappa.kappa_C1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Kappa.kappa_C3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Kappa.kappa_frame' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Kappa.nMat_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Kappa.cert_of_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Kappa.kappa_of_cert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Kappa.C1.checkN' depends on axioms: [propext]
+'Tammes15.Kappa.C3.checkN' depends on axioms: [propext]
+'Tammes15.Kappa.close_C1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Kappa.close_C3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Params.dlo_file_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Params.dhi_le_file' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Params.alo_file_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Params.alpha_dhi_le_file' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Params.smax_dhi_le_file' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Params.arccos_root_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Params.fejesToth_value_lt_dhi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Params.margin_onehex_P' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Params.pi_lt_d21' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.alpha_dhi_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.margin_nor_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.margin_perims' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.nonunique_of_enum_killed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Nonunique.frames_not_iso' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Nonunique.frameC1_sep_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Nonunique.frameC3_sep_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.PaperSteps.killed_of_progKilled' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.conjecture_of_enum_progKilled' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.PaperSteps.progKilled_of_progTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.conjecture_of_enum_progTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.PaperSteps.local_optimality_frame' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.PaperSteps.optima_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.PaperSteps.frames_not_isometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.PaperSteps.frames_not_distance_preserving' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.conjecture_of_enum_progTreesDom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.nonunique_of_enum_progTreesDom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.killed_of_progTreesDom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Impl.onDom_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.progTrees_onDom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Run.sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Run.subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.wheelOut_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.primStep_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.primStep_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.nar_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.rowStep_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.sysRow_holds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.alphaStep_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.alphaInvStep_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.rhoStep_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.rhoDStep_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.pentStep_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.hexStep_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.diagFwdStep_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.diagBwdStep_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.wheelStep_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.triAngleSt_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.side_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.contactDrawn_of_structured' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.contactDrawn_arcs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.D2Regions.regions_eq_facePolygons' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.D2Regions.planeClass_of_structured' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.nar_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.isoBase_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.isoAngle_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.triAngleSt_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.triAngle_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.triAngleC_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.alphaIv_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.alphaInvIv_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.rhoIv_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.rhombusD_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.side_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.longdiagLb_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.cornerEnds_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.decDir_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.monoBounds_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.pentEvalC_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.hexEvalC_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.cmin_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.cmax_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.rowUpd_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.rowStep_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.alphaStep_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.alphaInvStep_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.rhoStep_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.rhoDStep_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.pentStep_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.hexStep_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.diagFwdStep_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.diagBwdStep_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.wheelTurn_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Tammes15.Contractors.Q.wheelStep_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit 0; 153 of 153 theorems printed; axioms outside propext, Classical.choice, Quot.sound: none
 axioms: PASS
 == 5. types of the interfaces (code/lean/types.lean)
 (no message)
 exit 0; examples: 10
 types: PASS
 == 6. environment audit (code/lean/EnvAudit.lean), every module of the package except Tammes15.Challenge*
+MODULE Tammes15.Attained.Capstone: 1 constants
+MODULE Tammes15.Attained.Data: 120 constants
+MODULE Tammes15.Attained.Final: 1 constants
+MODULE Tammes15.Attained.Frames: 15 constants
+MODULE Tammes15.Attained.Ident: 60 constants
+MODULE Tammes15.Attained.Points: 12 constants
+MODULE Tammes15.Attained.Roots: 14 constants
+MODULE Tammes15.Attained.Sep: 86 constants
+MODULE Tammes15.Contractors.Arith: 125 constants
+MODULE Tammes15.Contractors.Defs: 149 constants
+MODULE Tammes15.Contractors.DiffTest.Commute: 406 constants
+MODULE Tammes15.Contractors.DiffTest.PrimsQ: 222 constants
+MODULE Tammes15.Contractors.Encl: 84 constants
+MODULE Tammes15.Contractors.Fan: 30 constants
+MODULE Tammes15.Contractors.FlLemmas: 57 constants
+MODULE Tammes15.Contractors.Main: 2 constants
+MODULE Tammes15.Contractors.Prims: 65 constants
+MODULE Tammes15.Contractors.Statement: 140 constants
+MODULE Tammes15.Contractors.Tri: 18 constants
+MODULE Tammes15.D2Draw.Statement: 2 constants
+MODULE Tammes15.D2Regions.Arc: 8 constants
+MODULE Tammes15.D2Regions.Cover: 2 constants
+MODULE Tammes15.D2Regions.Defs: 12 constants
+MODULE Tammes15.D2Regions.Faces: 53 constants
+MODULE Tammes15.D2Regions.Orbit: 3 constants
+MODULE Tammes15.D2Regions.Poly: 25 constants
+MODULE Tammes15.D2Regions.Statement: 5 constants
 MODULE Tammes15.Draw.Angular: 11 constants
 MODULE Tammes15.Draw.Count: 8 constants
 MODULE Tammes15.Draw.Cyclic: 8 constants
@@ -202,17 +356,17 @@ MODULE Tammes15.Draw.Frame: 30 constants
 MODULE Tammes15.Draw.Iface: 3 constants
 MODULE Tammes15.Draw.Minimal: 3 constants
 MODULE Tammes15.Draw.Realise: 3 constants
-MODULE Tammes15.Draw.Shift: 3 constants
+MODULE Tammes15.Draw.Shift: 4 constants
 MODULE Tammes15.Draw.Structure: 7 constants
 MODULE Tammes15.FaceChain.Basic: 5 constants
 MODULE Tammes15.FaceChain.Contact: 9 constants
 MODULE Tammes15.FaceChain.Interfaces: 51 constants
 MODULE Tammes15.FaceChain.Sizes: 21 constants
-MODULE Tammes15.FaceChain.ThreeConn: 34 constants
+MODULE Tammes15.FaceChain.ThreeConn: 33 constants
 MODULE Tammes15.Fans.Cone: 1 constants
 MODULE Tammes15.Fans.Corners: 2 constants
 MODULE Tammes15.Fans.Hexagon: 2 constants
-MODULE Tammes15.Fans.Realise: 10 constants
+MODULE Tammes15.Fans.Realise: 9 constants
 MODULE Tammes15.FejesToth.Bound: 5 constants
 MODULE Tammes15.FejesToth.Facets: 4 constants
 MODULE Tammes15.FejesToth.Numerics: 6 constants
@@ -236,17 +390,49 @@ MODULE Tammes15.Glue.FramesAlg: 15 constants
 MODULE Tammes15.Glue.Pair: 3 constants
 MODULE Tammes15.Glue.Reconstruct: 46 constants
 MODULE Tammes15.Hyps.Case: 163 constants
-MODULE Tammes15.Hyps.Computations: 9 constants
+MODULE Tammes15.Hyps.Computations: 11 constants
 MODULE Tammes15.Hyps.Interfaces: 9 constants
 MODULE Tammes15.Hyps.Reduction: 13 constants
 MODULE Tammes15.Hyps.Transport: 44 constants
+MODULE Tammes15.Kappa.Assembly: 13 constants
+MODULE Tammes15.Kappa.C1: 24 constants
+MODULE Tammes15.Kappa.C3: 24 constants
+MODULE Tammes15.Kappa.Close: 42 constants
+MODULE Tammes15.Kappa.Defs: 58 constants
+MODULE Tammes15.Kappa.Generic: 93 constants
+MODULE Tammes15.Kappa.Spec: 122 constants
 MODULE Tammes15.Local41.Chain: 17 constants
 MODULE Tammes15.Local41.Defs: 7 constants
 MODULE Tammes15.Local41.Rotation: 18 constants
+MODULE Tammes15.Nonunique.Corollary: 9 constants
+MODULE Tammes15.Nonunique.Defs: 20 constants
+MODULE Tammes15.Nonunique.SepLt: 89 constants
 MODULE Tammes15.Numerics.ChordData: 6 constants
 MODULE Tammes15.Numerics.HexData: 97 constants
 MODULE Tammes15.Numerics.Root: 2 constants
 MODULE Tammes15.Numerics.Taylor: 23 constants
+MODULE Tammes15.PaperSteps.Defs: 18 constants
+MODULE Tammes15.PaperSteps.FrameD: 68 constants
+MODULE Tammes15.PaperSteps.FrameDefs: 13 constants
+MODULE Tammes15.PaperSteps.Isometric: 2 constants
+MODULE Tammes15.PaperSteps.LocalEq: 11 constants
+MODULE Tammes15.PaperSteps.Main: 2 constants
+MODULE Tammes15.PaperSteps.MainSearch: 1 constants
+MODULE Tammes15.PaperSteps.Optima: 15 constants
+MODULE Tammes15.PaperSteps.Reflect: 63 constants
+MODULE Tammes15.PaperSteps.Relabel: 25 constants
+MODULE Tammes15.PaperSteps.Roots2: 36 constants
+MODULE Tammes15.PaperSteps.Search: 62 constants
+MODULE Tammes15.PaperSteps.SearchDefs: 121 constants
+MODULE Tammes15.PaperSteps.SearchTree: 63 constants
+MODULE Tammes15.PaperSteps.Targets: 2 constants
+MODULE Tammes15.PaperSteps.TieData: 4 constants
+MODULE Tammes15.PaperSteps.TieMap: 12 constants
+MODULE Tammes15.Params.Checks: 8 constants
+MODULE Tammes15.Params.Defs: 6 constants
+MODULE Tammes15.Params.Generic: 31 constants
+MODULE Tammes15.Params.Onehex: 41 constants
+MODULE Tammes15.Params.Pi: 1 constants
 MODULE Tammes15.Rattlers.Basic: 17 constants
 MODULE Tammes15.Rattlers.Hex: 8 constants
 MODULE Tammes15.Rattlers.HexChord: 6 constants
@@ -257,7 +443,7 @@ MODULE Tammes15.Trigrows.Defs: 10 constants
 MODULE Tammes15.Trigrows.Margins: 18 constants
 MODULE Tammes15.Trigrows.Mono: 71 constants
 MODULE Tammes15.Trigrows.Points: 20 constants
-MODULE Tammes15.Trigrows.Realise: 9 constants
+MODULE Tammes15.Trigrows.Realise: 10 constants
 MODULE Tammes15.Trigrows.Rows: 21 constants
 MODULE Tammes15.Trigrows.Sdist: 25 constants
 MODULE Tammes15.Trigrows.Sphere: 3 constants
@@ -414,9 +600,9 @@ MODULE Tammes15.Vendor.EM8.VertexConcavity: 22 constants
 MODULE Tammes15.Vendor.EM8.VoronoiRegions: 8 constants
 MODULE Tammes15.Vendor.EM8.WeakBoundarySupport: 10 constants
 MODULE Tammes15.Vendor.EM8.WeakEulerArea: 2 constants
-SCOPE [M:Tammes15]: 4301 constants in 222 modules
-FLAGS: 0 (6 compiled-code shims `_unsafe_rec` of checked recursive definitions not counted)
-AXIOMS OK: 4301 constants reach 67030 constants and only the axioms [Classical.choice, Quot.sound, propext]
-exit 0; modules audited: 223
+SCOPE [M:Tammes15]: 7119 constants in 281 modules
+FLAGS: 0 (8 compiled-code shims `_unsafe_rec` of checked recursive definitions not counted)
+AXIOMS OK: 7119 constants reach 71053 constants and only the axioms [Classical.choice, Quot.sound, propext]
+exit 0; modules audited: 282
 audit: PASS
 CHECK PASS

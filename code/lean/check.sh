@@ -1,10 +1,11 @@
 #!/bin/bash
-# The checks of the Lean package, from a clone of this repository (Section 8.5 of the paper):
-#  1. `lake build` of every library of lakefile.toml; the only `sorry` warnings allowed are the two of
+# The checks of the Lean package, from a clone of this repository (Section 10.5 of the paper):
+#  1. `lake build` of every library of lakefile.toml; the only `sorry` warnings allowed are the fifteen of
 #     Tammes15/Challenge.lean, the statements Comparator checks (the complete build log goes to BUILD_LOG);
 #  2. `lake build --no-build` of the same libraries: every target is up to date (its output is appended to BUILD_LOG);
-#  3. the source scan code/lean/scan.sh of Tammes15/ and lakefile.toml; allowed: those `sorry`, and the local
-#     notations of the vendored library Tammes15/Vendor/EM8;
+#  3. the source scan code/lean/scan.sh of Tammes15/ and lakefile.toml; allowed: those `sorry`, the local
+#     notations of the vendored library Tammes15/Vendor/EM8, and the tactic macro `comm_simp` of
+#     Tammes15/Contractors/DiffTest/Commute.lean (a fixed `simp only` call);
 #  4. `#print axioms` of the theorems of code/lean/axioms.lean: only propext, Classical.choice and Quot.sound;
 #  5. code/lean/types.lean: each interface has the type of the theorem that proves it;
 #  6. the environment audit code/lean/EnvAudit.lean of every constant of every module of the package except the
@@ -41,7 +42,7 @@ sorrys=$(grep -E "declaration uses [\`']sorry[\`']" "$log" | grep -c . || true)
 sorry_ok=$(grep -E "^warning: Tammes15/Challenge\.lean:[0-9]+:[0-9]+: declaration uses [\`']sorry[\`']" "$log" | grep -c . || true)
 echo "exit $rc, $((t1 - t0)) s wall; modules of the package built: $nb (built or replayed: $nr); sorry warnings: $sorrys, of them in Tammes15/Challenge.lean: $sorry_ok"
 tail -1 "$log"
-[ $rc = 0 ] && [ "$sorrys" = "$sorry_ok" ] && [ "$sorry_ok" = 2 ] && res build PASS || res build FAIL
+[ $rc = 0 ] && [ "$sorrys" = "$sorry_ok" ] && [ "$sorry_ok" = 15 ] && res build PASS || res build FAIL
 
 echo "== 2. every target up to date (lake build --no-build)"
 { echo; echo "== lake build --no-build $libs"; } >> "$log"
@@ -52,7 +53,8 @@ echo "exit $rc; $(tail -1 "$log")"
 echo "== 3. source scan (code/lean/scan.sh Tammes15 lakefile.toml)"
 scan=$(bash code/lean/scan.sh Tammes15 lakefile.toml); echo "$scan"
 other=$(printf '%s\n' "$scan" | grep -E '^[^ ]+:[0-9]+: ' \
-  | grep -vE '^Tammes15/Challenge\.lean:[0-9]+: sorry \| ' | grep -vE '^Tammes15/Vendor/EM8/[A-Za-z]+\.lean:[0-9]+: notation \| local notation ' || true)
+  | grep -vE '^Tammes15/Challenge\.lean:[0-9]+: sorry \| ' | grep -vE '^Tammes15/Vendor/EM8/[A-Za-z]+\.lean:[0-9]+: notation \| local notation ' \
+  | grep -vE '^Tammes15/Contractors/DiffTest/Commute\.lean:[0-9]+: macro \| macro "comm_simp" : tactic => ' || true)
 if [ -z "$other" ]; then res scan PASS; else echo "not allowed:"; echo "$other"; res scan FAIL; fi
 
 echo "== 4. #print axioms (code/lean/axioms.lean)"

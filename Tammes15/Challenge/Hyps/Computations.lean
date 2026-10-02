@@ -1,17 +1,22 @@
 import Tammes15.Challenge.Hyps.Case
 import Tammes15.Challenge.Local41.Defs
+import Tammes15.Challenge.D2Regions.Defs
 
 /-!
-# The four computations D1 to D4, stated exactly
+# The four statements D1 to D4, stated exactly
 
-The hybrid theorem `Tammes15.reduction` (module `Tammes15.Hyps.Reduction`) proves
-`Tammes15.Conjecture` from four hypotheses on a list `L` of plane graphs and a set `F` of labelled
-frame configurations. Each hypothesis is a statement that a recorded computation checks; Section 8
-of the paper names, for each one, the program, its output and the step of the proof it gives.
+The theorem `Tammes15.reduction` (module `Tammes15.Hyps.Reduction`) proves `Tammes15.Conjecture`
+from four hypotheses on a list `L` of plane graphs and a set `F` of labelled frame configurations.
+D1 and D4 are proved for the frames C1 and C3 (`Tammes15.Kappa.kappaHyp`,
+`Tammes15.Attained.attained`), so `Tammes15.conjecture_of_enum_killed` needs D2 and D3 only; Section 7.3
+of the paper derives D2 and D3 from the outputs of the programs.
 
 * `KappaHyp F` (D1): the first-order rigidity constant of every frame is at least `kappa0`.
-* `EnumComplete L` (D2): every plane graph of the class of Section 5.1 with 12 to 15 vertices is
-  isomorphic to an entry of `L`, possibly with the orientation reversed.
+* `EnumComplete L` (D2, Definition 7.1 of the paper): every rotation system with 12 to 15 vertices of a 3-connected graph with
+  degrees 3 to 5 that is in the input class of `plantri -p -f6` read on a drawing
+  (`D2Regions.PlaneClass`: an arc drawing on the sphere without crossings, with these clockwise
+  orders, every region bounded by at most 6 edges) is isomorphic to an entry of `L`, possibly with
+  the orientation reversed.
 * `Killed L F` (D3): for every entry with `n` vertices, every choice of `15 - n` hexagons and every
   assignment with `d ∈ [dlo, dhi]` that satisfies the relation system, some gluing of it fires
   Pair, or fires Local with a frame of `F`.
@@ -34,11 +39,26 @@ respect to its contacts. -/
 def KappaHyp (F : Set Frame) : Prop :=
   ∀ q ∈ F, KappaBound q.p q.S kappa0
 
-/-- D2 (EnumComplete): every plane graph of the class with `12 ≤ n ≤ 15` vertices is isomorphic,
-possibly reversing the orientation, to an entry of `L` with the same number of vertices. -/
+/-- A contact drawing of `G` at distance `d`: unit vectors at pairwise spherical distance at least
+`d`, the edges exactly the pairs at distance `d`. -/
+def IsContactDrawing {n : ℕ} (G : SimpleGraph (Fin n)) (d : ℝ) (x : Fin n → E3) : Prop :=
+  0 < d ∧ d < π / 2 ∧ (∀ a, ‖x a‖ = 1) ∧ (∀ a b, a ≠ b → d ≤ sdist (x a) (x b)) ∧
+    ∀ a b, G.Adj a b ↔ a ≠ b ∧ sdist (x a) (x b) = d
+
+/-- `R` is the rotation system of a contact drawing of `G`: at each vertex, the counterclockwise
+order of the edges seen from outside (`IsAngular`). -/
+def ContactDrawn {n : ℕ} (G : SimpleGraph (Fin n)) (R : RotSys G) : Prop :=
+  ∃ (d : ℝ) (x : Fin n → E3), IsContactDrawing G d x ∧ IsAngular R x
+
+open scoped Classical in
+/-- D2 (EnumComplete): every rotation system with `12 ≤ n ≤ 15` vertices of a 3-connected graph with
+degrees 3 to 5 in the input class of `plantri -p -f6` read on a drawing (`D2Regions.PlaneClass`)
+is isomorphic, possibly reversing the orientation, to an entry of `L` with the same number of
+vertices. The body of `D2Regions.EnumCompletePlane`. -/
 def EnumComplete (L : Set PlaneGraph) : Prop :=
   ∀ n : ℕ, 12 ≤ n → n ≤ 15 → ∀ (G : SimpleGraph (Fin n)) (R : RotSys G),
-    InClass ⟨n, G, R⟩ → ∃ P ∈ L, P.n = n ∧ R.IsoRefl P.R
+    KConnected G 3 → (∀ a, 3 ≤ G.degree a ∧ G.degree a ≤ 5) → D2Regions.PlaneClass G R →
+      ∃ P ∈ L, P.n = n ∧ R.IsoRefl P.R
 
 /-- D3 (Killed): every case of `L` is refuted on `[dlo, dhi]`: for every entry `P`, with
 `k = 15 - P.n` free points in any `k` distinct hexagons, every assignment satisfying the relation

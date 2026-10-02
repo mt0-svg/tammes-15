@@ -1,0 +1,10 @@
+stream b5f7ba0901a2366b965e3c7649089c92307c03c05d8ad265fb0983d371a10955 (rust-1000.sha256: b5f7ba0901a2366b965e3c7649089c92307c03c05d8ad265fb0983d371a10955)
+distinct lines 411431
+malformed lines (an O line of op 4 to 9 with a second argument) 0
+op cos calls 162912 distinct 152505
+op sin calls 126846 distinct 117639
+op acos calls 78425 distinct 70661
+op asin calls 31810 distinct 30798
+op atan calls 38600 distinct 33565
+op tan calls 6726 distinct 6262
+transcendental calls 445319 distinct 411430; P lines 1

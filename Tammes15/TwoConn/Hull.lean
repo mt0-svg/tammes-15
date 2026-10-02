@@ -5,7 +5,7 @@ import Tammes15.Draw.Angular
 # The hull graph at a vertex: links, exposed pairs and the successor plane
 
 Steps S1 to S3 of the proof of Corollary twoconn by the convex hull (paper, Section 3, Corollary
-twoconn and Remark routeC). For a finite injective family `x` of unit vectors not contained in a
+twoconn and Lemma hull). For a finite injective family `x` of unit vectors not contained in a
 closed hemisphere (`hB`, which the corner hypothesis gives by `no_closed_hemisphere`), the link of
 a vertex `v` is the stereographic image `linkSet x v` of the other points in the plane `(x v)⊥`;
 it has `0` strictly inside, its exposed points are the hull neighbours of `v`

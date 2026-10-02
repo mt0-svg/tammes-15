@@ -1,0 +1,13 @@
+part 0/1: graphs 7, class 7, plantri count 7
+n = 6, 1 parts of modulus 1: graphs 7, class 7
+
+  n   F   E         sum 4E/|Aut|           T(F-1,n-1)  equal       graphs        class
+  6   5   9                    3                    3    yes            1            1
+  6   6  10                   24                   24    yes            2            2
+  6   7  11                   33                   33    yes            2            2
+  6   8  12                   13                   13    yes            2            2
+
+cells equal: 4 of 4; total rooted maps 73, formula 73
+graphs 7, A000944(6) = 7: equal
+CHECK PASS n = 6
+END

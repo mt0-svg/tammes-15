@@ -40,6 +40,12 @@ fn usable(x: Iv) -> bool {
     x.lo <= x.hi
 }
 
+/// The interval lies inside (0, PI_LO) (NaN-free). Guard of `tri_angle_st`.
+#[inline]
+fn in_open(x: Iv) -> bool {
+    0.0 < x.lo && x.hi < PI_LO
+}
+
 // ---------------------------------------------------------------------------------------------
 // Spherical trigonometry on intervals
 
@@ -81,6 +87,11 @@ pub fn tri_angle_c(g: Iv, e: Iv, f: Iv) -> Iv {
 
 /// Err(v): no triangle on the whole box, v = constant value of the clamped formula there.
 fn tri_angle_st(g: Iv, e: Iv, f: Iv) -> Result<Iv, Iv> {
+    // The monotonicity below needs sin > 0 on the three sides: no information unless the three
+    // intervals lie inside (0, PI_LO) (computed enclosures are passed here).
+    if !(in_open(g) && in_open(e) && in_open(f)) {
+        return Ok(Iv::new(0.0, PI_HI));
+    }
     let h = |g: Iv, e: Iv, f: Iv| g.cos().sub(e.cos().mul(f.cos())).div(e.sin().mul(f.sin()));
     let gc = g.cos();
     // numerators of cos F and cos E (denominators are > 0)
@@ -166,7 +177,7 @@ pub fn side(b: Iv, c: Iv, ang: Iv) -> Result<Iv, ()> {
     if !(a.lo <= a.hi) {
         return Err(());
     }
-    let q = |b: Iv, c: Iv, a: Iv| b.cos().mul(c.cos()).add(b.sin().mul(c.sin()).mul(a.cos()));
+    let q = |b: Iv, c: Iv, ca: Iv| b.cos().mul(c.cos()).add(b.sin().mul(c.sin()).mul(ca));
     let ca = a.cos();
     let sb = b.sin().mul(c.cos()).sub(b.cos().mul(c.sin()).mul(ca));
     let sc = c.sin().mul(b.cos()).sub(c.cos().mul(b.sin()).mul(ca));
@@ -185,8 +196,11 @@ pub fn side(b: Iv, c: Iv, ang: Iv) -> Result<Iv, ()> {
     } else {
         (c, c)
     };
-    let qmax = q(b_amin, c_amin, pt(a.lo));
-    let qmin = q(b_amax, c_amax, pt(a.hi));
+    let qmax = q(b_amin, c_amin, pt(a.lo).cos());
+    // cos is decreasing in the angle on [0, pi] only: at an upper end of at least PI_LO (it may be
+    // PI_HI > pi) the cosine is bounded below by -1 instead.
+    let ca_hi = if PI_LO <= a.hi { pt(-1.0) } else { pt(a.hi).cos() };
+    let qmin = q(b_amax, c_amax, ca_hi);
     if !usable(qmax) || !usable(qmin) {
         return Ok(Iv::new(0.0, PI_HI));
     }

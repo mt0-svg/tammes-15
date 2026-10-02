@@ -1,0 +1,7 @@
+reference out/ref_w1_n12.codes: 3342 codes; generator out/gen_sabotage_n12.codes: 1886 codes
+only in reference: 1456; only in generator: 0
+s 3 expected_leaves 0 generator_ok_leaves 0 equal
+s 4 expected_leaves 122 generator_ok_leaves 35 DIFFERENT
+s 5 expected_leaves 52855 generator_ok_leaves 31095 DIFFERENT
+s 6 expected_leaves 14923 generator_ok_leaves 9565 DIFFERENT
+verdict: sets DIFFERENT

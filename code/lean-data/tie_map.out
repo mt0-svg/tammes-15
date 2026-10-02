@@ -1,0 +1,20 @@
+rhoIdx (k -> index of rho(pt k)) = [1, 2, 0, 4, 5, 3, 7, 8, 6, 10, 11, 9, 14, 12, 13, 17, 15, 16]
+tauIdx (k -> index of tau(pt k)) = [15, 16, 17, 12, 13, 14, 9, 11, 10, 6, 8, 7, 3, 4, 5, 0, 1, 2]
+conf 0 (conf P,I,A C3): frame C3, g = 1, sigma = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], frame indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17]; the 30 contacts go onto those of C3
+conf 1 (conf P,I,J C1): frame C1, g = 1, sigma = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], frame indices = [0, 1, 2, 3, 4, 5, 6, 7, 10, 12, 13, 14, 15, 16, 17]; the 30 contacts go onto those of C1
+conf 2 (conf P,A,Q C1): frame C1, g = rr, sigma = [1, 2, 0, 4, 5, 3, 7, 6, 8, 11, 9, 10, 14, 12, 13], frame indices = [0, 1, 2, 3, 4, 5, 6, 8, 9, 12, 13, 14, 15, 16, 17]; the 30 contacts go onto those of C1
+conf 3 (conf P,Q,J C1): frame C1, g = rt, sigma = [14, 12, 13, 11, 9, 10, 8, 7, 6, 4, 5, 3, 1, 2, 0], frame indices = [0, 1, 2, 3, 4, 5, 6, 9, 10, 12, 13, 14, 15, 16, 17]; the 30 contacts go onto those of C1
+conf 4 (conf I,A,B C1): frame C1, g = r, sigma = [2, 0, 1, 5, 3, 4, 6, 7, 8, 10, 11, 9, 13, 14, 12], frame indices = [0, 1, 2, 3, 4, 5, 7, 8, 11, 12, 13, 14, 15, 16, 17]; the 30 contacts go onto those of C1
+conf 5 (conf I,J,B C1): frame C1, g = rrt, sigma = [13, 14, 12, 10, 11, 9, 8, 7, 6, 5, 3, 4, 2, 0, 1], frame indices = [0, 1, 2, 3, 4, 5, 7, 10, 11, 12, 13, 14, 15, 16, 17]; the 30 contacts go onto those of C1
+conf 6 (conf A,Q,B C1): frame C1, g = t, sigma = [12, 13, 14, 9, 10, 11, 8, 6, 7, 3, 4, 5, 0, 1, 2], frame indices = [0, 1, 2, 3, 4, 5, 8, 9, 11, 12, 13, 14, 15, 16, 17]; the 30 contacts go onto those of C1
+conf 7 (conf Q,J,B C3): frame C3, g = t, sigma = [12, 13, 14, 9, 10, 11, 6, 8, 7, 3, 4, 5, 0, 1, 2], frame indices = [0, 1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14, 15, 16, 17]; the 30 contacts go onto those of C3
+symbol 1 (aN): value 0.895023968738567581775205302730006936398205373; midpoints standing for it: ["-(-0.8950239687385675817752053027300069363982)", "0.8950239687385675817752053027300069363982"]; largest distance 5.373 e-42
+symbol 2 (bN): value 0.171490309809374975541122055625428625236151974; midpoints standing for it: ["-(-0.1714903098093749755411220556254286252362)", "0.1714903098093749755411220556254286252362"]; largest distance 4.803 e-41
+symbol 3 (cN): value 0.411731914022884785585093080162974505289734023; midpoints standing for it: ["-(-0.4117319140228847855850930801629745052897)", "0.4117319140228847855850930801629745052897"]; largest distance 3.402 e-41
+symbol 4 (dN): value 0.800992899482025696698989309445039552756987846; midpoints standing for it: ["-(-0.8009928994820256966989893094450395527570)", "0.8009928994820256966989893094450395527570"]; largest distance 1.215 e-41
+symbol 5 (eN): value 0.381964324149505653815941410076123244954236171; midpoints standing for it: ["-(-0.3819643241495056538159414100761232449542)", "0.3819643241495056538159414100761232449542"]; largest distance 3.617 e-41
+symbol 6 (fN): value -0.460992006499449890813339371479272677316196067; midpoints standing for it: ["-(0.4609920064994498908133393714792726773162)", "-0.4609920064994498908133393714792726773162"]; largest distance 3.933 e-42
+symbol 7 (rN): value 0.778839962032255311222004861699505084013113823; midpoints standing for it: ["-(-0.7788399620322553112220048616995050840131)", "0.7788399620322553112220048616995050840131"]; largest distance 1.382 e-41
+symbol 8 (sN): value -0.627178075625406450219574610018797948879141661; midpoints standing for it: ["-(0.6271780756254064502195746100187979488791)", "-0.6271780756254064502195746100187979488791"]; largest distance 4.166 e-41
+symbol 9 (tN): value 0.007481643964200167173391057544491047266499331; midpoints standing for it: ["-(-0.007481643964200167173391057544491047266499)", "0.007481643964200167173391057544491047266499"]; largest distance 3.312 e-43
+wrote TieMap.lean

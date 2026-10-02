@@ -1,0 +1,10 @@
+n=4: plantri_ms and plantri_ms_chk (faces walked on every graph: count = Euler, degrees >= 3, faces >= 3) give identical cells
+n=5: plantri_ms and plantri_ms_chk (faces walked on every graph: count = Euler, degrees >= 3, faces >= 3) give identical cells
+n=6: plantri_ms and plantri_ms_chk (faces walked on every graph: count = Euler, degrees >= 3, faces >= 3) give identical cells
+n=7: plantri_ms and plantri_ms_chk (faces walked on every graph: count = Euler, degrees >= 3, faces >= 3) give identical cells
+n=8: plantri_ms and plantri_ms_chk (faces walked on every graph: count = Euler, degrees >= 3, faces >= 3) give identical cells
+n=9: plantri_ms and plantri_ms_chk (faces walked on every graph: count = Euler, degrees >= 3, faces >= 3) give identical cells
+n=10: plantri_ms and plantri_ms_chk (faces walked on every graph: count = Euler, degrees >= 3, faces >= 3) give identical cells
+n=11: plantri_ms and plantri_ms_chk (faces walked on every graph: count = Euler, degrees >= 3, faces >= 3) give identical cells
+n=12: plantri_ms and plantri_ms_chk (faces walked on every graph: count = Euler, degrees >= 3, faces >= 3) give identical cells
+n=13: plantri_ms and plantri_ms_chk (faces walked on every graph: count = Euler, degrees >= 3, faces >= 3) give identical cells

@@ -1,0 +1,21 @@
+part 0/1: graphs 440564, class 68728, plantri count 440564
+n = 11, 1 parts of modulus 1: graphs 440564, class 68728
+
+  n   F   E         sum 4E/|Aut|           T(F-1,n-1)  equal       graphs        class
+ 11   8  17                 1938                 1938    yes           38           31
+ 11   9  18                51300                51300    yes          768          639
+ 11  10  19               452865               452865    yes         6134         4888
+ 11  11  20              2020120              2020120    yes        25626        15847
+ 11  12  21              5354832              5354832    yes        64439        23855
+ 11  13  22              9095856              9095856    yes       104213        16956
+ 11  14  23             10215450             10215450    yes       112082         5627
+ 11  15  24              7580040              7580040    yes        79773          826
+ 11  16  25              3585270              3585270    yes        36528           57
+ 11  17  26               981708               981708    yes         9714            2
+ 11  18  27               118668               118668    yes         1249            0
+
+cells equal: 11 of 11; total rooted maps 39458047, formula 39458047
+graphs 440564, A000944(11) = 440564: equal
+class 68728, recorded 68728: equal
+CHECK PASS n = 11
+END

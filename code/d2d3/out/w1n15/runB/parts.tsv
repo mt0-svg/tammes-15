@@ -1,0 +1,1701 @@
+part 0/243 plantri: 1773699 polytopes written to stdout; cpu=36.63 sec wall_s 38.94
+part 0/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 0/243 fg ref n 15 s 4 classes 6 expected_leaves 480 expected_ring 12
+part 0/243 fg ref n 15 s 5 classes 4872 expected_leaves 156445 expected_ring 5194
+part 0/243 fg ref n 15 s 6 classes 4464 expected_leaves 65106 expected_ring 4804
+part 0/243 fg ref n 15 all 0 sabotage 0 read 1773699 class 1773699 kept 9342 expected_leaves 222031 expected_ring 10010 secs 38.93
+part 0/243 codes 9342 sha256 d5524f33a162df960e0c3d64dcb7164f634f7f798ed235432dad912bf4007a88
+part 1/243 plantri: 1733863 polytopes written to stdout; cpu=36.36 sec wall_s 38.69
+part 1/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 1/243 fg ref n 15 s 4 classes 2 expected_leaves 168 expected_ring 2
+part 1/243 fg ref n 15 s 5 classes 4794 expected_leaves 161715 expected_ring 5001
+part 1/243 fg ref n 15 s 6 classes 4485 expected_leaves 66264 expected_ring 4756
+part 1/243 fg ref n 15 all 0 sabotage 0 read 1733863 class 1733863 kept 9281 expected_leaves 228147 expected_ring 9759 secs 38.69
+part 1/243 codes 9281 sha256 07dcd49bc5a715dedbe708cdc7375f9ed5dde46460298445331d5ba466c7018a
+part 2/243 plantri: 1733701 polytopes written to stdout; cpu=36.89 sec wall_s 39.23
+part 2/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 2/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 2/243 fg ref n 15 s 5 classes 4045 expected_leaves 137090 expected_ring 4234
+part 2/243 fg ref n 15 s 6 classes 4246 expected_leaves 63738 expected_ring 4449
+part 2/243 fg ref n 15 all 0 sabotage 0 read 1733701 class 1733701 kept 8291 expected_leaves 200828 expected_ring 8683 secs 39.22
+part 2/243 codes 8291 sha256 8d43235c37e9db043186b6c5138cb266965b76e117ad928ffccdfb68b13c6cf0
+part 3/243 plantri: 1755751 polytopes written to stdout; cpu=36.73 sec wall_s 39.00
+part 3/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 3/243 fg ref n 15 s 4 classes 6 expected_leaves 272 expected_ring 8
+part 3/243 fg ref n 15 s 5 classes 3701 expected_leaves 123155 expected_ring 3923
+part 3/243 fg ref n 15 s 6 classes 3936 expected_leaves 57348 expected_ring 4221
+part 3/243 fg ref n 15 all 0 sabotage 0 read 1755751 class 1755751 kept 7643 expected_leaves 180775 expected_ring 8152 secs 39.00
+part 3/243 codes 7643 sha256 1bcce1d90b0878dcc5a59174a5c93ad720fd10f2e67d27ecfac97f9dcc6af9ad
+part 4/243 plantri: 1985692 polytopes written to stdout; cpu=40.99 sec wall_s 43.85
+part 4/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 4/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 4/243 fg ref n 15 s 5 classes 6649 expected_leaves 216540 expected_ring 7022
+part 4/243 fg ref n 15 s 6 classes 6067 expected_leaves 89067 expected_ring 6471
+part 4/243 fg ref n 15 all 0 sabotage 0 read 1985692 class 1985692 kept 12716 expected_leaves 305607 expected_ring 13493 secs 43.85
+part 4/243 codes 12716 sha256 982c2a8c31d663015bfdae1a9f890cec9af200cf5fd9d9dcab08bf0a54b8ad15
+part 5/243 plantri: 1815364 polytopes written to stdout; cpu=36.92 sec wall_s 39.19
+part 5/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 5/243 fg ref n 15 s 4 classes 1 expected_leaves 24 expected_ring 1
+part 5/243 fg ref n 15 s 5 classes 4999 expected_leaves 165232 expected_ring 5300
+part 5/243 fg ref n 15 s 6 classes 4863 expected_leaves 72879 expected_ring 5103
+part 5/243 fg ref n 15 all 0 sabotage 0 read 1815364 class 1815364 kept 9863 expected_leaves 238135 expected_ring 10404 secs 39.19
+part 5/243 codes 9863 sha256 aebe54a1ba4b3d0ef8a62d4961c10da802faa2d2201d95e57671827022abff9e
+part 6/243 plantri: 1892312 polytopes written to stdout; cpu=39.07 sec wall_s 41.45
+part 6/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 6/243 fg ref n 15 s 4 classes 2 expected_leaves 108 expected_ring 2
+part 6/243 fg ref n 15 s 5 classes 4162 expected_leaves 137765 expected_ring 4386
+part 6/243 fg ref n 15 s 6 classes 4186 expected_leaves 63558 expected_ring 4423
+part 6/243 fg ref n 15 all 0 sabotage 0 read 1892312 class 1892312 kept 8350 expected_leaves 201431 expected_ring 8811 secs 41.44
+part 6/243 codes 8350 sha256 a3c3b15b2abc33c96cfc109e08a13e15c77bc07d4b7cf7a988f1845e1c224412
+part 7/243 plantri: 1802434 polytopes written to stdout; cpu=38.42 sec wall_s 40.78
+part 7/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 7/243 fg ref n 15 s 4 classes 7 expected_leaves 428 expected_ring 9
+part 7/243 fg ref n 15 s 5 classes 4773 expected_leaves 156810 expected_ring 5042
+part 7/243 fg ref n 15 s 6 classes 4856 expected_leaves 71482 expected_ring 5188
+part 7/243 fg ref n 15 all 0 sabotage 0 read 1802434 class 1802434 kept 9636 expected_leaves 228720 expected_ring 10239 secs 40.78
+part 7/243 codes 9636 sha256 d9b81089f1d43682d103a592074c5c1d826ac90757ce2dc0a4434b041e7de536
+part 8/243 plantri: 1706746 polytopes written to stdout; cpu=36.66 sec wall_s 39.01
+part 8/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 8/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 8/243 fg ref n 15 s 5 classes 4368 expected_leaves 149120 expected_ring 4646
+part 8/243 fg ref n 15 s 6 classes 4581 expected_leaves 68826 expected_ring 4816
+part 8/243 fg ref n 15 all 0 sabotage 0 read 1706746 class 1706746 kept 8949 expected_leaves 217946 expected_ring 9462 secs 39.00
+part 8/243 codes 8949 sha256 e3be70e4703311031d574983ee873d6605d93d6a7df156acf68b3935b47cdbcd
+part 9/243 plantri: 1757703 polytopes written to stdout; cpu=34.40 sec wall_s 36.56
+part 9/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 9/243 fg ref n 15 s 4 classes 10 expected_leaves 550 expected_ring 15
+part 9/243 fg ref n 15 s 5 classes 3894 expected_leaves 129415 expected_ring 4123
+part 9/243 fg ref n 15 s 6 classes 3543 expected_leaves 51354 expected_ring 3779
+part 9/243 fg ref n 15 all 0 sabotage 0 read 1757703 class 1757703 kept 7447 expected_leaves 181319 expected_ring 7917 secs 36.56
+part 9/243 codes 7447 sha256 dd527d946c3a026bf003ed89c821064ab059292e65666d2114e69346d9477999
+part 10/243 plantri: 1625648 polytopes written to stdout; cpu=32.56 sec wall_s 34.63
+part 10/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 10/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 10/243 fg ref n 15 s 5 classes 3382 expected_leaves 112395 expected_ring 3570
+part 10/243 fg ref n 15 s 6 classes 3471 expected_leaves 52134 expected_ring 3660
+part 10/243 fg ref n 15 all 0 sabotage 0 read 1625648 class 1625648 kept 6853 expected_leaves 164529 expected_ring 7230 secs 34.63
+part 10/243 codes 6853 sha256 2de1886664243e9c2a09142c754789ff670310d1757ad62cd2807e0d878ce00b
+part 11/243 plantri: 1694568 polytopes written to stdout; cpu=32.73 sec wall_s 34.84
+part 11/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 11/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 11/243 fg ref n 15 s 5 classes 3036 expected_leaves 102755 expected_ring 3233
+part 11/243 fg ref n 15 s 6 classes 3991 expected_leaves 60794 expected_ring 4250
+part 11/243 fg ref n 15 all 0 sabotage 0 read 1694568 class 1694568 kept 7027 expected_leaves 163549 expected_ring 7483 secs 34.84
+part 11/243 codes 7027 sha256 02ebee13b498a454663d264211dc5befe633d1cdeecab31aafff2f6a68d7525f
+part 12/243 plantri: 1750895 polytopes written to stdout; cpu=34.06 sec wall_s 36.30
+part 12/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 12/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 12/243 fg ref n 15 s 5 classes 4934 expected_leaves 167470 expected_ring 5237
+part 12/243 fg ref n 15 s 6 classes 4802 expected_leaves 70158 expected_ring 5097
+part 12/243 fg ref n 15 all 0 sabotage 0 read 1750895 class 1750895 kept 9736 expected_leaves 237628 expected_ring 10334 secs 36.29
+part 12/243 codes 9736 sha256 70d7de20d0f25ba6f7c5e025b2333fd94e15d2e8b2007741dc92aec02fad3989
+part 13/243 plantri: 1644826 polytopes written to stdout; cpu=33.20 sec wall_s 35.33
+part 13/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 13/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 13/243 fg ref n 15 s 5 classes 4144 expected_leaves 141830 expected_ring 4377
+part 13/243 fg ref n 15 s 6 classes 4176 expected_leaves 61458 expected_ring 4412
+part 13/243 fg ref n 15 all 0 sabotage 0 read 1644826 class 1644826 kept 8320 expected_leaves 203288 expected_ring 8789 secs 35.33
+part 13/243 codes 8320 sha256 9aa2c9f062d76768d471ad69b757d56c860fb0b573fd2a1c4089523c587ed7bd
+part 14/243 plantri: 1801900 polytopes written to stdout; cpu=35.49 sec wall_s 37.81
+part 14/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 14/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 14/243 fg ref n 15 s 5 classes 4934 expected_leaves 172250 expected_ring 5173
+part 14/243 fg ref n 15 s 6 classes 6173 expected_leaves 94662 expected_ring 6510
+part 14/243 fg ref n 15 all 0 sabotage 0 read 1801900 class 1801900 kept 11107 expected_leaves 266912 expected_ring 11683 secs 37.80
+part 14/243 codes 11107 sha256 5f6f901d9c7c62cbb418768540088d96a67e1900deab79c3ba040692bca4efc0
+part 15/243 plantri: 1866851 polytopes written to stdout; cpu=34.93 sec wall_s 37.31
+part 15/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 15/243 fg ref n 15 s 4 classes 1 expected_leaves 80 expected_ring 2
+part 15/243 fg ref n 15 s 5 classes 4739 expected_leaves 161015 expected_ring 4995
+part 15/243 fg ref n 15 s 6 classes 4974 expected_leaves 74190 expected_ring 5213
+part 15/243 fg ref n 15 all 0 sabotage 0 read 1866851 class 1866851 kept 9714 expected_leaves 235285 expected_ring 10210 secs 37.30
+part 15/243 codes 9714 sha256 c55c0e518953ddcce5b6aa6bcb69d6872df2d2bc1b1f5eb6057b54ef31bbc9b0
+part 16/243 plantri: 1774068 polytopes written to stdout; cpu=32.95 sec wall_s 35.18
+part 16/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 16/243 fg ref n 15 s 4 classes 2 expected_leaves 144 expected_ring 3
+part 16/243 fg ref n 15 s 5 classes 4476 expected_leaves 145315 expected_ring 4747
+part 16/243 fg ref n 15 s 6 classes 3760 expected_leaves 54198 expected_ring 3992
+part 16/243 fg ref n 15 all 0 sabotage 0 read 1774068 class 1774068 kept 8238 expected_leaves 199657 expected_ring 8742 secs 35.17
+part 16/243 codes 8238 sha256 9063a49f0a1acc2a2f68b5579fc265b1dde986697e965686e784d3a4a5a9fd7f
+part 17/243 plantri: 1792980 polytopes written to stdout; cpu=32.98 sec wall_s 35.27
+part 17/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 17/243 fg ref n 15 s 4 classes 5 expected_leaves 384 expected_ring 7
+part 17/243 fg ref n 15 s 5 classes 4042 expected_leaves 131615 expected_ring 4291
+part 17/243 fg ref n 15 s 6 classes 4502 expected_leaves 68880 expected_ring 4779
+part 17/243 fg ref n 15 all 0 sabotage 0 read 1792980 class 1792980 kept 8549 expected_leaves 200879 expected_ring 9077 secs 35.27
+part 17/243 codes 8549 sha256 7d6e75c6709fc512b269c5b7b39447a243c0b6208fe6cc47fd2d564dd400d8a4
+part 18/243 plantri: 1848843 polytopes written to stdout; cpu=34.47 sec wall_s 36.83
+part 18/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 18/243 fg ref n 15 s 4 classes 1 expected_leaves 88 expected_ring 2
+part 18/243 fg ref n 15 s 5 classes 4522 expected_leaves 153495 expected_ring 4753
+part 18/243 fg ref n 15 s 6 classes 4790 expected_leaves 71280 expected_ring 5129
+part 18/243 fg ref n 15 all 0 sabotage 0 read 1848843 class 1848843 kept 9313 expected_leaves 224863 expected_ring 9884 secs 36.83
+part 18/243 codes 9313 sha256 d99fd928d05fbb34359c2de98111fa0f400743fae6b836981694f343551ec7d9
+part 19/243 plantri: 1779520 polytopes written to stdout; cpu=34.01 sec wall_s 36.40
+part 19/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 19/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 19/243 fg ref n 15 s 5 classes 3777 expected_leaves 129635 expected_ring 3947
+part 19/243 fg ref n 15 s 6 classes 3968 expected_leaves 58458 expected_ring 4155
+part 19/243 fg ref n 15 all 0 sabotage 0 read 1779520 class 1779520 kept 7745 expected_leaves 188093 expected_ring 8102 secs 36.39
+part 19/243 codes 7745 sha256 468f80c16bb951732e3fe929b84e68b72e13f30f5f66f32e1462d7be89132a60
+part 20/243 plantri: 1841684 polytopes written to stdout; cpu=33.33 sec wall_s 35.74
+part 20/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 20/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 20/243 fg ref n 15 s 5 classes 5289 expected_leaves 181690 expected_ring 5557
+part 20/243 fg ref n 15 s 6 classes 4848 expected_leaves 70020 expected_ring 5125
+part 20/243 fg ref n 15 all 0 sabotage 0 read 1841684 class 1841684 kept 10137 expected_leaves 251710 expected_ring 10682 secs 35.73
+part 20/243 codes 10137 sha256 56b23a5926701ea959622deb935def7d90dbf9784fb9e50d77e1edeb9f70ad84
+part 21/243 plantri: 1988259 polytopes written to stdout; cpu=34.15 sec wall_s 36.56
+part 21/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 21/243 fg ref n 15 s 4 classes 1 expected_leaves 88 expected_ring 2
+part 21/243 fg ref n 15 s 5 classes 4838 expected_leaves 165355 expected_ring 5090
+part 21/243 fg ref n 15 s 6 classes 5516 expected_leaves 79650 expected_ring 5910
+part 21/243 fg ref n 15 all 0 sabotage 0 read 1988259 class 1988259 kept 10355 expected_leaves 245093 expected_ring 11002 secs 36.55
+part 21/243 codes 10355 sha256 52e597e118aad0a032543c563bef7521777fa2736f5a672aee1654a1fe484cfe
+part 22/243 plantri: 1812636 polytopes written to stdout; cpu=33.78 sec wall_s 36.08
+part 22/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 22/243 fg ref n 15 s 4 classes 1 expected_leaves 96 expected_ring 2
+part 22/243 fg ref n 15 s 5 classes 3048 expected_leaves 100895 expected_ring 3202
+part 22/243 fg ref n 15 s 6 classes 3231 expected_leaves 47532 expected_ring 3407
+part 22/243 fg ref n 15 all 0 sabotage 0 read 1812636 class 1812636 kept 6280 expected_leaves 148523 expected_ring 6611 secs 36.07
+part 22/243 codes 6280 sha256 c1265d68af73cb6ad9c8890cda56c3aa39d2b5a37e5d644115bf70eeaad9cd04
+part 23/243 plantri: 1769025 polytopes written to stdout; cpu=32.79 sec wall_s 35.15
+part 23/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 23/243 fg ref n 15 s 4 classes 2 expected_leaves 120 expected_ring 2
+part 23/243 fg ref n 15 s 5 classes 4725 expected_leaves 154470 expected_ring 4992
+part 23/243 fg ref n 15 s 6 classes 4693 expected_leaves 68100 expected_ring 5011
+part 23/243 fg ref n 15 all 0 sabotage 0 read 1769025 class 1769025 kept 9420 expected_leaves 222690 expected_ring 10005 secs 35.14
+part 23/243 codes 9420 sha256 fe157f2adc0bdb6f18a697a35307189d96b31691d35b3dfb96f7b38b4c1913fb
+part 24/243 plantri: 1866528 polytopes written to stdout; cpu=33.39 sec wall_s 35.66
+part 24/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 24/243 fg ref n 15 s 4 classes 2 expected_leaves 184 expected_ring 2
+part 24/243 fg ref n 15 s 5 classes 4444 expected_leaves 151030 expected_ring 4698
+part 24/243 fg ref n 15 s 6 classes 4566 expected_leaves 67674 expected_ring 4895
+part 24/243 fg ref n 15 all 0 sabotage 0 read 1866528 class 1866528 kept 9012 expected_leaves 218888 expected_ring 9595 secs 35.66
+part 24/243 codes 9012 sha256 2f0ce2ebb4879062770ef00bf3a6fa498ad1bc1c0fbe5555af68ab8a0b06f2f6
+part 25/243 plantri: 1594714 polytopes written to stdout; cpu=31.81 sec wall_s 34.00
+part 25/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 25/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 25/243 fg ref n 15 s 5 classes 3004 expected_leaves 104645 expected_ring 3150
+part 25/243 fg ref n 15 s 6 classes 3060 expected_leaves 45948 expected_ring 3279
+part 25/243 fg ref n 15 all 0 sabotage 0 read 1594714 class 1594714 kept 6064 expected_leaves 150593 expected_ring 6429 secs 33.99
+part 25/243 codes 6064 sha256 78f0961a407daecc8afd8dbbd416bd3417d8638d1196fed67992f45d020f0d0b
+part 26/243 plantri: 1899024 polytopes written to stdout; cpu=33.27 sec wall_s 35.51
+part 26/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 26/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 26/243 fg ref n 15 s 5 classes 4796 expected_leaves 159695 expected_ring 5082
+part 26/243 fg ref n 15 s 6 classes 4717 expected_leaves 68400 expected_ring 5053
+part 26/243 fg ref n 15 all 0 sabotage 0 read 1899024 class 1899024 kept 9513 expected_leaves 228095 expected_ring 10135 secs 35.51
+part 26/243 codes 9513 sha256 b09447c8720b11e0f61e29bd5fd0e67d963c13eb6a9462c2796972f130ba9b6b
+part 27/243 plantri: 1858439 polytopes written to stdout; cpu=35.34 sec wall_s 37.74
+part 27/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 27/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 27/243 fg ref n 15 s 5 classes 5379 expected_leaves 179855 expected_ring 5657
+part 27/243 fg ref n 15 s 6 classes 5659 expected_leaves 82848 expected_ring 6047
+part 27/243 fg ref n 15 all 0 sabotage 0 read 1858439 class 1858439 kept 11038 expected_leaves 262703 expected_ring 11704 secs 37.74
+part 27/243 codes 11038 sha256 b814ce0165d46bd2a2844918dd33998c76ad742d7b973d7b4b816e859f965ba8
+part 28/243 plantri: 1820174 polytopes written to stdout; cpu=34.34 sec wall_s 36.68
+part 28/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 28/243 fg ref n 15 s 4 classes 2 expected_leaves 184 expected_ring 3
+part 28/243 fg ref n 15 s 5 classes 4401 expected_leaves 148025 expected_ring 4656
+part 28/243 fg ref n 15 s 6 classes 4799 expected_leaves 70152 expected_ring 5127
+part 28/243 fg ref n 15 all 0 sabotage 0 read 1820174 class 1820174 kept 9202 expected_leaves 218361 expected_ring 9786 secs 36.67
+part 28/243 codes 9202 sha256 68872531d7d41f958d791a4450e95e32d17e7be488315d893cd6c28f004b065c
+part 29/243 plantri: 1635002 polytopes written to stdout; cpu=31.70 sec wall_s 33.74
+part 29/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 29/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 29/243 fg ref n 15 s 5 classes 3354 expected_leaves 112960 expected_ring 3568
+part 29/243 fg ref n 15 s 6 classes 3065 expected_leaves 45372 expected_ring 3278
+part 29/243 fg ref n 15 all 0 sabotage 0 read 1635002 class 1635002 kept 6419 expected_leaves 158332 expected_ring 6846 secs 33.74
+part 29/243 codes 6419 sha256 0ea0e1ebde322c683e2753139a66be5e559fdbc724fc200e8bb45623d128227c
+part 30/243 plantri: 1755416 polytopes written to stdout; cpu=34.53 sec wall_s 36.93
+part 30/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 30/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 30/243 fg ref n 15 s 5 classes 4555 expected_leaves 152780 expected_ring 4853
+part 30/243 fg ref n 15 s 6 classes 5128 expected_leaves 75186 expected_ring 5403
+part 30/243 fg ref n 15 all 0 sabotage 0 read 1755416 class 1755416 kept 9683 expected_leaves 227966 expected_ring 10256 secs 36.92
+part 30/243 codes 9683 sha256 6c87910481ee17577e9e6cda1503bbbf414128fc8d307dbbf041d9ebbd8d14c2
+part 31/243 plantri: 1890278 polytopes written to stdout; cpu=35.33 sec wall_s 37.72
+part 31/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 31/243 fg ref n 15 s 4 classes 1 expected_leaves 88 expected_ring 1
+part 31/243 fg ref n 15 s 5 classes 5064 expected_leaves 169000 expected_ring 5307
+part 31/243 fg ref n 15 s 6 classes 4328 expected_leaves 63738 expected_ring 4623
+part 31/243 fg ref n 15 all 0 sabotage 0 read 1890278 class 1890278 kept 9393 expected_leaves 232826 expected_ring 9931 secs 37.71
+part 31/243 codes 9393 sha256 80f2fae49a3b8853b48b69e4143a35340d03ec8839034d7eee5f712a914cf7da
+part 32/243 plantri: 1726483 polytopes written to stdout; cpu=33.01 sec wall_s 35.23
+part 32/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 32/243 fg ref n 15 s 4 classes 22 expected_leaves 1480 expected_ring 29
+part 32/243 fg ref n 15 s 5 classes 4546 expected_leaves 147295 expected_ring 4839
+part 32/243 fg ref n 15 s 6 classes 4580 expected_leaves 67032 expected_ring 4945
+part 32/243 fg ref n 15 all 0 sabotage 0 read 1726483 class 1726483 kept 9148 expected_leaves 215807 expected_ring 9813 secs 35.23
+part 32/243 codes 9148 sha256 8be49ad13567a7de2e4b2afe68a1f4250bd42ae05072574d10544bc1f172e2ec
+part 33/243 plantri: 1975239 polytopes written to stdout; cpu=37.87 sec wall_s 40.45
+part 33/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 33/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 33/243 fg ref n 15 s 5 classes 5072 expected_leaves 170550 expected_ring 5384
+part 33/243 fg ref n 15 s 6 classes 5143 expected_leaves 76437 expected_ring 5507
+part 33/243 fg ref n 15 all 0 sabotage 0 read 1975239 class 1975239 kept 10215 expected_leaves 246987 expected_ring 10891 secs 40.44
+part 33/243 codes 10215 sha256 19e926b46aa13d46696bd6a4ab96d2d27fa9d9f4d435412435e7c39caa5846a9
+part 34/243 plantri: 1951315 polytopes written to stdout; cpu=37.72 sec wall_s 40.31
+part 34/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 34/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 34/243 fg ref n 15 s 5 classes 4771 expected_leaves 156565 expected_ring 5011
+part 34/243 fg ref n 15 s 6 classes 5409 expected_leaves 78360 expected_ring 5816
+part 34/243 fg ref n 15 all 0 sabotage 0 read 1951315 class 1951315 kept 10180 expected_leaves 234925 expected_ring 10827 secs 40.30
+part 34/243 codes 10180 sha256 1243e13aef5b66345c8698ead45ce4532f4930c0367881dce4bc76fd32ffc426
+part 35/243 plantri: 1873503 polytopes written to stdout; cpu=37.13 sec wall_s 39.64
+part 35/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 35/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 35/243 fg ref n 15 s 5 classes 5887 expected_leaves 193685 expected_ring 6232
+part 35/243 fg ref n 15 s 6 classes 7175 expected_leaves 106104 expected_ring 7615
+part 35/243 fg ref n 15 all 0 sabotage 0 read 1873503 class 1873503 kept 13062 expected_leaves 299789 expected_ring 13847 secs 39.64
+part 35/243 codes 13062 sha256 39ffaeac0bbbeb2b68a163129588e0e1256d890d8cf80f981b89cbbe71760f39
+part 36/243 plantri: 1881901 polytopes written to stdout; cpu=34.93 sec wall_s 37.46
+part 36/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 36/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 36/243 fg ref n 15 s 5 classes 5807 expected_leaves 202225 expected_ring 6049
+part 36/243 fg ref n 15 s 6 classes 5990 expected_leaves 88680 expected_ring 6318
+part 36/243 fg ref n 15 all 0 sabotage 0 read 1881901 class 1881901 kept 11797 expected_leaves 290905 expected_ring 12367 secs 37.46
+part 36/243 codes 11797 sha256 0b0fe74778b835cc59a6181b5263b77aa50238b16936c50d0921371f7267db66
+part 37/243 plantri: 1837720 polytopes written to stdout; cpu=35.01 sec wall_s 37.49
+part 37/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 37/243 fg ref n 15 s 4 classes 5 expected_leaves 356 expected_ring 8
+part 37/243 fg ref n 15 s 5 classes 4478 expected_leaves 154815 expected_ring 4729
+part 37/243 fg ref n 15 s 6 classes 6021 expected_leaves 90282 expected_ring 6452
+part 37/243 fg ref n 15 all 0 sabotage 0 read 1837720 class 1837720 kept 10504 expected_leaves 245453 expected_ring 11189 secs 37.48
+part 37/243 codes 10504 sha256 87a1f8b4cb0424e8407e736b62f1aeabe5b88323d20f48c75ae59c03eddf2d41
+part 38/243 plantri: 1773963 polytopes written to stdout; cpu=33.42 sec wall_s 35.84
+part 38/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 38/243 fg ref n 15 s 4 classes 4 expected_leaves 160 expected_ring 5
+part 38/243 fg ref n 15 s 5 classes 4081 expected_leaves 134795 expected_ring 4323
+part 38/243 fg ref n 15 s 6 classes 3983 expected_leaves 59784 expected_ring 4238
+part 38/243 fg ref n 15 all 0 sabotage 0 read 1773963 class 1773963 kept 8068 expected_leaves 194739 expected_ring 8566 secs 35.83
+part 38/243 codes 8068 sha256 23a5ec15b36f9bc660a5787db276ed4ab744cb8fbdea114779d054042e795e55
+part 39/243 plantri: 1748287 polytopes written to stdout; cpu=33.43 sec wall_s 35.71
+part 39/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 39/243 fg ref n 15 s 4 classes 1 expected_leaves 40 expected_ring 1
+part 39/243 fg ref n 15 s 5 classes 7078 expected_leaves 229830 expected_ring 7447
+part 39/243 fg ref n 15 s 6 classes 7738 expected_leaves 113994 expected_ring 8267
+part 39/243 fg ref n 15 all 0 sabotage 0 read 1748287 class 1748287 kept 14817 expected_leaves 343864 expected_ring 15715 secs 35.70
+part 39/243 codes 14817 sha256 d557dff2dd9b8c7f2dbcc196f4dec626ae7d60eb2be45fcb10d16132f1b1262b
+part 40/243 plantri: 1873985 polytopes written to stdout; cpu=36.37 sec wall_s 38.76
+part 40/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 40/243 fg ref n 15 s 4 classes 3 expected_leaves 184 expected_ring 3
+part 40/243 fg ref n 15 s 5 classes 6245 expected_leaves 209030 expected_ring 6530
+part 40/243 fg ref n 15 s 6 classes 6269 expected_leaves 91474 expected_ring 6628
+part 40/243 fg ref n 15 all 0 sabotage 0 read 1873985 class 1873985 kept 12517 expected_leaves 300688 expected_ring 13161 secs 38.76
+part 40/243 codes 12517 sha256 db650dc0b0441df9aa128b14cd59f6a7ed032aae85df6e517fa641d55b4ad351
+part 41/243 plantri: 1708021 polytopes written to stdout; cpu=35.49 sec wall_s 37.87
+part 41/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 41/243 fg ref n 15 s 4 classes 3 expected_leaves 240 expected_ring 3
+part 41/243 fg ref n 15 s 5 classes 3552 expected_leaves 118330 expected_ring 3739
+part 41/243 fg ref n 15 s 6 classes 3936 expected_leaves 58680 expected_ring 4166
+part 41/243 fg ref n 15 all 0 sabotage 0 read 1708021 class 1708021 kept 7491 expected_leaves 177250 expected_ring 7908 secs 37.87
+part 41/243 codes 7491 sha256 3206d5e469ccaa60f029d304f5539b6ab29953045a6e883f20a75829c11e13ce
+part 42/243 plantri: 2004133 polytopes written to stdout; cpu=36.39 sec wall_s 39.01
+part 42/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 42/243 fg ref n 15 s 4 classes 4 expected_leaves 376 expected_ring 5
+part 42/243 fg ref n 15 s 5 classes 5079 expected_leaves 161665 expected_ring 5392
+part 42/243 fg ref n 15 s 6 classes 5631 expected_leaves 83022 expected_ring 6068
+part 42/243 fg ref n 15 all 0 sabotage 0 read 2004133 class 2004133 kept 10714 expected_leaves 245063 expected_ring 11465 secs 39.00
+part 42/243 codes 10714 sha256 355261e941b706f09201c9f1f6ee8b1966c9cd6f866b6acb3d5a6a894bbfaf52
+part 43/243 plantri: 1811200 polytopes written to stdout; cpu=35.15 sec wall_s 37.62
+part 43/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 43/243 fg ref n 15 s 4 classes 11 expected_leaves 904 expected_ring 15
+part 43/243 fg ref n 15 s 5 classes 6189 expected_leaves 203945 expected_ring 6540
+part 43/243 fg ref n 15 s 6 classes 5934 expected_leaves 86066 expected_ring 6391
+part 43/243 fg ref n 15 all 0 sabotage 0 read 1811200 class 1811200 kept 12134 expected_leaves 290915 expected_ring 12946 secs 37.62
+part 43/243 codes 12134 sha256 7a892df105b3753d4d127ac4cb00af98ab20181ad2a8574ae28f7c508dd60e38
+part 44/243 plantri: 1886195 polytopes written to stdout; cpu=35.28 sec wall_s 37.75
+part 44/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 44/243 fg ref n 15 s 4 classes 17 expected_leaves 1408 expected_ring 43
+part 44/243 fg ref n 15 s 5 classes 4874 expected_leaves 154265 expected_ring 5177
+part 44/243 fg ref n 15 s 6 classes 4549 expected_leaves 64818 expected_ring 4905
+part 44/243 fg ref n 15 all 0 sabotage 0 read 1886195 class 1886195 kept 9440 expected_leaves 220491 expected_ring 10125 secs 37.75
+part 44/243 codes 9440 sha256 afc5864bee5be561f338c0d597a294b2dfcd432a814c0e268369c5b61c9dbe9c
+part 45/243 plantri: 1819383 polytopes written to stdout; cpu=36.02 sec wall_s 38.36
+part 45/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 45/243 fg ref n 15 s 4 classes 4 expected_leaves 244 expected_ring 6
+part 45/243 fg ref n 15 s 5 classes 3880 expected_leaves 131040 expected_ring 4103
+part 45/243 fg ref n 15 s 6 classes 4737 expected_leaves 72753 expected_ring 5007
+part 45/243 fg ref n 15 all 0 sabotage 0 read 1819383 class 1819383 kept 8621 expected_leaves 204037 expected_ring 9116 secs 38.35
+part 45/243 codes 8621 sha256 bfa7dc24d0846758903e832d40ceaf96b8d2cd3c0dddc0316f741a4a0b28bd96
+part 46/243 plantri: 1769586 polytopes written to stdout; cpu=35.73 sec wall_s 38.01
+part 46/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 46/243 fg ref n 15 s 4 classes 7 expected_leaves 540 expected_ring 7
+part 46/243 fg ref n 15 s 5 classes 5080 expected_leaves 170530 expected_ring 5374
+part 46/243 fg ref n 15 s 6 classes 5074 expected_leaves 74580 expected_ring 5381
+part 46/243 fg ref n 15 all 0 sabotage 0 read 1769586 class 1769586 kept 10161 expected_leaves 245650 expected_ring 10762 secs 38.01
+part 46/243 codes 10161 sha256 4ae00b9c28966e8b9f85fe832336ec6849c86c6e8898af2bd313a682b1d352fd
+part 47/243 plantri: 1751895 polytopes written to stdout; cpu=35.60 sec wall_s 37.88
+part 47/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 47/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 47/243 fg ref n 15 s 5 classes 4460 expected_leaves 147950 expected_ring 4711
+part 47/243 fg ref n 15 s 6 classes 4448 expected_leaves 65196 expected_ring 4753
+part 47/243 fg ref n 15 all 0 sabotage 0 read 1751895 class 1751895 kept 8908 expected_leaves 213146 expected_ring 9464 secs 37.88
+part 47/243 codes 8908 sha256 5c6bd48630e94f9296b19cd6ec98d91a44f6025a6767b75364e318bae75dbd44
+part 48/243 plantri: 1898763 polytopes written to stdout; cpu=37.79 sec wall_s 40.20
+part 48/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 48/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 48/243 fg ref n 15 s 5 classes 4569 expected_leaves 157225 expected_ring 4775
+part 48/243 fg ref n 15 s 6 classes 5092 expected_leaves 76350 expected_ring 5375
+part 48/243 fg ref n 15 all 0 sabotage 0 read 1898763 class 1898763 kept 9661 expected_leaves 233575 expected_ring 10150 secs 40.20
+part 48/243 codes 9661 sha256 f35d3c0de956dbda5fc26410e1014b14aae841aa1117f8f619e1a97d205088cf
+part 49/243 plantri: 1922482 polytopes written to stdout; cpu=37.89 sec wall_s 40.38
+part 49/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 49/243 fg ref n 15 s 4 classes 3 expected_leaves 264 expected_ring 4
+part 49/243 fg ref n 15 s 5 classes 5038 expected_leaves 170895 expected_ring 5313
+part 49/243 fg ref n 15 s 6 classes 5087 expected_leaves 75411 expected_ring 5391
+part 49/243 fg ref n 15 all 0 sabotage 0 read 1922482 class 1922482 kept 10128 expected_leaves 246570 expected_ring 10708 secs 40.38
+part 49/243 codes 10128 sha256 bc231dd3a68130993c6619f58b1b6bd6e7a639d7d58afbd8f9a071aa906eeb42
+part 50/243 plantri: 1716899 polytopes written to stdout; cpu=33.75 sec wall_s 35.83
+part 50/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 50/243 fg ref n 15 s 4 classes 2 expected_leaves 152 expected_ring 3
+part 50/243 fg ref n 15 s 5 classes 3655 expected_leaves 123770 expected_ring 3873
+part 50/243 fg ref n 15 s 6 classes 3703 expected_leaves 55344 expected_ring 3940
+part 50/243 fg ref n 15 all 0 sabotage 0 read 1716899 class 1716899 kept 7360 expected_leaves 179266 expected_ring 7816 secs 35.82
+part 50/243 codes 7360 sha256 69502c6237139312a507e9141bb59e4c7348a3b7a566b18c78038b55eef93604
+part 51/243 plantri: 1787048 polytopes written to stdout; cpu=37.64 sec wall_s 40.09
+part 51/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 51/243 fg ref n 15 s 4 classes 1 expected_leaves 88 expected_ring 4
+part 51/243 fg ref n 15 s 5 classes 4682 expected_leaves 164885 expected_ring 4917
+part 51/243 fg ref n 15 s 6 classes 5777 expected_leaves 89160 expected_ring 6165
+part 51/243 fg ref n 15 all 0 sabotage 0 read 1787048 class 1787048 kept 10460 expected_leaves 254133 expected_ring 11086 secs 40.08
+part 51/243 codes 10460 sha256 af13dfe505197c6c74b7534257a175d52b34d7b810bdad06e2befdca99762ddb
+part 52/243 plantri: 1847067 polytopes written to stdout; cpu=35.79 sec wall_s 38.21
+part 52/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 52/243 fg ref n 15 s 4 classes 2 expected_leaves 184 expected_ring 2
+part 52/243 fg ref n 15 s 5 classes 4057 expected_leaves 136010 expected_ring 4278
+part 52/243 fg ref n 15 s 6 classes 4320 expected_leaves 63766 expected_ring 4582
+part 52/243 fg ref n 15 all 0 sabotage 0 read 1847067 class 1847067 kept 8379 expected_leaves 199960 expected_ring 8862 secs 38.20
+part 52/243 codes 8379 sha256 f3801fe1020b6f094e6e8a87af240dda0f659c29ed79e596bfa45b7fff7b4173
+part 53/243 plantri: 1959495 polytopes written to stdout; cpu=37.85 sec wall_s 40.45
+part 53/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 53/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 53/243 fg ref n 15 s 5 classes 4516 expected_leaves 153500 expected_ring 4735
+part 53/243 fg ref n 15 s 6 classes 5198 expected_leaves 74916 expected_ring 5467
+part 53/243 fg ref n 15 all 0 sabotage 0 read 1959495 class 1959495 kept 9714 expected_leaves 228416 expected_ring 10202 secs 40.44
+part 53/243 codes 9714 sha256 d94c5f82315dadb030e070850802062ad1e180ccdcdc6d8dcdac81106dc517aa
+part 54/243 plantri: 1851745 polytopes written to stdout; cpu=35.77 sec wall_s 38.20
+part 54/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 54/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 54/243 fg ref n 15 s 5 classes 4214 expected_leaves 145475 expected_ring 4433
+part 54/243 fg ref n 15 s 6 classes 5210 expected_leaves 78354 expected_ring 5501
+part 54/243 fg ref n 15 all 0 sabotage 0 read 1851745 class 1851745 kept 9424 expected_leaves 223829 expected_ring 9934 secs 38.19
+part 54/243 codes 9424 sha256 938c8a310bb5996e6ee2140c9458015e8dcf6c1a1c210175e19f0517b47506d3
+part 55/243 plantri: 1752063 polytopes written to stdout; cpu=35.63 sec wall_s 38.00
+part 55/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 55/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 55/243 fg ref n 15 s 5 classes 4677 expected_leaves 158935 expected_ring 4915
+part 55/243 fg ref n 15 s 6 classes 4139 expected_leaves 60012 expected_ring 4349
+part 55/243 fg ref n 15 all 0 sabotage 0 read 1752063 class 1752063 kept 8816 expected_leaves 218947 expected_ring 9264 secs 37.99
+part 55/243 codes 8816 sha256 4eec8d307fd48d52395045bf81b028ff0c407e730f10ed4bd06bbb67ac0ef3f5
+part 56/243 plantri: 1894282 polytopes written to stdout; cpu=35.67 sec wall_s 37.97
+part 56/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 56/243 fg ref n 15 s 4 classes 12 expected_leaves 912 expected_ring 17
+part 56/243 fg ref n 15 s 5 classes 5037 expected_leaves 168565 expected_ring 5309
+part 56/243 fg ref n 15 s 6 classes 6973 expected_leaves 107046 expected_ring 7374
+part 56/243 fg ref n 15 all 0 sabotage 0 read 1894282 class 1894282 kept 12022 expected_leaves 276523 expected_ring 12700 secs 37.96
+part 56/243 codes 12022 sha256 6ea80fd88ad9c6c8cb6f953bdba03a24a29b76656c32304fefe6a83c09ad0332
+part 57/243 plantri: 2127448 polytopes written to stdout; cpu=41.00 sec wall_s 44.04
+part 57/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 57/243 fg ref n 15 s 4 classes 2 expected_leaves 168 expected_ring 2
+part 57/243 fg ref n 15 s 5 classes 7983 expected_leaves 268140 expected_ring 8405
+part 57/243 fg ref n 15 s 6 classes 9569 expected_leaves 143478 expected_ring 10038
+part 57/243 fg ref n 15 all 0 sabotage 0 read 2127448 class 2127448 kept 17554 expected_leaves 411786 expected_ring 18445 secs 44.04
+part 57/243 codes 17554 sha256 26cec211032d3d64e71026e800313ee31559536f38bdf69749b35a3ad7dc0a26
+part 58/243 plantri: 2158901 polytopes written to stdout; cpu=40.92 sec wall_s 44.09
+part 58/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 58/243 fg ref n 15 s 4 classes 2 expected_leaves 200 expected_ring 2
+part 58/243 fg ref n 15 s 5 classes 9043 expected_leaves 305760 expected_ring 9585
+part 58/243 fg ref n 15 s 6 classes 9360 expected_leaves 141707 expected_ring 9953
+part 58/243 fg ref n 15 all 0 sabotage 0 read 2158901 class 2158901 kept 18405 expected_leaves 447667 expected_ring 19540 secs 44.09
+part 58/243 codes 18405 sha256 e96241bc6d2ee6d73b36595b75edb81463f5bd68f56114cec93307b7b73cc469
+part 59/243 plantri: 1751654 polytopes written to stdout; cpu=38.30 sec wall_s 41.00
+part 59/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 59/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 59/243 fg ref n 15 s 5 classes 5583 expected_leaves 188405 expected_ring 5891
+part 59/243 fg ref n 15 s 6 classes 6603 expected_leaves 103242 expected_ring 6922
+part 59/243 fg ref n 15 all 0 sabotage 0 read 1751654 class 1751654 kept 12186 expected_leaves 291647 expected_ring 12813 secs 41.00
+part 59/243 codes 12186 sha256 5270ae9ecb79866a64185b40be8a45c2fa60847f4c9dd7fd8903d087c44673cf
+part 60/243 plantri: 1848443 polytopes written to stdout; cpu=37.30 sec wall_s 39.72
+part 60/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 60/243 fg ref n 15 s 4 classes 2 expected_leaves 176 expected_ring 2
+part 60/243 fg ref n 15 s 5 classes 5500 expected_leaves 188230 expected_ring 5784
+part 60/243 fg ref n 15 s 6 classes 5938 expected_leaves 88140 expected_ring 6270
+part 60/243 fg ref n 15 all 0 sabotage 0 read 1848443 class 1848443 kept 11440 expected_leaves 276546 expected_ring 12056 secs 39.72
+part 60/243 codes 11440 sha256 f233e7b741e24b2bb9577ef49d96141bae9f81bffdb9338fddadc48ae2996679
+part 61/243 plantri: 1880456 polytopes written to stdout; cpu=36.80 sec wall_s 39.18
+part 61/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 61/243 fg ref n 15 s 4 classes 1 expected_leaves 80 expected_ring 1
+part 61/243 fg ref n 15 s 5 classes 4375 expected_leaves 145850 expected_ring 4655
+part 61/243 fg ref n 15 s 6 classes 4946 expected_leaves 74976 expected_ring 5168
+part 61/243 fg ref n 15 all 0 sabotage 0 read 1880456 class 1880456 kept 9322 expected_leaves 220906 expected_ring 9824 secs 39.18
+part 61/243 codes 9322 sha256 f6d63d8920549e66ec9d7a91f6fe657b9cc9ead9443abb34ea13a3f38d9a92e4
+part 62/243 plantri: 1838340 polytopes written to stdout; cpu=36.26 sec wall_s 38.64
+part 62/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 62/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 62/243 fg ref n 15 s 5 classes 3969 expected_leaves 130890 expected_ring 4218
+part 62/243 fg ref n 15 s 6 classes 4068 expected_leaves 57816 expected_ring 4347
+part 62/243 fg ref n 15 all 0 sabotage 0 read 1838340 class 1838340 kept 8037 expected_leaves 188706 expected_ring 8565 secs 38.64
+part 62/243 codes 8037 sha256 d750815d4faf4555e81bbe1e86128073004c3f1e86435881ecea3def12f2519b
+part 63/243 plantri: 1951852 polytopes written to stdout; cpu=34.82 sec wall_s 37.14
+part 63/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 63/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 63/243 fg ref n 15 s 5 classes 6040 expected_leaves 203810 expected_ring 6384
+part 63/243 fg ref n 15 s 6 classes 7088 expected_leaves 105696 expected_ring 7525
+part 63/243 fg ref n 15 all 0 sabotage 0 read 1951852 class 1951852 kept 13128 expected_leaves 309506 expected_ring 13909 secs 37.13
+part 63/243 codes 13128 sha256 fcf423a163c89e1e416cdccc7f19908677bd68565cc6441245eb9cdb910401d3
+part 64/243 plantri: 1953730 polytopes written to stdout; cpu=36.40 sec wall_s 38.79
+part 64/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 64/243 fg ref n 15 s 4 classes 2 expected_leaves 176 expected_ring 2
+part 64/243 fg ref n 15 s 5 classes 5247 expected_leaves 181050 expected_ring 5571
+part 64/243 fg ref n 15 s 6 classes 5086 expected_leaves 73848 expected_ring 5349
+part 64/243 fg ref n 15 all 0 sabotage 0 read 1953730 class 1953730 kept 10335 expected_leaves 255074 expected_ring 10922 secs 38.78
+part 64/243 codes 10335 sha256 7c1f5060b1e6bc9ba731c2a79aee603693d352d674c3652a44b1d7bb45c52e4d
+part 65/243 plantri: 1788932 polytopes written to stdout; cpu=36.41 sec wall_s 38.60
+part 65/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 65/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 65/243 fg ref n 15 s 5 classes 3910 expected_leaves 134261 expected_ring 4115
+part 65/243 fg ref n 15 s 6 classes 3946 expected_leaves 59502 expected_ring 4185
+part 65/243 fg ref n 15 all 0 sabotage 0 read 1788932 class 1788932 kept 7856 expected_leaves 193763 expected_ring 8300 secs 38.60
+part 65/243 codes 7856 sha256 bee1a138c5cd835305e74b3a10d173550cf1ad51e9f91062095e9f45d6280830
+part 66/243 plantri: 1792250 polytopes written to stdout; cpu=35.73 sec wall_s 38.08
+part 66/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 66/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 66/243 fg ref n 15 s 5 classes 3562 expected_leaves 125250 expected_ring 3740
+part 66/243 fg ref n 15 s 6 classes 4171 expected_leaves 63396 expected_ring 4408
+part 66/243 fg ref n 15 all 0 sabotage 0 read 1792250 class 1792250 kept 7733 expected_leaves 188646 expected_ring 8148 secs 38.07
+part 66/243 codes 7733 sha256 a504803fb762c3031f0c9a6389007405820b9de22a03bee46b949eb377585e2a
+part 67/243 plantri: 2050815 polytopes written to stdout; cpu=38.38 sec wall_s 40.56
+part 67/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 67/243 fg ref n 15 s 4 classes 6 expected_leaves 340 expected_ring 10
+part 67/243 fg ref n 15 s 5 classes 4919 expected_leaves 170290 expected_ring 5183
+part 67/243 fg ref n 15 s 6 classes 5083 expected_leaves 76278 expected_ring 5359
+part 67/243 fg ref n 15 all 0 sabotage 0 read 2050815 class 2050815 kept 10008 expected_leaves 246908 expected_ring 10552 secs 40.55
+part 67/243 codes 10008 sha256 ca08ccda122d3d01204ac94442f9777e1b7c2a9084470b55442a3bdb712bb359
+part 68/243 plantri: 1754941 polytopes written to stdout; cpu=33.84 sec wall_s 35.89
+part 68/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 68/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 68/243 fg ref n 15 s 5 classes 3913 expected_leaves 132310 expected_ring 4101
+part 68/243 fg ref n 15 s 6 classes 4648 expected_leaves 69996 expected_ring 4939
+part 68/243 fg ref n 15 all 0 sabotage 0 read 1754941 class 1754941 kept 8561 expected_leaves 202306 expected_ring 9040 secs 35.88
+part 68/243 codes 8561 sha256 b2c8d58704f20211164a59bcda800ea00ace304afdb0f5e6b48b9eca6560eab5
+part 69/243 plantri: 1981172 polytopes written to stdout; cpu=36.64 sec wall_s 39.01
+part 69/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 69/243 fg ref n 15 s 4 classes 2 expected_leaves 124 expected_ring 3
+part 69/243 fg ref n 15 s 5 classes 5880 expected_leaves 200960 expected_ring 6150
+part 69/243 fg ref n 15 s 6 classes 5858 expected_leaves 84894 expected_ring 6154
+part 69/243 fg ref n 15 all 0 sabotage 0 read 1981172 class 1981172 kept 11740 expected_leaves 285978 expected_ring 12307 secs 39.00
+part 69/243 codes 11740 sha256 95ea99e7c5fe4bd755aa2437240387932b6ef51bbb7d97b454a806049e247650
+part 70/243 plantri: 1862791 polytopes written to stdout; cpu=34.36 sec wall_s 36.55
+part 70/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 70/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 70/243 fg ref n 15 s 5 classes 5217 expected_leaves 182490 expected_ring 5469
+part 70/243 fg ref n 15 s 6 classes 5176 expected_leaves 75228 expected_ring 5460
+part 70/243 fg ref n 15 all 0 sabotage 0 read 1862791 class 1862791 kept 10393 expected_leaves 257718 expected_ring 10929 secs 36.53
+part 70/243 codes 10393 sha256 3e4a97d58714134e58a6190fa34612b7f846110cbe73276c5688f50f0f2240b4
+part 71/243 plantri: 1846617 polytopes written to stdout; cpu=36.30 sec wall_s 38.53
+part 71/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 71/243 fg ref n 15 s 4 classes 1 expected_leaves 88 expected_ring 1
+part 71/243 fg ref n 15 s 5 classes 4636 expected_leaves 157235 expected_ring 4929
+part 71/243 fg ref n 15 s 6 classes 4658 expected_leaves 69555 expected_ring 4919
+part 71/243 fg ref n 15 all 0 sabotage 0 read 1846617 class 1846617 kept 9295 expected_leaves 226878 expected_ring 9849 secs 38.53
+part 71/243 codes 9295 sha256 1dac72c77e3c84645f5a41a7c2d22eb909e0b0a0da47ca6cbe47d12135a94afb
+part 72/243 plantri: 1951129 polytopes written to stdout; cpu=37.53 sec wall_s 39.88
+part 72/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 72/243 fg ref n 15 s 4 classes 4 expected_leaves 272 expected_ring 5
+part 72/243 fg ref n 15 s 5 classes 4195 expected_leaves 147160 expected_ring 4401
+part 72/243 fg ref n 15 s 6 classes 4439 expected_leaves 66204 expected_ring 4657
+part 72/243 fg ref n 15 all 0 sabotage 0 read 1951129 class 1951129 kept 8638 expected_leaves 213636 expected_ring 9063 secs 39.88
+part 72/243 codes 8638 sha256 0e749e4773ace06e7c30dcafcfc3ccc1526d4511c2e238ee1a47d887e480a7f4
+part 73/243 plantri: 1893626 polytopes written to stdout; cpu=37.09 sec wall_s 39.37
+part 73/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 73/243 fg ref n 15 s 4 classes 2 expected_leaves 168 expected_ring 3
+part 73/243 fg ref n 15 s 5 classes 4315 expected_leaves 149220 expected_ring 4524
+part 73/243 fg ref n 15 s 6 classes 4738 expected_leaves 69720 expected_ring 5039
+part 73/243 fg ref n 15 all 0 sabotage 0 read 1893626 class 1893626 kept 9055 expected_leaves 219108 expected_ring 9566 secs 39.36
+part 73/243 codes 9055 sha256 4a33cf10b7c6164dc4738f448d66f4e31d2f648c8fd298685ab8282cac8ceea8
+part 74/243 plantri: 2087068 polytopes written to stdout; cpu=39.45 sec wall_s 42.01
+part 74/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 74/243 fg ref n 15 s 4 classes 1 expected_leaves 44 expected_ring 2
+part 74/243 fg ref n 15 s 5 classes 5054 expected_leaves 172045 expected_ring 5324
+part 74/243 fg ref n 15 s 6 classes 5912 expected_leaves 87756 expected_ring 6297
+part 74/243 fg ref n 15 all 0 sabotage 0 read 2087068 class 2087068 kept 10967 expected_leaves 259845 expected_ring 11623 secs 42.01
+part 74/243 codes 10967 sha256 28b6bbe3e356f63dc95e5e3c471d2e1d806f8db89ad4f7d88e0824ade90cd151
+part 75/243 plantri: 2164371 polytopes written to stdout; cpu=37.49 sec wall_s 40.11
+part 75/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 75/243 fg ref n 15 s 4 classes 5 expected_leaves 440 expected_ring 7
+part 75/243 fg ref n 15 s 5 classes 7995 expected_leaves 278550 expected_ring 8390
+part 75/243 fg ref n 15 s 6 classes 10948 expected_leaves 167943 expected_ring 11710
+part 75/243 fg ref n 15 all 0 sabotage 0 read 2164371 class 2164371 kept 18948 expected_leaves 446933 expected_ring 20107 secs 40.11
+part 75/243 codes 18948 sha256 2146547db6318e3a686d0e4b30d91be0d7db81c146076788e744e4d9476f24b2
+part 76/243 plantri: 1920350 polytopes written to stdout; cpu=37.78 sec wall_s 40.35
+part 76/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 76/243 fg ref n 15 s 4 classes 3 expected_leaves 196 expected_ring 6
+part 76/243 fg ref n 15 s 5 classes 4361 expected_leaves 148950 expected_ring 4605
+part 76/243 fg ref n 15 s 6 classes 4221 expected_leaves 62874 expected_ring 4436
+part 76/243 fg ref n 15 all 0 sabotage 0 read 1920350 class 1920350 kept 8585 expected_leaves 212020 expected_ring 9047 secs 40.34
+part 76/243 codes 8585 sha256 6f6131da601cd98af5f913c5584d3b5bbbb0ff59e14098fc030e17bcf4f82993
+part 77/243 plantri: 1926000 polytopes written to stdout; cpu=36.22 sec wall_s 38.64
+part 77/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 77/243 fg ref n 15 s 4 classes 1 expected_leaves 80 expected_ring 1
+part 77/243 fg ref n 15 s 5 classes 4578 expected_leaves 157520 expected_ring 4818
+part 77/243 fg ref n 15 s 6 classes 4772 expected_leaves 70764 expected_ring 5045
+part 77/243 fg ref n 15 all 0 sabotage 0 read 1926000 class 1926000 kept 9351 expected_leaves 228364 expected_ring 9864 secs 38.64
+part 77/243 codes 9351 sha256 e92f725f7854ba8594f079cea21c84a1072f73349c4f598ef01b9a79b7dc07bd
+part 78/243 plantri: 2035990 polytopes written to stdout; cpu=38.20 sec wall_s 40.91
+part 78/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 78/243 fg ref n 15 s 4 classes 1 expected_leaves 72 expected_ring 1
+part 78/243 fg ref n 15 s 5 classes 6563 expected_leaves 219385 expected_ring 6947
+part 78/243 fg ref n 15 s 6 classes 6366 expected_leaves 93312 expected_ring 6739
+part 78/243 fg ref n 15 all 0 sabotage 0 read 2035990 class 2035990 kept 12930 expected_leaves 312769 expected_ring 13687 secs 40.90
+part 78/243 codes 12930 sha256 dd49eb46fb225e64602edff680a49ef413eeda5c73ee74f868026843f3d2312f
+part 79/243 plantri: 1879359 polytopes written to stdout; cpu=35.34 sec wall_s 37.66
+part 79/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 79/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 79/243 fg ref n 15 s 5 classes 5159 expected_leaves 176525 expected_ring 5426
+part 79/243 fg ref n 15 s 6 classes 5319 expected_leaves 78066 expected_ring 5656
+part 79/243 fg ref n 15 all 0 sabotage 0 read 1879359 class 1879359 kept 10478 expected_leaves 254591 expected_ring 11082 secs 37.66
+part 79/243 codes 10478 sha256 e7429eb9d6a127ab54e6f481c29ed3835e27934ec6278d93b36194d6828a604b
+part 80/243 plantri: 1971968 polytopes written to stdout; cpu=36.84 sec wall_s 39.37
+part 80/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 80/243 fg ref n 15 s 4 classes 1 expected_leaves 80 expected_ring 1
+part 80/243 fg ref n 15 s 5 classes 4780 expected_leaves 171220 expected_ring 5031
+part 80/243 fg ref n 15 s 6 classes 5853 expected_leaves 87574 expected_ring 6159
+part 80/243 fg ref n 15 all 0 sabotage 0 read 1971968 class 1971968 kept 10634 expected_leaves 258874 expected_ring 11191 secs 39.37
+part 80/243 codes 10634 sha256 addcfed1f0d1bbea28680ea5dedd1f1a5c704e27f5c44785c6b2617d5aed465c
+part 81/243 plantri: 1847135 polytopes written to stdout; cpu=37.16 sec wall_s 39.57
+part 81/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 81/243 fg ref n 15 s 4 classes 5 expected_leaves 256 expected_ring 7
+part 81/243 fg ref n 15 s 5 classes 4073 expected_leaves 145915 expected_ring 4284
+part 81/243 fg ref n 15 s 6 classes 5102 expected_leaves 79434 expected_ring 5428
+part 81/243 fg ref n 15 all 0 sabotage 0 read 1847135 class 1847135 kept 9180 expected_leaves 225605 expected_ring 9719 secs 39.57
+part 81/243 codes 9180 sha256 320cbc49e90ec9d9714287ae7e2ab7f70597c1c5bd2b429b480ac24c3c3dad9f
+part 82/243 plantri: 1898280 polytopes written to stdout; cpu=37.84 sec wall_s 40.35
+part 82/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 82/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 82/243 fg ref n 15 s 5 classes 5261 expected_leaves 184105 expected_ring 5556
+part 82/243 fg ref n 15 s 6 classes 6776 expected_leaves 103359 expected_ring 7204
+part 82/243 fg ref n 15 all 0 sabotage 0 read 1898280 class 1898280 kept 12037 expected_leaves 287464 expected_ring 12760 secs 40.35
+part 82/243 codes 12037 sha256 5b0bf3316b805cb0e52ed7433d54c5ca15900533f84f126471ff03ffed2f5e54
+part 83/243 plantri: 1960482 polytopes written to stdout; cpu=38.47 sec wall_s 40.94
+part 83/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 83/243 fg ref n 15 s 4 classes 8 expected_leaves 600 expected_ring 12
+part 83/243 fg ref n 15 s 5 classes 4743 expected_leaves 166240 expected_ring 4977
+part 83/243 fg ref n 15 s 6 classes 7484 expected_leaves 117006 expected_ring 7796
+part 83/243 fg ref n 15 all 0 sabotage 0 read 1960482 class 1960482 kept 12235 expected_leaves 283846 expected_ring 12785 secs 40.93
+part 83/243 codes 12235 sha256 51f54e8e227d602f52f0e233f4b2faca42fa4ae7a0fcd64d1ebc810077461425
+part 84/243 plantri: 2001466 polytopes written to stdout; cpu=35.37 sec wall_s 37.88
+part 84/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 84/243 fg ref n 15 s 4 classes 46 expected_leaves 2988 expected_ring 63
+part 84/243 fg ref n 15 s 5 classes 6214 expected_leaves 205900 expected_ring 6511
+part 84/243 fg ref n 15 s 6 classes 7750 expected_leaves 117036 expected_ring 8150
+part 84/243 fg ref n 15 all 0 sabotage 0 read 2001466 class 2001466 kept 14010 expected_leaves 325924 expected_ring 14724 secs 37.88
+part 84/243 codes 14010 sha256 97ff101b5ecc8d8a8e15e93ea1d84882db4ef7c60e717b9f10de798343215ae9
+part 85/243 plantri: 1985451 polytopes written to stdout; cpu=37.30 sec wall_s 39.86
+part 85/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 85/243 fg ref n 15 s 4 classes 3 expected_leaves 264 expected_ring 4
+part 85/243 fg ref n 15 s 5 classes 5340 expected_leaves 190700 expected_ring 5579
+part 85/243 fg ref n 15 s 6 classes 7088 expected_leaves 107454 expected_ring 7436
+part 85/243 fg ref n 15 all 0 sabotage 0 read 1985451 class 1985451 kept 12431 expected_leaves 298418 expected_ring 13019 secs 39.86
+part 85/243 codes 12431 sha256 b3239af2040dac21e89525aacdca9575f1fefe33b709a31730cb4f5c5f394306
+part 86/243 plantri: 1980662 polytopes written to stdout; cpu=38.47 sec wall_s 41.15
+part 86/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 86/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 86/243 fg ref n 15 s 5 classes 5821 expected_leaves 207345 expected_ring 6069
+part 86/243 fg ref n 15 s 6 classes 7800 expected_leaves 120792 expected_ring 8145
+part 86/243 fg ref n 15 all 0 sabotage 0 read 1980662 class 1980662 kept 13621 expected_leaves 328137 expected_ring 14214 secs 41.15
+part 86/243 codes 13621 sha256 e618ad97c5011cf8f019cd548a7111f50b554a8ba6eb5937b31ede70f90dbad9
+part 87/243 plantri: 1810595 polytopes written to stdout; cpu=36.82 sec wall_s 39.24
+part 87/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 87/243 fg ref n 15 s 4 classes 4 expected_leaves 160 expected_ring 6
+part 87/243 fg ref n 15 s 5 classes 4892 expected_leaves 169775 expected_ring 5107
+part 87/243 fg ref n 15 s 6 classes 5421 expected_leaves 81324 expected_ring 5744
+part 87/243 fg ref n 15 all 0 sabotage 0 read 1810595 class 1810595 kept 10317 expected_leaves 251259 expected_ring 10857 secs 39.24
+part 87/243 codes 10317 sha256 2df4652a15011bbc2e3f056fca689cb834afc29e5c302d0fe0dd971d357bff02
+part 88/243 plantri: 1883867 polytopes written to stdout; cpu=34.77 sec wall_s 37.05
+part 88/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 88/243 fg ref n 15 s 4 classes 2 expected_leaves 62 expected_ring 2
+part 88/243 fg ref n 15 s 5 classes 4805 expected_leaves 168760 expected_ring 5051
+part 88/243 fg ref n 15 s 6 classes 5337 expected_leaves 78930 expected_ring 5619
+part 88/243 fg ref n 15 all 0 sabotage 0 read 1883867 class 1883867 kept 10144 expected_leaves 247752 expected_ring 10672 secs 37.05
+part 88/243 codes 10144 sha256 21ee3940ae0a326f58c12c3bbeadd82693ce981eccfb6c9f937ff388e464fd6b
+part 89/243 plantri: 2070823 polytopes written to stdout; cpu=38.87 sec wall_s 41.44
+part 89/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 89/243 fg ref n 15 s 4 classes 3 expected_leaves 264 expected_ring 9
+part 89/243 fg ref n 15 s 5 classes 6141 expected_leaves 215945 expected_ring 6404
+part 89/243 fg ref n 15 s 6 classes 8295 expected_leaves 125916 expected_ring 8714
+part 89/243 fg ref n 15 all 0 sabotage 0 read 2070823 class 2070823 kept 14439 expected_leaves 342125 expected_ring 15127 secs 41.44
+part 89/243 codes 14439 sha256 68e4e759bb1217068cbb86c08e8c532a68b72818c9ba3a06e2e30c84ad71ed9f
+part 90/243 plantri: 1901760 polytopes written to stdout; cpu=36.79 sec wall_s 39.22
+part 90/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 90/243 fg ref n 15 s 4 classes 5 expected_leaves 396 expected_ring 6
+part 90/243 fg ref n 15 s 5 classes 4455 expected_leaves 156500 expected_ring 4677
+part 90/243 fg ref n 15 s 6 classes 5883 expected_leaves 88584 expected_ring 6225
+part 90/243 fg ref n 15 all 0 sabotage 0 read 1901760 class 1901760 kept 10343 expected_leaves 245480 expected_ring 10908 secs 39.21
+part 90/243 codes 10343 sha256 265ab068374f4638b5b1b57749e6653e3994e6531f8a2ef5e52c742cdad4a603
+part 91/243 plantri: 1966626 polytopes written to stdout; cpu=37.60 sec wall_s 40.14
+part 91/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 91/243 fg ref n 15 s 4 classes 3 expected_leaves 224 expected_ring 3
+part 91/243 fg ref n 15 s 5 classes 4788 expected_leaves 166920 expected_ring 5042
+part 91/243 fg ref n 15 s 6 classes 5183 expected_leaves 78082 expected_ring 5437
+part 91/243 fg ref n 15 all 0 sabotage 0 read 1966626 class 1966626 kept 9974 expected_leaves 245226 expected_ring 10482 secs 40.13
+part 91/243 codes 9974 sha256 c9c712a96ebc942177a75011465cbe04f115db4345a514ca96f1b8739dc22080
+part 92/243 plantri: 1738683 polytopes written to stdout; cpu=33.41 sec wall_s 35.63
+part 92/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 92/243 fg ref n 15 s 4 classes 1 expected_leaves 40 expected_ring 4
+part 92/243 fg ref n 15 s 5 classes 4052 expected_leaves 132150 expected_ring 4289
+part 92/243 fg ref n 15 s 6 classes 4575 expected_leaves 68838 expected_ring 4839
+part 92/243 fg ref n 15 all 0 sabotage 0 read 1738683 class 1738683 kept 8628 expected_leaves 201028 expected_ring 9132 secs 35.62
+part 92/243 codes 8628 sha256 e5fb53ee069764e65e36fff02efc1b45cca301d8ae013b53106ff1cd8c6d7c36
+part 93/243 plantri: 1883741 polytopes written to stdout; cpu=37.88 sec wall_s 40.38
+part 93/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 93/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 93/243 fg ref n 15 s 5 classes 5592 expected_leaves 180400 expected_ring 5950
+part 93/243 fg ref n 15 s 6 classes 6287 expected_leaves 94383 expected_ring 6774
+part 93/243 fg ref n 15 all 0 sabotage 0 read 1883741 class 1883741 kept 11879 expected_leaves 274783 expected_ring 12724 secs 40.37
+part 93/243 codes 11879 sha256 31bf7fa4c66324041a4d597b9eabe4691a568e96f82fc29518442fd28440f934
+part 94/243 plantri: 1902417 polytopes written to stdout; cpu=37.92 sec wall_s 40.30
+part 94/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 94/243 fg ref n 15 s 4 classes 3 expected_leaves 280 expected_ring 4
+part 94/243 fg ref n 15 s 5 classes 5172 expected_leaves 178815 expected_ring 5437
+part 94/243 fg ref n 15 s 6 classes 5870 expected_leaves 86274 expected_ring 6241
+part 94/243 fg ref n 15 all 0 sabotage 0 read 1902417 class 1902417 kept 11045 expected_leaves 265369 expected_ring 11682 secs 40.29
+part 94/243 codes 11045 sha256 cf92474bf521dfdfff5e90c51a958969b51968ac0de17a30269661fa5faf6719
+part 95/243 plantri: 1781357 polytopes written to stdout; cpu=36.19 sec wall_s 38.50
+part 95/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 95/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 95/243 fg ref n 15 s 5 classes 4307 expected_leaves 152120 expected_ring 4534
+part 95/243 fg ref n 15 s 6 classes 5168 expected_leaves 76524 expected_ring 5485
+part 95/243 fg ref n 15 all 0 sabotage 0 read 1781357 class 1781357 kept 9475 expected_leaves 228644 expected_ring 10019 secs 38.49
+part 95/243 codes 9475 sha256 3e5f3a55988a686851dd69f027455c551a76fcff3a8c73dd9b29a5af206b3c03
+part 96/243 plantri: 1944856 polytopes written to stdout; cpu=39.64 sec wall_s 42.22
+part 96/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 96/243 fg ref n 15 s 4 classes 4 expected_leaves 234 expected_ring 4
+part 96/243 fg ref n 15 s 5 classes 5804 expected_leaves 202770 expected_ring 6098
+part 96/243 fg ref n 15 s 6 classes 6988 expected_leaves 105894 expected_ring 7473
+part 96/243 fg ref n 15 all 0 sabotage 0 read 1944856 class 1944856 kept 12796 expected_leaves 308898 expected_ring 13575 secs 42.21
+part 96/243 codes 12796 sha256 303f583bb9923c167b7d2120f0bedcfd5f40fabef23647bb6733cf9a19454363
+part 97/243 plantri: 1921542 polytopes written to stdout; cpu=39.13 sec wall_s 41.72
+part 97/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 97/243 fg ref n 15 s 4 classes 3 expected_leaves 232 expected_ring 6
+part 97/243 fg ref n 15 s 5 classes 4347 expected_leaves 149905 expected_ring 4625
+part 97/243 fg ref n 15 s 6 classes 5622 expected_leaves 85506 expected_ring 5904
+part 97/243 fg ref n 15 all 0 sabotage 0 read 1921542 class 1921542 kept 9972 expected_leaves 235643 expected_ring 10535 secs 41.72
+part 97/243 codes 9972 sha256 fee7c5e64973b3ab204e0621d5339daa3203a2913ed3007a8515c475a805b0c8
+part 98/243 plantri: 1804149 polytopes written to stdout; cpu=36.79 sec wall_s 39.11
+part 98/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 98/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 98/243 fg ref n 15 s 5 classes 3843 expected_leaves 132415 expected_ring 4044
+part 98/243 fg ref n 15 s 6 classes 3936 expected_leaves 57471 expected_ring 4193
+part 98/243 fg ref n 15 all 0 sabotage 0 read 1804149 class 1804149 kept 7779 expected_leaves 189886 expected_ring 8237 secs 39.11
+part 98/243 codes 7779 sha256 7d0d3815f6a346548ed80a27ebe372ace53e0cdcda246603de42369f4d79b035
+part 99/243 plantri: 1940378 polytopes written to stdout; cpu=37.66 sec wall_s 40.09
+part 99/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 99/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 99/243 fg ref n 15 s 5 classes 4743 expected_leaves 167405 expected_ring 4987
+part 99/243 fg ref n 15 s 6 classes 4911 expected_leaves 74046 expected_ring 5139
+part 99/243 fg ref n 15 all 0 sabotage 0 read 1940378 class 1940378 kept 9654 expected_leaves 241451 expected_ring 10126 secs 40.08
+part 99/243 codes 9654 sha256 576d7f895eb7e0bf1be7f9454493d44fb3fd7513d3cc076040c3dfebb38d7f95
+part 100/243 plantri: 1934085 polytopes written to stdout; cpu=37.48 sec wall_s 39.94
+part 100/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 100/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 100/243 fg ref n 15 s 5 classes 4500 expected_leaves 156425 expected_ring 4729
+part 100/243 fg ref n 15 s 6 classes 4644 expected_leaves 68280 expected_ring 4888
+part 100/243 fg ref n 15 all 0 sabotage 0 read 1934085 class 1934085 kept 9144 expected_leaves 224705 expected_ring 9617 secs 39.94
+part 100/243 codes 9144 sha256 994bf54fa2d0dd0d6cc6eb0d1300d0b75f8a075c4820a5d838a1dc57c85f4cf2
+part 101/243 plantri: 1907806 polytopes written to stdout; cpu=39.20 sec wall_s 41.74
+part 101/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 101/243 fg ref n 15 s 4 classes 1 expected_leaves 96 expected_ring 1
+part 101/243 fg ref n 15 s 5 classes 4969 expected_leaves 168790 expected_ring 5230
+part 101/243 fg ref n 15 s 6 classes 5915 expected_leaves 87486 expected_ring 6266
+part 101/243 fg ref n 15 all 0 sabotage 0 read 1907806 class 1907806 kept 10885 expected_leaves 256372 expected_ring 11497 secs 41.73
+part 101/243 codes 10885 sha256 d9e901c4cdcb0f42f8195e440bcffdcbb239fee2ab0733d87a0713d093853536
+part 102/243 plantri: 1790062 polytopes written to stdout; cpu=36.92 sec wall_s 39.43
+part 102/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 102/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 102/243 fg ref n 15 s 5 classes 4672 expected_leaves 160600 expected_ring 4917
+part 102/243 fg ref n 15 s 6 classes 6629 expected_leaves 104058 expected_ring 6939
+part 102/243 fg ref n 15 all 0 sabotage 0 read 1790062 class 1790062 kept 11301 expected_leaves 264658 expected_ring 11856 secs 39.43
+part 102/243 codes 11301 sha256 ff63ec0293343440f917baa97fd65a9cddec022d31a3eebc73c25048b1f2841a
+part 103/243 plantri: 1765533 polytopes written to stdout; cpu=35.25 sec wall_s 37.56
+part 103/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 103/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 103/243 fg ref n 15 s 5 classes 4411 expected_leaves 149635 expected_ring 4655
+part 103/243 fg ref n 15 s 6 classes 4993 expected_leaves 75808 expected_ring 5240
+part 103/243 fg ref n 15 all 0 sabotage 0 read 1765533 class 1765533 kept 9404 expected_leaves 225443 expected_ring 9895 secs 37.56
+part 103/243 codes 9404 sha256 1f9ec459cbe3aedc110599475eec697f9c245ab6ffcba4e035e8d49e2c402951
+part 104/243 plantri: 2016305 polytopes written to stdout; cpu=39.28 sec wall_s 41.87
+part 104/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 104/243 fg ref n 15 s 4 classes 1 expected_leaves 80 expected_ring 1
+part 104/243 fg ref n 15 s 5 classes 5759 expected_leaves 201105 expected_ring 6086
+part 104/243 fg ref n 15 s 6 classes 8230 expected_leaves 128886 expected_ring 8551
+part 104/243 fg ref n 15 all 0 sabotage 0 read 2016305 class 2016305 kept 13990 expected_leaves 330071 expected_ring 14638 secs 41.87
+part 104/243 codes 13990 sha256 c063542c66ef23843bdbf907592d08913241639a08b195e4744621a6ae288acf
+part 105/243 plantri: 1938123 polytopes written to stdout; cpu=37.75 sec wall_s 40.40
+part 105/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 105/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 105/243 fg ref n 15 s 5 classes 6605 expected_leaves 219980 expected_ring 6963
+part 105/243 fg ref n 15 s 6 classes 6695 expected_leaves 99072 expected_ring 7132
+part 105/243 fg ref n 15 all 0 sabotage 0 read 1938123 class 1938123 kept 13300 expected_leaves 319052 expected_ring 14095 secs 40.40
+part 105/243 codes 13300 sha256 fe8f358b87e7389635cc153e7894d6b0d4c5ca181eaa83abc0054039c4195337
+part 106/243 plantri: 2166349 polytopes written to stdout; cpu=39.12 sec wall_s 41.92
+part 106/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 106/243 fg ref n 15 s 4 classes 3 expected_leaves 172 expected_ring 3
+part 106/243 fg ref n 15 s 5 classes 6530 expected_leaves 220920 expected_ring 6833
+part 106/243 fg ref n 15 s 6 classes 7119 expected_leaves 106698 expected_ring 7521
+part 106/243 fg ref n 15 all 0 sabotage 0 read 2166349 class 2166349 kept 13652 expected_leaves 327790 expected_ring 14357 secs 41.91
+part 106/243 codes 13652 sha256 6e0fcbd544e175632ec98170fdc0f1d5b8566e9ec3e2d51bc0e50cb1ffbd3c60
+part 107/243 plantri: 2088791 polytopes written to stdout; cpu=39.61 sec wall_s 42.40
+part 107/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 107/243 fg ref n 15 s 4 classes 5 expected_leaves 278 expected_ring 5
+part 107/243 fg ref n 15 s 5 classes 4746 expected_leaves 165300 expected_ring 5034
+part 107/243 fg ref n 15 s 6 classes 5641 expected_leaves 85131 expected_ring 5963
+part 107/243 fg ref n 15 all 0 sabotage 0 read 2088791 class 2088791 kept 10392 expected_leaves 250709 expected_ring 11002 secs 42.40
+part 107/243 codes 10392 sha256 57dc690a500ad52ed6857ba0ffe379c0118a05f8abb9963050c760ff8da09e66
+part 108/243 plantri: 2165931 polytopes written to stdout; cpu=40.68 sec wall_s 43.76
+part 108/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 108/243 fg ref n 15 s 4 classes 2 expected_leaves 92 expected_ring 2
+part 108/243 fg ref n 15 s 5 classes 7240 expected_leaves 259305 expected_ring 7586
+part 108/243 fg ref n 15 s 6 classes 8902 expected_leaves 134169 expected_ring 9462
+part 108/243 fg ref n 15 all 0 sabotage 0 read 2165931 class 2165931 kept 16144 expected_leaves 393566 expected_ring 17050 secs 43.76
+part 108/243 codes 16144 sha256 c5a3eabcaa39aae4bcc0a309462b5cdab606c6b6f50d640da45a9e6de6d31700
+part 109/243 plantri: 2230558 polytopes written to stdout; cpu=41.63 sec wall_s 44.71
+part 109/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 109/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 109/243 fg ref n 15 s 5 classes 6737 expected_leaves 244100 expected_ring 7039
+part 109/243 fg ref n 15 s 6 classes 8801 expected_leaves 134750 expected_ring 9392
+part 109/243 fg ref n 15 all 0 sabotage 0 read 2230558 class 2230558 kept 15538 expected_leaves 378850 expected_ring 16431 secs 44.70
+part 109/243 codes 15538 sha256 591e19cfd116658d3716e718acdb8e4461698826a6496eae5d5c0ee30df649a1
+part 110/243 plantri: 2122134 polytopes written to stdout; cpu=39.11 sec wall_s 41.87
+part 110/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 110/243 fg ref n 15 s 4 classes 2 expected_leaves 80 expected_ring 3
+part 110/243 fg ref n 15 s 5 classes 6949 expected_leaves 237925 expected_ring 7287
+part 110/243 fg ref n 15 s 6 classes 7579 expected_leaves 113166 expected_ring 8024
+part 110/243 fg ref n 15 all 0 sabotage 0 read 2122134 class 2122134 kept 14530 expected_leaves 351171 expected_ring 15314 secs 41.86
+part 110/243 codes 14530 sha256 caa4201ba4912fed9fc9eea2566f21278144f503ed0449f2c679d7fe6e0be6b1
+part 111/243 plantri: 2031043 polytopes written to stdout; cpu=39.51 sec wall_s 42.19
+part 111/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 111/243 fg ref n 15 s 4 classes 3 expected_leaves 154 expected_ring 6
+part 111/243 fg ref n 15 s 5 classes 5166 expected_leaves 176540 expected_ring 5454
+part 111/243 fg ref n 15 s 6 classes 6318 expected_leaves 94584 expected_ring 6717
+part 111/243 fg ref n 15 all 0 sabotage 0 read 2031043 class 2031043 kept 11487 expected_leaves 271278 expected_ring 12177 secs 42.19
+part 111/243 codes 11487 sha256 e13f7e77b8e94493c7c054b5c54c94fa2530bc3a7e9a8b50d54fffa4f914814f
+part 112/243 plantri: 2070063 polytopes written to stdout; cpu=39.51 sec wall_s 42.34
+part 112/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 112/243 fg ref n 15 s 4 classes 1 expected_leaves 52 expected_ring 2
+part 112/243 fg ref n 15 s 5 classes 6539 expected_leaves 224430 expected_ring 6828
+part 112/243 fg ref n 15 s 6 classes 8233 expected_leaves 123672 expected_ring 8659
+part 112/243 fg ref n 15 all 0 sabotage 0 read 2070063 class 2070063 kept 14773 expected_leaves 348154 expected_ring 15489 secs 42.33
+part 112/243 codes 14773 sha256 a2f5dc10734a62c3d6372cc2c9ba9f90f8fbfaffdecabe93107c01c05c3e4dd8
+part 113/243 plantri: 2119953 polytopes written to stdout; cpu=39.56 sec wall_s 42.45
+part 113/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 113/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 113/243 fg ref n 15 s 5 classes 7208 expected_leaves 250355 expected_ring 7584
+part 113/243 fg ref n 15 s 6 classes 7773 expected_leaves 115482 expected_ring 8267
+part 113/243 fg ref n 15 all 0 sabotage 0 read 2119953 class 2119953 kept 14981 expected_leaves 365837 expected_ring 15851 secs 42.45
+part 113/243 codes 14981 sha256 b88acf787842f7a23d83424d3ae81cd5a28aa7ec2739362785d5963f0672ef81
+part 114/243 plantri: 2166901 polytopes written to stdout; cpu=38.84 sec wall_s 41.72
+part 114/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 114/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 114/243 fg ref n 15 s 5 classes 6737 expected_leaves 232990 expected_ring 7034
+part 114/243 fg ref n 15 s 6 classes 8419 expected_leaves 129576 expected_ring 8937
+part 114/243 fg ref n 15 all 0 sabotage 0 read 2166901 class 2166901 kept 15156 expected_leaves 362566 expected_ring 15971 secs 41.72
+part 114/243 codes 15156 sha256 757626294fee8b7162684f6bf041897d073c18d7c155f9417125f4b5d9464a9d
+part 115/243 plantri: 2078621 polytopes written to stdout; cpu=38.55 sec wall_s 41.41
+part 115/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 115/243 fg ref n 15 s 4 classes 5 expected_leaves 400 expected_ring 10
+part 115/243 fg ref n 15 s 5 classes 6755 expected_leaves 233970 expected_ring 7073
+part 115/243 fg ref n 15 s 6 classes 8677 expected_leaves 130600 expected_ring 9367
+part 115/243 fg ref n 15 all 0 sabotage 0 read 2078621 class 2078621 kept 15437 expected_leaves 364970 expected_ring 16450 secs 41.41
+part 115/243 codes 15437 sha256 4ece68f4087bef299f92938655d2ffd4cf55991a2db14476cb86195f05015e28
+part 116/243 plantri: 1895303 polytopes written to stdout; cpu=35.39 sec wall_s 37.87
+part 116/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 116/243 fg ref n 15 s 4 classes 2 expected_leaves 120 expected_ring 3
+part 116/243 fg ref n 15 s 5 classes 4967 expected_leaves 169490 expected_ring 5236
+part 116/243 fg ref n 15 s 6 classes 5294 expected_leaves 76656 expected_ring 5736
+part 116/243 fg ref n 15 all 0 sabotage 0 read 1895303 class 1895303 kept 10263 expected_leaves 246266 expected_ring 10975 secs 37.86
+part 116/243 codes 10263 sha256 6210d9f5fd45f1895c4e29879cdade97e6990fb03f1c63b026f6d0acc6f6cbba
+part 117/243 plantri: 1984575 polytopes written to stdout; cpu=37.41 sec wall_s 40.11
+part 117/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 117/243 fg ref n 15 s 4 classes 3 expected_leaves 256 expected_ring 3
+part 117/243 fg ref n 15 s 5 classes 6760 expected_leaves 221410 expected_ring 7205
+part 117/243 fg ref n 15 s 6 classes 6347 expected_leaves 91635 expected_ring 6881
+part 117/243 fg ref n 15 all 0 sabotage 0 read 1984575 class 1984575 kept 13110 expected_leaves 313301 expected_ring 14089 secs 40.11
+part 117/243 codes 13110 sha256 c513359d2d68bf3b38878311a9df7eee207943d797bacd6eb0de2ab3512f7297
+part 118/243 plantri: 2092977 polytopes written to stdout; cpu=40.04 sec wall_s 42.85
+part 118/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 118/243 fg ref n 15 s 4 classes 5 expected_leaves 264 expected_ring 6
+part 118/243 fg ref n 15 s 5 classes 5609 expected_leaves 200140 expected_ring 5874
+part 118/243 fg ref n 15 s 6 classes 7829 expected_leaves 120918 expected_ring 8354
+part 118/243 fg ref n 15 all 0 sabotage 0 read 2092977 class 2092977 kept 13443 expected_leaves 321322 expected_ring 14234 secs 42.85
+part 118/243 codes 13443 sha256 97810b8e5b2305af49f3cef8546bdf7161d43cf296cbe45bd2e604d55c6e8a2c
+part 119/243 plantri: 1993343 polytopes written to stdout; cpu=36.57 sec wall_s 39.23
+part 119/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 119/243 fg ref n 15 s 4 classes 3 expected_leaves 136 expected_ring 7
+part 119/243 fg ref n 15 s 5 classes 6204 expected_leaves 209565 expected_ring 6566
+part 119/243 fg ref n 15 s 6 classes 6456 expected_leaves 94728 expected_ring 7042
+part 119/243 fg ref n 15 all 0 sabotage 0 read 1993343 class 1993343 kept 12663 expected_leaves 304429 expected_ring 13615 secs 39.22
+part 119/243 codes 12663 sha256 ed2f5cfb43d4d33eef302068245aa83df360e16776950b7f1a8a4578bdc19c3c
+part 120/243 plantri: 1825564 polytopes written to stdout; cpu=36.24 sec wall_s 38.68
+part 120/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 120/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 120/243 fg ref n 15 s 5 classes 4766 expected_leaves 163045 expected_ring 5039
+part 120/243 fg ref n 15 s 6 classes 4524 expected_leaves 65996 expected_ring 4769
+part 120/243 fg ref n 15 all 0 sabotage 0 read 1825564 class 1825564 kept 9290 expected_leaves 229041 expected_ring 9808 secs 38.68
+part 120/243 codes 9290 sha256 92c48cb5ef5e9f7917269b4ac2a185b6e4e95b20eb2805711d21963c339d729c
+part 121/243 plantri: 1910453 polytopes written to stdout; cpu=36.33 sec wall_s 38.84
+part 121/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 121/243 fg ref n 15 s 4 classes 1 expected_leaves 40 expected_ring 1
+part 121/243 fg ref n 15 s 5 classes 4870 expected_leaves 166840 expected_ring 5100
+part 121/243 fg ref n 15 s 6 classes 4879 expected_leaves 71292 expected_ring 5225
+part 121/243 fg ref n 15 all 0 sabotage 0 read 1910453 class 1910453 kept 9750 expected_leaves 238172 expected_ring 10326 secs 38.83
+part 121/243 codes 9750 sha256 aa870ce8bc1482093489a14a23560d9ec10938338c606cc0cc4935ceaa92598b
+part 122/243 plantri: 1936960 polytopes written to stdout; cpu=35.33 sec wall_s 37.73
+part 122/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 122/243 fg ref n 15 s 4 classes 5 expected_leaves 408 expected_ring 10
+part 122/243 fg ref n 15 s 5 classes 5233 expected_leaves 167180 expected_ring 5573
+part 122/243 fg ref n 15 s 6 classes 4760 expected_leaves 68814 expected_ring 5034
+part 122/243 fg ref n 15 all 0 sabotage 0 read 1936960 class 1936960 kept 9998 expected_leaves 236402 expected_ring 10617 secs 37.73
+part 122/243 codes 9998 sha256 8c14b4185d1ea6251b077df4897a99d0a19a93a6378a6d1d763af70fb34e9531
+part 123/243 plantri: 1994129 polytopes written to stdout; cpu=35.04 sec wall_s 37.48
+part 123/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 123/243 fg ref n 15 s 4 classes 1 expected_leaves 64 expected_ring 1
+part 123/243 fg ref n 15 s 5 classes 4709 expected_leaves 157550 expected_ring 4967
+part 123/243 fg ref n 15 s 6 classes 4710 expected_leaves 69692 expected_ring 5025
+part 123/243 fg ref n 15 all 0 sabotage 0 read 1994129 class 1994129 kept 9420 expected_leaves 227306 expected_ring 9993 secs 37.48
+part 123/243 codes 9420 sha256 eabd718501d2e686aaf4a13a72029daac3b75e75140158aa1a0871f10315f2d2
+part 124/243 plantri: 1941959 polytopes written to stdout; cpu=36.17 sec wall_s 38.59
+part 124/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 124/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 124/243 fg ref n 15 s 5 classes 4514 expected_leaves 157405 expected_ring 4768
+part 124/243 fg ref n 15 s 6 classes 5053 expected_leaves 73923 expected_ring 5365
+part 124/243 fg ref n 15 all 0 sabotage 0 read 1941959 class 1941959 kept 9567 expected_leaves 231328 expected_ring 10133 secs 38.59
+part 124/243 codes 9567 sha256 1d33a9a37be8aa7809ccd9e7c3abe417a9f92c37f4f1419d51a2390a30eebb65
+part 125/243 plantri: 1773617 polytopes written to stdout; cpu=35.11 sec wall_s 37.56
+part 125/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 125/243 fg ref n 15 s 4 classes 13 expected_leaves 968 expected_ring 16
+part 125/243 fg ref n 15 s 5 classes 4934 expected_leaves 164795 expected_ring 5204
+part 125/243 fg ref n 15 s 6 classes 4989 expected_leaves 74442 expected_ring 5276
+part 125/243 fg ref n 15 all 0 sabotage 0 read 1773617 class 1773617 kept 9936 expected_leaves 240205 expected_ring 10496 secs 37.55
+part 125/243 codes 9936 sha256 9ff5b30a682a7716ec622f91718e6548c693219385607a62e425324b836610b2
+part 126/243 plantri: 1934992 polytopes written to stdout; cpu=37.68 sec wall_s 40.12
+part 126/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 126/243 fg ref n 15 s 4 classes 52 expected_leaves 3152 expected_ring 110
+part 126/243 fg ref n 15 s 5 classes 5450 expected_leaves 184085 expected_ring 5755
+part 126/243 fg ref n 15 s 6 classes 5251 expected_leaves 76350 expected_ring 5590
+part 126/243 fg ref n 15 all 0 sabotage 0 read 1934992 class 1934992 kept 10753 expected_leaves 263587 expected_ring 11455 secs 40.11
+part 126/243 codes 10753 sha256 ab328d345a5af02aa02538d87f10d3a32f9a72aedca133ed206770c4458691bb
+part 127/243 plantri: 1779843 polytopes written to stdout; cpu=34.84 sec wall_s 37.16
+part 127/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 127/243 fg ref n 15 s 4 classes 5 expected_leaves 312 expected_ring 12
+part 127/243 fg ref n 15 s 5 classes 5104 expected_leaves 165860 expected_ring 5434
+part 127/243 fg ref n 15 s 6 classes 4707 expected_leaves 68000 expected_ring 5003
+part 127/243 fg ref n 15 all 0 sabotage 0 read 1779843 class 1779843 kept 9816 expected_leaves 234172 expected_ring 10449 secs 37.16
+part 127/243 codes 9816 sha256 3b26f86d99ca4387552276e47d3b89b1806275eaf03771d8b7ce7652da8dc7d1
+part 128/243 plantri: 1778315 polytopes written to stdout; cpu=33.53 sec wall_s 35.85
+part 128/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 128/243 fg ref n 15 s 4 classes 1 expected_leaves 80 expected_ring 2
+part 128/243 fg ref n 15 s 5 classes 5445 expected_leaves 187180 expected_ring 5766
+part 128/243 fg ref n 15 s 6 classes 6376 expected_leaves 96072 expected_ring 6850
+part 128/243 fg ref n 15 all 0 sabotage 0 read 1778315 class 1778315 kept 11822 expected_leaves 283332 expected_ring 12618 secs 35.84
+part 128/243 codes 11822 sha256 10e414e7b4ec2b92e396f4fa80d6ad454a07133ae596097e883069fe9240a625
+part 129/243 plantri: 1807804 polytopes written to stdout; cpu=34.50 sec wall_s 36.82
+part 129/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 129/243 fg ref n 15 s 4 classes 6 expected_leaves 348 expected_ring 8
+part 129/243 fg ref n 15 s 5 classes 4987 expected_leaves 170895 expected_ring 5295
+part 129/243 fg ref n 15 s 6 classes 5139 expected_leaves 75108 expected_ring 5449
+part 129/243 fg ref n 15 all 0 sabotage 0 read 1807804 class 1807804 kept 10132 expected_leaves 246351 expected_ring 10752 secs 36.82
+part 129/243 codes 10132 sha256 d25d1a95a6d1a04684ec78c4cff58dc18e8dae41b9b4bbb1d726b4be06e19a77
+part 130/243 plantri: 1839565 polytopes written to stdout; cpu=35.28 sec wall_s 37.49
+part 130/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 130/243 fg ref n 15 s 4 classes 5 expected_leaves 356 expected_ring 6
+part 130/243 fg ref n 15 s 5 classes 4185 expected_leaves 140550 expected_ring 4434
+part 130/243 fg ref n 15 s 6 classes 4405 expected_leaves 65112 expected_ring 4660
+part 130/243 fg ref n 15 all 0 sabotage 0 read 1839565 class 1839565 kept 8595 expected_leaves 206018 expected_ring 9100 secs 37.49
+part 130/243 codes 8595 sha256 03b94d7979aca789feabbadad6e704ecd77aed367fdc0dc31de604cea43d5172
+part 131/243 plantri: 1842125 polytopes written to stdout; cpu=34.11 sec wall_s 36.43
+part 131/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 131/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 131/243 fg ref n 15 s 5 classes 4651 expected_leaves 157170 expected_ring 4926
+part 131/243 fg ref n 15 s 6 classes 4171 expected_leaves 61272 expected_ring 4398
+part 131/243 fg ref n 15 all 0 sabotage 0 read 1842125 class 1842125 kept 8822 expected_leaves 218442 expected_ring 9324 secs 36.42
+part 131/243 codes 8822 sha256 948a63388c602cd9b9661c08da56a468eed29cf7bf77896ebf03fbc9fbe9ca28
+part 132/243 plantri: 1915516 polytopes written to stdout; cpu=35.07 sec wall_s 37.67
+part 132/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 132/243 fg ref n 15 s 4 classes 2 expected_leaves 160 expected_ring 5
+part 132/243 fg ref n 15 s 5 classes 6431 expected_leaves 224700 expected_ring 6765
+part 132/243 fg ref n 15 s 6 classes 6941 expected_leaves 102540 expected_ring 7311
+part 132/243 fg ref n 15 all 0 sabotage 0 read 1915516 class 1915516 kept 13374 expected_leaves 327400 expected_ring 14081 secs 37.67
+part 132/243 codes 13374 sha256 57e2bbf76d5930c724345c1700c98122f1e5bf681774c38a452718a5be70b564
+part 133/243 plantri: 1961447 polytopes written to stdout; cpu=35.53 sec wall_s 38.00
+part 133/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 133/243 fg ref n 15 s 4 classes 4 expected_leaves 316 expected_ring 5
+part 133/243 fg ref n 15 s 5 classes 5408 expected_leaves 184950 expected_ring 5653
+part 133/243 fg ref n 15 s 6 classes 6019 expected_leaves 89376 expected_ring 6380
+part 133/243 fg ref n 15 all 0 sabotage 0 read 1961447 class 1961447 kept 11431 expected_leaves 274642 expected_ring 12038 secs 38.00
+part 133/243 codes 11431 sha256 97f79c91a0eb6f7fead84c331a33130015712641de47aabe157372e58a92c685
+part 134/243 plantri: 1982802 polytopes written to stdout; cpu=34.61 sec wall_s 37.07
+part 134/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 134/243 fg ref n 15 s 4 classes 1 expected_leaves 44 expected_ring 1
+part 134/243 fg ref n 15 s 5 classes 6222 expected_leaves 210880 expected_ring 6545
+part 134/243 fg ref n 15 s 6 classes 6958 expected_leaves 100744 expected_ring 7381
+part 134/243 fg ref n 15 all 0 sabotage 0 read 1982802 class 1982802 kept 13181 expected_leaves 311668 expected_ring 13927 secs 37.07
+part 134/243 codes 13181 sha256 c9bc6616b853f97600ba1894731976df65fe9e57b0f23fdddbf434cc870547ca
+part 135/243 plantri: 2064482 polytopes written to stdout; cpu=37.00 sec wall_s 39.51
+part 135/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 135/243 fg ref n 15 s 4 classes 4 expected_leaves 328 expected_ring 5
+part 135/243 fg ref n 15 s 5 classes 6185 expected_leaves 210730 expected_ring 6595
+part 135/243 fg ref n 15 s 6 classes 7040 expected_leaves 105634 expected_ring 7504
+part 135/243 fg ref n 15 all 0 sabotage 0 read 2064482 class 2064482 kept 13229 expected_leaves 316692 expected_ring 14104 secs 39.50
+part 135/243 codes 13229 sha256 23f74a42221c89560d3ba66cf92cc2362319b353f5b96dde2f214e74b6ca3a30
+part 136/243 plantri: 2063378 polytopes written to stdout; cpu=38.26 sec wall_s 40.95
+part 136/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 136/243 fg ref n 15 s 4 classes 3 expected_leaves 180 expected_ring 4
+part 136/243 fg ref n 15 s 5 classes 5767 expected_leaves 192080 expected_ring 6095
+part 136/243 fg ref n 15 s 6 classes 5952 expected_leaves 87035 expected_ring 6333
+part 136/243 fg ref n 15 all 0 sabotage 0 read 2063378 class 2063378 kept 11722 expected_leaves 279295 expected_ring 12432 secs 40.94
+part 136/243 codes 11722 sha256 0dac95583cb0c935fd0f7707737851ac57fb23740dcfb7579af326c2f0a0f746
+part 137/243 plantri: 2007631 polytopes written to stdout; cpu=37.96 sec wall_s 40.66
+part 137/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 137/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 137/243 fg ref n 15 s 5 classes 5995 expected_leaves 217650 expected_ring 6282
+part 137/243 fg ref n 15 s 6 classes 8274 expected_leaves 124380 expected_ring 8773
+part 137/243 fg ref n 15 all 0 sabotage 0 read 2007631 class 2007631 kept 14269 expected_leaves 342030 expected_ring 15055 secs 40.66
+part 137/243 codes 14269 sha256 f5e321c66479895d520cea70f50dc4d3564ba7fd2b11eb468dfb5c59ea278206
+part 138/243 plantri: 2066845 polytopes written to stdout; cpu=36.41 sec wall_s 38.96
+part 138/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 138/243 fg ref n 15 s 4 classes 1 expected_leaves 88 expected_ring 2
+part 138/243 fg ref n 15 s 5 classes 5713 expected_leaves 194045 expected_ring 6018
+part 138/243 fg ref n 15 s 6 classes 6626 expected_leaves 95576 expected_ring 7127
+part 138/243 fg ref n 15 all 0 sabotage 0 read 2066845 class 2066845 kept 12340 expected_leaves 289709 expected_ring 13147 secs 38.95
+part 138/243 codes 12340 sha256 5cb6b170ce887054324d227dcd137c78aab3a57c4d7d0bee20b8c9a96617993b
+part 139/243 plantri: 1995433 polytopes written to stdout; cpu=36.63 sec wall_s 39.18
+part 139/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 139/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 139/243 fg ref n 15 s 5 classes 5197 expected_leaves 183225 expected_ring 5450
+part 139/243 fg ref n 15 s 6 classes 5151 expected_leaves 75960 expected_ring 5467
+part 139/243 fg ref n 15 all 0 sabotage 0 read 1995433 class 1995433 kept 10348 expected_leaves 259185 expected_ring 10917 secs 39.18
+part 139/243 codes 10348 sha256 c876d0cff534b908c9902c08e7833017d39eb40d4cf20b3b6a65d1480a69367e
+part 140/243 plantri: 1884179 polytopes written to stdout; cpu=34.75 sec wall_s 37.22
+part 140/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 140/243 fg ref n 15 s 4 classes 1 expected_leaves 80 expected_ring 1
+part 140/243 fg ref n 15 s 5 classes 4236 expected_leaves 146535 expected_ring 4434
+part 140/243 fg ref n 15 s 6 classes 5034 expected_leaves 75054 expected_ring 5323
+part 140/243 fg ref n 15 all 0 sabotage 0 read 1884179 class 1884179 kept 9271 expected_leaves 221669 expected_ring 9758 secs 37.22
+part 140/243 codes 9271 sha256 42be47336af20fa8f52593b276128f3c4a0ebe8f1716965feb77f02948e6731f
+part 141/243 plantri: 1854539 polytopes written to stdout; cpu=35.11 sec wall_s 37.43
+part 141/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 141/243 fg ref n 15 s 4 classes 4 expected_leaves 336 expected_ring 5
+part 141/243 fg ref n 15 s 5 classes 5001 expected_leaves 170855 expected_ring 5226
+part 141/243 fg ref n 15 s 6 classes 5056 expected_leaves 75068 expected_ring 5411
+part 141/243 fg ref n 15 all 0 sabotage 0 read 1854539 class 1854539 kept 10061 expected_leaves 246259 expected_ring 10642 secs 37.43
+part 141/243 codes 10061 sha256 36c2c53f52eca28d6cafa59b63de8ed371bdc72704e841589ae3f8d0d2fc3b95
+part 142/243 plantri: 1776969 polytopes written to stdout; cpu=34.63 sec wall_s 36.92
+part 142/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 142/243 fg ref n 15 s 4 classes 1 expected_leaves 40 expected_ring 1
+part 142/243 fg ref n 15 s 5 classes 4298 expected_leaves 152490 expected_ring 4513
+part 142/243 fg ref n 15 s 6 classes 5383 expected_leaves 82206 expected_ring 5720
+part 142/243 fg ref n 15 all 0 sabotage 0 read 1776969 class 1776969 kept 9682 expected_leaves 234736 expected_ring 10234 secs 36.91
+part 142/243 codes 9682 sha256 017d865277b6eed32c10bf64a7e02e927f83ef3408267318f66b443b84c68639
+part 143/243 plantri: 1980421 polytopes written to stdout; cpu=35.55 sec wall_s 37.89
+part 143/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 143/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 143/243 fg ref n 15 s 5 classes 6081 expected_leaves 206515 expected_ring 6456
+part 143/243 fg ref n 15 s 6 classes 6040 expected_leaves 87522 expected_ring 6390
+part 143/243 fg ref n 15 all 0 sabotage 0 read 1980421 class 1980421 kept 12121 expected_leaves 294037 expected_ring 12846 secs 37.88
+part 143/243 codes 12121 sha256 26d3821c29ac45996d4c0e479ab14c9830c444184df541832ba0b53753e2aed6
+part 144/243 plantri: 1825377 polytopes written to stdout; cpu=37.53 sec wall_s 39.81
+part 144/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 144/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 144/243 fg ref n 15 s 5 classes 4494 expected_leaves 156955 expected_ring 4750
+part 144/243 fg ref n 15 s 6 classes 5109 expected_leaves 75978 expected_ring 5430
+part 144/243 fg ref n 15 all 0 sabotage 0 read 1825377 class 1825377 kept 9603 expected_leaves 232933 expected_ring 10180 secs 39.80
+part 144/243 codes 9603 sha256 6d4512e2d92eb7750d90a755ef8fa3f0968dc41ad6e11f4ebd3631b9b56024c3
+part 145/243 plantri: 1931322 polytopes written to stdout; cpu=37.91 sec wall_s 40.31
+part 145/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 145/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 145/243 fg ref n 15 s 5 classes 4556 expected_leaves 162980 expected_ring 4760
+part 145/243 fg ref n 15 s 6 classes 6498 expected_leaves 97980 expected_ring 6933
+part 145/243 fg ref n 15 all 0 sabotage 0 read 1931322 class 1931322 kept 11054 expected_leaves 260960 expected_ring 11693 secs 40.30
+part 145/243 codes 11054 sha256 aef68e0eb7355aad09b9185a57c543f4c3ba490ff96d6578acfb5942728742d9
+part 146/243 plantri: 1887574 polytopes written to stdout; cpu=37.96 sec wall_s 40.33
+part 146/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 146/243 fg ref n 15 s 4 classes 3 expected_leaves 180 expected_ring 3
+part 146/243 fg ref n 15 s 5 classes 4669 expected_leaves 166060 expected_ring 4890
+part 146/243 fg ref n 15 s 6 classes 5719 expected_leaves 84474 expected_ring 6160
+part 146/243 fg ref n 15 all 0 sabotage 0 read 1887574 class 1887574 kept 10391 expected_leaves 250714 expected_ring 11053 secs 40.32
+part 146/243 codes 10391 sha256 50e91b693cff92841739939ede984d46b4ca65105cfab72779a024b238702de9
+part 147/243 plantri: 1774487 polytopes written to stdout; cpu=36.68 sec wall_s 39.01
+part 147/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 147/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 147/243 fg ref n 15 s 5 classes 4883 expected_leaves 171490 expected_ring 5139
+part 147/243 fg ref n 15 s 6 classes 6875 expected_leaves 106244 expected_ring 7261
+part 147/243 fg ref n 15 all 0 sabotage 0 read 1774487 class 1774487 kept 11758 expected_leaves 277734 expected_ring 12400 secs 39.00
+part 147/243 codes 11758 sha256 f9485039053d712e0caafa1ce43d87083377f4ec798aa149de248eef0c999001
+part 148/243 plantri: 1851123 polytopes written to stdout; cpu=34.21 sec wall_s 36.33
+part 148/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 148/243 fg ref n 15 s 4 classes 1 expected_leaves 48 expected_ring 1
+part 148/243 fg ref n 15 s 5 classes 3871 expected_leaves 134530 expected_ring 4066
+part 148/243 fg ref n 15 s 6 classes 4455 expected_leaves 66384 expected_ring 4751
+part 148/243 fg ref n 15 all 0 sabotage 0 read 1851123 class 1851123 kept 8327 expected_leaves 200962 expected_ring 8818 secs 36.32
+part 148/243 codes 8327 sha256 525b85143a8a0236fbd14470f421f5476f3eef33d88fcb0c64a28e1c06000bf0
+part 149/243 plantri: 1973584 polytopes written to stdout; cpu=38.39 sec wall_s 40.78
+part 149/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 149/243 fg ref n 15 s 4 classes 3 expected_leaves 248 expected_ring 5
+part 149/243 fg ref n 15 s 5 classes 5737 expected_leaves 192955 expected_ring 6109
+part 149/243 fg ref n 15 s 6 classes 6732 expected_leaves 99084 expected_ring 7152
+part 149/243 fg ref n 15 all 0 sabotage 0 read 1973584 class 1973584 kept 12472 expected_leaves 292287 expected_ring 13266 secs 40.77
+part 149/243 codes 12472 sha256 e87b955d7fdb55d7c211e1611699f098cb0e9ff7df7baf7309c25d0aabe9dfc2
+part 150/243 plantri: 1851500 polytopes written to stdout; cpu=37.49 sec wall_s 39.99
+part 150/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 150/243 fg ref n 15 s 4 classes 8 expected_leaves 712 expected_ring 10
+part 150/243 fg ref n 15 s 5 classes 4864 expected_leaves 167990 expected_ring 5081
+part 150/243 fg ref n 15 s 6 classes 5390 expected_leaves 81528 expected_ring 5731
+part 150/243 fg ref n 15 all 0 sabotage 0 read 1851500 class 1851500 kept 10262 expected_leaves 250230 expected_ring 10822 secs 39.99
+part 150/243 codes 10262 sha256 2568b5b14773837956d8b1c73a32c28d94e4bb780ff53e908bef39107cd83971
+part 151/243 plantri: 1968769 polytopes written to stdout; cpu=38.38 sec wall_s 40.85
+part 151/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 151/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 151/243 fg ref n 15 s 5 classes 4894 expected_leaves 172855 expected_ring 5124
+part 151/243 fg ref n 15 s 6 classes 5413 expected_leaves 79380 expected_ring 5808
+part 151/243 fg ref n 15 all 0 sabotage 0 read 1968769 class 1968769 kept 10307 expected_leaves 252235 expected_ring 10932 secs 40.84
+part 151/243 codes 10307 sha256 a2950d299a2af14f2f5b666cc4be24922ac06536adc14c8cb777170280a74043
+part 152/243 plantri: 2080427 polytopes written to stdout; cpu=39.30 sec wall_s 42.07
+part 152/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 152/243 fg ref n 15 s 4 classes 4 expected_leaves 264 expected_ring 8
+part 152/243 fg ref n 15 s 5 classes 7183 expected_leaves 255230 expected_ring 7590
+part 152/243 fg ref n 15 s 6 classes 10211 expected_leaves 157158 expected_ring 10759
+part 152/243 fg ref n 15 all 0 sabotage 0 read 2080427 class 2080427 kept 17398 expected_leaves 412652 expected_ring 18357 secs 42.07
+part 152/243 codes 17398 sha256 d3ddf748cd2a8734a8a67c5f741d7ab7b72f93d352d35b652f0c5bd5b06a6823
+part 153/243 plantri: 2084588 polytopes written to stdout; cpu=37.59 sec wall_s 40.19
+part 153/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 153/243 fg ref n 15 s 4 classes 2 expected_leaves 168 expected_ring 3
+part 153/243 fg ref n 15 s 5 classes 5942 expected_leaves 208250 expected_ring 6219
+part 153/243 fg ref n 15 s 6 classes 6410 expected_leaves 91686 expected_ring 6797
+part 153/243 fg ref n 15 all 0 sabotage 0 read 2084588 class 2084588 kept 12354 expected_leaves 300104 expected_ring 13019 secs 40.19
+part 153/243 codes 12354 sha256 3c30742cf3293f7e1813a35a9528b50d5135a36351c0651edf4b2e26c70a16dd
+part 154/243 plantri: 1951074 polytopes written to stdout; cpu=36.99 sec wall_s 39.51
+part 154/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 154/243 fg ref n 15 s 4 classes 2 expected_leaves 60 expected_ring 2
+part 154/243 fg ref n 15 s 5 classes 5773 expected_leaves 190885 expected_ring 6019
+part 154/243 fg ref n 15 s 6 classes 5781 expected_leaves 83520 expected_ring 6169
+part 154/243 fg ref n 15 all 0 sabotage 0 read 1951074 class 1951074 kept 11556 expected_leaves 274465 expected_ring 12190 secs 39.51
+part 154/243 codes 11556 sha256 120ccc874e0fc34b490963bac0ade76ef8f3703dfef63f863f00042226c436f3
+part 155/243 plantri: 1911970 polytopes written to stdout; cpu=38.30 sec wall_s 40.93
+part 155/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 155/243 fg ref n 15 s 4 classes 6 expected_leaves 496 expected_ring 8
+part 155/243 fg ref n 15 s 5 classes 4922 expected_leaves 162735 expected_ring 5194
+part 155/243 fg ref n 15 s 6 classes 5000 expected_leaves 72954 expected_ring 5254
+part 155/243 fg ref n 15 all 0 sabotage 0 read 1911970 class 1911970 kept 9928 expected_leaves 236185 expected_ring 10456 secs 40.93
+part 155/243 codes 9928 sha256 42cefb4da48fc10c224b71c2a59b2b169bced2444fa4583bb493347b3b66c796
+part 156/243 plantri: 1835870 polytopes written to stdout; cpu=38.47 sec wall_s 41.04
+part 156/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 156/243 fg ref n 15 s 4 classes 1 expected_leaves 80 expected_ring 2
+part 156/243 fg ref n 15 s 5 classes 5090 expected_leaves 170770 expected_ring 5328
+part 156/243 fg ref n 15 s 6 classes 5543 expected_leaves 83604 expected_ring 5890
+part 156/243 fg ref n 15 all 0 sabotage 0 read 1835870 class 1835870 kept 10634 expected_leaves 254454 expected_ring 11220 secs 41.04
+part 156/243 codes 10634 sha256 c5f18262b6b2e1414c3a6f99631b278cecb3cd47be46779b4392dc557cd97cc2
+part 157/243 plantri: 1855427 polytopes written to stdout; cpu=36.11 sec wall_s 38.39
+part 157/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 157/243 fg ref n 15 s 4 classes 7 expected_leaves 352 expected_ring 12
+part 157/243 fg ref n 15 s 5 classes 3738 expected_leaves 131435 expected_ring 3890
+part 157/243 fg ref n 15 s 6 classes 5562 expected_leaves 88716 expected_ring 5870
+part 157/243 fg ref n 15 all 0 sabotage 0 read 1855427 class 1855427 kept 9307 expected_leaves 220503 expected_ring 9772 secs 38.39
+part 157/243 codes 9307 sha256 a5d7c45de1d3572a074bfc0995df1db5bb2950eaa02d7d1fc323e41d312d7445
+part 158/243 plantri: 1739049 polytopes written to stdout; cpu=34.80 sec wall_s 37.15
+part 158/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 158/243 fg ref n 15 s 4 classes 15 expected_leaves 1104 expected_ring 19
+part 158/243 fg ref n 15 s 5 classes 4440 expected_leaves 154385 expected_ring 4654
+part 158/243 fg ref n 15 s 6 classes 4586 expected_leaves 67680 expected_ring 4821
+part 158/243 fg ref n 15 all 0 sabotage 0 read 1739049 class 1739049 kept 9041 expected_leaves 223169 expected_ring 9494 secs 37.14
+part 158/243 codes 9041 sha256 ab596863679282c551fd2b9345990ed6b3c35717fa4f8ab5722453cbafa8310a
+part 159/243 plantri: 1751873 polytopes written to stdout; cpu=35.81 sec wall_s 38.14
+part 159/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 159/243 fg ref n 15 s 4 classes 1 expected_leaves 32 expected_ring 1
+part 159/243 fg ref n 15 s 5 classes 3185 expected_leaves 109980 expected_ring 3331
+part 159/243 fg ref n 15 s 6 classes 4162 expected_leaves 62784 expected_ring 4432
+part 159/243 fg ref n 15 all 0 sabotage 0 read 1751873 class 1751873 kept 7348 expected_leaves 172796 expected_ring 7764 secs 38.14
+part 159/243 codes 7348 sha256 6ce6472470eba0dd9051b56cfeecc8ecd32e4cbdc2ca707190a0ab70631afadd
+part 160/243 plantri: 1844198 polytopes written to stdout; cpu=36.79 sec wall_s 39.19
+part 160/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 160/243 fg ref n 15 s 4 classes 6 expected_leaves 288 expected_ring 8
+part 160/243 fg ref n 15 s 5 classes 4764 expected_leaves 162725 expected_ring 5042
+part 160/243 fg ref n 15 s 6 classes 5750 expected_leaves 86154 expected_ring 6078
+part 160/243 fg ref n 15 all 0 sabotage 0 read 1844198 class 1844198 kept 10520 expected_leaves 249167 expected_ring 11128 secs 39.18
+part 160/243 codes 10520 sha256 e01ef69784b2e1aeb4f9226687298f6453318ac1e8a3663998e26fe443215851
+part 161/243 plantri: 1845703 polytopes written to stdout; cpu=36.81 sec wall_s 39.21
+part 161/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 161/243 fg ref n 15 s 4 classes 2 expected_leaves 176 expected_ring 5
+part 161/243 fg ref n 15 s 5 classes 6210 expected_leaves 209580 expected_ring 6542
+part 161/243 fg ref n 15 s 6 classes 6666 expected_leaves 97482 expected_ring 7069
+part 161/243 fg ref n 15 all 0 sabotage 0 read 1845703 class 1845703 kept 12878 expected_leaves 307238 expected_ring 13616 secs 39.21
+part 161/243 codes 12878 sha256 a1223c31228a9d947c5d2a5f57a38b520ae0c96c24573e06747798629bef748b
+part 162/243 plantri: 1994981 polytopes written to stdout; cpu=37.51 sec wall_s 40.25
+part 162/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 162/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 162/243 fg ref n 15 s 5 classes 6243 expected_leaves 216105 expected_ring 6553
+part 162/243 fg ref n 15 s 6 classes 7674 expected_leaves 115242 expected_ring 8170
+part 162/243 fg ref n 15 all 0 sabotage 0 read 1994981 class 1994981 kept 13917 expected_leaves 331347 expected_ring 14723 secs 40.24
+part 162/243 codes 13917 sha256 b10e2fd6934cde75315152e460ec156333f9c90dd0926d7678857c1902440d14
+part 163/243 plantri: 1908927 polytopes written to stdout; cpu=37.84 sec wall_s 40.40
+part 163/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 163/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 163/243 fg ref n 15 s 5 classes 5678 expected_leaves 188995 expected_ring 6011
+part 163/243 fg ref n 15 s 6 classes 5572 expected_leaves 81810 expected_ring 5949
+part 163/243 fg ref n 15 all 0 sabotage 0 read 1908927 class 1908927 kept 11250 expected_leaves 270805 expected_ring 11960 secs 40.40
+part 163/243 codes 11250 sha256 fbfb95d87bc101e1bba39edb2ab940cabbb73963a263e3336fdbbc12b54cf590
+part 164/243 plantri: 1822765 polytopes written to stdout; cpu=37.82 sec wall_s 40.25
+part 164/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 164/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 164/243 fg ref n 15 s 5 classes 4002 expected_leaves 138420 expected_ring 4191
+part 164/243 fg ref n 15 s 6 classes 4509 expected_leaves 68454 expected_ring 4767
+part 164/243 fg ref n 15 all 0 sabotage 0 read 1822765 class 1822765 kept 8511 expected_leaves 206874 expected_ring 8958 secs 40.25
+part 164/243 codes 8511 sha256 8a7fecb2e4d45a3112e4ac5b2da7fd761fd17570ae0563e33bc81de767c8f1ee
+part 165/243 plantri: 1969070 polytopes written to stdout; cpu=40.53 sec wall_s 43.09
+part 165/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 165/243 fg ref n 15 s 4 classes 2 expected_leaves 132 expected_ring 2
+part 165/243 fg ref n 15 s 5 classes 5924 expected_leaves 202185 expected_ring 6206
+part 165/243 fg ref n 15 s 6 classes 6556 expected_leaves 98484 expected_ring 6958
+part 165/243 fg ref n 15 all 0 sabotage 0 read 1969070 class 1969070 kept 12482 expected_leaves 300801 expected_ring 13166 secs 43.08
+part 165/243 codes 12482 sha256 165038fad40326a553877b4a1f608b5afd670e87da65e7cbef66d792c462c4eb
+part 166/243 plantri: 1964692 polytopes written to stdout; cpu=40.47 sec wall_s 43.29
+part 166/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 166/243 fg ref n 15 s 4 classes 4 expected_leaves 260 expected_ring 6
+part 166/243 fg ref n 15 s 5 classes 5090 expected_leaves 172095 expected_ring 5366
+part 166/243 fg ref n 15 s 6 classes 6042 expected_leaves 89418 expected_ring 6423
+part 166/243 fg ref n 15 all 0 sabotage 0 read 1964692 class 1964692 kept 11136 expected_leaves 261773 expected_ring 11795 secs 43.28
+part 166/243 codes 11136 sha256 52095b1d4e8b993e48e6cc18ea0db7fd54882cd8234fad0611d0981dc0597dfe
+part 167/243 plantri: 1764366 polytopes written to stdout; cpu=39.43 sec wall_s 41.94
+part 167/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 167/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 167/243 fg ref n 15 s 5 classes 4752 expected_leaves 163500 expected_ring 5029
+part 167/243 fg ref n 15 s 6 classes 4398 expected_leaves 63258 expected_ring 4669
+part 167/243 fg ref n 15 all 0 sabotage 0 read 1764366 class 1764366 kept 9150 expected_leaves 226758 expected_ring 9698 secs 41.94
+part 167/243 codes 9150 sha256 1edea47186301118f7af73c388dd613874f23cff9944f6ca9ee886d96d5a9fd6
+part 168/243 plantri: 1872906 polytopes written to stdout; cpu=40.84 sec wall_s 43.41
+part 168/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 168/243 fg ref n 15 s 4 classes 2 expected_leaves 132 expected_ring 3
+part 168/243 fg ref n 15 s 5 classes 4790 expected_leaves 166955 expected_ring 5018
+part 168/243 fg ref n 15 s 6 classes 5343 expected_leaves 80766 expected_ring 5594
+part 168/243 fg ref n 15 all 0 sabotage 0 read 1872906 class 1872906 kept 10135 expected_leaves 247853 expected_ring 10615 secs 43.40
+part 168/243 codes 10135 sha256 e5c4de8a3222bf2c9957a2913288773f21797d90db22c9381e538712bb532890
+part 169/243 plantri: 1727993 polytopes written to stdout; cpu=38.38 sec wall_s 40.81
+part 169/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 169/243 fg ref n 15 s 4 classes 1 expected_leaves 80 expected_ring 1
+part 169/243 fg ref n 15 s 5 classes 4817 expected_leaves 162770 expected_ring 5087
+part 169/243 fg ref n 15 s 6 classes 4605 expected_leaves 68805 expected_ring 5042
+part 169/243 fg ref n 15 all 0 sabotage 0 read 1727993 class 1727993 kept 9423 expected_leaves 231655 expected_ring 10130 secs 40.80
+part 169/243 codes 9423 sha256 02f4d21b46db8fe0d950d9246f501121272c6f18c71bf1073fbb76f93abc963d
+part 170/243 plantri: 1804054 polytopes written to stdout; cpu=39.27 sec wall_s 41.59
+part 170/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 170/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 170/243 fg ref n 15 s 5 classes 4990 expected_leaves 168930 expected_ring 5270
+part 170/243 fg ref n 15 s 6 classes 4799 expected_leaves 69630 expected_ring 5152
+part 170/243 fg ref n 15 all 0 sabotage 0 read 1804054 class 1804054 kept 9789 expected_leaves 238560 expected_ring 10422 secs 41.59
+part 170/243 codes 9789 sha256 e3f1812a57faf4af00b4b9692ea2ee87259b8897e167bf5dc9ef16c5efb28d9a
+part 171/243 plantri: 1768213 polytopes written to stdout; cpu=36.71 sec wall_s 38.97
+part 171/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 171/243 fg ref n 15 s 4 classes 7 expected_leaves 348 expected_ring 9
+part 171/243 fg ref n 15 s 5 classes 3836 expected_leaves 130845 expected_ring 4028
+part 171/243 fg ref n 15 s 6 classes 4074 expected_leaves 59502 expected_ring 4350
+part 171/243 fg ref n 15 all 0 sabotage 0 read 1768213 class 1768213 kept 7917 expected_leaves 190695 expected_ring 8387 secs 38.96
+part 171/243 codes 7917 sha256 095517e0088137fbcda403f08efbee3b5bf4be6f3eb14b5f7dcc3982b69683e1
+part 172/243 plantri: 2034820 polytopes written to stdout; cpu=40.46 sec wall_s 43.12
+part 172/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 172/243 fg ref n 15 s 4 classes 2 expected_leaves 176 expected_ring 6
+part 172/243 fg ref n 15 s 5 classes 5396 expected_leaves 187575 expected_ring 5644
+part 172/243 fg ref n 15 s 6 classes 6551 expected_leaves 98262 expected_ring 6966
+part 172/243 fg ref n 15 all 0 sabotage 0 read 2034820 class 2034820 kept 11949 expected_leaves 286013 expected_ring 12616 secs 43.11
+part 172/243 codes 11949 sha256 a539b975bbf847e9ce73bf3333301bda9e74d10375550bf3637348d6ce59146f
+part 173/243 plantri: 1846763 polytopes written to stdout; cpu=37.85 sec wall_s 40.30
+part 173/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 173/243 fg ref n 15 s 4 classes 1 expected_leaves 88 expected_ring 2
+part 173/243 fg ref n 15 s 5 classes 5394 expected_leaves 183430 expected_ring 5719
+part 173/243 fg ref n 15 s 6 classes 5208 expected_leaves 77700 expected_ring 5542
+part 173/243 fg ref n 15 all 0 sabotage 0 read 1846763 class 1846763 kept 10603 expected_leaves 261218 expected_ring 11263 secs 40.29
+part 173/243 codes 10603 sha256 a61a60c9a3704e8c25969ffe9d396d28aa346c74cec6099db4c7d00a8ff87f34
+part 174/243 plantri: 1772922 polytopes written to stdout; cpu=34.92 sec wall_s 37.26
+part 174/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 174/243 fg ref n 15 s 4 classes 13 expected_leaves 940 expected_ring 18
+part 174/243 fg ref n 15 s 5 classes 4558 expected_leaves 148755 expected_ring 4812
+part 174/243 fg ref n 15 s 6 classes 4214 expected_leaves 60276 expected_ring 4481
+part 174/243 fg ref n 15 all 0 sabotage 0 read 1772922 class 1772922 kept 8785 expected_leaves 209971 expected_ring 9311 secs 37.25
+part 174/243 codes 8785 sha256 acecb888f059803ae6dcebd0005114bc45492d1cd5299bb2c7b593fe350cf091
+part 175/243 plantri: 1782142 polytopes written to stdout; cpu=35.47 sec wall_s 37.68
+part 175/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 175/243 fg ref n 15 s 4 classes 1 expected_leaves 80 expected_ring 1
+part 175/243 fg ref n 15 s 5 classes 3579 expected_leaves 127405 expected_ring 3746
+part 175/243 fg ref n 15 s 6 classes 4295 expected_leaves 63330 expected_ring 4571
+part 175/243 fg ref n 15 all 0 sabotage 0 read 1782142 class 1782142 kept 7875 expected_leaves 190815 expected_ring 8318 secs 37.67
+part 175/243 codes 7875 sha256 adc668fa6f81f26540556ed1f9aff89fd8b568bc1e2b8984969d025d9270828d
+part 176/243 plantri: 1849534 polytopes written to stdout; cpu=37.54 sec wall_s 39.95
+part 176/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 176/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 176/243 fg ref n 15 s 5 classes 3971 expected_leaves 139470 expected_ring 4192
+part 176/243 fg ref n 15 s 6 classes 4531 expected_leaves 68262 expected_ring 4776
+part 176/243 fg ref n 15 all 0 sabotage 0 read 1849534 class 1849534 kept 8502 expected_leaves 207732 expected_ring 8968 secs 39.94
+part 176/243 codes 8502 sha256 acaf34ed8fac5bc3bb3c4af856167708c5d75f613f3e13966cd5f38836824fd5
+part 177/243 plantri: 1896572 polytopes written to stdout; cpu=37.81 sec wall_s 40.25
+part 177/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 177/243 fg ref n 15 s 4 classes 9 expected_leaves 704 expected_ring 13
+part 177/243 fg ref n 15 s 5 classes 4731 expected_leaves 155570 expected_ring 4995
+part 177/243 fg ref n 15 s 6 classes 4280 expected_leaves 63246 expected_ring 4521
+part 177/243 fg ref n 15 all 0 sabotage 0 read 1896572 class 1896572 kept 9020 expected_leaves 219520 expected_ring 9529 secs 40.24
+part 177/243 codes 9020 sha256 426ecdedfbb56653ee1b0bf491f5e805f050a428923fd96f8889e8574066d47f
+part 178/243 plantri: 1956916 polytopes written to stdout; cpu=37.06 sec wall_s 39.62
+part 178/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 178/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 178/243 fg ref n 15 s 5 classes 5201 expected_leaves 173900 expected_ring 5531
+part 178/243 fg ref n 15 s 6 classes 4749 expected_leaves 69660 expected_ring 5087
+part 178/243 fg ref n 15 all 0 sabotage 0 read 1956916 class 1956916 kept 9950 expected_leaves 243560 expected_ring 10618 secs 39.61
+part 178/243 codes 9950 sha256 b540195bfa3e35f49e9c3e38203b2638fc5ca954ce6dd90f6d2caed3e377e737
+part 179/243 plantri: 1708587 polytopes written to stdout; cpu=34.38 sec wall_s 36.71
+part 179/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 179/243 fg ref n 15 s 4 classes 3 expected_leaves 144 expected_ring 3
+part 179/243 fg ref n 15 s 5 classes 4181 expected_leaves 139110 expected_ring 4396
+part 179/243 fg ref n 15 s 6 classes 3872 expected_leaves 55488 expected_ring 4170
+part 179/243 fg ref n 15 all 0 sabotage 0 read 1708587 class 1708587 kept 8056 expected_leaves 194742 expected_ring 8569 secs 36.70
+part 179/243 codes 8056 sha256 c09b22824f245c490416054ab872962445803700922a80787142baa3de2361b3
+part 180/243 plantri: 1872498 polytopes written to stdout; cpu=36.43 sec wall_s 38.92
+part 180/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 180/243 fg ref n 15 s 4 classes 4 expected_leaves 220 expected_ring 4
+part 180/243 fg ref n 15 s 5 classes 5552 expected_leaves 188935 expected_ring 5878
+part 180/243 fg ref n 15 s 6 classes 5134 expected_leaves 74952 expected_ring 5468
+part 180/243 fg ref n 15 all 0 sabotage 0 read 1872498 class 1872498 kept 10690 expected_leaves 264107 expected_ring 11350 secs 38.92
+part 180/243 codes 10690 sha256 d77f831102fd8a8311f52ee9eaabc25f7414ee87166119d6d9f5d08f698d4b8e
+part 181/243 plantri: 1916651 polytopes written to stdout; cpu=36.86 sec wall_s 39.42
+part 181/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 181/243 fg ref n 15 s 4 classes 2 expected_leaves 200 expected_ring 2
+part 181/243 fg ref n 15 s 5 classes 5558 expected_leaves 189760 expected_ring 5842
+part 181/243 fg ref n 15 s 6 classes 6848 expected_leaves 106326 expected_ring 7320
+part 181/243 fg ref n 15 all 0 sabotage 0 read 1916651 class 1916651 kept 12408 expected_leaves 296286 expected_ring 13164 secs 39.41
+part 181/243 codes 12408 sha256 4202dd24f1c070e5de1ea6b56ff42816fa76a60ddabe2f444dba10d748019cdf
+part 182/243 plantri: 1861348 polytopes written to stdout; cpu=36.60 sec wall_s 39.13
+part 182/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 182/243 fg ref n 15 s 4 classes 2 expected_leaves 200 expected_ring 3
+part 182/243 fg ref n 15 s 5 classes 4873 expected_leaves 165130 expected_ring 5182
+part 182/243 fg ref n 15 s 6 classes 5092 expected_leaves 75126 expected_ring 5403
+part 182/243 fg ref n 15 all 0 sabotage 0 read 1861348 class 1861348 kept 9967 expected_leaves 240456 expected_ring 10588 secs 39.13
+part 182/243 codes 9967 sha256 797876a95ccee4dd2f3238087db5c0366bbae5307bb6aed8a90cce2b717db6cd
+part 183/243 plantri: 1786045 polytopes written to stdout; cpu=33.46 sec wall_s 35.84
+part 183/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 183/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 183/243 fg ref n 15 s 5 classes 4310 expected_leaves 151445 expected_ring 4560
+part 183/243 fg ref n 15 s 6 classes 5093 expected_leaves 77412 expected_ring 5386
+part 183/243 fg ref n 15 all 0 sabotage 0 read 1786045 class 1786045 kept 9403 expected_leaves 228857 expected_ring 9946 secs 35.83
+part 183/243 codes 9403 sha256 f13151a452dfdb1dc2ef251becf96d63f8106c66845e16f9bfc71d26e0d952c5
+part 184/243 plantri: 1914531 polytopes written to stdout; cpu=35.03 sec wall_s 37.48
+part 184/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 184/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 184/243 fg ref n 15 s 5 classes 5988 expected_leaves 205090 expected_ring 6334
+part 184/243 fg ref n 15 s 6 classes 6056 expected_leaves 89136 expected_ring 6454
+part 184/243 fg ref n 15 all 0 sabotage 0 read 1914531 class 1914531 kept 12044 expected_leaves 294226 expected_ring 12788 secs 37.47
+part 184/243 codes 12044 sha256 69d40bad5a1d586a210fbdfbd252422bafee0b39487d24d4266d6a4a10876cbd
+part 185/243 plantri: 2017764 polytopes written to stdout; cpu=37.16 sec wall_s 39.83
+part 185/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 185/243 fg ref n 15 s 4 classes 4 expected_leaves 304 expected_ring 6
+part 185/243 fg ref n 15 s 5 classes 7066 expected_leaves 234995 expected_ring 7510
+part 185/243 fg ref n 15 s 6 classes 6350 expected_leaves 93360 expected_ring 6714
+part 185/243 fg ref n 15 all 0 sabotage 0 read 2017764 class 2017764 kept 13420 expected_leaves 328659 expected_ring 14230 secs 39.81
+part 185/243 codes 13420 sha256 c257cd80431fb66cc836f8b34d38c9ac5a085492f25874b79d4fc22691cb1a00
+part 186/243 plantri: 1924934 polytopes written to stdout; cpu=35.24 sec wall_s 37.72
+part 186/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 186/243 fg ref n 15 s 4 classes 2 expected_leaves 144 expected_ring 2
+part 186/243 fg ref n 15 s 5 classes 4582 expected_leaves 158945 expected_ring 4847
+part 186/243 fg ref n 15 s 6 classes 4825 expected_leaves 69900 expected_ring 5140
+part 186/243 fg ref n 15 all 0 sabotage 0 read 1924934 class 1924934 kept 9409 expected_leaves 228989 expected_ring 9989 secs 37.72
+part 186/243 codes 9409 sha256 1d0f6fc76e21ac444ff67fc297fc60dd9c40411708fcf8b331915f6d19e4ff7e
+part 187/243 plantri: 1862308 polytopes written to stdout; cpu=33.83 sec wall_s 36.26
+part 187/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 187/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 187/243 fg ref n 15 s 5 classes 4791 expected_leaves 169405 expected_ring 5013
+part 187/243 fg ref n 15 s 6 classes 4988 expected_leaves 74421 expected_ring 5292
+part 187/243 fg ref n 15 all 0 sabotage 0 read 1862308 class 1862308 kept 9779 expected_leaves 243826 expected_ring 10305 secs 36.26
+part 187/243 codes 9779 sha256 11ec65e1780ea0c9b9490dada0c973e467d1988ac69191539631ceae3c8ca174
+part 188/243 plantri: 1990722 polytopes written to stdout; cpu=36.46 sec wall_s 39.03
+part 188/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 188/243 fg ref n 15 s 4 classes 2 expected_leaves 124 expected_ring 5
+part 188/243 fg ref n 15 s 5 classes 5565 expected_leaves 185170 expected_ring 5925
+part 188/243 fg ref n 15 s 6 classes 5719 expected_leaves 83394 expected_ring 6115
+part 188/243 fg ref n 15 all 0 sabotage 0 read 1990722 class 1990722 kept 11286 expected_leaves 268688 expected_ring 12045 secs 39.03
+part 188/243 codes 11286 sha256 3977fb6d6c49b629643020b5efd2ca42c6f5e4d40a57b0e38c852fe6c52068cd
+part 189/243 plantri: 1964157 polytopes written to stdout; cpu=35.23 sec wall_s 37.72
+part 189/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 189/243 fg ref n 15 s 4 classes 3 expected_leaves 200 expected_ring 3
+part 189/243 fg ref n 15 s 5 classes 5065 expected_leaves 165930 expected_ring 5333
+part 189/243 fg ref n 15 s 6 classes 5482 expected_leaves 81932 expected_ring 5797
+part 189/243 fg ref n 15 all 0 sabotage 0 read 1964157 class 1964157 kept 10550 expected_leaves 248062 expected_ring 11133 secs 37.72
+part 189/243 codes 10550 sha256 6c21c1ea414933e8c5c7951393427bd5c78421aea332530a9c5b685f2919f2f9
+part 190/243 plantri: 1772534 polytopes written to stdout; cpu=32.79 sec wall_s 35.12
+part 190/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 190/243 fg ref n 15 s 4 classes 4 expected_leaves 176 expected_ring 8
+part 190/243 fg ref n 15 s 5 classes 4709 expected_leaves 155310 expected_ring 5002
+part 190/243 fg ref n 15 s 6 classes 4708 expected_leaves 69300 expected_ring 5079
+part 190/243 fg ref n 15 all 0 sabotage 0 read 1772534 class 1772534 kept 9421 expected_leaves 224786 expected_ring 10089 secs 35.11
+part 190/243 codes 9421 sha256 c65639ca32da8649fedc447ffea10ddd2ca7cd1906f42f0aaeb37006c27855cd
+part 191/243 plantri: 1823501 polytopes written to stdout; cpu=34.50 sec wall_s 36.99
+part 191/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 191/243 fg ref n 15 s 4 classes 33 expected_leaves 2384 expected_ring 38
+part 191/243 fg ref n 15 s 5 classes 4836 expected_leaves 156082 expected_ring 5160
+part 191/243 fg ref n 15 s 6 classes 5197 expected_leaves 75450 expected_ring 5533
+part 191/243 fg ref n 15 all 0 sabotage 0 read 1823501 class 1823501 kept 10066 expected_leaves 233916 expected_ring 10731 secs 36.98
+part 191/243 codes 10066 sha256 bb5d0e892b1408381b14775fe4cbcca79bee6c619487accc7459ddc2c7cce6d1
+part 192/243 plantri: 1879255 polytopes written to stdout; cpu=35.31 sec wall_s 37.88
+part 192/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 192/243 fg ref n 15 s 4 classes 11 expected_leaves 732 expected_ring 13
+part 192/243 fg ref n 15 s 5 classes 6778 expected_leaves 224360 expected_ring 7193
+part 192/243 fg ref n 15 s 6 classes 7023 expected_leaves 102681 expected_ring 7524
+part 192/243 fg ref n 15 all 0 sabotage 0 read 1879255 class 1879255 kept 13812 expected_leaves 327773 expected_ring 14730 secs 37.88
+part 192/243 codes 13812 sha256 7bee9c36dac352c20e2807ee37b97c28702c566595d46e446789461672df5a39
+part 193/243 plantri: 1800973 polytopes written to stdout; cpu=33.69 sec wall_s 36.12
+part 193/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 193/243 fg ref n 15 s 4 classes 5 expected_leaves 380 expected_ring 7
+part 193/243 fg ref n 15 s 5 classes 6683 expected_leaves 220595 expected_ring 7000
+part 193/243 fg ref n 15 s 6 classes 6839 expected_leaves 99852 expected_ring 7273
+part 193/243 fg ref n 15 all 0 sabotage 0 read 1800973 class 1800973 kept 13527 expected_leaves 320827 expected_ring 14280 secs 36.12
+part 193/243 codes 13527 sha256 ce2a68e9adc8323d6920d39213c0083d21c0b5c4dbc38d18878b2557a28ff661
+part 194/243 plantri: 1869119 polytopes written to stdout; cpu=36.01 sec wall_s 38.62
+part 194/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 194/243 fg ref n 15 s 4 classes 1 expected_leaves 72 expected_ring 1
+part 194/243 fg ref n 15 s 5 classes 4402 expected_leaves 147091 expected_ring 4653
+part 194/243 fg ref n 15 s 6 classes 4958 expected_leaves 73266 expected_ring 5293
+part 194/243 fg ref n 15 all 0 sabotage 0 read 1869119 class 1869119 kept 9361 expected_leaves 220429 expected_ring 9947 secs 38.61
+part 194/243 codes 9361 sha256 a564eeabf2c5e25cc2f3210218d8f40746eca71ce103458ba842cc481fc8aa76
+part 195/243 plantri: 1988705 polytopes written to stdout; cpu=37.12 sec wall_s 39.64
+part 195/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 195/243 fg ref n 15 s 4 classes 1 expected_leaves 64 expected_ring 1
+part 195/243 fg ref n 15 s 5 classes 4712 expected_leaves 160570 expected_ring 4933
+part 195/243 fg ref n 15 s 6 classes 5706 expected_leaves 84966 expected_ring 5991
+part 195/243 fg ref n 15 all 0 sabotage 0 read 1988705 class 1988705 kept 10419 expected_leaves 245600 expected_ring 10925 secs 39.64
+part 195/243 codes 10419 sha256 4022ed218474bccfe17383a11660762ddef0928c0e6bb93f06af20c62792cf6e
+part 196/243 plantri: 1923904 polytopes written to stdout; cpu=34.91 sec wall_s 37.34
+part 196/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 196/243 fg ref n 15 s 4 classes 11 expected_leaves 740 expected_ring 18
+part 196/243 fg ref n 15 s 5 classes 5824 expected_leaves 192745 expected_ring 6124
+part 196/243 fg ref n 15 s 6 classes 6321 expected_leaves 93324 expected_ring 6766
+part 196/243 fg ref n 15 all 0 sabotage 0 read 1923904 class 1923904 kept 12156 expected_leaves 286809 expected_ring 12908 secs 37.34
+part 196/243 codes 12156 sha256 bb420a64fd5bbbabd4a7e57c0f5cb8d24291930efc0d9a6ab0a7aeb77e677253
+part 197/243 plantri: 1830322 polytopes written to stdout; cpu=36.27 sec wall_s 38.84
+part 197/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 197/243 fg ref n 15 s 4 classes 13 expected_leaves 928 expected_ring 17
+part 197/243 fg ref n 15 s 5 classes 4222 expected_leaves 141540 expected_ring 4449
+part 197/243 fg ref n 15 s 6 classes 5404 expected_leaves 83478 expected_ring 5718
+part 197/243 fg ref n 15 all 0 sabotage 0 read 1830322 class 1830322 kept 9639 expected_leaves 225946 expected_ring 10184 secs 38.84
+part 197/243 codes 9639 sha256 b6de0b0b22b81045ad0bec726d53d4953ae03c1185fbe598a65efbf3a3504d5a
+part 198/243 plantri: 1893863 polytopes written to stdout; cpu=35.14 sec wall_s 37.65
+part 198/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 198/243 fg ref n 15 s 4 classes 4 expected_leaves 344 expected_ring 6
+part 198/243 fg ref n 15 s 5 classes 4868 expected_leaves 166800 expected_ring 5100
+part 198/243 fg ref n 15 s 6 classes 5340 expected_leaves 78036 expected_ring 5703
+part 198/243 fg ref n 15 all 0 sabotage 0 read 1893863 class 1893863 kept 10212 expected_leaves 245180 expected_ring 10809 secs 37.64
+part 198/243 codes 10212 sha256 31f0ae646711958c5d3edc67a9131528784a61648d68324ec0c4f1a861036cb8
+part 199/243 plantri: 1919204 polytopes written to stdout; cpu=33.92 sec wall_s 36.33
+part 199/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 199/243 fg ref n 15 s 4 classes 4 expected_leaves 212 expected_ring 6
+part 199/243 fg ref n 15 s 5 classes 5238 expected_leaves 176945 expected_ring 5486
+part 199/243 fg ref n 15 s 6 classes 5910 expected_leaves 87462 expected_ring 6224
+part 199/243 fg ref n 15 all 0 sabotage 0 read 1919204 class 1919204 kept 11152 expected_leaves 264619 expected_ring 11716 secs 36.33
+part 199/243 codes 11152 sha256 4a7fb08a7c12f42d2cd6665671d5b0cf83027e2a4ccb7f43d16c66e973e0dc18
+part 200/243 plantri: 1794093 polytopes written to stdout; cpu=33.78 sec wall_s 36.25
+part 200/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 200/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 200/243 fg ref n 15 s 5 classes 5518 expected_leaves 188485 expected_ring 5772
+part 200/243 fg ref n 15 s 6 classes 7338 expected_leaves 111774 expected_ring 7803
+part 200/243 fg ref n 15 all 0 sabotage 0 read 1794093 class 1794093 kept 12856 expected_leaves 300259 expected_ring 13575 secs 36.24
+part 200/243 codes 12856 sha256 59ee0d52eee96e23a853e509c1653c08e9cff4cbecb7ed71cfa333d4b3297d2b
+part 201/243 plantri: 1894435 polytopes written to stdout; cpu=33.63 sec wall_s 36.06
+part 201/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 201/243 fg ref n 15 s 4 classes 2 expected_leaves 184 expected_ring 5
+part 201/243 fg ref n 15 s 5 classes 6065 expected_leaves 202180 expected_ring 6362
+part 201/243 fg ref n 15 s 6 classes 5501 expected_leaves 79018 expected_ring 5890
+part 201/243 fg ref n 15 all 0 sabotage 0 read 1894435 class 1894435 kept 11568 expected_leaves 281382 expected_ring 12257 secs 36.06
+part 201/243 codes 11568 sha256 8b3ba3925598534cd5b08a89553ea11c0f14bcfe87551d65086919b68cb78a5e
+part 202/243 plantri: 1764446 polytopes written to stdout; cpu=32.37 sec wall_s 34.66
+part 202/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 202/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 202/243 fg ref n 15 s 5 classes 4042 expected_leaves 136380 expected_ring 4251
+part 202/243 fg ref n 15 s 6 classes 3897 expected_leaves 55128 expected_ring 4140
+part 202/243 fg ref n 15 all 0 sabotage 0 read 1764446 class 1764446 kept 7939 expected_leaves 191508 expected_ring 8391 secs 34.66
+part 202/243 codes 7939 sha256 5cc33176e408235ebeacf13ac047abe53efe83a4370843864f49b6d992718d88
+part 203/243 plantri: 1848346 polytopes written to stdout; cpu=32.64 sec wall_s 35.05
+part 203/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 203/243 fg ref n 15 s 4 classes 4 expected_leaves 284 expected_ring 4
+part 203/243 fg ref n 15 s 5 classes 6372 expected_leaves 214745 expected_ring 6676
+part 203/243 fg ref n 15 s 6 classes 6337 expected_leaves 93162 expected_ring 6772
+part 203/243 fg ref n 15 all 0 sabotage 0 read 1848346 class 1848346 kept 12713 expected_leaves 308191 expected_ring 13452 secs 35.05
+part 203/243 codes 12713 sha256 7e4abd0a19361c6b33f61ae772711812c35fbc6ed5ec9942a7cdc71b726c9d0f
+part 204/243 plantri: 1988532 polytopes written to stdout; cpu=35.53 sec wall_s 38.17
+part 204/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 204/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 204/243 fg ref n 15 s 5 classes 6626 expected_leaves 227465 expected_ring 6965
+part 204/243 fg ref n 15 s 6 classes 7554 expected_leaves 111744 expected_ring 8010
+part 204/243 fg ref n 15 all 0 sabotage 0 read 1988532 class 1988532 kept 14180 expected_leaves 339209 expected_ring 14975 secs 38.16
+part 204/243 codes 14180 sha256 700577a6867b0f49d119b32e61c0c71019e971cc69da053c3cafc65abf669917
+part 205/243 plantri: 2024092 polytopes written to stdout; cpu=36.74 sec wall_s 39.48
+part 205/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 205/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 205/243 fg ref n 15 s 5 classes 6513 expected_leaves 221905 expected_ring 6850
+part 205/243 fg ref n 15 s 6 classes 7035 expected_leaves 101664 expected_ring 7581
+part 205/243 fg ref n 15 all 0 sabotage 0 read 2024092 class 2024092 kept 13548 expected_leaves 323569 expected_ring 14431 secs 39.48
+part 205/243 codes 13548 sha256 6c4939c6a8090841daa6245a22bc9b0b1fe5d7635898e01a7567d4df9fd3ebf1
+part 206/243 plantri: 1939236 polytopes written to stdout; cpu=35.74 sec wall_s 38.44
+part 206/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 206/243 fg ref n 15 s 4 classes 1 expected_leaves 80 expected_ring 1
+part 206/243 fg ref n 15 s 5 classes 5422 expected_leaves 192070 expected_ring 5668
+part 206/243 fg ref n 15 s 6 classes 6028 expected_leaves 88050 expected_ring 6317
+part 206/243 fg ref n 15 all 0 sabotage 0 read 1939236 class 1939236 kept 11451 expected_leaves 280200 expected_ring 11986 secs 38.44
+part 206/243 codes 11451 sha256 ed4881ebbd8d693f904a3cfaa32bbc113f8cae29a322220c47d26c8751d08ae7
+part 207/243 plantri: 2136597 polytopes written to stdout; cpu=37.21 sec wall_s 39.96
+part 207/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 207/243 fg ref n 15 s 4 classes 3 expected_leaves 232 expected_ring 6
+part 207/243 fg ref n 15 s 5 classes 5988 expected_leaves 198645 expected_ring 6307
+part 207/243 fg ref n 15 s 6 classes 6693 expected_leaves 98856 expected_ring 7133
+part 207/243 fg ref n 15 all 0 sabotage 0 read 2136597 class 2136597 kept 12684 expected_leaves 297733 expected_ring 13446 secs 39.95
+part 207/243 codes 12684 sha256 7f7522d8e5cfbe7a38de380e4f8bd90a75c8d7ae433ab8650b7f461f59c06dbe
+part 208/243 plantri: 1839102 polytopes written to stdout; cpu=34.61 sec wall_s 37.12
+part 208/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 208/243 fg ref n 15 s 4 classes 15 expected_leaves 1184 expected_ring 25
+part 208/243 fg ref n 15 s 5 classes 5692 expected_leaves 198590 expected_ring 5952
+part 208/243 fg ref n 15 s 6 classes 6916 expected_leaves 105024 expected_ring 7276
+part 208/243 fg ref n 15 all 0 sabotage 0 read 1839102 class 1839102 kept 12623 expected_leaves 304798 expected_ring 13253 secs 37.11
+part 208/243 codes 12623 sha256 1ba4e663385be876c6a85dfcc7f9f6f916535d9b9c72efca21bc12c868554ceb
+part 209/243 plantri: 1826655 polytopes written to stdout; cpu=34.53 sec wall_s 36.95
+part 209/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 209/243 fg ref n 15 s 4 classes 2 expected_leaves 184 expected_ring 2
+part 209/243 fg ref n 15 s 5 classes 4546 expected_leaves 154655 expected_ring 4763
+part 209/243 fg ref n 15 s 6 classes 5379 expected_leaves 81552 expected_ring 5701
+part 209/243 fg ref n 15 all 0 sabotage 0 read 1826655 class 1826655 kept 9927 expected_leaves 236391 expected_ring 10466 secs 36.95
+part 209/243 codes 9927 sha256 b02e4c4cf258e3559ac1df7658389b8b98863375b8a5b62a9d132ed495dfea27
+part 210/243 plantri: 1991205 polytopes written to stdout; cpu=35.17 sec wall_s 37.66
+part 210/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 210/243 fg ref n 15 s 4 classes 3 expected_leaves 208 expected_ring 4
+part 210/243 fg ref n 15 s 5 classes 6253 expected_leaves 214375 expected_ring 6574
+part 210/243 fg ref n 15 s 6 classes 6726 expected_leaves 99972 expected_ring 7103
+part 210/243 fg ref n 15 all 0 sabotage 0 read 1991205 class 1991205 kept 12982 expected_leaves 314555 expected_ring 13681 secs 37.65
+part 210/243 codes 12982 sha256 43320aa9e4a2c77b2cf0656122c89fe6f8a31dca16e4939cf9744ce2fd23de3f
+part 211/243 plantri: 1887234 polytopes written to stdout; cpu=35.94 sec wall_s 38.52
+part 211/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 211/243 fg ref n 15 s 4 classes 4 expected_leaves 312 expected_ring 5
+part 211/243 fg ref n 15 s 5 classes 5350 expected_leaves 181945 expected_ring 5558
+part 211/243 fg ref n 15 s 6 classes 6410 expected_leaves 96222 expected_ring 6879
+part 211/243 fg ref n 15 all 0 sabotage 0 read 1887234 class 1887234 kept 11764 expected_leaves 278479 expected_ring 12442 secs 38.51
+part 211/243 codes 11764 sha256 bc64fbc294609baa70247876e9e00ea0a3d6555840ad4a013c44de9d378f28a2
+part 212/243 plantri: 1838965 polytopes written to stdout; cpu=34.29 sec wall_s 36.74
+part 212/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 212/243 fg ref n 15 s 4 classes 1 expected_leaves 26 expected_ring 2
+part 212/243 fg ref n 15 s 5 classes 4265 expected_leaves 140990 expected_ring 4498
+part 212/243 fg ref n 15 s 6 classes 4243 expected_leaves 62376 expected_ring 4498
+part 212/243 fg ref n 15 all 0 sabotage 0 read 1838965 class 1838965 kept 8509 expected_leaves 203392 expected_ring 8998 secs 36.74
+part 212/243 codes 8509 sha256 9a4ec19b1eeb6c5960a0537a049c472b87e093cbceb7cd0c8c299c789d6f3e23
+part 213/243 plantri: 1772266 polytopes written to stdout; cpu=33.94 sec wall_s 36.26
+part 213/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 213/243 fg ref n 15 s 4 classes 1 expected_leaves 22 expected_ring 1
+part 213/243 fg ref n 15 s 5 classes 4182 expected_leaves 138830 expected_ring 4441
+part 213/243 fg ref n 15 s 6 classes 4873 expected_leaves 72130 expected_ring 5183
+part 213/243 fg ref n 15 all 0 sabotage 0 read 1772266 class 1772266 kept 9056 expected_leaves 210982 expected_ring 9625 secs 36.26
+part 213/243 codes 9056 sha256 26ea0108d2b9e13594945ed7bec67b63eb54e329c32676be504ef088e10edc0f
+part 214/243 plantri: 1847584 polytopes written to stdout; cpu=34.17 sec wall_s 36.50
+part 214/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 214/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 214/243 fg ref n 15 s 5 classes 3608 expected_leaves 126580 expected_ring 3796
+part 214/243 fg ref n 15 s 6 classes 4413 expected_leaves 66168 expected_ring 4710
+part 214/243 fg ref n 15 all 0 sabotage 0 read 1847584 class 1847584 kept 8021 expected_leaves 192748 expected_ring 8506 secs 36.50
+part 214/243 codes 8021 sha256 b5dd3a144c6e66553427d7a334b2a7539352db94936177c012b7cff55fe9a810
+part 215/243 plantri: 1893658 polytopes written to stdout; cpu=35.23 sec wall_s 37.63
+part 215/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 215/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 215/243 fg ref n 15 s 5 classes 4896 expected_leaves 168560 expected_ring 5151
+part 215/243 fg ref n 15 s 6 classes 5875 expected_leaves 88914 expected_ring 6210
+part 215/243 fg ref n 15 all 0 sabotage 0 read 1893658 class 1893658 kept 10771 expected_leaves 257474 expected_ring 11361 secs 37.63
+part 215/243 codes 10771 sha256 ed1d9664b03256771d4c47cc286f87cc436c7fff52696bcb35bd920f1a33ab4d
+part 216/243 plantri: 1983274 polytopes written to stdout; cpu=36.06 sec wall_s 38.79
+part 216/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 216/243 fg ref n 15 s 4 classes 4 expected_leaves 164 expected_ring 5
+part 216/243 fg ref n 15 s 5 classes 5825 expected_leaves 197780 expected_ring 6117
+part 216/243 fg ref n 15 s 6 classes 5973 expected_leaves 88944 expected_ring 6466
+part 216/243 fg ref n 15 all 0 sabotage 0 read 1983274 class 1983274 kept 11802 expected_leaves 286888 expected_ring 12588 secs 38.79
+part 216/243 codes 11802 sha256 7c0ad4dc565cf0fc44e5eaa127d1db53e1fc1d1729e3afdd7563842acded492d
+part 217/243 plantri: 1873011 polytopes written to stdout; cpu=34.33 sec wall_s 36.82
+part 217/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 217/243 fg ref n 15 s 4 classes 14 expected_leaves 920 expected_ring 19
+part 217/243 fg ref n 15 s 5 classes 5925 expected_leaves 192795 expected_ring 6232
+part 217/243 fg ref n 15 s 6 classes 6181 expected_leaves 90960 expected_ring 6480
+part 217/243 fg ref n 15 all 0 sabotage 0 read 1873011 class 1873011 kept 12120 expected_leaves 284675 expected_ring 12731 secs 36.81
+part 217/243 codes 12120 sha256 54c7b7b62781bbfe4a6bab5589d81792d8187ecf3d09e974ec28c6aeef69bdee
+part 218/243 plantri: 1742466 polytopes written to stdout; cpu=32.76 sec wall_s 35.21
+part 218/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 218/243 fg ref n 15 s 4 classes 1 expected_leaves 88 expected_ring 1
+part 218/243 fg ref n 15 s 5 classes 3709 expected_leaves 130185 expected_ring 3865
+part 218/243 fg ref n 15 s 6 classes 4566 expected_leaves 68280 expected_ring 4853
+part 218/243 fg ref n 15 all 0 sabotage 0 read 1742466 class 1742466 kept 8276 expected_leaves 198553 expected_ring 8719 secs 35.21
+part 218/243 codes 8276 sha256 450c6df7c9d8bd7ae60b7b8063246b1baac6bf5cf2892792d998c6d02aa65f74
+part 219/243 plantri: 1879144 polytopes written to stdout; cpu=34.19 sec wall_s 36.59
+part 219/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 219/243 fg ref n 15 s 4 classes 2 expected_leaves 168 expected_ring 2
+part 219/243 fg ref n 15 s 5 classes 5335 expected_leaves 186125 expected_ring 5580
+part 219/243 fg ref n 15 s 6 classes 5501 expected_leaves 81930 expected_ring 5787
+part 219/243 fg ref n 15 all 0 sabotage 0 read 1879144 class 1879144 kept 10838 expected_leaves 268223 expected_ring 11369 secs 36.59
+part 219/243 codes 10838 sha256 1613f42f67e7d8217329358ce556234cf317407a7da63b852bdfe0342a2e4639
+part 220/243 plantri: 1889613 polytopes written to stdout; cpu=33.03 sec wall_s 35.25
+part 220/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 220/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 220/243 fg ref n 15 s 5 classes 6063 expected_leaves 205475 expected_ring 6396
+part 220/243 fg ref n 15 s 6 classes 6306 expected_leaves 90789 expected_ring 6669
+part 220/243 fg ref n 15 all 0 sabotage 0 read 1889613 class 1889613 kept 12369 expected_leaves 296264 expected_ring 13065 secs 35.24
+part 220/243 codes 12369 sha256 bf8387e7acf599dfa60327eac567e8e9edc73a61e3d400970ca90c6e948ee3b4
+part 221/243 plantri: 1894382 polytopes written to stdout; cpu=35.11 sec wall_s 37.52
+part 221/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 221/243 fg ref n 15 s 4 classes 1 expected_leaves 96 expected_ring 4
+part 221/243 fg ref n 15 s 5 classes 6557 expected_leaves 222650 expected_ring 6853
+part 221/243 fg ref n 15 s 6 classes 8779 expected_leaves 134226 expected_ring 9246
+part 221/243 fg ref n 15 all 0 sabotage 0 read 1894382 class 1894382 kept 15337 expected_leaves 356972 expected_ring 16103 secs 37.52
+part 221/243 codes 15337 sha256 ae6b57df04ad087e124a8d3a4e35453a613423186df379dad4997c3b33af8279
+part 222/243 plantri: 1811587 polytopes written to stdout; cpu=34.14 sec wall_s 36.50
+part 222/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 222/243 fg ref n 15 s 4 classes 1 expected_leaves 48 expected_ring 2
+part 222/243 fg ref n 15 s 5 classes 4474 expected_leaves 151155 expected_ring 4757
+part 222/243 fg ref n 15 s 6 classes 4709 expected_leaves 69360 expected_ring 5029
+part 222/243 fg ref n 15 all 0 sabotage 0 read 1811587 class 1811587 kept 9184 expected_leaves 220563 expected_ring 9788 secs 36.49
+part 222/243 codes 9184 sha256 53aa5b02d407aeee2ba4bcb11b9d5a7a0f878b531d4ba93713b9621e8e70758f
+part 223/243 plantri: 1856952 polytopes written to stdout; cpu=35.79 sec wall_s 38.38
+part 223/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 223/243 fg ref n 15 s 4 classes 4 expected_leaves 352 expected_ring 4
+part 223/243 fg ref n 15 s 5 classes 5594 expected_leaves 190820 expected_ring 5883
+part 223/243 fg ref n 15 s 6 classes 5752 expected_leaves 85386 expected_ring 6047
+part 223/243 fg ref n 15 all 0 sabotage 0 read 1856952 class 1856952 kept 11350 expected_leaves 276558 expected_ring 11934 secs 38.37
+part 223/243 codes 11350 sha256 479b26c2830603a3e22700d70485430e86d1b23ebb1178d5784007533e47af43
+part 224/243 plantri: 1911430 polytopes written to stdout; cpu=34.39 sec wall_s 36.85
+part 224/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 224/243 fg ref n 15 s 4 classes 3 expected_leaves 224 expected_ring 6
+part 224/243 fg ref n 15 s 5 classes 5663 expected_leaves 192245 expected_ring 5949
+part 224/243 fg ref n 15 s 6 classes 6466 expected_leaves 95907 expected_ring 6940
+part 224/243 fg ref n 15 all 0 sabotage 0 read 1911430 class 1911430 kept 12132 expected_leaves 288376 expected_ring 12895 secs 36.84
+part 224/243 codes 12132 sha256 2d09abd7843883b069051881007ff2d5c3d646447b3903ea54831bc4eb6dd7b3
+part 225/243 plantri: 1846744 polytopes written to stdout; cpu=35.75 sec wall_s 38.27
+part 225/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 225/243 fg ref n 15 s 4 classes 1 expected_leaves 32 expected_ring 2
+part 225/243 fg ref n 15 s 5 classes 7011 expected_leaves 236510 expected_ring 7444
+part 225/243 fg ref n 15 s 6 classes 8046 expected_leaves 117015 expected_ring 8615
+part 225/243 fg ref n 15 all 0 sabotage 0 read 1846744 class 1846744 kept 15058 expected_leaves 353557 expected_ring 16061 secs 38.26
+part 225/243 codes 15058 sha256 9f91371ad9c6ef6c201436607499526c02d5b4f33688596aabb90ad644ba2532
+part 226/243 plantri: 1982505 polytopes written to stdout; cpu=36.50 sec wall_s 39.22
+part 226/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 226/243 fg ref n 15 s 4 classes 2 expected_leaves 128 expected_ring 3
+part 226/243 fg ref n 15 s 5 classes 6133 expected_leaves 208685 expected_ring 6428
+part 226/243 fg ref n 15 s 6 classes 7724 expected_leaves 114084 expected_ring 8146
+part 226/243 fg ref n 15 all 0 sabotage 0 read 1982505 class 1982505 kept 13859 expected_leaves 322897 expected_ring 14577 secs 39.21
+part 226/243 codes 13859 sha256 c185458924ca9b0fe2c53d452f7c86d908dda661627ae07fa49aa29644d0b5c0
+part 227/243 plantri: 1868534 polytopes written to stdout; cpu=37.59 sec wall_s 40.21
+part 227/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 227/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 227/243 fg ref n 15 s 5 classes 4431 expected_leaves 151885 expected_ring 4643
+part 227/243 fg ref n 15 s 6 classes 5247 expected_leaves 77472 expected_ring 5552
+part 227/243 fg ref n 15 all 0 sabotage 0 read 1868534 class 1868534 kept 9678 expected_leaves 229357 expected_ring 10195 secs 40.21
+part 227/243 codes 9678 sha256 089edf5fbd9b7f5e01fd4c66b17dab7a15d640546e506666b86c95c0cea9e556
+part 228/243 plantri: 1955083 polytopes written to stdout; cpu=36.44 sec wall_s 38.96
+part 228/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 228/243 fg ref n 15 s 4 classes 3 expected_leaves 208 expected_ring 7
+part 228/243 fg ref n 15 s 5 classes 5168 expected_leaves 165175 expected_ring 5464
+part 228/243 fg ref n 15 s 6 classes 5099 expected_leaves 77526 expected_ring 5447
+part 228/243 fg ref n 15 all 0 sabotage 0 read 1955083 class 1955083 kept 10270 expected_leaves 242909 expected_ring 10918 secs 38.95
+part 228/243 codes 10270 sha256 a3ae9a0d0d7bbd703c2e39a27671242ef323c1f8fe825137ce81ade13dee6e97
+part 229/243 plantri: 2053432 polytopes written to stdout; cpu=36.97 sec wall_s 39.49
+part 229/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 229/243 fg ref n 15 s 4 classes 4 expected_leaves 336 expected_ring 5
+part 229/243 fg ref n 15 s 5 classes 6214 expected_leaves 210845 expected_ring 6546
+part 229/243 fg ref n 15 s 6 classes 6339 expected_leaves 92586 expected_ring 6727
+part 229/243 fg ref n 15 all 0 sabotage 0 read 2053432 class 2053432 kept 12557 expected_leaves 303767 expected_ring 13278 secs 39.48
+part 229/243 codes 12557 sha256 940234ceba87cacadb031a6ca5e0776242cc7323bcec0fd52cadfa55d9d01dbb
+part 230/243 plantri: 1875235 polytopes written to stdout; cpu=36.13 sec wall_s 38.59
+part 230/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 230/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 230/243 fg ref n 15 s 5 classes 4391 expected_leaves 149070 expected_ring 4628
+part 230/243 fg ref n 15 s 6 classes 4616 expected_leaves 67800 expected_ring 4981
+part 230/243 fg ref n 15 all 0 sabotage 0 read 1875235 class 1875235 kept 9007 expected_leaves 216870 expected_ring 9609 secs 38.58
+part 230/243 codes 9007 sha256 b0ba42d5cf6fc554bbe1700947b89167d97c86647f961dd14312cbe94eb13ad8
+part 231/243 plantri: 1824362 polytopes written to stdout; cpu=36.09 sec wall_s 38.43
+part 231/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 231/243 fg ref n 15 s 4 classes 5 expected_leaves 440 expected_ring 11
+part 231/243 fg ref n 15 s 5 classes 4002 expected_leaves 138460 expected_ring 4190
+part 231/243 fg ref n 15 s 6 classes 4237 expected_leaves 62424 expected_ring 4514
+part 231/243 fg ref n 15 all 0 sabotage 0 read 1824362 class 1824362 kept 8244 expected_leaves 201324 expected_ring 8715 secs 38.42
+part 231/243 codes 8244 sha256 8281a03432554dd0a3c26a012c9f70104b55857720a75ef5f7f7b65e3883ee2e
+part 232/243 plantri: 1841707 polytopes written to stdout; cpu=35.42 sec wall_s 37.70
+part 232/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 232/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 232/243 fg ref n 15 s 5 classes 4993 expected_leaves 168655 expected_ring 5228
+part 232/243 fg ref n 15 s 6 classes 4975 expected_leaves 72518 expected_ring 5331
+part 232/243 fg ref n 15 all 0 sabotage 0 read 1841707 class 1841707 kept 9968 expected_leaves 241173 expected_ring 10559 secs 37.70
+part 232/243 codes 9968 sha256 0769b1ee88f73cb2546af4f0bc3dba54a3e5b2df0fa057fe00c88b28d247762a
+part 233/243 plantri: 1832695 polytopes written to stdout; cpu=35.17 sec wall_s 37.45
+part 233/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 233/243 fg ref n 15 s 4 classes 5 expected_leaves 440 expected_ring 9
+part 233/243 fg ref n 15 s 5 classes 4066 expected_leaves 133860 expected_ring 4302
+part 233/243 fg ref n 15 s 6 classes 4482 expected_leaves 65136 expected_ring 4797
+part 233/243 fg ref n 15 all 0 sabotage 0 read 1832695 class 1832695 kept 8553 expected_leaves 199436 expected_ring 9108 secs 37.44
+part 233/243 codes 8553 sha256 d346451afde913292acfe6eacd6bfcbaf444ea3c7894870b778838b11dfc1637
+part 234/243 plantri: 1972153 polytopes written to stdout; cpu=37.90 sec wall_s 40.62
+part 234/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 234/243 fg ref n 15 s 4 classes 2 expected_leaves 160 expected_ring 2
+part 234/243 fg ref n 15 s 5 classes 5093 expected_leaves 174035 expected_ring 5369
+part 234/243 fg ref n 15 s 6 classes 5759 expected_leaves 85308 expected_ring 6086
+part 234/243 fg ref n 15 all 0 sabotage 0 read 1972153 class 1972153 kept 10854 expected_leaves 259503 expected_ring 11457 secs 40.62
+part 234/243 codes 10854 sha256 cba263b5ae872dc680644db859a2fed6e2dab06dacb9818c69e88bc9cfcb7f3d
+part 235/243 plantri: 1873939 polytopes written to stdout; cpu=34.23 sec wall_s 36.76
+part 235/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 235/243 fg ref n 15 s 4 classes 10 expected_leaves 604 expected_ring 12
+part 235/243 fg ref n 15 s 5 classes 5227 expected_leaves 177510 expected_ring 5534
+part 235/243 fg ref n 15 s 6 classes 6515 expected_leaves 98638 expected_ring 7040
+part 235/243 fg ref n 15 all 0 sabotage 0 read 1873939 class 1873939 kept 11752 expected_leaves 276752 expected_ring 12586 secs 36.76
+part 235/243 codes 11752 sha256 9f5d2898dcae473988efdddbd9cc3d09e55934439046de63e80f820761d0763f
+part 236/243 plantri: 1826063 polytopes written to stdout; cpu=33.56 sec wall_s 36.09
+part 236/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 236/243 fg ref n 15 s 4 classes 2 expected_leaves 152 expected_ring 2
+part 236/243 fg ref n 15 s 5 classes 6559 expected_leaves 218430 expected_ring 6888
+part 236/243 fg ref n 15 s 6 classes 7343 expected_leaves 108184 expected_ring 7895
+part 236/243 fg ref n 15 all 0 sabotage 0 read 1826063 class 1826063 kept 13904 expected_leaves 326766 expected_ring 14785 secs 36.09
+part 236/243 codes 13904 sha256 5aa5c3fdb9a826cf3ed716182d40759a89a8afee5f4cd65c569d79f3a64e7237
+part 237/243 plantri: 1751966 polytopes written to stdout; cpu=33.88 sec wall_s 36.17
+part 237/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 237/243 fg ref n 15 s 4 classes 8 expected_leaves 448 expected_ring 14
+part 237/243 fg ref n 15 s 5 classes 4381 expected_leaves 146385 expected_ring 4605
+part 237/243 fg ref n 15 s 6 classes 4358 expected_leaves 63702 expected_ring 4729
+part 237/243 fg ref n 15 all 0 sabotage 0 read 1751966 class 1751966 kept 8747 expected_leaves 210535 expected_ring 9348 secs 36.17
+part 237/243 codes 8747 sha256 bc3739487961f5d4d39fe2bf4eff600d365e2df3e4adc234536f58478988d826
+part 238/243 plantri: 1641231 polytopes written to stdout; cpu=33.15 sec wall_s 35.33
+part 238/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 238/243 fg ref n 15 s 4 classes 2 expected_leaves 184 expected_ring 2
+part 238/243 fg ref n 15 s 5 classes 3852 expected_leaves 132490 expected_ring 4125
+part 238/243 fg ref n 15 s 6 classes 3836 expected_leaves 56520 expected_ring 4033
+part 238/243 fg ref n 15 all 0 sabotage 0 read 1641231 class 1641231 kept 7690 expected_leaves 189194 expected_ring 8160 secs 35.32
+part 238/243 codes 7690 sha256 6ca0d6c198de2f5d2b7bd2109b7266c3421fde9e03704d16b689c7e5a79c2722
+part 239/243 plantri: 1576942 polytopes written to stdout; cpu=31.60 sec wall_s 33.66
+part 239/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 239/243 fg ref n 15 s 4 classes 6 expected_leaves 440 expected_ring 9
+part 239/243 fg ref n 15 s 5 classes 3614 expected_leaves 121215 expected_ring 3794
+part 239/243 fg ref n 15 s 6 classes 3078 expected_leaves 44037 expected_ring 3253
+part 239/243 fg ref n 15 all 0 sabotage 0 read 1576942 class 1576942 kept 6698 expected_leaves 165692 expected_ring 7056 secs 33.65
+part 239/243 codes 6698 sha256 8e9093cc900533a2dade0ce1aa6280839200d7311ade39a0b5c6332a7ef4439e
+part 240/243 plantri: 1722981 polytopes written to stdout; cpu=34.48 sec wall_s 36.64
+part 240/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 240/243 fg ref n 15 s 4 classes 1 expected_leaves 52 expected_ring 1
+part 240/243 fg ref n 15 s 5 classes 2828 expected_leaves 95615 expected_ring 2989
+part 240/243 fg ref n 15 s 6 classes 3285 expected_leaves 50001 expected_ring 3496
+part 240/243 fg ref n 15 all 0 sabotage 0 read 1722981 class 1722981 kept 6114 expected_leaves 145668 expected_ring 6486 secs 36.64
+part 240/243 codes 6114 sha256 0b1c4c64c6530877b5ff5ea3e023eb557bc66c9128ddae26fab2a778aa80439f
+part 241/243 plantri: 1648280 polytopes written to stdout; cpu=34.33 sec wall_s 36.45
+part 241/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 241/243 fg ref n 15 s 4 classes 0 expected_leaves 0 expected_ring 0
+part 241/243 fg ref n 15 s 5 classes 3597 expected_leaves 120315 expected_ring 3758
+part 241/243 fg ref n 15 s 6 classes 3359 expected_leaves 49661 expected_ring 3560
+part 241/243 fg ref n 15 all 0 sabotage 0 read 1648280 class 1648280 kept 6956 expected_leaves 169976 expected_ring 7318 secs 36.44
+part 241/243 codes 6956 sha256 6c17e2b009de6b3626875182c00648d322e4de863a3409bde91e7349df31c214
+part 242/243 plantri: 1692487 polytopes written to stdout; cpu=33.75 sec wall_s 35.69
+part 242/243 fg ref n 15 s 3 classes 0 expected_leaves 0 expected_ring 0
+part 242/243 fg ref n 15 s 4 classes 14 expected_leaves 1024 expected_ring 18
+part 242/243 fg ref n 15 s 5 classes 3634 expected_leaves 114645 expected_ring 3863
+part 242/243 fg ref n 15 s 6 classes 3721 expected_leaves 55170 expected_ring 3964
+part 242/243 fg ref n 15 all 0 sabotage 0 read 1692487 class 1692487 kept 7369 expected_leaves 170839 expected_ring 7845 secs 35.68
+part 242/243 codes 7369 sha256 558bb38b5e23d79a86a19f36ca0179c833b2eb16904f3795f161d5f660211bc7

@@ -1,0 +1,20 @@
+part 0/1: graphs 32300, class 8150, plantri count 32300
+n = 10, 1 parts of modulus 1: graphs 32300, class 8150
+
+  n   F   E         sum 4E/|Aut|           T(F-1,n-1)  equal       graphs        class
+ 10   7  15                   68                   68    yes            5            5
+ 10   8  16                 3740                 3740    yes           76           70
+ 10   9  17                39525                39525    yes          633          569
+ 10  10  18               180670               180670    yes         2635         1950
+ 10  11  19               452865               452865    yes         6134         2922
+ 10  12  20               685419               685419    yes         8822         1976
+ 10  13  21               646415               646415    yes         7916          574
+ 10  14  22               373175               373175    yes         4442           78
+ 10  15  23               121095               121095    yes         1404            5
+ 10  16  24                16965                16965    yes          233            1
+
+cells equal: 10 of 10; total rooted maps 2519937, formula 2519937
+graphs 32300, A000944(10) = 32300: equal
+class 8150, recorded 8150: equal
+CHECK PASS n = 10
+END

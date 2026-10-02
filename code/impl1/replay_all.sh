@@ -10,7 +10,8 @@
 #   code/impl1/replay_summary.sh OUT
 # prints the table of code/impl1/out/replay_summary.txt. With LIST=1 the script gathers the per-case
 # trees into OUT/rf, prints the job list (name|certificate file|input|options) and runs nothing; the
-# coverage join code/impl1/coverage_join.sh reads it.
+# coverage join code/impl1/coverage_join.sh reads it. ONLY=NAME|NAME|... runs only those jobs, in that order (the
+# replay jobs of ci.yml split the list this way).
 set -u
 A=$(realpath "$1"); O=$(realpath -m "$2"); NPAR=${3:-4}
 T=$(realpath code/impl1/rust/target/release/tdeep)
@@ -80,5 +81,8 @@ run() {
     < "$inp" 2> "$O/$name.log" | sed 's/ [0-9a-f]\{40,\} / /' > "$O/$name.txt"
 }
 export -f run; export O B
-jobs | xargs -P "$NPAR" -I{} bash -c 'run "$1"' _ {}
+if [ -n "${ONLY:-}" ]; then
+  jobs > "$O/rf/jobs.txt"
+  tr '|' '\n' <<< "$ONLY" | while read -r n; do grep "^$n|" "$O/rf/jobs.txt"; done
+else jobs; fi | xargs -P "$NPAR" -I{} bash -c 'run "$1"' _ {}
 grep -H '^replay:' "$O"/*.log

@@ -13,3 +13,4 @@ paper/*.toc
 *.pdf
 data/sample/*.out
 data/sample/*.err
+/code/plantri-ms-check/build/

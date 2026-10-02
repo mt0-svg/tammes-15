@@ -1,0 +1,20 @@
+# field instances checked calls holds vacuous fails unchecked
+F add 103148 97367 5781 0 0
+F add_lo 103148 103148 0 0 0
+F sub 131315 131315 0 0 0
+F mul 402335 399714 2621 0 0
+F div 130796 130796 0 0 0
+F addDn 3480 3480 0 0 0
+F addUp 9171 9160 11 0 0
+F subDn 1710 1660 50 0 0
+F subUp 1660 1611 49 0 0
+F subDn_ninf 19 19 0 0 0
+F subUp_inf 37 37 0 0 0
+F subDn_nan 31 31 0 0 0
+F subUp_nan 12 12 0 0 0
+F mulDn 4436 4436 0 0 0
+F mulUp 4436 4436 0 0 0
+F divDn 691 691 0 0 0
+F divUp 627 627 0 0 0
+NOTCHECKED transcendental calls 445319
+FAILS 0

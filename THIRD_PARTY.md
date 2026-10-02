@@ -1,3 +1,13 @@
+# Third-party code
+
+## plantri 5.8 (programs, not included)
+
+The enumeration (Section 6.1 of the paper) uses plantri 5.8 by G. Brinkmann and B. D. McKay (https://users.cecs.anu.edu.au/~bdm/plantri/, Apache License 2.0). No source file of plantri is in this repository: `code/impl1/enum/build_plantri.sh` and `code/plantri-ms-check/build.sh` download the tarball `plantri58.tar.gz`, check its sha256 (e78a944116fec9f2c9f5e484206276cc2b0043bae803e9815f4b2683614629b8) and compile plantri with one of two output plugins written for this work, through plantri's plugin interface (`-DPLUGIN=...`, plantri-guide.txt): `code/impl1/enum/plantri_md5.c` (maximum degree at most 5) and `code/plantri-ms-check/plantri_ms.c` (counts by number of faces and order of the automorphism group, for the check against the formula of Mullin and Schellenberg). `code/impl1/enum/plantri-guide.txt` is the guide of plantri 5.8, unchanged. The second enumerator `code/fg` contains no code of plantri; it reads plantri's planar code output.
+
+# Third-party data
+
+- `code/plantri-ms-check/ref/b290326_rows1-30.txt`: the first 843 lines (rows 1 to 30) of the b-file of OEIS A290326 by G. Coserea, https://oeis.org/A290326/b290326.txt, unchanged, read on 2026-10-02 (sha256 of the whole file 03dda99c9b4b15af017438bfcc62dcf2306fa65cecb1627a35fd989dc1f39a13). The content of the OEIS is licensed under CC BY-SA 4.0 (https://oeis.org/LICENSE); this file keeps that licence. The check uses it for known-answer tests of the formula (`code/plantri-ms-check/kat.gp`).
+
 # Third-party Lean code
 
 ## Energy-Minimization-8-Points (library `VendorEM8`, directory `Tammes15/Vendor/EM8/`)

@@ -1,0 +1,74 @@
+command: plantri_ms -pGu 12 0/2
+binary sha256: 11f1d0454e0bc76982d48882b3757dc0dd89db8e74196d5315b6564399678d99
+start: 2026-10-02T00:52:08Z
+./plantri_ms -pGu 12 0/2
+cell 12 8 1 1 0
+cell 12 8 2 2 2
+cell 12 8 4 1 1
+cell 12 8 8 1 1
+cell 12 8 12 1 1
+cell 12 8 24 1 1
+cell 12 9 1 232 152
+cell 12 9 2 49 36
+cell 12 9 4 6 5
+cell 12 10 1 4280 3210
+cell 12 10 2 239 176
+cell 12 10 4 15 12
+cell 12 10 8 1 1
+cell 12 10 16 1 1
+cell 12 10 20 1 1
+cell 12 11 1 32080 22269
+cell 12 11 2 680 462
+cell 12 11 3 3 3
+cell 12 11 4 13 9
+cell 12 11 6 6 5
+cell 12 11 12 2 2
+cell 12 12 1 134814 68554
+cell 12 12 2 1521 858
+cell 12 12 4 48 33
+cell 12 12 8 4 4
+cell 12 12 22 1 0
+cell 12 13 1 358030 103367
+cell 12 13 2 2514 1066
+cell 12 13 4 28 18
+cell 12 14 1 636591 75386
+cell 12 14 2 3759 1021
+cell 12 14 3 7 4
+cell 12 14 4 65 23
+cell 12 14 6 7 4
+cell 12 14 8 4 2
+cell 12 14 12 6 6
+cell 12 14 48 1 1
+cell 12 15 1 782722 26370
+cell 12 15 2 4083 543
+cell 12 15 4 43 16
+cell 12 15 10 1 0
+cell 12 16 1 669644 4422
+cell 12 16 2 4316 276
+cell 12 16 4 92 23
+cell 12 16 8 4 2
+cell 12 17 1 393879 355
+cell 12 17 2 3095 46
+cell 12 17 3 7 1
+cell 12 17 4 21 4
+cell 12 17 6 8 2
+cell 12 17 12 1 1
+cell 12 18 1 151505 5
+cell 12 18 2 2245 9
+cell 12 18 4 59 3
+cell 12 18 8 3 1
+cell 12 18 16 1 0
+cell 12 19 1 34433 0
+cell 12 19 2 865 0
+cell 12 19 4 26 0
+cell 12 20 1 3406 0
+cell 12 20 2 347 0
+cell 12 20 3 1 0
+cell 12 20 4 32 0
+cell 12 20 6 4 0
+cell 12 20 8 6 0
+cell 12 20 40 1 0
+total 12 0 2 3225865 308776
+3225865 polytopes generated; cpu=1.40 sec
+time: wall 1.41 s, user 1.40 s, sys 0.00 s, max rss 2748 KB
+end: 2026-10-02T00:52:09Z

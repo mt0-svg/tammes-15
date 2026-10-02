@@ -9,7 +9,7 @@ graph is connected (`rotSys_euler_le`, from the dimension count of the eight-poi
 `connected_permutation_cycle_bound`, applied to the dart reversal and `R.rot.symm`, whose product
 is `R.face`), and `V - E + F` is even (`rotSys_euler_even`, from the signs of the three
 permutations). Used for the hull (Lemma F) and for the graph itself (Lemma G12) in the proof of
-Corollary twoconn (paper, Section 3, Corollary twoconn and Remark routeC).
+Corollary twoconn (paper, Section 3, Lemma hull and Corollary twoconn).
 -/
 
 open Real InnerProductGeometry ComplexConjugate

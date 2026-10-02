@@ -1,0 +1,7 @@
+reference out/ref_w1_n14.codes: 282005 codes; generator out/gen_w1_n14.codes: 282005 codes
+only in reference: 0; only in generator: 0
+s 3 expected_leaves 0 generator_ok_leaves 0 equal
+s 4 expected_leaves 9022 generator_ok_leaves 9022 equal
+s 5 expected_leaves 4633715 generator_ok_leaves 4633715 equal
+s 6 expected_leaves 1906560 generator_ok_leaves 1906560 equal
+verdict: sets equal

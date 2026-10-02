@@ -4,6 +4,7 @@ import Tammes15.Local41.Chain
 import Tammes15.Glue.Pair
 import Tammes15.Trigrows.Sdist
 import Tammes15.FejesToth.Bound
+import Tammes15.D2Regions.Statement
 
 /-!
 # The capstone: `Tammes15.Conjecture` from D1 to D4
@@ -16,8 +17,9 @@ The proof is the written reduction. Attainment is D4. For the upper bound, a con
 all angles above `ψ* = arccos u` gives a maximal configuration at `d₁₅ ∈ (ψ*, dhi]`
 (`exists_isGreatest_config`, `fejesToth_bound`), hence (Theorem 3.1, `structure_theorem`) a
 structured one, hence a realisation of a case of a plane graph of the class
-(`realisation_of_structured`); D2 and `realisation_transport` move it to a case of an entry of the
-list, whose assignment satisfies the relation system (`relSys_of_realisation`). D3 then gives a
+(`realisation_of_structured`), whose rotation system is in the input class of plantri
+(`D2Regions.planeClass_of_structured`); D2 and `realisation_transport` move it to a case of an
+entry of the list, whose assignment satisfies the relation system (`relSys_of_realisation`). D3 then gives a
 gluing firing Pair or Local; the gluing is the realisation up to isometry (`glue_congruent`), so
 Pair contradicts the separation `d₁₅`, and Local with Theorem 4.1 (`local_optimality`, with D1 and
 D4) gives two points at inner product at least `u`, while all inner products are below
@@ -181,7 +183,14 @@ theorem upperBound_of_hyps (L : Set PlaneGraph) (F : Set Frame) (h0 : FejesTothB
       ⟨two_pi_lt_seven_dlo, alpha_dhi_lt, le_rfl, le_rfl⟩
   obtain ⟨hP, H, x, hx⟩ := realisation_of_structured hd Y k G S
   have hk := S.k_le
-  obtain ⟨P', hP'L, hn, hiso⟩ := h2 (15 - k) (by omega) (by omega) G S.R hP
+  have hdpi : 0 < d15 ∧ d15 < π / 2 := by
+    have := pi_div_four_lt_dlo
+    have := dhi_lt_pi_div_three
+    have := Real.pi_pos
+    constructor <;> linarith
+  obtain ⟨P', hP'L, hn, hiso⟩ :=
+    h2 (15 - k) (by omega) (by omega) G S.R S.threeConn S.degrees
+      (D2Regions.planeClass_of_structured hdpi S)
   obtain ⟨hP', H', x', hx'⟩ := realisation_transport hP hiso hx
   have hrel := relSys_of_realisation hP' hd hx'
   obtain ⟨g, hg, hfire⟩ := h3 P' hP'L k (by omega) H' _ hdlo.le hdhi hrel

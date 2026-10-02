@@ -1,0 +1,5 @@
+sha256 of the merged plantri-route list and the generator list: identical (2 lines)
+totals, classes and leaf counts per seed size, verdict: identical (9 lines)
+run A: plantri cpu 8730 s, part wall sum 9343 s; generator nodes 42124866 secs 144.13
+run B: plantri cpu 8793 s, part wall sum 9389 s; generator nodes 56248548 secs 181.48
+runs A and B agree

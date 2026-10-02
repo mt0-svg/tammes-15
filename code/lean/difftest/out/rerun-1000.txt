@@ -1,0 +1,8 @@
+# setup.sh and lake build difftest soundcheck on a copy of this repository (code/impl1/rust, code/lean/difftest, Tammes15/Contractors/DiffTest/PrimsQ.lean), then run.sh 1000, 2026-10-02 04:39 UTC
+S rowStep 1000 0 0 18520 0:706 1*:128 1=:166
+PANIC 0
+rust-1000.sha256: identical to the record
+lean-1000.sha256: identical to the record
+report-1000.txt: identical to the record
+rust-1000.err: identical to the record
+lean-1000.err: identical to the record

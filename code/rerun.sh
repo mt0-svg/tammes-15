@@ -20,24 +20,16 @@ spec() {
   case $1 in
     # PARI/GP, in code/gp
     paper_checks)       S=(gp code/gp "gp -q paper_checks.gp" code/gp/paper_checks.out gp) ;;
-    structure_checks)   S=(gp code/gp "gp -q structure_checks.gp" code/gp/structure_checks.out gp) ;;
     rtrig_consts)       S=(gp code/gp "gp -q rtrig_consts.gp" code/gp/rtrig_consts.out gp) ;;
-    consts120)          S=(gp code/gp "gp -q consts120.gp" code/gp/consts120.out gp) ;;
     params)             S=(gp . "sh code/gp/params.sh 5365785/100000 141679/2500" data/params15ft.txt gp) ;;
     bk15_c3_coords)     S=(gp code/gp "gp -q bk15_c3_coords.gp" code/gp/bk15_c3_coords.out gp "data/bk15_c1.txt data/bk15_c3.txt") ;;
-    tie_targets_check)  S=(gp code/gp "$GP tie_targets_check.gp" code/gp/tie_targets_check.out gp) ;;
-    kappa_gale)         S=(gp code/gp "$GP kappa_gale.gp" code/gp/kappa_gale.out gp) ;;
-    kappa_vertex)       S=(gp code/gp "$GP kappa_vertex.gp" code/gp/kappa_vertex.out gp) ;;
-    local_nonlinear)    S=(gp code/gp "$GP local_nonlinear.gp" code/gp/local_nonlinear.out gp) ;;
     contact_graphs)     S=(gp code/gp "gp -q contact_graphs.gp" code/gp/contact_graphs.out gp) ;;
     consts_check)       S=(gp code/impl2 "gp -q consts_check.gp" code/impl2/consts_check.out gp) ;;
-    # SageMath, from the repository root (attain_aa in code/sage)
+    # SageMath, from the repository root
     bk15_exact)         S=(sage . "sage code/sage/bk15_exact.sage" code/sage/bk15_exact.out gp data/bk15_exact.txt) ;;
-    attain_aa)          S=(sage code/sage "sage attain_aa.sage" code/sage/attain_aa.out gp) ;;
     params_check)       S=(sage . "sage code/sage/params_check.sage" code/sage/params_check.out gp) ;;
-    rigidity)           S=(sage . "sage code/sage/rigidity.sage" code/sage/rigidity.out gp) ;;
-    rigidity2)          S=(sage . "sage code/sage/rigidity2.sage" code/sage/rigidity2.out gp) ;;
     tie_targets)        S=(sage . "sage code/sage/tie_targets.sage" code/sage/tie_targets.out gp data/tie_targets.txt) ;;
+    lean_data)          S=(sage . "code/lean-data/regen.sh" code/lean-data/regen.out regen "code/lean-data/d4_cut.out code/lean-data/d1_lp.out code/lean-data/d1_kernel.out code/lean-data/gen_close.out code/lean-data/gen34.out code/lean-data/witness.out code/lean-data/pi_witness.out code/lean-data/gen_seplt.out code/lean-data/tie_map.out") ;;
     exactlp_k3)         S=(sage . "sh code/sage/stageA_exactlp.sh 3 0 1 data/stageA/stageA_k3.pc 3000 13" code/sage/exactlp_k3.out gp) ;;
     exactlp_k2)         S=(sage . "sh code/sage/stageA_exactlp.sh 2 0 1 data/stageA/stageA_k2.pc 2000 22" code/sage/exactlp_k2.out gp) ;;
     exactlp_k1_15)      S=(sage . "sh code/sage/stageA_exactlp.sh 1 15 40 data/stageA/k1_15.pc 2000 21" code/sage/exactlp_k1_15.out gp) ;;
@@ -53,12 +45,6 @@ spec() {
     replay_corrupt)     S=(impl1 . "code/impl1/replay_corrupt.sh" "" none) ;;
     localtest)          S=(impl1 . "sh -c 'cd code/impl1/localtest && cargo build --release -q && target/release/localtest ../../..'" code/impl1/out/localtest.txt none) ;;
     filtercheck_n4_13)  S=(impl1 . "sh -c 'for n in 4 5 6 7 8 9 10 11 12 13; do code/impl1/enum/filtercheck.sh \$n 4 $J; done'" code/impl1/out/filtercheck_n4_13.txt none) ;;
-    truth)              S=(impl1 . "code/impl1/truth.sh" code/impl1/out/truth.txt none "data/truth/c1_real.pc data/truth/c1_realv.pc data/truth/c3_real.pc data/truth/c3_realv4.pc") ;;
-    nolocal_case)       S=(impl1 . "code/impl1/nolocal_case.sh" code/impl1/out/nolocal_case.txt none) ;;
-    place_c1_edges)     S=(impl1 . "code/impl1/rust/target/release/realize data/bk15_c1.txt 6 --check data/params15ft.txt --local data/tie_targets.txt" code/impl1/out/place_c1_edges.txt none) ;;
-    place_c3_edges)     S=(impl1 . "code/impl1/rust/target/release/realize data/bk15_c3.txt 6 --check data/params15ft.txt --local data/tie_targets.txt" code/impl1/out/place_c3_edges.txt none) ;;
-    place_c1_vertex)    S=(impl1 . "code/impl1/rust/target/release/realize data/bk15_c1.txt 3 --vertex --check data/params15ft.txt --local data/tie_targets.txt" code/impl1/out/place_c1_vertex.txt none) ;;
-    place_c3_vertex)    S=(impl1 . "code/impl1/rust/target/release/realize data/bk15_c3.txt 3 --vertex --check data/params15ft.txt --local data/tie_targets.txt" code/impl1/out/place_c3_vertex.txt none) ;;
     unfiltered_n13)     S=(impl1 . "code/impl1/enum/count.sh plantri 13 1" code/impl1/out/unfiltered_n13.txt none) ;;
     unfiltered_n14)     S=(impl1 . "code/impl1/enum/count.sh plantri 14 4 $J" code/impl1/out/unfiltered_n14.txt none) ;;
     split_n14)          S=(impl1 . "code/impl1/enum/count.sh plantri_md5 14 1" code/impl1/out/split_n14.txt none) ;;
@@ -69,11 +55,6 @@ spec() {
     # the second implementation (code/impl2)
     test_impl2)         S=(impl2 code/impl2 "cargo test --release" "" none) ;;
     sample_kill)        S=(impl2 . "code/impl2/sample_kill.sh" code/impl2/out/sample_kill.txt vkill) ;;
-    nolocal)            S=(impl2 . "code/impl2/nolocal.sh" "" none) ;;
-    vtest_c1_edges)     S=(impl2 . "code/impl2/target/release/vtest data/bk15_c1.txt --maxdel 8 --boxes 24 --local --targets data/tie_targets.txt" code/impl2/out/vtest_c1_edges.txt none) ;;
-    vtest_c3_edges)     S=(impl2 . "code/impl2/target/release/vtest data/bk15_c3.txt --maxdel 8 --boxes 24 --local --targets data/tie_targets.txt" code/impl2/out/vtest_c3_edges.txt none) ;;
-    vtest_c1_vertex)    S=(impl2 . "code/impl2/target/release/vtest data/bk15_c1.txt --maxdel 4 --vertex --boxes 24 --local --targets data/tie_targets.txt" code/impl2/out/vtest_c1_vertex.txt none) ;;
-    vtest_c3_vertex)    S=(impl2 . "code/impl2/target/release/vtest data/bk15_c3.txt --maxdel 4 --vertex --boxes 24 --local --targets data/tie_targets.txt" code/impl2/out/vtest_c3_vertex.txt none) ;;
     residue_*)          local g=${1#residue_}; S=(impl2 . "env JOBS=$J code/impl2/residue_rerun.sh $(residue_group "$g")" "" none) ;;
     # on the release assets (ASSETS=dir)
     coverage_join)      S=(assets . "code/impl1/coverage_join.sh \"\${ASSETS:?}\"" code/impl1/out/coverage_join.txt none) ;;
@@ -100,18 +81,17 @@ norm() {
   case $2 in
     gp) grep -v -e 'Warning: .*stack size' "$1" | sed 's/[[:space:]]*$//' ;;
     tdeep) sed -E 's/ t=[0-9.]+$//; s/ time [0-9.]+s \([0-9.]+ s\/graph\)//' "$1" ;;
+    regen) sed -E '1d; s/^ran in [0-9]+ s/ran in N s/' "$1" ;;
     vkill) sed -E 's/^([0-9]+ [A-Z]+ [0-9]+ [0-9]+) [0-9.]+ /\1 /; s/ time [0-9.]+ s$//' "$1" ;;
     *) cat "$1" ;;
   esac
 }
 
-ALL="paper_checks structure_checks rtrig_consts consts120 params bk15_c3_coords tie_targets_check kappa_gale
-kappa_vertex local_nonlinear contact_graphs consts_check bk15_exact attain_aa params_check rigidity rigidity2 tie_targets
+ALL="paper_checks rtrig_consts params bk15_c3_coords contact_graphs consts_check bk15_exact params_check tie_targets lean_data
 exactlp_k3 exactlp_k2 exactlp_k1_15 exactlp_k0_135 exactlp_k0_1848 build_impl1 build_impl2 build_plantri
-test_impl1 replay_sample replay_corrupt localtest truth nolocal_case place_c1_edges place_c3_edges place_c1_vertex place_c3_vertex
-filtercheck_n4_13 unfiltered_n13 unfiltered_n14 split_n14
-stageA_k1 stageA_k2 stageA_k3 $(seq -f 'stageA_k0_%g' 0 200 1800 | tr '\n' ' ') test_impl2 sample_kill nolocal
-vtest_c1_edges vtest_c3_edges vtest_c1_vertex vtest_c3_vertex residue_a residue_b residue_c residue_d residue_e
+test_impl1 replay_sample replay_corrupt localtest filtercheck_n4_13 unfiltered_n13 unfiltered_n14 split_n14
+stageA_k1 stageA_k2 stageA_k3 $(seq -f 'stageA_k0_%g' 0 200 1800 | tr '\n' ' ') test_impl2 sample_kill
+residue_a residue_b residue_c residue_d residue_e
 coverage_join coverage_join_test stageA_compare mpfr_samples mpfr_974"
 [ "${1:-}" = --list ] && { echo $ALL | tr ' ' '\n'; exit 0; }
 

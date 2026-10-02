@@ -1,0 +1,36 @@
+command: plantri_ms_chk -pGu 8 0/1
+binary sha256: 27fa7c21ee5f1371036f3ab20ee9792934821db2a1d70c30173a8af1346db2ff
+start: 2026-10-02T00:41:48Z
+./plantri_ms_chk -pGu 8 0/1
+cell 8 6 4 1 1
+cell 8 6 48 1 1
+cell 8 7 1 3 3
+cell 8 7 2 6 6
+cell 8 7 4 2 2
+cell 8 8 1 22 20
+cell 8 8 2 16 16
+cell 8 8 8 3 3
+cell 8 8 14 1 0
+cell 8 9 1 48 35
+cell 8 9 2 22 17
+cell 8 9 4 1 1
+cell 8 9 6 2 1
+cell 8 9 12 1 1
+cell 8 10 1 44 16
+cell 8 10 2 27 15
+cell 8 10 4 3 2
+cell 8 10 8 1 1
+cell 8 10 16 1 1
+cell 8 11 1 21 2
+cell 8 11 2 13 3
+cell 8 11 4 4 2
+cell 8 12 1 2 0
+cell 8 12 2 5 0
+cell 8 12 4 3 0
+cell 8 12 8 1 1
+cell 8 12 12 1 1
+cell 8 12 24 2 0
+total 8 0 1 257 151
+257 polytopes generated; cpu=0.00 sec
+time: wall 0.00 s, user 0.00 s, sys 0.00 s, max rss 2556 KB
+end: 2026-10-02T00:41:48Z

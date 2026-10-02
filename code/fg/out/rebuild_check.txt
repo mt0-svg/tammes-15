@@ -1,0 +1,5 @@
+build: b74292af0fd05cb3b7dc57bbaa75d6658b62088c4ba4d481ad72d3f785270d8d  fg (rustc 1.99.0-nightly (12c36e253 2026-08-10))
+comparison files: 50, of them different from out/: 0
+kat.log: 350 lines, identical to the first 350 lines of out/kat.log (which goes on with the runs of n14.sh)
+code lists: 58 code lists in both, 0 with a different sha256
+REBUILD CHECK: PASS

@@ -4,7 +4,7 @@ import Tammes15.Trigrows.Sdist
 /-!
 # Convex spherical polygons in cone form
 
-A face of the drawn contact graph (paper Section 3, Lemma convex and Remark polygons) is read as a
+A face of the drawn contact graph (paper, Section 3, Lemma convex, and Section 10.7) is read as a
 sequence `A : ℕ → E3` of period `m`, unit vertices, with strict support in the cone form of
 `StrictSupportFace`: every vertex other than `A i`, `A (i + 1)` lies strictly on the positive side
 of `cross (A i) (A (i + 1))`. A point is inside when it is strictly on the positive side of every

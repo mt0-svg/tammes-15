@@ -1,0 +1,7 @@
+reference out/ref_w1_n13.codes: 30326 codes; generator out/gen_w1_n13_ring2.codes: 30326 codes
+only in reference: 0; only in generator: 0
+s 3 expected_ring 0 generator_ok_leaves 0 equal
+s 4 expected_ring 50 generator_ok_leaves 50 equal
+s 5 expected_ring 18482 generator_ok_leaves 18482 equal
+s 6 expected_ring 14106 generator_ok_leaves 14106 equal
+verdict: sets equal

@@ -1,0 +1,7 @@
+reference out/ref_all_n9.codes: 1006 codes; generator out/gen_all_n9_ring.codes: 1006 codes
+only in reference: 0; only in generator: 0
+s 3 expected_ring 1 generator_ok_leaves 1 equal
+s 4 expected_ring 532 generator_ok_leaves 532 equal
+s 5 expected_ring 540 generator_ok_leaves 540 equal
+s 6 expected_ring 68 generator_ok_leaves 68 equal
+verdict: sets equal

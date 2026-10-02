@@ -1,0 +1,11 @@
+1. PASS: the 45 job outputs of jobs/ give their 45 lines of the table
+2. PASS: 45 jobs, the same verified, failed and missing counts as the record in every job; total verified 462764, failed 0
+3. PASS: the coverage join equals the recorded one in its 287 lines after the first
+   first line here:   Coverage join, code/impl1/coverage_join.sh; replay records: code/impl1/out/guarded/jobs
+   first line record: Coverage join, code/impl1/coverage_join.sh; replay records: replay-v1
+   last line: coverage join: PASS
+binaries:
+   531cc8554b888f84ee6a4c5790e48ed61f1197e02720ee4b6f41fe482657e49b  tdeep (37 jobs: every job but the 8 below)
+   88db04169987599a8c37a6d2002774dc95d2c690b6aa0d4be3e557bdaa499630  tdeep (8 jobs, a later build of the same source with rustc 1.99.0-nightly (12c36e253 2026-08-10): full_k3 p1_k2 p1_k3 p3w_k3 p4b_k1 p4c_k1 pb_k2 pw_k2)
+patch: 7d97a80b42d59b32ca725fa5ff067ad773d25af6808b8851049e1196eab4676d  code/impl1/deep-guards.patch
+GUARDED REPLAY: PASS

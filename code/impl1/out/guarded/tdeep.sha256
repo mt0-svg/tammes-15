@@ -1,0 +1,2 @@
+531cc8554b888f84ee6a4c5790e48ed61f1197e02720ee4b6f41fe482657e49b  tdeep (37 jobs: every job but the 8 below)
+88db04169987599a8c37a6d2002774dc95d2c690b6aa0d4be3e557bdaa499630  tdeep (8 jobs, a later build of the same source with rustc 1.99.0-nightly (12c36e253 2026-08-10): full_k3 p1_k2 p1_k3 p3w_k3 p4b_k1 p4c_k1 pb_k2 pw_k2)

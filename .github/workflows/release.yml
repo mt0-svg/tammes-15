@@ -14,9 +14,11 @@ name: Release
 #   3. run ci.yml by hand on the branch (gh workflow run ci.yml), so that its job assets checks them, and wait
 #      until it is green;
 #   4. push the tag.
-# This workflow downloads the tarballs from the draft, checks them against the sha256 sums of ASSETS.md, adds the
-# PDF, the verification archive and the Lake build archive, and publishes the draft. It stops, saying so, when the
-# tag has no draft with the tarballs, or when no green CI run has checked the commit with them.
+# When ASSETS.md is unchanged since the previous release, step 2 is skipped: CI checks the tarballs of that release,
+# and this workflow takes them from it, makes the draft of the tag and goes on.
+# This workflow downloads the tarballs from the draft (or the previous release), checks them against the sha256 sums
+# of ASSETS.md, adds the PDF, the verification archive and the Lake build archive, and publishes the draft. It stops,
+# saying so, when the tarballs are in neither place, or when no green CI run has checked the commit with them.
 on:
   push:
     tags: ["v*"]
@@ -59,6 +61,25 @@ jobs:
             --jq '.workflow_runs[0].id // empty')
           [ -n "$run" ] || { echo "no successful CI run started by hand on $TAG ($sha): run ci.yml on it (gh workflow run ci.yml --ref $TAG), then this workflow by hand"; exit 1; }
           echo "CI run $run on $TAG ($sha)"
+          # Every job of that run but Badges must have run and passed: a job skipped by its if, or a step skipped
+          # inside a job, would leave results missing, and counts of result files kept here drift from ci.yml. The
+          # one exception: the continuation parts of a chained Lean build (part 2 on) are skipped by design once an
+          # earlier part ends the build, so they may be skipped, provided part 1 and the job after the chain, which
+          # needs every part and fails on an unfinished build, passed.
+          gh api --paginate "repos/$GITHUB_REPOSITORY/actions/runs/$run/jobs?per_page=100" \
+            | jq -r '.jobs[] | select(.name != "Badges") | "\(.conclusion)\t\(.name)"' > jobs.tsv
+          cat jobs.tsv
+          [ -s jobs.tsv ] || { echo "CI run $run lists no job"; exit 1; }
+          cont='^skipped'$'\t''(Lean build|Build), part ([2-9]|[1-9][0-9]+)$'
+          if grep -vE "^success"$'\t' jobs.tsv | grep -vE "$cont"; then
+            echo "CI run $run has jobs that did not pass (above)"; exit 1
+          fi
+          if grep -qE "$cont" jobs.tsv; then
+            if ! grep -qE '^success'$'\t''(Lean build|Build), part 1$' jobs.tsv \
+              || ! grep -qE '^success'$'\t''(Lean checks|Axioms)$' jobs.tsv; then
+              echo "CI run $run: build parts skipped, but part 1 or the job after the chain did not pass"; exit 1
+            fi
+          fi
           echo "run=$run" >> "$GITHUB_OUTPUT"
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
 
@@ -78,7 +99,8 @@ jobs:
       - uses: actions/checkout@v5
         with:
           ref: ${{ env.TAG }}
-      - name: Data tarballs from the draft release of the tag, checked against ASSETS.md
+          fetch-depth: 0
+      - name: Data tarballs from the draft release of the tag, or from the previous release, checked against ASSETS.md
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -90,14 +112,32 @@ jobs:
             | jq -s --arg tag "$TAG" 'add // [] | map(select(.tag_name == $tag))' > rel.json
           [ "$(jq 'map(select(.draft | not)) | length' rel.json)" -eq 0 ] || { echo "the release $TAG is already published"; exit 1; }
           n=$(jq 'length' rel.json)
-          [ "$n" -gt 0 ] || { echo "no draft release $TAG with the data tarballs: see the head of release.yml"; exit 1; }
-          [ "$n" -eq 1 ] || { echo "$n draft releases $TAG: delete all but the one with the data tarballs"; exit 1; }
+          [ "$n" -le 1 ] || { echo "$n draft releases $TAG: delete all but the one with the data tarballs"; exit 1; }
+          if [ "$n" -eq 1 ] && [ "$(jq '.[0].assets | length' rel.json)" -gt 0 ]; then
+            from="the draft release $TAG"
+          else
+            # No draft with the tarballs: those of the previous release, if ASSETS.md has not changed since.
+            prev=$(gh api --paginate "repos/$GITHUB_REPOSITORY/releases?per_page=100" | jq -rs --arg tag "$TAG" \
+              'add // [] | map(select((.draft | not) and .tag_name != $tag)) | sort_by(.published_at) | last | .tag_name // empty')
+            [ -n "$prev" ] || { echo "no draft release $TAG with the data tarballs and no previous release: see the head of release.yml"; exit 1; }
+            git diff --quiet "$prev" "$TAG" -- ASSETS.md || { echo "ASSETS.md changed since $prev: upload the new data tarballs to a draft release $TAG (head of release.yml)"; exit 1; }
+            gh api "repos/$GITHUB_REPOSITORY/releases/tags/$prev" | jq '[.]' > rel.json
+            from="the release $prev (ASSETS.md unchanged since)"
+          fi
           while read -r _ f; do
             id=$(jq -r --arg f "$f" '.[0].assets[] | select(.name == $f) | .id' rel.json)
-            [ -n "$id" ] || { echo "the draft release $TAG has no $f: see the head of release.yml"; exit 1; }
+            [ -n "$id" ] || { echo "$from has no $f: see the head of release.yml"; exit 1; }
             gh api -H 'Accept: application/octet-stream' "repos/$GITHUB_REPOSITORY/releases/assets/$id" > "$f"
           done < assets.sha256
           sha256sum -c assets.sha256
+          echo "Data tarballs of $from."
+          if [ "$n" -eq 0 ]; then
+            # shellcheck disable=SC2046 # one file name per line of ASSETS.md
+            gh release create "$TAG" --draft --verify-tag --title "$TAG" --notes "" $(awk '{print $2}' assets.sha256)
+          elif [ "$(jq '.[0].tag_name' rel.json)" != "\"$TAG\"" ]; then
+            # shellcheck disable=SC2046
+            gh release upload "$TAG" $(awk '{print $2}' assets.sha256)
+          fi
       - uses: actions/download-artifact@v4
         with:
           run-id: ${{ needs.ci-run.outputs.run }}
@@ -137,8 +177,8 @@ jobs:
           fi
           cat archive.md
 
-      # Expected runs: the source scan, the six steps of code/lean/check.sh, Comparator, and the computations
-      # (update the counts when the jobs of ci.yml change).
+      # Expected runs: the files that steps of ci.yml write unconditionally (the result files of code/rerun.sh are
+      # covered by the job check of ci-run: rerun.sh fails its job when a check fails or is unknown).
       - name: Verification archive
         shell: bash
         run: |
@@ -151,9 +191,8 @@ jobs:
           for k in source-scan lean_build lean_up-to-date lean_scan lean_axioms lean_types lean_audit comparator; do
             [ -f "verify/results/$k.tsv" ] || miss="$miss $k"
           done
-          for kn in impl1_:27 impl2_:12 gp_:12 sage_:11 assets_:5; do
-            k=${kn%%:*} want=${kn#*:}
-            [ "$(count "$k")" -eq "$want" ] || miss="$miss ${k%_} ($(count "$k") of $want)"
+          for k in gp_hyps_d_range gp_hyps_check assets_replay_full assets_coverage_join_fresh; do
+            [ -f "verify/results/$k.tsv" ] || miss="$miss $k"
           done
           [ -z "$miss" ] || { echo "missing runs:$miss"; ls verify/results; exit 1; }
           if cut -f4 verify/results/*.tsv | grep -v '^PASS'; then echo "a run did not pass"; exit 1; fi

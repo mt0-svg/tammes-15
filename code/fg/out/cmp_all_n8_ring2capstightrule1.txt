@@ -1,0 +1,7 @@
+reference out/ref_all_n8.codes: 151 codes; generator out/gen_all_n8_ring2capstightrule1.codes: 151 codes
+only in reference: 0; only in generator: 0
+s 3 expected_ring 5 generator_ok_leaves 5 equal
+s 4 expected_ring 106 generator_ok_leaves 106 equal
+s 5 expected_ring 51 generator_ok_leaves 51 equal
+s 6 expected_ring 4 generator_ok_leaves 4 equal
+verdict: sets equal

@@ -1,4 +1,0 @@
-psi = 53.657850129932669 deg, 30 contacts
-relsys: families [PentSplit, HexChain5, HexC4Iso] dropped, Edge off
-37 realised subgraphs (maxdel 2, vertex false)
-tested 37 subgraphs, 37 searches, Local fired on 0 truth boxes, failures 0
