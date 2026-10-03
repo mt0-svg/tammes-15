@@ -1,4 +1,4 @@
-\\ Proposition onehex, inscribed polygon form (paper, Proposition onehex; Tammes15/Rattlers/HexPoly.lean):
+\\ Proposition 4.6 of the paper, inscribed polygon form (Tammes15/Rattlers/HexPoly.lean):
 \\ the ten pieces hex_piece_i, each reduced to rational checkpoints by the generic lemmas hex_piece_of,
 \\ le_tanLen_hrad, tanAng_hrad_le, le_chordC_hrad (Rattlers/HexPoly.lean) and to rational enclosures of cos and
 \\ sin at points q*Pi (Numerics/Taylor.lean: cos_mul_pi_le, le_cos_mul_pi, sin_mul_pi_le at Taylor order NT, with

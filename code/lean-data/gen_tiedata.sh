@@ -1,6 +1,6 @@
 #!/bin/bash
 # gen_tiedata.sh [IN [OUT]]: Tammes15/PaperSteps/TieData.lean (or OUT) from data/tie_targets.txt (or IN), the file
-# of targets that the first program reads (code/impl1/rust/src/local.rs, Targets::load). The numbers are copied as
+# of targets that the program reads (code/impl1/rust/src/local.rs, Targets::load). The numbers are copied as
 # written: per configuration, 15 lines of "x_mid x_rad y_mid y_rad z_mid z_rad" and the line "contacts i j i j ..."
 # (0-based, 30 pairs). Run from the repository root; code/lean-data/regen.sh compares OUT with the Lean file.
 set -eu
@@ -19,9 +19,9 @@ awk '
     print "import Mathlib.Data.Fin.VecNotation"
     print ""
     print "/-!"
-    print "# The targets of Local, as the first program reads them (generated)"
+    print "# The targets of Local, as the program reads them (generated)"
     print ""
-    print "Written by gen_tiedata.sh from tie_targets.txt, the file of targets that the first program reads: the"
+    print "Written by gen_tiedata.sh from tie_targets.txt, the file of targets that the program reads: the"
     print "eight frame configurations, each with 15 points given by a midpoint and a"
     print "radius per coordinate, and its 30 contacts (0-based). Configurations in file order:"
     for (c = 1; c <= nc; c++) print "`" c - 1 "`: " name[c] (c < nc ? ";" : ".")

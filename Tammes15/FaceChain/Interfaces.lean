@@ -7,23 +7,23 @@ import Tammes15.Trigrows.Points
 import Tammes15.Trigrows.Sdist
 
 /-!
-# Lemma convex through the eight-point face chain
+# Lemma A.7 through the eight-point face chain
 
-Section 3 of the paper, Lemma convex in cone form (`StrictSupportFace`), from the face chain of
+Lemma A.7 of the paper in cone form (`StrictSupportFace`), from the face chain of
 Kryvonos, Liehr and Taylor (arXiv 2609.22077, the vendored library `VendorEM8`), which the port
 states for any number of points (`Fin nPts`) and with the two-connectivity of the contacts
 (`ContactTwoConnected`) in place of their bound `c ≤ aInf`, the only use the chain made of it.
 
 * `boundary_strictSupport`: every boundary cycle of the contact graph of a configuration whose
   contacts are two-connected has strict support (the vendored chain).
-* `Setup`: the data of Lemma convex for vertices `Fin n`: a drawing `x` of its contact graph `G`
+* `Setup`: the data of Lemma A.7 for vertices `Fin n`: a drawing `x` of its contact graph `G`
   at distance `d`, with an angular rotation system `R` whose corners lie in `(0, π)`.
 * The bridge from a `Setup` to the eight-point objects at `c = cos d`: a configuration
   (`Setup.hY`), the inner product bound (`Setup.bound`), contacts (`Setup.contactAdj_iff`),
   two-connectivity (`Setup.twoConnected`), irreducibility (`Setup.irreducible`), darts
   (`Setup.dartEquiv`), the rotation (`Setup.dartEquiv_rotate`) and the faces
   (`Setup.dartEquiv_faceNext`), and strict support (`Setup.strictSupportFace_of_boundary`).
-* `Setup.strictSupportFace`: Lemma convex in cone form.
+* `Setup.strictSupportFace`: Lemma A.7 in cone form.
 -/
 
 open Real Matrix WithLp InnerProductGeometry ComplexConjugate
@@ -40,7 +40,7 @@ theorem boundary_strictSupport {n : ℕ} (Y : Fin n → E3) (c : ℝ) (hY : IsCo
     (C : ContactBoundaryCycle Y c hY hc) : C.StrictSupport :=
   C.strict_support_of_weak_support hirr hbound (C.weak_support_from_actual_face hconn hbound hirr)
 
-/-- The data of Lemma convex for vertices `Fin n`: unit vectors `x` at pairwise distance at least
+/-- The data of Lemma A.7 for vertices `Fin n`: unit vectors `x` at pairwise distance at least
 `d`, their contact graph `G` at distance `d`, and an angular rotation system `R` of it whose
 corners lie in `(0, π)`. -/
 structure Setup (n : ℕ) where
@@ -698,7 +698,7 @@ theorem strictSupportFace_of_boundary
   -- Rewrite using the vertex identities and cross_eq_crossVec
   simpa [ContactBoundaryCycle.vertex, h_vertex0, h_vertex1, h_vertex_j, cross_eq_crossVec] using h_strict
 
-/-- Lemma convex in cone form, for vertices `Fin n`. -/
+/-- Lemma A.7 in cone form, for vertices `Fin n`. -/
 theorem strictSupportFace (h2 : KConnected S.G 2) : StrictSupportFace S.R S.x :=
   S.strictSupportFace_of_boundary fun C =>
     boundary_strictSupport S.x (cos S.d) S.hY S.hc S.bound S.irreducible (S.twoConnected h2) C

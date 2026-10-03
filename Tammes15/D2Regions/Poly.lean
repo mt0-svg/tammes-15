@@ -4,7 +4,7 @@ import Tammes15.Geom.Cover
 import Tammes15.Geom.T8
 
 /-!
-# Strictly convex polygons in cone form (Lemma 3.20 of the paper)
+# Strictly convex polygons in cone form (Lemma 4.9 of the paper)
 
 
 For a polygon `A` in cone form (`Tammes15.Geom.IsCPoly`), the open polygon is

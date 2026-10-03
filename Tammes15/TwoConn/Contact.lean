@@ -1,10 +1,10 @@
 import Tammes15.TwoConn.Main
 
 /-!
-# Corollary twoconn for a contact graph
+# Corollary A.6 for a contact graph
 
 The interface `twoconn_contact` of the drawing layer (Draw/Iface.lean), from the theorem
-`twoconn` (paper, Section 3, Corollary twoconn) and Lemma A (`contact_exposed`):
+`twoconn` (paper, Corollary A.6) and `contact_exposed`:
 the contact pairs of a spherical code are exposed pairs of its points. The statement is that of
 `twoconn_contact` word for word; the interface file imports this module and proves its statement
 by `twoconn_contact_proof`, so elaboration checks that the two agree.

@@ -3,7 +3,7 @@ import Tammes15.FaceChain.Interfaces
 import Tammes15.Vendor.EM8.ContactSectorCover
 
 /-!
-# The cover (Lemma 3.20 of the paper: every point lies in the closed polygon of a face walk)
+# The cover (Lemma 4.9 of the paper: every point lies in the closed polygon of a face walk)
 
 Every unit vector lies in the closed polygon of some face of a contact drawing with an angular
 rotation system, corners in `(0, π)` and strictly supported faces of at least three darts. A vertex

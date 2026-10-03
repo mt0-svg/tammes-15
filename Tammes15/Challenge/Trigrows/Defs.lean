@@ -3,7 +3,7 @@ import Mathlib
 /-!
 # Real functions of the rows and face relations
 
-The functions of Sections 3 and 5 of the paper that the rows (5.2) and the face relations (5.3)
+The functions of Sections 4 and 6 of the paper that the rows (6.1) and the face relations (6.2)
 are written with. Statements about them: `Tammes15.Trigrows.Mono`.
 -/
 
@@ -11,10 +11,10 @@ open Real
 
 namespace Tammes15
 
-/-- `α(d) = arccos (cos d / (1 + cos d))`, the least corner (Lemma alpha). -/
+/-- `α(d) = arccos (cos d / (1 + cos d))`, the least corner (Lemma A.1). -/
 noncomputable def alpha (d : ℝ) : ℝ := arccos (cos d / (1 + cos d))
 
-/-- The rattler radius `h(d) = arccos (cos d / cos (d/2))` (Lemma edge). -/
+/-- The rattler radius `h(d) = arccos (cos d / cos (d/2))` (Lemma A.9). -/
 noncomputable def hrad (d : ℝ) : ℝ := arccos (cos d / cos (d / 2))
 
 /-- `ρ_d(x) = π - 2 arctan (cos d tan (x/2))`, the opposite corner of a rhombus. -/

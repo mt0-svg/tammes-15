@@ -1,7 +1,7 @@
 import Tammes15.Contractors.Encl
 
 /-!
-# Soundness of the triangle angle and of the side (the two guards of Section 5.5 of the paper)
+# Soundness of the triangle angle and of the side (the two guards of Appendix B.1 of the paper)
 
 `triAngleSt` (deep.rs `tri_angle_st` with its guard) encloses the angle `gam g e f` opposite `g`
 for every point of its three input intervals, or reports that no triangle exists there; `side`

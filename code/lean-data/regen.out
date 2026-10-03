@@ -1,4 +1,4 @@
-# code/lean-data/regen.sh, 2026-10-01 07:43 UTC; SageMath 10.9; PARI/GP [2, 17, 4]
+# code/lean-data/regen.sh, 2026-10-03 14:04 UTC; SageMath 10.9; PARI/GP [2, 17, 4]
 # inputs: data/bk15_exact.txt 396ddde092504e6b, code/lean-data/d1_lp_cert_C1.txt eb737a4c4f632f81, code/lean-data/d1_lp_cert_C3.txt 1edcb99254a07f8a (sha256, first 16 hex digits)
 == 1. d4_cut.sage
 ran in 1 s; generated D4Cut.lean e4c1aa3965924ef0, D4CutProofs.lean d886e7a625385997
@@ -7,13 +7,13 @@ same as D4Cut.lean: keepC1
 same as D4Cut.lean: frameC1
 same as D4Cut.lean: keepC3
 same as D4Cut.lean: frameC3
-compared: Tammes15/Attained/Data.lean be490ec762f7ffd9
+compared: Tammes15/Attained/Data.lean 4512b0c85650ef1c
 compared: Tammes15/Attained/Ident.lean 53b00c0dbd650704
 compared: Tammes15/Attained/Sep.lean abc4885f154266f6
 compared: Tammes15/Attained/Roots.lean 60e974af082f1dd5
 balls of u and b of data/bk15_exact.txt inside [ul, uh] and [bl, bh] of Data.lean: [1, 1, 1, 1]
 == 2. d1_lp.sage
-ran in 30 s
+ran in 56 s
 d1_lp_cert_C1.txt: identical to the committed certificate (eb737a4c4f632f81)
 d1_lp_cert_C3.txt: identical to the committed certificate (1edcb99254a07f8a)
 == 3. d1_kernel.sage
@@ -29,11 +29,9 @@ compared: Tammes15/Attained/Frames.lean 23d68f2636b68137
 layout of the rounded frames: OK
 worst 1.000000 e-20, margin to 2e-20: 1.000000 e-20
 compared: Tammes15/Kappa/Close.lean a8b6bb9896e2773c
-== 6. gen34.gp, witness.gp, pi_witness.gp
-ALL OK; least margin 0.110481089699734000000000000000000000000000000000000000000000
-Tammes15/Params/Onehex.lean: identical to the file gen34.gp writes (e596e5b6c1c3b69d)
+== 6. witness.gp, pi_witness.gp
 witness.gp: 16 checks OK, 0 failed
-witnesses printed by witness.gp found in Tammes15/Params/Checks.lean: 8 of 8 (95dec78553e08afe)
+witnesses printed by witness.gp found in Tammes15/Params/Checks.lean: 8 of 8 (1a54a9f85c4cc065)
 pi_witness.gp: 3 checks OK, 0 failed
 Tammes15/Params/Pi.lean: the list of pi_upper_bound is the one pi_witness.gp prints (c28cf219530c8648)
 == 7. gen_seplt.sh
@@ -42,7 +40,7 @@ Tammes15/Nonunique/SepLt.lean: identical to the file gen_seplt.sh writes (f778e7
 == 8. gen_tiedata.sh, tie_map.gp, gen_roots2.sh
 input: data/tie_targets.txt 120cc0382570e54f
 tie_map.gp: 8 of 8 configurations matched to a frame; 9 coordinate values
-Tammes15/PaperSteps/TieData.lean: identical to the file written (5ee8553b45950127)
-Tammes15/PaperSteps/TieMap.lean: identical to the file written (f96ba14dcdcc60cf)
+Tammes15/PaperSteps/TieData.lean: identical to the file written (6b2e5b3600404066)
+Tammes15/PaperSteps/TieMap.lean: identical to the file written (281d651eef671380)
 Tammes15/PaperSteps/Roots2.lean: identical to the file written (31026a9280f440fa)
 REGEN OK

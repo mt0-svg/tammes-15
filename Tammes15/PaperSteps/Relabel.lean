@@ -1,7 +1,7 @@
 import Tammes15.PaperSteps.Defs
 
 /-!
-# Step (i) of the proof of Proposition 7.7: another choice of hexagons for the same set
+# Step (i) of the proof of Lemma B.7: another choice of hexagons for the same set
 
 Two choices `H`, `H₀` of the same set of hexagons differ by a bijection `σ` of the free points and,
 for each hexagon, a cyclic shift `s m` of its corners: `H.base m = face^(s m) (H₀.base (σ m))`

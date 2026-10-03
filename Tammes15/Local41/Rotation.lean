@@ -3,7 +3,7 @@ import Tammes15.Local41.Defs
 /-!
 # Cross products, determinants and Rodrigues' rotations
 
-Two statements of the proof of Theorem 4.1, each proved from smaller steps:
+Two statements of the proof of Theorem C, each proved from smaller steps:
 `cross_isometry` from `inner_cross_eq_det` and `det_rows_linearMap`;
 `exists_rotation_curve` from Rodrigues' formula (`norm_rodrigues`, `exists_rodrigues_isometry`,
 `hasDerivAt_rodrigues`). `inner_cross_self` and `inner_cross_perm` are used in `Chain`.

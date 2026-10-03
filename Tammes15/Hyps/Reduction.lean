@@ -15,13 +15,13 @@ upper end `dhi` of the search range comes from the Fejes Tóth bound, proved in 
 
 The proof is the written reduction. Attainment is D4. For the upper bound, a configuration with
 all angles above `ψ* = arccos u` gives a maximal configuration at `d₁₅ ∈ (ψ*, dhi]`
-(`exists_isGreatest_config`, `fejesToth_bound`), hence (Theorem 3.1, `structure_theorem`) a
+(`exists_isGreatest_config`, `fejesToth_bound`), hence (Theorem 4.1, `structure_theorem`) a
 structured one, hence a realisation of a case of a plane graph of the class
 (`realisation_of_structured`), whose rotation system is in the input class of plantri
 (`D2Regions.planeClass_of_structured`); D2 and `realisation_transport` move it to a case of an
 entry of the list, whose assignment satisfies the relation system (`relSys_of_realisation`). D3 then gives a
 gluing firing Pair or Local; the gluing is the realisation up to isometry (`glue_congruent`), so
-Pair contradicts the separation `d₁₅`, and Local with Theorem 4.1 (`local_optimality`, with D1 and
+Pair contradicts the separation `d₁₅`, and Local with Theorem C (`local_optimality`, with D1 and
 D4) gives two points at inner product at least `u`, while all inner products are below
 `cos d₁₅ < u`.
 -/
@@ -45,7 +45,7 @@ theorem root_lt (u : ℝ) (h1 : 1 / 2 < u) (h2 : u < 7 / 10) (h0 : quintic u = 0
   have hpos : 0 < quintic 0.5927 := by unfold quintic; norm_num
   linarith
 
-/-- The radius condition of Theorem 4.1 for `r = 1.04·10⁻³`, `κ₀ = 6.4980·10⁻³`, `n = 15`. -/
+/-- The radius condition of Theorem C for `r = 1.04·10⁻³`, `κ₀ = 6.4980·10⁻³`, `n = 15`. -/
 theorem radius_ok (u : ℝ) (h0 : 0 < u) (hu : u < 0.5927) :
     Real.sqrt ((15 : ℕ) : ℝ) * rLocal * (1.01 * (1 + u)) ≤ kappa0 := by
   have hs : Real.sqrt ((15 : ℕ) : ℝ) < 3.873 := by
@@ -60,13 +60,13 @@ theorem radius_ok (u : ℝ) (h0 : 0 < u) (hu : u < 0.5927) :
   refine h1.trans ?_
   unfold rLocal kappa0; norm_num
 
-/-- The small-displacement condition of Theorem 4.1. -/
+/-- The small-displacement condition of Theorem C. -/
 theorem radius_sq_ok : ((15 : ℕ) : ℝ) * rLocal ^ 2 < 0.02 := by
   unfold rLocal; norm_num
 
-/-! ## From Theorem 3.1 to a realisation -/
+/-! ## From Theorem 4.1 to a realisation -/
 
-/-- A structured configuration (Theorem 3.1) gives a plane graph of the class and a realisation
+/-- A structured configuration (Theorem 4.1) gives a plane graph of the class and a realisation
 of one of its cases, with the rattlers as free points. -/
 theorem realisation_of_structured {d : ℝ} (hd : dlo ≤ d ∧ d ≤ dhi) (X : Config 15 d) (k : ℕ)
     (G : SimpleGraph (Fin (15 - k))) (S : Structured (V := Fin (15 - k)) (G := G) X k) :
@@ -177,7 +177,7 @@ theorem upperBound_of_hyps (L : Set PlaneGraph) (F : Set Frame) (h0 : FejesTothB
     have := dhi_lt_pi_div_three
     have := Real.pi_pos
     constructor <;> linarith
-  -- Theorem 3.1, a case of the list, its relation system
+  -- Theorem 4.1, a case of the list, its relation system
   obtain ⟨Y, k, G, ⟨S⟩⟩ :=
     structure_theorem dlo dhi d15 hdlo.le hdhi hmax
       ⟨two_pi_lt_seven_dlo, alpha_dhi_lt, le_rfl, le_rfl⟩
@@ -209,7 +209,7 @@ theorem upperBound_of_hyps (L : Set PlaneGraph) (F : Set Frame) (h0 : FejesTothB
       (hx'.sep a b hab) (by simp) (by simp)
     change ‖x' a - x' b‖ < 2 * sin (d15 / 2) at hlt
     linarith
-  · -- Local and Theorem 4.1
+  · -- Local and Theorem C
     obtain ⟨-, u', hu1', hu2', hu0', hF⟩ := h4
     have huu : u' = u := existsUnique_root.unique ⟨hu1', hu2', hu0'⟩ ⟨hu1, hu2, hu0⟩
     subst huu

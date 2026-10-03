@@ -4,9 +4,9 @@ import Tammes15.D2Draw.Statement
 import Tammes15.Geom.Hexagons
 
 /-!
-# The regions of the drawing: the two theorems (Lemma 3.20 of the paper)
+# The regions of the drawing: the two theorems (Lemma 4.9 of the paper)
 
-The statements are Lemma 3.20 and its use in the proof of Theorem 7.4, where D2 is read on a
+The statements are Lemma 4.9 and its use in the proof of Theorem B.8, where D2 is read on a
 structured configuration; the definitions they use are in
 `Tammes15.D2Regions.Defs`.
 
@@ -121,7 +121,7 @@ theorem planeClass_of_structured {d : ℝ} (hd : 0 < d ∧ d < π / 2) {X : Conf
   rw [hsize e]
   exact (S.faces e).2
 
-/-- D2 applies to the rotation system of a structured configuration, as in the proof of Theorem 7.4. -/
+/-- D2 applies to the rotation system of a structured configuration, as in the proof of Theorem B.8. -/
 example (L : Set PlaneGraph) (hL : EnumCompletePlane L) {d : ℝ} (hd : 0 < d ∧ d < π / 2)
     {X : Config 15 d} {k : ℕ} {G : SimpleGraph (Fin (15 - k))}
     (S : Structured (V := Fin (15 - k)) (G := G) X k) (h12 : 12 ≤ 15 - k) :

@@ -12,17 +12,15 @@ import Tammes15.PaperSteps.Optima
 import Tammes15.PaperSteps.Isometric
 import Tammes15.Contractors.Main
 import Tammes15.D2Regions.Statement
-import Tammes15.Contractors.DiffTest.Commute
 
 /-! `#print axioms` of the main theorem, of the theorems it takes from each part (the interfaces of
-`Draw/Iface.lean` and `Hyps/Interfaces.lean`), of theorems of Sections 4 and 8 of the paper, of the
+`Draw/Iface.lean` and `Hyps/Interfaces.lean`), of theorems of the written proof, of the
 eight-point theorem of the vendored library, of the bound of Fejes Tóth with 17 theorems of `FejesToth/` and one
-of the vendored library behind Lemmas 8.1 and 8.2 and Proposition 8.3, of the main theorem with D1 and D4 proved
-and theorems of D1 and D4 (Proposition 2.1, Lemma 4.2), of the inequalities of `Params/`, of Corollary 1.2 with
-its parts, of the eight theorems of `PaperSteps/` that `config.json` names, of the main theorem, Corollary 1.2 and
-D3 from the search trees the replays accept and the soundness theorems of `Contractors/` behind them (Theorem 7.10,
-Proposition 5.6), of the theorems of `D2Draw/` and `D2Regions/` (Lemma 3.20), and of the 31 commutation theorems of
-`Contractors/DiffTest/Commute.lean` (Section 10.4). Run by check.sh, step 4. -/
+of the vendored library behind it, of the main theorem with D1 and D4 proved and theorems of D1 and D4, of the
+inequalities of `Params/`, of the non-uniqueness corollary with its parts, of the eight theorems of `PaperSteps/`
+that `config.json` names, of the main theorem, the corollary and D3 from the search trees the replays accept and
+the soundness theorems of `Contractors/` behind them, and of the theorems of `D2Draw/` and `D2Regions/`. Run by
+check.sh, step 4. -/
 
 #print axioms Tammes15.reduction
 #print axioms Tammes15.upperBound_of_hyps
@@ -101,10 +99,8 @@ Proposition 5.6), of the theorems of `D2Draw/` and `D2Regions/` (Lemma 3.20), an
 #print axioms Tammes15.Params.smax_dhi_le_file
 #print axioms Tammes15.Params.arccos_root_lt
 #print axioms Tammes15.Params.fejesToth_value_lt_dhi
-#print axioms Tammes15.Params.margin_onehex_P
 #print axioms Tammes15.Params.pi_lt_d21
 #print axioms Tammes15.alpha_dhi_lt
-#print axioms Tammes15.margin_nor_closed
 #print axioms Tammes15.margin_perims
 #print axioms Tammes15.nonunique_of_enum_killed
 #print axioms Tammes15.Nonunique.frames_not_iso
@@ -146,34 +142,3 @@ Proposition 5.6), of the theorems of `D2Draw/` and `D2Regions/` (Lemma 3.20), an
 #print axioms Tammes15.contactDrawn_arcs
 #print axioms Tammes15.D2Regions.regions_eq_facePolygons
 #print axioms Tammes15.D2Regions.planeClass_of_structured
-#print axioms Tammes15.Contractors.Q.nar_comm
-#print axioms Tammes15.Contractors.Q.isoBase_comm
-#print axioms Tammes15.Contractors.Q.isoAngle_comm
-#print axioms Tammes15.Contractors.Q.triAngleSt_comm
-#print axioms Tammes15.Contractors.Q.triAngle_comm
-#print axioms Tammes15.Contractors.Q.triAngleC_comm
-#print axioms Tammes15.Contractors.Q.alphaIv_comm
-#print axioms Tammes15.Contractors.Q.alphaInvIv_comm
-#print axioms Tammes15.Contractors.Q.rhoIv_comm
-#print axioms Tammes15.Contractors.Q.rhombusD_comm
-#print axioms Tammes15.Contractors.Q.side_comm
-#print axioms Tammes15.Contractors.Q.longdiagLb_comm
-#print axioms Tammes15.Contractors.Q.cornerEnds_comm
-#print axioms Tammes15.Contractors.Q.decDir_comm
-#print axioms Tammes15.Contractors.Q.monoBounds_comm
-#print axioms Tammes15.Contractors.Q.pentEvalC_comm
-#print axioms Tammes15.Contractors.Q.hexEvalC_comm
-#print axioms Tammes15.Contractors.Q.cmin_comm
-#print axioms Tammes15.Contractors.Q.cmax_comm
-#print axioms Tammes15.Contractors.Q.rowUpd_comm
-#print axioms Tammes15.Contractors.Q.rowStep_comm
-#print axioms Tammes15.Contractors.Q.alphaStep_comm
-#print axioms Tammes15.Contractors.Q.alphaInvStep_comm
-#print axioms Tammes15.Contractors.Q.rhoStep_comm
-#print axioms Tammes15.Contractors.Q.rhoDStep_comm
-#print axioms Tammes15.Contractors.Q.pentStep_comm
-#print axioms Tammes15.Contractors.Q.hexStep_comm
-#print axioms Tammes15.Contractors.Q.diagFwdStep_comm
-#print axioms Tammes15.Contractors.Q.diagBwdStep_comm
-#print axioms Tammes15.Contractors.Q.wheelTurn_comm
-#print axioms Tammes15.Contractors.Q.wheelStep_comm

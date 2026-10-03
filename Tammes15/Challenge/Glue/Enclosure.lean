@@ -5,7 +5,7 @@ import Tammes15.Challenge.Trigrows.Sphere
 # Gluing: the frame of a child, the step bound and the path enclosure
 
 
-A step of the tree is the matrix `R_z(φ) R_y(θ) Z` (Section 5.4). The child of a
+A step of the tree is the matrix `R_z(φ) R_y(θ) Z` (Section 6.3). The child of a
 frame `F` is `cos θ • F e₃ + sin θ • (cos φ • F e₁ + sin φ • F e₂)`, and the tangent direction from
 the child back to the parent is `sin θ` times the first column of the child's frame (the reference
 direction at the child is its parent). Along a path the product of steps moves `v` by at most the sum

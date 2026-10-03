@@ -4,7 +4,7 @@ import Tammes15.PaperSteps.MainSearch
 import Tammes15.Params.Checks
 
 /-!
-# Soundness of the contractors (Proposition 5.6 (1) and Theorem 7.10 of the paper)
+# Soundness of the contractors (Proposition B.2 and Theorem B.9 of the paper)
 
 `Tammes15.conjecture_of_enum_progTreesDom` replaces the hypothesis `hN : N.Sound` of
 `Tammes15.conjecture_of_enum_progTrees` (PaperSteps/MainSearch.lean) by `Contractors.Impl N`, which
@@ -1613,7 +1613,7 @@ end Tammes15.Contractors
 
 namespace Tammes15
 
-/-- `Tammes15.Conjecture` from `EnumComplete L` (D2), the replayed trees of the first program on `L`
+/-- `Tammes15.Conjecture` from `EnumComplete L` (D2), the replayed trees of the program on `L`
 with root boxes in the domain, and how its procedures compute (`Contractors.Impl`): the soundness
 of its contractors is proved, not assumed. -/
 theorem conjecture_of_enum_progTreesDom (L : Set PlaneGraph) (N : PaperSteps.Procs)

@@ -1,7 +1,0 @@
-reference out/ref_all_n10.codes: 8150 codes; generator out/gen_all_n10_ring2capstight.codes: 8150 codes
-only in reference: 0; only in generator: 0
-s 3 expected_ring 3 generator_ok_leaves 3 equal
-s 4 expected_ring 2899 generator_ok_leaves 2899 equal
-s 5 expected_ring 5256 generator_ok_leaves 5256 equal
-s 6 expected_ring 1069 generator_ok_leaves 1069 equal
-verdict: sets equal

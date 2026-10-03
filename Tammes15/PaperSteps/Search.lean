@@ -3,9 +3,9 @@ import Tammes15.Trigrows.Rows
 import Tammes15.TwoConn.Blocks
 
 /-!
-# Soundness of the level-2 search, from the replayed trees to `ProgKilled`
+# Soundness of the search of the second level, from the replayed trees to `ProgKilled`
 
-Proposition 5.6 (2) of the paper with the narrowings of the program as parameters. The
+Proposition 6.4 of the paper with the narrowings of the program as parameters. The
 variables `PVar`, the procedures `Procs` and their soundness `Procs.Sound`, the leaf test
 `LeafKill` and the replayed trees `ProgTrees` are defined in SearchDefs.lean.
 
@@ -422,7 +422,7 @@ theorem leafKill_sound {N : Procs} (hN : N.Sound) {H : HexChoice P k} {A : Assig
 
 /-! ## The verdicts -/
 
-/-- Proposition 5.6 (2): the trees that the replays accept, with sound procedures, give
+/-- Proposition 6.4: the trees that the replays accept, with sound procedures, give
 the verdicts of the program in pointwise form. -/
 theorem progKilled_of_progTrees {L : Set PlaneGraph} {N : Procs} (h : ProgTrees L N)
     (hN : N.Sound) : ProgKilled L := by

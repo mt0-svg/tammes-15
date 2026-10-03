@@ -1,4 +1,0 @@
-input k3_0_plantri.pc: 606838 graphs, 82 with >= 3 hexagons, 5 of them survivors of stage A, 77 killed; testing all survivors and 77 killed
-killed by stage A: LP infeasible 77, LP FEASIBLE (wrong kill) 0
-survivors of stage A: LP feasible 5, LP infeasible 0
-survivor file graphs not found in the input: 0

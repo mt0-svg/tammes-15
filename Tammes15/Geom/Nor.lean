@@ -4,14 +4,14 @@ import Tammes15.Trigrows.Mono
 import Tammes15.Rattlers.Hex
 
 /-!
-# Lemma disc and Proposition nor on faces in cone form
+# Lemma A.10 and Proposition 4.5 on faces in cone form
 
-Lemma disc (paper Section 3): a point `r` strictly inside a face with all sides `d`, at distance
+Lemma A.10 of the paper: a point `r` strictly inside a face with all sides `d`, at distance
 at least `d` from every vertex, is at distance at least `h(d)` from the great circle of every side,
 in the form `sin d * sin (hrad d) ≤ ⟪cross (A i) (A (i + 1)), r⟫` (`disc_side`); hence the disc
 `D(r, h(d))` lies in the closed face (`disc_closed`).
 
-Proposition nor (paper Section 3): no face with at most five vertices contains such a point. The
+Proposition 4.5 of the paper: no face with at most five vertices contains such a point. The
 formal proof uses no perimeter: a side whose great circle is at distance at least `h(d)` from `r`
 subtends at `r` an angle at most `α(d)` (`subtend_le_alpha`: with `u = ⟪r, A⟫`, `v = ⟪r, B⟫`,
 `c = cos d`, the Gram identity gives `uv ≤ c²`, and `cos β = (c - uv)/√((1-u²)(1-v²)) ≥
@@ -158,7 +158,7 @@ theorem edge_comb_bound (d : ℝ) (hd : 0 < d ∧ d < π / 2) (a b r : E3) (ha :
     _ ≤ cos d * ‖l • a + μ • b‖ := by
       nlinarith
 
-/-- Lemma disc, distance form. -/
+/-- Lemma A.10, distance form. -/
 theorem disc_side (d : ℝ) (hd : 0 < d ∧ d < π / 2) {m : ℕ} {A : ℕ → E3} (hA : IsCPoly m A)
     (hside : ∀ i, sdist (A i) (A (i + 1)) = d) (r : E3) (hr : ‖r‖ = 1) (hin : Inside A r)
     (hfar : ∀ i, d ≤ sdist r (A i)) (i : ℕ) :
@@ -284,7 +284,7 @@ theorem disc_side (d : ℝ) (hd : 0 < d ∧ d < π / 2) {m : ℕ} {A : ℕ → E
     exact mul_le_mul_of_nonneg_left (by linarith) (sq_nonneg _)
   exact le_of_pow_le_pow_left₀ two_ne_zero hs0.le hsq
 
-/-- Lemma disc: the disc `D(r, h(d))` lies in the closed face. -/
+/-- Lemma A.10: the disc `D(r, h(d))` lies in the closed face. -/
 theorem disc_closed (d : ℝ) (hd : 0 < d ∧ d < π / 2) {m : ℕ} {A : ℕ → E3} (hA : IsCPoly m A)
     (hside : ∀ i, sdist (A i) (A (i + 1)) = d) (r : E3) (hr : ‖r‖ = 1) (hin : Inside A r)
     (hfar : ∀ i, d ≤ sdist r (A i)) (y : E3) (hy : ‖y‖ = 1) (hry : sdist r y ≤ hrad d) :
@@ -375,7 +375,7 @@ theorem no_small_face (d : ℝ) (hd : 0 < d ∧ d < π / 2) (hα : alpha d < 2 *
   have hm' : (m : ℝ) ≤ 5 := by exact_mod_cast hm
   nlinarith [pi_pos]
 
-/-- Proposition nor, in cone form. -/
+/-- Proposition 4.5, in cone form. -/
 theorem nor (d : ℝ) (hlo : dlo ≤ d) (hhi : d ≤ dhi) {m : ℕ} {A : ℕ → E3} (hA : IsCPoly m A)
     (hm : m ≤ 5) (hside : ∀ i, sdist (A i) (A (i + 1)) = d) (r : E3) (hr : ‖r‖ = 1)
     (hin : Inside A r) (hfar : ∀ i, d ≤ sdist r (A i)) : False := by

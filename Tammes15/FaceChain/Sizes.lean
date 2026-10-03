@@ -3,7 +3,7 @@ import Tammes15.FaceChain.Basic
 /-!
 # Face sizes
 
-Section 3 of the paper, Lemma faces: a face orbit of period `m` with strict support is a strict
+Lemma 4.3 of the paper: a face orbit of period `m` with strict support is a strict
 spherical polygon of the eight-point code with perimeter `m d`, less than `2π`
 (`StrictSphericalPolygon.perimeter_lt_two_pi`), so `m ≤ 6` when `7 dlo > 2π` and `d ≥ dlo`.
 -/

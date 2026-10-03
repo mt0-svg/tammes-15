@@ -4,7 +4,7 @@ import Tammes15.Vendor.EM8.ArcEmbedding
 import Tammes15.Trigrows.Sdist
 
 /-!
-# Contact drawings (Lemma 3.20 (1) of the paper)
+# Contact drawings (Lemma 4.9 (1) of the paper)
 
 Two lemmas on contact drawings (`IsContactDrawing`, `ContactDrawn` of Tammes15/Hyps/Computations.lean),
 the second of which Tammes15/D2Regions/Statement.lean uses to read D2 (Definition 7.1) on the
@@ -14,7 +14,7 @@ rotation system `S.R` of a structured configuration:
   contact drawing;
 * `contactDrawn_arcs`: in a contact drawing, the open minor arcs of distinct edges are disjoint
   and avoid the vertices (the vendored `contact_graph_arcs_disjoint` and
-  `contact_arc_avoids_vertices`), item (1) of Lemma 3.20.
+  `contact_arc_avoids_vertices`), item (1) of Lemma 4.9.
 -/
 
 open Real

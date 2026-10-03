@@ -8,8 +8,8 @@ and `sin` is bounded by `1` in absolute value, so the remainder after the terms 
 is at most `|x| ^ m / m!` at every real `x`), their one-sided forms at nonnegative points, the
 transfer to points `q * π` through rational bounds of `π` (`Real.pi_gt_d20`, `Real.pi_lt_d20` and
 the coarser ones of Mathlib) and the monotonicity of `cos` and `sin`, and the comparison of `arccos`
-with a point through `cos`. These give the numerical margins of Proposition onehex in its inscribed
-polygon form and the bound `dlo < ψ*` (paper, Proposition onehex and the choice of `dlo`).
+with a point through `cos`. These give the numerical margins of Proposition 4.6 in its inscribed
+polygon form and the bound `dlo < ψ*` (paper, Proposition 4.6 and the choice of `dlo`).
 
 A value such as `c ≤ cos (q * π)` for explicit rationals `q`, `c` is proved by `le_cos_mul_pi` with
 `p = 3.14159265358979323847` (`Real.pi_lt_d20`) and a rational inequality closed by `norm_num`.

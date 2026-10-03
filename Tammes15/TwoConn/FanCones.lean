@@ -3,8 +3,8 @@ import Tammes15.TwoConn.Regions
 /-!
 # Fan cones of the facets
 
-Steps D3', D4 and Lemma F' of the proof of Corollary twoconn by the convex hull (paper, Section 3,
-Lemma hull and Corollary twoconn). Every point of a facet plane is a vertex of the facet
+Three steps of the proof of Corollary A.6 by the convex hull (paper,
+Lemma A.5 and Corollary A.6). Every point of a facet plane is a vertex of the facet
 (`vertex_complete`), so a plane carries one facet (`orbit_eq_of_polar_eq`). Seen from its first
 vertex, the other vertices of a facet turn counterclockwise (`fan_det_pos`), and the open cones over
 the fan triangles of all facets are pairwise disjoint (`cone_unique`).

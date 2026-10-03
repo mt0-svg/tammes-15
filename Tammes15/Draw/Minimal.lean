@@ -1,13 +1,13 @@
 import Tammes15.Draw.Shift
 
 /-!
-# Lemma minimal
+# Lemma 4.2
 
 For a configuration `X` at separation `d < π/2` with fewest contacts, and the graph `G` of its
 non-rattlers with an angular rotation system: every corner lies in `[α(d), π)` and every vertex
 has degree 3, 4 or 5. A corner `≥ π`, or a vertex of degree one, would give a push direction
 (`exists_push_dir`) and a configuration with fewer contacts (`shift_config`,
-`contactCount_lt_of_shift`); the lower bound is Lemma alpha (`alpha_le_angle`,
+`contactCount_lt_of_shift`); the lower bound is Lemma A.1 (`alpha_le_angle`,
 `angle_le_ocorner`); the degree bounds come from the angle sum `corner_sum`.
 -/
 
@@ -18,7 +18,7 @@ namespace Tammes15
 
 variable {V : Type} [Fintype V] [DecidableEq V] {G : SimpleGraph V}
 
-/-- Lemma alpha for the corner after a dart that the rotation moves. -/
+/-- Lemma A.1 for the corner after a dart that the rotation moves. -/
 theorem alpha_le_corner {N : ℕ} {d : ℝ} (hd : 0 < d ∧ d < π / 2) (X : Config N d)
     (emb : V ↪ Fin N) (hG : ∀ a b, G.Adj a b → (contactGraph X).Adj (emb a) (emb b))
     (R : RotSys G) (e : G.Dart) (hne : R.rot e ≠ e) :
@@ -39,7 +39,7 @@ theorem alpha_le_corner {N : ℕ} {d : ℝ} (hd : 0 < d ∧ d < π / 2) (X : Con
         alpha_le_angle d hd _ _ _ (X.unit _) (X.unit _) (X.unit _) h1.2 h2.2 h12
     _ ≤ _ := angle_le_ocorner _ _ _ (X.unit _) (hD.1 _ _ e.adj) (hD.1 _ _ h2adj)
 
-/-- Lemma minimal. -/
+/-- Lemma 4.2. -/
 theorem lemma_minimal {d : ℝ} (hd : 0 < d ∧ d < π / 2) (X : Config 15 d)
     (hmin : ∀ Y : Config 15 d, contactCount X ≤ contactCount Y) [DecidableRel G.Adj]
     (emb : V ↪ Fin 15) (hG : ∀ a b, G.Adj a b ↔ (contactGraph X).Adj (emb a) (emb b))

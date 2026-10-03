@@ -2,7 +2,7 @@ import Tammes15.D2Regions.Defs
 import Tammes15.Geom.Basic
 
 /-!
-# Self-contained steps of the graph part of Lemma 3.20 of the paper
+# Self-contained steps of the graph part of Lemma 4.9 of the paper
 
 
 * `wedge_not_inside`: the corner wedge in algebraic form. If no neighbour direction `u` of `w`

@@ -5,7 +5,7 @@ import Tammes15.Geom.Hexagons
 import Tammes15.FaceChain.ThreeConn
 
 /-!
-# The regions of an arc drawing with convex faces (Lemma 3.20 of the paper)
+# The regions of an arc drawing with convex faces (Lemma 4.9 of the paper)
 
 
 `Hyp G x R` collects what the graph part uses: an arc drawing (`IsArcDrawing`), an angular rotation

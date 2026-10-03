@@ -1,7 +1,7 @@
 import Tammes15.PaperSteps.Defs
 
 /-!
-# Step (ii) of the proof of Proposition 7.7: the reflection Θ
+# Step (ii) of the proof of Lemma B.7: the reflection Θ
 
 The program turns at a vertex in the order opposite to `P.R.rot` and places a free point through
 `A_{i-1}` instead of `A_{i+1}`. As the corners at a vertex sum to `2π`, each turn of the program is

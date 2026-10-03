@@ -4,7 +4,7 @@ import Tammes15.Trigrows.Rows
 import Tammes15.Hyps.Case
 
 /-!
-# Interval enclosures of the contractors (proof of Proposition 5.6 (1) of the paper)
+# Interval enclosures of the contractors (proof of Proposition B.2 of the paper)
 
 Each lemma reads one computation of `Tammes15.Contractors.Prims` over an arithmetic with
 `Rnd.Sound`: the directed sums and the update of a row of `fbbt`, and the enclosures of `alpha`,

@@ -1,4 +1,4 @@
-\\ onehex_chord_margin (Tammes15/Rattlers/HexChord.lean; paper, Proposition onehex, inscribed polygon form):
+\\ onehex_chord_margin (Tammes15/Rattlers/HexChord.lean; Proposition 4.6 of the paper, inscribed polygon form):
 \\ one piece [a, b] = [dpt 0, dpt 10] = [dlo, dhi] of chord_piece_of, with rational bounds at its ends. Every rational
 \\ inequality closed by norm_num in the Lean proof is checked here exactly; enclosures as in pieces.gp (Taylor order
 \\ NT, PLO <= Pi <= PHI). Reuses the enclosures of Numerics/HexData.lean at the points 0 and 10 and the upper bound

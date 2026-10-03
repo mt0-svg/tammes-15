@@ -1,2 +1,2 @@
 replay: verified 1 failed 0 missing certificates 4 (trig rig)
-d in [9.36506155531897644e-1, 9.89106012373218602e-1] rad = [53.6578502000, 56.6716000000] deg; total 5 killed 0 unresolved 0 budget 0 nodes 476 time 1.59s (0.317 s/graph) leaf kills [] trig rig
+d in [9.36506155531897644e-1, 9.89106012373218602e-1] rad = [53.6578502000, 56.6716000000] deg; total 5 killed 0 unresolved 0 budget 0 nodes 476 time 1.41s (0.282 s/graph) leaf kills [] trig rig

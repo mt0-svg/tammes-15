@@ -1,12 +1,12 @@
-import Tammes15.Params.Onehex
+import Tammes15.Params.Generic
+import Tammes15.Numerics.HexData
 import Tammes15.Params.Pi
 
 /-!
-# params_check in Lean
+# The inequalities on the parameters
 
-The inequalities that code/sage/params_check.sage checks in ball arithmetic (record
-params_check.out), one statement each. The rational witnesses of the proofs are those that
-code/lean-data/witness.gp prints and checks in exact arithmetic (witness.out).
+Inequalities on the constants and the parameters of the program, one statement each. The rational
+witnesses of the proofs are those that code/lean-data/witness.gp prints and checks in exact arithmetic (witness.out).
 
 1. The constants of data/params15ft.txt, read as exact decimals, are outward
    enclosures: `dlo_file ≤ dlo`, `dhi ≤ dhi_file`, `alo_file ≤ α(dlo)`, `α(dhi) ≤ ahi_file`,
@@ -14,10 +14,9 @@ code/lean-data/witness.gp prints and checks in exact arithmetic (witness.out).
 2. The range: `53.65785° < ψ*` is `dlo_lt_arccos_root` (Hyps/Interfaces.lean); `ψ* < 53.6578502°`
    is `arccos_root_lt` below.
 3. `56.6716°` lies above the Fejes Tóth value `arccos ((cot² ω - 1) / 2)`, `ω = 15π / (6 · 13)`.
-4. The margins of Section 3: [3.1] `2π - 5 α(dhi) > 0` is `alpha_dhi_lt`, [3.2]
-   `π (1 + sin h(dlo)) - 5 dhi > 0` is `margin_nor_closed`, [3.3] `π - 2 h(dhi) - dhi > 0` is
-   `margin_perims` (all in Trigrows/Margins.lean); [3.4] `P(a, h(a)) - 6 b > 0` on the 40
-   subintervals `[a, b] = [pa k, pa (k + 1)]` is `margin_onehex_P` below.
+4. The margins of Section 4.3 of the paper are proved elsewhere: `two_pi_lt_seven_dlo`, `alpha_dhi_lt` and
+   `margin_perims` in Trigrows/Margins.lean, `onehex_chord_margin` in Rattlers/HexChord.lean and
+   `margin_onehex_poly` in Rattlers/HexPoly.lean.
 -/
 
 open Real
@@ -218,8 +217,5 @@ theorem fejesToth_value_lt_dhi : arccos ((cot (15 * π / (6 * 13)) ^ 2 - 1) / 2)
     norm_num
   · -- cU < 1 / (2 * SU ^ 2) - 1
     norm_num
-
-theorem margin_onehex_P (k : ℕ) (hk : k < 40) : 6 * pa (k + 1) < Pform (pa k) (hrad (pa k)) := by
-  exact margin_onehex_P' k hk
 
 end Tammes15.Params

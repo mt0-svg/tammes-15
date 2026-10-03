@@ -7,10 +7,11 @@ name: CI
 # import them are compiled; Comparator replays the whole environment in nanoda whatever was
 # restored. Then a scan of the sources, and Comparator.
 #
-# The computations: code/rerun.sh reruns the checks of the paper that fit a runner in about 20 minutes and compares
-# each output with the recorded one, except bk15_exact, whose statements Lean proves (code/README.md); the job assets
-# runs those that read the data tarballs of ASSETS.md, when a release (draft or published) holds them; in a run started
-# by hand, which certifies a release, it fails when none does. code/README.md lists the checks left out and why.
+# The computations: code/rerun.sh reruns the enumeration, the first level and the PARI/GP and SageMath scripts of the
+# paper that fit a runner in about 20 minutes and compares each output with the recorded one, except bk15_exact, whose
+# statements Lean proves (code/README.md); the jobs replay and replay-join replay every certificate from the data
+# tarballs of ASSETS.md, when a release (draft or published) holds them; in a run started by hand, which certifies a
+# release, they fail when none does. code/README.md lists what is left out and why.
 # Every job uploads the complete output of each check and one result line per check as an artifact verify-*, which
 # release.yml collects into the verification archive of a release. A run started by hand on the default branch ends
 # with the job badges, which writes the three badges of the README to the branch badges, with the page run.html that
@@ -454,42 +455,20 @@ jobs:
       image: rust:1.98.1
     steps:
       - uses: actions/checkout@v5
-      - name: Build plantri 5.8 and both implementations
+      - name: Build plantri 5.8 and the program
         run: |
           mkdir -p verify/versions
           { rustc --version; cc --version | head -1; } > verify/versions/rust.txt
-          code/rerun.sh build_plantri build_impl1 build_impl2
-      - name: Unit tests, sample replay, the test of Local, enumeration up to n = 13, stage A for k = 1, 2, 3
-        run: |
-          SAVE="$PWD/verify" code/rerun.sh test_impl1 replay_sample replay_corrupt localtest \
-            filtercheck_n4_13 unfiltered_n13 stageA_k1 stageA_k2 stageA_k3
+          code/rerun.sh build_plantri build_impl1
+      - name: Enumeration and first level for k = 1, 2, 3
+        run: SAVE="$PWD/verify" code/rerun.sh stageA_k1 stageA_k2 stageA_k3
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: verify-impl1
           path: verify/
 
-  # plantri at n = 14: the count without the degree filter (4 parts) and the unsplit count of the class
-  enum14:
-    needs: changes
-    if: needs.changes.outputs.compute == 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    container:
-      image: rust:1.98.1
-    steps:
-      - uses: actions/checkout@v5
-      - name: Build plantri 5.8
-        run: code/rerun.sh build_plantri
-      - name: Counts at n = 14
-        run: SAVE="$PWD/verify" code/rerun.sh unfiltered_n14 split_n14
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: verify-enum14
-          path: verify/
-
-  # Stage A for k = 0 (2000 parts of plantri), 200 parts per job, each part through tfilter and vlevel1
+  # The enumeration and the first level for k = 0 (2000 parts of plantri), 200 parts per job, each part through tfilter
   stageA_k0:
     needs: changes
     if: needs.changes.outputs.compute == 'true'
@@ -503,58 +482,14 @@ jobs:
         first: [0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800]
     steps:
       - uses: actions/checkout@v5
-      - name: Build plantri 5.8 and both implementations
-        run: code/rerun.sh build_plantri build_impl1 build_impl2
+      - name: Build plantri 5.8 and the program
+        run: code/rerun.sh build_plantri build_impl1
       - name: Parts ${{ matrix.first }} to ${{ matrix.first }} + 199
         run: SAVE="$PWD/verify" code/rerun.sh stageA_k0_${{ matrix.first }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: verify-stageA-k0-${{ matrix.first }}
-          path: verify/
-
-  impl2:
-    needs: changes
-    if: needs.changes.outputs.compute == 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    container:
-      image: rust:1.98.1
-    steps:
-      - uses: actions/checkout@v5
-      - name: Build the second implementation
-        run: code/rerun.sh build_impl2
-      - name: Unit tests, the plain pass on the sample
-        run: |
-          SAVE="$PWD/verify" code/rerun.sh test_impl2 sample_kill
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: verify-impl2
-          path: verify/
-
-  # The 42 graphs left by the bulk passes of vkill (54 runs, some on slices of d), in five groups
-  residue:
-    needs: changes
-    if: needs.changes.outputs.compute == 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    container:
-      image: rust:1.98.1
-    strategy:
-      fail-fast: false
-      matrix:
-        group: [a, b, c, d, e]
-    steps:
-      - uses: actions/checkout@v5
-      - name: Build the second implementation
-        run: code/rerun.sh build_impl2
-      - name: Residue group ${{ matrix.group }}
-        run: SAVE="$PWD/verify" code/rerun.sh residue_${{ matrix.group }}
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: verify-residue-${{ matrix.group }}
           path: verify/
 
   gp:
@@ -570,31 +505,25 @@ jobs:
           mkdir -p verify/versions
           echo 'print("PARI/GP ", version())' | gp -q > verify/versions/gp.txt
           SAVE="$PWD/verify" code/rerun.sh paper_checks rtrig_consts params \
-            bk15_c3_coords contact_graphs consts_check
-      # The checks of code/hyps that back the step from the program's output to D3: d_range.sh (the exact enclosure
-      # of the range of d, and the program's own parse of it) and check.gp (the Lean definitions of
-      # Tammes15/Hyps/Case.lean on the configurations of data/genuine). Each must pass its own check and give the
-      # recorded output (d_range.out without its header line of date and versions).
-      - name: The checks of code/hyps
+            bk15_c3_coords contact_graphs
+      # Computation B.4: the range of d of the program, from code/hyps/d_range.sh (the exact enclosure of the range of
+      # d, and the program's own parse of it). It must pass its own check and give the recorded output (d_range.out
+      # without its header line of date and versions).
+      - name: The range of d of the program
         shell: bash
         run: |
           set -u
           mkdir -p verify/gp verify/results
           git show HEAD:code/hyps/d_range.out > "$RUNNER_TEMP/d_range.out"
-          git show HEAD:code/hyps/check.out > "$RUNNER_TEMP/check.out"
           norm() { grep -v -e 'Warning: .*stack size' "$1" | sed 's/[[:space:]]*$//'; }
-          fail=0
-          for c in d_range check; do
-            case $c in d_range) cmd="sh code/hyps/d_range.sh"; skip=2 ;; check) cmd="sh code/hyps/run_check.sh"; skip=1 ;; esac
-            s0=$(date +%s); rc=0
-            $cmd > "verify/gp/hyps_$c.log" 2>&1 || rc=$?
-            cp "code/hyps/$c.out" "verify/gp/hyps_$c.txt"
-            if [ "$rc" = 0 ] && diff <(norm "code/hyps/$c.out" | tail -n "+$skip") <(norm "$RUNNER_TEMP/$c.out" | tail -n "+$skip"); then
-              r=PASS; else r=FAIL; fail=1; fi
-            printf 'gp hyps_%s\t%s\t%s s\t%s\tgp/hyps_%s.txt\n' "$c" "$cmd" "$(($(date +%s) - s0))" "$r" "$c" \
-              > "verify/results/gp_hyps_$c.tsv"
-          done
-          exit "$fail"
+          s0=$(date +%s); rc=0
+          sh code/hyps/d_range.sh > verify/gp/hyps_d_range.log 2>&1 || rc=$?
+          cp code/hyps/d_range.out verify/gp/hyps_d_range.txt
+          if [ "$rc" = 0 ] && diff <(norm code/hyps/d_range.out | tail -n +2) <(norm "$RUNNER_TEMP/d_range.out" | tail -n +2); then
+            r=PASS; else r=FAIL; fi
+          printf 'gp hyps_d_range\t%s\t%s s\t%s\tgp/hyps_d_range.txt\n' "sh code/hyps/d_range.sh" "$(($(date +%s) - s0))" "$r" \
+            > verify/results/gp_hyps_d_range.tsv
+          [ "$r" = PASS ]
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -611,62 +540,22 @@ jobs:
       options: --user root
     steps:
       - uses: actions/checkout@v5
-      - name: curl, to download plantri
-        run: apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq curl
-      - name: SageMath checks, and stage A by exact rational LP
+      - name: The targets of Local
         run: |
           mkdir -p verify/versions
           { sage --version; sage -c 'print("PARI in Sage", pari.version())'; } > verify/versions/sage.txt
-          code/rerun.sh build_plantri
-          SAVE="$PWD/verify" code/rerun.sh params_check tie_targets \
-            exactlp_k3 exactlp_k2 exactlp_k1_15 exactlp_k0_135 exactlp_k0_1848
+          SAVE="$PWD/verify" code/rerun.sh tie_targets
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: verify-sage
           path: verify/
 
-  # The checks that read the data tarballs (group assets of code/rerun.sh): the coverage join of the
-  # second level and its tests, the comparison of the two first levels, the samples of the MPFR replays and
-  # the replay of the two further samples (974 replays) with the MPFR backend. The tarballs come from the
-  # newest release, draft or published, that has the three of ASSETS.md with its sha256 sums.
-  assets:
-    needs: changes
-    if: needs.changes.outputs.compute == 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    permissions:
-      contents: write # a draft release is visible only with write access; this job writes nothing
-    steps:
-      - uses: actions/checkout@v5
-      - name: Data tarballs from a release, checked against ASSETS.md and unpacked
-        id: fetch
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: bash .github/scripts/fetch-assets.sh "$RUNNER_TEMP/assets"
-      - name: Build the first implementation with Rust 1.98.1
-        if: steps.fetch.outputs.release != ''
-        run: |
-          rustup toolchain install 1.98.1 --profile minimal
-          rustup default 1.98.1
-          mkdir -p verify/versions
-          { rustc --version; awk -W version 2>&1 | head -1; } > verify/versions/assets.txt
-          code/rerun.sh build_impl1
-      - name: Coverage join and its tests, stage A comparison, MPFR samples and their replay
-        if: steps.fetch.outputs.release != ''
-        run: |
-          ASSETS="$RUNNER_TEMP/assets" SAVE="$PWD/verify" code/rerun.sh coverage_join coverage_join_test \
-            stageA_compare mpfr_samples mpfr_974
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.fetch.outputs.release != ''
-        with:
-          name: verify-assets
-          path: verify/
-
   # The replay of every recorded tree of the second level (Section 7.5) with the tdeep of this commit, in three groups
-  # of the jobs of code/impl1/replay_all.sh, balanced on the recorded times of code/impl1/out/replay_summary.txt (the
-  # longest jobs, p3_k1 and p3_k2, take about 55 min each and cannot be split); then replay-join checks the totals
-  # against the recorded table and runs the coverage join on these fresh replays.
+  # of the jobs of code/impl1/replay_all.sh, balanced on the recorded times of code/impl1/out/guarded/replay_summary.txt
+  # (the longest jobs, p3_k1 and p3_k2, take about 53 min each and cannot be split); then replay-join checks the totals
+  # against the recorded table and runs the coverage join on these fresh replays. The data tarballs come from the
+  # newest release, draft or published, that has the three of ASSETS.md with their sha256 sums.
   replay:
     name: Replay of the certificates, group ${{ matrix.group }} of 3
     needs: changes
@@ -686,7 +575,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: bash .github/scripts/fetch-assets.sh "$RUNNER_TEMP/assets"
-      - name: Build the first implementation with Rust 1.98.1
+      - name: Build the program with Rust 1.98.1
         if: steps.fetch.outputs.release != ''
         run: |
           rustup toolchain install 1.98.1 --profile minimal
@@ -698,7 +587,7 @@ jobs:
         run: |
           set -euo pipefail
           # Longest first, each to the group with the least recorded time so far.
-          only=$(awk 'NR > 1 && $1 != "total" { print $5, $1 }' code/impl1/out/replay_summary.txt | sort -rn \
+          only=$(awk 'NR > 1 && $1 != "total" { print $5, $1 }' code/impl1/out/guarded/replay_summary.txt | sort -rn \
             | awk -v G=3 -v g=${{ matrix.group }} '{ b = 0; for (i = 1; i < G; i++) if (L[i] < L[b]) b = i; L[b] += $1
                 if (b == g) printf "%s%s", (n++ ? "|" : ""), $2 }')
           echo "jobs: $only"
@@ -725,7 +614,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: bash .github/scripts/fetch-assets.sh "$RUNNER_TEMP/assets"
-      - name: Build the first implementation with Rust 1.98.1
+      - name: Build the program with Rust 1.98.1
         if: steps.fetch.outputs.release != ''
         run: |
           rustup toolchain install 1.98.1 --profile minimal
@@ -748,13 +637,13 @@ jobs:
           s0=$(date +%s)
           sh code/impl1/replay_summary.sh replay > verify/assets/replay_full.txt
           cols() { awk '$1 == "total" { print $1, $2, $3; next } { print $1, $2, $3, $4 }' "$1"; }
-          if diff <(cols code/impl1/out/replay_summary.txt) <(cols verify/assets/replay_full.txt); then r=PASS; else r=FAIL; fi
+          if diff <(cols code/impl1/out/guarded/replay_summary.txt) <(cols verify/assets/replay_full.txt); then r=PASS; else r=FAIL; fi
           printf 'assets replay_full\t%s\t%s s\t%s\tassets/replay_full.txt\n' \
-            "code/impl1/replay_all.sh in 3 groups, then replay_summary.sh against code/impl1/out/replay_summary.txt" \
+            "code/impl1/replay_all.sh in 3 groups, then replay_summary.sh against code/impl1/out/guarded/replay_summary.txt" \
             "$(($(date +%s) - s0))" "$r" > verify/results/assets_replay_full.tsv
           s0=$(date +%s); rc=0
           code/impl1/coverage_join.sh "$RUNNER_TEMP/assets" replay > verify/assets/coverage_join_fresh.txt 2>&1 || rc=$?
-          if [ "$rc" = 0 ] && diff <(sed 1d code/impl1/out/coverage_join.txt) <(sed 1d verify/assets/coverage_join_fresh.txt); then
+          if [ "$rc" = 0 ] && diff <(sed 1d code/impl1/out/guarded/coverage_join.txt) <(sed 1d verify/assets/coverage_join_fresh.txt); then
             r2=PASS; else r2=FAIL; fi
           printf 'assets coverage_join_fresh\t%s\t%s s\t%s\tassets/coverage_join_fresh.txt\n' \
             "code/impl1/coverage_join.sh on the replay of this run" "$(($(date +%s) - s0))" "$r2" \
@@ -770,7 +659,7 @@ jobs:
   # branch badges, and run.html, which sends the links of the README to this run (GitHub Pages serves the branch).
   badges:
     name: Badges
-    needs: [changes, scan, lean, comparator, impl1, enum14, stageA_k0, impl2, residue, gp, sage, assets, replay, replay-join]
+    needs: [changes, scan, lean, comparator, impl1, stageA_k0, gp, sage, replay, replay-join]
     if: ${{ always() && github.event_name == 'workflow_dispatch' && github.ref_name == github.event.repository.default_branch }}
     runs-on: ubuntu-latest
     permissions:

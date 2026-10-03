@@ -1,5 +1,0 @@
-k = 0: 2000 parts; tfilter parts equal to their recorded sha256: 2000; identical survivor files 1927; vlevel1 file = tfilter file without the listed graphs, byte for byte, in 73 of 73 other parts (98 graphs); survivors tfilter 435263, vlevel1 435165
-k = 1: 40 parts; tfilter parts equal to their recorded sha256: 40; identical survivor files 40; vlevel1 file = tfilter file without the listed graphs, byte for byte, in 0 of 0 other parts (0 graphs); survivors tfilter 26994, vlevel1 26994
-k = 2: 1 parts; tfilter parts equal to their recorded sha256: 1; identical survivor files 1; vlevel1 file = tfilter file without the listed graphs, byte for byte, in 0 of 0 other parts (0 graphs); survivors tfilter 441, vlevel1 441
-k = 3: 1 parts; tfilter parts equal to their recorded sha256: 1; identical survivor files 1; vlevel1 file = tfilter file without the listed graphs, byte for byte, in 0 of 0 other parts (0 graphs); survivors tfilter 5, vlevel1 5
-stage A compare: PASS (the vlevel1 survivors are a subset of the tfilter survivors in every part)

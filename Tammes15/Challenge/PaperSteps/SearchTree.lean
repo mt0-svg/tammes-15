@@ -3,7 +3,7 @@ import Mathlib.Basic.Real.Basic
 /-!
 # Boxes, narrowings and search trees
 
-The abstract part of Proposition 5.6 (2) of the paper, for any type `ι` of variables.
+The abstract part of Proposition 6.4 of the paper, for any type `ι` of variables.
 
 * A box gives each variable a lower and an upper end; a point `x : ι → ℝ` is in it when every
   coordinate is between its ends. The two closed halves of a split of `v` at `t` cover the box

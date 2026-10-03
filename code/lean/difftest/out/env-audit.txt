@@ -1,6 +1,0 @@
-== Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release); 2 modules imported; scopes: Tammes15.Contractors.DiffTest
-MODULE Tammes15.Contractors.DiffTest.Commute: 406 constants
-MODULE Tammes15.Contractors.DiffTest.PrimsQ: 222 constants
-SCOPE [M:Tammes15.Contractors.DiffTest]: 628 constants in 2 modules
-FLAGS: 0 (1 compiled-code shims `_unsafe_rec` of checked recursive definitions not counted)
-AXIOMS OK: 628 constants reach 10051 constants and only the axioms [Classical.choice, Quot.sound, propext]

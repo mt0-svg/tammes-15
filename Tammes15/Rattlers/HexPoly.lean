@@ -1,8 +1,8 @@
-import Tammes15.Rattlers.NorPoly
+import Tammes15.Rattlers.Hex
 import Tammes15.Numerics.HexData
 
 /-!
-# Proposition onehex by an inscribed polygon: the closed form and the margin
+# Proposition 4.6 by an inscribed polygon: the closed form and the margin
 
 
 See code/lean/numerics/onehex_poly.gp. For two discs of
@@ -28,7 +28,7 @@ noncomputable def tanAng (l h : ℝ) : ℝ := arccos (-(tan h * tan (l / 2)))
 /-- The chord of the arc of angle `s` on a circle of radius `h`. -/
 noncomputable def chordC (h s : ℝ) : ℝ := arccos (cos h ^ 2 + sin h ^ 2 * cos s)
 
-/-- The perimeter of the inscribed polygon of Proposition onehex, `k = 4`. -/
+/-- The perimeter of the inscribed polygon of Proposition 4.6, `k = 4`. -/
 noncomputable def hexPoly (l h : ℝ) : ℝ := 2 * tanLen l h + 8 * chordC h ((2 * π - 2 * tanAng l h) / 4)
 
 /-- The subdivision points `dpt i = 53.65785° + i · 0.301375°`; `dpt 0 = dlo`, `dpt 10 = dhi`. -/
@@ -302,7 +302,7 @@ theorem hexPoly_lower (a b d : ℝ) (ha : dlo ≤ a) (had : a ≤ d) (hdb : d �
 Each piece inequality `hex_piece_i` follows from three monotone ends at rational checkpoints `T1`, `G`, `T2`
 (`hex_piece_of`), and each end reduces, through `cos (hrad a) = cos a / cos (a/2)`, to enclosures of `cos` and
 `sin` at `a`, `a/2` and the checkpoints (`Numerics/HexData.lean`, generated and checked by
-code/lean/numerics/pieces.gp; paper, Proposition onehex). -/
+code/lean/numerics/pieces.gp; paper, Proposition 4.6). -/
 
 /-- The piece inequality from its three monotone ends. -/
 theorem hex_piece_of {a b T1 G T2 : ℝ} (h1 : T1 ≤ tanLen a (hrad a)) (h2 : tanAng b (hrad b) ≤ G)
@@ -709,7 +709,7 @@ theorem hex_piece_9 : 6 * dpt 10 < 2 * tanLen (dpt 9) (hrad (dpt 9)) +
     · rw [ha]; exact cos_dpt_le_9
     · rw [ha2]; exact le_cos_hdpt_9
 
-/-- The margin of Proposition onehex in the polygon form. -/
+/-- The margin of Proposition 4.6 in the polygon form. -/
 theorem margin_onehex_poly (d : ℝ) (hd : dlo ≤ d ∧ d ≤ dhi) : 6 * d < hexPoly d (hrad d) := by
   rcases hd with ⟨hdlo, hdhi⟩
   by_cases h1 : d ≤ dpt 1

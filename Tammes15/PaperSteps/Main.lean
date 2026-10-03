@@ -4,10 +4,10 @@ import Tammes15.PaperSteps.Targets
 import Tammes15.Attained.Final
 
 /-!
-# D3 from the verdicts of the first program
+# D3 from the verdicts of the program
 
 `killed_of_progKilled`: the verdicts of the program in its own conventions (`ProgKilled`) give D3,
-`Killed L {frameC1, frameC3}`, by steps (i) to (iii) of the proof of Proposition 7.7.
+`Killed L {frameC1, frameC3}`, by steps (i) to (iii) of the proof of Lemma B.7.
 `conjecture_of_enum_progKilled` is the main theorem from D2 and these verdicts.
 -/
 
@@ -37,7 +37,7 @@ end Tammes15.PaperSteps
 
 namespace Tammes15
 
-/-- `Tammes15.Conjecture` from `EnumComplete L` (D2) and the verdicts of the first program on `L`. -/
+/-- `Tammes15.Conjecture` from `EnumComplete L` (D2) and the verdicts of the program on `L`. -/
 theorem conjecture_of_enum_progKilled (L : Set PlaneGraph) (h2 : EnumComplete L)
     (h3 : PaperSteps.ProgKilled L) : Conjecture :=
   conjecture_of_enum_killed L h2 (PaperSteps.killed_of_progKilled h3)

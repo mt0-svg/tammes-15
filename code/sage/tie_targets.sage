@@ -1,4 +1,4 @@
-# Targets of the tie-window discard "Local" (Section 5.4): the 8 configurations
+# Targets of the tie-window discard "Local" (Section 6.3): the 8 configurations
 # obtained from the Buddenhagen-Kottwitz frame by keeping one point of each toggle pair
 # (P,B), (I,Q), (A,J); each is congruent to C3 or C1 (checked here by the exact contact count and
 # the degree-5 pattern). Output data/tie_targets.txt: per configuration a line "conf NAME TYPE",

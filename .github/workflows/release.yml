@@ -11,10 +11,10 @@ name: Release
 #   2. create the draft with the tarballs:
 #        gh release create v1.0.0 --draft --title v1.0.0 --notes "" tammes15-inputs.tar.xz \
 #          tammes15-certificates.tar.xz tammes15-records.tar.xz
-#   3. run ci.yml by hand on the branch (gh workflow run ci.yml), so that its job assets checks them, and wait
+#   3. run ci.yml by hand on the branch (gh workflow run ci.yml), so that its replay jobs check them, and wait
 #      until it is green;
 #   4. push the tag.
-# When ASSETS.md is unchanged since the previous release, step 2 is skipped: CI checks the tarballs of that release,
+# When the sha256 sums of ASSETS.md are unchanged since the previous release, step 2 is skipped: CI checks the tarballs of that release,
 # and this workflow takes them from it, makes the draft of the tag and goes on.
 # This workflow downloads the tarballs from the draft (or the previous release), checks them against the sha256 sums
 # of ASSETS.md, adds the PDF, the verification archive and the Lake build archive, and publishes the draft. It stops,
@@ -116,13 +116,14 @@ jobs:
           if [ "$n" -eq 1 ] && [ "$(jq '.[0].assets | length' rel.json)" -gt 0 ]; then
             from="the draft release $TAG"
           else
-            # No draft with the tarballs: those of the previous release, if ASSETS.md has not changed since.
+            # No draft with the tarballs: those of the previous release, if the sums of ASSETS.md have not changed since.
             prev=$(gh api --paginate "repos/$GITHUB_REPOSITORY/releases?per_page=100" | jq -rs --arg tag "$TAG" \
               'add // [] | map(select((.draft | not) and .tag_name != $tag)) | sort_by(.published_at) | last | .tag_name // empty')
             [ -n "$prev" ] || { echo "no draft release $TAG with the data tarballs and no previous release: see the head of release.yml"; exit 1; }
-            git diff --quiet "$prev" "$TAG" -- ASSETS.md || { echo "ASSETS.md changed since $prev: upload the new data tarballs to a draft release $TAG (head of release.yml)"; exit 1; }
+            git show "$prev:ASSETS.md" | grep -E '^[0-9a-f]{64}  ' | cmp -s - assets.sha256 \
+              || { echo "the sha256 sums of ASSETS.md changed since $prev: upload the new data tarballs to a draft release $TAG (head of release.yml)"; exit 1; }
             gh api "repos/$GITHUB_REPOSITORY/releases/tags/$prev" | jq '[.]' > rel.json
-            from="the release $prev (ASSETS.md unchanged since)"
+            from="the release $prev (sums of ASSETS.md unchanged since)"
           fi
           while read -r _ f; do
             id=$(jq -r --arg f "$f" '.[0].assets[] | select(.name == $f) | .id' rel.json)
@@ -191,7 +192,7 @@ jobs:
           for k in source-scan lean_build lean_up-to-date lean_scan lean_axioms lean_types lean_audit comparator; do
             [ -f "verify/results/$k.tsv" ] || miss="$miss $k"
           done
-          for k in gp_hyps_d_range gp_hyps_check assets_replay_full assets_coverage_join_fresh; do
+          for k in gp_hyps_d_range assets_replay_full assets_coverage_join_fresh; do
             [ -f "verify/results/$k.tsv" ] || miss="$miss $k"
           done
           [ -z "$miss" ] || { echo "missing runs:$miss"; ls verify/results; exit 1; }

@@ -1,12 +1,12 @@
 import Tammes15.Draw.Defs
 
 /-!
-# Corollary k3: at most three rattlers
+# Corollary 4.7: at most three rattlers
 
 Each face has at least three darts and each of the `k` hexagons holding a rattler has six, the
 hexagons being distinct faces, so `3F + 3k ≤ 2E`; the degrees are at least 3, so `3n ≤ 2E`;
-Euler's relation gives `F + n = E + 2`; with `n + k = 15` these force `k ≤ 3` (Section 3,
-Corollary k3).
+Euler's relation gives `F + n = E + 2`; with `n + k = 15` these force `k ≤ 3`
+(Corollary 4.7).
 -/
 
 open Real
@@ -191,7 +191,7 @@ theorem card_compl_range_add {V : Type} [Fintype V] {N : ℕ} (emb : V ↪ Fin N
 
 variable {V : Type} [Fintype V] [DecidableEq V] {G : SimpleGraph V}
 
-/-- Corollary k3. -/
+/-- Corollary 4.7. -/
 theorem k_le_three_of_hex (k : ℕ) (hcard : Fintype.card V + k = 15) (R : RotSys G)
     (hdeg : ∀ a, 3 ≤ G.degree a) (hsph : R.Spherical)
     (hface : ∀ e, 3 ≤ Function.minimalPeriod R.face e)

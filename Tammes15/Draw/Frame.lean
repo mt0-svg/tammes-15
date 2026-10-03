@@ -539,7 +539,7 @@ theorem eq_of_toIcoMod_arg_conj_mul_eq_zero (z w : ℂ) (hz : z ≠ 0) (hn : ‖
   have h_eq : w = z := mul_left_cancel₀ h_conj_ne hq_eq_conj_mul_z
   rw [h_eq]
 
-/-- The half-plane step of Lemma shift, in the complex line: if the gap after `z a` in the cyclic
+/-- The half-plane step of Lemma A.2, in the complex line: if the gap after `z a` in the cyclic
 order is at least `π`, a unit `u` has every `z i` in the closed half-plane `Re (conj u * z) ≤ 0`. -/
 theorem exists_halfplane_of_gap {ι : Type*} (z : ι → ℂ) (hz : ∀ i, z i ≠ 0) (a : ι) (θ : ℝ)
     (hθ : π ≤ θ ∧ θ ≤ 2 * π)
@@ -694,7 +694,7 @@ theorem tangent_of_complex (v e : E3) (hv : ‖v‖ = 1) (he : ‖e‖ = 1) (hve
     simp [tcoord, f, Complex.mul_re, Complex.conj_re, Complex.conj_im, real_inner_comm]
   exact And.intro h_norm_eq (And.intro h_inner_v h_formula)
 
-/-- Lemma alpha in oriented form: the oriented corner is at least the unoriented one. -/
+/-- Lemma A.1 in oriented form: the oriented corner is at least the unoriented one. -/
 theorem angle_le_ocorner (v a b : E3) (hv : ‖v‖ = 1) (ha : tdir v a ≠ 0) (hb : tdir v b ≠ 0) :
     angle (tdir v a) (tdir v b) ≤ ocorner v a b := by
   obtain ⟨e, he, hve⟩ := exists_unit_orthogonal v

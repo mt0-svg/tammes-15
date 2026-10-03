@@ -7,7 +7,7 @@ For finitely many distinct angles `φ a ∈ [0, 2π)`, the counterclockwise succ
 each `a` goes to the `b ≠ a` with the least positive gap `toIcoMod 2π 0 (φ b - φ a)`. It is a
 single cycle, and when there are at least two angles its gaps sum to `2π`. These are the
 combinatorial facts behind the angular rotation system of a drawing and the angle sum at a
-vertex (Section 3 of the paper, setup).
+vertex (Section 4 of the paper).
 -/
 
 open Real

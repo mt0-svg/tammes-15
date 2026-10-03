@@ -1,5 +1,5 @@
 //! Rigorous linear relaxation of the level-2 face relations on a box, and an LP kill test with a
-//! verified Farkas certificate (lp::check_farkas). Exploratory option, not used by the proof (Section 5.5).
+//! verified Farkas certificate (lp::check_farkas). Exploratory option, not used by the proof.
 //!
 //! For a relation o = F(x_1, ..., x_K) satisfied by every solution in the box B, with F smooth on
 //! B (every asin/acos argument strictly inside (-1, 1) and no division by an interval containing
@@ -14,7 +14,7 @@
 //! all faces through the vertex rows at once.
 //! Relations: a = alpha(d); rhombus y = rho(x, d), x = rho(y, d); pentagon fan from each corner
 //! (u_{i+1}, u_{i-1}, d) -> (u_i, u_{i+2}, u_{i-2}); hexagon (u_1, u_3, u_5, d) -> (u_0, u_2, u_4)
-//! for both parities (T1-T6 of Section 5.3). Wheel variables do not enter the LP.
+//! for both parities (T1-T6 of Section 6.2). Wheel variables do not enter the LP.
 
 use crate::deep::{FaceK, Prob};
 use crate::iv::{add_up, mul_up, sub_dn};

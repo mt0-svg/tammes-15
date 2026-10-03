@@ -6,7 +6,7 @@
 //! r_i = |P A_i| from the isolated vertex P to the corners (wheel variables, optional).
 //!
 //! Contractors, each sound in outward-rounded interval arithmetic (ivt::Iv; transcendental
-//! functions under the TR_ULPS assumption stated in ivt.rs). Derivations: Section 5.3 of the paper.
+//! functions by rtrig.rs, rigorous). Derivations: Section 6.2 of the paper.
 //!   lin    FBBT on the rows of Sys (vertex sums, rhombus rows, face inequalities if enabled)
 //!   alpha  a = alpha(d) and d = alpha^{-1}(a), both increasing
 //!   rho    rhombus: y = rho(x, d), x = rho(y, d), d = acos(cot(x/2) cot(y/2))
@@ -72,7 +72,7 @@ pub fn iso_angle(u: Iv, d: Iv) -> Iv {
 /// cos G = h(g, e, f) = (cos g - cos e cos f) / (sin e sin f). h is decreasing in g; dh/de has
 /// the sign of cos F (F opposite f), dh/df the sign of cos E; the signs are tested on the box and
 /// the bounds taken at the corresponding corners (whole interval when the sign is unknown).
-/// G = acos(h) is decreasing in h, so G is increasing in g (Section 5.3, T2).
+/// G = acos(h) is decreasing in h, so G is increasing in g (Section 6.2, T2).
 /// Err(()) when no triangle with sides in the box exists (h > 1 or h < -1 on the whole box).
 pub fn tri_angle(g: Iv, e: Iv, f: Iv) -> Result<Iv, ()> {
     tri_angle_st(g, e, f).map_err(|_| ())
@@ -251,7 +251,7 @@ pub enum Reason {
     Lp,
     /// two vertices around a common vertex, sharing no face, closer than d (xstar.rs)
     Star,
-    /// tie window: the glued configuration lies within the radius of Theorem 4.1 of a copy of C1 or
+    /// tie window: the glued configuration lies within the radius of Theorem C of a copy of C1 or
     /// C3 (local.rs); the box holds no configuration with minimal distance > psi*
     Local,
     /// two points of the glued configuration, not joined by an edge, closer than d (local.rs)
@@ -379,7 +379,7 @@ pub struct Prob {
 /// Configuration of the gluing tests.
 pub struct LocalCfg {
     pub geo: crate::local::Geo,
-    /// targets and radius of Theorem 4.1 (None: no Local test)
+    /// targets and radius of Theorem C (None: no Local test)
     pub targets: Option<std::sync::Arc<crate::local::Targets>>,
     pub r: f64,
     /// Local is tried only on boxes with d.lo <= dmax (rad)
@@ -458,7 +458,7 @@ impl Prob {
         }
         root.push(Iv::new(dlo, dhi));
         while root.len() < nv {
-            // r_i in [d, 3d] (Section 5.3)
+            // r_i in [d, 3d] (Section 6.2)
             root.push(Iv::new(dlo, (3.0 * dhi).next_up()));
         }
         let mut branch = vec![true; nv];
@@ -922,8 +922,8 @@ pub fn parse_cert(s: &str) -> Result<Vec<Tok>, String> {
 /// Position after the subtree starting at `pos` (preorder).
 fn skip_subtree(cert: &[Tok], mut pos: usize) -> Option<usize> {
     // `open` counts the subtrees still to be skipped; a Split replaces itself by its two children.
-    // (An earlier version counted one child per Split: a completeness bug that could reject valid
-    // trees but never accept a tree that leaves a box unrefuted; see Section 6.4.)
+    // A tree is read in preorder: each Split is followed by the subtree of its lower half and
+    // then that of its upper half.
     let mut open = 1usize;
     while open > 0 {
         match cert.get(pos)? {
@@ -1016,7 +1016,7 @@ fn corner_ends(u: Iv) -> (Iv, Iv) {
 /// Direction of C(u) = beta(u, d) + G(e(u, d), ...) in the corner angle u, where
 /// dG/de = -cot(X)/sin(e) (X = angle of the middle triangle opposite the side held fixed):
 /// dC/du = -sin d (cos d sin(u/2) + cot X cos(u/2)) / (2 sin(e/2) cos^2(e/2)) for u in (0, 2 pi)
-/// (Section 5.3, T9). Returns -1 when dC/du <= 0 on the box: either u <= PI_LO and
+/// (Appendix B.1, T5 and T6). Returns -1 when dC/du <= 0 on the box: either u <= PI_LO and
 /// beta + X <= pi (then cos d sin(u/2) + cot X cos(u/2) = cos(u/2) sin(beta + X)/(sin beta sin X)
 /// >= 0), or the bracket is positive by direct interval evaluation (valid past pi). Else 0.
 fn dec_dir(u: Iv, beta_plus_x: Iv, x: Iv, d: Iv) -> i8 {
@@ -1042,7 +1042,7 @@ fn pent_eval_c(x: &[Iv; 2], d: Iv) -> [Iv; 3] {
 
 /// Pentagon, fan from A_i: triangles A_i A_{i+1} A_{i+2} (apex u_{i+1}), A_i A_{i-1} A_{i-2}
 /// (apex u_{i-1}), middle triangle A_i A_{i+2} A_{i-2} with sides e, f, d.
-/// Monotonicity (Section 5.3, T9): u_i is non-increasing in u_{i+1} when b1 + F <= pi on the
+/// Monotonicity (Appendix B.1, T5 and T6): u_i is non-increasing in u_{i+1} when b1 + F <= pi on the
 /// box (F = middle angle at A_{i+2}, so b1 + F is the formula for u_{i+2}), and in u_{i-1} when
 /// b3 + E <= pi; u_{i+2} is non-decreasing in u_{i-1} and non-increasing in u_{i+1} when
 /// b1 + G_i <= pi; symmetrically for u_{i-2}.

@@ -3,7 +3,7 @@ import Tammes15.FejesToth.Triangle
 /-!
 # Facets of the hull of a saturated set
 
-Paper, proof of Proposition 8.3, steps (4) to (6), on the hull of Lemma 3.7 (TwoConn/Hull, Facets,
+Paper, proof of Proposition C.3, steps (4) to (6), on the hull of Lemma A.5 (TwoConn/Hull, Facets,
 Excess, Euler). For a `c`-separated saturated family `x`: the plane of every facet is at distance
 above `c` from the origin, so its circumradius is below `arccos c` (`facetPolar_norm_lt`, step (4));
 every fan triangle of a facet then satisfies the triangle lemma, so a facet with `v` vertices has

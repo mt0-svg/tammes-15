@@ -1,9 +1,9 @@
 import Tammes15.Trigrows.Defs
 
 /-!
-# The monotonicity facts of Section 5
+# The monotonicity facts of Section 6
 
-The monotonicity statements that Section 5 of the paper uses.
+The monotonicity statements that Section 6 of the paper uses.
 `gam_hasDerivAt_side` has the hypotheses
 `0 < c < π` and `-1 < η < 1` (with `η ≠ ±1` alone it would be false where
 `|η| > 1`, `arccos` being constant there); `rho_hasDerivAt_x` (for

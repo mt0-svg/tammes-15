@@ -2,7 +2,7 @@ import Tammes15.Challenge.Contractors.Arith
 import Tammes15.Challenge.PaperSteps.SearchDefs
 
 /-!
-# The contractors of the program, written over its arithmetic (Definition 5.5 (2) of the paper)
+# The contractors of the program, written over its arithmetic (Definition B.1(2) of the paper)
 
 Each definition transcribes one function of code/impl1/rust/src (deep.rs, ivt.rs, system.rs),
 line for line, over an arbitrary arithmetic `R : Rnd`: every interval operation of the Rust code is
@@ -10,7 +10,7 @@ the corresponding field of `R`, every comparison of floats is `Fl.le` or `Fl.lt`
 `min` of floats is `Fl.max` or `Fl.min`, and an early `Err` is `none`. The memo cache of
 `mono_bounds` is left out (it returns what it stored).
 
-Two places differ from the Rust code that wrote the certificates, by a guard (Section 5.5 of the
+Two places differ from the Rust code that wrote the certificates, by a guard (Appendix B.1 of the
 paper; the program of this repository carries both, code/impl1/deep-guards.patch):
 
 * `triAngleSt` returns the no-information interval `[0, PI_HI]` when one of its three input

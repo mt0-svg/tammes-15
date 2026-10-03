@@ -1,5 +1,5 @@
 //! Gluing of a box into an enclosure of the whole configuration, and the tie-window discard
-//! "Local" (Sections 4 and 5.4 of the paper).
+//! "Local" (Sections 5 and 6.3 of the paper).
 //!
 //! Positions. Let G be the plane graph of the case (rotation system from the traced faces), d the
 //! edge length, and at every vertex v the corners of the faces around v (box variables). Fix a
@@ -31,8 +31,8 @@
 //! The box is discarded when, for some normalised target T, every point v of Y (vertices and
 //! isolated vertices) has sup |Y_c(v) - T_j| + rho(v) <= r for a target point T_j, the map v -> j
 //! being injective (hence a bijection of the 15 points). Then every genuine configuration X
-//! realising the box satisfies |x_v - R T_j(v)| <= r for a rotation R, and Theorem 4.1
-//! (Section 4, r = 1.04e-3) gives psi(X) <= psi*: the box holds no configuration
+//! realising the box satisfies |x_v - R T_j(v)| <= r for a rotation R, and Theorem C
+//! (Section 5, r = 1.04e-3) gives psi(X) <= psi*: the box holds no configuration
 //! with minimal distance > psi*. So a box discarded by Local is not "empty": it is empty of
 //! configurations better than the known optimum, which is what the tie window needs.
 //!

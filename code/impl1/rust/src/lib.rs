@@ -13,5 +13,3 @@ pub mod lpopt;
 pub mod xstar;
 pub mod rtrig;
 pub mod local;
-#[cfg(feature = "mpfr")]
-pub mod mpfr;

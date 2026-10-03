@@ -4,7 +4,7 @@ import Tammes15.Draw.Angular
 /-!
 # Row (4) for a realisation
 
-The corners of a realisation (Definition 5.1) at a vertex sum to `2π`: a realisation has distinct
+The corners of a realisation (Definition 2.1) at a vertex sum to `2π`: a realisation has distinct
 neighbour directions (edges of length `d`, distinct points at distance at least `d`), its rotation
 system is angular, and every vertex of a graph of the class has degree at least 3, so the angle
 sum `corner_sum` applies. `vertexSum_realisation` is the statement of the interface

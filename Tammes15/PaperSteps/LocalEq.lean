@@ -4,7 +4,7 @@ import Tammes15.Kappa.Assembly
 import Tammes15.PaperSteps.FrameD
 
 /-!
-# Theorem 4.1 for the eight frame configurations, with its equality case
+# Theorem C for the eight frame configurations, with its equality case
 
 The paper states: let `p` be one of the eight frame configurations, labelled, and let `x` be
 fifteen points of the sphere with `|x_i - R p_i| ≤ r = 1.04·10⁻³` for all `i` and some orthogonal
@@ -68,7 +68,7 @@ theorem eq_of_tpart_eq_zero (p x : E3) (hp : ‖p‖ = 1) (hx : ‖x‖ = 1) (hs
     have hsq : ‖x - p‖ ^ 2 = 4 := by linarith
     nlinarith
 
-/-- The chain of Theorem 4.1 with the strict radius condition: either the points are the frame, or
+/-- The chain of Theorem C with the strict radius condition: either the points are the frame, or
 some contact is strictly shorter. -/
 theorem chain_strict {n : ℕ} (q x : Fin n → E3) (S : Finset (Fin n × Fin n)) (u κ0 r : ℝ)
     (hq : ∀ i, ‖q i‖ = 1) (hx : ∀ i, ‖x i‖ = 1) (hS : ∀ ij ∈ S, ⟪q ij.1, q ij.2⟫ = u)
@@ -200,7 +200,7 @@ theorem chain_strict {n : ℕ} (q x : Fin n → E3) (S : Finset (Fin n × Fin n)
       linarith
     exact ⟨ij, hijS, h_main⟩
 
-/-- Theorem 4.1 for an abstract frame with the strict radius condition: the points are an orthogonal
+/-- Theorem C for an abstract frame with the strict radius condition: the points are an orthogonal
 image of the frame, or some contact is strictly shorter. -/
 theorem local_optimality_strict {n : ℕ} (p : Fin n → E3) (S : Finset (Fin n × Fin n))
     (u κ0 r : ℝ) (hp : ∀ i, ‖p i‖ = 1) (hS : ∀ ij ∈ S, ⟪p ij.1, p ij.2⟫ = u ∧ ij.1 ≠ ij.2)
@@ -284,7 +284,7 @@ theorem kappaBound_relabel {n : ℕ} (p : Fin n → E3) (S S' : Finset (Fin n ×
   refine ⟨ij', hij', ?_⟩
   simpa [hsum, hlmap] using hineq
 
-/-- The radius condition of Theorem 4.1, strict: `√15 · 1.04·10⁻³ · 1.01 (1 + u) < κ₀`. -/
+/-- The radius condition of Theorem C, strict: `√15 · 1.04·10⁻³ · 1.01 (1 + u) < κ₀`. -/
 theorem radius_lt (u : ℝ) (h0 : 0 < u) (hu : u < 0.5927) :
     Real.sqrt ((15 : ℕ) : ℝ) * rLocal * (1.01 * (1 + u)) < kappa0 := by
   have hsqrt15 : Real.sqrt ((15 : ℕ) : ℝ) < 3.873 := by
@@ -368,7 +368,7 @@ theorem optima_four_idx (t : Fin 3 → Bool) :
   revert t
   decide
 
-/-- Theorem 4.1 as the paper states it, for the eight frame configurations, any labelling
+/-- Theorem C as the paper states it, for the eight frame configurations, any labelling
 and `r = rLocal = 1.04·10⁻³`, with `ψ* = arccos u`: the least distance is at most `ψ*`, with
 equality only if the points are an orthogonal image of the frame configuration. -/
 theorem local_optimality_frame (keep : Fin 15 → Fin 18) (hkeep : IsFrameKeep keep)

@@ -4,7 +4,7 @@ import Tammes15.Challenge.Hyps.Case
 # D2 read on a drawing: the definitions (Definition 7.1 of the paper)
 
 The definitions of the D2 statement read on a drawing, in the terms of the guide of plantri
-(code/impl1/enum/plantri-guide.txt; Definition 7.1 and the proof of Proposition 7.5 of the
+(code/impl1/enum/plantri-guide.txt; Definition 7.1 and the proof of Proposition B.3 of the
 paper). They sit in their own module, above the lemmas that
 prove the two theorems of `Tammes15.D2Regions.Statement`, and import only `Tammes15.Hyps.Case`, so
 that `Tammes15.Hyps.Computations` can state D2 with them.

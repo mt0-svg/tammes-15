@@ -1,7 +1,0 @@
-reference out/ref_all_n6.codes: 7 codes; generator out/gen_all_n6.codes: 7 codes
-only in reference: 0; only in generator: 0
-s 3 expected_leaves 13 generator_ok_leaves 13 equal
-s 4 expected_leaves 16 generator_ok_leaves 16 equal
-s 5 expected_leaves 1 generator_ok_leaves 1 equal
-s 6 expected_leaves 0 generator_ok_leaves 0 equal
-verdict: sets equal

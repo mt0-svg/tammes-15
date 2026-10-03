@@ -5,11 +5,11 @@ f = 13*x^5 - x^4 + 6*x^3 + 2*x^2 - 3*x - 1;
 u = polrootsreal(f)[1];
 print([polisirreducible(f), #polrootsreal(f), subst(f,x,1/2) < 0, subst(f,x,7/10) > 0]);
 printf("u = %.20f, psi* = %.14f deg\n", u, acos(u)*180/Pi);
-\\ [2] Section 3: the range [dlo, dhi] and the bound of Fejes Toth.
+\\ [2] Conventions: the range [dlo, dhi] and the bound of Fejes Toth.
 deg = Pi/180; dlo = 53.65785*deg; dhi = 56.6716*deg; w = Pi*15/(6*15-12);
 dft = acos((cotan(w)^2 - 1)/2);
 printf("dlo < psi*: %d, FT = %.10f deg < dhi: %d\n", dlo < acos(u), dft/deg, dft < dhi);
-\\ [3] Section 3.4: the margins of the structure theorem, in degrees.
+\\ [3] Section 4.3: the margins of the structure theorem, in degrees.
 al(d) = acos(cos(d)/(1+cos(d)));
 h(d) = acos(cos(d)/cos(d/2));
 P(l,t) = 2*acos((cos(l)-sin(t)^2)/cos(t)^2) + 2*sin(t)*(Pi - 2*asin(tan(t)*tan(l/2)));

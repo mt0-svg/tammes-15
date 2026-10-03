@@ -4,7 +4,7 @@ import Mathlib.Data.Fin.VecNotation
 /-!
 # The targets of Local against the frame (generated)
 
-Written by tie_map.gp (PARI/GP) from tie_targets.txt, the file of targets that the first program
+Written by tie_map.gp (PARI/GP) from tie_targets.txt, the file of targets that the program
 reads. For each target configuration `c`: the frame `C3` (`true`) or
 `C1`, the element of `D` by its index in `[1, ρ, ρ², τ, ρτ, ρ²τ]`, and `σ`: point `i` of `c` is the
 image under that element of point `σ i` of the frame. `ptMid k l` is the midpoint of the data for

@@ -2,13 +2,13 @@ import Tammes15.Trigrows.Rows
 import Tammes15.Trigrows.Points
 
 /-!
-# Sphere basics: the spherical distance, equilateral pieces, T7, Lemmas shift and minimal
+# Sphere basics: the spherical distance, equilateral pieces, T7, Lemmas A.2 and 4.2
 
 
 Basic facts on `sdist`; `T7_iff`, the trigonometric core of the long diagonal
-relation (T7) with `θ = u₂ - b₁`; the equilateral triangle and the rhombus of Lemma faces;
-`degree_le_five`, `exists_ge_pi_of_le_two` (the counts of Lemma minimal); `shift_move`, the first
-variation step of Lemma shift for the curve `cos s • v + sin s • t`.
+relation (T7) with `θ = u₂ - b₁`; the equilateral triangle and the rhombus of Lemma 4.3;
+`degree_le_five`, `exists_ge_pi_of_le_two` (the counts of Lemma 4.2); `shift_move`, the first
+variation step of Lemma A.2 for the curve `cos s • v + sin s • t`.
 -/
 
 open Real InnerProductGeometry
@@ -206,7 +206,7 @@ theorem equilateral_angle (d : ℝ) (hd : 0 < d ∧ d < π) (v w₁ w₂ : E3) (
     (h₁₂ : sdist w₁ w₂ = d) : angle (tdir v w₁) (tdir v w₂) = alpha d := by
   rw [angle_tdir_eq_gam v w₁ w₂ hv hw₁ hw₂ (by rw [h₁]; exact hd) (by rw [h₂]; exact hd), h₁, h₂, h₁₂, gam_equilateral d hd]
 
-/-- Lemma faces: in a rhombus opposite corners are equal. -/
+/-- Lemma 4.3: in a rhombus opposite corners are equal. -/
 theorem rhombus_opposite_angle (d : ℝ) (hd : 0 < d ∧ d < π) (v₁ v₂ v₃ v₄ : E3) (h₁ : ‖v₁‖ = 1)
     (h₂ : ‖v₂‖ = 1) (h₃ : ‖v₃‖ = 1) (h₄ : ‖v₄‖ = 1) (h₁₂ : sdist v₁ v₂ = d) (h₁₄ : sdist v₁ v₄ = d)
     (h₃₂ : sdist v₃ v₂ = d) (h₃₄ : sdist v₃ v₄ = d) :
@@ -246,7 +246,7 @@ theorem rhombus_opposite_angle (d : ℝ) (hd : 0 < d ∧ d < π) (v₁ v₂ v₃
     _ = angle (tdir v₃ v₂) (tdir v₃ v₄) := by
       rw [angle_tdir_eq_gam v₃ v₂ v₄ h₃ h₂ h₄ ⟨h₃₂_pos, h₃₂_lt⟩ ⟨h₃₄_pos, h₃₄_lt⟩]
 
-/-- Lemma minimal: corners at least `alpha d` summing to `2π` are at most five. -/
+/-- Lemma 4.2: corners at least `alpha d` summing to `2π` are at most five. -/
 theorem degree_le_five (d : ℝ) (hd : 0 < d ∧ d < π / 2) (m : ℕ) (β : Fin m → ℝ)
     (hβ : ∀ i, alpha d ≤ β i) (hsum : ∑ i, β i = 2 * π) : m ≤ 5 := by
   by_contra! h
@@ -266,7 +266,7 @@ theorem degree_le_five (d : ℝ) (hd : 0 < d ∧ d < π / 2) (m : ℕ) (β : Fin
   have h_six : (6 : ℝ) * (π / 3) = 2 * π := by ring
   linarith
 
-/-- Lemma minimal: a vertex of degree one or two has a corner at least `π`. -/
+/-- Lemma 4.2: a vertex of degree one or two has a corner at least `π`. -/
 theorem exists_ge_pi_of_le_two (m : ℕ) (hm : 0 < m ∧ m ≤ 2) (β : Fin m → ℝ)
     (hsum : ∑ i, β i = 2 * π) : ∃ i, π ≤ β i := by
   by_contra h
@@ -307,7 +307,7 @@ theorem norm_cos_sin_unit (v t : E3) (hv : ‖v‖ = 1) (ht : ‖t‖ = 1) (hvt 
     _ = 1 := by rw [Real.cos_sq_add_sin_sq]
     _ = 1 ^ 2 := by norm_num
 
-/-- Lemma shift, first variation: moving `v` along `cos s • v + sin s • t` for small `s > 0`
+/-- Lemma A.2, first variation: moving `v` along `cos s • v + sin s • t` for small `s > 0`
 takes it strictly farther than `d` from each `w j`. -/
 theorem shift_move {ι : Type*} [Fintype ι] (d : ℝ) (v t : E3) (w : ι → E3)
     (hw : ∀ j, ⟪v, w j⟫ < cos d ∨ (⟪v, w j⟫ = cos d ∧ ⟪t, w j⟫ < 0) ∨

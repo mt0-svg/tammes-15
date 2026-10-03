@@ -4,12 +4,12 @@ import Tammes15.Rattlers.HexChord
 import Tammes15.Geom.Frame
 
 /-!
-# The ten vertex polygon of Proposition onehex
+# The ten vertex polygon of Proposition 4.6
 
 Two circles of radius `h = h(d)` about `C` and `R`, `sdist C R = d`; with `γ = tanAng d h` and
 `s = (π - γ) / 2`, five vertices on the outer arc of each circle, at the angles
 `ψ_j = -(π - γ) + j s = (j - 2) s`, `j = 0, …, 4`, in the frames `(T, F, C)` and
-`(-(cos d • T + sin d • C), -F, R)` (code/lean/geom/onehex_q.gp).
+`(-(cos d • T + sin d • C), -F, R)`.
 
 The polygon is the image under a rotation of the model polygon `qm d` in coordinates
 (`qpoly_eq_map`). In the model, `smap d` is the rotation by `π` exchanging the two circles and
@@ -40,7 +40,7 @@ noncomputable def qang (d : ℝ) (j : ℕ) : ℝ := -(π - tanAng d (hrad d)) + 
 /-- The point of angle `ψ` on the circle of radius `h` about `C`, in the frame `(T, F, C)`. -/
 noncomputable def cpt (h ψ : ℝ) (T F C : E3) : E3 := cos h • C + sin h • (cos ψ • T + sin ψ • F)
 
-/-- The ten vertex polygon of Proposition onehex, read modulo 10. -/
+/-- The ten vertex polygon of Proposition 4.6, read modulo 10. -/
 noncomputable def qpoly (d : ℝ) (T F C : E3) (j : ℕ) : E3 :=
   if j % 10 < 5 then cpt (hrad d) (qang d (j % 10)) T F C
   else cpt (hrad d) (qang d (j % 10 - 5)) (-(cos d • T + sin d • C)) (-F) (cos d • C - sin d • T)

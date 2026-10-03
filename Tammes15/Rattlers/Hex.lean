@@ -2,14 +2,14 @@ import Tammes15.Rattlers.Basic
 import Tammes15.Trigrows.Sdist
 
 /-!
-# Proposition onehex and Corollary k3: point steps and the count
+# Proposition 4.6 and Corollary 4.7: point steps and the count
 
 
 `arcPt_dist_left`, `arcPt_dist_right`: the parameter of `arcPt` is the distance
 from `v` (so points of an edge are within `d/2` of an endpoint); `cap_in_hemisphere`: a disc of
 radius `h` about `r` lies in the closed hemisphere of pole `n` when `⟪r, n⟫ ≥ sin h`;
-`onehex_inner`: the point `c` of Proposition onehex keeps that bound; `k_le_three`: the count of
-Corollary k3.
+`onehex_inner`: the point `c` of Proposition 4.6 keeps that bound; `k_le_three`: the count of
+Corollary 4.7.
 -/
 
 open Real InnerProductGeometry
@@ -118,7 +118,7 @@ theorem cap_in_hemisphere (h : ℝ) (hh : 0 ≤ h ∧ h ≤ π / 2) (r n x : E3)
   · linarith
   · linarith
 
-/-- Proposition onehex: the point `c` of `[r₁ r₂]` at distance `d` from `r₁` keeps the bound. -/
+/-- Proposition 4.6: the point `c` of `[r₁ r₂]` at distance `d` from `r₁` keeps the bound. -/
 theorem onehex_inner (d l h : ℝ) (hd : 0 < d ∧ d ≤ l ∧ l < π) (hsh : 0 ≤ sin h) (r₁ r₂ n : E3)
     (h₁ : sin h ≤ ⟪r₁, n⟫) (h₂ : sin h ≤ ⟪r₂, n⟫) :
     sin h ≤ ⟪(sin (l - d) / sin l) • r₁ + (sin d / sin l) • r₂, n⟫ := by
@@ -170,7 +170,7 @@ theorem onehex_inner (d l h : ℝ) (hd : 0 < d ∧ d ≤ l ∧ l < π) (hsh : 0 
     simpa [mul_one] using this
   linarith
 
-/-- Corollary k3: the count. -/
+/-- Corollary 4.7: the count. -/
 theorem k_le_three (k n E F : ℕ) (hn : n + k = 15) (h1 : 3 * F + 3 * k ≤ 2 * E)
     (h2 : F + n = E + 2) (h3 : 3 * n ≤ 2 * E) : k ≤ 3 := by
   omega

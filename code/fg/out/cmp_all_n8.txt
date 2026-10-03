@@ -1,7 +1,0 @@
-reference out/ref_all_n8.codes: 151 codes; generator out/gen_all_n8.codes: 151 codes
-only in reference: 0; only in generator: 0
-s 3 expected_leaves 15 generator_ok_leaves 15 equal
-s 4 expected_leaves 1468 generator_ok_leaves 1468 equal
-s 5 expected_leaves 415 generator_ok_leaves 415 equal
-s 6 expected_leaves 24 generator_ok_leaves 24 equal
-verdict: sets equal

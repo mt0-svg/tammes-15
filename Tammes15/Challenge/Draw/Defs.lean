@@ -10,7 +10,7 @@ The definitions of configurations and their drawings, in the package namespace
 `ebase`, `bangle`, `eta`, `gam` (`Tammes15.Trigrows.Defs`), `cross`, `Lmap`, `TPerp`,
 `KappaBound` (`Tammes15.Local41.Defs`). This file adds the corner `ocorner`, configurations,
 contact graphs, rotation systems and their faces, `KConnected`, `IsAngular`,
-`StrictSupportFace`, `FaceSizes` and `Structured`. The statement of Theorem 3.1
+`StrictSupportFace`, `FaceSizes` and `Structured`. The statement of Theorem 4.1
 (`structure_theorem`) is in `Tammes15.Draw.Structure`.
 -/
 
@@ -85,11 +85,11 @@ def StrictSupportFace (R : RotSys G) (x : V → E3) : Prop :=
 def FaceSizes (R : RotSys G) (lo hi : ℕ) : Prop :=
   ∀ e, lo ≤ Function.minimalPeriod R.face e ∧ Function.minimalPeriod R.face e ≤ hi
 
-/-! ## Theorem 3.1 -/
+/-! ## Theorem 4.1 -/
 
-/-- Conclusion of Theorem 3.1 for a configuration `X` at `d`, with the `15 - k` non-rattlers
+/-- Conclusion of Theorem 4.1 for a configuration `X` at `d`, with the `15 - k` non-rattlers
 indexed by `V`. Item (3) is stated in the cone form `StrictSupportFace`, which is what the
-realisation (Definition 5.1) consumes; no perimeter of a non-polygonal set appears. -/
+realisation (Definition 2.1) consumes; no perimeter of a non-polygonal set appears. -/
 structure Structured {d : ℝ} (X : Config 15 d) (k : ℕ) where
   emb : V ↪ Fin 15
   card : Fintype.card V = 15 - k
@@ -105,7 +105,7 @@ structure Structured {d : ℝ} (X : Config 15 d) (k : ℕ) where
   spherical : R.Spherical
   faces : FaceSizes R 3 6
   convex : StrictSupportFace R (X.pt ∘ emb)
-  /-- Item (4) of Theorem 3.1: each rattler lies strictly inside a hexagonal face, and distinct
+  /-- Item (4) of Theorem 4.1: each rattler lies strictly inside a hexagonal face, and distinct
   rattlers lie in distinct faces. -/
   hexOf : {i : Fin 15 // ∀ a, emb a ≠ i} → G.Dart
   hexOf_six : ∀ r, Function.minimalPeriod R.face (hexOf r) = 6

@@ -1,7 +1,7 @@
 import Tammes15.Contractors.Tri
 
 /-!
-# Monotonicity of the fan maps (T9) and the corner evaluation of `monoBounds` (Section 5.3)
+# Monotonicity of the fan maps (T9) and the corner evaluation of `monoBounds` (Section 6.2)
 
 An output of the pentagon and hexagon contractors is `C(u) = bangle d u + gam c (ebase d u) b`
 in a corner `u` (the base angle of the isosceles triangle at the corner, plus an angle of the middle

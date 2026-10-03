@@ -1,5 +1,5 @@
 name = "tammes-15"
-version = "1.2.0"
+version = "1.3.0"
 description = "The Tammes problem for fifteen points: the maximal minimal distance is arccos u, u the root in (1/2, 7/10) of 13u^5 - u^4 + 6u^3 + 2u^2 - 3u - 1; proved in Lean 4 from two finite computations, the enumeration and the refutation of the graphs, stated as hypotheses"
 keywords = ["math", "Tammes problem", "spherical code", "contact graph", "discrete geometry", "formal verification"]
 license = "Apache-2.0"
@@ -20,27 +20,27 @@ name = "mathlib"
 scope = "leanprover-community"
 rev = "v4.34.1"
 
-# The statement of the problem (Theorem 1.1 of the paper).
+# The statement of the problem.
 [[lean_lib]]
 name = "Statement"
 roots = ["Tammes15.Statement"]
 
-# Real functions of the rows and face relations (Sections 3.4 and 5).
+# Real functions of the rows and of the face relations.
 [[lean_lib]]
 name = "Trigrows"
 globs = ["Tammes15.Trigrows.+"]
 
-# Theorem 4.1, with the rigidity bound D1 as a hypothesis.
+# The local optimality, with the rigidity bound D1 as a hypothesis.
 [[lean_lib]]
 name = "Local41"
 globs = ["Tammes15.Local41.+"]
 
-# Lemmas 3.13 and 3.14, Propositions 3.16 and 3.17 by inscribed polygons.
+# The rattlers and the hexagons, by inscribed polygons.
 [[lean_lib]]
 name = "Rattlers"
 globs = ["Tammes15.Rattlers.+"]
 
-# Frames, reconstruction, the enclosure bound, Pair and Local (Section 5.4).
+# Frames, reconstruction, the enclosure bound, Pair and Local.
 [[lean_lib]]
 name = "Glue"
 globs = ["Tammes15.Glue.+"]
@@ -50,7 +50,7 @@ globs = ["Tammes15.Glue.+"]
 name = "Fans"
 globs = ["Tammes15.Fans.+"]
 
-# Configurations, contact graphs, rotation systems and Theorem 3.1.
+# Configurations, contact graphs, rotation systems and the structure theorem.
 [[lean_lib]]
 name = "Draw"
 globs = ["Tammes15.Draw.+"]
@@ -68,12 +68,12 @@ leanOptions = { autoImplicit = true, relaxedAutoImplicit = true }
 name = "Hyps"
 globs = ["Tammes15.Hyps.+"]
 
-# Spherical geometry of Section 3 on faces in cone form.
+# Spherical geometry of the faces in cone form.
 [[lean_lib]]
 name = "Geom"
 globs = ["Tammes15.Geom.+"]
 
-# Corollary 3.8 by the convex hull (Lemma 3.7).
+# The 3-connectivity of the contact graph, by the convex hull.
 [[lean_lib]]
 name = "TwoConn"
 globs = ["Tammes15.TwoConn.+"]
@@ -83,61 +83,58 @@ globs = ["Tammes15.TwoConn.+"]
 name = "Numerics"
 globs = ["Tammes15.Numerics.+"]
 
-# Lemmas 3.9 (cone form), 3.11 and 3.12 through the face chain of the eight-point code.
+# The faces of the contact graph, through the face chain of the eight-point code.
 [[lean_lib]]
 name = "FaceChain"
 globs = ["Tammes15.FaceChain.+"]
 
-# The bound of Fejes Toth in the form d15 <= 56.6716 degrees, by a triangle lemma on the hull of a saturated set
-# (Section 8).
+# The bound of Fejes Toth in the form d15 <= 56.6716 degrees, by a triangle lemma on the hull of a saturated set.
 [[lean_lib]]
 name = "FejesToth"
 globs = ["Tammes15.FejesToth.+"]
 
-# D4 for the frames C1 and C3 by exact identities in their field of degree 20 (Proposition 2.1), and the main theorem
-# with D1 and D4 proved, `Tammes15.conjecture_of_enum_killed` (Theorem 7.4).
+# D4 for the frames C1 and C3 by exact identities in their field of degree 20, and the main theorem with D1 and D4
+# proved, `Tammes15.conjecture_of_enum_killed`.
 [[lean_lib]]
 name = "Attained"
 globs = ["Tammes15.Attained.+"]
 
-# D1 for the frames C1 and C3 by the certificate of the proof of Lemma 4.2, checked by kernel reduction.
+# D1 for the frames C1 and C3 by a certificate checked by kernel reduction.
 [[lean_lib]]
 name = "Kappa"
 globs = ["Tammes15.Kappa.+"]
 
-# The inequalities of code/sage/params_check.sage as Lean theorems; the proof of the main theorem does not use them.
+# Inequalities on the constants and the parameters of the program.
 [[lean_lib]]
 name = "Params"
 globs = ["Tammes15.Params.+"]
 
-# Corollary 1.2 from D2 and D3, `Tammes15.nonunique_of_enum_killed`: the contact graphs of C1 and C3 are not isomorphic.
+# The non-uniqueness from D2 and D3, `Tammes15.nonunique_of_enum_killed`: the contact graphs of C1 and C3 are not
+# isomorphic.
 [[lean_lib]]
 name = "Nonunique"
 globs = ["Tammes15.Nonunique.+"]
 
-# Section 7.3 in Lean: the steps from the verdicts of the first program to D3 (Propositions 5.6 (2) and 7.7, the
-# interval procedures of the program a hypothesis), Theorem 4.1 with its equality case for the eight frame
-# configurations, Proposition 2.1 (4) and the last sentence of Corollary 1.2.
+# The steps from the verdicts of the program to D3, the interval procedures and their search trees, the local
+# optimality with its equality case for the eight frame configurations, and the frames not isometric.
 [[lean_lib]]
 name = "PaperSteps"
 globs = ["Tammes15.PaperSteps.+"]
 
 # Contact drawings: the rotation system of a structured configuration is that of a contact drawing, and the
-# arcs of distinct edges of a contact drawing are disjoint (Lemma 3.20 (1)).
+# arcs of distinct edges of a contact drawing are disjoint.
 [[lean_lib]]
 name = "D2Draw"
 globs = ["Tammes15.D2Draw.+"]
 
-# Lemma 3.20: the regions of a contact drawing with convex faces are the open polygons of its face orbits, and the
-# rotation system of a structured configuration is in the class of D2 (Definition 7.1).
+# The regions of a contact drawing with convex faces are the open polygons of its face orbits, and the rotation
+# system of a structured configuration is in the class of D2.
 [[lean_lib]]
 name = "D2Regions"
 globs = ["Tammes15.D2Regions.+"]
 
-# Theorem 7.10: the interval procedures of the first program as its source writes them (Definition 5.4), sound for
-# every sound arithmetic (Proposition 5.6); D3 from the search trees the replays accept, and the main theorem and
-# Corollary 1.2 from D2 and these hypotheses. DiffTest: the commutation theorems of the differential test
-# (Section 10.4).
+# The formal model of the procedures of the program, sound for every sound arithmetic; D3 from the search trees
+# the replays accept, and the main theorem and the non-uniqueness from D2 and these hypotheses.
 [[lean_lib]]
 name = "Contractors"
 globs = ["Tammes15.Contractors.+"]

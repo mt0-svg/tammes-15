@@ -3,7 +3,7 @@ import Tammes15.Statement
 /-!
 # Gluing: rotation matrices and the enclosure bound
 
-The frames of Section 5.4 are products `F(v) R_z(φ) R_y(d) Z`; the enclosure
+The frames of Section 6.3 are products `F(v) R_z(φ) R_y(d) Z`; the enclosure
 `|Y(w) - Y_c(w)| ≤ ϱ(w)` rests on `|R_z(φ) v - R_z(ψ) v| ≤ |φ - ψ| |v|` (the same for `R_y`) and
 on the telescoping bound for products of isometries, stated here on vectors (no operator norm).
 -/

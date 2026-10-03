@@ -5,7 +5,7 @@ import Tammes15.Trigrows.Margins
 /-!
 # Cases, assignments, the relation system, the gluing, Pair and Local
 
-The objects of Section 5 of the paper in the form the computations check them.
+The objects of Sections 2 and 6 of the paper in the form the computations check them.
 
 * A *case* is a `PlaneGraph` (a rotation system on a simple graph with vertex set `Fin n`) and a
   `HexChoice` of `k` hexagonal faces holding the free points (rattlers); its points `Pts P k` are the
@@ -14,16 +14,16 @@ The objects of Section 5 of the paper in the form the computations check them.
   corner per dart (the corner at `e.fst` from `e` to `R.rot e`, which is the corner of the face of
   `e` at that vertex), and the six distances `r` from each free point to the corners
   `A_j = ((R.face ^ j) (base m)).fst` of its hexagon.
-* `RelSys` is the conjunction of the relations that the level-2 program applies to a box (Section 5.2,
-  the rows; Section 5.3, (T1) to (T8)), each as a statement about real numbers, for every face, every
+* `RelSys` is the conjunction of the relations that the second level of the program applies to a box (Section 6.1,
+  the rows; Section 6.2, (T1) to (T8)), each as a statement about real numbers, for every face, every
   rotation of it and every free point.
-* `glueY` is the configuration glued from an assignment along a spanning tree (Section 5.4):
+* `glueY` is the configuration glued from an assignment along a spanning tree (Section 6.3):
   `F(v₀) = I`, `F(w) = F(v) R_z(φ) R_y(d) Z` with `φ` the sum of the corners at `v` from the reference
   dart of `v` to `w`, `Y(w) = F(w) e₃`; a free point is placed from a corner `A_i` of its hexagon.
 * `PairFires` (two points not joined by an edge at chord distance below `2 sin (d/2)`) and
   `LocalFires` (every point within `1.04·10⁻³` of an isometric image of a frame configuration, under a
-  bijection of the fifteen points) are the two tests of Section 5.4 on a configuration.
-* `Realisation` is Definition 5.1, and `assignOf` reads the assignment of a realisation.
+  bijection of the fifteen points) are the two tests of Section 6.3 on a configuration.
+* `Realisation` is Definition 2.1, and `assignOf` reads the assignment of a realisation.
 -/
 
 open Real Matrix
@@ -36,13 +36,13 @@ open scoped Classical
 /-! ## Cases -/
 
 /-- A plane graph given by a rotation system on a simple graph with vertex set `Fin n`: an entry
-of the enumeration (Computation 6.1) with its rotation system. -/
+of the enumeration (Computation 7.4) with its rotation system. -/
 structure PlaneGraph where
   n : ℕ
   G : SimpleGraph (Fin n)
   R : RotSys G
 
-/-- The class of Section 5.1: 3-connected, degrees 3 to 5, faces of size 3 to 6, genus zero. -/
+/-- The class of Section 2.1: 3-connected, degrees 3 to 5, faces of size 3 to 6, genus zero. -/
 def InClass (P : PlaneGraph) : Prop :=
   KConnected P.G 3 ∧ (∀ a, 3 ≤ P.G.degree a ∧ P.G.degree a ≤ 5) ∧ FaceSizes P.R 3 6 ∧
     P.R.Spherical
@@ -134,8 +134,8 @@ def WheelRel (d : ℝ) (u r : Fin 6 → ℝ) : Prop :=
       eta (r (j - 1)) (r j) d ∈ Set.Icc (-1 : ℝ) 1) ∧
     ∀ j, u j = gam (r (j + 1)) (r j) d + gam (r (j - 1)) (r j) d
 
-/-- The relation system of a case: the rows of Section 5.2 and the relations (T1) to (T8) of
-Section 5.3, as the level-2 program applies them, for every face (every base dart, so every
+/-- The relation system of a case: the rows of Section 6.1 and the relations (T1) to (T8) of
+Section 6.2, as the second level of the program applies them, for every face (every base dart, so every
 rotation) and every free point. -/
 structure RelSys (P : PlaneGraph) {k : ℕ} (H : HexChoice P k) (A : Assign P k) : Prop where
   /-- Every corner lies in `[α(d), π)` (rows (1) and (3); the program allows `π` too, and the
@@ -231,7 +231,7 @@ structure Frame where
   p : Fin 15 → E3
   S : Finset (Fin 15 × Fin 15)
 
-/-- The radius of Local, `1.04·10⁻³` (Theorem 4.1). -/
+/-- The radius of Local, `1.04·10⁻³` (Theorem C). -/
 noncomputable def rLocal : ℝ := 1.04e-3
 
 /-- Local: every point is within `rLocal` of an isometric image of a frame configuration of `F`,
@@ -239,9 +239,9 @@ under a bijection of the points with the fifteen frame points. -/
 def LocalFires (F : Set Frame) {α : Type} (Y : α → E3) : Prop :=
   ∃ q ∈ F, ∃ O : E3 ≃ₗᵢ[ℝ] E3, ∃ j : α ≃ Fin 15, ∀ a, ‖Y a - O (q.p (j a))‖ ≤ rLocal
 
-/-! ## Realisations (Definition 5.1) -/
+/-! ## Realisations (Definition 2.1) -/
 
-/-- A realisation of the case `(P, H)` with edge length `d` (Definition 5.1): unit vectors;
+/-- A realisation of the case `(P, H)` with edge length `d` (Definition 2.1): unit vectors;
 adjacent vertices at distance `d`; the drawing has the rotation system `P.R` (`IsAngular`) and
 convex faces (`StrictSupportFace`) with corners in `[α(d), π)`; distinct points at distance at
 least `d`; each free point strictly inside its hexagon (on the inner side of every side). -/

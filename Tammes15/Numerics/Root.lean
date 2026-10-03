@@ -4,9 +4,8 @@ import Tammes15.Numerics.HexData
 # `dlo` lies below `ψ* = arccos u`
 
 `u` is the root in `(1/2, 7/10)` of `13u⁵ - u⁴ + 6u³ + 2u² - 3u - 1`, `ψ* = arccos u = 53.6578501299…°` and
-`dlo = 53.65785°` (paper, the choice of `dlo`): the gap is about `1.3·10⁻⁷°`, `cos dlo - u ≈ 1.8·10⁻⁹`. The
-quintic is increasing on `[1/2, 7/10]` and positive at `c = 0.592605903`, so `u < c`, and `c ≤ cos dlo` is the
-enclosure `le_cos_dpt_0` of Numerics/HexData.lean (code/lean/numerics/dlo.gp, dlo.out).
+`dlo = 53.65785°`. The quintic is increasing on `[1/2, 7/10]` and positive at `c = 0.592605903`, so `u < c`,
+and `c ≤ cos dlo` is the enclosure `le_cos_dpt_0` of Numerics/HexData.lean.
 -/
 
 open Real

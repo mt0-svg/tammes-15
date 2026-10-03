@@ -2,132 +2,52 @@
 //! needed for spherical trigonometry.
 //!
 //! Basic operations: IEEE round-to-nearest result moved one ulp outward (rigorous).
-//! Transcendental functions at the interval endpoints, through a backend chosen at run time
-//! (`set_trig`):
-//! - Trig::Rig (default): rtrig.rs, rigorous enclosures from IEEE basic operations and Taylor
-//!   series with remainder bounds; no libm call, no assumption;
-//! - Trig::Libm: libm result moved TR_ULPS ulps outward, rigorous only under the assumption that
-//!   glibc has error < TR_ULPS ulps for cos, tan, acos, asin, atan (documented, not proved);
-//! - Trig::Mpfr (cargo feature `mpfr`): MPFR 4 with directed rounding (correctly rounded bounds).
-//! Rig and Mpfr results are memoised per thread in a direct-mapped cache keyed by the argument bits
-//! (the functions are deterministic, so a hit returns the same enclosure).
+//! Transcendental functions at the interval endpoints: rtrig.rs, rigorous enclosures from IEEE
+//! basic operations and Taylor series with remainder bounds; no libm call, no assumption. The
+//! results are memoised per thread in a direct-mapped cache keyed by the argument bits (the
+//! functions are deterministic, so a hit returns the same enclosure).
 
 use crate::iv::{PI_HI, PI_LO};
 
-pub const TR_ULPS: usize = 4;
-
-/// Backend of the transcendental functions.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub enum Trig {
-    Libm = 0,
-    Rig = 1,
-    Mpfr = 2,
-}
-
-static TRIG: std::sync::atomic::AtomicU8 = std::sync::atomic::AtomicU8::new(Trig::Rig as u8);
-
-pub fn set_trig(t: Trig) {
-    if t == Trig::Mpfr && !cfg!(feature = "mpfr") {
-        panic!("built without the mpfr feature");
-    }
-    TRIG.store(t as u8, std::sync::atomic::Ordering::Relaxed);
-}
-
-pub fn trig() -> Trig {
-    match TRIG.load(std::sync::atomic::Ordering::Relaxed) {
-        0 => Trig::Libm,
-        1 => Trig::Rig,
-        _ => Trig::Mpfr,
-    }
-}
-
+/// Name of the backend of the transcendental functions, printed in the replay logs.
 pub fn trig_name() -> &'static str {
-    match trig() {
-        Trig::Libm => "libm",
-        Trig::Rig => "rig",
-        Trig::Mpfr => "mpfr",
-    }
+    "rig"
 }
 
 const CBITS: u32 = 16;
 struct Cache {
     keys: Vec<u64>,
     vals: Vec<(f64, f64)>,
-    owner: u8,
 }
 thread_local! {
     static CACHE: std::cell::RefCell<Cache> = std::cell::RefCell::new(Cache {
         keys: vec![u64::MAX; 5 << CBITS],
         vals: vec![(0.0, 0.0); 5 << CBITS],
-        owner: 255,
     });
 }
 
 /// Enclosure (lo, hi) of function f (0 cos, 1 acos, 2 asin, 3 atan, 4 tan) at the point x.
 #[inline]
 fn enc(f: usize, x: f64) -> (f64, f64) {
-    let t = trig();
-    if t == Trig::Libm {
-        let v = match f {
-            0 => x.cos(),
-            1 => x.acos(),
-            2 => x.asin(),
-            3 => x.atan(),
-            _ => x.tan(),
-        };
-        return (dnk(v, TR_ULPS), upk(v, TR_ULPS));
-    }
     CACHE.with(|c| {
         let mut c = c.borrow_mut();
-        if c.owner != t as u8 {
-            c.keys.iter_mut().for_each(|k| *k = u64::MAX);
-            c.owner = t as u8;
-        }
         let b = x.to_bits();
         let h = ((b.wrapping_mul(0x9E3779B97F4A7C15) >> (64 - CBITS)) as usize) + (f << CBITS);
         if c.keys[h] == b {
             return c.vals[h];
         }
-        let r = if t == Trig::Rig {
-            let e = match f {
-                0 => crate::rtrig::cos_enc(x),
-                1 => crate::rtrig::acos_enc(x),
-                2 => crate::rtrig::asin_enc(x),
-                3 => crate::rtrig::atan_enc(x),
-                _ => crate::rtrig::tan_enc(x),
-            };
-            (e.lo, e.hi)
-        } else {
-            mpfr_enc(f, x)
+        let e = match f {
+            0 => crate::rtrig::cos_enc(x),
+            1 => crate::rtrig::acos_enc(x),
+            2 => crate::rtrig::asin_enc(x),
+            3 => crate::rtrig::atan_enc(x),
+            _ => crate::rtrig::tan_enc(x),
         };
+        let r = (e.lo, e.hi);
         c.keys[h] = b;
         c.vals[h] = r;
         r
     })
-}
-
-#[cfg(feature = "mpfr")]
-fn mpfr_enc(f: usize, x: f64) -> (f64, f64) {
-    crate::mpfr::enc(f, x)
-}
-#[cfg(not(feature = "mpfr"))]
-fn mpfr_enc(_f: usize, _x: f64) -> (f64, f64) {
-    unreachable!()
-}
-
-#[inline]
-fn dnk(mut x: f64, k: usize) -> f64 {
-    for _ in 0..k {
-        x = x.next_down();
-    }
-    x
-}
-#[inline]
-fn upk(mut x: f64, k: usize) -> f64 {
-    for _ in 0..k {
-        x = x.next_up();
-    }
-    x
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]

@@ -3,7 +3,7 @@ import Tammes15.Geom.Basic
 import Tammes15.Vendor.EM8.ContactGeometryGlobal
 
 /-!
-# Minor arcs (Lemma 3.20 of the paper)
+# Minor arcs (Lemma 4.9 of the paper)
 
 `minorArc p q` for unit `p, q` with `q ≠ -p`: symmetric in its ends, contains them, its points
 other than the ends lie on the open arc `OpenContactArc p q` of the eight-point code, it is

@@ -3,10 +3,10 @@ import Tammes15.TwoConn.Hull
 /-!
 # Facets of the hull
 
-Step S4 of the proof of Corollary twoconn by the convex hull (paper, Section 3, Corollary twoconn
-and Lemma hull). The facets are the orbits of the face permutation of the angular rotation
+A step of the proof of Corollary A.6 by the convex hull (paper, Corollary A.6
+and Lemma A.5). The facets are the orbits of the face permutation of the angular rotation
 `rho` of the hull graph. Each hull dart `d` has a supporting plane `{y | ⟪y, m⟫ = 1}` through
-`x d.fst`, `x d.snd` and `x (rho.rot d).snd` (Lemma C, `hull_step`); its polar `facetPolar` is
+`x d.fst`, `x d.snd` and `x (rho.rot d).snd` (`hull_step`); its polar `facetPolar` is
 unique, constant along the orbit (`facetPolar_face`, the facet is planar), every other point of
 the plane lies strictly on the left of each side (`facetPolar_strict`), and the vertices of an
 orbit are pairwise distinct (`facet_fst_injective`).
@@ -151,7 +151,7 @@ variable (x : V → E3) (hx : ∀ v, ‖x v‖ = 1) (hinj : Function.Injective x
 
 include hx hinj hB hrho
 
-/-- Lemma C (i): the successor of a hull dart turns counterclockwise. -/
+/-- The successor of a hull dart turns counterclockwise. -/
 theorem hull_det_pos (d : (hullGraph x).Dart) :
     0 < ⟪cross (x d.fst) (x d.snd), x (rho.rot d).snd⟫ :=
   (hull_step x hx hinj hB rho hrho d).1

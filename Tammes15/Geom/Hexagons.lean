@@ -3,7 +3,7 @@ import Tammes15.Geom.Onehex
 import Tammes15.Draw.Exist
 
 /-!
-# Item (4) of Theorem 3.1: each rattler strictly inside its own hexagon
+# Item (4) of Theorem 4.1: each rattler strictly inside its own hexagon
 
 `rattlers_core`: for the drawn contact graph of a configuration at `d ∈ [dlo, dhi]`, each rattler
 lies strictly inside some face (`exists_face_inside`), which is a hexagon (`nor` excludes the faces
@@ -11,8 +11,7 @@ with at most five vertices), and two rattlers never share a face (`onehex`).
 
 `rattlers_in_hexagons_proof` has the statement of `Tammes15.rattlers_in_hexagons`
 (`Tammes15.Draw.Iface`). Its conjuncts `Tammes15.dlo ≤ dlo` and `dhi ≤ Tammes15.dhi` put `d` in
-the interval where the margins are proved: the margin of Proposition onehex fails above
-`d ≈ 58.6°` (code/lean/geom/onehex_range.gp). `KConnected G 3` gives a vertex, which
+the interval where the margins are proved. `KConnected G 3` gives a vertex, which
 `exists_face_inside` needs.
 -/
 
@@ -51,7 +50,7 @@ theorem inside_of_sameCycle (R : RotSys G) (x : V → E3) (e e' : G.Dart)
   rw [h_eq]
   exact hy (n + k)
 
-/-- Item (4) of Theorem 3.1 for `d` in the interval of the constants. -/
+/-- Item (4) of Theorem 4.1 for `d` in the interval of the constants. -/
 theorem rattlers_core [DecidableRel G.Adj] [Nonempty V] (d : ℝ) (hlo : dlo ≤ d) (hhi : d ≤ dhi)
     (hd : 0 < d ∧ d < π / 2) (X : Config 15 d) (emb : V ↪ Fin 15)
     (hG : ∀ a b, G.Adj a b ↔ (contactGraph X).Adj (emb a) (emb b))
@@ -107,7 +106,7 @@ theorem rattlers_core [DecidableRel G.Adj] [Nonempty V] (d : ℝ) (hlo : dlo ≤
     (hfarf r _) (hfarf r' _) (X.sep _ _ (fun h => hrr' (Subtype.ext h)))
 
 set_option linter.unusedVariables false in
-/-- Item (4) of Theorem 3.1, the statement of `Tammes15.rattlers_in_hexagons` (the hypotheses
+/-- Item (4) of Theorem 4.1, the statement of `Tammes15.rattlers_in_hexagons` (the hypotheses
 `hmax`, `hmin`, `h3`, `hsph` are not needed). -/
 theorem rattlers_in_hexagons_proof [DecidableRel G.Adj] (dlo dhi d : ℝ)
     (hmarg : 7 * dlo > 2 * π ∧ alpha dhi < 2 * π / 5 ∧ Tammes15.dlo ≤ dlo ∧ dhi ≤ Tammes15.dhi)

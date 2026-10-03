@@ -23,7 +23,7 @@ Tammes15.Trigrows.Margins
 Tammes15.Trigrows.Mono
 Tammes15.Trigrows.Rows
 Tammes15.Trigrows.Sphere
-modules: 24, lines: 5196
+modules: 24, lines: 5125
 # bash code/lean/challenge.sh --closure Tammes15.Hyps.Computations Tammes15.Attained.Data Tammes15.Nonunique.Defs (the first four statements of config.json)
 Tammes15.Attained.Data
 Tammes15.D2Regions.Defs
@@ -41,4 +41,4 @@ Tammes15.Trigrows.Margins
 Tammes15.Trigrows.Mono
 Tammes15.Trigrows.Rows
 Tammes15.Trigrows.Sphere
-modules: 16, lines: 3502
+modules: 16, lines: 3431

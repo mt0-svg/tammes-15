@@ -8,7 +8,7 @@ Tammes15/Hyps/Computations.lean). By `LocalFires` (isometries and bijections) th
 for all eight.
 
 The definitions `aN` to `bh` are generated in SageMath from the exact coordinates of
-data/bk15_exact.txt (paper, Section 2).
+data/bk15_exact.txt (paper, Section 3).
 `u` is the root of `quintic` in `[ul, uh]` and `b` the
 root of `Q4 b u` in `[bl, bh]` (decimal enclosures of width 1e-40 and 1e-30). The frame coordinates
 lie in `ℚ(u, b)`, of degree 20; each one is `xN b u / 225008` with `xN` a polynomial with integer

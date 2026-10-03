@@ -6,10 +6,10 @@ import Tammes15.Hyps.Computations
 /-!
 # The Fejes Tóth bound for 15 points
 
-`fejesToth_bound : FejesTothBound` (Proposition 8.3; definition in `Tammes15.Hyps.Computations`),
-by the route of the paper, Section 8: a configuration at `d > dhi` is
+`fejesToth_bound : FejesTothBound` (Proposition C.3; definition in `Tammes15.Hyps.Computations`),
+by the route of the paper, Appendix C: a configuration at `d > dhi` is
 `c₀`-separated (N1), extends to a saturated `c₀`-separated set `S` (step (2)) with no closed
-hemisphere; its hull (Lemma 3.7) has facets bounded by the triangle lemma (steps (4), (5)); the count
+hemisphere; its hull (Lemma A.5) has facets bounded by the triangle lemma (steps (4), (5)); the count
 of fan triangles (step (6)) gives `(2|S| - 4) 2θ₀ ≤ 4π` with `|S| ≥ 15`, against `θ₀ > π / 13` (N2).
 -/
 
@@ -20,7 +20,7 @@ namespace Tammes15
 
 namespace FejesToth
 
-/-- Saturation at a level `c ≥ 0` leaves no closed hemisphere (the hypothesis of Lemma hull). -/
+/-- Saturation at a level `c ≥ 0` leaves no closed hemisphere (the hypothesis of Lemma A.5). -/
 theorem hB_of_sat {V : Type} (x : V → E3) (c : ℝ) (hc : 0 ≤ c)
     (hsat : ∀ u : E3, ‖u‖ = 1 → ∃ a, c < ⟪u, x a⟫) :
     ∀ e : E3, e ≠ 0 → ∃ a, 0 < ⟪x a, e⟫ := by
@@ -57,7 +57,7 @@ end FejesToth
 open scoped Classical
 open FejesToth
 
-/-- Proposition 8.3: the Fejes Tóth bound, `FejesTothBound`. -/
+/-- Proposition C.3: the Fejes Tóth bound, `FejesTothBound`. -/
 theorem fejesToth_bound : FejesTothBound := by
   intro d ⟨X⟩
   by_contra hd

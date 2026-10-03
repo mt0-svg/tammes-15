@@ -15,7 +15,7 @@ gh api --paginate "repos/$GITHUB_REPOSITORY/releases?per_page=100" | jq -rs --ar
 if [ ! -s "$a/candidates.txt" ]; then
   # A run started by hand certifies a release: it must check the data tarballs.
   if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
-    echo "No release or draft has the three data tarballs of ASSETS.md: upload them to a draft of the tag (head of release.yml) or keep ASSETS.md as in the previous release, then run this workflow again."
+    echo "No release or draft has the three data tarballs of ASSETS.md: upload them to a draft of the tag (head of release.yml) or keep the sha256 sums of ASSETS.md as in the previous release, then run this workflow again."
     exit 1
   fi
   echo "No release has the three data tarballs of ASSETS.md: the checks on them are not run."

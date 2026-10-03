@@ -2,9 +2,9 @@ import Tammes15.Challenge.PaperSteps.Defs
 import Tammes15.Challenge.PaperSteps.SearchTree
 
 /-!
-# The objects of the level-2 search
+# The objects of the search of the second level
 
-The definitions of Definition 5.4 of the paper, with the narrowings of the program as
+The definitions of Definition 6.3 of the paper, with the narrowings of the program as
 parameters, that the statements of `progKilled_of_progTrees` (Search.lean) and
 `conjecture_of_enum_progTrees` (MainSearch.lean) reach. The module holds definitions only, so that
 the challenge of Comparator can copy it whole.
@@ -227,7 +227,7 @@ that its replay accepts (for an entry rejected by the first level, the tree is a
 level). `RootOK` and `LeafKill` are exact real statements that the program checks in
 outward-rounded binary64 arithmetic (`rig` backend), which a VERIFIED line asks to trust besides
 `Procs.Sound`. `P` is read from its plantri record with `P.R.rot` the previous neighbour in the
-clockwise order of the planar code (the paper, Section 7.3); under the other reading
+clockwise order of the planar code (the paper, Appendix B.2); under the other reading
 `ProgTrees` would state the mirror image of what the program checks. -/
 def ProgTrees (L : Set PlaneGraph) (N : Procs) : Prop :=
   ∀ P ∈ L, ∀ k : ℕ, P.n + k = 15 → ∀ H : HexChoice P k, ∃ H₀ : HexChoice P k, SameHexSet H H₀ ∧

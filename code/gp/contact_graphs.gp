@@ -1,7 +1,7 @@
 \\ The contact graphs of C1 and C3 (Corollary 1.2 and the remark after it): degrees, the vertices of
 \\ degree 5 with their names in Table 1 and the edges among them, the face sizes of the embedding on the
 \\ sphere, and 3-connectivity. Contacts and point labels from ../../data/bk15_exact.txt (the exact lists
-\\ of Computation 2.2), coordinates from ../../data/bk15_c1.txt and bk15_c3.txt.
+\\ of Section 3), coordinates from ../../data/bk15_c1.txt and bk15_c3.txt.
 \\ Run: gp -q contact_graphs.gp < /dev/null
 default(realprecision, 40);
 names = ["p_V", "rho p_V", "rho^2 p_V", "p_W", "rho p_W", "rho^2 p_W", "p_T", "rho p_T", "rho^2 p_T", \

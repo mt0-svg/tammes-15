@@ -3,8 +3,8 @@ import Tammes15.TwoConn.Winding
 /-!
 # Two-connectivity of the graph
 
-The last step of the proof of Corollary twoconn by the convex hull (paper, Section 3, Corollary
-twoconn and Lemma hull). Two neighbours `w` and `u` of a vertex `v`, consecutive in the rotation
+The last step of the proof of Corollary A.6 by the convex hull (paper, Corollary
+twoconn and Lemma A.5). Two neighbours `w` and `u` of a vertex `v`, consecutive in the rotation
 at `v`, are joined in `G - v` by the rest of the face walk through `v → w`, whose vertices are
 pairwise distinct (`face_tails_ne`). Going round the rotation at `v`, all neighbours of `v` are
 joined in `G - v`, and so is every other vertex, by a walk of `G` to `v` stopped before `v`.

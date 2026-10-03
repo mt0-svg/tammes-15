@@ -3,7 +3,7 @@ import Tammes15.Trigrows.Sdist
 import Tammes15.Vendor.EM8.RankinBound
 
 /-!
-# Setup of Section 3: `d_N` is attained, `d_15 < π/2`, and a maximal configuration with fewest
+# Setup of Section 4: `d_N` is attained, `d_15 < π/2`, and a maximal configuration with fewest
 contacts
 
 `contactCount X` is `E(X)`, the number of edges of the contact graph. The supremum of the

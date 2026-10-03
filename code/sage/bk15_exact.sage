@@ -1,5 +1,5 @@
 # Exact construction of the Buddenhagen-Kottwitz 18-point frame and the optimal codes C3, C1
-# (formulas of Buddenhagen and Kottwitz, Section 4) in a number field, with a real embedding to ball arithmetic.
+# (formulas of Section 4 of Buddenhagen and Kottwitz) in a number field, with a real embedding to ball arithmetic.
 # Checks, exactly in the field: unit norms, the 30 contacts of C3 and C1 (inner product = u), and,
 # in ball arithmetic, that every other pair has inner product < u with a margin.
 # Output: data/bk15_exact.txt (coordinates as 120-digit balls) and the contact lists.
@@ -18,7 +18,7 @@ RB = RealBallField(PREC)
 embs = [e for e in K.embeddings(RealField(200)) if 0.5 < e(uu) < 0.7]
 assert len(embs) == 1
 u0 = embs[0](uu)
-# b^2 is the root of qb near 0.0294 (bk15_check.out)
+# b^2 is the root of qb near 0.0294 (code/gp/bk15_c3_coords.out)
 if fq[0][0].degree() == 2 and len(fq) == 1:
     K2.<yy> = K.extension(qb)
 else:

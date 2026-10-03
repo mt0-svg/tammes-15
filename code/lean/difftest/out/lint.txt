@@ -1,6 +1,0 @@
-code/lean/difftest/lean/Main.lean:288: partial | partial def loop (inp out : IO.FS.Stream) (rep : IO.FS.Handle) (c : Consts)
-code/lean/difftest/lean/Sound.lean:187: partial | partial def loop (inp out : IO.FS.Stream) (case : String) (tal : Std.HashMap String Tally)
-Tammes15/Contractors/DiffTest/Commute.lean:234: macro | macro "comm_simp" : tactic => `(tactic| simp only [lift_add, lift_sub, lift_mul, lift_div,
-LINT: 3 lines with a construct in 6 files; per construct:
-      2 partial
-      1 macro

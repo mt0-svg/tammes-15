@@ -4,8 +4,8 @@ import Tammes15.Draw.Angular
 /-!
 # The hull graph at a vertex: links, exposed pairs and the successor plane
 
-Steps S1 to S3 of the proof of Corollary twoconn by the convex hull (paper, Section 3, Corollary
-twoconn and Lemma hull). For a finite injective family `x` of unit vectors not contained in a
+The first steps of the proof of Corollary A.6 by the convex hull (paper, Corollary
+twoconn and Lemma A.5). For a finite injective family `x` of unit vectors not contained in a
 closed hemisphere (`hB`, which the corner hypothesis gives by `no_closed_hemisphere`), the link of
 a vertex `v` is the stereographic image `linkSet x v` of the other points in the plane `(x v)⊥`;
 it has `0` strictly inside, its exposed points are the hull neighbours of `v`
@@ -31,7 +31,7 @@ theorem ocorner_pos_of_ne {V : Type} [Fintype V] [DecidableEq V] {G : SimpleGrap
     0 < ocorner (x e.fst) (x e.snd) (x f.snd) :=
   lt_of_lt_of_le (hpos e) (hR e f hf hfe)
 
-/-- Lemma B: the points lie in no closed hemisphere. -/
+/-- The points lie in no closed hemisphere. -/
 theorem not_closed_hemisphere {V : Type} [Fintype V] [DecidableEq V] [Nonempty V]
     {G : SimpleGraph V} (x : V → E3) (hx : ∀ v, ‖x v‖ = 1) (hinj : Function.Injective x)
     (hne : ∀ v, ∃ w, G.Adj v w) (R : RotSys G) (hR : IsAngular R x)
@@ -841,7 +841,7 @@ theorem hull_rot_pos (x : V → E3) (hx : ∀ v, ‖x v‖ = 1) (hinj : Function
     exact h
   exact hull_ocorner_pos x hx hinj hB d.adj hexp2 hsnd
 
-/-! ## S3: the successor plane of a hull dart (Lemma C) and connectivity (Lemma E) -/
+/-! ## The successor plane of a hull dart and connectivity -/
 
 /-- The successor of `d` is the hull neighbour `y` counterclockwise from `d.snd` within `π` with
 no hull neighbour strictly between. -/
@@ -906,7 +906,7 @@ theorem hull_rot_snd_eq (x : V → E3) (hx : ∀ v, ‖x v‖ = 1) (hinj : Funct
     (ocorner_pos_lt_pi_iff (x v) (x w) (x y)).mp ⟨hc0, by linarith⟩
   exact hbetween w hexw ⟨hdw, hwy'⟩
 
-/-- Lemma C: a hull dart, its successor and a supporting plane through the three points. -/
+/-- A hull dart, its successor and a supporting plane through the three points. -/
 theorem hull_step (x : V → E3) (hx : ∀ v, ‖x v‖ = 1) (hinj : Function.Injective x)
     (hB : ∀ e : E3, e ≠ 0 → ∃ a, 0 < ⟪x a, e⟫) (rho : RotSys (hullGraph x))
     (hrho : IsAngular rho x) (d : (hullGraph x).Dart) :
@@ -1169,7 +1169,7 @@ theorem hull_step (x : V → E3) (hx : ∀ v, ‖x v‖ = 1) (hinj : Function.In
     nlinarith
   exact ⟨h_cross1_x, h_cross2_x⟩
 
-/-- Lemma E, the step: from `v ≠ w` a hull edge climbs towards `w`. -/
+/-- Connectivity, the step: from `v ≠ w` a hull edge climbs towards `w`. -/
 theorem hull_step_up (x : V → E3) (hx : ∀ v, ‖x v‖ = 1) (hinj : Function.Injective x)
     (_hB : ∀ e : E3, e ≠ 0 → ∃ a, 0 < ⟪x a, e⟫) {v w : V} (hvw : v ≠ w) :
     ∃ y, ExposedPair x v y ∧ ⟪x v, x w⟫ < ⟪x y, x w⟫ := by
@@ -1233,7 +1233,7 @@ theorem hull_step_up (x : V → E3) (hx : ∀ v, ‖x v‖ = 1) (hinj : Function
     exact h_lt
   exact ⟨y, h_exposed, h_inner_gt⟩
 
-/-- Lemma E: the hull graph is connected. -/
+/-- The hull graph is connected. -/
 theorem hull_connected [Nonempty V] (x : V → E3) (hx : ∀ v, ‖x v‖ = 1)
     (hinj : Function.Injective x) (hB : ∀ e : E3, e ≠ 0 → ∃ a, 0 < ⟪x a, e⟫) :
     (hullGraph x).Connected := by

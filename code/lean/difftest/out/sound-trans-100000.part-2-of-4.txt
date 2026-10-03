@@ -1,9 +1,0 @@
-# op calls contained vacuous violated undecided | distinct contained vacuous violated undecided
-T cos 5611036 5502783 108253 0 0 | 5004046 4910428 93618 0 0
-T sin 5725673 5675819 49854 0 0 | 5304013 5255196 48817 0 0
-T acos 0 0 0 0 0 | 0 0 0 0 0
-T asin 0 0 0 0 0 | 0 0 0 0 0
-T atan 0 0 0 0 0 | 0 0 0 0 0
-T tan 0 0 0 0 0 | 0 0 0 0 0
-NEAR calls 79988 distinct 68485 (within 2^-200 at the first precision; decided at a higher one unless undecided)
-TOTAL calls 11336709 contained 11178602 vacuous 158107 violated 0 undecided 0

@@ -1,9 +1,0 @@
-command: plantri_ms -pGu 4 0/1
-binary sha256: 11f1d0454e0bc76982d48882b3757dc0dd89db8e74196d5315b6564399678d99
-start: 2026-10-02T00:41:48Z
-./plantri_ms -pGu 4 0/1
-cell 4 4 24 1 1
-total 4 0 1 1 1
-1 polytopes generated; cpu=0.00 sec
-time: wall 0.00 s, user 0.00 s, sys 0.00 s, max rss 2364 KB
-end: 2026-10-02T00:41:48Z

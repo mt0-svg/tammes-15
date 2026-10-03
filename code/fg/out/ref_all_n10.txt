@@ -1,5 +1,0 @@
-fg ref n 10 s 3 classes 1 expected_leaves 6 expected_ring 3
-fg ref n 10 s 4 classes 2393 expected_leaves 73898 expected_ring 2899
-fg ref n 10 s 5 classes 4757 expected_leaves 60092 expected_ring 5256
-fg ref n 10 s 6 classes 999 expected_leaves 11502 expected_ring 1069
-fg ref n 10 all 1 sabotage 0 read 8150 class 8150 kept 8150 expected_leaves 145498 expected_ring 9227 secs 0.15

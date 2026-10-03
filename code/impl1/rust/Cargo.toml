@@ -6,10 +6,6 @@ publish = false
 
 [dependencies]
 
-[features]
-default = ["mpfr"]
-mpfr = []
-
 [profile.release]
 opt-level = 3
 debug = false

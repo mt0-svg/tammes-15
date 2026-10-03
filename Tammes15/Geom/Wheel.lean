@@ -6,7 +6,7 @@ import Tammes15.Draw.Frame
 
 At a point `x` strictly inside a convex polygon in cone form, the tangent directions towards the
 vertices turn monotonically, each step an angle in `(0, π)`, and the steps add up to `2π`
-(paper Section 3, proofs of Proposition nor and of (T8)). Proof in tangent coordinates `tz`:
+(paper, proofs of Proposition 4.5 and of (T8)). Proof in tangent coordinates `tz`:
 `Im (conj (tz a) * tz b) = ⟪cross a b, x⟫`, the partial sums of the arguments stay below `2π` up
 to the last vertex because the sign of `⟪cross (A 0) (A j), x⟫` switches once (`switch_of_inside`,
 from `cramer4`), and the total is a positive multiple of `2π` below `3π` (`phase_sum`).

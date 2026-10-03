@@ -1,7 +1,0 @@
-reference out/ref_w1_n14.codes: 282005 codes; generator out/gen_w1_n14_ring.codes: 282005 codes
-only in reference: 0; only in generator: 0
-s 3 expected_ring 0 generator_ok_leaves 0 equal
-s 4 expected_ring 301 generator_ok_leaves 301 equal
-s 5 expected_ring 157176 generator_ok_leaves 157176 equal
-s 6 expected_ring 143803 generator_ok_leaves 143803 equal
-verdict: sets equal

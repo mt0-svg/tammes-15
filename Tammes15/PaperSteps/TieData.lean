@@ -2,9 +2,9 @@ import Mathlib.Basic.Real.Basic
 import Mathlib.Data.Fin.VecNotation
 
 /-!
-# The targets of Local, as the first program reads them (generated)
+# The targets of Local, as the program reads them (generated)
 
-Written by gen_tiedata.sh from tie_targets.txt, the file of targets that the first program reads: the
+Written by gen_tiedata.sh from tie_targets.txt, the file of targets that the program reads: the
 eight frame configurations, each with 15 points given by a midpoint and a
 radius per coordinate, and its 30 contacts (0-based). Configurations in file order:
 `0`: P,I,A C3;

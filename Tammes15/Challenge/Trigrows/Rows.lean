@@ -1,9 +1,9 @@
 import Tammes15.Challenge.Trigrows.Mono
 
 /-!
-# Rows 5.2, (T1) to (T4), Lemma alpha, Lemma edge: the real part
+# The rows of Section 6.1, (T1) to (T4), Lemma A.1, Lemma A.9: the real part
 
-`rhombus_rows` gives the rhombus rows of Section 5.2; the four
+`rhombus_rows` gives the rhombus rows of Section 6.1; the four
 `rhombus_row_*` lemmas are its cut points.
 -/
 
@@ -544,7 +544,7 @@ theorem eta_hasDerivAt_f (g e f : ℝ) (he : 0 < e ∧ e < π) (hf : 0 < f ∧ f
       _ = cos e - cos f * cos g := by ring
   simpa [h_simplify] using h_eta_deriv
 
-/-- Lemma edge, last step: `cos d ≥ cos s cos t` with `t ≤ d/2` gives `s ≥ h(d)`. -/
+/-- Lemma A.9, last step: `cos d ≥ cos s cos t` with `t ≤ d/2` gives `s ≥ h(d)`. -/
 theorem edge_bound_real (d s t : ℝ) (hd : 0 < d ∧ d < π / 2) (hs : 0 ≤ s ∧ s ≤ π)
     (ht : 0 ≤ t ∧ t ≤ d / 2) (h : cos s * cos t ≤ cos d) : hrad d ≤ s := by
   rcases hd with ⟨hd_pos, hd_lt⟩

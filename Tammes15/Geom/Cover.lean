@@ -9,7 +9,7 @@ system with corners in `(0, π)` and faces in cone form (`StrictSupportFace`, fa
 three darts), every unit point at distance more than `d` from all vertices lies strictly on the
 inner side of every side of some face.
 
-Route (nearest point of the drawing, paper Section 3). The drawn edge of a dart `a → b` is the cone
+Route (nearest point of the drawing, paper, proof of Lemma A.12). The drawn edge of a dart `a → b` is the cone
 `{l • a + μ • b | 0 ≤ l, 0 ≤ μ}`; some unit point `z` of the drawing maximises `⟪y, ·⟫ / ‖·‖`
 (`cover_exists_cone_max`, compactness of the chords). `z` is not a vertex: at a vertex `v`,
 `exists_pos_of_corner_lt_pi` gives a neighbour `w` on the positive side of the tangent direction of

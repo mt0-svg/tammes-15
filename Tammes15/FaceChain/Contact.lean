@@ -5,10 +5,10 @@ import Tammes15.Hyps.Transport
 import Tammes15.Trigrows.Rows
 
 /-!
-# Lemmas convex, faces and threeconn for a contact graph
+# Lemmas A.7, 4.3 and 4.4 for a contact graph
 
 `faceconvex_contact` proves the statement of the same name in `Tammes15.Draw.Iface`: strict
-support of every face (Lemma convex in cone form) through the generalized eight-point chain on
+support of every face (Lemma A.7 in cone form) through the generalized eight-point chain on
 `Fin n` (`Setup.strictSupportFace`), carried to the vertex type `V` along `Fintype.equivFin V`
 (`RotSys.map`, and the transport lemmas of `Tammes15.Hyps.Transport`); face sizes 3 to 6
 (`faceSizes_of`, `face_perimeter_lt`); and 3-connectivity (`threeconn`).
@@ -61,7 +61,7 @@ end
 
 variable {V : Type} [Fintype V] [DecidableEq V] {G : SimpleGraph V}
 
-/-- Lemmas convex (cone form), faces (sizes) and threeconn. -/
+/-- Lemmas A.7 (cone form), 4.3 (sizes) and 4.4. -/
 theorem faceconvex_contact [DecidableRel G.Adj] (dlo d : ℝ) (h7 : 7 * dlo > 2 * π)
     (hlo : dlo ≤ d) (hd : 0 < d ∧ d < π / 2) (x : V → E3) (hx : ∀ v, ‖x v‖ = 1)
     (hsep : ∀ a b, a ≠ b → d ≤ sdist (x a) (x b))

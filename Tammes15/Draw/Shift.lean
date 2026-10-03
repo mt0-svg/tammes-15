@@ -1,7 +1,7 @@
 import Tammes15.Draw.Angular
 
 /-!
-# Lemma shift
+# Lemma A.2
 
 If the corner after a dart at `v` is at least `π`, or `v` has a single neighbour, all neighbours
 of `v` lie in a closed half-plane of the tangent plane (`exists_push_dir`); moving `v` a little
@@ -19,7 +19,7 @@ namespace Tammes15
 
 variable {V : Type} [Fintype V] [DecidableEq V] {G : SimpleGraph V}
 
-/-- Lemma shift, the half-plane step. -/
+/-- Lemma A.2, the half-plane step. -/
 theorem exists_push_dir [DecidableRel G.Adj] (x : V → E3) (hx : ∀ v, ‖x v‖ = 1)
     (hD : DistinctDirs G x) (R : RotSys G) (hR : IsAngular R x) (e : G.Dart)
     (he : π ≤ ocorner (x e.fst) (x e.snd) (x (R.rot e).snd) ∨ R.rot e = e) :
@@ -114,7 +114,7 @@ theorem exists_push_dir [DecidableRel G.Adj] (x : V → E3) (hx : ∀ v, ‖x v�
       rw [← hz_w]
       exact hu_half ⟨w, hw⟩
 
-/-- Lemma shift: `v` moves to a point farther than `d` from every other point. -/
+/-- Lemma A.2: `v` moves to a point farther than `d` from every other point. -/
 theorem shift_config {N : ℕ} {d : ℝ} (hd : 0 < d ∧ d < π / 2) (X : Config N d) (i : Fin N)
     (t : E3) (ht : ‖t‖ = 1) (hit : ⟪X.pt i, t⟫ = 0)
     (hpush : ∀ j, j ≠ i → sdist (X.pt i) (X.pt j) = d → ⟪t, X.pt j⟫ ≤ 0) :

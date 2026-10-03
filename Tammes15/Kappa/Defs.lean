@@ -3,7 +3,7 @@ import Tammes15.Hyps.Computations
 /-!
 # D1 for `F = {frameC1, frameC3}`: the objects of the certificate
 
-The objects of the certificate of D1 (paper, proof of Lemma 4.2); the data of the
+The objects of the certificate of D1 (paper, proof of Lemma 5.1); the data of the
 kernel checker are in Kappa/C1.lean and Kappa/C3.lean.
 
 The certificate, found by linear programming in SageMath. For a frame `p`

@@ -8,7 +8,7 @@ import Tammes15.D2Regions.Defs
 The theorem `Tammes15.reduction` (module `Tammes15.Hyps.Reduction`) proves `Tammes15.Conjecture`
 from four hypotheses on a list `L` of plane graphs and a set `F` of labelled frame configurations.
 D1 and D4 are proved for the frames C1 and C3 (`Tammes15.Kappa.kappaHyp`,
-`Tammes15.Attained.attained`), so `Tammes15.conjecture_of_enum_killed` needs D2 and D3 only; Section 7.3
+`Tammes15.Attained.attained`), so `Tammes15.conjecture_of_enum_killed` needs D2 and D3 only; Appendix B
 of the paper derives D2 and D3 from the outputs of the programs.
 
 * `KappaHyp F` (D1): the first-order rigidity constant of every frame is at least `kappa0`.

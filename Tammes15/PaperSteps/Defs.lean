@@ -2,16 +2,16 @@ import Tammes15.Hyps.Computations
 import Tammes15.PaperSteps.TieData
 
 /-!
-# The verdicts of the first program, in its own conventions
+# The verdicts of the program, in its own conventions
 
 `Killed L F` (D3) speaks of every choice of hexagons, of the gluing of Definition 7.2 and of `F`. The
-first program checks something narrower, which this file states as `ProgKilled L`:
+program checks something narrower, which this file states as `ProgKilled L`:
 
 * one choice of hexagons per set of hexagons, with base darts of its own (`SameHexSet`);
 * its gluing (code/impl1/rust/src/local.rs, `Geo::new` and `Geo::place`), which turns at a vertex in
   the order opposite to `P.R.rot` (`Assign.turnR`) and places a free point from a corner `A_i` through
   `A_{i-1}` (`progGlueY`). The plane graph `P` is read from its plantri record as in the paper
-  (Section 7.3): `P.R.rot` takes a dart at a vertex to the next one counterclockwise, the
+  (Appendix B.2): `P.R.rot` takes a dart at a vertex to the next one counterclockwise, the
   previous neighbour in the clockwise order of the planar code. Under the other reading (`rot` the
   next neighbour of the code) the program would turn by `rot`, and `ProgKilled` would state the
   mirror image of what it checks;
@@ -22,7 +22,7 @@ first program checks something narrower, which this file states as `ProgKilled L
 `ProgKilled` is the pointwise form of the verdicts: for every assignment that satisfies the relation
 system with its `d` in `[dlo, dhi]`, some gluing of the program fires Pair or Local. That the boxes
 and the interval arithmetic of the program give this form is the soundness of the search
-(Proposition 5.6 (2) of the paper).
+(Proposition 6.4 of the paper).
 `killed_of_progKilled` (PaperSteps/Main.lean) proves `Killed L {frameC1, frameC3}` from it.
 -/
 
@@ -112,12 +112,12 @@ def TieFires {α : Type} (Y : α → E3) : Prop :=
 
 /-! ## The verdicts -/
 
-/-- The verdicts of the first program on the list `L`, pointwise: for every entry with `n` vertices
+/-- The verdicts of the program on the list `L`, pointwise: for every entry with `n` vertices
 and every set of `k = 15 - n` hexagons (given by a choice `H`), the program's own choice `H₀` of the
 same set is refuted: every assignment satisfying the relation system of `H₀` with `d ∈ [dlo, dhi]`
 has a valid gluing of the program that fires Pair, or fires Local against the targets. `P` is read
 from its plantri record with `P.R.rot` the previous neighbour in the clockwise order of the planar
-code (the paper, Section 7.3), the reading under which these are the program's gluings. -/
+code (the paper, Appendix B.2), the reading under which these are the program's gluings. -/
 def ProgKilled (L : Set PlaneGraph) : Prop :=
   ∀ P ∈ L, ∀ k : ℕ, P.n + k = 15 → ∀ H : HexChoice P k, ∃ H₀ : HexChoice P k, SameHexSet H H₀ ∧
     ∀ A : Assign P k, dlo ≤ A.d → A.d ≤ dhi → RelSys P H₀ A →

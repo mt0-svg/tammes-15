@@ -2,7 +2,7 @@ import Tammes15.Draw.FaceWalk
 import Tammes15.Draw.Angular
 
 /-!
-# Reconstruction by the valid tree (Section 5.4)
+# Reconstruction by the valid tree (Section 6.3)
 
 The interface `glue_congruent` of `Tammes15.Hyps.Interfaces`, stated word for word as
 `glue_congruent_proof` (the unused hypotheses are named `_hP`, `_hd`); the interface file closes the interface

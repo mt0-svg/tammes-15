@@ -20,19 +20,19 @@
 //!   --tol X            width below which a box is reported unresolved (rad)
 //!   --absscale, --dweight W, --shrink F, --rounds R   search and propagation tuning
 //!   --replay           re-check every killed case by replaying its tree
-//!   --trig B           transcendental backend: rig (default, rigorous, rtrig.rs), libm (glibc
-//!                      plus TR_ULPS ulps, assumption), mpfr (correctly rounded, slow)
-//!   --local FILE       tie-window discard "Local" (local.rs, Theorem 4.1 of Section 4): FILE =
+//!   --trig rig         transcendental functions by rtrig.rs (the only backend; the option is kept
+//!                      for the command lines of the replay)
+//!   --local FILE       tie-window discard "Local" (local.rs, Theorem C of Section 5): FILE =
 //!                      data/tie_targets.txt; tried on boxes with d_lo <= --localmax DEG (default:
-//!                      all boxes; sound for every d); --localr R (default and maximum 1.04e-3, the radius of Theorem 4.1)
+//!                      all boxes; sound for every d); --localr R (default and maximum 1.04e-3, the radius of Theorem C)
 //!   --pair             refutation "Pair" (local.rs): two points of the glued configuration, not
 //!                      joined by an edge, provably closer than d
 //!   --close            refutation "Close" (local.rs): an edge of the glued configuration (or a
 //!                      wheel radius) provably of the wrong length (loop closure of the gluing)
 //!   --cert DIR         write the tree of every killed case to DIR/g<idx>_c<choice>.cert
 //!   --certfile FILE    append the trees of all killed cases to FILE ("G idx choice", tokens, "E")
-//!   --replayfile FILE  no search: replay the trees of FILE (same options as the recording run;
-//!                      any --trig); verdict VERIFIED, REPLAY_FAILED or NO_CERTIFICATE per graph
+//!   --replayfile FILE  no search: replay the trees of FILE (same options as the recording run);
+//!                      verdict VERIFIED, REPLAY_FAILED or NO_CERTIFICATE per graph
 //!   --dump FILE        append the unresolved (U) and open (O) boxes of surviving cases to FILE,
 //!                      one line per box: graph index, choice, U/O, then lo hi of every variable
 //!   --every M          only the graphs whose index is a multiple of M (sampling)
@@ -44,7 +44,7 @@
 //! (KILLED / UNRESOLVED / BUDGET), nodes, seconds, and for unresolved graphs the hull of d over the
 //! unresolved boxes (degrees, and offset from d_lo in radians), and when the search stopped early
 //! (node budget, or --stopunres unresolved boxes) the number and d-hull of the open boxes.
-//! A graph is killed only by interval contractors (outward rounding; libm assumption of ivt.rs).
+//! A graph is killed only by interval contractors (outward rounding).
 //! Face inequalities from the parameter file are numerical (uncertified) unless --no-face.
 
 use std::io::{BufReader, BufWriter, Write};
@@ -152,12 +152,7 @@ fn main() {
             "--close" => close = true,
             "--trig" => {
                 i += 1;
-                tammes15::ivt::set_trig(match args[i].as_str() {
-                    "libm" => tammes15::ivt::Trig::Libm,
-                    "rig" => tammes15::ivt::Trig::Rig,
-                    "mpfr" => tammes15::ivt::Trig::Mpfr,
-                    s => panic!("--trig libm|rig|mpfr, got {s}"),
-                });
+                assert!(args[i] == "rig", "--trig rig, got {}", args[i]);
             }
             "--cert" => {
                 i += 1;

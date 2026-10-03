@@ -3,8 +3,8 @@ import Tammes15.TwoConn.Blocks
 /-!
 # Regions: the faces of the graph as unions of facets
 
-Lemmas G1 to G12 of the proof of Corollary twoconn by the convex hull (paper, Section 3,
-Lemma hull and Corollary twoconn), with the cycle space bound G7 replaced by the dimension
+Steps of the proof of Corollary A.6 by the convex hull (paper,
+Lemma A.5 and Corollary A.6), through the dimension
 count of the eight-point proof. Facets of the hull are adjacent across hull edges that are not
 edges of `G`, and a region is a connected component of this adjacency (`regionGraph`). The
 permutation `tauPerm` (reverse the hull darts that are not darts of `G`, then take the face map

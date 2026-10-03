@@ -1,7 +1,6 @@
 name: Paper
 
-# The PDF of the paper, as the artifact paper (tammes-15.pdf). The paper reads files outside paper/: Lean sources
-# for its listings and code/gp/paper_checks.gp with its output.
+# The PDF of the paper, as the artifact paper (tammes-15.pdf), built from paper/main.tex alone.
 on:
   workflow_dispatch:
   workflow_call:

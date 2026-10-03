@@ -3,8 +3,8 @@ import Tammes15.TwoConn.FanCones
 /-!
 # Winding numbers of the face walks
 
-Steps H4 to H9 of the proof of Corollary twoconn by the convex hull (paper, Section 3, Corollary
-twoconn and Lemma hull). About a generic axis `z`, the winding of a facet is the sum of the
+Steps of the proof of Corollary A.6 by the convex hull (paper, Corollary
+twoconn and Lemma A.5). About a generic axis `z`, the winding of a facet is the sum of the
 windings of its fan triangles (`facet_wind`), each at most one turn, and a full turn only when `z`
 lies in its open cone (`tri_le`); the open fan cones are disjoint, so all facets together wind at
 most once (`facets_cone_count`). The winding of a face walk of `G` is the sum of the windings of the

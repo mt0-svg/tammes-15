@@ -14,7 +14,7 @@ of `Tammes15.PaperSteps`: `Tammes15.PaperSteps.killed_of_progKilled`, `Tammes15.
 `Tammes15.PaperSteps.progKilled_of_progTrees`, `Tammes15.conjecture_of_enum_progTrees`,
 `Tammes15.PaperSteps.local_optimality_frame`, `Tammes15.PaperSteps.optima_four`,
 `Tammes15.PaperSteps.frames_not_isometric` and `Tammes15.PaperSteps.frames_not_distance_preserving`, and the three
-from the hypotheses of Theorem 7.10 of the paper: `Tammes15.conjecture_of_enum_progTreesDom` (the theorem),
+from the hypotheses of Theorem B.9 of the paper: `Tammes15.conjecture_of_enum_progTreesDom` (the theorem),
 `Tammes15.Contractors.killed_of_progTreesDom` (D3) and `Tammes15.nonunique_of_enum_progTreesDom` (Corollary 1.2).
 The modules `Tammes15.Challenge.*` are copies of the 24 modules that hold the definitions the statements reach
 (the import closure of `Tammes15.Hyps.Computations`, `Tammes15.Attained.Data`, which defines the frames `frameC1` and

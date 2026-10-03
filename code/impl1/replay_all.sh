@@ -1,5 +1,5 @@
 #!/bin/bash
-# Replays every recorded level-2 tree of the release assets (Section 6.4) with the tdeep of this
+# Replays every recorded level-2 tree of the release assets (Section 7.5) with the tdeep of this
 # repository: the full rerun (every graph of the level-2 inputs on the whole range) and the
 # per-case passes (the free-point cases and the second pass on their d ranges and options).
 # Usage (from the repository root, after building code/impl1/rust):
@@ -8,7 +8,7 @@
 # per graph), .log (summary line "replay: verified V failed F missing certificates M") and .time
 # per job. Resumable: a job whose .log holds its summary line is not rerun. Then
 #   code/impl1/replay_summary.sh OUT
-# prints the table of code/impl1/out/replay_summary.txt. With LIST=1 the script gathers the per-case
+# prints the table of code/impl1/out/guarded/replay_summary.txt. With LIST=1 the script gathers the per-case
 # trees into OUT/rf, prints the job list (name|certificate file|input|options) and runs nothing; the
 # coverage join code/impl1/coverage_join.sh reads it. ONLY=NAME|NAME|... runs only those jobs, in that order (the
 # replay jobs of ci.yml split the list this way).
@@ -18,7 +18,7 @@ T=$(realpath code/impl1/rust/target/release/tdeep)
 P=$(realpath data/params15ft.txt); L=$(realpath data/tie_targets.txt)
 I=$A/inputs; C=$A/certificates
 mkdir -p "$O/rf"
-B="$T $P --no-face --no-cuts --trig ${TRIG:-rig}"
+B="$T $P --no-face --no-cuts --trig rig"
 LP="--local $L --pair"
 
 # Per-case trees certificates/<pass>/<tag>/g<idx>_c<choice>.cert, gathered into one replay file per

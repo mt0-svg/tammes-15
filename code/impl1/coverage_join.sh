@@ -1,5 +1,5 @@
 #!/bin/bash
-# Coverage join of the second level (Sections 6.3 and 6.4): every stage-A survivor has VERIFIED
+# Coverage join of the second level (Sections 7.4 and 7.5): every stage-A survivor has VERIFIED
 # replays whose d ranges cover the d range of data/params15ft.txt. It checks, and prints:
 #  1. inputs/stageA_k<k>.pc, cut into the parts of code/impl1/out/stageA_parts.txt in part order,
 #     gives the recorded survivor file (sha256) of every part; the stageA_* checks of CI regenerate
@@ -18,16 +18,17 @@
 #  5. for every survivor, the union of the d ranges of its VERIFIED replays covers the d range;
 #  6. counts per k, then "coverage join: PASS" or "coverage join: FAIL" (exit status 1).
 # Usage (from the repository root, after building code/impl1/rust):
-#   code/impl1/coverage_join.sh ASSETS [REPLAY]
+#   code/impl1/coverage_join.sh ASSETS REPLAY
 # ASSETS: the unpacked release assets (inputs/, certificates/, records/); REPLAY: an output
-# directory of replay_all.sh (default: ASSETS/records/replay-v1, the recorded full replay).
-# JOBLIST=FILE replaces the job list (negative controls, code/impl1/coverage_join_test.sh);
+# directory of replay_all.sh (the recorded one: code/impl1/out/guarded/jobs, decompressed).
+# JOBLIST=FILE replaces the job list;
 # SELFTEST=1 runs only the known-answer tests of the cover test.
 set -u
 AWK=${AWK:-awk}
 J=code/impl1/coverage_join.awk
 if [ -n "${SELFTEST:-}" ]; then $AWK -v SELFTEST=1 -f $J; exit; fi
-A=$(realpath "$1"); R=$(realpath "${2:-$A/records/replay-v1}")
+[ $# -ge 2 ] || { echo "usage: code/impl1/coverage_join.sh ASSETS REPLAY" >&2; exit 2; }
+A=$(realpath "$1"); R=$(realpath "$2")
 H=code/impl1/rust/target/release/pcrec
 W=$(mktemp -d)
 trap 'rm -rf "$W"' EXIT

@@ -1,9 +1,0 @@
-plantri_md5 -p -f6 -u 15 0/8: 56681330
-plantri_md5 -p -f6 -u 15 1/8: 56718073
-plantri_md5 -p -f6 -u 15 2/8: 57622368
-plantri_md5 -p -f6 -u 15 3/8: 56909495
-plantri_md5 -p -f6 -u 15 4/8: 56403650
-plantri_md5 -p -f6 -u 15 5/8: 57734245
-plantri_md5 -p -f6 -u 15 6/8: 57277583
-plantri_md5 -p -f6 -u 15 7/8: 58201469
-sum: 457548213

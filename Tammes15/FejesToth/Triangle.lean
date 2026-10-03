@@ -3,15 +3,15 @@ import Tammes15.TwoConn.Excess
 /-!
 # The triangle lemma of the Fejes Tóth bound
 
-Paper, Section 8, Lemmas 8.1 and 8.2. A
+Paper, Appendix C, Lemmas C.1 and C.2. A
 spherical triangle `p q r` (positively oriented) with sides at least `a` (`⟪·, ·⟫ ≤ c = cos a`) and
 circumradius at most `a` (a unit `n` with `⟪n, p⟫ = ⟪n, q⟫ = ⟪n, r⟫ = k ≥ c`) has angle sum at least
 that of the equilateral triangle of side `a`, `π + 2 arg (1 + 3c + i (1 - c) √(1 + 2c))`, for
-`1/2 ≤ c < 1` (`fejesToth_triangle`, Lemma 8.2). The proof is algebraic: the corners are arguments
-(`sphereVertexAngle_eq_arg`, Lemma 8.1), their sum is `π + 2 arg (1 + x + y + z + iD)`
-(`angle_sum_arg`, Lemma 8.1), the circumradius condition is a polynomial inequality
+`1/2 ≤ c < 1` (`fejesToth_triangle`, Lemma C.2). The proof is algebraic: the corners are arguments
+(`sphereVertexAngle_eq_arg`, Lemma C.1), their sum is `π + 2 arg (1 + x + y + z + iD)`
+(`angle_sum_arg`, Lemma C.1), the circumradius condition is a polynomial inequality
 (`circumcentre_identity`), and the comparison of arguments (`arg_le_arg_of_mul_le`)
-reduces to the certificate `tri_poly` (proof of Lemma 8.2).
+reduces to the certificate `tri_poly` (proof of Lemma C.2).
 -/
 
 open Real InnerProductGeometry
@@ -22,7 +22,7 @@ open Tammes15.Vendor.EM8.SquareAntiprismVerification (crossVec spherical_triangl
 
 namespace Tammes15.FejesToth
 
-/-- The triangle lemma in polynomial form (the certificate in the proof of Lemma 8.2). -/
+/-- The triangle lemma in polynomial form (the certificate in the proof of Lemma C.2). -/
 theorem tri_poly (m a b g : ℝ) (hm0 : 0 < m) (hm : m ≤ 1 / 2)
     (ha : 0 ≤ a) (hb : 0 ≤ b) (hg : 0 ≤ g)
     (hK : 0 ≤ (2 - m) * (2 * ((1 + a) * (1 + b) + (1 + b) * (1 + g) + (1 + g) * (1 + a))
@@ -78,7 +78,7 @@ theorem tri_poly (m a b g : ℝ) (hm0 : 0 < m) (hm : m ≤ 1 / 2)
     linarith
 
 /-- The triangle lemma in the inner products `x = ⟪q, r⟫`, `y = ⟪r, p⟫`, `z = ⟪p, q⟫` and
-`D = det (p, q, r)`, squared: `tri_poly` after the change of variables of the proof of Lemma 8.2. -/
+`D = det (p, q, r)`, squared: `tri_poly` after the change of variables of the proof of Lemma C.2. -/
 theorem tri_sq_le (x y z D c : ℝ) (hc : 1 / 2 ≤ c) (hc1 : c < 1)
     (hx : x ≤ c) (hy : y ≤ c) (hz : z ≤ c)
     (hG : D ^ 2 = 1 - x ^ 2 - y ^ 2 - z ^ 2 + 2 * x * y * z)
@@ -207,7 +207,7 @@ theorem tri_mul_le (x y z D c : ℝ) (hc : 1 / 2 ≤ c) (hc1 : c < 1)
     have h_final := (pow_le_pow_iff_left₀ h_left_nonneg h_right_nonneg (by norm_num : 2 ≠ 0)).mp h_sq
     exact h_final
 
-/-- Lemma 8.1: the angle sum of a spherical triangle as an argument. -/
+/-- Lemma C.1: the angle sum of a spherical triangle as an argument. -/
 theorem angle_sum_arg (x y z D : ℝ) (hD : 0 < D) (hx : x < 1) (hy : y < 1) (hz : z < 1)
     (hG : D ^ 2 = 1 - x ^ 2 - y ^ 2 - z ^ 2 + 2 * x * y * z)
     (hexc : π < Complex.arg ⟨x - y * z, D⟩ + Complex.arg ⟨y - z * x, D⟩ + Complex.arg ⟨z - x * y, D⟩) :
@@ -276,7 +276,7 @@ theorem angle_sum_arg (x y z D : ℝ) (hD : 0 < D) (hx : x < 1) (hy : y < 1) (hz
   simp at hkeq
   linarith
 
-/-- Comparison of two arguments in the upper half plane (proof of Lemma 8.2). -/
+/-- Comparison of two arguments in the upper half plane (proof of Lemma C.2). -/
 theorem arg_le_arg_of_mul_le (s D s₀ D₀ : ℝ) (hD : 0 < D) (hD₀ : 0 < D₀) (hs₀ : 0 < s₀)
     (h : s * D₀ ≤ s₀ * D) : Complex.arg ⟨s₀, D₀⟩ ≤ Complex.arg ⟨s, D⟩ := by
   set z : ℂ := ⟨s, D⟩ with hz
@@ -341,7 +341,7 @@ theorem arg_le_arg_of_mul_le (s D s₀ D₀ : ℝ) (hD : 0 < D) (hD₀ : 0 < D�
       refine div_nonneg (by linarith) (by positivity)
     nlinarith
 
-/-- Lemma 8.1: the corner of a positively oriented triangle as an argument. -/
+/-- Lemma C.1: the corner of a positively oriented triangle as an argument. -/
 theorem sphereVertexAngle_eq_arg (p q r : E3) (hp : ‖p‖ = 1) (hq : ‖q‖ = 1) (hr : ‖r‖ = 1)
     (hD : 0 < ⟪cross p q, r⟫) :
     sphereVertexAngle p q r
@@ -428,7 +428,7 @@ theorem circumcentre_smul (p q r n : E3) (k : ℝ) (hkp : ⟪n, p⟫ = k)
   have h_eq : D • n = k • w := sub_eq_zero.mp hy_zero
   simpa [D, w] using h_eq
 
-/-- The circumcentre relation `D² (1 - k²) = 2 k² (1 - x)(1 - y)(1 - z)` (proof of Lemma 8.2). -/
+/-- The circumcentre relation `D² (1 - k²) = 2 k² (1 - x)(1 - y)(1 - z)` (proof of Lemma C.2). -/
 theorem circumcentre_identity (p q r n : E3) (hp : ‖p‖ = 1) (hq : ‖q‖ = 1) (hr : ‖r‖ = 1)
     (hn : ‖n‖ = 1) (k : ℝ) (hkp : ⟪n, p⟫ = k) (hkq : ⟪n, q⟫ = k) (hkr : ⟪n, r⟫ = k)
     (hD : ⟪cross p q, r⟫ ≠ 0) :
@@ -459,7 +459,7 @@ theorem circumcentre_identity (p q r n : E3) (hp : ‖p‖ = 1) (hq : ‖q‖ = 
       _ = k ^ 2 * (D ^ 2 + 2 * P) := by rw [← h_gram]
   nlinarith
 
-/-- Lemma 8.2: the triangle lemma. -/
+/-- Lemma C.2: the triangle lemma. -/
 theorem fejesToth_triangle (p q r n : E3) (hp : ‖p‖ = 1) (hq : ‖q‖ = 1) (hr : ‖r‖ = 1)
     (hn : ‖n‖ = 1) (c k : ℝ) (hc : 1 / 2 ≤ c) (hc1 : c < 1) (hck : c ≤ k)
     (hkp : ⟪n, p⟫ = k) (hkq : ⟪n, q⟫ = k) (hkr : ⟪n, r⟫ = k)

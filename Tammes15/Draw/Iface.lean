@@ -6,20 +6,20 @@ import Tammes15.Geom.Hexagons
 /-!
 # Interfaces of the drawing layer to the face modules
 
-Statements that Theorem 3.1 takes from other parts, each proved there. All three are closed by
+Statements that Theorem 4.1 takes from other parts, each proved there. All three are closed by
 the theorems of those parts, with the same statements: `twoconn_contact_proof` of
 `Tammes15.TwoConn.Contact`, `FaceChain.faceconvex_contact` of `Tammes15.FaceChain.Contact`, and
 `Geom.rattlers_in_hexagons_proof` of `Tammes15.Geom.Hexagons`.
 Their exact form is what `structure_theorem` consumes, and every hypothesis is available at that
 point of the proof.
 
-* `twoconn_contact` (TwoConn): Corollary twoconn for a contact graph, the theorem
-  `twoconn` of TwoConn/Main.lean composed with its Lemma A (`contact_exposed`).
-* `faceconvex_contact` (FaceChain): Lemma convex in cone form, face sizes 3 to 6
-  (Lemma faces) and 3-connectivity (Lemma threeconn).
-* `rattlers_in_hexagons` (Geom): item (4) of Theorem 3.1 in the form of the fields
-  `hexOf`, `hexOf_six`, `hexOf_inside`, `hexOf_distinct` of `Structured` (Propositions nor and
-  onehex).
+* `twoconn_contact` (TwoConn): Corollary A.6 for a contact graph, the theorem
+  `twoconn` of TwoConn/Main.lean composed with `contact_exposed`.
+* `faceconvex_contact` (FaceChain): Lemma A.7 in cone form, face sizes 3 to 6
+  (Lemma 4.3) and 3-connectivity (Lemma 4.4).
+* `rattlers_in_hexagons` (Geom): item (4) of Theorem 4.1 in the form of the fields
+  `hexOf`, `hexOf_six`, `hexOf_inside`, `hexOf_distinct` of `Structured` (Propositions 4.5 and
+  4.6).
 -/
 
 open Real InnerProductGeometry
@@ -29,7 +29,7 @@ namespace Tammes15
 
 variable {V : Type} [Fintype V] [DecidableEq V] {G : SimpleGraph V}
 
-/-- Corollary twoconn for a contact graph (proved in TwoConn). -/
+/-- Corollary A.6 for a contact graph (proved in TwoConn). -/
 theorem twoconn_contact [Nonempty V] [DecidableRel G.Adj] (x : V → E3) (hx : ∀ v, ‖x v‖ = 1)
     (c : ℝ) (hc : c < 1) (hsep : ∀ a b, a ≠ b → ⟪x a, x b⟫ ≤ c)
     (hG : ∀ a b, G.Adj a b → ⟪x a, x b⟫ = c) (hne : ∀ v, ∃ w, G.Adj v w)
@@ -42,7 +42,7 @@ theorem twoconn_contact [Nonempty V] [DecidableRel G.Adj] (x : V → E3) (hx : �
         ((R.face ^ m) e).fst ≠ ((R.face ^ n) e).fst :=
   twoconn_contact_proof x hx c hc hsep hG hne R hR hcorner
 
-/-- Lemmas convex (cone form), faces (sizes) and threeconn (proved in FaceChain). -/
+/-- Lemmas A.7 (cone form), 4.3 (sizes) and 4.4 (proved in FaceChain). -/
 theorem faceconvex_contact [DecidableRel G.Adj] (dlo d : ℝ) (h7 : 7 * dlo > 2 * π)
     (hlo : dlo ≤ d) (hd : 0 < d ∧ d < π / 2) (x : V → E3) (hx : ∀ v, ‖x v‖ = 1)
     (hsep : ∀ a b, a ≠ b → d ≤ sdist (x a) (x b))
@@ -59,7 +59,7 @@ theorem faceconvex_contact [DecidableRel G.Adj] (dlo d : ℝ) (h7 : 7 * dlo > 2 
   FaceChain.faceconvex_contact dlo d h7 hlo hd x hx hsep hG R hR hcorner hdeg hconn h2 hsph
     hface3 hwalk
 
-/-- Item (4) of Theorem 3.1: each rattler strictly inside a hexagonal face, distinct rattlers in
+/-- Item (4) of Theorem 4.1: each rattler strictly inside a hexagonal face, distinct rattlers in
 distinct faces (proved in Geom as `Geom.rattlers_in_hexagons_proof` with the same
 statement). The conjuncts `Tammes15.dlo ≤ dlo` and `dhi ≤ Tammes15.dhi` of `hmarg` keep `d` in
 the paper's range: the margins of the hexagon argument (`nor`, the one hexagon margin) hold only on

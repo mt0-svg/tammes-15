@@ -1,10 +1,10 @@
 import Tammes15.Local41.Rotation
 
 /-!
-# Theorem 4.1: the inequality chain and the orthogonal invariance of `κ`
+# Theorem C: the inequality chain and the orthogonal invariance of `κ`
 
 
-`chain_conclusion` is the proof of Theorem 4.1 after the choice of the best
+`chain_conclusion` is the proof of Theorem C after the choice of the best
 orthogonal map `R` (so `q i = R (p i)`, `∑ |x_i - q_i|² ≤ n r²` and the first order condition
 `∑ q_i × x_i = 0`); `kappaBound_orthogonal` is the orthogonal invariance of `κ`. Improper maps need no separate
 case: the minimum is taken over all orthogonal maps, and `κ` is invariant under all of them.
@@ -217,7 +217,7 @@ theorem kappaBound_orthogonal {n : ℕ} (p : Fin n → E3) (S : Finset (Fin n ×
     _ ≤ Lmap p t' ij := h_ineq
     _ = Lmap (fun i => O (p i)) t ij := by rw [h_lmap ij]
 
-/-- Theorem 4.1 after the choice of the best orthogonal map. -/
+/-- Theorem C after the choice of the best orthogonal map. -/
 theorem chain_conclusion {n : ℕ} (q x : Fin n → E3) (S : Finset (Fin n × Fin n)) (u κ0 r : ℝ)
     (hq : ∀ i, ‖q i‖ = 1) (hx : ∀ i, ‖x i‖ = 1) (hS : ∀ ij ∈ S, ⟪q ij.1, q ij.2⟫ = u)
     (hu : 0 < u) (hκ : KappaBound q S κ0) (hr0 : 0 ≤ r)
@@ -520,8 +520,8 @@ theorem best_orthogonal_cross {n : ℕ} (p x : Fin n → E3) (R : E3 ≃ₗᵢ[�
     exact (inner_self_eq_zero (𝕜 := ℝ) (x := c)).mp h_inner
   simpa [hc_def] using h_c_zero
 
-/-- Theorem 4.1 for an abstract frame `p` with contact set `S` at inner product `u`
-(paper, Theorem 4.1). -/
+/-- Theorem C for an abstract frame `p` with contact set `S` at inner product `u`
+(paper, Theorem C). -/
 theorem local_optimality {n : ℕ} (p : Fin n → E3) (S : Finset (Fin n × Fin n)) (u κ0 r : ℝ)
     (hp : ∀ i, ‖p i‖ = 1) (hS : ∀ ij ∈ S, ⟪p ij.1, p ij.2⟫ = u ∧ ij.1 ≠ ij.2)
     (hu : 0 < u) (hκ : KappaBound p S κ0) (hr : Real.sqrt (n : ℝ) * r * (1.01 * (1 + u)) ≤ κ0)

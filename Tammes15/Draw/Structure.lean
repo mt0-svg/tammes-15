@@ -3,14 +3,14 @@ import Tammes15.Draw.Iface
 import Tammes15.Draw.Count
 
 /-!
-# Theorem 3.1
+# Theorem 4.1
 
 `structure_theorem`: some maximal configuration of 15 points is structured. The proof takes a
 maximal configuration with fewest contacts (`exists_min_contacts`), indexes its non-rattlers by
 `Fin n`, and assembles the fields of `Structured`: the angular rotation system
-(`exists_angular`), Lemma minimal (`lemma_minimal`), Corollary twoconn (`twoconn_contact`),
-Lemmas convex, faces and threeconn (`faceconvex_contact`), item (4) (`rattlers_in_hexagons`) and
-Corollary k3 (`k_le_three_of_hex`).
+(`exists_angular`), Lemma 4.2 (`lemma_minimal`), Corollary A.6 (`twoconn_contact`),
+Lemmas A.7, 4.3 and 4.4 (`faceconvex_contact`), item (4) (`rattlers_in_hexagons`) and
+Corollary 4.7 (`k_le_three_of_hex`).
 -/
 
 open Real InnerProductGeometry
@@ -34,7 +34,7 @@ section
 
 variable {V : Type} [Fintype V] [DecidableEq V] {G : SimpleGraph V}
 
-/-- Theorem 3.1 for a maximal configuration with fewest contacts and an indexing `emb` of its
+/-- Theorem 4.1 for a maximal configuration with fewest contacts and an indexing `emb` of its
 non-rattlers. `hmarg` keeps `[dlo, dhi]` inside the paper's range
 `[Tammes15.dlo, Tammes15.dhi]`, as `rattlers_in_hexagons` needs. -/
 theorem structured_of_min (dlo dhi d : ℝ) (hlo : dlo ≤ d) (hhi : d ≤ dhi)
@@ -103,7 +103,7 @@ theorem structured_of_min (dlo dhi d : ℝ) (hlo : dlo ≤ d) (hhi : d ≤ dhi)
 
 end
 
-/-- Theorem 3.1: some maximal configuration is structured. `dlo, dhi` are the
+/-- Theorem 4.1: some maximal configuration is structured. `dlo, dhi` are the
 parameters of the range of `d15`, with the two margins the proof uses and inside the paper's range
 `[Tammes15.dlo, Tammes15.dhi]`: the margins of the hexagon argument (`nor`, the one hexagon
 margin) hold only there, and without the last two conjuncts the parameters do not keep `d15`

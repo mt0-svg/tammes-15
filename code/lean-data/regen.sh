@@ -4,7 +4,7 @@
 # Lean package.
 # Usage, from the repository root: code/lean-data/regen.sh > code/lean-data/regen.out
 # The output of each generator is written next to it (d4_cut.out, d1_lp.out, d1_kernel.out, gen_close.out,
-# gen34.out, witness.out, pi_witness.out, gen_seplt.out, tie_map.out); the generated files go to a temporary
+# witness.out, pi_witness.out, gen_seplt.out, tie_map.out); the generated files go to a temporary
 # directory, and their sha256 are printed.
 #  1. d4_cut.sage: every declaration of the generated D4CutProofs.lean (the definitions aN to bh and
 #     the lemmas nm_k, ct_k1_k2, sp_k1_k2 and the four sign lemmas) appears exactly once in
@@ -23,9 +23,9 @@
 #     bodies of these theorems in Tammes15/Attained/Frames.lean.
 #  5. gen_close.sh: the rounded frames of Tammes15/Kappa/C1.lean and C3.lean against the enclosures of
 #     Tammes15/Kappa/Close.lean (distance at most 2e-20).
-#  6. gen34.gp, witness.gp, pi_witness.gp (PARI/GP, exact rational arithmetic): Tammes15/Params/Onehex.lean is
-#     the file gen34.gp writes, byte for byte; each of the eight witnesses that witness.gp prints appears in
-#     Tammes15/Params/Checks.lean; the list that pi_witness.gp prints is the one of Tammes15/Params/Pi.lean.
+#  6. witness.gp, pi_witness.gp (PARI/GP, exact rational arithmetic): each of the eight witnesses that
+#     witness.gp prints appears in Tammes15/Params/Checks.lean; the list that pi_witness.gp prints is the one
+#     of Tammes15/Params/Pi.lean.
 #  7. gen_seplt.sh: Tammes15/Nonunique/SepLt.lean is the file it writes, byte for byte.
 #  8. gen_tiedata.sh, tie_map.gp (PARI/GP) and gen_roots2.sh, from data/tie_targets.txt: TieData.lean, TieMap.lean
 #     and Roots2.lean of Tammes15/PaperSteps are the files they write, byte for byte (gen_roots2.sh reads the
@@ -113,13 +113,8 @@ grep -q '^layout check .*: OK$' $D/gen_close.out && say "layout of the rounded f
 grep '^worst' $D/gen_close.out
 say "compared: Tammes15/Kappa/Close.lean $(sha Tammes15/Kappa/Close.lean)"
 
-say "== 6. gen34.gp, witness.gp, pi_witness.gp"
+say "== 6. witness.gp, pi_witness.gp"
 P=Tammes15/Params
-OUT=$T/Onehex.lean gp -q $D/gen34.gp > $D/gen34.out 2>&1 || { say "gen34.gp FAILED"; bad=$((bad + 1)); }
-tail -1 $D/gen34.out
-grep -q '^ALL OK' $D/gen34.out || bad=$((bad + 1))
-if cmp -s $T/Onehex.lean $P/Onehex.lean; then say "$P/Onehex.lean: identical to the file gen34.gp writes ($(sha $P/Onehex.lean))"
-else say "$P/Onehex.lean: DIFFERS from the file gen34.gp writes ($(sha $T/Onehex.lean))"; bad=$((bad + 1)); fi
 gp -q $D/witness.gp > $D/witness.out 2>&1 || { say "witness.gp FAILED"; bad=$((bad + 1)); }
 say "witness.gp: $(grep -cE '^P[0-9a-z]+: OK$' $D/witness.out) checks OK, $(grep -cE ': FAIL$' $D/witness.out) failed"
 grep -qE ': FAIL$' $D/witness.out && bad=$((bad + 1))

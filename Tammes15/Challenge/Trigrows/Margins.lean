@@ -1,14 +1,12 @@
 import Tammes15.Challenge.Trigrows.Rows
 
 /-!
-# The range `[dlo, dhi]` and the closed-form margins of Section 3.4
+# The range `[dlo, dhi]` and the closed-form margins of Section 4.3
 
-
-`dlo = 53.65785°` and `dhi = 56.6716°` (paper, Section 1). The margins
-`7 dlo > 2π` and `α(dhi) < 72°` (the hypothesis `hmarg` of Theorem 3.1), `3 dhi < π` (T8),
-`dhi + 2 h(dhi) < π` (the hypothesis of Lemma perims) and the closed-form bound of Proposition nor,
-`5 dhi < π (1 + sin h(dlo))`. The margin of Proposition onehex is not here: it depends on the
-polygon form of Rattlers.
+`dlo = 53.65785°` and `dhi = 56.6716°` (paper, Conventions of Section 1). Proved here: the margins
+`7 dlo > 2π`, `α(dhi) < 72°` (the hypothesis `hmarg` of Theorem 4.1), `3 dhi < π` (T8) and
+`dhi + 2 h(dhi) < π` (the hypothesis of Lemma A.11). The margin of Proposition 4.6 is not here: it
+depends on the polygon form of Rattlers.
 -/
 
 open Real
@@ -108,28 +106,6 @@ theorem alpha_dhi_lt : alpha dhi < 2 * π / 5 := by
   rw [h_arccos_cos] at h_arccos_lt
   exact lt_trans halpha_lt h_arccos_lt
 
-theorem sin_hrad_pi_div_four : sin (hrad (π / 4)) = Real.sqrt (Real.sqrt 2 - 1) := by
-  have hcos4 : cos (π / 4) = Real.sqrt 2 / 2 := Real.cos_pi_div_four
-  have hcos8 : cos (π / 8) = Real.sqrt (2 + Real.sqrt 2) / 2 := Real.cos_pi_div_eight
-  have h_div2 : (π / 4) / 2 = π / 8 := by ring
-  have hrad_def : hrad (π / 4) = arccos (cos (π / 4) / cos ((π / 4) / 2)) := rfl
-  rw [h_div2] at hrad_def
-  rw [hrad_def, Real.sin_arccos]
-  rw [hcos4, hcos8]
-  have h_sq : ((Real.sqrt 2 / 2) / (Real.sqrt (2 + Real.sqrt 2) / 2)) ^ 2 = 2 - Real.sqrt 2 := by
-    calc
-      ((Real.sqrt 2 / 2) / (Real.sqrt (2 + Real.sqrt 2) / 2)) ^ 2
-          = (Real.sqrt 2 / Real.sqrt (2 + Real.sqrt 2)) ^ 2 := by ring
-      _ = (Real.sqrt 2) ^ 2 / (Real.sqrt (2 + Real.sqrt 2)) ^ 2 := by ring
-      _ = 2 / (2 + Real.sqrt 2) := by
-        rw [Real.sq_sqrt (show 0 ≤ (2 : ℝ) by norm_num),
-          Real.sq_sqrt (show 0 ≤ 2 + Real.sqrt 2 by nlinarith [Real.sqrt_nonneg 2])]
-      _ = 2 - Real.sqrt 2 := by
-        field_simp [show 2 + Real.sqrt 2 ≠ 0 by nlinarith [Real.sqrt_nonneg 2]]
-        nlinarith [Real.sq_sqrt (show 0 ≤ (2 : ℝ) by norm_num)]
-  rw [h_sq]
-  ring_nf
-
 theorem margin_perims : dhi + 2 * hrad dhi < π := by
   have hπ_pos : 0 < π := Real.pi_pos
   have hdhi_pos : 0 < dhi := by
@@ -147,52 +123,5 @@ theorem margin_perims : dhi + 2 * hrad dhi < π := by
   rw [h_eq] at h
   have h_final : 3 * dhi < π := three_dhi_lt_pi
   linarith
-
-theorem margin_nor_closed : 5 * dhi < π * (1 + sin (hrad dlo)) := by
-  have hpi_pos : 0 < π := Real.pi_pos
-  have hpi4_pos : 0 < π / 4 := by linarith
-  have hpi4_lt_pi2 : π / 4 < π / 2 := by linarith
-  have hdlo_pos : 0 < dlo := by
-    unfold dlo
-    positivity
-  have hdlo_lt_pi2 : dlo < π / 2 := by
-    unfold dlo
-    have h : (5365785 : ℝ) < 9000000 := by norm_num
-    nlinarith
-  have h_sqrt_gt : (3/5 : ℝ) < Real.sqrt (Real.sqrt 2 - 1) := by
-    have h_inner_sq : ((3/5 : ℝ) ^ 2) < Real.sqrt 2 - 1 := by
-      have h_sqrt2_gt_34_25 : (34/25 : ℝ) < Real.sqrt 2 := by
-        rw [Real.lt_sqrt (by norm_num : 0 ≤ (34/25 : ℝ))]
-        norm_num
-      have h_sq_eq : (3/5 : ℝ) ^ 2 = (34/25 : ℝ) - 1 := by norm_num
-      linarith
-    rw [Real.lt_sqrt (by norm_num : 0 ≤ (3/5 : ℝ))]
-    exact h_inner_sq
-  have h_dhi_bound : 5 * dhi < (8/5 : ℝ) * π := by
-    unfold dhi
-    have hcoeff : (5 * 566716 / 10000 / 180 : ℝ) < (8/5 : ℝ) := by norm_num
-    nlinarith [hpi_pos]
-  have h_sin_lt : sin (hrad (π / 4)) < sin (hrad dlo) := by
-    have hx_mem : π / 4 ∈ Set.Ioo (0 : ℝ) (π / 2) := Set.mem_Ioo.mpr ⟨hpi4_pos, hpi4_lt_pi2⟩
-    have hy_mem : dlo ∈ Set.Ioo (0 : ℝ) (π / 2) := Set.mem_Ioo.mpr ⟨hdlo_pos, hdlo_lt_pi2⟩
-    have h_lt : hrad (π / 4) < hrad dlo := hrad_strictMonoOn hx_mem hy_mem pi_div_four_lt_dlo
-    have hx_sin_low : -(π / 2) ≤ hrad (π / 4) := by
-      have hpos : 0 < hrad (π / 4) := by
-        have := (hrad_bounds (π / 4) ⟨hpi4_pos, hpi4_lt_pi2⟩).1
-        linarith
-      linarith
-    have hy_sin_high : hrad dlo ≤ π / 2 := by
-      have hlt := (hrad_bounds dlo ⟨hdlo_pos, hdlo_lt_pi2⟩).2
-      linarith
-    exact Real.sin_lt_sin_of_lt_of_le_pi_div_two hx_sin_low hy_sin_high h_lt
-  calc
-    5 * dhi < (8/5 : ℝ) * π := h_dhi_bound
-    _ = π * (8/5 : ℝ) := by ring
-    _ = π * (1 + (3/5 : ℝ)) := by ring
-    _ < π * (1 + Real.sqrt (Real.sqrt 2 - 1)) := by
-      nlinarith
-    _ = π * (1 + sin (hrad (π / 4))) := by rw [sin_hrad_pi_div_four]
-    _ < π * (1 + sin (hrad dlo)) := by
-      nlinarith
 
 end Tammes15

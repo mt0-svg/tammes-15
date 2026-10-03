@@ -1,8 +1,8 @@
 //! Rigorous enclosures of cos, sin, tan, atan, asin, acos at f64 points, from IEEE 754 basic
 //! operations only (+, -, *, /, sqrt, each correctly rounded to nearest and then moved one ulp
 //! outward by `Iv`), with Taylor series and explicit remainder bounds. No libm function is called.
-//! Constants: code/gp/rtrig_consts.gp (PARI/GP, 200 digits), output rtrig_consts.out; they are
-//! re-checked against MPFR by the `rtrigcheck` binary.
+//! Constants: code/gp/rtrig_consts.gp (PARI/GP, 200 digits), output
+//! code/gp/rtrig_consts.out.
 //!
 //! Derivations.
 //! - Reduction for cos, sin, tan: k = nearest integer to x 2/pi (any integer is correct; this one
@@ -290,7 +290,7 @@ mod tests {
     use super::*;
     #[test]
     fn against_libm_loose() {
-        // loose sanity check against libm (the MPFR check is the rtrigcheck binary)
+        // loose sanity check against libm
         let mut x = -7.0f64;
         while x < 7.0 {
             for (e, v) in [(cos_enc(x), x.cos()), (sin_enc(x), x.sin()), (atan_enc(x), x.atan())] {

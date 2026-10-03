@@ -1,5 +1,5 @@
 #!/bin/bash
-# Enumeration and stage A (Sections 6.1 and 6.2): plantri_md5 -p -f6 (15 - k) in res/mod parts,
+# Enumeration and first level (Sections 7.2 and 7.3): plantri_md5 -p -f6 (15 - k) in res/mod parts,
 # piped into tfilter with the stage-A options, for k = 0 (2000 parts), 1 (40 parts), 2 and 3 (one
 # part each). Survivors go to OUT/k<k>_<r>.pc, statistics to OUT/k<k>_<r>.log.
 # Usage (from the repository root, after build_plantri.sh and building code/impl1/rust):

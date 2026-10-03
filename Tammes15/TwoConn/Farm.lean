@@ -6,9 +6,9 @@ import Tammes15.Rattlers.Hex
 import Tammes15.Fans.Cone
 
 /-!
-# Self-contained lemmas of Corollary twoconn by the convex hull
+# Self-contained lemmas of Corollary A.6 by the convex hull
 
-Self-contained statements of the proof (paper, Section 3, Lemma hull and Corollary
+Self-contained statements of the proof (paper, Lemma A.5 and Corollary
 twoconn). Groups:
 
 * corners and determinants at a vertex (`inner_cross_tdir` to `sameRay_of_ocorner_eq_zero`);
@@ -1591,7 +1591,7 @@ theorem toIcoMod_arg_upper_bound {z : ℂ} (hre : z.re ≤ 0) (hz : z ≠ 0) :
       nlinarith
 
 /-- At a vertex whose consecutive corners lie in `(0, π)`, every nonzero tangent direction `t` has
-a neighbour on its open side (a step of Lemma B, paper, Section 3). -/
+a neighbour on its open side (a step of `not_closed_hemisphere`). -/
 theorem exists_pos_of_corner_lt_pi {V : Type} [Fintype V] [DecidableEq V] {G : SimpleGraph V}
     (R : RotSys G) (x : V → E3) (hx : ∀ v, ‖x v‖ = 1) (_hR : IsAngular R x)
     (hcorner : ∀ e : G.Dart, 0 < ocorner (x e.fst) (x e.snd) (x (R.rot e).snd) ∧

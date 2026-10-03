@@ -8,8 +8,8 @@ For a rotation system `R` of a finite graph without isolated vertex, `V - E + F 
 graph is connected (`rotSys_euler_le`, from the dimension count of the eight-point proof,
 `connected_permutation_cycle_bound`, applied to the dart reversal and `R.rot.symm`, whose product
 is `R.face`), and `V - E + F` is even (`rotSys_euler_even`, from the signs of the three
-permutations). Used for the hull (Lemma F) and for the graph itself (Lemma G12) in the proof of
-Corollary twoconn (paper, Section 3, Lemma hull and Corollary twoconn).
+permutations). Used for the hull (`hull_euler`) and for the graph itself (Regions.lean) in the proof of
+Corollary A.6 (paper, Lemma A.5 and Corollary A.6).
 -/
 
 open Real InnerProductGeometry ComplexConjugate

@@ -3,7 +3,7 @@ import Tammes15.Numerics.Taylor
 /-!
 # The two numerical facts of the Fejes Tóth bound
 
-Paper, Section 8, facts N1 and N2. The level `c₀ = 0.5494377` lies above `cos dhi`
+Paper, Appendix C, facts N1 and N2. The level `c₀ = 0.5494377` lies above `cos dhi`
 (N1, `dhi = π · 566716 / 1800000`), and the equilateral angle `θ₀ = arg (1 + 3c₀ + i (1 - c₀)
 √(1 + 2c₀))` exceeds `π / 13` (N2), so `52 θ₀ > 4π`. Both by the Taylor enclosures of
 `Tammes15.Numerics` at a rational bound of `π` (`Real.pi_gt_d20`, `Real.pi_lt_d20`); the rational

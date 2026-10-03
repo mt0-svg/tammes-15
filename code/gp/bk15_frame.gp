@@ -1,4 +1,4 @@
-\\ The Buddenhagen-Kottwitz construction of the 18-point frame and of C3, C1 (Section 2), in floating point at 60 digits; read by bk15_c3_coords.gp.
+\\ The Buddenhagen-Kottwitz construction of the 18-point frame and of C3, C1 (Section 3), in floating point at 60 digits; read by bk15_c3_coords.gp.
 default(realprecision, 60);
 pu = 13*x^5 - x^4 + 6*x^3 + 2*x^2 - 3*x - 1;
 print("pu irreducible over Q: ", polisirreducible(pu));

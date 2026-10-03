@@ -4,9 +4,9 @@ import Tammes15.Trigrows.Points
 import Tammes15.Trigrows.Sdist
 
 /-!
-# Lemma threeconn in cone form
+# Lemma 4.4 in cone form
 
-Section 3 of the paper, Lemma threeconn, from the combinatorial faces of an angular rotation system:
+Lemma 4.4 of the paper, from the combinatorial faces of an angular rotation system:
 strict support (`StrictSupportFace`), corners in `(0, π)` and simple face walks. A vertex of a face
 other than the ends of its corner at `u` lies strictly inside that corner (`face_vertex_sector`);
 no neighbour of `u` lies strictly inside a corner (`sector_no_neighbor`) and distinct corners at `u`
@@ -856,7 +856,7 @@ theorem card_gt_three {V : Type} [Fintype V] [DecidableEq V]
   have h_deg_ge : 3 ≤ G.degree a := hdeg a
   omega
 
-/-- Lemma threeconn in cone form. -/
+/-- Lemma 4.4 in cone form. -/
 theorem threeconn {V : Type} [Fintype V] [DecidableEq V] {G : SimpleGraph V} [DecidableRel G.Adj]
     (R : RotSys G) (x : V → E3) (hx : ∀ v, ‖x v‖ = 1)
     (hinj : Function.Injective x) (d : ℝ) (hG : ∀ a b, G.Adj a b → sdist (x a) (x b) = d)

@@ -2,7 +2,7 @@ import Tammes15.Trigrows.Sphere
 import Tammes15.Trigrows.Rows
 
 /-!
-# Law of cosines, (T1), (T2), Lemma alpha: the part on points
+# Law of cosines, (T1), (T2), Lemma A.1: the part on points
 
 Corners are unoriented here: `angle (tdir v a) (tdir v b) ∈ [0, π]`.
 -/
@@ -140,7 +140,7 @@ theorem eta_mem_Icc (A B C : E3) (hA : ‖A‖ = 1) (hB : ‖B‖ = 1) (hC : ‖
     exact Real.cos_le_one _
   exact And.intro h_lower h_upper
 
-/-- Lemma alpha. -/
+/-- Lemma A.1. -/
 theorem alpha_le_angle (d : ℝ) (hd : 0 < d ∧ d < π / 2) (v w₁ w₂ : E3) (hv : ‖v‖ = 1)
     (hw₁ : ‖w₁‖ = 1) (hw₂ : ‖w₂‖ = 1) (h₁ : sdist v w₁ = d) (h₂ : sdist v w₂ = d)
     (h₁₂ : d ≤ sdist w₁ w₂) : alpha d ≤ angle (tdir v w₁) (tdir v w₂) := by
@@ -287,7 +287,7 @@ theorem T1_isosceles_angle (d : ℝ) (hd : 0 < d ∧ d < π / 2) (A B C : E3) (h
   rw [h_gam, hAC, h_sdist_BA, h_base]
   exact gam_isosceles_eq_bangle d u hd ⟨hu_pos, hu_le_pi⟩
 
-/-- Lemma edge, Pythagoras step: a right corner at `x`. -/
+/-- Lemma A.9, Pythagoras step: a right corner at `x`. -/
 theorem pythagoras_tangent (p x v : E3) (hp : ‖p‖ = 1) (hx : ‖x‖ = 1) (hv : ‖v‖ = 1)
     (hperp : ⟪tdir x p, tdir x v⟫ = 0) :
     cos (sdist p v) = cos (sdist x p) * cos (sdist x v) := by

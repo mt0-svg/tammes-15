@@ -39,7 +39,7 @@ theorem dlo_lt_arccos_root (u : ℝ) (h1 : 1 / 2 < u) (h2 : u < 7 / 10) (h0 : qu
   unfold dlo
   exact Numerics.dlo_lt_arccos_quintic_root u h1 h2 (by simpa [quintic] using h0)
 
-/-! ## The relation system of a realisation (Section 5.2, 5.3) -/
+/-! ## The relation system of a realisation (Sections 6.1 and 6.2) -/
 
 section Relations
 
@@ -103,7 +103,7 @@ theorem wheel_of_realisation (hP : InClass P) (hd : dlo ≤ d ∧ d ≤ dhi)
 
 end Relations
 
-/-! ## Gluing (Section 5.4) -/
+/-! ## Gluing (Section 6.3) -/
 
 /-- Reconstruction: the configuration glued from the assignment of a realisation, along any
 valid tree and from any corners of the hexagons, is the realisation moved by a linear isometry.

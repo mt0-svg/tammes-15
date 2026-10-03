@@ -3,8 +3,8 @@ import Tammes15.Draw.Defs
 /-!
 # Exposed pairs, the hull graph and oriented arguments
 
-Definitions for the proof of Corollary twoconn by the convex hull of the points (paper, Section 3,
-Lemma hull and Corollary twoconn). `ExposedPair x a b`: some linear functional takes its
+Definitions for the proof of Corollary A.6 by the convex hull of the points (paper,
+Lemma A.5 and Corollary A.6). `ExposedPair x a b`: some linear functional takes its
 maximum over the point set `x` exactly at `x a` and `x b` (an edge of the hull polytope, since no
 three points of a sphere are collinear). `hullGraph x` is the graph of exposed pairs. `oarg z p q`
 is the oriented angle at `z` from the arc `z p` to the arc `z q`, the argument inside

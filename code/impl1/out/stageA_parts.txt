@@ -1,4 +1,4 @@
-# Enumeration and stage A (Sections 6.1, 6.2), one line per part: k, part r of m, the statistics printed by tfilter
+# Enumeration and stage A (Sections 7.2 and 7.3), one line per part: k, part r of m, the statistics printed by tfilter
 # (running time removed) and the sha256 of the survivor file. Produced by code/impl1/enum/stageA.sh; checked by code/impl1/stageA_check.sh.
 k0 0/2000 total 339983 rej_deg 0 rej_face 0 rej_nohex 0 killed_a 339387 killed_b 0 killed_lp 0 survivors 596 (cases 339983, lp_unknown 0) | classes total [triquad, pent, hex] = [6368, 152056, 181559]  survivors = [0, 195, 401] | 910870a6b4f336c98497b9eb66b29f6d86023cb0c1010b9fc55e3333d0b62296
 k0 1/2000 total 238222 rej_deg 0 rej_face 0 rej_nohex 0 killed_a 237929 killed_b 0 killed_lp 0 survivors 293 (cases 238222, lp_unknown 0) | classes total [triquad, pent, hex] = [3771, 114095, 120356]  survivors = [0, 136, 157] | d26239ed1524ff74b4d58267ad229af934d57a1ea1bc9501f39dcb086463d45a

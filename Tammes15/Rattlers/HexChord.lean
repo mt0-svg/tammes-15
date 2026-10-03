@@ -2,13 +2,13 @@ import Tammes15.Rattlers.HexPoly
 import Tammes15.Numerics.ChordData
 
 /-!
-# Proposition onehex: the extreme chord of the inscribed polygon
+# Proposition 4.6: the extreme chord of the inscribed polygon
 
 For `d ∈ [dlo, dhi]`, `h = hrad d` and the step `s = (π - tanAng d h) / 2` of the inscribed polygon of
-Proposition onehex (paper, Proposition onehex, inscribed polygon form), the extreme chord of the circle of radius
+Proposition 4.6 (paper, inscribed polygon form), the extreme chord of the circle of radius
 `h` about one centre keeps the whole disc about the other centre strictly on its side:
 `sin h √(cos² h + sin² h cos² (s/2)) < cos h sin d cos (3s/2) + sin h cos (s/2) cos d` (`onehex_chord_margin`).
-The worst-end bound over `[dlo, dhi]` has margin about `0.0037` (code/lean/numerics/chord_probe.gp): `hrad`
+The worst-end bound over `[dlo, dhi]` has margin about `0.0037` (code/lean/numerics/chord.gp): `hrad`
 and `tanAng d (hrad d)` increase with `d`, so every factor is bounded at an end of the interval, and those end
 values come from rational enclosures (code/lean/numerics/chord.gp, Numerics/HexData.lean).
 -/
@@ -300,7 +300,7 @@ theorem chord_piece_of {a b d Γ G C L c H1 Rb σa σb k3 k1 m1 sA cB : ℝ}
     (Real.cos_sq_add_sin_sq _) (Real.cos_sq_add_sin_sq _) hkey
 
 open Numerics in
-/-- Proposition onehex: the extreme chord keeps the other disc strictly on its side. -/
+/-- Proposition 4.6: the extreme chord keeps the other disc strictly on its side. -/
 theorem onehex_chord_margin (d : ℝ) (h1 : dlo ≤ d) (h2 : d ≤ dhi) :
     sin (hrad d) * √(cos (hrad d) ^ 2 + sin (hrad d) ^ 2 * cos ((π - tanAng d (hrad d)) / 4) ^ 2) <
       cos (hrad d) * sin d * cos (3 * ((π - tanAng d (hrad d)) / 2) / 2) +

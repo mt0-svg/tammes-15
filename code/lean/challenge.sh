@@ -1,5 +1,5 @@
 #!/bin/bash
-# code/lean/challenge.sh: write the definition modules of the Comparator challenge (Section 10.5 of the paper),
+# code/lean/challenge.sh: write the definition modules of the Comparator challenge (Section 9.3 of the paper),
 # from the root of the repository. The modules Tammes15/Challenge/** are copies, whole, of the Tammes15 import closure of the modules
 # that hold the definitions the fifteen statements of Tammes15/Challenge.lean reach: Tammes15.Hyps.Computations
 # (D1 to D4, EnumComplete with its class D2Regions.PlaneClass), Tammes15.Attained.Data (the frames), Tammes15.Nonunique.Defs

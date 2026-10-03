@@ -3,8 +3,8 @@ import Tammes15.TwoConn.Excess
 /-!
 # Blocks: the rotation of the graph inside the rotation of the hull
 
-Lemmas G1 and G2 of the proof of Corollary twoconn by the convex hull (paper, Section 3,
-Lemma hull and Corollary twoconn), in the form used by the count of regions. Along an angular
+Two steps of the proof of Corollary A.6 by the convex hull (paper,
+Lemma A.5 and Corollary A.6), in the form used by the count of regions. Along an angular
 rotation with positive corners the corner from a dart to its `j`-th iterate is the sum of the
 first `j` corners (`ocorner_rot_pow`). For a graph `G` whose edges are hull edges, with an angular
 rotation `R` whose corners lie in `(0, π)`, the successor `R.rot e` of a dart of `G` is the first

@@ -3,7 +3,7 @@ import Tammes15.Statement
 /-!
 # Saturation
 
-Paper, proof of Proposition 8.3, step (2): a finite `c`-separated set of unit vectors,
+Paper, proof of Proposition C.3, step (2): a finite `c`-separated set of unit vectors,
 `c < 1`, extends to a finite `c`-separated set `S` of unit vectors that is saturated: every unit
 vector has inner product above `c` with some point of `S`.
 -/
@@ -92,7 +92,7 @@ theorem sep_card_bound (c : ℝ) (hc : c < 1) :
     Finset.card_le_card_of_injOn f' hf_maps_to hf_inj
   simpa [N] using h_card
 
-/-- A saturated separated superset (Proposition 8.3, step (2)). -/
+/-- A saturated separated superset (Proposition C.3, step (2)). -/
 theorem exists_saturated (c : ℝ) (hc : c < 1) (X : Finset E3) (hX : ∀ x ∈ X, ‖x‖ = 1)
     (hsep : ∀ x ∈ X, ∀ y ∈ X, x ≠ y → ⟪x, y⟫ ≤ c) :
     ∃ S : Finset E3, X ⊆ S ∧ (∀ x ∈ S, ‖x‖ = 1) ∧

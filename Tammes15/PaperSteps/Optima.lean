@@ -1,7 +1,7 @@
 import Tammes15.PaperSteps.LocalEq
 
 /-!
-# Proposition 2.1 (4): the orbits of `D` on the eight frame configurations
+# Proposition 3.1 (3): the orbits of `D` on the eight frame configurations
 
 The paper states: the group `D` acts on the eight frame configurations with two orbits: `C3` and the
 configuration keeping the other three toggle points form one orbit, the six others the second, which
@@ -146,7 +146,7 @@ theorem orbit_C1_idx (t : Fin 3 → Bool) :
   revert t
   decide
 
-/-- Proposition 2.1 (4): `D` maps each frame configuration to a frame configuration; `C3`
+/-- Proposition 3.1 (3): `D` maps each frame configuration to a frame configuration; `C3`
 and `C1` are frame configurations; the orbit of `C3` is made of the two choices constant on the
 toggle pairs (`C3` and the configuration keeping the other three toggle points), and the orbit of
 `C1` of the six others. -/

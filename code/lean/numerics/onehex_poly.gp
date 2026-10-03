@@ -1,4 +1,4 @@
-\\ Proposition onehex by an inscribed polygon: the polygon with the two common tangent points of each
+\\ Proposition 4.6 of the paper by an inscribed polygon: the polygon with the two common tangent points of each
 \\ side and k + 1 points on each outer arc has perimeter
 \\ perHex(l, h, k) = 2 L + 2 k acos(cos(h)^2 + sin(h)^2 cos((2 Pi - 2 g)/k)), cos L = (cos l - sin^2 h)/cos^2 h,
 \\ cos g = -tan h tan(l/2), l = d, h = hrad(d). L increases with l and h; g increases with l and h, so the

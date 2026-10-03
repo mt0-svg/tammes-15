@@ -1,9 +1,0 @@
-fg gen n 11 s 3 rule 0 ring 0 ring2 caps tight nodes 105 cands 255 rej_nv 0 rej_meet 1 rej_doom 127 rej_caps 0 rej_ring 23 useful 0 leaves 15 short 15 not3c 0 ok 0 classes 0 w1_recheck_fail 0 max_reg_len 8 max_nreg 2 secs 0.00
-fg gen n 11 s 4 rule 0 ring 0 ring2 caps tight nodes 104911 cands 338658 rej_nv 0 rej_meet 112111 rej_doom 67764 rej_caps 0 rej_ring 53873 useful 46061 leaves 18730 short 3562 not3c 0 ok 15168 classes 12250 w1_recheck_fail 0 max_reg_len 11 max_nreg 4 secs 0.56
-fg gen n 11 s 5 rule 0 ring 0 ring2 caps tight nodes 234226 cands 735172 rej_nv 0 rej_meet 333105 rej_doom 76839 rej_caps 0 rej_ring 91003 useful 135533 leaves 52941 short 5852 not3c 0 ok 47089 classes 43008 w1_recheck_fail 0 max_reg_len 11 max_nreg 4 secs 1.49
-fg gen n 11 s 6 rule 0 ring 0 ring2 caps tight nodes 77979 cands 308389 rej_nv 0 rej_meet 183337 rej_doom 20489 rej_caps 0 rej_ring 26585 useful 43323 leaves 15511 short 1141 not3c 0 ok 14370 classes 13470 w1_recheck_fail 0 max_reg_len 11 max_nreg 4 secs 0.50
-fg gen n 11 all 1 sabotage 0 rule 0 ring 0 ring2 caps tight s 3..6 nodes 417221 cands 1382474 useful 224917 leaves 87197 ok 76627 classes 68728 w1_recheck_fail 0 secs 2.87
-
-real	0m2.882s
-user	0m2.783s
-sys	0m0.018s

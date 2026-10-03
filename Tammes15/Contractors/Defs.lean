@@ -1,7 +1,7 @@
 import Tammes15.Contractors.Prims
 
 /-!
-# Soundness of the contractors: the definitions (Definition 5.5 of the paper)
+# Soundness of the contractors: the definitions (Definition B.1 of the paper)
 
 The objects that the statements of Statement.lean reach, moved there verbatim (same names, same
 bodies), in a module of definitions only, so that the challenge of Comparator can copy it whole.

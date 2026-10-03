@@ -1,9 +1,9 @@
 import Mathlib
 
 /-!
-# The arithmetic of the program (Definition 5.5 (1) of the paper)
+# The arithmetic of the program (Definition B.1(1) of the paper)
 
-The first program (code/impl1/rust/src) computes in binary64 with outward rounding. This module
+The program (code/impl1/rust/src) computes in binary64 with outward rounding. This module
 fixes how its values and its interval operations are read in Lean, and what is assumed of them.
 
 * `Fl`: a binary64 value, read as an extended real (the two zeros are one value), or NaN. The order
@@ -20,7 +20,7 @@ fixes how its values and its interval operations are read in Lean, and what is a
   enclose `π` and `2π`. This is the whole computational content left outside Lean by the soundness
   of the contractors: no statement of this module mentions a geometric object.
 
-The arithmetic claim left outside Lean, (i) of Sections 5.5 and 10.8 of the paper: the operations of
+The arithmetic claim left outside Lean, part of Definition B.1(6) of the paper (Section 9.6): the operations of
 the program, extended to every value of `Fl` as Lean reads them (NaN and infinite ends included),
 form an `R : Rnd` with `R.Sound`. The procedures `N` of `Contractors.Impl N` (Statement.lean) are
 the program on boxes whose ends are floats, and on the other boxes the identity: the narrowing

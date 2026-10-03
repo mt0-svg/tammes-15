@@ -2,10 +2,10 @@ import Tammes15.Geom.Crofton
 import Tammes15.Geom.Qpoly
 
 /-!
-# Proposition onehex: two far points never share a hexagonal face
+# Proposition 4.6: two far points never share a hexagonal face
 
 Let `A` be a hexagon in cone form with sides `d ∈ [dlo, dhi]`, and `r₁`, `r₂` two points inside it,
-at distance at least `d` from each other and from every vertex. By Lemma disc (`disc_side`) both
+at distance at least `d` from each other and from every vertex. By Lemma A.10 (`disc_side`) both
 lie at distance at least `h = h(d)` from the great circle of every side, and so does the point `c`
 of the arc `r₁ r₂` at distance `d` from `r₁` (`onehex_inner`); the discs of radius `h` about `r₁`
 and `c` lie in the closed face (`inClosed_of_disc`). The ten vertex polygon `qpoly` has five
@@ -15,7 +15,7 @@ vertices lie in the closed face; it is in cone form (`qpoly_isCPoly`) with perim
 against `margin_onehex_poly`.
 
 The polygon is built in a right handed orthonormal frame `(T, F, C)` with `T` the tangent at `C`
-pointing away from `R = cos d • C - sin d • T` (code/lean/geom/onehex_q.gp): the `j`-th vertex on
+pointing away from `R = cos d • C - sin d • T`: the `j`-th vertex on
 the circle about `C` is `cos h • C + sin h • (cos ψ_j • T + sin ψ_j • F)` with
 `ψ_j = -(π - γ) + j s`, `γ = tanAng d h`, `s = (π - γ) / 2`, and likewise about `R` in the frame
 `(-(cos d • T + sin d • C), -F, R)`.
@@ -296,7 +296,7 @@ theorem sdist_lt_pi_of_inside {m : ℕ} {A : ℕ → E3} (_hA : IsCPoly m A) (r�
   rw [h_neg_inner] at hpos₂'
   linarith
 
-/-- Proposition onehex. -/
+/-- Proposition 4.6. -/
 theorem onehex (d : ℝ) (hlo : dlo ≤ d) (hhi : d ≤ dhi) {A : ℕ → E3} (hA : IsCPoly 6 A)
     (hside : ∀ i, sdist (A i) (A (i + 1)) = d) (r₁ r₂ : E3) (h₁ : ‖r₁‖ = 1) (h₂ : ‖r₂‖ = 1)
     (hin₁ : Inside A r₁) (hin₂ : Inside A r₂) (hfar₁ : ∀ i, d ≤ sdist r₁ (A i))

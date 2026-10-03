@@ -4,8 +4,8 @@ import Tammes15.Vendor.EM8.PolygonExcess
 /-!
 # Positive excess of the facets and Euler's relation for the hull
 
-Steps D5, D6 and Lemma F of the proof of Corollary twoconn by the convex hull (paper, Section 3,
-Lemma hull and Corollary twoconn). A face cycle of the hull rotation `rho` is a strict
+Three steps of the proof of Corollary A.6 by the convex hull (paper,
+Lemma A.5 and Corollary A.6). A face cycle of the hull rotation `rho` is a strict
 spherical polygon of the eight-point proof, whose angles are the corners of `rho`
 (`facet_excess`, from `StrictSphericalPolygon.positive_excess`). The corners of `rho` at a vertex
 sum to `2π` (`corner_sum`), so the excesses of all facets add up to `2π (V - E + F)`, which is
@@ -220,7 +220,7 @@ theorem hull_euler_pos [Nonempty V] :
     exact_mod_cast key
   omega
 
-/-- Lemma F: Euler's relation for the hull. -/
+/-- Euler's relation for the hull. -/
 theorem hull_euler [Nonempty V] :
     (Fintype.card V : ℤ) - (hullGraph x).edgeFinset.card + rho.faceCount = 2 := by
   have hpos := hull_euler_pos x hx hinj hB rho hrho

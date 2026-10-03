@@ -1,5 +1,0 @@
-fg ref n 6 s 3 classes 2 expected_leaves 13 expected_ring 2
-fg ref n 6 s 4 classes 4 expected_leaves 16 expected_ring 4
-fg ref n 6 s 5 classes 1 expected_leaves 1 expected_ring 1
-fg ref n 6 s 6 classes 0 expected_leaves 0 expected_ring 0
-fg ref n 6 all 1 sabotage 0 read 7 class 7 kept 7 expected_leaves 30 expected_ring 7 secs 0.00

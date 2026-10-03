@@ -2,12 +2,12 @@ import Tammes15.Trigrows.Points
 import Tammes15.Trigrows.Margins
 
 /-!
-# Lemma edge and the first step of Proposition nor
+# Lemma A.9 and the first step of Proposition 4.5
 
-`edge_distance` is Lemma edge with a direct proof (no nearest point): the
+`edge_distance` is Lemma A.9 with a direct proof (no nearest point): the
 point of the arc `[v w]` at distance `t` from `v` is `(sin (d - t) v + sin t w) / sin d`, and
 `⟪p, x⟫ ≤ cos d · cos (d/2 - t) / cos (d/2) ≤ cos (h d)`. `eta_ge_cos_alpha` and
-`gam_le_alpha` are the two-variable bound of Proposition nor (`β ≤ α(d)` when both distances lie
+`gam_le_alpha` are the two-variable bound of Proposition 4.5 (`β ≤ α(d)` when both distances lie
 in `[d, π/2]`), by `√((1 - x²)(1 - y²)) ≤ 1 - x y`.
 -/
 
@@ -64,7 +64,7 @@ theorem sin_sub_add_sin (d t : ℝ) (hd : 0 < d ∧ d < π) :
   rw [h_sin_sum, h_sin_d]
   field_simp [hsin_ne_zero, hcos_ne_zero]
 
-/-- Lemma edge: a point at distance at least `d` from both ends of an edge is at distance at least
+/-- Lemma A.9: a point at distance at least `d` from both ends of an edge is at distance at least
 `h(d)` from every point of the edge. -/
 theorem edge_distance (d : ℝ) (hd : 0 < d ∧ d < π / 2) (v w p : E3) (hv : ‖v‖ = 1)
     (hw : ‖w‖ = 1) (hp : ‖p‖ = 1) (hvw : sdist v w = d) (hpv : d ≤ sdist p v)
@@ -230,7 +230,7 @@ theorem gam_le_alpha (d a b : ℝ) (hd : 0 < d ∧ d < π / 2) (ha : d ≤ a ∧
   unfold gam alpha
   exact Real.arccos_le_arccos (eta_ge_cos_alpha d a b hd ha hb)
 
-/-- The pigeonhole step of Proposition nor. -/
+/-- The pigeonhole step of Proposition 4.5. -/
 theorem exists_ge_two_pi_div_five {m : ℕ} (hm : 0 < m ∧ m ≤ 5) (β : Fin m → ℝ)
     (hβ : ∑ i, β i = 2 * π) : ∃ i, 2 * π / 5 ≤ β i := by
   rcases hm with ⟨hm_pos, hm_le⟩
