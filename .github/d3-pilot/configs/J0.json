@@ -1,0 +1,8 @@
+{
+  "challenge_module": "Tammes15.D3Pilot.Challenge",
+  "solution_module": "Tammes15.D3Pilot.J0.Solution",
+  "theorem_names": ["Tammes15.D3Pilot.chunk_J0"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true,
+  "lean_kernel": false
+}

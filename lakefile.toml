@@ -148,3 +148,23 @@ globs = ["Tammes15.Challenge.*"]
 [[lean_lib]]
 name = "Solution"
 roots = ["Tammes15.Solution"]
+
+# D3 by kernel check (branch d3-pilot): the walk over stored records, the checkers of its record kinds with their
+# programs and soundness, and the chunk statement (.d3-pilot-modules.txt lists the modules added).
+[[lean_lib]]
+name = "D3"
+globs = ["Tammes15.D3lp.+", "Tammes15.D3Kernel.+", "Tammes15.D3Pack.+", "Tammes15.D3Ck2.+", "Tammes15.D3Prog.+",
+  "Tammes15.D3Trig.+", "Tammes15.D3Data.+", "Tammes15.W1Filter.+"]
+
+# The chunk jobs of the pilot: the loader definitions of their codes and their statements (Jobs, Challenge), and
+# the proof of each job from its data (<job>.Solution).
+[[lean_lib]]
+name = "D3Pilot"
+globs = ["Tammes15.D3Pilot.+"]
+
+# The generated data of the jobs (the walk modules and the per-code facts of each piece), unpacked from the job's
+# tarball by .github/d3-pilot/fetch.sh.
+[[lean_lib]]
+name = "D3PilotData"
+globs = ["D3E2E.+"]
+leanOptions = { Elab.async = false }

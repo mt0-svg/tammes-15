@@ -1,288 +1,104 @@
-name: CI
+name: D3 pilot
 
-# The Lean package: Mathlib from its cache, then the package's own modules and the checks of code/lean/check.sh
-# (the build, every target up to date, the source scan, #print axioms, the types of the interfaces, the environment
-# audit). The package's .lake/build is restored first, from the actions cache (the last build on this toolchain and
-# manifest), else from the Lake build archive of the latest release, so only the modules that changed and those that
-# import them are compiled; Comparator replays the whole environment in nanoda whatever was
-# restored. Then a scan of the sources, and Comparator.
-#
-# The computations: code/rerun.sh reruns the enumeration, the first level and the PARI/GP and SageMath scripts of the
-# paper that fit a runner in about 20 minutes and compares each output with the recorded one, except bk15_exact, whose
-# statements Lean proves (code/README.md); the jobs replay and replay-join replay every certificate from the data
-# tarballs of ASSETS.md, when a release (draft or published) holds them; in a run started by hand, which certifies a
-# release, they fail when none does. code/README.md lists what is left out and why.
-# Every job uploads the complete output of each check and one result line per check as an artifact verify-*, which
-# release.yml collects into the verification archive of a release. A run started by hand on the default branch ends
-# with the job badges, which writes the three badges of the README to the branch badges, with the page run.html that
-# their links open, which forwards to this run.
-# Only commits that touch the build or the computations run it; a newer push cancels the older run on the same branch.
-# On a push to an existing branch the job changes reads the files of the pushed commits, and only the jobs of the parts
-# they touch run: the computations for code/ outside code/lean/, data/ and ASSETS.md, the Lean jobs (scan, lean,
-# comparator) for the Lean sources, the Lake files, config.json and code/lean/. A change of this file, a run by hand, a
-# pull request and a new branch run everything. A push cancelled by a newer one is not made up by the newer run, so a
-# release takes a run started by hand on its tagged commit (release.yml).
+# A pilot of the continuous integration of D3 by kernel check, on the branch d3-pilot only. The chunk jobs are the
+# lines of .github/d3-pilot/jobs.tsv. Each chunk job builds the trusted statement modules from the commit's sources,
+# exports the closure of its statement and hashes it, then runs Comparator with nanoda alone (4 threads, lean_kernel
+# false) on its theorem: Comparator builds the job's generated data and its solution module itself, inside its
+# sandbox, and nanoda replays them. The job reference builds the statement closure from source with Mathlib from its
+# cache only (no release archive) and hashes it for every job; the job join checks each chunk record against the
+# template written from the commit and against that reference. Every step records its wall time, CPU time and memory
+# peaks (.github/d3-pilot/measure.sh) in the artifact d3-pilot-<job>. The loader modules of each statement (its codes)
+# and the generated data are not in the branch: they come from the draft release named by the required input
+# data_release, each checked against the sha256 the commit pins in .github/d3-pilot/ASSETS.sha256 before anything is
+# built. Started by hand only.
 on:
-  push:
-    branches: ["**"]
-    paths: &build-paths
-      - "**.lean"
-      - lakefile.toml
-      - lake-manifest.json
-      - lean-toolchain
-      - config.json
-      - ASSETS.md
-      - code/**
-      - data/**
-      - .github/workflows/ci.yml
-  pull_request:
-    paths: *build-paths
   workflow_dispatch:
+    inputs:
+      data_release:
+        description: Tag name of the draft release that holds the data tarballs of .github/d3-pilot/ASSETS.sha256 (required; the data is never in the branch)
+        required: true
 
 concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  group: d3-pilot
+  cancel-in-progress: false
 
 permissions:
   contents: read
 
 env:
   ROOT: Tammes15
-  PACKAGE: tammes-15
 
 jobs:
-  changes:
-    name: Changed parts
-    runs-on: ubuntu-latest
+  plan:
+    name: D3 plan
+    runs-on: ubuntu-24.04
     outputs:
-      compute: ${{ steps.diff.outputs.compute }}
-      lean: ${{ steps.diff.outputs.lean }}
+      jobs: ${{ steps.jobs.outputs.jobs }}
     steps:
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 0
-      - name: Files of the pushed commits
-        id: diff
-        shell: bash
-        env:
-          EVENT: ${{ github.event_name }}
-          BEFORE: ${{ github.event.before }}
-          SHA: ${{ github.sha }}
-        run: |
-          set -eu
-          zero=0000000000000000000000000000000000000000
-          if [ "$EVENT" != push ] || [ -z "$BEFORE" ] || [ "$BEFORE" = "$zero" ] ||
-            ! files=$(git diff --name-only --no-renames "$BEFORE" "$SHA"); then
-            echo "$EVENT${BEFORE:+ from $BEFORE}: every job runs"
-            { echo compute=true; echo lean=true; } >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          compute=false lean=false
-          while IFS= read -r f; do
-            case "$f" in .github/workflows/ci.yml) compute=true lean=true ;; esac
-            case "$f" in code/lean/*) ;; code/* | data/* | ASSETS.md) compute=true ;; esac
-            case "$f" in *.lean | lakefile.toml | lake-manifest.json | lean-toolchain | config.json | code/lean/*) lean=true ;; esac
-          done <<< "$files"
-          printf '%s\n' "$files"
-          echo "compute=$compute lean=$lean"
-          { echo "compute=$compute"; echo "lean=$lean"; } >> "$GITHUB_OUTPUT"
+          persist-credentials: false
+      - id: jobs
+        run: echo "jobs=$(awk -F'\t' '$1 !~ /^#/ && NF {print $1}' .github/d3-pilot/jobs.tsv | jq -Rsc 'split("\n") | map(select(length > 0))')" >> "$GITHUB_OUTPUT"
 
-  scan:
-    name: Source scan
-    needs: changes
-    if: needs.changes.outputs.lean == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - name: sorry, admit and native_decide outside comments and strings
-        shell: bash
-        run: |
-          set -u
-          mkdir -p verify/lean verify/results
-          cat > scan.awk <<'EOF'
-          FNR == 1 { depth = 0 }
-          {
-            s = $0; out = ""; i = 1; n = length(s)
-            while (i <= n) {
-              two = substr(s, i, 2)
-              if (depth > 0) {
-                if (two == "/-") { depth++; i += 2 } else if (two == "-/") { depth--; i += 2 } else i++
-                continue
-              }
-              if (two == "/-") { depth = 1; i += 2; continue }
-              if (two == "--") break
-              c = substr(s, i, 1)
-              if (c == "\"") {
-                j = i + 1
-                while (j <= n) { d = substr(s, j, 1); if (d == "\\") { j += 2; continue }; if (d == "\"") break; j++ }
-                out = out " "; i = j + 1; continue
-              }
-              out = out c; i++
-            }
-            if (match(out, "(^|[^A-Za-z0-9_.'!?])(" W ")([^A-Za-z0-9_'!?]|$)")) print FILENAME ":" FNR ": " $0
-          }
-          EOF
-          { find "$ROOT" -name '*.lean' ! -path "$ROOT/Challenge.lean"; [ ! -f "$ROOT.lean" ] || echo "$ROOT.lean"; } | LC_ALL=C sort > files.txt
-          {
-            echo "# Uses of sorry, admit and native_decide outside comments and string literals, in the $(wc -l < files.txt) files of $ROOT/ other than Challenge.lean, and of admit and native_decide in Challenge.lean (whose statements end in sorry)."
-            xargs awk -v W='sorry|admit|native_decide' -f scan.awk < files.txt
-            awk -v W='admit|native_decide' -f scan.awk "$ROOT/Challenge.lean"
-          } > scan.txt
-          cat scan.txt
-          hits=$(($(wc -l < scan.txt) - 1))
-          echo "# $hits uses" >> scan.txt
-          cp scan.txt verify/lean/source-scan.txt
-          if [ "$hits" -eq 0 ]; then r=PASS; else r=FAIL; fi
-          printf 'source-scan\tscan of %s/ for sorry, admit and native_decide outside comments\t%s uses\t%s\tlean/source-scan.txt\n' "$ROOT" "$hits" "$r" > verify/results/source-scan.tsv
-          [ "$r" = PASS ]
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: verify-source-scan
-          path: verify/
-
-  lean:
-    name: Lean build and checks
-    needs: changes
-    if: needs.changes.outputs.lean == 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 240
-    outputs:
-      built: ${{ steps.check.outputs.built }}
-      hypotheses: ${{ steps.facts.outputs.hypotheses }}
-      axioms: ${{ steps.facts.outputs.axioms }}
-      sorryAx: ${{ steps.facts.outputs.sorryAx }}
-    steps:
-      - name: Free disk space
-        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL && df -h /
-      - uses: actions/checkout@v5
-      - name: Set up Lean and fetch the Mathlib cache
-        uses: leanprover/lean-action@v1
-        with:
-          auto-config: false
-          use-mathlib-cache: true
-          use-github-cache: false
-      - name: Earlier build from the cache
-        id: cache
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            .lake/build
-            !.lake/build/**/*.setup.json
-          key: lake-build-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.sha }}
-          restore-keys: lake-build-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-
-      - name: Earlier build from the latest release
-        if: steps.cache.outputs.cache-matched-key == ''
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -u
-          a=$PACKAGE-x86_64-unknown-linux-gnu.tar.gz
-          if gh release download --pattern "$a" -D /tmp 2> /dev/null; then
-            mkdir -p .lake/build && tar -xzf "/tmp/$a" -C .lake/build && rm "/tmp/$a"
-            echo "Restored the build of the latest release."
-          else
-            echo "No release build archive: a build from scratch."
-          fi
-      - name: code/lean/check.sh
-        id: check
-        shell: bash
-        run: |
-          set -u
-          mkdir -p verify/lean verify/results verify/versions
-          lean --version > verify/versions/lean.txt
-          # check.out is what check.sh > check.out 2>&1 writes; the loop stamps the result line of each step, for its time.
-          s0=$(date +%s)
-          set +e  # the default shell has -e and pipefail: record the result lines also when a step fails
-          code/lean/check.sh 2>&1 | tee code/lean/check.out | while IFS= read -r l; do
-            printf '%s\n' "$l" >&2
-            if [[ $l =~ ^[a-z-]+:\ (PASS|FAIL)$ ]]; then printf '%(%s)T %s\n' -1 "${l%%:*}"; fi
-          done > steps.txt
-          rc=${PIPESTATUS[0]}
-          set -e
-          cp code/lean/check.out code/lean/build.out verify/lean/ || true
-          if grep -qx 'up-to-date: PASS' code/lean/check.out; then echo "built=true" >> "$GITHUB_OUTPUT"; fi
-          declare -A secs
-          prev=$s0
-          while read -r t s; do secs[$s]="$((t - prev)) s"; prev=$t; done < steps.txt
-          for s in build up-to-date scan axioms types audit; do
-            case $s in
-              build) c="code/lean/check.sh, 1: lake build of every library of lakefile.toml"; o=lean/build.out ;;
-              up-to-date) c="code/lean/check.sh, 2: lake build --no-build of every library"; o=lean/build.out ;;
-              scan) c="code/lean/check.sh, 3: code/lean/scan.sh Tammes15 lakefile.toml"; o=lean/check.out ;;
-              axioms) c="code/lean/check.sh, 4: lake env lean code/lean/axioms.lean"; o=lean/check.out ;;
-              types) c="code/lean/check.sh, 5: lake env lean code/lean/types.lean"; o=lean/check.out ;;
-              audit) c="code/lean/check.sh, 6: code/lean/EnvAudit.lean on every module but the challenge"; o=lean/check.out ;;
-            esac
-            if grep -qx "$s: PASS" code/lean/check.out; then r=PASS; else r=FAIL; fi
-            printf 'lean %s\t%s\t%s\t%s\t%s\n' "$s" "$c" "${secs[$s]:-not reached}" "$r" "$o" > "verify/results/lean_$s.tsv"
-          done
-          cat verify/results/lean_*.tsv
-          tail -1 code/lean/check.out | grep -qx 'CHECK PASS' && [ "$rc" -eq 0 ]
-      # For the badges: the hypotheses of the theorems of config.json and their axioms.
-      - name: code/lean/facts.lean
-        id: facts
-        if: steps.check.outcome == 'success'
-        shell: bash
-        run: |
-          set -eu
-          lake env lean code/lean/facts.lean | tee facts.txt
-          awk '$1 == "hypotheses" || $1 == "axioms" || $1 == "sorryAx" { print $1 "=" $2 }' facts.txt >> "$GITHUB_OUTPUT"
-      - name: Save the build to the cache
-        if: always() && steps.check.outputs.built == 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            .lake/build
-            !.lake/build/**/*.setup.json
-          key: lake-build-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.sha }}
-      # Read by the job comparator, and by release.yml some days later.
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.check.outputs.built == 'true'
-        with:
-          name: lake-build
-          path: .lake/build
-          include-hidden-files: true
-          compression-level: 1
-          retention-days: 30
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: verify-lean
-          path: verify/
-
-  comparator:
-    name: Comparator
-    needs: [changes, lean]
-    if: ${{ !cancelled() && needs.changes.outputs.lean == 'true' && needs.lean.outputs.built == 'true' }}
+  chunk:
+    name: D3 chunk ${{ matrix.job }}
+    needs: plan
     runs-on: ubuntu-24.04
     timeout-minutes: 360
+    permissions:
+      contents: write # a draft release is visible only with write access; this job writes nothing
+    strategy:
+      fail-fast: false
+      matrix:
+        job: ${{ fromJSON(needs.plan.outputs.jobs) }}
+    env:
+      JOB: ${{ matrix.job }}
+      MEASURE_TSV: ${{ github.workspace }}/verify/measure.tsv
     steps:
-      - name: Free disk space
-        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL && df -h /
+      - name: Free disk space (at least 30 GB)
+        run: df -h / && test "$(df -B1G --output=avail / | tail -1)" -ge 30
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Record the machine
+        run: |
+          mkdir -p verify
+          { echo "commit $GITHUB_SHA job $JOB"; nproc; free -b; df -B1 /; uname -a; } | tee verify/machine.txt
+          printf 'step\trc\twall_s\tuser_s\tsys_s\tmax_rss_kb\tscope_peak_bytes\tmachine_used_peak_bytes\n' > "$MEASURE_TSV"
+          echo "JOB_START=$(date +%s)" >> "$GITHUB_ENV"
+
+      # The loader modules of the statement and the generated data, from the draft release only, each checked against
+      # the sha256 the commit pins in .github/d3-pilot/ASSETS.sha256 (the loaders: exactly the modules Jobs/JOB.lean
+      # imports) before anything is built.
+      - name: Statement loaders and data of the job, checked against ASSETS.sha256
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.data_release }}
+        run: |
+          bash .github/d3-pilot/measure.sh fetch-stmt verify/fetch-stmt.log bash .github/d3-pilot/fetch.sh "$TAG" stmt "$JOB"
+          bash .github/d3-pilot/measure.sh fetch-data verify/fetch-data.log bash .github/d3-pilot/fetch.sh "$TAG" data "$JOB"
+          cat verify/fetch-stmt.log verify/fetch-data.log
 
       - uses: actions/checkout@v5
         with:
           repository: leanprover/comparator
           ref: d03acab154d269c06e60e4de7e4cc85deebff94b
           path: .ci/comparator
-
+          persist-credentials: false
       - uses: actions/checkout@v5
         with:
           repository: Zouuup/landrun
           ref: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
           path: .ci/landrun
-
+          persist-credentials: false
       - uses: actions/setup-go@v5
         with:
           go-version: stable
-
       - name: Build Landrun
         working-directory: .ci/landrun
         run: go build -o landrun cmd/landrun/main.go
-
       - name: Build nanoda
         run: cargo install --locked --git https://github.com/ammkrn/nanoda_lib --rev 3a2407216ee84a75f9e1aead6803d0578be06ae7 --root "$RUNNER_TEMP/nanoda"
 
@@ -292,29 +108,26 @@ jobs:
           auto-config: false
           use-mathlib-cache: true
           use-github-cache: false
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: lake-build
-          path: .lake/build
-      # Comparator trusts the challenge module, so it is compiled again from its source inside the sandbox.
-      - name: Drop the build outputs of the challenge module
+      # The main library from the release's build archive; its statement modules are checked against the reference.
+      - name: Earlier build from the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
         run: |
-          rm -rfv ".lake/build/lib/lean/$ROOT/Challenge" .lake/build/lib/lean/"$ROOT"/Challenge.* \
-            ".lake/build/ir/$ROOT/Challenge" .lake/build/ir/"$ROOT"/Challenge.*
+          set -u
+          a=tammes-15-x86_64-unknown-linux-gnu.tar.gz
+          if gh release download --pattern "$a" -D /tmp 2> /dev/null; then
+            mkdir -p .lake/build && tar -xzf "/tmp/$a" -C .lake/build && rm "/tmp/$a"
+            echo "Restored the build of the latest release."
+          else
+            echo "No release build archive: a build from scratch."
+          fi
 
-      # The option lean_kernel of config.json (false: nanoda alone replays the export, the build having run the Lean
-      # kernel on every declaration), a patch of this repository on Comparator (.github/comparator-lean-kernel.patch).
-      - name: Patch Comparator
-        run: git -C .ci/comparator apply "$GITHUB_WORKSPACE/.github/comparator-lean-kernel.patch"
-
-      # Comparator at this commit targets Lean v4.34.0; build it with the project's toolchain so that
-      # lean4export reads the project's .olean files.
-      - name: Align the Comparator toolchain
-        run: cp lean-toolchain .ci/comparator/lean-toolchain
-
-      - name: Build Comparator
-        uses: leanprover/lean-action@v1
+      - name: Patch, align and build Comparator
+        run: |
+          git -C .ci/comparator apply "$GITHUB_WORKSPACE/.github/comparator-lean-kernel.patch"
+          cp lean-toolchain .ci/comparator/lean-toolchain
+      - uses: leanprover/lean-action@v1
         with:
           lake-package-directory: .ci/comparator
           auto-config: false
@@ -322,60 +135,39 @@ jobs:
           build-args: lean4export comparator
           use-mathlib-cache: false
           use-github-cache: false
-
       - name: Check lean4export commit
         run: test "$(git -C .ci/comparator/.lake/packages/lean4export rev-parse HEAD)" = 076e8e57707e813375e8f9da8bf989799ace9680
 
-      - name: Start time
-        run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
-
-      # config.json: the theorems of the solution module against the statements of the challenge module, the permitted
-      # axioms, then nanoda (enable_nanoda; 4 threads, set by Comparator), and the Lean kernel unless lean_kernel is false.
-      - name: Run Comparator
-        id: run
+      # The challenge module and the config of this job, byte-equal to the template written from jobs.tsv.
+      - name: Template
         shell: bash
-        env:
-          COMPARATOR_LANDRUN: ${{ github.workspace }}/.ci/landrun/landrun
-          COMPARATOR_LEAN4EXPORT: ${{ github.workspace }}/.ci/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export
-          COMPARATOR_NANODA: ${{ runner.temp }}/nanoda/bin/nanoda_bin
-        # One more run, and only one, when lean4export crashed (exit 139) during the export, before any kernel ran;
-        # that run decides. Any other failure is final.
         run: |
-          run() {
-            systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pty --pipe \
-              -E PATH="$PATH" \
-              -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" \
-              -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
-              -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
-              --working-directory "$PWD" -- \
-              bash -c 'lake env .ci/comparator/.lake/build/bin/comparator config.json' \
-              2>&1 | tee "$1"
-          }
-          export_crash() {
-            awk '{ sub(/\r$/, "") }
-              /^Exporting #\[/ { exported = 1 }
-              exported && /^uncaught exception: Child exited with 139$/ { crashed = 1 }
-              /kernel on solution|kernel accepts the solution|kernel rejects the solution/ { kernel = 1 }
-              END { exit !(crashed && !kernel) }' "$1"
-          }
-          rc=0
-          run comparator.log || rc=$?
-          retry=no
-          if [ "$rc" != 0 ] && export_crash comparator.log; then
-            retry=yes
-            echo "lean4export exited with 139 during the export, before any kernel: Comparator runs once more"
-            rc=0
-            run comparator-retry.log || rc=$?
-          fi
-          echo "retry=$retry" >> "$GITHUB_OUTPUT"
-          exit "$rc"
+          set -eu
+          bash .github/d3-pilot/template.sh "$RUNNER_TEMP/tpl"
+          cmp "$RUNNER_TEMP/tpl/Challenge.lean" Tammes15/D3Pilot/Challenge.lean
+          cmp "$RUNNER_TEMP/tpl/configs/$JOB.json" ".github/d3-pilot/configs/$JOB.json"
+          { echo "challenge $(sha256sum < Tammes15/D3Pilot/Challenge.lean | cut -d' ' -f1)"
+            echo "config $(sha256sum < ".github/d3-pilot/configs/$JOB.json" | cut -d' ' -f1)"
+            echo "lakefile $(sha256sum < lakefile.toml | cut -d' ' -f1)"
+            echo "toolchain $(cat lean-toolchain)"; } | tee verify/template.txt
 
-      # The negative controls of .github/comparator-controls.tsv, when the repository has one, after a pass: each
-      # changes one line of the challenge in place, and Comparator must reject it with the expected message (at the
-      # comparison, before any kernel); the file is restored after each control.
-      - name: Negative controls
-        id: controls
-        if: steps.run.outcome == 'success' && hashFiles('.github/comparator-controls.tsv') != ''
+      # The statement closure, built in this job from the commit's sources (the checker, the chunk statement, the
+      # loader definitions of the jobs), then its export and hash. Nothing of the data or the solution is built
+      # outside Comparator.
+      - name: Build the statement modules and hash the closure of the statement
+        shell: bash
+        run: |
+          set -eu
+          bash .github/d3-pilot/measure.sh build-statements verify/build-statements.log lake build Tammes15.D3Pilot.Challenge
+          bash .github/d3-pilot/measure.sh hash verify/hash.log bash -c \
+            'lake env .ci/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export "$@" > "$RUNNER_TEMP/statement.export"' \
+            _ Tammes15.D3Pilot.Challenge -- Tammes15.D3Data.ChunkG Tammes15.D3Data.QXR "Tammes15.D3Pilot.job_$JOB"
+          echo "statement_hash $(sha256sum < "$RUNNER_TEMP/statement.export" | cut -d' ' -f1) bytes $(stat -c %s "$RUNNER_TEMP/statement.export")" | tee -a verify/template.txt
+          rm -rfv ".lake/build/lib/lean/$ROOT/D3Pilot/Challenge".* ".lake/build/ir/$ROOT/D3Pilot/Challenge".*
+
+      # Comparator builds the challenge and the solution with its data in its sandbox (Lake's own parallelism), exports
+      # both and replays the solution's closure in nanoda. Each log line carries the seconds since the start.
+      - name: Comparator
         shell: bash
         env:
           COMPARATOR_LANDRUN: ${{ github.workspace }}/.ci/landrun/landrun
@@ -383,350 +175,157 @@ jobs:
           COMPARATOR_NANODA: ${{ runner.temp }}/nanoda/bin/nanoda_bin
         run: |
           set -uo pipefail
-          mkdir -p verify/lean
-          : > controls.tsv
-          fail=0
-          while IFS=$'\t' read -r name file old new expect; do
-            case $name in '#'* | '') continue ;; esac
-            s0=$(date +%s); rc=none
-            log=verify/lean/comparator-$name.txt
-            n=$(grep -cxF -- "$old" "$file" || true)
-            if [ "$n" = 1 ]; then
-              cp "$file" "$RUNNER_TEMP/original"
-              awk -v o="$old" -v n="$new" '$0 == o { print n; next } { print }' "$RUNNER_TEMP/original" > "$file"
-              rm -rf ".lake/build/lib/lean/$ROOT/Challenge" .lake/build/lib/lean/"$ROOT"/Challenge.* \
-                ".lake/build/ir/$ROOT/Challenge" .lake/build/ir/"$ROOT"/Challenge.*
-              { echo "control $name: in $file only, the line"; echo "  $old"; echo "is changed to"; echo "  $new"
-                echo "lines that differ from the original: $(diff "$RUNNER_TEMP/original" "$file" | grep -c '^>')"
-              } > "$log"
-              rc=0
-              systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pty --pipe \
-                -E PATH="$PATH" \
-                -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" \
-                -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
-                -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
-                --working-directory "$PWD" -- \
-                bash -c 'lake env .ci/comparator/.lake/build/bin/comparator config.json' \
-                2>&1 | tee -a "$log" || rc=$?
-              cp "$RUNNER_TEMP/original" "$file"
-              if [ "$rc" != 0 ] && tr -d '\r' < "$log" | grep -qF -- "$expect"; then r=PASS; else r=FAIL; fi
-            else
-              echo "control $name: the line to change is found $n times in $file" > "$log"; r=FAIL
-            fi
-            echo "control $name: $r (exit $rc, expected a rejection with: $expect)" | tee -a "$log"
-            printf 'comparator-%s\tcomparator config.json, %s changed in one line (negative control)\t%s s\t%s\t%s\n' \
-              "$name" "$file" "$(($(date +%s) - s0))" "$r" "lean/comparator-$name.txt" >> controls.tsv
-            [ "$r" = PASS ] || fail=1
-          done < .github/comparator-controls.tsv
-          exit "$fail"
+          s0=$(date +%s)
+          rc=0
+          ( m=0; while :; do
+              u=$(awk '/^MemTotal:/ {a = $2} /^MemAvailable:/ {b = $2} END {print (a - b) * 1024}' /proc/meminfo)
+              [ "$u" -gt "$m" ] && m=$u && echo "$m" > "$RUNNER_TEMP/comparator.sys"; sleep 2; done ) &
+          sp=$!
+          systemd-run --property=RestrictAddressFamilies=~AF_UNIX --property=MemoryAccounting=yes --user --pty --pipe \
+            -E PATH="$PATH" \
+            -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" \
+            -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
+            -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
+            --working-directory "$PWD" -- \
+            /usr/bin/time -o "$RUNNER_TEMP/comparator.time" -f '%e %U %S %M' \
+            bash .github/d3-pilot/measure-inner.sh "$RUNNER_TEMP/comparator.peak" \
+            lake env .ci/comparator/.lake/build/bin/comparator ".github/d3-pilot/configs/$JOB.json" \
+            2>&1 | while IFS= read -r l; do printf '%s %s\n' "$(($(date +%s) - s0))" "$l"; done | tee verify/comparator.log || rc=$?
+          kill "$sp" 2> /dev/null
+          read -r wall user sys rss < <(tail -n 1 "$RUNNER_TEMP/comparator.time")
+          printf 'comparator\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$rc" "$wall" "$user" "$sys" "$rss" "$(cat "$RUNNER_TEMP/comparator.peak")" \
+            "$(cat "$RUNNER_TEMP/comparator.sys" 2> /dev/null || echo NA)" >> "$MEASURE_TSV"
+          echo "comparator_rc $rc" >> verify/template.txt
+          { echo "olean of the data $(find .lake/build/lib/lean/D3E2E -name '*.olean' -printf '%s\n' | paste -sd+ | bc) bytes"
+            df -B1 / | tail -1; } >> verify/machine.txt
+          exit "$rc"
 
-      - name: Record the result
+      - name: Record
         if: always()
         shell: bash
         run: |
-          mkdir -p verify/lean verify/results
-          secs=$(($(date +%s) - ${START:-$(date +%s)}))
-          cp comparator.log verify/lean/comparator.txt || true
-          files=lean/comparator.txt; retry="no retry"
-          if [ "${{ steps.run.outputs.retry }}" = yes ]; then
-            cp comparator-retry.log verify/lean/comparator-retry.txt || true
-            files="lean/comparator.txt lean/comparator-retry.txt"; retry="retried once after a lean4export crash"
-          fi
-          k=$(jq -r '[.enable_nanoda // false, .lean_kernel != false] | map(tostring) | join(" ")' config.json)
-          case $k in "true true") kernels="nanoda and the Lean kernel" ;; "true false") kernels=nanoda ;; *) kernels="Lean kernel" ;; esac
-          if [ "${{ steps.run.outcome }}" = success ]; then r=PASS; else r=FAIL; fi
-          printf 'comparator\tcomparator config.json (%s against %s, %s; %s)\t%s s\t%s\t%s\n' \
-            "$(jq -r .challenge_module config.json)" "$(jq -r .solution_module config.json)" "$kernels" "$retry" \
-            "$secs" "$r" "$files" > verify/results/comparator.tsv
-          if [ -f controls.tsv ]; then cat controls.tsv >> verify/results/comparator.tsv; fi
-
+          echo "job_wall_s $(($(date +%s) - JOB_START))" >> verify/template.txt
+          if grep -qx 'comparator_rc 0' verify/template.txt; then v=PASS; else v=FAIL; fi
+          echo "verdict $v" >> verify/template.txt
+          cat verify/template.txt; column -t -s $'\t' "$MEASURE_TSV"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: verify-comparator
+          name: d3-pilot-${{ matrix.job }}
           path: verify/
+          overwrite: true
 
-  impl1:
-    needs: changes
-    if: needs.changes.outputs.compute == 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    container:
-      image: rust:1.98.1
+  # The reference: the statement closure built from the commit's sources with Mathlib from its cache only, nothing
+  # restored from a release or a cache of this repository, and the export of each job's statement.
+  reference:
+    name: D3 reference
+    needs: plan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    permissions:
+      contents: write # a draft release is visible only with write access; this job writes nothing
+    env:
+      MEASURE_TSV: ${{ github.workspace }}/reference/measure.tsv
     steps:
+      - name: Free disk space (at least 30 GB)
+        run: df -h / && test "$(df -B1G --output=avail / | tail -1)" -ge 30
       - uses: actions/checkout@v5
-      - name: Build plantri 5.8 and the program
+        with:
+          persist-credentials: false
+      - name: Statement loaders of every job, checked against ASSETS.sha256
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.data_release }}
         run: |
-          mkdir -p verify/versions
-          { rustc --version; cc --version | head -1; } > verify/versions/rust.txt
-          code/rerun.sh build_plantri build_impl1
-      - name: Enumeration and first level for k = 1, 2, 3
-        run: SAVE="$PWD/verify" code/rerun.sh stageA_k1 stageA_k2 stageA_k3
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: verify-impl1
-          path: verify/
-
-  # The enumeration and the first level for k = 0 (2000 parts of plantri), 200 parts per job, each part through tfilter
-  stageA_k0:
-    needs: changes
-    if: needs.changes.outputs.compute == 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    container:
-      image: rust:1.98.1
-    strategy:
-      fail-fast: false
-      matrix:
-        first: [0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800]
-    steps:
+          for j in $(awk -F'\t' '$1 !~ /^#/ && NF {print $1}' .github/d3-pilot/jobs.tsv); do
+            bash .github/d3-pilot/fetch.sh "$TAG" stmt "$j"
+          done
       - uses: actions/checkout@v5
-      - name: Build plantri 5.8 and the program
-        run: code/rerun.sh build_plantri build_impl1
-      - name: Parts ${{ matrix.first }} to ${{ matrix.first }} + 199
-        run: SAVE="$PWD/verify" code/rerun.sh stageA_k0_${{ matrix.first }}
-      - uses: actions/upload-artifact@v4
-        if: always()
         with:
-          name: verify-stageA-k0-${{ matrix.first }}
-          path: verify/
+          repository: leanprover/comparator
+          ref: d03acab154d269c06e60e4de7e4cc85deebff94b
+          path: .ci/comparator
+          persist-credentials: false
+      - name: Set up Lean and fetch the Mathlib cache
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-mathlib-cache: true
+          use-github-cache: false
+      - name: Align lean4export
+        run: |
+          cp lean-toolchain .ci/comparator/lean-toolchain
+          mkdir -p reference
+          printf 'step\trc\twall_s\tuser_s\tsys_s\tmax_rss_kb\tscope_peak_bytes\tmachine_used_peak_bytes\n' > "$MEASURE_TSV"
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: .ci/comparator
+          auto-config: false
+          build: true
+          build-args: lean4export
+          use-mathlib-cache: false
+          use-github-cache: false
+      - name: Check lean4export commit
+        run: test "$(git -C .ci/comparator/.lake/packages/lean4export rev-parse HEAD)" = 076e8e57707e813375e8f9da8bf989799ace9680
+      - name: Build the statement closure from source and hash each job's statement
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e .lake/build/lib/lean/Tammes15
+          bash .github/d3-pilot/measure.sh build-reference reference/build.log lake build Tammes15.D3Pilot.Challenge
+          for j in $(awk -F'\t' '$1 !~ /^#/ && NF {print $1}' .github/d3-pilot/jobs.tsv); do
+            lake env .ci/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export \
+              Tammes15.D3Pilot.Challenge -- Tammes15.D3Data.ChunkG Tammes15.D3Data.QXR "Tammes15.D3Pilot.job_$j" > ref.export
+            echo "$j $(sha256sum < ref.export | cut -d' ' -f1) $(stat -c %s ref.export)" | tee -a reference/hashes.txt
+          done
+          column -t -s $'\t' "$MEASURE_TSV"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: d3-pilot-reference
+          path: reference/
+          overwrite: true
 
-  gp:
-    needs: changes
-    if: needs.changes.outputs.compute == 'true'
+  join:
+    name: D3 join
+    needs: [plan, chunk, reference]
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
-      - run: sudo apt-get update -qq && sudo apt-get install -y -qq pari-gp
-      - name: PARI/GP checks
-        run: |
-          mkdir -p verify/versions
-          echo 'print("PARI/GP ", version())' | gp -q > verify/versions/gp.txt
-          SAVE="$PWD/verify" code/rerun.sh paper_checks rtrig_consts params \
-            bk15_c3_coords contact_graphs
-      # Computation B.4: the range of d of the program, from code/hyps/d_range.sh (the exact enclosure of the range of
-      # d, and the program's own parse of it). It must pass its own check and give the recorded output (d_range.out
-      # without its header line of date and versions).
-      - name: The range of d of the program
-        shell: bash
-        run: |
-          set -u
-          mkdir -p verify/gp verify/results
-          git show HEAD:code/hyps/d_range.out > "$RUNNER_TEMP/d_range.out"
-          norm() { grep -v -e 'Warning: .*stack size' "$1" | sed 's/[[:space:]]*$//'; }
-          s0=$(date +%s); rc=0
-          sh code/hyps/d_range.sh > verify/gp/hyps_d_range.log 2>&1 || rc=$?
-          cp code/hyps/d_range.out verify/gp/hyps_d_range.txt
-          if [ "$rc" = 0 ] && diff <(norm code/hyps/d_range.out | tail -n +2) <(norm "$RUNNER_TEMP/d_range.out" | tail -n +2); then
-            r=PASS; else r=FAIL; fi
-          printf 'gp hyps_d_range\t%s\t%s s\t%s\tgp/hyps_d_range.txt\n' "sh code/hyps/d_range.sh" "$(($(date +%s) - s0))" "$r" \
-            > verify/results/gp_hyps_d_range.tsv
-          [ "$r" = PASS ]
-      - uses: actions/upload-artifact@v4
-        if: always()
         with:
-          name: verify-gp
-          path: verify/
-
-  sage:
-    needs: changes
-    if: needs.changes.outputs.compute == 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    container:
-      image: sagemath/sagemath:10.9
-      options: --user root
-    steps:
-      - uses: actions/checkout@v5
-      - name: The targets of Local
-        run: |
-          mkdir -p verify/versions
-          { sage --version; sage -c 'print("PARI in Sage", pari.version())'; } > verify/versions/sage.txt
-          SAVE="$PWD/verify" code/rerun.sh tie_targets
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: verify-sage
-          path: verify/
-
-  # The replay of every recorded tree of the second level (Section 7.5) with the tdeep of this commit, in three groups
-  # of the jobs of code/impl1/replay_all.sh, balanced on the recorded times of code/impl1/out/guarded/replay_summary.txt
-  # (the longest jobs, p3_k1 and p3_k2, take about 53 min each and cannot be split); then replay-join checks the totals
-  # against the recorded table and runs the coverage join on these fresh replays. The data tarballs come from the
-  # newest release, draft or published, that has the three of ASSETS.md with their sha256 sums.
-  replay:
-    name: Replay of the certificates, group ${{ matrix.group }} of 3
-    needs: changes
-    if: needs.changes.outputs.compute == 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 150
-    permissions:
-      contents: write # a draft release is visible only with write access; this job writes nothing
-    strategy:
-      fail-fast: false
-      matrix:
-        group: [0, 1, 2]
-    steps:
-      - uses: actions/checkout@v5
-      - name: Data tarballs from a release, checked against ASSETS.md and unpacked
-        id: fetch
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: bash .github/scripts/fetch-assets.sh "$RUNNER_TEMP/assets"
-      - name: Build the program with Rust 1.98.1
-        if: steps.fetch.outputs.release != ''
-        run: |
-          rustup toolchain install 1.98.1 --profile minimal
-          rustup default 1.98.1
-          code/rerun.sh build_impl1
-      - name: Replay the jobs of this group
-        if: steps.fetch.outputs.release != ''
-        shell: bash
-        run: |
-          set -euo pipefail
-          # Longest first, each to the group with the least recorded time so far.
-          only=$(awk 'NR > 1 && $1 != "total" { print $5, $1 }' code/impl1/out/guarded/replay_summary.txt | sort -rn \
-            | awk -v G=3 -v g=${{ matrix.group }} '{ b = 0; for (i = 1; i < G; i++) if (L[i] < L[b]) b = i; L[b] += $1
-                if (b == g) printf "%s%s", (n++ ? "|" : ""), $2 }')
-          echo "jobs: $only"
-          ONLY=$only code/impl1/replay_all.sh "$RUNNER_TEMP/assets" replay 4
-          rm -rf replay/rf
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.fetch.outputs.release != ''
-        with:
-          name: replay-group-${{ matrix.group }}
-          path: replay/
-
-  replay-join:
-    name: Replay of the certificates, totals and coverage join
-    needs: [changes, replay]
-    if: ${{ !cancelled() && needs.changes.outputs.compute == 'true' }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    permissions:
-      contents: write # a draft release is visible only with write access; this job writes nothing
-    steps:
-      - uses: actions/checkout@v5
-      - name: Data tarballs from a release, checked against ASSETS.md and unpacked
-        id: fetch
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: bash .github/scripts/fetch-assets.sh "$RUNNER_TEMP/assets"
-      - name: Build the program with Rust 1.98.1
-        if: steps.fetch.outputs.release != ''
-        run: |
-          rustup toolchain install 1.98.1 --profile minimal
-          rustup default 1.98.1
-          code/rerun.sh build_impl1
+          persist-credentials: false
       - uses: actions/download-artifact@v4
-        if: steps.fetch.outputs.release != ''
         with:
-          pattern: replay-group-*
-          merge-multiple: true
-          path: replay
-      # The table of the fresh replay against the recorded one (every column but the times), then the coverage join
-      # on it, compared with the recorded join on the recorded replay (the line naming the replay directory aside).
-      - name: Totals and coverage join
-        if: steps.fetch.outputs.release != ''
+          pattern: d3-pilot-*
+          path: records
+      # Coverage from the commit's template: one passing record per line of jobs.tsv, its challenge, config and
+      # lakefile equal to the template's, its statement hash equal to the reference's.
+      - name: Join
         shell: bash
+        env:
+          CHUNK_RESULT: ${{ needs.chunk.result }}
+          REFERENCE_RESULT: ${{ needs.reference.result }}
         run: |
           set -uo pipefail
-          mkdir -p verify/assets verify/results
-          s0=$(date +%s)
-          sh code/impl1/replay_summary.sh replay > verify/assets/replay_full.txt
-          cols() { awk '$1 == "total" { print $1, $2, $3; next } { print $1, $2, $3, $4 }' "$1"; }
-          if diff <(cols code/impl1/out/guarded/replay_summary.txt) <(cols verify/assets/replay_full.txt); then r=PASS; else r=FAIL; fi
-          printf 'assets replay_full\t%s\t%s s\t%s\tassets/replay_full.txt\n' \
-            "code/impl1/replay_all.sh in 3 groups, then replay_summary.sh against code/impl1/out/guarded/replay_summary.txt" \
-            "$(($(date +%s) - s0))" "$r" > verify/results/assets_replay_full.tsv
-          s0=$(date +%s); rc=0
-          code/impl1/coverage_join.sh "$RUNNER_TEMP/assets" replay > verify/assets/coverage_join_fresh.txt 2>&1 || rc=$?
-          if [ "$rc" = 0 ] && diff <(sed 1d code/impl1/out/guarded/coverage_join.txt) <(sed 1d verify/assets/coverage_join_fresh.txt); then
-            r2=PASS; else r2=FAIL; fi
-          printf 'assets coverage_join_fresh\t%s\t%s s\t%s\tassets/coverage_join_fresh.txt\n' \
-            "code/impl1/coverage_join.sh on the replay of this run" "$(($(date +%s) - s0))" "$r2" \
-            > verify/results/assets_coverage_join_fresh.tsv
-          [ "$r" = PASS ] && [ "$r2" = PASS ]
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.fetch.outputs.release != ''
-        with:
-          name: verify-replay
-          path: verify/
-
-  # The three badges of the README, from a run started by hand on the default branch: shields.io endpoint files on the
-  # branch badges, and run.html, which sends the links of the README to this run (GitHub Pages serves the branch).
-  badges:
-    name: Badges
-    needs: [changes, scan, lean, comparator, impl1, stageA_k0, gp, sage, replay, replay-join]
-    if: ${{ always() && github.event_name == 'workflow_dispatch' && github.ref_name == github.event.repository.default_branch }}
-    runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: write
-    steps:
-      - uses: actions/checkout@v5
-      - name: Badge files
-        env:
-          GH_TOKEN: ${{ github.token }}
-          NEEDS: ${{ toJSON(needs) }}
-          # Every job of the run whose name this does not match is a computation job (one per matrix entry).
-          NOT_COMPUTATION: '^(Changed parts|Source scan|Lean .*|Paper .*|Comparator|Badges)$'
-        shell: bash
-        run: |
-          set -eu
-          mkdir out
-          result() { jq -r --arg j "$1" '.[$j].result' <<< "$NEEDS"; }
-          fact() { jq -r --arg j "$1" --arg k "$2" '.[$j].outputs[$k] // ""' <<< "$NEEDS"; }
-          # The Lean logo of vscode-lean4 at a pinned commit, without its editor metadata, drawn in white.
-          logo=$(curl -fsSL https://raw.githubusercontent.com/leanprover/vscode-lean4/7a1bb55441807380aa710fd39141971dc532298b/vscode-lean4/images/lean_logo.svg \
-            | tr '\n\t' '  ' | sed -e 's/<?xml[^>]*>//' -e 's/<metadata.*<\/metadata>//' -e 's/<sodipodi:namedview[^>]*>//' \
-              -e 's/#000000/#ffffff/g' -e 's/#0000ff/#ffffff/g' -e 's/  */ /g')
-          badge() {
-            jq -n --arg l "$2" --arg m "$3" --arg c "$4" --arg logo "${5:-}" \
-              '{schemaVersion: 1, label: $l, message: $m, color: $c, style: "flat"} + (if $logo == "" then {} else {logoSvg: $logo} end)' > "out/$1.json"
-            echo "$2: $3 ($4)"
-          }
-          hyps=$(fact lean hypotheses) axioms=$(fact lean axioms) sorry=$(fact lean sorryAx)
-          if [ "$(result lean)" = success ] && [ "$(result scan)" = success ] && [ "$sorry" = false ] && [ -n "$hyps" ]; then
-            if [ "$hyps" -eq 0 ]; then badge lean "Lean Proved" "0 sorry · $axioms axioms" brightgreen "$logo"
-            else badge lean "Lean Proved" "from $hyps hypotheses" orange "$logo"; fi
-          else
-            badge lean "Lean Proved" failed red "$logo"
-          fi
-          if [ "$(result comparator)" = success ]; then
-            k=$(jq -r '[.enable_nanoda // false, .lean_kernel != false] | map(tostring) | join(" ")' config.json)
-            case $k in "true true") m="statement checked · 2 kernels" ;; "true false") m="statement checked · nanoda" ;; *) m="statement checked · Lean kernel" ;; esac
-            badge comparator "Lean Comparator" "$m" brightgreen
-          else
-            badge comparator "Lean Comparator" failed red
-          fi
-          gh api --paginate "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/jobs?per_page=100" \
-            | jq -s --arg re "$NOT_COMPUTATION" '[.[].jobs[] | select((.name | test($re)) | not)]' > jobs.json
-          n=$(jq length jobs.json) k=$(jq 'map(select(.conclusion == "success")) | length' jobs.json)
-          jq -r '.[] | "\(.name): \(.conclusion)"' jobs.json
-          if [ "$n" -gt 0 ] && [ "$k" -eq "$n" ]; then c=brightgreen; else c=red; fi
-          badge certificates "Computation Certificates" "$k/$n reproduced" "$c"
-          run="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          printf '<!doctype html>\n<meta charset="utf-8">\n<title>Run %s</title>\n<meta http-equiv="refresh" content="0; url=%s">\n<a href="%s">%s</a>\n' \
-            "$GITHUB_RUN_ID" "$run" "$run" "$run" > out/run.html
-          touch out/.nojekyll
-      - name: Commit to the branch badges
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -eu
-          url="https://github.com/$GITHUB_REPOSITORY.git"
-          auth="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
-          git config --global "http.https://github.com/.extraheader" "$auth"
-          git clone -q --depth 1 --branch badges "$url" b 2> /dev/null || { git init -q -b badges b && git -C b remote add origin "$url"; }
-          cp -a out/. b/
-          cd b
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- *.json run.html .nojekyll
-          git diff --cached --quiet && { echo "badges unchanged"; exit 0; }
-          git commit -qm "Badges of run $GITHUB_RUN_ID ($GITHUB_SHA)"
-          git push -q origin badges
+          fail=0
+          [ "$CHUNK_RESULT" = success ] || { echo "chunk jobs: $CHUNK_RESULT"; fail=1; }
+          [ "$REFERENCE_RESULT" = success ] || { echo "reference job: $REFERENCE_RESULT"; fail=1; }
+          bash .github/d3-pilot/template.sh "$RUNNER_TEMP/tpl"
+          cmp "$RUNNER_TEMP/tpl/Challenge.lean" Tammes15/D3Pilot/Challenge.lean || { echo "challenge module differs from the template"; fail=1; }
+          for j in $(awk -F'\t' '$1 !~ /^#/ && NF {print $1}' .github/d3-pilot/jobs.tsv); do
+            ref=$(awk -v j="$j" '$1 == j {print $2}' records/d3-pilot-reference/hashes.txt 2> /dev/null)
+            r=records/d3-pilot-$j/template.txt
+            if [ ! -f "$r" ]; then echo "$j: no record"; fail=1; continue; fi
+            if [ -z "$ref" ]; then echo "$j: no reference hash"; fail=1; continue; fi
+            ok=1
+            grep -qx "challenge $(sha256sum < "$RUNNER_TEMP/tpl/Challenge.lean" | cut -d' ' -f1)" "$r" || { echo "$j: challenge differs from the template"; ok=0; }
+            grep -qx "config $(sha256sum < "$RUNNER_TEMP/tpl/configs/$j.json" | cut -d' ' -f1)" "$r" || { echo "$j: config differs from the template"; ok=0; }
+            grep -qx "lakefile $(sha256sum < lakefile.toml | cut -d' ' -f1)" "$r" || { echo "$j: lakefile differs"; ok=0; }
+            grep -qx "toolchain $(cat lean-toolchain)" "$r" || { echo "$j: toolchain differs"; ok=0; }
+            grep -q "^statement_hash $ref " "$r" || { echo "$j: statement hash differs from the reference $ref"; ok=0; }
+            grep -qx "verdict PASS" "$r" || { echo "$j: Comparator did not pass"; ok=0; }
+            echo "$j: $([ $ok = 1 ] && echo PASS || echo FAIL)"
+            [ $ok = 1 ] || fail=1
+          done
+          [ $fail = 0 ] && echo "JOIN PASS" || { echo "JOIN FAIL"; exit 1; }
