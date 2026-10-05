@@ -108,20 +108,26 @@ jobs:
           auto-config: false
           use-mathlib-cache: true
           use-github-cache: false
-      # The main library from the release's build archive; its statement modules are checked against the reference.
-      - name: Earlier build from the latest release
+      # The main library from the build archive of release v1.3.0 (the release this branch starts from), pinned by its
+      # sha256 in .github/d3-pilot/ASSETS.sha256; no other archive and no fallback. Its statement modules are checked
+      # against the reference, which builds them from source.
+      - name: Build archive of release v1.3.0, pinned
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          set -u
+          set -euo pipefail
           a=tammes-15-x86_64-unknown-linux-gnu.tar.gz
-          if gh release download --pattern "$a" -D /tmp 2> /dev/null; then
-            mkdir -p .lake/build && tar -xzf "/tmp/$a" -C .lake/build && rm "/tmp/$a"
-            echo "Restored the build of the latest release."
-          else
-            echo "No release build archive: a build from scratch."
-          fi
+          want=$(awk -v f="$a" '$2 == f {print $1}' .github/d3-pilot/ASSETS.sha256)
+          [ -n "$want" ] || { echo "no sha256 line for $a in .github/d3-pilot/ASSETS.sha256"; exit 1; }
+          gh release download v1.3.0 --pattern "$a" -D "$RUNNER_TEMP"
+          got=$(sha256sum < "$RUNNER_TEMP/$a" | cut -d' ' -f1)
+          echo "$a: sha256 $got, expected $want"
+          [ "$got" = "$want" ] || { echo "sha256 mismatch"; exit 1; }
+          bad=$(tar -tvzf "$RUNNER_TEMP/$a" | awk '$1 !~ /^[-d]/ || $NF !~ /^\.\/(lib|ir)(\/|$)/ && $NF != "./"' | wc -l)
+          [ "$bad" = 0 ] || { echo "$a: $bad entries not plain files or directories under lib/ and ir/"; exit 1; }
+          mkdir -p .lake/build && tar -xzf "$RUNNER_TEMP/$a" -C .lake/build && rm "$RUNNER_TEMP/$a"
+          echo "Restored the build of release v1.3.0."
 
       - name: Patch, align and build Comparator
         run: |

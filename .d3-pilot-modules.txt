@@ -26,6 +26,7 @@ Tammes15.D3Data.LinK cdb732d393fc21d9 51f184dc3f8f1988
 Tammes15.D3Data.LinR 51a9acee0032f6f6 a5d6504615c0793b
 Tammes15.D3Data.Q c49794300d73d4b2 820f8282ca6e74f6
 Tammes15.D3Data.QX 46bdb052aea8009e 5d2c7267775e6202
+Tammes15.D3Data.RootsK f709f95f593dc5ed 2a51b48434cc5795
 Tammes15.D3Kernel.Assembly eab9d7c520db9195 8f0618a4a229c9ff
 Tammes15.D3Kernel.Bits 1294bc7a542a7e49 ca19bd524d8c0bab
 Tammes15.D3Kernel.Cases cb3aeec371dd8e93 ffe2485d03b4bf96
