@@ -7,7 +7,11 @@
     "Tammes15.conjecture_of_enum_progTrees", "Tammes15.PaperSteps.local_optimality_frame",
     "Tammes15.PaperSteps.optima_four", "Tammes15.PaperSteps.frames_not_isometric",
     "Tammes15.PaperSteps.frames_not_distance_preserving", "Tammes15.conjecture_of_enum_progTreesDom",
-    "Tammes15.Contractors.killed_of_progTreesDom", "Tammes15.nonunique_of_enum_progTreesDom"],
+    "Tammes15.Contractors.killed_of_progTreesDom", "Tammes15.nonunique_of_enum_progTreesDom",
+    "Tammes15.classification_of_enum_killed", "Tammes15.classification_of_enum_progTreesDom",
+    "Tammes15.PaperSteps.aut_contactGraph_C1", "Tammes15.PaperSteps.aut_contactGraph_C3",
+    "Tammes15.PaperSteps.orthogonal_C1", "Tammes15.PaperSteps.orthogonal_C3", "Tammes15.PaperSteps.orthogonal_det",
+    "Tammes15.classification_count_of_enum_killed", "Tammes15.classification_count_of_enum_progTreesDom"],
   "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
   "enable_nanoda": true,
   "lean_kernel": false

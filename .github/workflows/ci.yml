@@ -220,7 +220,7 @@ jobs:
           done
           cat verify/results/lean_*.tsv
           tail -1 code/lean/check.out | grep -qx 'CHECK PASS' && [ "$rc" -eq 0 ]
-      # For the badges: the hypotheses of the theorems of config.json and their axioms.
+      # For the badges: the hypotheses of the main theorem and their axioms.
       - name: code/lean/facts.lean
         id: facts
         if: steps.check.outcome == 'success'

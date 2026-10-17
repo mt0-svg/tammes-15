@@ -1,0 +1,1257 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "The Tammes problem for fifteen points"
+  description: >-
+    The largest possible minimal angular distance between fifteen points on the
+    unit sphere is arccos u, about 53.65785 degrees, where u is the root in
+    (1/2, 7/10) of 13u^5 - u^4 + 6u^3 + 2u^2 - 3u - 1. Up to isometry this value
+    is attained by exactly two configurations, described by Buddenhagen and
+    Kottwitz, whose contact graphs are not isomorphic. Lean 4 with Mathlib proves
+    every step except the enumeration of the plane graphs and their refutation
+    by the program, which enter the formal proof as hypotheses.
+  authors:
+    - "mt0-svg"
+  responsible_maintainers:
+    - "mt0-svg"
+  license: "Apache-2.0"
+
+classification:
+  arxiv: ["math.MG", "math.CO"]
+  msc2020: ["52C17", "05C10", "52C25", "65G30"]
+
+sources:
+  - title: "The Tammes problem for fifteen points (the paper of this repository)"
+    authors:
+      - "mt0-svg"
+    id: "https://doi.org/10.5281/zenodo.23058956"
+    type: original-proof
+    location: "paper/main.tex, Theorem 1.1, Corollary 1.2, Theorem 1.3 and Proposition 3.2; the PDF of each GitHub release and the Zenodo record"
+    relationship: other
+    note: >-
+      The results are proved in the paper of this repository, whose TeX
+      source is paper/main.tex, and in this formalization. The argument of
+      Theorem 1.3 is due to Satvik-patil, who posted it as issue 1 of this
+      repository (https://github.com/mt0-svg/tammes-15/issues/1).
+    contributors:
+      - name: "Satvik-patil"
+        role: "the argument of Theorem 1.3"
+  - title: "The Tammes problem for sixteen points: a computer-assisted proof candidate"
+    authors:
+      - "K. Kępiński"
+    id: "doi:10.5281/zenodo.23312437"
+    type: preprint
+    location: "Remark 2"
+    relationship: other
+    note: >-
+      States the first sentence of Theorem 1.3, and that no maximal
+      configuration has a point at distance more than arccos u from all the
+      others, on paper and from the computations of an earlier version of
+      the paper of this repository.
+    author_endorsement: not-contacted
+  - title: "Multiplicity and symmetry breaking in (conjectured) densest packings of congruent circles on a sphere"
+    authors:
+      - "J. Buddenhagen"
+      - "D. A. Kottwitz"
+    id: "https://web.archive.org/web/20210507001707/http://www.buddenbooks.com/jb/pack/sphere/toggles7.pdf"
+    type: preprint
+    location: "Sections 4 and 7"
+    relationship: background
+    note: >-
+      Describes the two configurations C1 and C3 that the main theorem shows
+      optimal, with the frame from which both are built.
+    author_endorsement: not-contacted
+  - title: "Extremal problems of circle packings on a sphere and irreducible contact graphs"
+    authors:
+      - "O. R. Musin"
+      - "A. S. Tarasov"
+    id: "doi:10.1134/S0081543815010095; arXiv:1410.0744"
+    type: article
+    location: "Proc. Steklov Inst. Math. 288 (2015), 117-131, Section 6, Questions 1 and 2"
+    relationship: background
+    note: >-
+      Corollary 1.2 of the paper answers Question 2 in the negative for N = 15.
+      The reduction to plane graphs follows their proofs for N = 13 and 14.
+    author_endorsement: not-contacted
+
+related_formalizations:
+  - id: "https://github.com/lukasliehr/Energy-Minimization-8-Points/tree/50d14bc06bd41f61573eb6a36eedb8d00759af8f"
+    relationship: builds-on
+    note: >-
+      The Lean development of Kryvonos, Liehr and Taylor (arXiv:2609.22077) for
+      eight points: its 140 modules reachable from BestPacking.lean are vendored
+      under Tammes15/Vendor/EM8, with the changes listed in THIRD_PARTY.md.
+
+status:
+  scope: >-
+    Formalized: the value of d_15 (Theorem 1.1 of the paper), Corollary 1.2
+    and Theorem 1.3, each in two forms. The first form
+    (`conjecture_of_enum_progTreesDom`, `nonunique_of_enum_progTreesDom`,
+    `classification_of_enum_progTreesDom`,
+    `classification_count_of_enum_progTreesDom`) assumes D2, `EnumComplete L`:
+    every rotation system with 12 to 15 vertices of a 3-connected graph with
+    degrees 3 to 5, in the input class of plantri read on a drawing, is
+    isomorphic, possibly reversing the orientation, to a member of `L`; a
+    family `N` of interval procedures with `Impl N`: on every box of the
+    domain, each narrowing of `N` is the outcome of a run of the primitive
+    steps defined in `Tammes15/Contractors/Prims.lean`, computed with some
+    sound arithmetic, and each enclosure contains the triangle angle of the
+    primitive steps; and `ProgTreesDom L N`: every case of `L` has, for every
+    choice of hexagons, a choice in the same faces with accepted trees from
+    boxes of the domain that contain the root boxes, on ranges of d that cover
+    [d_lo, d_hi]. The second form (`conjecture_of_enum_killed`,
+    `nonunique_of_enum_killed`, `classification_of_enum_killed`,
+    `classification_count_of_enum_killed`) assumes D2 and D3,
+    `Killed L {frameC1, frameC3}`. Proposition 3.2 of the paper (the
+    automorphisms of the two contact graphs and the orthogonal maps that
+    preserve C1 and C3), a step of the proof of Theorem 1.3, is proved with
+    no hypothesis. Not formalized: the hypotheses themselves, which rest on
+    the enumeration by plantri with an output filter and on the program,
+    whose certificates are replayed (code/, Section 9.6 of the paper: plantri
+    meets its description, the filter keeps exactly the graphs of maximum
+    degree at most 5, and the program meets its model in the sense of
+    Definition B.1(6) of the paper).
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+  main_results:
+    # main-results begin: generated by code/paper/statement_map.pl, do not edit
+    - declaration: "Tammes15.reduction"
+      file: "Tammes15/Hyps/Reduction.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.fejesToth_bound"
+      file: "Tammes15/FejesToth/Bound.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.conjecture_of_enum_killed"
+      file: "Tammes15/Attained/Final.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.nonunique_of_enum_killed"
+      file: "Tammes15/Nonunique/Corollary.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.PaperSteps.killed_of_progKilled"
+      file: "Tammes15/PaperSteps/Main.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.conjecture_of_enum_progKilled"
+      file: "Tammes15/PaperSteps/Main.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.PaperSteps.progKilled_of_progTrees"
+      file: "Tammes15/PaperSteps/Search.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.conjecture_of_enum_progTrees"
+      file: "Tammes15/PaperSteps/MainSearch.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.PaperSteps.local_optimality_frame"
+      file: "Tammes15/PaperSteps/LocalEq.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.PaperSteps.optima_four"
+      file: "Tammes15/PaperSteps/Optima.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.PaperSteps.frames_not_isometric"
+      file: "Tammes15/PaperSteps/Isometric.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.PaperSteps.frames_not_distance_preserving"
+      file: "Tammes15/PaperSteps/Isometric.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.conjecture_of_enum_progTreesDom"
+      file: "Tammes15/Contractors/Statement.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.Contractors.killed_of_progTreesDom"
+      file: "Tammes15/Contractors/Main.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.nonunique_of_enum_progTreesDom"
+      file: "Tammes15/Contractors/Main.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.classification_of_enum_killed"
+      file: "Tammes15/Classification.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.classification_of_enum_progTreesDom"
+      file: "Tammes15/Classification.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.PaperSteps.aut_contactGraph_C1"
+      file: "Tammes15/PaperSteps/Automorphisms.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.PaperSteps.aut_contactGraph_C3"
+      file: "Tammes15/PaperSteps/Automorphisms.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.PaperSteps.orthogonal_C1"
+      file: "Tammes15/PaperSteps/Automorphisms.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.PaperSteps.orthogonal_C3"
+      file: "Tammes15/PaperSteps/Automorphisms.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.PaperSteps.orthogonal_det"
+      file: "Tammes15/PaperSteps/Automorphisms.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.classification_count_of_enum_killed"
+      file: "Tammes15/PaperSteps/Classes.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    - declaration: "Tammes15.classification_count_of_enum_progTreesDom"
+      file: "Tammes15/PaperSteps/Classes.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "config.json"
+      literature_dependencies: []
+    # main-results end
+
+automation:
+  methods:
+    - method: agent
+      models: []
+      framework: "not named in this repository"
+      tool_setup: >-
+        AI-generated research: the results, proofs and code (the paper, the
+        certificate program and the Lean formalization) were found and written
+        by AI. Lean 4 and Mathlib for the formal proof; Comparator with nanoda
+        for the check of the statements; plantri, Rust, SageMath and PARI/GP
+        for the computations.
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "not tracked"
+        hardware: "one Linux x86_64 workstation; GitHub-hosted runners for the checks"
+      prompting_notes: "n/a"
+  spend_usd: "not tracked"
+  notes: >-
+    The paper's own statement, repeated in the README: "This is AI-generated
+    research: the results, proofs and code were found and written by AI.
+    Credit goes to all the humans whose work it builds on."
+
+fidelity:
+  divergences: >-
+    The challenge states the results for labelled unit vectors of R^3 with
+    angular distance InnerProductGeometry.angle; Theorem 1.3 is stated for
+    fifteen vectors at pairwise angle at least arccos u, which by the main
+    theorem is the same as minimal distance arccos u; its first sentence
+    concludes with an image of C1 or C3 under a linear isometry after
+    relabelling, and its count up to rotation takes the rotations as the
+    linear isometries of determinant 1 and adds that the contact graph is
+    isomorphic to that of C1 or of C3. Corollary
+    1.2 does not name the two configurations; its proof takes C1 and C3, and
+    its last sentence is proved separately for them. The points of C1 and C3
+    in the challenge are polynomial expressions in u and in a root b of a
+    polynomial over Q(u), each pinned down by an enclosure
+    (Tammes15/Attained/Data.lean).
+
+review:
+  status: "agent-reviewed"
+  reviewers: []
+  notes: >-
+    No human expert has reviewed the proof. Fresh AI referee passes checked the
+    mathematics, the Lean statements against the paper, the computations and
+    the paper. Mechanically: the Lean build, #print axioms on every main
+    theorem, an environment audit of every constant of the package, and
+    Comparator with nanoda on the export.
+
+alignment:
+  namespace: "Tammes15"
+  statements:
+    # statement-map begin: generated by code/paper/statement_map.pl, do not edit
+    - source: "Theorem 1.1 of the paper (thm:main)"
+      status: proved
+      lean:
+        - "Tammes15.conjecture_of_enum_progTreesDom"
+        - "Tammes15.conjecture_of_enum_killed"
+      module:
+        - "Tammes15.Contractors.Statement"
+        - "Tammes15.Attained.Final"
+      script:
+        - "code/gp/paper_checks.gp"
+      output:
+        - "code/gp/paper_checks.out"
+      note: "the equality $d_{15}=\\psi^*$ as `Tammes15.Conjecture`, from the hypotheses of Theorem B.9: D2 (Definition 7.1), the accepted trees of the program and procedures computed by the program (Definition B.1(5)); the second declaration from D2 and D3 (Definitions 7.1 and 7.3); the formal statement does not name $C_1$ and $C_3$"
+    - source: "Corollary 1.2 of the paper (cor:nonunique)"
+      status: proved
+      lean:
+        - "Tammes15.nonunique_of_enum_progTreesDom"
+        - "Tammes15.nonunique_of_enum_killed"
+        - "Tammes15.Nonunique.frames_not_iso"
+        - "Tammes15.PaperSteps.frames_not_isometric"
+        - "Tammes15.PaperSteps.frames_not_distance_preserving"
+      module:
+        - "Tammes15.Contractors.Main"
+        - "Tammes15.Nonunique.Corollary"
+        - "Tammes15.PaperSteps.Isometric"
+      script:
+        - "code/gp/contact_graphs.gp"
+        - "code/lean-data/gen_seplt.sh"
+      output:
+        - "code/gp/contact_graphs.out"
+        - "code/lean-data/gen_seplt.out"
+      note: "the first sentence from the hypotheses of Theorem B.9, and from D2 and D3 (Definitions 7.1 and 7.3) as the second declaration: the maximum $d$ is attained by two configurations whose contact graphs at $\\cos d$ are not isomorphic; the statement does not name them, and its proof takes $C_1$ and $C_3$; the non-isomorphism of the contact graphs of $C_1$ and $C_3$ at $u$ is the third declaration, with no hypothesis; the last sentence is the fourth and fifth, with no hypothesis: no isometry of $\\mathbb{R}^3$ maps $C_1$ onto $C_3$, and no bijection between their points preserves distances"
+    - source: "Theorem 1.3 of the paper (thm:classif)"
+      status: proved
+      lean:
+        - "Tammes15.classification_of_enum_progTreesDom"
+        - "Tammes15.classification_of_enum_killed"
+        - "Tammes15.classification_count_of_enum_progTreesDom"
+        - "Tammes15.classification_count_of_enum_killed"
+      module:
+        - "Tammes15.Classification"
+        - "Tammes15.PaperSteps.Classes"
+      note: "for fifteen labelled unit vectors at pairwise angle at least $\\arccos u$, up to relabelling: the first sentence as the image of $C_1$ or $C_3$ under a linear isometry of $\\mathbb{R}^3$ (first and second declarations); the classes up to rotation, with the rotations as the linear isometries of determinant $1$, as the third and fourth: every such configuration is $sRC_1$ or $sRC_3$ with $s=\\pm1$ and $R$ a rotation, each of $\\pm C_1$, $\\pm C_3$ is one, and no rotation maps one of the four onto another; with Corollary 1.2 this gives the two classes up to isometry; the last sentence, with distance $\\psi^*$ as angle $\\arccos u$, also as the third and fourth, which add that the contact graph at $u$ is isomorphic to that of $C_1$ or of $C_3$ and that these two are not isomorphic; the first and third declarations from the hypotheses of Theorem B.9, the second and fourth from D2 and D3 (Definitions 7.1 and 7.3)"
+    - source: "Section 2.1 of the paper (sec:cases)"
+      status: proved
+      lean:
+        - "Tammes15.PlaneGraph"
+        - "Tammes15.RotSys"
+        - "Tammes15.RotSys.face"
+        - "Tammes15.InClass"
+        - "Tammes15.KConnected"
+        - "Tammes15.FaceSizes"
+        - "Tammes15.RotSys.Spherical"
+        - "Tammes15.HexChoice"
+        - "Tammes15.D2Regions.IsArcDrawing"
+        - "Tammes15.D2Regions.minorArc"
+        - "Tammes15.D2Regions.drawingSet"
+        - "Tammes15.D2Regions.IsRegion"
+        - "Tammes15.D2Regions.regionSize"
+      module:
+        - "Tammes15.Hyps.Case"
+        - "Tammes15.Draw.Defs"
+        - "Tammes15.D2Regions.Defs"
+      note: "plane graphs on the vertex set $\\{0,\\dots,n-1\\}$, the class, the choices of hexagons as lists of darts, and the drawings with their regions"
+    - source: "Definition 2.1 of the paper (def:real)"
+      status: proved
+      lean:
+        - "Tammes15.Realisation"
+        - "Tammes15.IsAngular"
+        - "Tammes15.StrictSupportFace"
+        - "Tammes15.ocorner"
+      module:
+        - "Tammes15.Hyps.Case"
+        - "Tammes15.Draw.Defs"
+    - source: "Proposition A of the paper (prop:A)"
+      status: proved
+      lean:
+        - "Tammes15.structured_of_min"
+        - "Tammes15.realisation_of_structured"
+        - "Tammes15.D2Regions.planeClass_of_structured"
+      module:
+        - "Tammes15.Draw.Structure"
+        - "Tammes15.Hyps.Reduction"
+        - "Tammes15.D2Regions.Statement"
+      note: "the conclusions of Theorem 4.1 in the form of `Tammes15.Structured` (first declaration), then the realisation (second) and the class of D2 on the drawing (third)"
+    - source: "Proposition B of the paper (prop:B)"
+      status: not-formalized
+      note: "not formalized as one statement; it is the step of the proof of `Tammes15.reduction` from D2 and D3 to the closeness to a frame configuration"
+    - source: "Theorem C of the paper (thm:local)"
+      status: proved
+      lean:
+        - "Tammes15.PaperSteps.local_optimality_frame"
+        - "Tammes15.local_optimality"
+        - "Tammes15.PaperSteps.local_optimality_strict"
+        - "Tammes15.radius_ok"
+        - "Tammes15.radius_sq_ok"
+        - "Tammes15.root_lt"
+      module:
+        - "Tammes15.PaperSteps.LocalEq"
+        - "Tammes15.Local41.Chain"
+        - "Tammes15.Hyps.Reduction"
+      note: "as stated, with its equality case, for every labelling of each of the eight frame configurations; the second declaration is the inequality for any labelled configuration of $n$ points with contacts at inner product $u>0$ whose constant $\\kappa$ is at least $\\kappa_0$, and any $r$ with $\\sqrt n\\,r\\cdot1.01(1+u)\\le\\kappa_0$ and $nr^2<0.02$; the third gives, when the first condition is strict, that the points are an orthogonal image of the configuration or some contact pair has inner product above $u$"
+    - source: "Proposition D of the paper (prop:D)"
+      status: proved
+      lean:
+        - "Tammes15.exists_unshiftable"
+        - "Tammes15.structured_of_unshiftable"
+        - "Tammes15.realisation_of_structured_pts"
+        - "Tammes15.D2Regions.planeClass_of_structured"
+      module:
+        - "Tammes15.Classification"
+        - "Tammes15.D2Regions.Statement"
+      note: "for fifteen labelled points at pairwise distance at least $d_{15}$, as steps of the proof of the first declaration of Theorem 1.3: the first declaration gives $\\Xi^*$, the second the conclusions of Theorem 4.1 for $\\Xi^*$ in the form of `Tammes15.Structured`, the third the realisation with the bijection onto the points of $\\Xi^*$, and the fourth the class of D2 on the drawing"
+    - source: "Proposition 3.1 of the paper (prop:optima)"
+      status: proved
+      lean:
+        - "Tammes15.Attained.attained"
+        - "Tammes15.Nonunique.frameC1_sep_lt"
+        - "Tammes15.Nonunique.frameC3_sep_lt"
+        - "Tammes15.PaperSteps.optima_four"
+      module:
+        - "Tammes15.Attained.Frames"
+        - "Tammes15.Nonunique.SepLt"
+        - "Tammes15.PaperSteps.Optima"
+      script:
+        - "code/sage/bk15_exact.sage"
+        - "code/lean-data/d4_cut.sage"
+        - "code/lean-data/regen.sh"
+      output:
+        - "code/sage/bk15_exact.out"
+        - "code/lean-data/d4_cut.out"
+        - "code/lean-data/regen.out"
+      note: "items (1) and (2) for $C_1$ and $C_3$ as the first declaration, with inner products at most $u$ for the other pairs, the strict inequalities as the second and third; item (3), the last declaration, on sets of points: each element of $\\Delta$ maps each frame configuration onto a frame configuration, $C_3$ and $C_1$ are the frame configurations of their toggle points, and their orbits are those of item (3)"
+    - source: "Proposition 3.2 of the paper (prop:auto)"
+      status: proved
+      lean:
+        - "Tammes15.PaperSteps.aut_contactGraph_C1"
+        - "Tammes15.PaperSteps.aut_contactGraph_C3"
+        - "Tammes15.PaperSteps.orthogonal_C1"
+        - "Tammes15.PaperSteps.orthogonal_C3"
+        - "Tammes15.PaperSteps.orthogonal_det"
+      module:
+        - "Tammes15.PaperSteps.Automorphisms"
+      note: "with no hypothesis: the automorphisms of the contact graphs at $u$ on the labels of the points (first and second declarations), the linear isometries of $\\mathbb{R}^3$ that map the set of points onto itself (third and fourth), and their determinant $1$ (fifth)"
+    - source: "Section 4 of the paper (sec:structure)"
+      status: proved
+      lean:
+        - "Tammes15.Geom.IsCPoly"
+        - "Tammes15.Geom.Inside"
+        - "Tammes15.Geom.InClosed"
+        - "Tammes15.Geom.perim"
+        - "Tammes15.StrictSupportFace"
+        - "Tammes15.IsAngular"
+        - "Tammes15.ocorner"
+      module:
+        - "Tammes15.Geom.Basic"
+        - "Tammes15.Draw.Defs"
+      note: "the convex polygons, their insides, closed polygons and perimeters, the rotation of a drawing and its corners"
+    - source: "Theorem 4.1 of the paper (thm:structure)"
+      status: proved
+      lean:
+        - "Tammes15.structured_of_min"
+        - "Tammes15.structure_theorem"
+        - "Tammes15.exists_contact_of_isGreatest"
+        - "Tammes15.Geom.rattlers_in_hexagons_proof"
+      module:
+        - "Tammes15.Draw.Structure"
+        - "Tammes15.Draw.Exist"
+        - "Tammes15.Geom.Hexagons"
+      note: "items (1) to (4), for $d_{15}$ in any interval $[a,b]\\subseteq[d_{lo},d_{hi}]$ with $7a>2\\pi$ and $\\alpha(b)<2\\pi/5$"
+    - source: "Lemma 4.2 of the paper (lem:minimal)"
+      status: proved
+      lean:
+        - "Tammes15.lemma_minimal"
+        - "Tammes15.alpha_le_corner"
+        - "Tammes15.contactCount_lt_of_shift"
+      module:
+        - "Tammes15.Draw.Minimal"
+        - "Tammes15.Draw.Shift"
+      note: "for every $d\\in(0,\\pi/2)$ and fifteen points with the fewest contacts among those at pairwise distance at least $d$"
+    - source: "Lemma 4.3 of the paper (lem:faces)"
+      status: proved
+      lean:
+        - "Tammes15.twoconn_contact"
+        - "Tammes15.FaceChain.Setup.strictSupportFace"
+        - "Tammes15.FaceChain.face_perimeter_lt"
+        - "Tammes15.FaceChain.faceSizes_of"
+        - "Tammes15.FaceChain.faceconvex_contact"
+        - "Tammes15.equilateral_angle"
+        - "Tammes15.rhombus_opposite_angle"
+      module:
+        - "Tammes15.Draw.Iface"
+        - "Tammes15.FaceChain.Interfaces"
+        - "Tammes15.FaceChain.Sizes"
+        - "Tammes15.FaceChain.Contact"
+        - "Tammes15.Trigrows.Sdist"
+      note: "with its faces in cone form, with $md<2\\pi$ in place of $md=\\per F$ and without the closure in an open hemisphere; the first sentence from the first four declarations; the fifth gives the convexity, the sizes and 3-connectivity (Lemma 4.4) under the hypotheses of Theorem 4.1; the last sentence is the last two, on a spherical triangle and a spherical rhombus with all sides $d$"
+    - source: "Lemma 4.4 of the paper (lem:threeconn)"
+      status: proved
+      lean:
+        - "Tammes15.FaceChain.threeconn"
+      module:
+        - "Tammes15.FaceChain.ThreeConn"
+      note: "for faces in cone form"
+    - source: "Proposition 4.5 of the paper (prop:nor)"
+      status: proved
+      lean:
+        - "Tammes15.Geom.nor"
+        - "Tammes15.Geom.no_small_face"
+        - "Tammes15.Geom.wheel_sum"
+        - "Tammes15.Geom.subtend_le_alpha"
+        - "Tammes15.Geom.subtend_alg"
+        - "Tammes15.Geom.disc_side"
+        - "Tammes15.alpha_dhi_lt"
+      module:
+        - "Tammes15.Geom.Nor"
+        - "Tammes15.Geom.Wheel"
+        - "Tammes15.Trigrows.Margins"
+    - source: "Proposition 4.6 of the paper (prop:onehex)"
+      status: proved
+      lean:
+        - "Tammes15.Geom.onehex"
+        - "Tammes15.Geom.disc_side"
+        - "Tammes15.Geom.disc_slerp"
+        - "Tammes15.Geom.inClosed_of_disc"
+        - "Tammes15.Geom.qpoly_isCPoly"
+        - "Tammes15.Geom.qpoly_perim"
+        - "Tammes15.Geom.perim_mono"
+        - "Tammes15.margin_onehex_poly"
+        - "Tammes15.onehex_chord_margin"
+      module:
+        - "Tammes15.Geom.Onehex"
+        - "Tammes15.Geom.Nor"
+        - "Tammes15.Geom.Qpoly"
+        - "Tammes15.Geom.Crofton"
+        - "Tammes15.Rattlers.HexPoly"
+        - "Tammes15.Rattlers.HexChord"
+      script:
+        - "code/lean/numerics/onehex_poly.gp"
+      output:
+        - "code/lean/numerics/onehex_poly.out"
+    - source: "Corollary 4.7 of the paper (cor:k3)"
+      status: proved
+      lean:
+        - "Tammes15.Geom.rattlers_in_hexagons_proof"
+        - "Tammes15.Geom.rattlers_core"
+        - "Tammes15.Geom.exists_face_inside"
+        - "Tammes15.k_le_three_of_hex"
+      module:
+        - "Tammes15.Geom.Hexagons"
+        - "Tammes15.Geom.Cover"
+        - "Tammes15.Draw.Count"
+      note: "the hexagon of a rattler is found as the face of an edge nearest to it, and then counted as in the proof"
+    - source: "Section 4.3 of the paper (sec:constants)"
+      status: proved
+      lean:
+        - "Tammes15.two_pi_lt_seven_dlo"
+        - "Tammes15.alpha_dhi_lt"
+        - "Tammes15.margin_perims"
+        - "Tammes15.margin_onehex_poly"
+        - "Tammes15.dlo_lt_arccos_root"
+        - "Tammes15.Params.arccos_root_lt"
+        - "Tammes15.Params.fejesToth_value_lt_dhi"
+        - "Tammes15.onehex_chord_margin"
+      module:
+        - "Tammes15.Trigrows.Margins"
+        - "Tammes15.Rattlers.HexPoly"
+        - "Tammes15.Hyps.Interfaces"
+        - "Tammes15.Params.Checks"
+        - "Tammes15.Rattlers.HexChord"
+      script:
+        - "code/gp/paper_checks.gp"
+        - "code/lean/numerics/onehex_poly.gp"
+        - "code/lean/numerics/chord.gp"
+      output:
+        - "code/gp/paper_checks.out"
+        - "code/lean/numerics/onehex_poly.out"
+        - "code/lean/numerics/chord.out"
+      note: "the ten end bounds as $6d<P_{10}(d,h(d))$ for every $d\\in[d_{lo},d_{hi}]$"
+    - source: "Lemma 4.8 of the paper (lem:realise)"
+      status: proved
+      lean:
+        - "Tammes15.realisation_of_structured"
+        - "Tammes15.Structured"
+      module:
+        - "Tammes15.Hyps.Reduction"
+        - "Tammes15.Draw.Defs"
+      note: "for fifteen points at pairwise distance at least $d$, with the contact graph at distance $d$ and the conclusions (1) to (4) of Theorem 4.1 in the form of the second declaration"
+    - source: "Lemma 4.9 of the paper (lem:regions)"
+      status: proved
+      lean:
+        - "Tammes15.D2Regions.regions_eq_facePolygons"
+        - "Tammes15.D2Regions.isArcDrawing_of_contact"
+        - "Tammes15.D2Regions.planeClass_of_structured"
+        - "Tammes15.D2Regions.IsArcDrawing"
+        - "Tammes15.D2Regions.IsRegion"
+        - "Tammes15.D2Regions.Bounds"
+        - "Tammes15.D2Regions.regionSize"
+        - "Tammes15.D2Regions.facePolygon"
+      module:
+        - "Tammes15.D2Regions.Statement"
+        - "Tammes15.D2Regions.Defs"
+      note: "for the vertex set of $G'(X)$, whose contact graph is $G'(X)$; the last sentence is the third declaration"
+    - source: "Lemma 4.10 of the paper (lem:descent)"
+      status: proved
+      lean:
+        - "Tammes15.exists_unshiftable"
+        - "Tammes15.lemma_unshiftable"
+        - "Tammes15.structured_of_unshiftable"
+        - "Tammes15.Unshiftable"
+        - "Tammes15.Descends"
+      module:
+        - "Tammes15.Classification"
+      note: "the minimality is replaced by the property it gives: no point of $\\Xi^*$ with a contact can be moved to a point at distance more than $d$ from all the others while the others stay (fourth declaration); the first declaration gives a $\\Xi^*$ at pairwise distance at least $d$, for every $d$, with this property and agreeing with $\\Xi$ at its points with contacts (fifth declaration); the second is Lemma 4.2 for such a $\\Xi^*$, for every $d\\in(0,\\pi/2)$, and the third items (1) to (4) of Theorem 4.1 for such a $\\Xi^*$, for every $d$ in an interval $[a,b]\\subseteq[d_{lo},d_{hi}]$ with $7a>2\\pi$ and $\\alpha(b)<2\\pi/5$ and $\\Xi^*$ with a contact"
+    - source: "Lemma 5.1 of the paper (lem:kappa)"
+      status: proved
+      lean:
+        - "Tammes15.Kappa.kappaHyp"
+        - "Tammes15.Kappa.kappa_C1"
+        - "Tammes15.Kappa.kappa_C3"
+      module:
+        - "Tammes15.Kappa.Assembly"
+      script:
+        - "code/lean-data/d1_lp.sage"
+        - "code/lean-data/d1_kernel.sage"
+        - "code/lean-data/gen_close.sh"
+        - "code/lean-data/regen.sh"
+      output:
+        - "code/lean-data/d1_lp.out"
+        - "code/lean-data/d1_kernel.out"
+        - "code/lean-data/gen_close.out"
+        - "code/lean-data/regen.out"
+    - source: "Lemma 5.2 of the paper (lem:kappainv)"
+      status: proved
+      lean:
+        - "Tammes15.kappaBound_orthogonal"
+      module:
+        - "Tammes15.Local41.Chain"
+      note: "only that a lower bound $\\kappa\\ge\\kappa_0$ passes from $p$ to $Op$"
+    - source: "Section 6.1 of the paper (sec:rows)"
+      status: proved
+      lean:
+        - "Tammes15.rhombus_rows"
+        - "Tammes15.rho_concaveOn"
+        - "Tammes15.rho_strictAntiOn_x"
+        - "Tammes15.rho_alpha"
+        - "Tammes15.Ssum_strictMonoOn"
+        - "Tammes15.alpha_strictMonoOn"
+        - "Tammes15.equilateral_angle"
+        - "Tammes15.relSys_of_realisation"
+        - "Tammes15.vertexSum_of_realisation"
+        - "Tammes15.vertexSum_realisation"
+        - "Tammes15.tri_of_realisation"
+        - "Tammes15.rhombus_of_realisation"
+        - "Tammes15.tri_of_realisation_proof"
+        - "Tammes15.rhombus_of_realisation_proof"
+      module:
+        - "Tammes15.Trigrows.Rows"
+        - "Tammes15.Trigrows.Mono"
+        - "Tammes15.Trigrows.Sdist"
+        - "Tammes15.Hyps.Reduction"
+        - "Tammes15.Hyps.Interfaces"
+        - "Tammes15.Draw.Realise"
+        - "Tammes15.Trigrows.Realise"
+      note: "the rows are fields of the relation system of D3 (Definition 6.1)"
+    - source: "Section 6.2 of the paper (sec:faces)"
+      status: proved
+      lean:
+        - "Tammes15.T1_isosceles_base"
+        - "Tammes15.T1_isosceles_angle"
+        - "Tammes15.bangle_strictAntiOn"
+        - "Tammes15.eta_strictAntiOn_g"
+        - "Tammes15.eta_hasDerivAt_e"
+        - "Tammes15.eta_hasDerivAt_f"
+        - "Tammes15.alpha_inverse"
+        - "Tammes15.dOfAlpha_strictMonoOn"
+        - "Tammes15.rho_rho"
+        - "Tammes15.cot_mul_cot_rho"
+        - "Tammes15.rho_strictMonoOn_d"
+        - "Tammes15.rhombus_d_monotoneOn_x"
+        - "Tammes15.T5_corner"
+        - "Tammes15.T8_corner"
+        - "Tammes15.T5_side_corner"
+        - "Tammes15.T6_corner"
+        - "Tammes15.angle_add_of_cone"
+        - "Tammes15.T7_iff"
+        - "Tammes15.T7_bound_antitoneOn"
+        - "Tammes15.T9_monotoneOn_G"
+        - "Tammes15.T9_monotoneOn_e"
+        - "Tammes15.gam_hasDerivAt_side"
+        - "Tammes15.fan_sign_identity"
+        - "Tammes15.napier_isosceles"
+        - "Tammes15.ebase_strictMonoOn"
+        - "Tammes15.ebase_symm"
+        - "Tammes15.pent_of_realisation_proof"
+        - "Tammes15.hex_of_realisation_proof"
+        - "Tammes15.hexDiag_of_realisation_proof"
+        - "Tammes15.Geom.wheel_of_realisation_proof"
+        - "Tammes15.Geom.sdist_le_half_perim"
+      module:
+        - "Tammes15.Trigrows.Points"
+        - "Tammes15.Trigrows.Mono"
+        - "Tammes15.Trigrows.Rows"
+        - "Tammes15.Fans.Corners"
+        - "Tammes15.Fans.Hexagon"
+        - "Tammes15.Fans.Cone"
+        - "Tammes15.Trigrows.Sdist"
+        - "Tammes15.Fans.Realise"
+        - "Tammes15.Trigrows.Realise"
+        - "Tammes15.Geom.T8"
+      note: "(T5) to (T8) are fields of the relation system of D3 (Definition 6.1); the monotonicity of the fan maps serves the soundness of the contractors of the program, Proposition B.2"
+    - source: "Definition 6.1 of the paper (def:relsys)"
+      status: proved
+      lean:
+        - "Tammes15.Assign"
+        - "Tammes15.RelSys"
+        - "Tammes15.PentRel"
+        - "Tammes15.HexRel"
+        - "Tammes15.HexDiagRel"
+        - "Tammes15.longDiag"
+        - "Tammes15.WheelRel"
+      module:
+        - "Tammes15.Hyps.Case"
+    - source: "Section 6.3 of the paper (sec:glue)"
+      status: proved
+      lean:
+        - "Tammes15.frame_child_inner"
+        - "Tammes15.frame_child_eq"
+        - "Tammes15.frame_child_back"
+        - "Tammes15.stepM_sub_apply_le"
+        - "Tammes15.frame_path_enclosure"
+        - "Tammes15.pair_core"
+        - "Tammes15.norm_sub_eq_two_sin"
+        - "Tammes15.local_core"
+        - "Tammes15.glue_congruent"
+        - "Tammes15.glue_congruent_proof"
+      module:
+        - "Tammes15.Glue.FramesAlg"
+        - "Tammes15.Glue.Enclosure"
+        - "Tammes15.Glue.Pair"
+        - "Tammes15.Hyps.Interfaces"
+        - "Tammes15.Glue.Reconstruct"
+      note: "the gluing of the formal statement is that of Definition 7.2, which differs from that of the program by a reflection (Lemma B.7)"
+    - source: "Search 6.2 of the paper (alg:search)"
+      status: not-formalized
+      note: "the search itself is not formalized; the formal proof reads its trees (Definition 6.3)"
+    - source: "Definition 6.3 of the paper (def:procs)"
+      status: proved
+      lean:
+        - "Tammes15.PaperSteps.Procs"
+        - "Tammes15.PaperSteps.Procs.Sound"
+        - "Tammes15.PaperSteps.Sol"
+        - "Tammes15.PaperSteps.Mode"
+        - "Tammes15.PaperSteps.PVar"
+        - "Tammes15.PaperSteps.Search.Box"
+        - "Tammes15.PaperSteps.Search.Tree"
+        - "Tammes15.PaperSteps.Search.Tree.OK"
+        - "Tammes15.PaperSteps.LeafKill"
+        - "Tammes15.PaperSteps.Encl.Covers"
+        - "Tammes15.PaperSteps.PairC"
+        - "Tammes15.PaperSteps.TieC"
+        - "Tammes15.PaperSteps.RootOK"
+      module:
+        - "Tammes15.PaperSteps.SearchDefs"
+        - "Tammes15.PaperSteps.SearchTree"
+      note: "in the formalization the variable of a corner is attached to its dart, and the definitions are stated for all cases at once; the enclosure depends on the graph and $k$, not on the choice of hexagons"
+    - source: "Proposition 6.4 of the paper (prop:soundtrees)"
+      status: proved
+      lean:
+        - "Tammes15.PaperSteps.progKilled_of_progTrees"
+        - "Tammes15.PaperSteps.Search.Tree.sound"
+        - "Tammes15.PaperSteps.glue_enclosure"
+        - "Tammes15.PaperSteps.leafKill_sound"
+        - "Tammes15.PaperSteps.root_mem"
+      module:
+        - "Tammes15.PaperSteps.Search"
+        - "Tammes15.PaperSteps.SearchTree"
+      note: "for every case of a list at once, the first declaration"
+    - source: "Definition 7.1 of the paper (def:dtwo)"
+      status: proved
+      lean:
+        - "Tammes15.EnumComplete"
+        - "Tammes15.D2Regions.PlaneClass"
+        - "Tammes15.D2Regions.IsArcDrawing"
+        - "Tammes15.D2Regions.minorArc"
+        - "Tammes15.D2Regions.dartArc"
+        - "Tammes15.D2Regions.drawingSet"
+        - "Tammes15.D2Regions.IsRegion"
+        - "Tammes15.D2Regions.Bounds"
+        - "Tammes15.D2Regions.regionSize"
+        - "Tammes15.IsAngular"
+        - "Tammes15.RotSys.IsoRefl"
+      module:
+        - "Tammes15.Hyps.Computations"
+        - "Tammes15.D2Regions.Defs"
+        - "Tammes15.Draw.Defs"
+        - "Tammes15.Hyps.Case"
+      note: "the rotation of the drawing as `Tammes15.IsAngular`, the condition of Definition 2.1(2)"
+    - source: "Definition 7.2 of the paper (def:glue)"
+      status: proved
+      lean:
+        - "Tammes15.GlueData"
+        - "Tammes15.GlueData.Valid"
+        - "Tammes15.GlueData.refD"
+        - "Tammes15.turnSteps"
+        - "Tammes15.Assign.turn"
+        - "Tammes15.GlueData.frame"
+        - "Tammes15.glueY"
+        - "Tammes15.stepM"
+        - "Tammes15.PairFires"
+        - "Tammes15.LocalFires"
+        - "Tammes15.rLocal"
+      module:
+        - "Tammes15.Hyps.Case"
+        - "Tammes15.Glue.Enclosure"
+    - source: "Definition 7.3 of the paper (def:dthree)"
+      status: proved
+      lean:
+        - "Tammes15.Killed"
+        - "Tammes15.HexChoice"
+        - "Tammes15.Frame"
+      module:
+        - "Tammes15.Hyps.Computations"
+        - "Tammes15.Hyps.Case"
+    - source: "Computation 7.4 of the paper (comp:enum)"
+      status: other
+      script:
+        - "code/impl1/stageA_check.sh"
+      output:
+        - "code/impl1/out/stageA_parts.txt"
+      note: "by plantri; its conclusion is D2 (Proposition B.3)"
+    - source: "Computation 7.5 of the paper (comp:stageA)"
+      status: other
+      script:
+        - "code/impl1/stageA_check.sh"
+      output:
+        - "code/impl1/out/stageA_parts.txt"
+    - source: "Computation 7.6 of the paper (comp:level2)"
+      status: other
+      script:
+        - "code/impl1/replay_all.sh"
+        - "code/impl1/coverage_join.sh"
+      output:
+        - "code/impl1/out/guarded/replay_summary.txt"
+        - "code/impl1/out/guarded/coverage_join.txt"
+    - source: "Section 7.5 of the paper (sec:replay)"
+      status: other
+      script:
+        - "code/impl1/replay_summary.sh"
+        - "code/impl1/coverage_join.sh"
+      output:
+        - "code/impl1/out/guarded/replay_summary.txt"
+        - "code/impl1/out/guarded/coverage_join.txt"
+    - source: "Proposition 7.7 of the paper (prop:lists)"
+      status: other
+      script:
+        - "code/impl1/coverage_join.sh"
+        - "code/impl1/replay_summary.sh"
+      output:
+        - "code/impl1/out/guarded/coverage_join.txt"
+        - "code/impl1/out/guarded/replay_summary.txt"
+      note: "D2 is a hypothesis of Theorems B.8 and B.9, and D3 is a hypothesis of Theorem B.8, proved in Lean from the hypotheses of Theorem B.9 as `Tammes15.Contractors.killed\\_of\\_progTreesDom`"
+    - source: "Section 9.3 of the paper (sec:formal)"
+      status: other
+      script:
+        - "code/lean/check.sh"
+        - "code/lean/challenge.sh"
+        - "code/lean/comparator.sh"
+        - "code/lean-data/regen.sh"
+      output:
+        - "code/lean/check.out"
+        - "code/lean/build.out"
+        - "code/lean/challenge.out"
+        - "code/lean/comparator.out"
+        - "code/lean-data/regen.out"
+    - source: "Lemma A.1 of the paper (lem:alpha)"
+      status: proved
+      lean:
+        - "Tammes15.alpha_le_angle"
+        - "Tammes15.alpha_bounds"
+      module:
+        - "Tammes15.Trigrows.Points"
+        - "Tammes15.Trigrows.Rows"
+    - source: "Lemma A.2 of the paper (lem:shift)"
+      status: proved
+      lean:
+        - "Tammes15.exists_push_dir"
+        - "Tammes15.shift_config"
+        - "Tammes15.shift_move"
+      module:
+        - "Tammes15.Draw.Shift"
+        - "Tammes15.Trigrows.Sdist"
+      note: "without the closeness of $v'$ to $v$, which Lemma 4.2 does not use"
+    - source: "Lemma A.3 of the paper (lem:hemi)"
+      status: proved
+      lean:
+        - "Tammes15.polygon_hemisphere"
+      module:
+        - "Tammes15.TwoConn.Farm"
+      note: "for closed polygons with sides shorter than $\\pi$, whose vertices lie in an open hemisphere"
+    - source: "Lemma A.4 of the paper (lem:genus)"
+      status: proved
+      lean:
+        - "Tammes15.permutation_cycle_bound_classes"
+      module:
+        - "Tammes15.TwoConn.Regions"
+      note: "with $c$ the number of classes of any partition of $Z$ such that every function invariant under $\\pi_1$ and $\\pi_2$ is constant on each class"
+    - source: "Lemma A.5 of the paper (lem:hull)"
+      status: proved
+      lean:
+        - "Tammes15.hullGraph"
+        - "Tammes15.ExposedPair"
+        - "Tammes15.exists_angular"
+        - "Tammes15.hull_step"
+        - "Tammes15.facetPolar"
+        - "Tammes15.isFacetPolar_facetPolar"
+        - "Tammes15.facetPolar_strict"
+        - "Tammes15.facet_fst_injective"
+        - "Tammes15.facet_period_ge_three"
+        - "Tammes15.facet_excess"
+        - "Tammes15.hull_corner_total"
+        - "Tammes15.hull_connected"
+        - "Tammes15.hull_euler"
+        - "Tammes15.fan_det_pos"
+        - "Tammes15.cone_unique"
+      module:
+        - "Tammes15.TwoConn.Defs"
+        - "Tammes15.Draw.Angular"
+        - "Tammes15.TwoConn.Hull"
+        - "Tammes15.TwoConn.Facets"
+        - "Tammes15.TwoConn.Excess"
+        - "Tammes15.TwoConn.FanCones"
+    - source: "Corollary A.6 of the paper (cor:twoconn)"
+      status: proved
+      lean:
+        - "Tammes15.twoconn"
+        - "Tammes15.twoconn_contact"
+        - "Tammes15.not_closed_hemisphere"
+        - "Tammes15.contact_exposed"
+        - "Tammes15.region_excess"
+        - "Tammes15.region_chi"
+        - "Tammes15.euler_bound_regions"
+        - "Tammes15.regions_count"
+        - "Tammes15.spherical_of_regions"
+        - "Tammes15.connected_of_regions"
+        - "Tammes15.region_turn"
+        - "Tammes15.region_wind"
+        - "Tammes15.face_walk_injective"
+        - "Tammes15.kconnected_two"
+      module:
+        - "Tammes15.TwoConn.Main"
+        - "Tammes15.Draw.Iface"
+        - "Tammes15.TwoConn.Hull"
+        - "Tammes15.TwoConn.Farm"
+        - "Tammes15.TwoConn.Regions"
+        - "Tammes15.TwoConn.Winding"
+        - "Tammes15.TwoConn.KConn"
+      note: "for a finite set of distinct unit vectors and a graph on it without isolated vertices whose edges are exposed pairs, with the face walks of its rotation in place of the faces of the drawing; the second declaration is the case of a contact graph"
+    - source: "Lemma A.7 of the paper (lem:convex)"
+      status: proved
+      lean:
+        - "Tammes15.FaceChain.Setup.strictSupportFace"
+        - "Tammes15.FaceChain.faceconvex_contact"
+        - "Tammes15.StrictSupportFace"
+      module:
+        - "Tammes15.FaceChain.Interfaces"
+        - "Tammes15.FaceChain.Contact"
+        - "Tammes15.Draw.Defs"
+      note: "for the faces of a contact graph, in the cone form of Section 9.4: along each face orbit, every vertex that is not an end of a side lies strictly on the left of the great circle of that side; proved from the 2-connectivity through the chain of lemmas on the faces of a contact graph of the eight-point proof"
+    - source: "Lemma A.8 of the paper (lem:polar)"
+      status: proved
+      lean:
+        - "Tammes15.Geom.perim_mono"
+        - "Tammes15.FaceChain.face_perimeter_lt"
+        - "Tammes15.Vendor.EM8.SquareAntiprismVerification.StrictSphericalPolygon.perimeter_lt_two_pi"
+        - "Tammes15.Vendor.EM8.SquareAntiprismVerification.StrictSphericalPolygon.polar_angle"
+        - "Tammes15.Geom.volume_lune"
+        - "Tammes15.Geom.lintegral_cnt"
+        - "Tammes15.Geom.IsCPoly.triple_pos"
+        - "Tammes15.Geom.IsCPoly.chg_le_two"
+        - "Tammes15.Geom.IsCPoly.cone_of_inClosed"
+      module:
+        - "Tammes15.Geom.Crofton"
+        - "Tammes15.FaceChain.Sizes"
+        - "Tammes15.Vendor.EM8.PolygonExcess"
+        - "Tammes15.Vendor.EM8.SphericalPolygon"
+        - "Tammes15.Geom.Basic"
+      note: "only the bound $md<2\\pi$ for the faces of Lemma 4.3, and the monotonicity for polygons in cone form, the latter by a formula of Crofton"
+    - source: "Lemma A.9 of the paper (lem:edge)"
+      status: proved
+      lean:
+        - "Tammes15.edge_distance"
+        - "Tammes15.sin_sub_add_sin"
+        - "Tammes15.hrad_bounds"
+      module:
+        - "Tammes15.Rattlers.Basic"
+        - "Tammes15.Trigrows.Mono"
+    - source: "Lemma A.10 of the paper (lem:disc)"
+      status: proved
+      lean:
+        - "Tammes15.Geom.disc_side"
+        - "Tammes15.Geom.inClosed_of_disc"
+      module:
+        - "Tammes15.Geom.Nor"
+        - "Tammes15.Geom.Onehex"
+      note: "for faces in cone form, by bounding the distance from $r$ to the great circle of each side"
+    - source: "Lemma A.11 of the paper (lem:perims)"
+      status: proved
+      lean:
+        - "Tammes15.hexPoly"
+        - "Tammes15.tanLen"
+        - "Tammes15.tanAng"
+        - "Tammes15.chordC"
+        - "Tammes15.tanLen_monotoneOn_l"
+        - "Tammes15.tanLen_monotoneOn_h"
+        - "Tammes15.tanAng_monotoneOn_l"
+        - "Tammes15.tanAng_monotoneOn_h"
+        - "Tammes15.chordC_monotoneOn_h"
+        - "Tammes15.chordC_monotoneOn_s"
+        - "Tammes15.Geom.qpoly"
+        - "Tammes15.Geom.Frame3"
+        - "Tammes15.Geom.qpoly_isCPoly"
+        - "Tammes15.Geom.qpoly_perim"
+        - "Tammes15.onehex_chord_margin"
+      module:
+        - "Tammes15.Rattlers.HexPoly"
+        - "Tammes15.Geom.Qpoly"
+        - "Tammes15.Geom.Frame"
+        - "Tammes15.Rattlers.HexChord"
+      script:
+        - "code/lean/numerics/chord.gp"
+      output:
+        - "code/lean/numerics/chord.out"
+      note: "item (1) for $l\\in[0,\\pi]$ in $\\ell_t$ and $l\\in[0,\\pi)$ in $\\gamma_t$, with $\\arccos$ equal to $\\pi$ below $-1$ and to $0$ above $1$"
+    - source: "Lemma A.12 of the paper (lem:inside)"
+      status: proved
+      lean:
+        - "Tammes15.Geom.exists_face_inside"
+      module:
+        - "Tammes15.Geom.Cover"
+    - source: "Definition B.1 of the paper (def:impl)"
+      status: proved
+      lean:
+        - "Tammes15.Contractors.Fl"
+        - "Tammes15.Contractors.Iv"
+        - "Tammes15.Contractors.Rnd"
+        - "Tammes15.Contractors.Rnd.Sound"
+        - "Tammes15.Contractors.Prim"
+        - "Tammes15.Contractors.Prim.Allowed"
+        - "Tammes15.Contractors.primStep"
+        - "Tammes15.Contractors.RowKind"
+        - "Tammes15.Contractors.SysRow"
+        - "Tammes15.Contractors.InOpen"
+        - "Tammes15.Contractors.triAngleSt"
+        - "Tammes15.Contractors.triAngle"
+        - "Tammes15.Contractors.side"
+        - "Tammes15.Contractors.DomOK"
+        - "Tammes15.Contractors.Run"
+        - "Tammes15.Contractors.WheelOut"
+        - "Tammes15.Contractors.Impl"
+        - "Tammes15.Contractors.onDom"
+      module:
+        - "Tammes15.Contractors.Arith"
+        - "Tammes15.Contractors.Defs"
+        - "Tammes15.Contractors.Prims"
+      note: "the primitive steps are definitions of the formalization, with the two guards, over an arbitrary arithmetic; item (6) is about the program and is not formalized; it is the assumption of Section 9.6"
+    - source: "Proposition B.2 of the paper (prop:sound)"
+      status: proved
+      lean:
+        - "Tammes15.Contractors.Impl.onDom_sound"
+        - "Tammes15.Contractors.progTrees_onDom"
+        - "Tammes15.Contractors.primStep_sound"
+        - "Tammes15.Contractors.primStep_subset"
+        - "Tammes15.Contractors.Run.sound"
+        - "Tammes15.Contractors.Run.subset"
+        - "Tammes15.Contractors.wheelOut_sound"
+      module:
+        - "Tammes15.Contractors.Statement"
+      note: "for all cases at once, with the procedures as a parameter of the statement and the variable of each corner attached to its dart, the first declaration, and for the trees of every case of a list, the second"
+    - source: "Proposition B.3 of the paper (prop:dtwo)"
+      status: other
+      script:
+        - "code/impl1/stageA_check.sh"
+      output:
+        - "code/impl1/out/stageA_parts.txt"
+      note: "D2 is a hypothesis of Theorems B.8 and B.9"
+    - source: "Computation B.4 of the paper (comp:targets)"
+      status: other
+      script:
+        - "code/hyps/d_range.sh"
+      output:
+        - "code/hyps/d_range.out"
+    - source: "Proposition B.5 of the paper (prop:dthree)"
+      status: other
+      script:
+        - "code/impl1/coverage_join.sh"
+        - "code/impl1/replay_summary.sh"
+      output:
+        - "code/impl1/out/guarded/coverage_join.txt"
+        - "code/impl1/out/guarded/replay_summary.txt"
+      note: "D3 is a hypothesis of Theorem B.8; Lemma B.7, Proposition B.2 and Theorem B.9 are the formal steps of its proof, and `Tammes15.Contractors.killed\\_of\\_progTreesDom` is D3 from the hypotheses of Theorem B.9"
+    - source: "Definition B.6 of the paper (def:verdicts)"
+      status: proved
+      lean:
+        - "Tammes15.PaperSteps.ProgKilled"
+        - "Tammes15.PaperSteps.SameHexSet"
+        - "Tammes15.PaperSteps.turnR"
+        - "Tammes15.PaperSteps.progFrameN"
+        - "Tammes15.PaperSteps.progGlueY"
+        - "Tammes15.PaperSteps.tieNormalize"
+        - "Tammes15.PaperSteps.InTieBoxes"
+        - "Tammes15.PaperSteps.TieFires"
+        - "Tammes15.PaperSteps.tieMid"
+        - "Tammes15.PaperSteps.tieRad"
+        - "Tammes15.PaperSteps.tieContacts"
+      module:
+        - "Tammes15.PaperSteps.Defs"
+        - "Tammes15.PaperSteps.TieData"
+    - source: "Lemma B.7 of the paper (lem:verdicts)"
+      status: proved
+      lean:
+        - "Tammes15.PaperSteps.killed_of_progKilled"
+        - "Tammes15.PaperSteps.exists_shift_data"
+        - "Tammes15.PaperSteps.relSys_relabel"
+        - "Tammes15.PaperSteps.glueY_relabel"
+        - "Tammes15.PaperSteps.pairFires_of_equiv"
+        - "Tammes15.PaperSteps.localFires_of_equiv"
+        - "Tammes15.PaperSteps.glueY_theta"
+        - "Tammes15.PaperSteps.frameN_theta"
+        - "Tammes15.PaperSteps.free_angle_sum"
+        - "Tammes15.PaperSteps.localFires_of_tieFires"
+        - "Tammes15.PaperSteps.inTieBoxes_pt"
+        - "Tammes15.PaperSteps.tie_idx"
+        - "Tammes15.PaperSteps.normalize_isometry"
+      module:
+        - "Tammes15.PaperSteps.Main"
+        - "Tammes15.PaperSteps.Relabel"
+        - "Tammes15.PaperSteps.Reflect"
+        - "Tammes15.PaperSteps.Targets"
+        - "Tammes15.PaperSteps.FrameD"
+    - source: "Theorem B.8 of the paper (thm:formal)"
+      status: proved
+      lean:
+        - "Tammes15.conjecture_of_enum_killed"
+        - "Tammes15.conjecture_of_frames"
+        - "Tammes15.reduction"
+        - "Tammes15.upperBound_of_hyps"
+        - "Tammes15.realisation_transport"
+        - "Tammes15.realisation_iso"
+        - "Tammes15.realisation_reverse"
+        - "Tammes15.D2Regions.planeClass_of_structured"
+        - "Tammes15.attained_of_hyp"
+        - "Tammes15.conjecture_iff"
+        - "Tammes15.existsUnique_root"
+      module:
+        - "Tammes15.Attained.Final"
+        - "Tammes15.Attained.Capstone"
+        - "Tammes15.Hyps.Reduction"
+        - "Tammes15.Hyps.Transport"
+        - "Tammes15.D2Regions.Statement"
+        - "Tammes15.Statement"
+      note: "the conclusion is `Tammes15.Conjecture`, the formal statement of Theorem 1.1"
+    - source: "Theorem B.9 of the paper (thm:trees)"
+      status: proved
+      lean:
+        - "Tammes15.conjecture_of_enum_progTreesDom"
+        - "Tammes15.Contractors.ProgTreesDom"
+        - "Tammes15.Contractors.Impl"
+        - "Tammes15.Contractors.killed_of_progTreesDom"
+        - "Tammes15.conjecture_of_enum_progTrees"
+        - "Tammes15.PaperSteps.ProgTrees"
+        - "Tammes15.PaperSteps.progKilled_of_progTrees"
+        - "Tammes15.conjecture_of_enum_progKilled"
+      module:
+        - "Tammes15.Contractors.Statement"
+        - "Tammes15.Contractors.Defs"
+        - "Tammes15.Contractors.Main"
+        - "Tammes15.PaperSteps.MainSearch"
+        - "Tammes15.PaperSteps.SearchDefs"
+        - "Tammes15.PaperSteps.Search"
+        - "Tammes15.PaperSteps.Main"
+      note: "the conclusion is `Tammes15.Conjecture`, the formal statement of Theorem 1.1; the family of procedures is a parameter of the statement; the fourth declaration gives D3 with $\\{C_1,C_3\\}$ from the same hypotheses; the fifth is the conclusion from D2, any sound family of procedures and its accepted trees"
+    - source: "Lemma C.1 of the paper (lem:anglesum)"
+      status: proved
+      lean:
+        - "Tammes15.FejesToth.sphereVertexAngle_eq_arg"
+        - "Tammes15.FejesToth.angle_sum_arg"
+      module:
+        - "Tammes15.FejesToth.Triangle"
+    - source: "Lemma C.2 of the paper (lem:fttri)"
+      status: proved
+      lean:
+        - "Tammes15.FejesToth.fejesToth_triangle"
+        - "Tammes15.FejesToth.gram_cross"
+        - "Tammes15.FejesToth.circumcentre_identity"
+        - "Tammes15.FejesToth.tri_sq_le"
+        - "Tammes15.FejesToth.tri_poly"
+        - "Tammes15.FejesToth.tri_mul_le"
+        - "Tammes15.FejesToth.arg_le_arg_of_mul_le"
+        - "Tammes15.inner_cross_cyc"
+        - "Tammes15.Vendor.EM8.SquareAntiprismVerification.spherical_triangle_excess_positive"
+      module:
+        - "Tammes15.FejesToth.Triangle"
+        - "Tammes15.TwoConn.Facets"
+        - "Tammes15.Vendor.EM8.SphericalTriangle"
+    - source: "Proposition C.3 of the paper (prop:ftbound)"
+      status: proved
+      lean:
+        - "Tammes15.fejesToth_bound"
+        - "Tammes15.FejesToth.N1"
+        - "Tammes15.FejesToth.N2"
+        - "Tammes15.FejesToth.exists_saturated"
+        - "Tammes15.FejesToth.sep_card_bound"
+        - "Tammes15.FejesToth.hB_of_sat"
+        - "Tammes15.FejesToth.facetPolar_norm_lt"
+        - "Tammes15.FejesToth.facet_fan_bound"
+        - "Tammes15.FejesToth.hull_fan_count"
+        - "Tammes15.hullGraph"
+        - "Tammes15.exists_angular"
+        - "Tammes15.facetPolar"
+        - "Tammes15.isFacetPolar_facetPolar"
+        - "Tammes15.facetPolar_strict"
+        - "Tammes15.hull_corner_total"
+        - "Tammes15.hull_euler"
+      module:
+        - "Tammes15.FejesToth.Bound"
+        - "Tammes15.FejesToth.Numerics"
+        - "Tammes15.FejesToth.Saturate"
+        - "Tammes15.FejesToth.Facets"
+        - "Tammes15.TwoConn.Defs"
+        - "Tammes15.Draw.Angular"
+        - "Tammes15.TwoConn.Facets"
+        - "Tammes15.TwoConn.Excess"
+      note: "of type `Tammes15.FejesTothBound`"
+    # statement-map end
+
+acknowledgements: >-
+  Lean 4 and Mathlib; Comparator, lean4export, landrun and nanoda; the
+  eight-point Lean development of Kryvonos, Liehr and Taylor (THIRD_PARTY.md);
+  plantri by Brinkmann and McKay; Satvik-patil for the argument of Theorem 1.3.

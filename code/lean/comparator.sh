@@ -3,17 +3,19 @@
 # job comparator of .github/workflows/ci.yml: the build outputs of the challenge modules are deleted, so that
 # Comparator builds the challenge from its source in its sandbox, and `lake env comparator config.json` runs in a
 # systemd unit where landrun cannot reach the user's session bus (no AF_UNIX sockets). The solution is the build that
-# check.sh made. With config.json as it is, the fifteen theorems it names (`Tammes15.reduction`,
+# check.sh made. With config.json as it is, the twenty-four theorems it names (`Tammes15.reduction`,
 # `Tammes15.fejesToth_bound`, `Tammes15.conjecture_of_enum_killed`, `Tammes15.nonunique_of_enum_killed`, eight of
-# `Tammes15.PaperSteps`, `Tammes15.Contractors.killed_of_progTreesDom`, `Tammes15.conjecture_of_enum_progTreesDom`
-# and `Tammes15.nonunique_of_enum_progTreesDom`) of `Tammes15.Solution` must have exactly the statements of
-# `Tammes15.Challenge`, every constant these statements reach must be identical in the two, only propext, Quot.sound
-# and Classical.choice may be used, and the kernels must accept the export of the proofs. Expected: PASS. When
-# lean4export crashes (exit 139) during the export, before any kernel runs (code/lean/export_crash.awk), Comparator
-# runs once more and that run decides, as in ci.yml. Comparator exports the challenge and the solution, compares
-# the statements and the constants they reach, then runs nanoda (4 threads) and, unless config.json sets lean_kernel
-# to false (a patch of this repository on Comparator, .github/comparator-lean-kernel.patch), the Lean kernel (one
-# thread) after it. code/lean/comparator.out records a pass.
+# `Tammes15.PaperSteps`, `Tammes15.Contractors.killed_of_progTreesDom`, `Tammes15.conjecture_of_enum_progTreesDom`,
+# `Tammes15.nonunique_of_enum_progTreesDom`, `Tammes15.classification_of_enum_killed`,
+# `Tammes15.classification_of_enum_progTreesDom`, the five of Proposition 3.2 in `Tammes15.PaperSteps`,
+# `Tammes15.classification_count_of_enum_killed` and `Tammes15.classification_count_of_enum_progTreesDom`) of
+# `Tammes15.Solution` must have exactly the statements of `Tammes15.Challenge`, every constant these statements reach
+# must be identical in the two, only propext, Quot.sound and Classical.choice may be used, and the kernels must accept
+# the export of the proofs. Expected: PASS. When lean4export crashes (exit 139) during the export, before any kernel
+# runs (code/lean/export_crash.awk), Comparator runs once more and that run decides, as in ci.yml. Comparator exports
+# the challenge and the solution, compares the statements and the constants they reach, then runs nanoda (4 threads)
+# and, unless config.json sets lean_kernel to false (a patch of this repository on Comparator,
+# .github/comparator-lean-kernel.patch), the Lean kernel (one thread) after it. code/lean/comparator.out records a pass.
 # Usage, from the root of the repository:
 #   code/lean/comparator.sh pass
 # Env: COMPARATOR (the comparator binary), COMPARATOR_LANDRUN, COMPARATOR_LEAN4EXPORT, COMPARATOR_NANODA (paths, built

@@ -4,9 +4,9 @@
 \\ of Section 3), coordinates from ../../data/bk15_c1.txt and bk15_c3.txt.
 \\ Run: gp -q contact_graphs.gp < /dev/null
 default(realprecision, 40);
-names = ["p_V", "rho p_V", "rho^2 p_V", "p_W", "rho p_W", "rho^2 p_W", "p_T", "rho p_T", "rho^2 p_T", \
-  "tau p_T", "rho tau p_T", "rho^2 tau p_T", "tau p_W", "rho^2 tau p_W", "rho tau p_W", "tau p_V", \
-  "rho^2 tau p_V", "rho tau p_V"];
+names = ["p_V", "zeta p_V", "zeta^2 p_V", "p_W", "zeta p_W", "zeta^2 p_W", "p_T", "zeta p_T", "zeta^2 p_T", \
+  "chi p_T", "zeta chi p_T", "zeta^2 chi p_T", "chi p_W", "zeta^2 chi p_W", "zeta chi p_W", "chi p_V", \
+  "zeta^2 chi p_V", "zeta chi p_V"];
 lines = readstr("../../data/bk15_exact.txt");
 field(key) = {
   for (i = 1, #lines, my(s = lines[i], k = #key);

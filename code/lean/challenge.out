@@ -1,4 +1,4 @@
-# bash code/lean/challenge.sh (the fifteen statements), in a copy of the repository without Tammes15/Challenge/; the modules written are identical to those of Tammes15/Challenge/ (diff -r)
+# bash code/lean/challenge.sh (the twenty-four statements), in a copy of the repository without Tammes15/Challenge/; the modules written are identical to those of Tammes15/Challenge/ (diff -r)
 Tammes15.Attained.Data
 Tammes15.Contractors.Arith
 Tammes15.Contractors.Defs
@@ -23,7 +23,7 @@ Tammes15.Trigrows.Margins
 Tammes15.Trigrows.Mono
 Tammes15.Trigrows.Rows
 Tammes15.Trigrows.Sphere
-modules: 24, lines: 5125
+modules: 24, lines: 5245
 # bash code/lean/challenge.sh --closure Tammes15.Hyps.Computations Tammes15.Attained.Data Tammes15.Nonunique.Defs (the first four statements of config.json)
 Tammes15.Attained.Data
 Tammes15.D2Regions.Defs
@@ -41,4 +41,4 @@ Tammes15.Trigrows.Margins
 Tammes15.Trigrows.Mono
 Tammes15.Trigrows.Rows
 Tammes15.Trigrows.Sphere
-modules: 16, lines: 3431
+modules: 16, lines: 3511

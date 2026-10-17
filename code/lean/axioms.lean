@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 mt0-svg. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: mt0-svg
+-/
 import Tammes15.Statement
 import Tammes15.Hyps.Reduction
 import Tammes15.Local41.Chain
@@ -12,6 +17,9 @@ import Tammes15.PaperSteps.Optima
 import Tammes15.PaperSteps.Isometric
 import Tammes15.Contractors.Main
 import Tammes15.D2Regions.Statement
+import Tammes15.Classification
+import Tammes15.PaperSteps.Automorphisms
+import Tammes15.PaperSteps.Classes
 
 /-! `#print axioms` of the main theorem, of the theorems it takes from each part (the interfaces of
 `Draw/Iface.lean` and `Hyps/Interfaces.lean`), of theorems of the written proof, of the
@@ -19,8 +27,11 @@ eight-point theorem of the vendored library, of the bound of Fejes Tóth with 17
 of the vendored library behind it, of the main theorem with D1 and D4 proved and theorems of D1 and D4, of the
 inequalities of `Params/`, of the non-uniqueness corollary with its parts, of the eight theorems of `PaperSteps/`
 that `config.json` names, of the main theorem, the corollary and D3 from the search trees the replays accept and
-the soundness theorems of `Contractors/` behind them, and of the theorems of `D2Draw/` and `D2Regions/`. Run by
-check.sh, step 4. -/
+the soundness theorems of `Contractors/` behind them, of the theorems of `D2Draw/` and `D2Regions/`, of the
+classification of the maximal configurations in its two forms with the steps of its proof, of the five theorems of
+Proposition 3.2 (`PaperSteps/Automorphisms.lean`) with the steps of their proof, and of the count up to rotation,
+the contacts and the two maximal graphs of the classification in its two forms (`PaperSteps/Classes.lean`) with the
+steps of their proof. Run by check.sh, step 4. -/
 
 #print axioms Tammes15.reduction
 #print axioms Tammes15.upperBound_of_hyps
@@ -142,3 +153,26 @@ check.sh, step 4. -/
 #print axioms Tammes15.contactDrawn_arcs
 #print axioms Tammes15.D2Regions.regions_eq_facePolygons
 #print axioms Tammes15.D2Regions.planeClass_of_structured
+#print axioms Tammes15.classification_of_enum_killed
+#print axioms Tammes15.classification_of_enum_progTreesDom
+#print axioms Tammes15.exists_unshiftable
+#print axioms Tammes15.lemma_unshiftable
+#print axioms Tammes15.structured_of_unshiftable
+#print axioms Tammes15.realisation_of_structured_pts
+#print axioms Tammes15.realisation_transport_pts
+#print axioms Tammes15.PaperSteps.aut_contactGraph_C1
+#print axioms Tammes15.PaperSteps.aut_contactGraph_C3
+#print axioms Tammes15.PaperSteps.orthogonal_C1
+#print axioms Tammes15.PaperSteps.orthogonal_C3
+#print axioms Tammes15.PaperSteps.orthogonal_det
+#print axioms Tammes15.PaperSteps.perm_S1_eq_one
+#print axioms Tammes15.PaperSteps.perm_S3_eq_zeta3_pow
+#print axioms Tammes15.PaperSteps.eq_zero_of_inner_pV
+#print axioms Tammes15.PaperSteps.det_rhoL
+#print axioms Tammes15.classification_count_of_enum_killed
+#print axioms Tammes15.classification_count_of_enum_progTreesDom
+#print axioms Tammes15.PaperSteps.classification_count_core
+#print axioms Tammes15.PaperSteps.exists_rotation
+#print axioms Tammes15.PaperSteps.frame_map_eq
+#print axioms Tammes15.PaperSteps.rotation_classes_distinct
+#print axioms Tammes15.PaperSteps.contacts_of_iso

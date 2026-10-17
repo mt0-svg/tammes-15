@@ -13,9 +13,9 @@
 
 ## The result
 
-We prove that the largest possible minimal angular distance between fifteen points on the unit sphere is $`\arccos u\approx 53.65785^\circ`$, where $`u`$ is the root in $`(1/2,7/10)`$ of $`13u^5-u^4+6u^3+2u^2-3u-1`$. This value is attained by two configurations described by Buddenhagen and Kottwitz, whose contact graphs are not isomorphic, so the optimum is not unique. As Musin and Tarasov did for thirteen and fourteen points, a written reduction leads to plane graphs with at most fifteen vertices, and an interval computation rules out each of them except near the two known optima, where a local rigidity estimate concludes. The computation records its search trees as certificates, which are replayed. Lean 4 proves every step except the enumeration of the plane graphs and their refutation by the program, which enter the formal proof as hypotheses.
+We prove that the largest possible minimal angular distance between fifteen points on the unit sphere is $`\arccos u\approx 53.65785^\circ`$, where $`u`$ is the root in $`(1/2,7/10)`$ of $`13u^5-u^4+6u^3+2u^2-3u-1`$. Up to isometry this value is attained by exactly two configurations, described by Buddenhagen and Kottwitz, whose contact graphs are not isomorphic. As Musin and Tarasov did for thirteen and fourteen points, a written reduction leads to plane graphs with at most fifteen vertices, and an interval computation rules out each of them except near the two known optima, where a local rigidity estimate concludes. The computation records its search trees as certificates, which are replayed. Lean 4 proves every step except the enumeration of the plane graphs and their refutation by the program, which enter the formal proof as hypotheses.
 
-Corollary 1.2 of the paper answers in the negative, for $`N=15`$, Question 2 of Section 6 of Musin and Tarasov, *Extremal problems of circle packings on a sphere and irreducible contact graphs*, Proc. Steklov Inst. Math. 288 (2015), 117–131 ([doi:10.1134/S0081543815010095](https://doi.org/10.1134/S0081543815010095); [arXiv:1410.0744](https://arxiv.org/abs/1410.0744)): is the contact graph of a maximal configuration of $`N>5`$ points unique up to isomorphism?
+Corollary 1.2 of the paper answers in the negative, for $`N=15`$, Question 2 of Section 6 of Musin and Tarasov, *Extremal problems of circle packings on a sphere and irreducible contact graphs*, Proc. Steklov Inst. Math. 288 (2015), 117–131 ([doi:10.1134/S0081543815010095](https://doi.org/10.1134/S0081543815010095); [arXiv:1410.0744](https://arxiv.org/abs/1410.0744)): is the contact graph of a maximal configuration of $`N>5`$ points unique up to isomorphism? By Theorem 1.3 there are exactly two such graphs for $`N=15`$. The argument of Theorem 1.3 is due to [@Satvik-patil](https://github.com/Satvik-patil) ([issue #1](https://github.com/mt0-svg/tammes-15/issues/1)).
 
 ```lean
 theorem Tammes15.conjecture_of_enum_progTreesDom (L : Set Tammes15.PlaneGraph) (N : Tammes15.PaperSteps.Procs)
@@ -31,6 +31,34 @@ theorem Tammes15.nonunique_of_enum_progTreesDom (L : Set Tammes15.PlaneGraph) (N
         IsEmpty
           (Tammes15.Nonunique.contactGraph X (Real.cos d) ≃g Tammes15.Nonunique.contactGraph Y (Real.cos d))
 
+theorem Tammes15.classification_count_of_enum_progTreesDom (L : Set Tammes15.PlaneGraph)
+    (N : Tammes15.PaperSteps.Procs) (h2 : Tammes15.EnumComplete L) (h3 : Tammes15.Contractors.ProgTreesDom L N)
+    (hN : Tammes15.Contractors.Impl N) (u : ℝ) (hu1 : 1 / 2 < u) (hu2 : u < 7 / 10)
+    (hu0 : Tammes15.quintic u = 0) (x : Fin 15 → Tammes15.E3) (hx : ∀ i, ‖x i‖ = 1)
+    (hsep : ∀ i j, i ≠ j → Real.arccos u ≤ InnerProductGeometry.angle (x i) (x j)) :
+    (∃ q ∈ ({Tammes15.Attained.frameC1, Tammes15.Attained.frameC3} : Set Tammes15.Frame),
+      ∃ s ∈ ({1, -1} : Set ℝ), ∃ σ : Fin 15 ≃ Fin 15, ∃ R : Tammes15.E3 ≃ₗᵢ[ℝ] Tammes15.E3,
+        LinearMap.det (R.toLinearEquiv : Tammes15.E3 →ₗ[ℝ] Tammes15.E3) = 1 ∧ ∀ i, x i = s • R (q.p (σ i))) ∧
+    (∀ q ∈ ({Tammes15.Attained.frameC1, Tammes15.Attained.frameC3} : Set Tammes15.Frame),
+      ∀ s ∈ ({1, -1} : Set ℝ), (∀ i, ‖s • q.p i‖ = 1) ∧
+        ∀ i j, i ≠ j → Real.arccos u ≤ InnerProductGeometry.angle (s • q.p i) (s • q.p j)) ∧
+    (∀ q ∈ ({Tammes15.Attained.frameC1, Tammes15.Attained.frameC3} : Set Tammes15.Frame),
+      ∀ q' ∈ ({Tammes15.Attained.frameC1, Tammes15.Attained.frameC3} : Set Tammes15.Frame),
+      ∀ s ∈ ({1, -1} : Set ℝ), ∀ s' ∈ ({1, -1} : Set ℝ), ∀ σ : Fin 15 ≃ Fin 15,
+      ∀ R : Tammes15.E3 ≃ₗᵢ[ℝ] Tammes15.E3,
+      LinearMap.det (R.toLinearEquiv : Tammes15.E3 →ₗ[ℝ] Tammes15.E3) = 1 →
+        (∀ i, s' • q'.p (σ i) = R (s • q.p i)) → q = q' ∧ s = s') ∧
+    {ij : Fin 15 × Fin 15 | ij.1 < ij.2 ∧ InnerProductGeometry.angle (x ij.1) (x ij.2) = Real.arccos u}.ncard =
+      30 ∧
+    (∀ i, 3 ≤ {j | j ≠ i ∧ InnerProductGeometry.angle (x i) (x j) = Real.arccos u}.ncard ∧
+      {j | j ≠ i ∧ InnerProductGeometry.angle (x i) (x j) = Real.arccos u}.ncard ≤ 5) ∧
+    (Nonempty (Tammes15.Nonunique.contactGraph x u ≃g Tammes15.Nonunique.contactGraph Tammes15.Attained.frameC1.p u) ∨
+      Nonempty (Tammes15.Nonunique.contactGraph x u ≃g
+        Tammes15.Nonunique.contactGraph Tammes15.Attained.frameC3.p u)) ∧
+    IsEmpty (Tammes15.Nonunique.contactGraph Tammes15.Attained.frameC1.p u ≃g
+      Tammes15.Nonunique.contactGraph Tammes15.Attained.frameC3.p u)
+
+
 theorem Tammes15.conjecture_of_enum_killed (L : Set Tammes15.PlaneGraph) (h2 : Tammes15.EnumComplete L)
     (h3 : Tammes15.Killed L {Tammes15.Attained.frameC1, Tammes15.Attained.frameC3}) :
     Tammes15.Conjecture
@@ -38,10 +66,10 @@ theorem Tammes15.conjecture_of_enum_killed (L : Set Tammes15.PlaneGraph) (h2 : T
 
 ## What is checked
 
-- **Lean 4**: `Tammes15.conjecture_of_enum_progTreesDom` (Theorem B.9) proves the value of $`d_{15}`$ and `Tammes15.nonunique_of_enum_progTreesDom` proves Corollary 1.2, from three hypotheses: D2 for a set of plane graphs (Definition 7.1); for each of its graphs and each choice of hexagons, a choice in the same faces such that each $`d`$ in $`[d_{lo}, d_{hi}]`$ lies in a range on which a family of interval procedures accepts a search tree for it from a box in the domain that contains the root box; and that these procedures are computed by the program in the sense of Definition B.1(5). `Tammes15.conjecture_of_enum_killed` and `Tammes15.nonunique_of_enum_killed` (Theorem B.8) prove the same from D2 and D3 (Definitions 7.1 and 7.3). Each depends only on the axioms `propext`, `Classical.choice` and `Quot.sound`, with Mathlib. Comparator checks these four theorems, with eleven more, against the statements of `Tammes15/Challenge.lean`.
+- **Lean 4**: `Tammes15.conjecture_of_enum_progTreesDom` (Theorem B.9) proves the value of $`d_{15}`$, `Tammes15.nonunique_of_enum_progTreesDom` proves Corollary 1.2, and `Tammes15.classification_of_enum_progTreesDom` and `Tammes15.classification_count_of_enum_progTreesDom` prove Theorem 1.3 (the maximal configurations are the orthogonal images of $`C_1`$ and $`C_3`$, four up to rotation, with thirty contacts and contact graphs isomorphic to one of theirs), from three hypotheses: D2 for a set of plane graphs (Definition 7.1); for each of its graphs and each choice of hexagons, a choice in the same faces such that each $`d`$ in $`[d_{lo}, d_{hi}]`$ lies in a range on which a family of interval procedures accepts a search tree for it from a box in the domain that contains the root box; and that these procedures are computed by the program in the sense of Definition B.1(5). `Tammes15.conjecture_of_enum_killed` (Theorem B.8), `Tammes15.nonunique_of_enum_killed`, `Tammes15.classification_of_enum_killed` and `Tammes15.classification_count_of_enum_killed` prove the same from D2 and D3 (Definitions 7.1 and 7.3). The five theorems `Tammes15.PaperSteps.aut_contactGraph_C1`, `aut_contactGraph_C3`, `orthogonal_C1`, `orthogonal_C3` and `orthogonal_det` prove Proposition 3.2, a step of the proof of Theorem 1.3, with no hypothesis. Each depends only on the axioms `propext`, `Classical.choice` and `Quot.sound`, with Mathlib. Comparator checks these thirteen theorems, with eleven more, against the statements of `Tammes15/Challenge.lean`.
 - **Computation**: D2 for the list given by plantri and an output filter, and the trees by the first level of the program and the replay of its certificates, both of which the CI reruns in full. The proof assumes that plantri, with the options of Computation 7.4, meets its description and that the filter keeps exactly the graphs of maximum degree at most 5, and that the program meets its model in the sense of Definition B.1(6) (Section 9.6 of the paper).
 
-[`STATEMENTS.md`](STATEMENTS.md) states the main theorems with their hypotheses and maps each numbered statement of the paper to its Lean declarations, or to its scripts and their recorded outputs. [`code/README.md`](code/README.md) gives the script, recorded output and running time of each check, and says which checks the CI reruns.
+[`formalization.yaml`](formalization.yaml) describes the formalization in the format of [formalization.yaml](https://github.com/mathlib-initiative/formalization.yaml): the main theorems with their hypotheses, their files and their axioms, and in `alignment.statements` each numbered statement of the paper with its Lean declarations and their modules, or its scripts and their recorded outputs. [`code/README.md`](code/README.md) gives the script, recorded output and running time of each check, and says which checks the CI reruns.
 
 The workflow `ci.yml` builds the Lean package, prints the axioms and runs Comparator in nanoda; it reruns the computations that fit a runner, replays every certificate in three parallel jobs, and compares each output with the recorded one. The badges give the results of the latest run by hand on `main` and link to that run. A release publishes the PDF, the outputs of every check of the green run by hand on the tagged commit, and the Lake build archive that Comparator checked.
 
@@ -53,7 +81,7 @@ The workflow `ci.yml` builds the Lean package, prints the axioms and runs Compar
 | `paper/` | the TeX source |
 | `code/` | the program of the computation and the output filter of plantri, the PARI/GP and SageMath scripts, the generators of the Lean data, the checks of the Lean package, each with its recorded output |
 | `data/` | the two optima, the parameters of the runs, the targets of Local |
-| `STATEMENTS.md` | the statement map |
+| `formalization.yaml` | the formalization in the format of formalization.yaml, with the statement map |
 | `ASSETS.md` | the data tarballs of the release, with their sha256 sums |
 | `THIRD_PARTY.md` | the vendored Lean code and every change made to it |
 
@@ -63,16 +91,16 @@ Fast check, in a clone at the tag, with the build of the release (times measured
 
 ```sh
 lake exe cache get          # Mathlib, from its cache: 234 s with an empty cache
-lake build :release         # this package, from the release archive (113 MB): 3 s once downloaded
-lake build --no-build       # nothing left to build: 5 s
+lake build :release         # this package, from the release archive (114 MB): 3 s once downloaded
+lake build --no-build       # nothing left to build: 3 s
 rm -rf .lake/build/lib/lean/Tammes15/Challenge .lake/build/lib/lean/Tammes15/Challenge.* \
   .lake/build/ir/Tammes15/Challenge .lake/build/ir/Tammes15/Challenge.*
-# then Comparator, as the job comparator of .github/workflows/ci.yml runs it: 281 s with nanoda
+# then Comparator, as the job comparator of .github/workflows/ci.yml runs it: 374 s with nanoda
 ```
 
 Comparator trusts the challenge module, which holds the statements: the `rm` line has it compiled again from its source in Comparator's sandbox.
 
-Full check, from source: `lake exe cache get && code/lean/check.sh` (the build took 1446 s with `LEAN_NUM_THREADS=3`; output `code/lean/check.out`), then `code/lean/comparator.sh pass` (`code/README.md`). The record `code/lean/comparator.out` is a pass on the workstation of the paper, with nanoda alone, in 281 s.
+Full check, from source: `lake exe cache get && code/lean/check.sh` (the build took 1376 s with `LEAN_NUM_THREADS=3`; output `code/lean/check.out`), then `code/lean/comparator.sh pass` (`code/README.md`). The record `code/lean/comparator.out` is a pass on the workstation of the paper, with nanoda alone, in 374 s.
 
 As a dependency, in a package on Lean `v4.34.1` that requires Mathlib at `rev = "v4.34.1"`:
 
@@ -80,10 +108,10 @@ As a dependency, in a package on Lean `v4.34.1` that requires Mathlib at `rev = 
 [[require]]
 name = "tammes-15"
 git = "https://github.com/mt0-svg/tammes-15"
-rev = "v1.3.0"
+rev = "v1.4.0"
 ```
 
-then `lake update tammes-15`, `lake exe cache get` and `lake build`, which downloads the build archive of the release and compiles none of its modules: a file that imports `Tammes15.Solution` and prints the axioms of the fifteen theorems of `config.json` built in 74 s once Mathlib was in place.
+then `lake update tammes-15`, `lake exe cache get` and `lake build`, which downloads the build archive of the release and compiles none of its modules: a file that imports `Tammes15.Solution` and prints the axioms of the twenty-four theorems of `config.json` built in 35 s once Mathlib was in place.
 
 The computations: `code/rerun.sh --list` prints the names of the checks, and `code/rerun.sh NAME ...` reruns them and compares each output with the recorded one; `code/README.md` gives the running time of each, and the commands of the replay of every certificate from the data tarballs (`code/impl1/fetch_assets.sh DIR` downloads them) and of the steps that the CI leaves out.
 

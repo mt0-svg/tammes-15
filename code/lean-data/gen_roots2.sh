@@ -14,6 +14,11 @@ IFS=',' read -r -a M <<< "$vals"
 names=(aN bN cN dN eN fN rN sN tN)
 {
 cat <<'EOF'
+/-
+Copyright (c) 2026 mt0-svg. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: mt0-svg
+-/
 import Tammes15.Attained.Roots
 import Tammes15.PaperSteps.TieMap
 

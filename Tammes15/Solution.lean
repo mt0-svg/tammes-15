@@ -1,10 +1,18 @@
+/-
+Copyright (c) 2026 mt0-svg. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: mt0-svg
+-/
 import Tammes15.Hyps.Reduction
 import Tammes15.Attained.Final
 import Tammes15.Nonunique.Corollary
 import Tammes15.PaperSteps.MainSearch
 import Tammes15.PaperSteps.Optima
 import Tammes15.PaperSteps.Isometric
+import Tammes15.PaperSteps.Automorphisms
 import Tammes15.Contractors.Main
+import Tammes15.Classification
+import Tammes15.PaperSteps.Classes
 
 /-!
 # Solution
@@ -35,4 +43,18 @@ these statements are those of `Tammes15/PaperSteps/Defs.lean`, `Tammes15/PaperSt
 (`Tammes15.Contractors.Impl.onDom_sound`), and `Tammes15.Contractors.killed_of_progTreesDom` and
 `Tammes15.nonunique_of_enum_progTreesDom` in `Tammes15/Contractors/Main.lean`. The definitions of these statements
 are those of `Tammes15/Contractors/Defs.lean`, `Tammes15/Contractors/Prims.lean` and `Tammes15/Contractors/Arith.lean`.
+
+`Tammes15.classification_of_enum_killed` and `Tammes15.classification_of_enum_progTreesDom` are proved in
+`Tammes15/Classification.lean`, from the structure theorem for a configuration none of whose points with a contact
+can be moved off its contacts, D2, D3 and `Tammes15.PaperSteps.local_optimality_frame` with its equality case.
+
+The five theorems of Proposition 3.2, `Tammes15.PaperSteps.aut_contactGraph_C1`,
+`Tammes15.PaperSteps.aut_contactGraph_C3`, `Tammes15.PaperSteps.orthogonal_C1`, `Tammes15.PaperSteps.orthogonal_C3`
+and `Tammes15.PaperSteps.orthogonal_det`, are proved in `Tammes15/PaperSteps/Automorphisms.lean`, by colour
+refinement on the contact graphs and the three points `p_V`, `ζ p_V`, `ζ² p_V`, which span the space.
+
+`Tammes15.classification_count_of_enum_killed` and `Tammes15.classification_count_of_enum_progTreesDom` are proved in
+`Tammes15/PaperSteps/Classes.lean`, from the two forms of the classification, the orthogonal maps preserving `C1` and
+`C3` (`Tammes15.PaperSteps.orthogonal_det`), `Tammes15.PaperSteps.frames_not_isometric`, the contact graphs of the
+two frames and a count by `decide` on their edge lists.
 -/

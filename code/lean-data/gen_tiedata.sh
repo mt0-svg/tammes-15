@@ -15,6 +15,11 @@ awk '
   { print "unexpected line: " $0 > "/dev/stderr"; exit 1 }
   END {
     if (nc != 8) { print "expected 8 configurations" > "/dev/stderr"; exit 1 }
+    print "/-"
+    print "Copyright (c) 2026 mt0-svg. All rights reserved."
+    print "Released under Apache 2.0 license as described in the file LICENSE."
+    print "Authors: mt0-svg"
+    print "-/"
     print "import Mathlib.Basic.Real.Basic"
     print "import Mathlib.Data.Fin.VecNotation"
     print ""

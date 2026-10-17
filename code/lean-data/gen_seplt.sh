@@ -9,6 +9,11 @@ A=Tammes15/Attained
 O=${1:-Tammes15/Nonunique/SepLt.lean}
 {
 cat <<'H'
+/-
+Copyright (c) 2026 mt0-svg. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: mt0-svg
+-/
 import Tammes15.Attained.Frames
 import Tammes15.Nonunique.Defs
 
